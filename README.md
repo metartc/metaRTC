@@ -56,3 +56,8 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 
 下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+## 编译教程
+metaRTC嵌入式webrtc编程指南 https://blog.csdn.net/m0_56595685/article/details/122010285  
+视频编译教程 https://www.bilibili.com/video/BV1d3411r742/  
+
