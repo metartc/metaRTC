@@ -66,7 +66,7 @@ The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situati
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 ## compile the tutorial 编译教程
-### metaRTC嵌入式webrtc编程指南 MetaRTC Embedded Webrtc Programming Guide  
+### MetaRTC Embedded Webrtc Programming Guide  metaRTC嵌入式webrtc编程指南 
 https://blog.csdn.net/m0_56595685/article/details/122010285  
 ### Video Compilation Tutorial 视频编译教程
 https://www.bilibili.com/video/BV1d3411r742/  
