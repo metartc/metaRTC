@@ -1,14 +1,14 @@
 ## MetaRTC Overview
 MetaRTC是一个为嵌入式/物联网打造的RTC库，为第三代互联网 元宇宙提供RTC能力。  
-MetaRTC实现了webrtc协议，支持webrtc/srt/rtmp，可与谷歌webrtc互联互通。 
-GitHub - metartc/metaRTC: 中国人自己的webrtc,非谷歌lib  
+MetaRTC实现了webrtc协议，支持webrtc/srt/rtmp，可与谷歌webrtc互联互通。   
+GitHub - metartc/metaRTC: 中国人自己的webrtc,非谷歌lib    
 metaRTC为嵌入式版本   
-yangwebrtc为PC版本  https://github.com/metartc/yangwebrtc  
+yangwebrtc为PC版本  https://github.com/metartc/yangwebrtc    
 
 MetaRTC is an RTC library built for embedded/IoT that provides RTC capabilities for the third-generation Internet metaverse.  
 MetaRTC implements the webrtc protocol, supports webrtc/srt/rtmp, and can be interconnected with Google webrtc.  
 non-Google lib metaRTC for the embedded version  
-of yangwebrtc for the PC version https://github.com/metartc/yangwebrtc  
+yangwebrtc for the PC version https://github.com/metartc/yangwebrtc  
  
 ## MetaRTC和谷歌Webrtc的区别
 优势:
@@ -60,8 +60,9 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 可用于远程教育、远程医疗、指挥调度、安防监控、影视录播、协同办公、直播互动等多种行业应用。
 
 
-下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。
-The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.  
+下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。  
+The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.   
+
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 ## compile the tutorial 编译教程
