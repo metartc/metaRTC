@@ -12,7 +12,7 @@ Webrtc compilation is difficult, requires scientific Internet access, and wareho
 small size  
 2.webrtc is developed using c++ and is bulky and not suitable for embedding. metartc is mostly developed in the c language and is inherently suitable for embedding.
 easy to re-develop  
-3.webrtc is developed by google, the amount of code is large, and the secondary development is difficult. the amount of meta code is small, the difficulty of secondary development is small, and there is a complete community of chinese people.
+3.webrtc is developed by google, the amount of code is large, and the secondary development is difficult. the amount of meta code is small, the difficulty of secondary development is small, and there is a complete community of chinese people.  
 4.create a chinese ecology  
  webrtc is p2p, there is no server side, and the open source server side, various, high learning costs, developers often struggle to use that webrtc open source service. metartc recommends using srs yang to set up a big guy open source server (written by the chinese), of course, if you have your own streaming media server also support docking.  
 5.more open  
