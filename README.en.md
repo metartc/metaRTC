@@ -7,17 +7,17 @@ yangwebrtc for the PC version https://github.com/metartc/yangwebrtc
 ## The difference between MetaRTC and Google Webrtc  
 advantage:  
 
-MetaRTC compilation is simple  
+1.MetaRTC compilation is simple  
 Webrtc compilation is difficult, requires scientific Internet access, and warehouses dozens of G. And metatc on station B has a complete compilation tutorial and video
 small size  
-webrtc is developed using c++ and is bulky and not suitable for embedding. metartc is mostly developed in the c language and is inherently suitable for embedding.
+2.webrtc is developed using c++ and is bulky and not suitable for embedding. metartc is mostly developed in the c language and is inherently suitable for embedding.
 easy to re-develop  
-webrtc is developed by google, the amount of code is large, and the secondary development is difficult. the amount of meta code is small, the difficulty of secondary development is small, and there is a complete community of chinese people.
-create a chinese ecology  
-webrtc is p2p, there is no server side, and the open source server side, various, high learning costs, developers often struggle to use that webrtc open source service. metartc recommends using srs yang to set up a big guy open source server (written by the chinese), of course, if you have your own streaming media server also support docking.
-more open  
+3.webrtc is developed by google, the amount of code is large, and the secondary development is difficult. the amount of meta code is small, the difficulty of secondary development is small, and there is a complete community of chinese people.
+4.create a chinese ecology  
+ webrtc is p2p, there is no server side, and the open source server side, various, high learning costs, developers often struggle to use that webrtc open source service. metartc recommends using srs yang to set up a big guy open source server (written by the chinese), of course, if you have your own streaming media server also support docking.
+5.more open  
 metartc is more localized, has independent development rights, the required functions and suggestions can be mentioned issue, and iterative metartc will be updated according to the developer's suggestions
-complete solutions available  
+6.complete solutions available  
 Metartc provides a full set of solutions, such as developers want to use H265, and SRS does not support 265, we extend H265 support on SRS to provide a complete solution from the client to the server
 7. more controllable  
 
@@ -39,7 +39,8 @@ Recent Java log4j security vulnerabilities, brushed the entire Internet, log4j b
 13. a variety of processing of sound and images is realized.  
 14. professional camera gimbal control with multi-lens guide switching.  
 15.supports both 32-bit and 64-bit programming.  
-IT CAN BE USED FOR: VIDEO CONFERENCING, HD RECORDING AND LIVE BROADCASTING, LIVE INTERACTIVE, CLOUD GAMES, CLOUD 3D AND OTHER VIDEO AND AUDIO APPLICATIONS. IT CAN BE USED FOR REMOTE EDUCATION, TELEMEDICINE, COMMAND AND DISPATCH, SECURITY MONITORING, FILM AND TELEVISION RECORDING, COLLABORATIVE OFFICE, LIVE INTERACTIVE AND OTHER INDUSTRY APPLICATIONS.  
+IT CAN BE USED FOR: VIDEO CONFERENCING, HD RECORDING AND LIVE BROADCASTING, LIVE INTERACTIVE, CLOUD GAMES, CLOUD 3D AND OTHER VIDEO AND AUDIO APPLICATIONS.   
+IT CAN BE USED FOR REMOTE EDUCATION, TELEMEDICINE, COMMAND AND DISPATCH, SECURITY MONITORING, FILM AND TELEVISION RECORDING, COLLABORATIVE OFFICE, LIVE INTERACTIVE AND OTHER INDUSTRY APPLICATIONS.  
 
 The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.  
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
