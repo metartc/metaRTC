@@ -14,14 +14,14 @@ small size
 easy to re-develop  
 3.webrtc is developed by google, the amount of code is large, and the secondary development is difficult. the amount of meta code is small, the difficulty of secondary development is small, and there is a complete community of chinese people.
 4.create a chinese ecology  
- webrtc is p2p, there is no server side, and the open source server side, various, high learning costs, developers often struggle to use that webrtc open source service. metartc recommends using srs yang to set up a big guy open source server (written by the chinese), of course, if you have your own streaming media server also support docking.
+ webrtc is p2p, there is no server side, and the open source server side, various, high learning costs, developers often struggle to use that webrtc open source service. metartc recommends using srs yang to set up a big guy open source server (written by the chinese), of course, if you have your own streaming media server also support docking.  
 5.more open  
-metartc is more localized, has independent development rights, the required functions and suggestions can be mentioned issue, and iterative metartc will be updated according to the developer's suggestions
+metartc is more localized, has independent development rights, the required functions and suggestions can be mentioned issue, and iterative metartc will be updated according to the developer's suggestions  
 6.complete solutions available  
-Metartc provides a full set of solutions, such as developers want to use H265, and SRS does not support 265, we extend H265 support on SRS to provide a complete solution from the client to the server
+Metartc provides a full set of solutions, such as developers want to use H265, and SRS does not support 265, we extend H265 support on SRS to provide a complete solution from the client to the server  
 7. more controllable  
 
-Recent Java log4j security vulnerabilities, brushed the entire Internet, log4j broke most of the Java day, for RTC, more need an independent and controllable RTC
+Recent Java log4j security vulnerabilities, brushed the entire Internet, log4j broke most of the Java day, for RTC, more need an independent and controllable RTC  
 
 ## metaRTC function
 1.Video encoding 8bit: x264, x265, vaapi, nvenc, etc., the second phase adds AV1 and a variety of hardware encoding.  
