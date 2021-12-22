@@ -1,9 +1,15 @@
 ## MetaRTC Overview
 MetaRTC是一个为嵌入式/物联网打造的RTC库，为第三代互联网 元宇宙提供RTC能力。  
-MetaRTC实现了webrtc协议，支持webrtc/srt/rtmp，可与谷歌webrtc互联互通。  
+MetaRTC实现了webrtc协议，支持webrtc/srt/rtmp，可与谷歌webrtc互联互通。 
 GitHub - metartc/metaRTC: 中国人自己的webrtc,非谷歌lib  
 metaRTC为嵌入式版本   
-yangwebrtc为PC版本  https://github.com/metartc/yangwebrtc   
+yangwebrtc为PC版本  https://github.com/metartc/yangwebrtc  
+
+MetaRTC is an RTC library built for embedded/IoT that provides RTC capabilities for the third-generation Internet metaverse.  
+MetaRTC implements the webrtc protocol, supports webrtc/srt/rtmp, and can be interconnected with Google webrtc.  
+non-Google lib metaRTC for the embedded version  
+of yangwebrtc for the PC version https://github.com/metartc/yangwebrtc  
+ 
 ## MetaRTC和谷歌Webrtc的区别
 优势:
 1. MetaRTC编译简单
@@ -33,21 +39,21 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 
 ## metaRTC功能
 
-1. 视频编码 8bit:x264、x265、vaapi、nvenc等，二期增加AV1和多种硬件编码。
-2. 视频编码 10bit:x265、vaapi、nvenc等。
-3. 视频解码：ffmpeg和yangh264decoder。
+1. video encoding 8bit:x265, vaapi, nvenc, etc。
+2. video encoding  10bit:x265、vaapi、nvenc，etc。
+3. video decoding：ffmpeg or yangh264decoder。
 4. VR:基于抠图实现虚拟视频的互动和录制、直播等。
 5. 8bit和10bit网络播放器：yangplayer
-6. 音频：Opus、Aac、Speex、Mp3等音频编解码。
-7. 音频：AEC、AGC、ANS及声音合成等处理。
-8. 传输：webrtc、rtmp、srt，webrtc为自己实现，没使用谷歌lib库。
-9. 直播：rtmp、srt、webrtc、HLS、HTTP-FLV。
-10. 8bit录制：h264、h265的mp4和flv。
-11. 10bit录制：h265的mp4
-12. 实现了屏幕共享与控制。
-13. 实现了声音和图像多种处理。
-14. 专业摄像头的云台控制与多镜头导播切换。
-15. 支持32位和64位编程。
+6. audio：Opus、Aac、Speex、Mp3 and other audio codecs。
+7. audio：AEC、AGC、ANS and  SOUND SYNTHESIS 声音合成等处理。
+8. transport：webrtc、rtmp、srt，webrtc is non-google lib。
+9. live：rtmp、srt、webrtc、HLS、HTTP-FLV。
+10. 8bit recording：hh264, h265 mp4 and flv。
+11. 10bit recording：h265 mp4
+12. screen sharing and control 实现了屏幕共享与控制。
+13. a variety of processing of sound and images is realized 实现了声音和图像多种处理。
+14. professional camera gimbal control with multi-lens guide switching 专业摄像头的云台控制与多镜头导播切换。
+15. supports both 32-bit and 64-bit programming 支持32位和64位编程。
 
 可用于：
 视频会议、高清录播直播、直播互动、云游戏、云3D等多种视音频应用。
@@ -55,9 +61,11 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 
 
 下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。
+The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.  
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
-## 编译教程
-metaRTC嵌入式webrtc编程指南 https://blog.csdn.net/m0_56595685/article/details/122010285  
-视频编译教程 https://www.bilibili.com/video/BV1d3411r742/  
+## compile the tutorial 编译教程
+metaRTC嵌入式webrtc编程指南 MetaRTC Embedded Webrtc Programming Guide  
+https://blog.csdn.net/m0_56595685/article/details/122010285  
+Video Compilation Tutorial 视频编译教程 https://www.bilibili.com/video/BV1d3411r742/  
 
