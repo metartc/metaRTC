@@ -59,10 +59,10 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 视频会议、高清录播直播、直播互动、云游戏、云3D等多种视音频应用。
 可用于远程教育、远程医疗、指挥调度、安防监控、影视录播、协同办公、直播互动等多种行业应用。
 ## libmetartc2 compile
-mkdir build
-cd build 
-cmake ..
-make
+mkdir build  
+cd build   
+cmake ..  
+make  
 
 下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。  
 The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.   
