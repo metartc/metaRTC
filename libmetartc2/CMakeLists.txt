@@ -32,8 +32,37 @@ aux_source_directory(./src/yangrtmp DIR_SRCS)
 aux_source_directory(./src/yangsrt DIR_SRCS)
 aux_source_directory(./src/yangrtp DIR_SRCS)
 aux_source_directory(./src/yangwebrtc DIR_SRCS)
-include(utils.cmake)
+# include(utils.cmake)
 # 排除不参与编译的文件
 
-
+# 最终要生成的静态库 libmetartc2.a
 add_library(metartc2 ${DIR_SRCS})
+
+# 第三方依赖库
+add_library(ssl2 STATIC IMPORTED)
+set_target_properties(
+    ssl2
+    PROPERTIES IMPORTED_LOCATION
+    ${HOME_BASE}/thirdparty/lib/libssl2.a
+)
+
+add_library(srtp2 STATIC IMPORTED)
+set_target_properties(
+    srtp2
+    PROPERTIES IMPORTED_LOCATION
+    ${HOME_BASE}/thirdparty/lib/libsrtp2.a
+)
+
+add_library(crypto2 STATIC IMPORTED)
+set_target_properties(
+    crypto2
+    PROPERTIES IMPORTED_LOCATION
+    ${HOME_BASE}/thirdparty/lib/libcrypto2.a
+)
+
+find_library(ASOUND_C_LIB asound)
+find_path(ASOUND_C_INCLUDE asound)
+include_directories(${ASOUND_C_INCLUDE})
+
+# 链接库
+target_link_libraries(metartc2 m ssl2 srtp2 crypto2 ${ASOUND_C_LIB})
