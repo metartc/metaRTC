@@ -73,8 +73,13 @@ The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situati
 ### MetaRTC Embedded Webrtc Programming Guide  metaRTC嵌入式webrtc编程指南 
 https://blog.csdn.net/m0_56595685/article/details/122139482   
 https://blog.csdn.net/m0_56595685/article/details/122010285  
+搭建低延迟并节省一半码率的H265的webrtc应用 https://blog.csdn.net/m0_56595685/article/details/121880362  
+搭建支持H264和H265的linux和嵌入式的高清录播直播系统 https://blog.csdn.net/m0_56595685/article/details/121735106  
+搭建跨平台支持嵌入式智能终端的双师课堂实现远程互动教学 https://blog.csdn.net/m0_56595685/article/details/121735106  
 ### Video Compilation Tutorial 视频编译教程
 https://www.bilibili.com/video/BV1d3411r742/  
+
+
 
 metaRTC服务群
 
