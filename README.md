@@ -61,7 +61,7 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 ## libmetartc2 compile
 mkdir build  
 cd build   
-cmake ..  
+cmake .. -DCMAKE_BUILD_TYPE=Release  
 make  
 
 下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。  
