@@ -26,7 +26,8 @@ const int32_t kAudioSamplerate      = 48000;
 // Firefox defaults as 126, Chrome is 102.
 const int32_t kVideoPayloadType = 102;
 const int32_t kVideoSamplerate  = 90000;
-const int32_t kRtpMaxPayloadSize = kRtpPacketSize - 200;
+// const int32_t kRtpMaxPayloadSize = kRtpPacketSize - 200;
+const int32_t kRtpMaxPayloadSize = 1300;
 
 const int32_t kRtcpPacketSize = 1500;
 const uint8_t kRtcpVersion = 0x2;
