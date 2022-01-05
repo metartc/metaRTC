@@ -32,6 +32,32 @@ int32_t hmac_encode(const char* algo, const char* key, const int key_length,
         return 1;
     }
 
+#if !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
+	HMAC_CTX hctx;
+	HMAC_CTX_init(&hctx);
+    if (&hctx == NULL) {
+        return yang_error_wrap(ERROR_SSL, "hmac init faied");
+    }
+
+    if (HMAC_Init_ex(&hctx, key, key_length, engine, NULL) < 0) {
+        HMAC_CTX_cleanup(&hctx);
+        return yang_error_wrap(ERROR_SSL, "hmac init faied");
+    }
+
+    if (HMAC_Update(&hctx, (const uint8_t*)input, input_length) < 0) {
+        HMAC_CTX_cleanup(&hctx);
+        return yang_error_wrap(ERROR_SSL, "hmac update faied");
+    }
+
+    if (HMAC_Final(&hctx, (uint8_t*)output, &output_length) < 0) {
+        HMAC_CTX_cleanup(&hctx);
+        return yang_error_wrap(ERROR_SSL, "hmac final faied");
+    }
+
+    HMAC_CTX_cleanup(&hctx);
+
+#else
+
     HMAC_CTX* ctx = HMAC_CTX_new();
     if (ctx == NULL) {
         return yang_error_wrap(ERROR_SSL, "hmac init faied");
@@ -53,6 +79,7 @@ int32_t hmac_encode(const char* algo, const char* key, const int key_length,
     }
 
     HMAC_CTX_free(ctx);
+#endif
 
     return err;
 }
@@ -60,7 +87,7 @@ int32_t hmac_encode(const char* algo, const char* key, const int key_length,
 
 
 
-void yang_destroy_certificate(YangCertificate* cer){
+void yang_destroy_certificate(struct YangCertificate* cer){
 	if (cer->eckey) {
 		EC_KEY_free(cer->eckey);
 	}
@@ -73,7 +100,7 @@ void yang_destroy_certificate(YangCertificate* cer){
 		X509_free(cer->dtls_cert);
 	}
 }
-int32_t yang_init_certificate(YangCertificate* cer) {
+int32_t yang_init_certificate(struct YangCertificate* cer) {
 	int32_t err = Yang_Ok;
 	cer->ecdsa_mode = true;
 	// Initialize once.
@@ -143,8 +170,7 @@ int32_t yang_init_certificate(YangCertificate* cer) {
 		//const std::string &aor = "yrt";//RTMP_SIG_SRS_DOMAIN;
 		uint8_t aor[10];
 		memset(aor,0,10);
-		//sprintf(aor,"metaRTC");
-		strcpy(aor,"metaRTC");
+		sprintf(aor,"metaRTC");
 		X509_NAME_add_entry_by_txt(subject, "CN", MBSTRING_ASC,
 				aor, strlen(aor), -1, 0);
 
