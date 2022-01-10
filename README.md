@@ -80,7 +80,3 @@ https://blog.csdn.net/m0_56595685/article/details/122010285
 https://www.bilibili.com/video/BV1d3411r742/  
 
 
-
-metaRTC服务群
-
-![1225big](https://user-images.githubusercontent.com/87118023/147380891-b5cb2fcd-eaf1-4f5b-b791-11a5aaf0319e.jpg)
