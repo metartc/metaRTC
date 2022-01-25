@@ -38,7 +38,7 @@ void yang_ma_close(void* pcontext){
 	if(pcontext==NULL) return;
 	YangAecContext* aec=(YangAecContext*)pcontext;
 
-	aec->aec.closeAec(&aec->aec.context);
+	aec->aec.closeAec(aec->aec.context);
 }
 
 void yang_ma_echo_capture(void* pcontext,short *rec, short *out){
@@ -47,7 +47,7 @@ void yang_ma_echo_capture(void* pcontext,short *rec, short *out){
 	aec->audioFrame.payload=(uint8_t*)rec;
 	aec->audioFrame.nb=aec->inRes.context->inBytes;
 	aec->inRes.resample(aec->inRes.context,&aec->audioFrame);
-	aec->aec.echoCapture(&aec->aec.context,(short*)aec->audioFrame.payload,(short*)aec->buf);
+	aec->aec.echoCapture(aec->aec.context,(short*)aec->audioFrame.payload,(short*)aec->buf);
 	aec->audioFrame.payload=aec->buf;
 	aec->audioFrame.nb=aec->outRes.context->inBytes;
 	aec->outRes.resample(aec->outRes.context,&aec->audioFrame);
@@ -57,12 +57,12 @@ void yang_ma_echo_capture(void* pcontext,short *rec, short *out){
 void yang_ma_preprocess_run(void* pcontext,short *pcm){
 	if(pcontext==NULL) return;
 	YangAecContext* aec=(YangAecContext*)pcontext;
-	aec->aec.preprocessRun(&aec->aec.context,pcm);
+	aec->aec.preprocessRun(aec->aec.context,pcm);
 }
 void yang_ma_echo_state_reset(void* pcontext){
 	if(pcontext==NULL) return;
 	YangAecContext* aec=(YangAecContext*)pcontext;
-	aec->aec.echoStateReset(&aec->aec.context);
+	aec->aec.echoStateReset(aec->aec.context);
 }
 void yang_ma_echo_playback(void* pcontext,short *play){
 	if(pcontext==NULL) return;
@@ -70,13 +70,13 @@ void yang_ma_echo_playback(void* pcontext,short *play){
 	aec->audioFrame.payload=(uint8_t*)play;
 	aec->audioFrame.nb=aec->inRes.context->inBytes;
 	aec->inRes.resample(aec->inRes.context,&aec->audioFrame);
-	aec->aec.echoPlayback(&aec->aec.context,(short*)aec->audioFrame.payload);
+	aec->aec.echoPlayback(aec->aec.context,(short*)aec->audioFrame.payload);
 }
 void yang_ma_echo_cancellation(void* pcontext,const short *rec, const short *play,
 		short *out){
 	if(pcontext==NULL) return;
 	YangAecContext* aec=(YangAecContext*)pcontext;
-	aec->aec.echoCancellation(&aec->aec.context,rec,play,out);
+	aec->aec.echoCancellation(aec->aec.context,rec,play,out);
 }
 
 void yang_init_aec(YangAec* aec){
