@@ -1,4 +1,4 @@
-/*
+﻿/*
  * YangAec.c
  *
  *  Created on: 2022年1月24日
@@ -31,6 +31,7 @@ void yang_ma_init(void* pcontext,int32_t sample,int32_t channel){
 	aec->outChannel=1;
 	aec->inRes.init(aec->inRes.context,aec->inSample,aec->inChannel,aec->outSample,aec->outChannel,20);
 	aec->outRes.init(aec->outRes.context,aec->outSample,aec->outChannel,aec->inSample,aec->inChannel,20);
+    aec->aec.init(aec->aec.context,aec->outSample,aec->outChannel,aec->outSample/50);
 	if(aec->buf==NULL) aec->buf=(uint8_t*)malloc(aec->outRes.context->inBytes);
 }
 void yang_ma_close(void* pcontext){

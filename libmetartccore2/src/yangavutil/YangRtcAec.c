@@ -24,6 +24,7 @@ void yang_rtcaec_init(void* context, int32_t sampleRate, int32_t pchannel,int32_
 			aec->frameSize = pframeSize;
 			aec->sampleRate = sampleRate;
 			aec->channel = pchannel;
+            aec->echoPath=20;
 			int32_t frame_size = aec->frameSize;//(aec->frameSizeInMS * aec->sampleRate * 1.0) / 1000;
 			int32_t filter_length = aec->frameSize * aec->echoPath;//20;//30;//aec->echoPath;//(aec->frameSizeInMS * aec->sampleRate * 1.0) / 1000;
 
