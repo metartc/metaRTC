@@ -99,6 +99,7 @@ void yang_rtcaec_echo_cancellation(void* context,const short *rec, const short *
 void yang_init_rtcaec(YangRtcAec* aec){
 	if(aec==NULL) return;
 	aec->context=(YangRtcAecContext*)calloc(sizeof(YangRtcAecContext),1);
+	aec->init=yang_rtcaec_init;
 	aec->closeAec=yang_rtcaec_close;
 	aec->echoCancellation=yang_rtcaec_echo_cancellation;
 	aec->echoCapture=yang_rtcaec_echo_capture;
