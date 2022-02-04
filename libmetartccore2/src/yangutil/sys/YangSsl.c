@@ -118,7 +118,7 @@ void g_yang_init_srtp(){
 	    }
 }
 void g_yang_destroy_srtp(){
-	if(g_yang_destroy_srtp!=-1){
+	if(g_yang_srtp_inited!=-1){
 		srtp_shutdown();
 		g_yang_srtp_inited=-1;
 	}
