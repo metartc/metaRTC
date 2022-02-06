@@ -75,6 +75,8 @@ https://www.bilibili.com/video/BV1d3411r742/
 ### MetaRTC Embedded Webrtc Programming Guide  metaRTC嵌入式webrtc编程指南 
 https://blog.csdn.net/m0_56595685/article/details/122139482   
 https://blog.csdn.net/m0_56595685/article/details/122010285  
+### metaRTC搭建视频会议
+https://blog.csdn.net/m0_56595685/article/details/122775443  
 ### 搭建低延迟并节省一半码率的H265的webrtc应用
 https://blog.csdn.net/m0_56595685/article/details/121880362  
 ### 搭建支持H264和H265的linux和嵌入式的高清录播直播系统 
