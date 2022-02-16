@@ -43,7 +43,7 @@ win32{
     }
     LIBS += -lmetartc3  -lmetartccore3 -lspeexdsp -lksuser -lwinmm  -lole32 -lStrmiids -lsrtp2 -lavutil -lavcodec
     #gpu encode and decode
-    #LIBS +=  -lyangwincodec  -ld3d11 -ld3d9 -ldxva2
+    #LIBS +=  -lyangwincodec3  -ld3d11 -ld3d9 -ldxva2
     #using vr
     #LIBS += -lyangrtcext2
 
