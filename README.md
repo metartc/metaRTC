@@ -60,8 +60,20 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 
 可用于：
 视频会议、高清录播直播、直播互动、云游戏、云3D等多种视音频应用。
-可用于远程教育、远程医疗、指挥调度、安防监控、影视录播、协同办公、直播互动等多种行业应用。
-## libmetartc2 compile
+可用于远程教育、远程医疗、指挥调度、安防监控、影视录播、协同办公、直播互动等多种行业应用。  
+## module
+### libmetartccore3
+webrtc/rtmp 协议实现和基础应用C类库
+### libmetartc3
+实现采集、编码、解码、传输以及推拉流等实现
+### metapushstream
+推流和录制 demo
+### metaplayer
+拉流demo
+### yangwincodec
+nvidia/intel gpu编码
+
+## libmetartc3 compile
 mkdir build  
 cd build   
 cmake .. -DCMAKE_BUILD_TYPE=Release  
