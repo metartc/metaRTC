@@ -65,7 +65,7 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 ### libmetartccore3
 webrtc/rtmp 协议实现和基础应用C类库
 ### libmetartc3
-实现采集、编码、解码、传输以及推拉流等实现
+实现采集、编码、解码、传输(SRT实现)以及推拉流等实现
 ### metapushstream
 推流和录制 demo
 ### metaplayer
