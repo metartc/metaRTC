@@ -136,6 +136,7 @@ void yang_init_rtcpRR(YangRtcpCommon *comm) {
 	comm->header.version = kRtcpVersion;
 	comm->header.length = 7;
 	comm->ssrc = 0;
+	
 	if(comm->rb==NULL) comm->rb=(YangRtcpRB*)calloc(sizeof(YangRtcpRB),1);
 }
 
