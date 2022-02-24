@@ -36,7 +36,7 @@ void yang_create_stream(int32_t transType,YangStreamHandle* streamHandle,int32_t
 	context->audioStream=0;
 	context->videoStream=0;
 	context->uid=puid;
-	context->data=NULL;
+	//context->data=NULL;
 	context->netState = 1;
 	streamHandle->init=yang_stream_init;
 	context->transtype=transType;
