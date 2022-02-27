@@ -83,7 +83,13 @@ make
 The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.   
 
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-
+## metaRTC3产品展区
+### metaRTC云桌面(浏览器/嵌入式/GPU编码/H264/H265/webrtc)
+下载：
+https://github.com/metartc/metaRTC/releases/tag/3.0.009  
+https://download.csdn.net/download/m0_56595685/82167672  
+详情参见：
+https://blog.csdn.net/m0_56595685/article/details/123104236  
 ## compile the tutorial 编译教程
 ### Video Compilation Tutorial 视频编译教程
 https://www.bilibili.com/video/BV1d3411r742/  
