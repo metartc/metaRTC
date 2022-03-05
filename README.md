@@ -12,6 +12,8 @@ yangwebrtc for C++ version https://github.com/metartc/yangwebrtc
   
 Remark:metaRTC2.0为稳定版本 metaRTC3.0正在开发中，为非稳定版本  
 Remark:metaRTC2.0 is stable  metaRTC3.0 is developing and not stable  
+### metaRTC2.0稳定版本下载
+https://github.com/metartc/metaRTC/releases/tag/v2.0-b0  
  
 ## MetaRTC和谷歌Webrtc的区别
 优势:
