@@ -26,14 +26,14 @@ int32_t yang_rtcsession_dispatch_rtcp(YangRtcSession *session,YangRtcpCommon *rt
  }
  // For STUN packet, 0x00 is binding request, 0x01 is binding success response.
 
-
+ **/
  // For RTCP, PT is [128, 223] (or without marker [0, 95]).
  // Literally, RTCP starts from 64 not 0, so PT is [192, 223] (or without marker [64, 95]).
  // @note For RTP, the PT is [96, 127], or [224, 255] with marker.
  bool yang_is_rtcp(const uint8_t *data, size_t len) {
  return (len >= 12) && (data[0] & 0x80) && (data[1] >= 192 && data[1] <= 223);
  }
- **/
+
 bool yang_is_stun(const uint8_t *data, size_t size) {
 	return size > 0 && (data[0] == 0 || data[0] == 1) ? 1 : 0;
 }
@@ -300,8 +300,7 @@ void yang_rtcsession_receive(YangRtcSession *session, char *data, int32_t size) 
 	if (session==NULL||!session->activeState)	return;
 
 	bool is_rtp_or_rtcp = (size >= 12 && (data[0] & 0xC0) == 0x80);
-	bool is_rtcp = (size >= 12) && (data[0] & 0x80)
-			&& (data[1] >= 192 && data[1] <= 223);
+	bool is_rtcp = yang_is_rtcp((uint8_t*)data,size);//(size >= 12) && (data[0] & 0x80)	&& (data[1] >= 192 && data[1] <= 223);
 
 	if (is_rtp_or_rtcp && !is_rtcp) {
 		session->startRecv = 1;

@@ -134,7 +134,7 @@ void yang_clogf(int32_t level, const char *fmt, ...) {
 	len = vsnprintf(buf, 4095, fmt, args);
 	va_end(args);
 
-	printf(buf);
+	printf("%s",buf);
 
 	if (g_hasLogFile) {
 		if (g_fmsg){
