@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(libmetartc2)
+project(libmetartc3)
 
 add_definitions(-D__STDC_FORMAT_MACROS)
 
@@ -12,7 +12,7 @@ include_directories(${HOME_BASE}/include)
 include_directories(${HOME_BASE}/thirdparty/include)
 include_directories(${HOME_BASE}/thirdparty/user_include)
 include_directories(${HOME_BASE}/thirdparty/user_include/ffmpeg)
-include_directories(${HOME_BASE}/libmetartc2/src)
+include_directories(${HOME_BASE}/libmetartc3/src)
 
 
 # 发现目录下的源文件
@@ -36,4 +36,4 @@ include(utils.cmake)
 # 排除不参与编译的文件
 
 
-add_library(metartc2 ${DIR_SRCS})
+add_library(metartc3 ${DIR_SRCS})
