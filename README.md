@@ -71,10 +71,10 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 webrtc/rtmp 协议实现和基础应用C类库
 ### libmetartc3
 实现采集、编码、解码、传输(SRT实现)以及推拉流等实现
-### metapushstream
-推流和录制 demo
-### metaplayer
-拉流demo
+### metapushstream3/metapushstream3_android
+推流和录制 demo metapushstream3_android为安卓版
+### metaplayer3/metaplayer3_android
+拉流demo,metaplayer3_android为安卓版
 ### yangwincodec
 nvidia/intel gpu编码
 
