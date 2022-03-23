@@ -4,6 +4,7 @@ MetaRTC实现了webrtc协议，支持webrtc/srt/rtmp，可与谷歌webrtc互联�
 GitHub - metartc/metaRTC: 中国人自己的webrtc,非谷歌lib    
 metaRTC为纯C版本   
 yangwebrtc为C++版本  https://github.com/metartc/yangwebrtc    
+支持windows/linux/android等
 
 MetaRTC is an webRTC library built for embedded/IoT that provides webRTC capabilities for the third-generation Internet metaverse.  
 MetaRTC implements the webrtc protocol, supports webrtc/srt/rtmp, and can be interconnected with Google webrtc.  
