@@ -1,3 +1,0 @@
-/home/yang/yangpro/metartc3/libmetartc3/build/CMakeFiles/metartc3.dir
-/home/yang/yangpro/metartc3/libmetartc3/build/CMakeFiles/edit_cache.dir
-/home/yang/yangpro/metartc3/libmetartc3/build/CMakeFiles/rebuild_cache.dir
