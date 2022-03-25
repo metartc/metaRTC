@@ -16,6 +16,9 @@ Remark:metaRTC2.0 is stable  metaRTC3.0 is developing and not stable
 ### metaRTC2.0稳定版本下载
 https://github.com/metartc/metaRTC/releases/tag/v2.0-b0  
  
+### metaRTC3.0第三方类库已经编译好的类库下载地址
+https://download.csdn.net/download/m0_56595685/85036149  
+ 
 ## MetaRTC和谷歌Webrtc的区别
 优势:
 1. MetaRTC编译简单
