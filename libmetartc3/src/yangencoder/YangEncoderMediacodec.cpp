@@ -108,7 +108,7 @@ int32_t YangEncoderMediacodec::encode(YangFrame* pframe, YangEncoderCallback* pc
 
 	//取输出buffer
 	auto outindex = AMediaCodec_dequeueOutputBuffer(m_mediaCodec, &info, 0);
-	int i=0;
+	
 	if (outindex >= 0) {
 		//在这里取走编码后的数据
 		//释放buffer给编码器
@@ -154,20 +154,14 @@ int32_t YangEncoderMediacodec::encode(YangFrame* pframe, YangEncoderCallback* pc
 			pframe->nb=info.size+metaLen;
 			pframe->payload=m_vbuffer;
 
-			memcpy(temp,m_vbuffer,40);
+			
 
 		}else{
 			pframe->payload = buf+4;
 			pframe->nb = info.size-4;
-			memset(temp,0,50);
-			memcpy(temp,buf+4,yang_min(info.size,40));
+		
 		}
-		i=0;
-		yang_trace("%d:%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x",
-				info.size,	temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],
-				temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],
-				temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],
-				temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++],temp[i++]);
+	
 		if (pcallback)	pcallback->onVideoData(pframe);
 		AMediaCodec_releaseOutputBuffer(m_mediaCodec, outindex, false);
 	}
