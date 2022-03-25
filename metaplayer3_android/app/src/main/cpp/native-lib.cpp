@@ -19,7 +19,7 @@ void g_player_initContext(YangContext* context){
 
 	//YangV_Hw_Android mediacodec
 	//Yang_Hw_Soft yangh264decoder
-	context->avinfo.video.videoDecHwType=YangV_Hw_Android;
+	context->avinfo.video.videoDecHwType=Yang_Hw_Soft;
 	yang_setLogLevle(5);
 	yang_setLogFile(1);
 }
