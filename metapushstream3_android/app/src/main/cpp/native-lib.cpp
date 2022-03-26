@@ -16,11 +16,14 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 void g_push_initContext(YangContext* context){
 	context->avinfo.rtc.mixAvqueue=0;
 	context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm
-	context->avinfo.video.videoEncoderType=Yang_VED_264;
+	context->avinfo.video.videoEncoderType=Yang_VED_264; //h264
+
+	//YangI420 YangYv12 YangNv12 YangNv21//根据机型mediacodec 需要nv12
 	context->avinfo.video.videoEncoderFormat=YangI420;
+    context->avinfo.video.videoCaptureFormat=YangI420;
 	//YangV_Hw_Android mediacodec
 	//Yang_Hw_Soft libx264
-	context->avinfo.video.videoEncHwType=Yang_Hw_Soft;
+	context->avinfo.video.videoEncHwType=YangV_Hw_Android;
 
 
     context->avinfo.audio.usingMono=0;
@@ -31,13 +34,17 @@ void g_push_initContext(YangContext* context){
     context->avinfo.audio.audioCacheSize=8;
     context->avinfo.audio.audioPlayCacheNum=8;
 
+    context->avinfo.video.rate=2048;//码率默认为2048K
+    context->avinfo.video.frame=30;//默认30帧
+    context->avinfo.video.bitDepth=8;//默认8位，10,12,16
+    context->avinfo.video.videoCaptureFormat=YangI420;
     context->avinfo.video.videoCacheNum=10;
     context->avinfo.video.evideoCacheNum=10;
     context->avinfo.video.videoPlayCacheNum=10;
 
     context->avinfo.audio.audioEncoderType=Yang_AED_OPUS;
     context->avinfo.sys.rtcLocalPort=17000;
-    context->avinfo.enc.enc_threads=4;
+    context->avinfo.enc.enc_threads=4; //x264编码线程数
     context->avinfo.enc.createMeta=0;
     
     yang_setLogLevle(5);
