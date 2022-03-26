@@ -15,14 +15,16 @@ void yang_init_rtcpSR(YangRtcpCommon *comm) {
 	comm->header.length = 6;
 
 	comm->ssrc = 0;
+	if (comm->sr == NULL)
+		comm->sr = (YangRtcpSR*) calloc(1, sizeof(YangRtcpSR));
+	
 	comm->sr->ntp = 0;
 	comm->sr->rtp_ts = 0;
 	comm->sr->send_rtp_packets = 0;
 	comm->sr->send_rtp_bytes = 0;
 	comm->sr->send_rtp_bytes = 0;
 
-	if (comm->sr == NULL)
-		comm->sr = (YangRtcpSR*) calloc(1, sizeof(YangRtcpSR));
+	
 }
 
 void yang_destroy_rtcpSR(YangRtcpCommon *comm) {
