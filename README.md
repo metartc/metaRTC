@@ -72,7 +72,7 @@ meta代码量小，二次开发难度小，并且有完整的国人社区。
 
 ## module
 ### libmetartccore3
-webrtc/rtmp 协议实现和基础应用C类库，可集成到ffmpeg
+webrtc/rtmp 协议实现和基础应用C类库，可集成到ffmpeg  
 如果平台已有采集和编解吗，只需要libmetartccore3即可，不需要libmetartc3
 ### libmetartc3
 实现采集、编码、解码、传输(SRT实现)以及推拉流等实现
