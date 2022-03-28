@@ -20,10 +20,11 @@ void g_push_initContext(YangContext* context){
 
 	//YangI420 YangYv12 YangNv12 YangNv21//根据机型mediacodec 需要nv12
 	context->avinfo.video.videoEncoderFormat=YangI420;
-    context->avinfo.video.videoCaptureFormat=YangI420;
-	//YangV_Hw_Android mediacodec
+ 	//YangV_Hw_Android mediacodec
 	//Yang_Hw_Soft libx264
-	context->avinfo.video.videoEncHwType=YangV_Hw_Android;
+	context->avinfo.video.videoEncHwType=Yang_Hw_Soft;
+	//Yang_Rotate0 Yang_Rotate90 Yang_Rotate180 Yang_Rotate270
+	context->avinfo.video.rotate=Yang_Rotate0;
 
 
     context->avinfo.audio.usingMono=0;
