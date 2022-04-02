@@ -22,7 +22,7 @@ https://download.csdn.net/download/m0_56595685/85036149
 ## MetaRTC和谷歌Webrtc的区别
 优势:
 1. MetaRTC编译简单
-- webrtc编译难，需要科学上网，仓库几十个G。
+- webrtc编译难，仓库几十个G。
 而metartc在[B站](https://www.bilibili.com/video/BV1d3411r742/)有完整的编译教程和视频
 
 
