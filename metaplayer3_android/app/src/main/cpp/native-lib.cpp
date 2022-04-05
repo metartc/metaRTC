@@ -7,6 +7,8 @@
 #include <android/native_window_jni.h> // 是为了 渲染到屏幕支持的
 #include <android/asset_manager_jni.h>
 #include <yangutil/sys/YangLog.h>
+#include <yangutil/sys/YangSocket.h>
+#include <yangutil/sys/YangMath.h>
 #include <yangandroid/MetaPlayer.h>
 #include <android/log.h>
 MetaPlayer *g_player = nullptr;
@@ -20,6 +22,10 @@ void g_player_initContext(YangContext* context){
 	//YangV_Hw_Android mediacodec
 	//Yang_Hw_Soft yangh264decoder
 	context->avinfo.video.videoDecHwType=Yang_Hw_Soft;
+
+    context->avinfo.sys.rtcLocalPort=10000+yang_random()%15000;
+    memset(context->avinfo.sys.localIp,0,sizeof(context->avinfo.sys.localIp));
+    yang_getLocalInfo(context->avinfo.sys.localIp);
 	yang_setLogLevle(5);
 	yang_setLogFile(1);
 }

@@ -7,6 +7,8 @@
 #include <android/native_window_jni.h> // 是为了 渲染到屏幕支持的
 #include <android/asset_manager_jni.h>
 #include <yangutil/sys/YangLog.h>
+#include <yangutil/sys/YangSocket.h>
+#include <yangutil/sys/YangMath.h>
 #include <yangandroid/YangPushAndroid.h>
 #include <android/log.h>
 YangPushAndroid *g_push = nullptr;
@@ -44,7 +46,9 @@ void g_push_initContext(YangContext* context){
     context->avinfo.video.videoPlayCacheNum=10;
 
     context->avinfo.audio.audioEncoderType=Yang_AED_OPUS;
-    context->avinfo.sys.rtcLocalPort=17000;
+    context->avinfo.sys.rtcLocalPort=10000+yang_random()%15000;
+    memset(context->avinfo.sys.localIp,0,sizeof(context->avinfo.sys.localIp));
+    yang_getLocalInfo(context->avinfo.sys.localIp);
     context->avinfo.enc.enc_threads=4; //x264编码线程数
     context->avinfo.enc.createMeta=0;
     
