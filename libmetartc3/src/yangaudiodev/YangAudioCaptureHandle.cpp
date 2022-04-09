@@ -114,8 +114,7 @@ void  YangAudioCaptureHandle::setOutAudioBuffer(YangAudioBuffer *pbuf)
     		m_audioFrame.nb = plen;
     		m_resample.resample(m_resample.context,&m_audioFrame);
     		if (m_audioList) {
-    			yang_trace("au%d,",m_audioFrame.nb);
-    			m_audioList->putAudio(&m_audioFrame);
+    	    			m_audioList->putAudio(&m_audioFrame);
     		}
     	}
 
@@ -127,7 +126,6 @@ void  YangAudioCaptureHandle::setOutAudioBuffer(YangAudioBuffer *pbuf)
     	m_audioFrame.nb = plen;
     	m_resample.resample(m_resample.context,&m_audioFrame);
     	if (m_audioList) {
-    		yang_trace("au%d,",m_audioFrame.nb);
     		m_audioList->putAudio(&m_audioFrame);
     	}
 
