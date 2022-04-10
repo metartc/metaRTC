@@ -106,6 +106,14 @@ https://blog.csdn.net/m0_56595685/article/details/123104236
 ## compile the tutorial 编译教程
 ### Video Compilation Tutorial 视频编译教程
 https://www.bilibili.com/video/BV1d3411r742/  
+### metaRTC实现webrtc的P2P应用之音视频对讲和视频会议
+https://blog.csdn.net/m0_56595685/article/details/124067383
+### metaRTC与浏览器webrtc的P2P通信编程指南
+https://blog.csdn.net/m0_56595685/article/details/124015458  
+### metaRTC实现安卓webrtc推流直播
+https://blog.csdn.net/m0_56595685/article/details/123657024  
+### metaRTC(ARM linux64)编译指南
+https://blog.csdn.net/m0_56595685/article/details/123900651  
 ### MetaRTC Embedded Webrtc Programming Guide  metaRTC嵌入式webrtc编程指南 
 https://blog.csdn.net/m0_56595685/article/details/122139482   
 https://blog.csdn.net/m0_56595685/article/details/122010285  
