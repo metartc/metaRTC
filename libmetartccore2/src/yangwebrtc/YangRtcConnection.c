@@ -19,7 +19,7 @@ int32_t yang_send_nackpacket(YangRtcContext *context, char *data, int32_t nb) {
 		return yang_error_wrap(err, "srtp protect");
 	}
 
-	return yang_rtc_sendData(context->udp, data, nb);
+	return yang_rtc_sendData(context->udp, data, nn_encrypt);
 }
 void yang_do_request_keyframe(YangRtcContext *context, uint32_t ssrc) {
 	if (context && context->avcontext && context->avcontext->sendRequest)
