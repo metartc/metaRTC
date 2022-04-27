@@ -20,7 +20,6 @@ https://github.com/metartc/metaRTC/releases/tag/v2.0-b2
 https://download.csdn.net/download/m0_56595685/85036149  
  
 ## MetaRTC和谷歌Webrtc的区别
-优势:
 ### MetaRTC编译简单
 webrtc编译难，仓库几十个G。  
 
