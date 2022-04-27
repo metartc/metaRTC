@@ -21,7 +21,7 @@ https://download.csdn.net/download/m0_56595685/85036149
  
 ## MetaRTC和谷歌Webrtc的区别
 优势:
-1. MetaRTC编译简单
+### MetaRTC编译简单
 webrtc编译难，仓库几十个G。  
 
 metaRTC代码量小，编译简单。  
@@ -29,35 +29,35 @@ metaRTC代码量小，编译简单。
 而metartc在[B站](https://www.bilibili.com/video/BV1d3411r742/)有完整的编译教程和视频。  
 
 
-2. 体积小  
+### 体积小  
 webrtc使用c++开发，体积大，不适合嵌入式。  
 
 metartc大多数使用c语言开发，天生适合嵌入式。  
 
-3. 容易二次开发  
+### 容易二次开发  
 webrtc是谷歌开发，代码量大，二次开发难度大。  
 
 meta代码量小，二次开发难度小，并且有完整的国人社区。  
 
-4. 打造国人生态  
+### 打造国人生态  
 metaRTC无缝兼容SRS和ZLM,代码整合了其信令交互。  
 
 metaRTC已经实现了国密gmssl支持 。  
 
 metaRTC已提交了龙芯生态建设申请且会加大对国产芯片和操作系统的支持。  
 
-5. 更适合嵌入式/物联网  
+### 更适合嵌入式/物联网  
 嵌入式算力弱，不适合webrtc  
 
 嵌入式开发人员纯C开发人员多  
 
-6.更适合元宇宙RTC  
+### 更适合元宇宙RTC  
 
 第三代互联网为元宇宙  
 
 支持元宇宙的穿戴设备算力弱，更适合metaRTC  
 
-7.提供H265全套解决方案  
+### 提供H265全套解决方案  
 
 H265比H264可以节省一半的带宽,H265生态在国内比较成熟，如安防等很多行业芯片都支持H265编码。  
 
@@ -65,10 +65,10 @@ metaRTC支持H265版webrtc
 
 metaRTC提供支持H265的SRS(http://github/metartc/srs-webrtc265)  
 
-8.内置纯C版信令服务  
+### 内置纯C版信令服务  
 metap2p工程内置信令服务，信令处理均为纯C实现。  
 
-9.集成ffmpeg 支持静态编译集成到ffmpeg  
+### 集成ffmpeg 支持静态编译集成到ffmpeg  
 
 集成ffmpeg使ffmpeg支持webrtc推拉流和p2p  
 
