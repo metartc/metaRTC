@@ -93,10 +93,9 @@ metaRTC集成FFmpeg新版本支持回声消除等AEC/AGC/ANC功能
 13. a variety of processing of sound and images is realized 实现了声音和图像多种处理。
 14. professional camera gimbal control with multi-lens guide switching 专业摄像头的云台控制与多镜头导播切换。
 15. supports both 32-bit and 64-bit programming 支持32位和64位编程。
-
-可用于：
-视频会议、高清录播直播、直播互动、云游戏、云3D等多种视音频应用。
-可用于远程教育、远程医疗、指挥调度、安防监控、影视录播、协同办公、直播互动等多种行业应用。  
+## 应用范围
+音视频应用： 视频会议/录播直播/直播互动 IPC/云游戏/云3D/元宇宙RTC  
+行业应用： 远程教育/远程医疗/远程办公 指挥调度/安防监控/金融 视频AI/影视录播/电商直播   
 ## metaRTC微信群
 加微信taihang82
 
