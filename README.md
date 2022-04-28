@@ -1,10 +1,11 @@
 ## MetaRTC Overview
 MetaRTC是一个为嵌入式/物联网打造的webRTC库，为第三代互联网 元宇宙提供webRTC能力。  
-MetaRTC实现了webrtc协议，支持webrtc/srt/rtmp，可与谷歌webrtc互联互通。   
-GitHub - metartc/metaRTC: 中国人自己的webrtc,非谷歌lib    
+MetaRTC实现了webrtc协议，支持webrtc/srt/rtmp，有纯C和C++两个版本。   
+webrtc支持为原创，没有引用谷歌webrtc代码,可与谷歌Webrtc库和浏览器互通。  
+支持windows/linux/android等  
+
 metaRTC为纯C版本   
 yangwebrtc为C++版本  https://github.com/metartc/yangwebrtc    
-支持windows/linux/android等
 
 MetaRTC is an webRTC library built for embedded/IoT that provides webRTC capabilities for the third-generation Internet metaverse.  
 MetaRTC implements the webrtc protocol, supports webrtc/srt/rtmp, and can be interconnected with Google webrtc.  
