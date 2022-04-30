@@ -13,11 +13,13 @@ The webrtc support is original, without citing the Google webrtc code, and can i
 Support windows/linux/android etc.  
 
 yangwebrtc for C++ version https://github.com/metartc/yangwebrtc  
-  
-Remark:metaRTC2.0为稳定版本 metaRTC3.0正在开发中，为非稳定版本  
-Remark:metaRTC2.0 is stable  metaRTC3.0 is developing and not stable  
-### metaRTC2.0稳定版本下载
-https://github.com/metartc/metaRTC/releases/tag/v2.0-b2  
+
+Remark:metaRTC2.0停止更新  
+Remark:metaRTC3.0为稳定版本 metaRTC4.0正在开发中，为非稳定版本  
+Remark:metaRTC3.0 is stable  metaRTC4.0 is developing and not stable  
+
+### metaRTC3.0稳定版本下载
+https://github.com/metartc/metaRTC/releases/tag/v3.0-b0 
  
 ### metaRTC3.0第三方类库已经编译好的类库下载地址
 https://download.csdn.net/download/m0_56595685/85036149  
