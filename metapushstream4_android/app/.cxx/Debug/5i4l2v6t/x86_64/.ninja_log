@@ -1,0 +1,25 @@
+# ninja log v5
+0	70	1648001809	build.ninja	a18f4dc7d1faf169
+289	475	1648091640	/home/yang/yangpro/metartc3/metapushstream3_android/app/build/intermediates/cxx/Debug/5i4l2v6t/obj/x86_64/libpush.so	60a5bb6d3c52fd38
+0	289	1648091640	CMakeFiles/push.dir/native-lib.cpp.o	8ccd53ec8c6d69ee
+0	1	0	clean	86bc5d9861107cd1
+0	288	1648100867	CMakeFiles/push.dir/native-lib.cpp.o	8ccd53ec8c6d69ee
+289	458	1648100867	/home/yang/yangpro/metartc3/metapushstream3_android/app/build/intermediates/cxx/Debug/5i4l2v6t/obj/x86_64/libpush.so	60a5bb6d3c52fd38
+0	2	0	clean	86bc5d9861107cd1
+1	355	1648101223	CMakeFiles/push.dir/native-lib.cpp.o	8ccd53ec8c6d69ee
+355	551	1648101223	/home/yang/yangpro/metartc3/metapushstream3_android/app/build/intermediates/cxx/Debug/5i4l2v6t/obj/x86_64/libpush.so	60a5bb6d3c52fd38
+0	2	0	clean	86bc5d9861107cd1
+0	283	1648101491	CMakeFiles/push.dir/native-lib.cpp.o	8ccd53ec8c6d69ee
+283	485	1648101491	/home/yang/yangpro/metartc3/metapushstream3_android/app/build/intermediates/cxx/Debug/5i4l2v6t/obj/x86_64/libpush.so	60a5bb6d3c52fd38
+0	2	0	clean	86bc5d9861107cd1
+1	246	1648101747	CMakeFiles/push.dir/native-lib.cpp.o	8ccd53ec8c6d69ee
+246	377	1648101747	/home/yang/yangpro/metartc3/metapushstream3_android/app/build/intermediates/cxx/Debug/5i4l2v6t/obj/x86_64/libpush.so	60a5bb6d3c52fd38
+0	1	0	clean	86bc5d9861107cd1
+1	405	1648103787	CMakeFiles/push.dir/native-lib.cpp.o	8ccd53ec8c6d69ee
+405	615	1648103787	/home/yang/yangpro/metartc3/metapushstream3_android/app/build/intermediates/cxx/Debug/5i4l2v6t/obj/x86_64/libpush.so	60a5bb6d3c52fd38
+0	1	0	clean	86bc5d9861107cd1
+1	281	1648103828	CMakeFiles/push.dir/native-lib.cpp.o	8ccd53ec8c6d69ee
+281	518	1648103828	/home/yang/yangpro/metartc3/metapushstream3_android/app/build/intermediates/cxx/Debug/5i4l2v6t/obj/x86_64/libpush.so	60a5bb6d3c52fd38
+0	2	0	clean	86bc5d9861107cd1
+0	271	1648104532	CMakeFiles/push.dir/native-lib.cpp.o	8ccd53ec8c6d69ee
+271	429	1648104532	/home/yang/yangpro/metartc3/metapushstream3_android/app/build/intermediates/cxx/Debug/5i4l2v6t/obj/x86_64/libpush.so	60a5bb6d3c52fd38
