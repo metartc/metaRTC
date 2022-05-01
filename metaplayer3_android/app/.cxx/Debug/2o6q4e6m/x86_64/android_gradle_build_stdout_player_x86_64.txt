@@ -1,2 +1,0 @@
-ninja: Entering directory `/home/yang/yangpro/metartc3/metaplayer3_android/app/.cxx/Debug/2o6q4e6m/x86_64'
-ninja: no work to do.
