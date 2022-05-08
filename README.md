@@ -70,7 +70,9 @@ metaRTC支持H265版webrtc
 metaRTC提供支持H265的SRS(http://github/metartc/srs-webrtc265)  
 
 ### 内置纯C版信令服务  
-metap2p工程内置信令服务，信令处理均为纯C实现。  
+
+metap2p工程内置信令服务，信令处理均为纯C实现。
+
 支持datachannel/websocket/http
 
 ### 集成ffmpeg 支持静态编译集成到ffmpeg  
