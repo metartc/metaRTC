@@ -105,7 +105,8 @@ metaRTC集成FFmpeg新版本支持回声消除等AEC/AGC/ANC功能
 行业应用： 远程教育/远程医疗/远程办公 指挥调度/安防监控/金融 视频AI/影视录播/电商直播   
 
 ## metaRTC微信群
-![20220511202004](https://user-images.githubusercontent.com/87118023/167849674-e1e0d8c5-9016-42dd-a247-ca910fc5e164.jpg)  
+
+![20220511202004](https://user-images.githubusercontent.com/87118023/167850890-3b3f1904-e0e3-457c-86b6-71ef29382dfd.jpg)  
 也可加微信taihang82  
 ## module
 ### libmetartccore3
