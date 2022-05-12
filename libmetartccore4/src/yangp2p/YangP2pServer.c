@@ -81,7 +81,7 @@ void* yang_run_http_thread(void *obj){
 	while (true) {
 		memset(buf, 0, Yang_Http_Buffer);
 		nBytes = recv(connfd, (char*) buf, Yang_Http_Buffer, 0);
-		yang_trace2("%s\n",buf);
+
 		if (nBytes > 0) {
 			recvAllLen+=nBytes;
 			if(recvtimes==0){
