@@ -20,7 +20,7 @@
 <div class="container" width="100%" height="100%">
     <div class="form-inline">
         URL:
-        <input type="text" id="txt_url" class="input-xxlarge" value="webrtc://192.168.0.101:1988/live/livestream">
+        <input type="text" id="txt_url" class="input-xxlarge" value="webrtc://192.168.0.102:1988/live/livestream">
         <button class="btn btn-primary" id="btn_play">播放视频</button>
         <button class="btn btn-primary" id="btn_play_stop">停止视频</button><br>
    
@@ -58,13 +58,16 @@ $(function(){
        // parse_webrtc(url);
         sdk.play(url).then(function(session){
 			 console.log("play url ",$("#txt_url").val());
+			 $('#datachannel_form').show();
         }).catch(function (reason) {
             sdk.close();
  
         });
     };
     $("#btn_play_send").click(function(e) {
-            if (!datachannel) return;
+		    console.log("peer connection readyState: ", sdk.pc.connectionState);
+            if (!datachannel) return;     
+         
             console.log("send message readyState: ", datachannel.readyState);
             if(datachannel.readyState == "open") datachannel.send($('#datachannel_send').val());
         });

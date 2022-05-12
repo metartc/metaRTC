@@ -259,16 +259,28 @@ var datachannel=null;
 function SrsRtcPlayerAsync() {
     var self = {};
 	self.pc = new RTCPeerConnection(null);
-	datachannel=self.pc.createDataChannel('webrtc-datachannel',{
-                ordered: true
-            });
+	
+	self.pc.onconnectionstatechange=function(event){
+		console.log("connection state change: ", self.pc.connectionState);
+	}
+	
+	
+	datachannel=self.pc.createDataChannel('chat');
+
 	datachannel.onopen = function(event) {
-		datachannel.send('metaRTC');
+		console.log("datachannel onopen: ", event.data);
 	}
 	datachannel.onmessage = function(event) {
 	  console.log("receive message: ", event.data);
 	  $('#datachannel_recv').val(event.data);
 	}
+	datachannel.onerror=function(event) {
+	  console.log("datachannel error: ", event.data);
+	}
+	datachannel.onclose=function(event) {
+	  console.log("datachannel close: ");
+	}
+
     // @see https://github.com/rtcdn/rtcdn-draft
     // @url The WebRTC url to play with, for example:
     //      webrtc://r.ossrs.net/live/livestream
