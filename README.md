@@ -146,6 +146,8 @@ https://blog.csdn.net/m0_56595685/article/details/123104236
 https://www.bilibili.com/video/BV1d3411r742/  
 ### metaRTC实现webrtc的P2P应用之音视频对讲和视频会议
 https://blog.csdn.net/m0_56595685/article/details/124067383
+### metaRTC4.0与浏览器webrtc的P2P音视频对讲demo
+https://blog.csdn.net/m0_56595685/article/details/124784019
 ### metaRTC与浏览器webrtc的P2P通信编程指南
 https://blog.csdn.net/m0_56595685/article/details/124015458  
 ### metaRTC实现安卓webrtc推流直播
