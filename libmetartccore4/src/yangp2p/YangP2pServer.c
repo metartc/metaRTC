@@ -92,18 +92,17 @@ void* yang_run_http_thread(void *obj){
 					if (contentPos > 0) 	headerLen = contentPos + 4;
 				}
 			}
-			if(headerLen==0&&contentLen==0){
+			if(headerLen>0&&contentLen==0){
 				p=strstr(rets,Yang_Http_Content);
-				if(p==NULL) continue;
-
-				int32_t ind=yang_cstr_userfindindex(p,'\r');
-				if(ind==0) continue;
-				if(ind>contetSize){
-					memset(contentLenStr,0,sizeof(contentLenStr));
-					memcpy(contentLenStr,p+contetSize,ind-contetSize);
-					int numberIndex=yang_cstr_isnumber(contentLenStr,sizeof(contentLenStr));
-					if(numberIndex>-1&&numberIndex<sizeof(contentLenStr)){
-						contentLen=atoi(contentLenStr+numberIndex);
+				if(p){
+					int32_t ind=yang_cstr_userfindindex(p,'\r');
+					if(ind>contetSize){
+						memset(contentLenStr,0,sizeof(contentLenStr));
+						memcpy(contentLenStr,p+contetSize,ind-contetSize);
+						int numberIndex=yang_cstr_isnumber(contentLenStr,sizeof(contentLenStr));
+						if(numberIndex>-1&&numberIndex<sizeof(contentLenStr)){
+							contentLen=atoi(contentLenStr+numberIndex);
+						}
 					}
 				}
 			}
