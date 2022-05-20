@@ -138,4 +138,49 @@ The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situati
 ## compile the tutorial
 MetaRTC Embedded Webrtc Programming Guide https://blog.csdn.net/m0_56595685/article/details/122010285  
 Video Compilation Tutorial https://www.bilibili.com/video/BV1d3411r742/  
+### P2P audio and video intercom demo between metaRTC4.0 and browser webrtc
+https://blog.csdn.net/m0_56595685/article/details/124784019
+
+### metaRTC realizes audio and video intercom and video conference of P2P application of webrtc
+https://blog.csdn.net/m0_56595685/article/details/124067383
+
+### P2P audio and video intercom demo between metaRTC4.0 and browser webrtc
+https://blog.csdn.net/m0_56595685/article/details/124784019
+
+### P2P communication programming guide between metaRTC and browser webrtc
+https://blog.csdn.net/m0_56595685/article/details/124015458
+
+### metaRTC implements Android webrtc live streaming
+https://blog.csdn.net/m0_56595685/article/details/123657024
+
+### metaRTC (ARM linux64) compilation guide
+https://blog.csdn.net/m0_56595685/article/details/123900651
+
+### MetaRTC Embedded Webrtc Programming Guide metaRTC Embedded Webrtc Programming Guide
+https://blog.csdn.net/m0_56595685/article/details/122139482
+https://blog.csdn.net/m0_56595685/article/details/122010285
+
+### metaRTC builds video conferencing
+https://blog.csdn.net/m0_56595685/article/details/122775443
+
+### Build a low-latency H265 webrtc application that saves half the bit rate
+https://blog.csdn.net/m0_56595685/article/details/121880362
+
+### Build a linux and embedded HD recording and broadcasting system that supports H264 and H265
+https://blog.csdn.net/m0_56595685/article/details/121735106
+
+### Build a dual-teacher classroom that supports embedded intelligent terminals across platforms to realize remote interactive teaching
+https://blog.csdn.net/m0_56595685/article/details/121735106
+
+### metaRTC integrates FFmpeg to implement audio functions such as echo cancellation (3A)
+https://blog.csdn.net/m0_56595685/article/details/122682713
+
+### metaRTC is integrated into ffmpeg to implement srs's webrtc push-pull stream
+https://blog.csdn.net/m0_56595685/article/details/122642347
+
+### metaRTC is integrated into ffmpeg to implement webrtc streaming playback of srs
+https://blog.csdn.net/m0_56595685/article/details/122594797
+
+### SRS+metaRTC+FFmpeg helps live broadcast enter a new era of webrtc live broadcast interaction
+https://blog.csdn.net/m0_56595685/article/details/122697381
 
