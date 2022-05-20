@@ -89,7 +89,22 @@ The new version of metaRTC integrated with FFmpeg supports AEC/AGC/ANC functions
 Audio and video applications: video conferencing/recording and live broadcasting/live interactive IPC/cloud games/cloud 3D/metaverse RTC
 
 Industry application: distance education / telemedicine / remote office command and dispatch / security monitoring / financial video AI / video recording and broadcasting / e-commerce live broadcast
+## P2P support
+Built-in signaling service   
+one-to-many live broadcast  
+browser p2p communication  
+two-way intercom and conference  
 
+## Supports multiple transport protocols
+metaRTC3.0 supports WEBRTC/RTMP/SRT/  
+
+metaRTC4.0 will support RTSP/GB2811/QUIC  
+
+## ARM support
+Support ARM-Linux
+Support ARM-Android
+Provide ARM compilation scripts
+Provide third-party ARM compilation documents
 ## metaRTC WeChat group
 You can add WeChat taihang82
 
