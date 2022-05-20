@@ -104,6 +104,24 @@ metaRTC集成FFmpeg新版本支持回声消除等AEC/AGC/ANC功能
 
 行业应用： 远程教育/远程医疗/远程办公 指挥调度/安防监控/金融 视频AI/影视录播/电商直播   
 
+## P2P支持
+可内置信令服务  
+实现一对多直播  
+实现浏览器p2p通信  
+实现双向对讲和会议  
+
+## 支持多种传输协议
+
+metaRTC3.0支持WEBRTC/RTMP/SRT/  
+
+metaRTC4.0将支持RTSP/GB2811/QUIC  
+## ARM支持
+
+支持ARM-Linux  
+支持ARM-Android  
+提供ARM编译脚本  
+提供第三方ARM编译文档  
+
 ## metaRTC微信群
 可加微信taihang82  
 ## module
