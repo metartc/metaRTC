@@ -101,10 +101,10 @@ metaRTC3.0 supports WEBRTC/RTMP/SRT/
 metaRTC4.0 will support RTSP/GB2811/QUIC  
 
 ## ARM support
-Support ARM-Linux
-Support ARM-Android
-Provide ARM compilation scripts
-Provide third-party ARM compilation documents
+Support ARM-Linux  
+Support ARM-Android  
+Provide ARM compilation scripts  
+Provide third-party ARM compilation documents  
 ## metaRTC WeChat group
 You can add WeChat taihang82
 
