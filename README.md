@@ -160,6 +160,8 @@ https://blog.csdn.net/m0_56595685/article/details/123104236
 ## compile the tutorial 编译教程
 ### Video Compilation Tutorial 视频编译教程
 https://www.bilibili.com/video/BV1d3411r742/  
+### metaRTC4.0与浏览器webrtc的P2P音视频对讲demo
+https://blog.csdn.net/m0_56595685/article/details/124784019  
 ### metaRTC实现webrtc的P2P应用之音视频对讲和视频会议
 https://blog.csdn.net/m0_56595685/article/details/124067383
 ### metaRTC4.0与浏览器webrtc的P2P音视频对讲demo
