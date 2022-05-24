@@ -18,11 +18,27 @@ Remark:metaRTC2.0停止更新
 Remark:metaRTC3.0为稳定版本 metaRTC4.0正在开发中，为非稳定版本  
 Remark:metaRTC3.0 is stable  metaRTC4.0 is developing and not stable  
 
+## metaRTC微信群
+可加微信taihang82  
+
 ### metaRTC3.0稳定版本下载
 https://github.com/metartc/metaRTC/releases/tag/v3.0-b1 
  
 ### metaRTC3.0第三方类库已经编译好的类库下载地址
 https://download.csdn.net/download/m0_56595685/85036149  
+
+## metaRTC4产品展区
+### p2p云桌面demo
+https://github.com/yangrtc/yangrtc/releases/tag/4.0.020  
+https://gitee.com/yangrtc/yangrtc/releases/4.0.020  
+
+## metaRTC3产品展区
+### metaRTC云桌面(浏览器/嵌入式/GPU编码/H264/H265/webrtc)
+下载：
+https://github.com/metartc/metaRTC/releases/tag/3.0.009  
+https://download.csdn.net/download/m0_56595685/82167672  
+详情参见：
+https://blog.csdn.net/m0_56595685/article/details/123104236  
  
 ## MetaRTC和谷歌Webrtc的区别
 ### MetaRTC编译简单
@@ -122,8 +138,7 @@ metaRTC4.0将支持RTSP/GB2811/QUIC
 提供ARM编译脚本  
 提供第三方ARM编译文档  
 
-## metaRTC微信群
-可加微信taihang82  
+
 ## module
 ### libmetartccore3
 webrtc/rtmp 协议实现和基础应用C类库，可集成到ffmpeg  
@@ -150,13 +165,7 @@ make
 The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.   
 
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-## metaRTC3产品展区
-### metaRTC云桌面(浏览器/嵌入式/GPU编码/H264/H265/webrtc)
-下载：
-https://github.com/metartc/metaRTC/releases/tag/3.0.009  
-https://download.csdn.net/download/m0_56595685/82167672  
-详情参见：
-https://blog.csdn.net/m0_56595685/article/details/123104236  
+
 ## compile the tutorial 编译教程
 ### Video Compilation Tutorial 视频编译教程
 https://www.bilibili.com/video/BV1d3411r742/  
