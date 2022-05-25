@@ -18,7 +18,7 @@ Remark:metaRTC2.0停止更新
 Remark:metaRTC3.0为稳定版本 metaRTC4.0正在开发中，为非稳定版本  
 Remark:metaRTC3.0 is stable  metaRTC4.0 is developing and not stable  
 
-## metaRTC微信群
+## metaRTC服务微信群
 可加微信taihang82  
 
 ### metaRTC3.0稳定版本下载
