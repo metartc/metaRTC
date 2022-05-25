@@ -152,6 +152,11 @@ p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p3拉流
 ### yangwincodec
 nvidia/intel gpu编码
 
+## demo compile
+### linux
+sudo apt install libasound2-dev  
+sudo apt install libgl1-mesa-dev 
+
 ## libmetartc3 compile
 mkdir build  
 cd build   
