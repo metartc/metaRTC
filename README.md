@@ -23,9 +23,6 @@ Remark:metaRTC3.0 is stable  metaRTC4.0 is developing and not stable
 
 ### metaRTC3.0稳定版本下载
 https://github.com/metartc/metaRTC/releases/tag/v3.0-b1 
- 
-### metaRTC3.0第三方类库已经编译好的类库下载地址
-https://download.csdn.net/download/m0_56595685/85036149  
 
 ## metaRTC4产品展区
 ### p2p云桌面demo
