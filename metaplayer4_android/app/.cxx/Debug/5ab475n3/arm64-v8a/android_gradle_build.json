@@ -1,0 +1,38 @@
+{
+  "buildFiles": [
+    "/home/yang/yangpro/metartc3/metaplayer3_android/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/yang/pro/android/android-sdk-linux/cmake/3.18.1/bin/ninja",
+      "-C",
+      "/home/yang/yangpro/metartc3/metaplayer3_android/app/.cxx/Debug/5ab475n3/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/yang/pro/android/android-sdk-linux/cmake/3.18.1/bin/ninja",
+    "-C",
+    "/home/yang/yangpro/metartc3/metaplayer3_android/app/.cxx/Debug/5ab475n3/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "player::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "player",
+      "output": "/home/yang/yangpro/metartc3/metaplayer3_android/app/build/intermediates/cxx/Debug/5ab475n3/obj/arm64-v8a/libplayer.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/home/yang/pro/android/android-sdk-linux/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+      "cppCompilerExecutable": "/home/yang/pro/android/android-sdk-linux/ndk/21.4.7075529/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

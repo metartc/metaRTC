@@ -1,0 +1,1 @@
+ninja: Entering directory `/home/yang/yangpro/metartc3/metapushstream3_android/app/.cxx/Debug/5i4l2v6t/armeabi-v7a'
