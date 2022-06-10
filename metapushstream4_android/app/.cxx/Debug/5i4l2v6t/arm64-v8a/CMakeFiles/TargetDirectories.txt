@@ -1,3 +1,0 @@
-/home/yang/yangpro/metartc3/metapushstream3_android/app/.cxx/Debug/5i4l2v6t/arm64-v8a/CMakeFiles/rebuild_cache.dir
-/home/yang/yangpro/metartc3/metapushstream3_android/app/.cxx/Debug/5i4l2v6t/arm64-v8a/CMakeFiles/edit_cache.dir
-/home/yang/yangpro/metartc3/metapushstream3_android/app/.cxx/Debug/5i4l2v6t/arm64-v8a/CMakeFiles/push.dir
