@@ -14,15 +14,15 @@ Support windows/linux/android etc.
 
 yangwebrtc for C++ version https://github.com/metartc/yangwebrtc  
 
-Remark:metaRTC2.0停止更新  
-Remark:metaRTC3.0为稳定版本 metaRTC4.0正在开发中，为非稳定版本  
-Remark:metaRTC3.0 is stable  metaRTC4.0 is developing and not stable  
+Remark:metaRTC2.0/metaRTC3.0停止更新  
+Remark:metaRTC4.0为稳定版本 metaRTC5.0正在开发中，为非稳定版本  
+Remark:metaRTC4.0 is stable  metaRTC5.0 is developing and not stable  
 
 ## metaRTC服务微信群
 可加微信taihang82  
 
-### metaRTC3.0稳定版本下载
-https://github.com/metartc/metaRTC/releases/tag/v3.0-b1 
+### metaRTC4.0稳定版本下载
+https://github.com/metartc/metaRTC/releases/tag/v4.0-b0
 
 ## metaRTC4产品展区
 ### p2p云桌面demo
