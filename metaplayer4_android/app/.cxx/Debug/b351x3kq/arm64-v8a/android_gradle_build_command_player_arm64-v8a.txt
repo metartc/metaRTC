@@ -1,7 +1,0 @@
-Executable : /home/yang/pro/android/android-sdk-linux/cmake/3.18.1/bin/ninja
-arguments : 
--C
-/home/yang/yangpro/metartc3/metaplayer3_android/app/.cxx/Debug/b351x3kq/arm64-v8a
-player
-jvmArgs : 
-
