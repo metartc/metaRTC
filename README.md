@@ -125,9 +125,9 @@ metaRTC集成FFmpeg新版本支持回声消除等AEC/AGC/ANC功能
 
 ## 支持多种传输协议
 
-metaRTC3.0支持WEBRTC/RTMP/SRT/  
+metaRTC4.0支持WEBRTC/RTMP/SRT/  
 
-metaRTC4.0将支持RTSP/GB2811/QUIC  
+metaRTC5.0将支持RTSP/GB2811/QUIC  
 ## ARM支持
 
 支持ARM-Linux  
@@ -156,12 +156,6 @@ nvidia/intel gpu编码
 ### linux
 sudo apt install libasound2-dev  
 sudo apt install libgl1-mesa-dev 
-
-## libmetartc3 compile
-mkdir build  
-cd build   
-cmake .. -DCMAKE_BUILD_TYPE=Release  
-make  
 
 下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。  
 The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.   
