@@ -1,0 +1,219 @@
+<html>
+  <meta charset="utf-8">
+  <head>
+    <title>metaRTC p2p demo</title>
+    <script src="./ZLMRTCClient.js"></script>
+  </head>
+    
+  <body>
+
+    <div style="text-align: center;">
+        <div>
+          <video id='video' controls autoplay style="text-align:left;">
+            Your browser is too old which doesn't support HTML5 video.
+          </video>
+
+          <video id='selfVideo' controls autoplay style="text-align:right;">
+            Your browser is too old which doesn't support HTML5 video.
+          </video>
+        </div>
+
+        <div>
+
+            <p>
+                <label for="streamUrl">url:</label>
+                <input type="text" style="co" id='streamUrl' value="http://192.168.1.101/index/api/webrtc?app=live&stream=xiong&type=play">
+            </p>      
+            <p>
+              <label for="resilution">resolution:</label>
+              <select id="resilution">
+              </select>
+            </p>
+       
+            <button onclick="start()">开始(start)</button>
+            <button onclick="stop()">停止(stop)</button>
+
+            <p>
+              <label for="msgsend">msgsend:</label>
+              <input type="text" id='msgsend' value="hello word !">
+            </p>
+            <p>
+              <label for="msgrecv">msgrecv:</label>
+              <input type="text" id='msgrecv' disabled>
+            </p>
+            <button onclick="send()">发送(send by datachannel)</button>
+            <button onclick="close()">关闭(close datachannel)</button>
+            
+
+           
+            
+        </div>
+    </div>
+
+    <script>
+      var player = null
+      var recvOnly = true
+      var resArr = []
+
+      var ishttps = 'https:' == document.location.protocol ? true : false
+      var isLocal = "file:" == document.location.protocol ? true : false
+      var url = "webrtc://"+window.location.host+":1988/live/livestream"
+      
+
+      if(!ishttps && !isLocal){
+        alert('本demo需要在https的网站访问 ,如果你要推流的话(this demo must access in site of https if you want push stream)')
+      }
+
+      if(isLocal){
+        url = "webrtc://10.42.0.1"+":1988/live/livestream"
+      }
+      document.getElementById('streamUrl').value = url
+   
+            recvOnly = false;
+    
+
+      ZLMRTCClient.GetAllScanResolution().forEach((r,i)=>{
+          opt = document.createElement('option');
+          opt.text = r.label +"("+r.width+"x"+r.height+")";
+          opt.value = r;
+          document.getElementById("resilution").add(opt,null)
+		if(r.width==320) opt.selected=true;
+          //console.log(opt.text.match(/\d+/g))
+
+        
+      })
+      function start_play(){
+        let elr = document.getElementById("resilution");
+        let res = elr.options[elr.selectedIndex].text.match(/\d+/g);
+        let h = parseInt(res.pop());
+        let w = parseInt(res.pop());
+		let urlstr=document.getElementById('streamUrl').value.replace("webrtc:","http:");
+		//urlstr="http://127.0.0.1/index/api/webrtc?app=live&stream=test&type=echo";
+        player = new ZLMRTCClient.Endpoint(
+                {
+                    element: document.getElementById('video'),// video 标签
+                    debug: true,// 是否打印日志
+                    zlmsdpUrl:urlstr,//流地址
+                    simulcast:false,
+                    useCamera:true,
+                    audioEnable:true,
+                    videoEnable:true,
+                    recvOnly:recvOnly,
+                    resolution:{w:w,h:h},
+                    usedatachannel:true,
+                }
+            );
+    
+            player.on(ZLMRTCClient.Events.WEBRTC_ICE_CANDIDATE_ERROR,function(e)
+            {// ICE 协商出错
+                console.log('ICE 协商出错')
+            });
+    
+            player.on(ZLMRTCClient.Events.WEBRTC_ON_REMOTE_STREAMS,function(e)
+            {//获取到了远端流，可以播放
+                console.log('播放成功',e.streams)
+            });
+    
+            player.on(ZLMRTCClient.Events.WEBRTC_OFFER_ANWSER_EXCHANGE_FAILED,function(e)
+            {// offer anwser 交换失败
+                console.log('offer anwser 交换失败',e)
+                stop();
+            });
+    
+            player.on(ZLMRTCClient.Events.WEBRTC_ON_LOCAL_STREAM,function(s)
+            {// 获取到了本地流
+    
+              document.getElementById('selfVideo').srcObject=s;
+              document.getElementById('selfVideo').muted = true;
+              
+                //console.log('offer anwser 交换失败',e)
+            });
+
+            player.on(ZLMRTCClient.Events.CAPTURE_STREAM_FAILED,function(s)
+            {// 获取本地流失败
+    
+              console.log('获取本地流失败')
+            });
+
+            player.on(ZLMRTCClient.Events.WEBRTC_ON_CONNECTION_STATE_CHANGE,function(state)
+            {// RTC 状态变化 ,详情参考 https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/connectionState
+              console.log('当前状态==>',state)
+            });
+
+            player.on(ZLMRTCClient.Events.WEBRTC_ON_DATA_CHANNEL_OPEN,function(event)
+            {
+              console.log('rtc datachannel 打开 :',event)
+            });
+
+            player.on(ZLMRTCClient.Events.WEBRTC_ON_DATA_CHANNEL_MSG,function(event)
+            {
+              console.log('rtc datachannel 消息 :',event.data)
+              document.getElementById('msgrecv').value = event.data
+            });
+            player.on(ZLMRTCClient.Events.WEBRTC_ON_DATA_CHANNEL_ERR,function(event)
+            {
+              console.log('rtc datachannel 错误 :',event)
+            });
+            player.on(ZLMRTCClient.Events.WEBRTC_ON_DATA_CHANNEL_CLOSE,function(event)
+            {
+              console.log('rtc datachannel 关闭 :',event)
+            });
+      }
+
+      function start()
+      {
+        stop();
+        let elr = document.getElementById("resilution");
+        let res = elr.options[elr.selectedIndex].text.match(/\d+/g);
+        let h = parseInt(res.pop());
+        let w = parseInt(res.pop());
+
+     
+          ZLMRTCClient.isSupportResolution(w,h).then(e=>{
+            start_play()
+          }).catch(e=>{
+           alert("not support resolution")
+          });
+        
+      }
+
+      function stop()
+      {
+          if(player)
+          {
+            player.close();
+            player = null;
+            var remote = document.getElementById('video');
+            if(remote)
+            {
+                remote.srcObject = null;
+                remote.load();
+            }
+            var local = document.getElementById('selfVideo');
+            local.srcObject = null;
+            local.load();
+          }
+      }
+
+      function send(){
+        if(player){
+          //send msg refernece https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/send
+          player.sendMsg(document.getElementById('msgsend').value)
+        }
+      }
+
+      function close(){
+        if(player){
+          player.closeDataChannel()
+        }
+      }
+
+    </script>
+    
+  </body>
+
+  <script>
+    
+  </script>
+
+</html>
