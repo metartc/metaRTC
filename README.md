@@ -137,18 +137,18 @@ metaRTC5.0将支持RTSP/GB2811/QUIC
 
 
 ## module
-### libmetartccore3
+### libmetartccore
 webrtc/rtmp 协议实现和基础应用C类库，可集成到ffmpeg  
-如果平台已有采集和编解吗，只需要libmetartccore3即可，不需要libmetartc3
-### libmetartc3
+如果平台已有采集和编解吗，只需要libmetartccore即可，不需要libmetartc
+### libmetartc
 实现采集、编码、解码、传输(SRT实现)以及推拉流等实现
-### metapushstream3/metapushstream3_android
+### metapushstream/metapushstream_android
 推流和录制 demo metapushstream3_android为安卓版
-### metaplayer3/metaplayer3_android
-拉流demo,metaplayer3_android为安卓版
-### metap2p3
-p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p3拉流  
-和metapushstream3与metaplayer3不同，metap2p3支持全双工，即一个连接同时支持推拉流   
+### metaplayer/metaplayer_android
+拉流demo,metaplayer_android为安卓版
+### metap2p
+p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p拉流  
+和metapushstream与metaplayer不同，metap2p支持全双工，即一个连接同时支持推拉流   
 ### yangwincodec
 nvidia/intel gpu编码
 
