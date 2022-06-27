@@ -1,0 +1,10 @@
+# ninja log v5
+0	11	1656303842	build.ninja	7f8566e000d785ad
+0	1	0	clean	86bc5d9861107cd1
+0	2	0	clean	86bc5d9861107cd1
+1	16	1656303847	build.ninja	7f8566e000d785ad
+0	320	1656303847	CMakeFiles/player.dir/native-lib.cpp.o	44c4b157265add09
+321	921	1656303848	/home/yang/yangpro/metartc5/metaplayer5_android/app/build/intermediates/cxx/Debug/1y11a3zp/obj/arm64-v8a/libplayer.so	cde944f1bf273ad6
+0	1	0	clean	86bc5d9861107cd1
+0	393	1656304222	CMakeFiles/player.dir/native-lib.cpp.o	44c4b157265add09
+393	880	1656304223	/home/yang/yangpro/metartc5/metaplayer5_android/app/build/intermediates/cxx/Debug/1y11a3zp/obj/arm64-v8a/libplayer.so	cde944f1bf273ad6
