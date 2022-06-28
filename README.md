@@ -24,6 +24,10 @@ Remark:metaRTC4.0 is stable  metaRTC5.0 is developing and not stable
 ### metaRTC4.0稳定版本下载
 https://github.com/metartc/metaRTC/releases/tag/v4.0-b0
 
+### metaRTC5.0 API
+https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API  
+https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API-Sample  
+
 ## metaRTC4产品展区
 ### p2p云桌面demo
 https://github.com/yangrtc/yangrtc/releases/tag/4.0.020  
