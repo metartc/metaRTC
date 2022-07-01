@@ -15,7 +15,7 @@ Support windows/linux/android etc.
 yangwebrtc for C++ version https://github.com/metartc/yangwebrtc  
 
 Remark:metaRTC2.0/metaRTC3.0停止更新  
-Remark:metaRTC5.0为稳定版本  
+Remark:metaRTC5.0为稳定版本，metaRTC4.0/metaRTC5.0正常更新    
 Remark:metaRTC5.0 is stable  
 
 ## metaRTC服务微信群
