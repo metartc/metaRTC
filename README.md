@@ -21,8 +21,8 @@ Remark:metaRTC4.0 is stable  metaRTC5.0 is developing and not stable
 ## metaRTC服务微信群
 可加微信taihang82  
 
-### metaRTC4.0稳定版本下载
-https://github.com/metartc/metaRTC/releases/tag/v4.0-b0
+### metaRTC5.0稳定版本下载
+https://github.com/metartc/metaRTC/releases/tag/v5.0-b0  
 
 ### metaRTC5.0 API
 https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API  
