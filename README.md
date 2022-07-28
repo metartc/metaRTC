@@ -18,6 +18,8 @@ Remark:metaRTC5.0 is stable
 
 ### metaRTC5.0稳定版本下载
 https://github.com/metartc/metaRTC/releases/tag/v5.0-b0  
+### 纯C版IPC
+https://github.com/metartc/metaRTC/releases/tag/v5.0-b1   
 
 ### metaRTC5.0 API
 https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API  
