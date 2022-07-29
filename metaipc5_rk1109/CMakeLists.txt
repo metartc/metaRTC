@@ -8,15 +8,15 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -std=gnu++11 ")
 set(HOME_BASE_REL "../")
 get_filename_component(HOME_BASE ${HOME_BASE_REL} REALPATH)
 set(Yang_3RD_DIR ${HOME_BASE}/thirdparty/lib/mips32)
-set(Yang_RK_DIR ${HOME_BASE}/metaipc5_rk/lib)
+set(Yang_RK_DIR ${HOME_BASE}/metaipc5_rk1109/lib)
 set(Yang_Lib_DIR ${HOME_BASE}/bin/lib_debug)
 # 头文件目录
 include_directories(${HOME_BASE}/include)
 include_directories(${HOME_BASE}/thirdparty/include)
-include_directories(${HOME_BASE}/metaipc5_rk/lib/include)
-include_directories(${HOME_BASE}/metaipc5_rk/lib/include/easymedia)
-include_directories(${HOME_BASE}/metaipc5_rk/lib/include/rkmedia)
-include_directories(${HOME_BASE}/metaipc5_rk/src)
+include_directories(${HOME_BASE}/metaipc5_rk1109/lib/include)
+include_directories(${HOME_BASE}/metaipc5_rk1109/lib/include/easymedia)
+include_directories(${HOME_BASE}/metaipc5_rk1109/lib/include/rkmedia)
+include_directories(${HOME_BASE}/metaipc5_rk1109/src)
 
 # 发现目录下的源文件
 
