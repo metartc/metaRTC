@@ -106,6 +106,7 @@ int32_t yang_ipc_rtcrecv_addPeer(YangIpcRtcSession* session,char* sdp,char* answ
 	sh->peer.streamconfig.recvCallback.receiveAudio=g_ipc_rtcrecv_receiveAudio;
 	sh->peer.streamconfig.recvCallback.receiveVideo=g_ipc_rtcrecv_receiveVideo;
 	sh->peer.streamconfig.recvCallback.receiveMsg=g_ipc_rtcrecv_receiveMsg;
+
 	memcpy(&sh->peer.streamconfig.rtcCallback,&session->rtcCallback,sizeof(YangRtcCallback));
 	sh->peer.avinfo=session->avinfo;
 	yang_create_peerConnection(sh);
@@ -118,14 +119,14 @@ int32_t yang_ipc_rtcrecv_addPeer(YangIpcRtcSession* session,char* sdp,char* answ
 	if (ret)		return ret;
 	//取得answer传回对端
 	ret = sh->createHttpAnswer(&sh->peer,answer);
-
+	pthread_mutex_lock(&session->mutex);
 	session->pushs.insert(&session->pushs.vec,sh);
+	pthread_mutex_unlock(&session->mutex);
+
 	if(sh->peer.streamconfig.streamOptType==Yang_Stream_Both||sh->peer.streamconfig.streamOptType==Yang_Stream_Play){
-		//m_playCount++;
-		//yang_post_message(YangM_P2p_Play_Start,0,NULL);
 
 	}
-	//	if(m_context) m_context->streams.connectNotify(sh->peer.streamconfig.uid,sh->peer.streamconfig.streamOptType, true);
+
 	if(session->pushs.vec.vsize==1){
 		//yang_reindex(session->in_audioBuffer);
 		yang_reindex2(session->in_videoBuffer);
@@ -174,6 +175,7 @@ int32_t yang_ipc_rtcrecv_connectMediaServer(YangIpcRtcSession* session) {
 
 	return Yang_Ok;
 }
+
 int32_t yang_ipc_rtcrecv_disConnectPeer(YangIpcRtcSession* session) {
 	yang_ipc_rtcrecv_removePeer(session,session->clientUid);
 	session->clientUid=-1;
