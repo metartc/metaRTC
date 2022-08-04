@@ -187,7 +187,7 @@ int32_t yang_create_certificate(YangCertificate *cer) {
 		yang_error("mbedtls_sha256 fail");
 	}
 
-	size_t n = Yang_SHA256_Length+1;
+	size_t n = Yang_SHA256_Length;
 
 	for (size_t i = 0; i < n; i++, ++p) {
 		sprintf(p, "%02X", md[i]);
@@ -200,7 +200,7 @@ int32_t yang_create_certificate(YangCertificate *cer) {
 		}
 	}
 	memset(cer->fingerprint, 0, sizeof(cer->fingerprint));
-	memcpy(cer->fingerprint, fp, Yang_SHA256_Length+1);
+	memcpy(cer->fingerprint, fp, strlen(fp));
 
 	ret: if (ca_inited) {
 		mbedtls_x509write_crt_free(tmpCert);
