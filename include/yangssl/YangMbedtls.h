@@ -13,7 +13,11 @@
 #if Yang_HaveDtls
 
 #include <mbedtls/ssl.h>
+
+#define Yang_Mbedtls_3 0
 #define Yang_SHA256_Length 32
+
+
 typedef struct{
     char fingerprint[128];
     yangbool ecdsa_mode;
@@ -24,8 +28,8 @@ typedef struct{
 #ifdef __cplusplus
 extern "C"{
 #endif
-int32_t hmac_encode(const char* algo, const char* key, const int key_length,
-       const char* input, const int32_t input_length, char* output, unsigned int* output_length);
+int32_t hmac_encode(const char* algo, const char* key, const int32_t key_length,
+       const char* input, const int32_t input_length, char* output, uint32_t* output_length);
 
 int32_t yang_create_certificate(YangCertificate* cer);
 void yang_destroy_certificate(YangCertificate* cer);

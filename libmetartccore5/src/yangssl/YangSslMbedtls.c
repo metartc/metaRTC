@@ -17,9 +17,9 @@
 #include <mbedtls/sha256.h>
 #include <mbedtls/md5.h>
 #include <srtp2/srtp.h>
-int32_t hmac_encode(const char *algo, const char *key, const int key_length,
+int32_t hmac_encode(const char *algo, const char *key, const int32_t key_length,
 		const char *input, const int32_t input_length, char *output,
-		unsigned int *output_length) {
+		uint32_t *output_length) {
 	int32_t err = Yang_Ok;
 
 	if ((err = mbedtls_md_hmac(mbedtls_md_info_from_type(MBEDTLS_MD_SHA1),
@@ -181,9 +181,12 @@ int32_t yang_create_certificate(YangCertificate *cer) {
 	char fp[128] = { 0 };
 	char *p = fp;
 	uint8_t md[128] = { 0 };
+#if Yang_Mbedtls_3
+	if ((err = mbedtls_sha256(cer->dtls_cert->raw.p, cer->dtls_cert->raw.len,md, 0)) != Yang_Ok) {
+#else
+	if ((err = mbedtls_sha256_ret(cer->dtls_cert->raw.p, cer->dtls_cert->raw.len,md, 0)) != Yang_Ok) {
+#endif
 
-	if ((err = mbedtls_sha256(cer->dtls_cert->raw.p, cer->dtls_cert->raw.len,
-			md, 0)) != Yang_Ok) {
 		yang_error("mbedtls_sha256 fail");
 	}
 

@@ -35,7 +35,7 @@ int32_t yang_filter_data(YangDtlsSession *dtls, uint8_t *data, int32_t size) {
 
 	return err;
 }
-
+#if Yang_Mbedtls_3
 void yang_dtls_keyCallback( void *user,
 		mbedtls_ssl_key_export_type type,
 		const unsigned char *secret,
@@ -43,12 +43,26 @@ void yang_dtls_keyCallback( void *user,
 		const unsigned char client_random[32],
 		const unsigned char server_random[32],
 		mbedtls_tls_prf_types tls_prf_type ){
+#else
+int yang_dtls_keyCallback( void *user,
+	                                           const unsigned char *secret,
+	                                           const unsigned char *kb,
+	                                           size_t maclen,
+	                                           size_t keylen,
+	                                           size_t ivlen,
+	                                           const unsigned char client_random[32],
+	                                           const unsigned char server_random[32],
+	                                           mbedtls_tls_prf_types tls_prf_type ){
+#endif
 	YangDtlsSession* session = (YangDtlsSession*) user;
 
 	memcpy(session->masterSecret, secret, sizeof(session->masterSecret));
 	memcpy(session->randBytes, client_random, 32);
 	memcpy(session->randBytes + 32, server_random, 32);
 	session->tlsPrf=tls_prf_type;
+#if !Yang_Mbedtls_3
+	return Yang_Ok;
+#endif
 
 }
 
@@ -131,8 +145,11 @@ int32_t yang_get_srtp_key(YangDtlsSession *session, char *precv_key, int *precvk
 	memcpy(recv_key + SRTP_MASTER_KEY_KEY_LEN, &keyingMaterialBuffer[offset], SRTP_MASTER_KEY_SALT_LEN);
 
 	mbedtls_ssl_get_dtls_srtp_negotiation_result(session->ssl, &negotiatedSRTPProfile);
-
+#if Yang_Mbedtls_3
 	switch (negotiatedSRTPProfile.private_chosen_dtls_srtp_profile) {
+#else
+	switch(negotiatedSRTPProfile.chosen_dtls_srtp_profile) {
+#endif
 	case MBEDTLS_TLS_SRTP_AES128_CM_HMAC_SHA1_80:
 		session->srtpPrf = MBEDTLS_TLS_SRTP_AES128_CM_HMAC_SHA1_80;
 		break;
@@ -149,14 +166,17 @@ int32_t yang_get_srtp_key(YangDtlsSession *session, char *precv_key, int *precvk
 
 int32_t yang_run_rtcdtls_app(YangDtlsSession *dtls) {
 	dtls->isStart = 1;
-	int32_t err = Yang_Ok;
 	const int32_t max_loop = 512;
 	int32_t arq_count = 0;
 	int32_t arq_max_retry = 12 * 2;
 	for (int32_t i = 0; arq_count < arq_max_retry && i < max_loop; i++) {
 		if (dtls->handshake_done)  goto ret;
 		// For DTLS client ARQ, the state should be specified.
+#if Yang_Mbedtls_3
 		if (dtls->ssl->private_state == MBEDTLS_SSL_HANDSHAKE_OVER)  goto ret;
+#else
+		if (dtls->ssl->state == MBEDTLS_SSL_HANDSHAKE_OVER)  goto ret;
+#endif
 
 		yang_usleep(50*YANG_UTIME_MILLISECONDS);
 		yang_doHandshake(dtls);
@@ -258,13 +278,15 @@ int32_t yang_process_dtls_data(void* user,YangDtlsSession *dtls, char *data, int
 	}
 
 
-
+#if Yang_Mbedtls_3
 	if (dtls->ssl->private_state == MBEDTLS_SSL_HANDSHAKE_OVER) {
+#else
+	if (dtls->ssl->state == MBEDTLS_SSL_HANDSHAKE_OVER) {
+#endif
 		yang_on_handshake_done(dtls);
 	}
 
 	if(dtls->state == YangDtlsStateClientDone){
-
 #if Yang_HaveDatachannel
 		YangDatachannel* datachannel=(YangDatachannel*)dtls->datachannel;
 		if(datachannel&&datachannel->on_message&&readBytes>0)
@@ -375,16 +397,18 @@ void yang_mbed_initDtls(YangDtlsSession* session){
 	//mbedtls_ssl_conf_dbg(session->sslConfig,yang_dtls_debug,session);
 	//mbedtls_debug_set_threshold(0);
 
-
-
 	mbedtls_ssl_conf_dtls_cookies(session->sslConfig, NULL, NULL, NULL);
+
 
 	if(mbedtls_ssl_conf_dtls_srtp_protection_profiles(session->sslConfig, YANG_SRTP_SUPPORTED_PROFILES)!=Yang_Ok){
 		yang_error("mbedtls_ssl_conf_dtls_srtp_protection_profiles  fail");
 	}
-
+#if Yang_Mbedtls_3
 	mbedtls_ssl_set_export_keys_cb(session->ssl, yang_dtls_keyCallback, session);
+#else
 
+	mbedtls_ssl_conf_export_keys_ext_cb(session->sslConfig, yang_dtls_keyCallback, session);
+#endif
 
 	if(mbedtls_ssl_setup(session->ssl, session->sslConfig) !=Yang_Ok){
 		yang_error("create ssl ctx(mbedtls_ssl_setup) fail");
@@ -414,6 +438,7 @@ int32_t yang_create_rtcdtls(YangRtcDtls *dtls,int32_t isServer) {
 	session->ctrDrbg=(mbedtls_ctr_drbg_context*)calloc(sizeof(mbedtls_ctr_drbg_context),1);
 	session->entropy=(mbedtls_entropy_context*)calloc(sizeof(mbedtls_entropy_context),1);
 	session->sslConfig=(mbedtls_ssl_config*)calloc(sizeof(mbedtls_ssl_config),1);
+
 	memset(session->buffer,0,sizeof(session->buffer));
 	yang_init_buffer(&session->mbbuf, (char*)session->buffer, kRtpPacketSize);
 
@@ -445,7 +470,6 @@ void yang_destroy_rtcdtls(YangRtcDtls *dtls) {
 	yang_free(session->ctrDrbg);
 	yang_free(session->sslConfig);
 	yang_free(session->ssl);
-
 }
 
 #endif
