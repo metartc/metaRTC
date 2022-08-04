@@ -13,7 +13,7 @@
 #if Yang_HaveDtls
 
 #include <mbedtls/ssl.h>
-
+#define Yang_SHA256_Length 32
 typedef struct{
     char fingerprint[128];
     yangbool ecdsa_mode;
