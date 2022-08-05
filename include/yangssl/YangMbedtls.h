@@ -11,12 +11,15 @@
 #include <stdint.h>
 #if !Yang_Using_Openssl
 #if Yang_HaveDtls
-
+#include <mbedtls/version.h>
 #include <mbedtls/ssl.h>
 
-#define Yang_Mbedtls_3 0
 #define Yang_SHA256_Length 32
-
+#if (MBEDTLS_VERSION_NUMBER>0x03000000)
+#define Yang_Mbedtls_3 1 //0:mbedtls2.0 1:mbedtls3.0
+#else
+#define Yang_Mbedtls_3 0 //0:mbedtls2.0 1:mbedtls3.0
+#endif
 
 typedef struct{
     char fingerprint[128];
