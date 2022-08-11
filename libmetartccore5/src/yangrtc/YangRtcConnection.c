@@ -562,15 +562,17 @@ int32_t yang_rtcconn_startRtc(YangRtcSession* session,char* sdp){
 			yang_rtcconn_startudp(session);
 			g_yang_startStunTimer(session->context.udp->session.user);
 		}else{
-			yang_create_rtcudp(session->context.udp,session->context.streamConfig->localPort);
-			session->context.udp->updateRemoteAddress(&session->context.udp->session,session->context.streamConfig->remoteIp,session->isServer?0:session->remotePort);
-			yang_rtcconn_startudp(session);
-			session->context.udp->start(&session->context.udp->session);
+			goto ret;
 		}
+	}else{
+		goto ret;
 	}
 
-
-
+ret:
+	yang_create_rtcudp(session->context.udp,session->context.streamConfig->localPort);
+	session->context.udp->updateRemoteAddress(&session->context.udp->session,session->context.streamConfig->remoteIp,session->isServer?0:session->remotePort);
+	yang_rtcconn_startudp(session);
+	session->context.udp->start(&session->context.udp->session);
 	return Yang_Ok;
 }
 
