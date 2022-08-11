@@ -14,6 +14,7 @@ include_directories(${HOME_BASE}/include)
 include_directories(${HOME_BASE}/thirdparty/include)
 include_directories(${HOME_BASE}/thirdparty/user_include)
 include_directories(${HOME_BASE}/thirdparty/user_include/gmssl)
+include_directories(${HOME_BASE}/thirdparty/user_include/mbedtls3)
 include_directories(${HOME_BASE}/libmetartccore5/src)
 
 
