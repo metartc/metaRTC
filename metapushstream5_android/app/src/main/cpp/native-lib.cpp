@@ -53,7 +53,7 @@ void g_push_initContext(YangContext* context){
     context->avinfo.enc.createMeta=0;
 
     context->avinfo.rtc.usingDatachannel=0;
-    yang_setLogLevle(5);
+    yang_setLogLevel(5);
 	yang_setLogFile(1);
 }
 

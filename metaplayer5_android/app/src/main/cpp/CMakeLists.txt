@@ -49,7 +49,8 @@ find_library( # Sets the name of the path variable.
 target_link_libraries( # Specifies the target library.
         player
         ${Yang_Lib_DIR}/libmetartc5.a  ${Yang_Lib_DIR}/libmetartccore5.a
-        ${Yang_3RD_DIR}/libsrtp2.a ${Yang_3RD_DIR}/libssl.a ${Yang_3RD_DIR}/libcrypto.a
+       # ${Yang_3RD_DIR}/libsrtp2.a ${Yang_3RD_DIR}/libssl.a ${Yang_3RD_DIR}/libcrypto.a
+        ${Yang_3RD_DIR}/libsrtp2_mbed.a ${Yang_3RD_DIR}/libmbedtls.a ${Yang_3RD_DIR}/libmbedx509.a ${Yang_3RD_DIR}/libmbedcrypto.a
         ${Yang_3RD_DIR}/libspeexdsp.a ${Yang_3RD_DIR}/libyuv.a ${Yang_3RD_DIR}/libusrsctp.a
         ${Yang_3RD_DIR}/libyangh264decoder.a ${Yang_3RD_DIR}/libopus.a
         # Links the target library to the log library

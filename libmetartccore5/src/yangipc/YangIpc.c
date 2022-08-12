@@ -9,7 +9,7 @@
 #include <yangutil/sys/YangFile.h>
 #include <yangutil/sys/YangSocket.h>
 #include <yangutil/sys/YangMath.h>
-
+#ifndef __ANDROID__
 int32_t yang_ipc_startRtc(YangIpcSession* session,char* remoteIp,char* sdp,char* response );
 
 void g_ipc_receive(char *data, int32_t nb_data,char* response,char* remoteIp, void *user) {
@@ -170,4 +170,4 @@ void yang_destroy_ipc(YangIpc* ipc){
 
 }
 
-
+#endif
