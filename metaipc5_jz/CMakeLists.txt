@@ -16,7 +16,7 @@ include_directories(${HOME_BASE}/thirdparty/user_include)
 include_directories(${HOME_BASE}/metaipc5/src)
 
 # 发现目录下的源文件
-
+aux_source_directory(./src/yangipc_jz DIR_SRCS)
 aux_source_directory(./src DIR_SRCS)
 
 include(utils.cmake)

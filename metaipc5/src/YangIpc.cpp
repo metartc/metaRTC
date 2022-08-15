@@ -45,9 +45,9 @@ YangIpc::YangIpc() {
 
          m_context->avinfo.rtc.usingDatachannel=1;
 
-         strcpy(m_context->avinfo.rtc.iceServerIP,"182.92.163.143");
-         m_context->avinfo.rtc.iceStunPort=3478;
-         m_context->avinfo.rtc.iceCandidateType=YangIceHost;
+       //  strcpy(m_context->avinfo.rtc.iceServerIP,"182.92.163.143");
+         //m_context->avinfo.rtc.iceStunPort=3478;
+         //m_context->avinfo.rtc.iceCandidateType=YangIceHost;
 }
 
 YangIpc::~YangIpc() {
