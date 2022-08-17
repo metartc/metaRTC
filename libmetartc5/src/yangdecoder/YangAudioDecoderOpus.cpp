@@ -118,9 +118,8 @@ int32_t YangAudioDecoderOpus::decode(YangFrame *pframe,
 	ret = yang_opus_decode(m_decoder, pframe->payload, pframe->nb, m_out,
 			MAX_FRAME_SIZE, 0);
 	m_prePts = pframe->pts;
-	return yang_opus_insertData(ret, pframe, pcallback);
 
-	return ERROR_CODEC_Decode_Audio;
+	return yang_opus_insertData(ret, pframe, pcallback);
 }
 
 void YangAudioDecoderOpus::closedec() {
