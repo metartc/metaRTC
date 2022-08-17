@@ -72,6 +72,7 @@ void yang_create_playTrackAudio(YangRtcContext *context, YangPlayTrackAudio *tra
 }
 void yang_destroy_playTrackAudio(YangPlayTrackAudio *track) {
 	yang_destroy_sortBuffer(track->session.sortBuffer);
+	yang_free(track->session.sortBuffer);
 	yang_destroy_playTrack(&track->session);
 }
 
