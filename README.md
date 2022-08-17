@@ -17,8 +17,8 @@ Remark:metaRTC5.0 is stable
 可加微信taihang82  
 
 ### metaRTC5.0稳定版本下载
-https://github.com/metartc/metaRTC/releases/tag/v5.0-b2  
-### 纯C版IPC
+https://github.com/metartc/metaRTC/releases/tag/v5.0-b3  
+### 纯C版IPC第三方库下载
 https://github.com/metartc/metaRTC/releases/tag/v5.0-b1   
 
 ### metaRTC5.0 API
