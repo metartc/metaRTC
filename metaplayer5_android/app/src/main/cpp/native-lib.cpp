@@ -29,6 +29,10 @@ void g_player_initContext(YangContext* context){
     context->avinfo.sys.rtcLocalPort=10000+yang_random()%15000;
     memset(context->avinfo.sys.localIp,0,sizeof(context->avinfo.sys.localIp));
     yang_getLocalInfo(context->avinfo.sys.localIp);
+
+    context->avinfo.rtc.hasAudioBuffer=yangtrue;
+    context->avinfo.audio.hasAec=yangfalse;
+
 	yang_setLogLevel(5);
 	yang_setLogFile(1);
 }
