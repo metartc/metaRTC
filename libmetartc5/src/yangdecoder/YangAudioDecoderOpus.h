@@ -23,6 +23,7 @@ public:
 		int32_t isConvert;
 		OpusDecoder *m_decoder;
 		int64_t m_prePts;
+		int32_t m_frameTime;
 		int32_t m_fec;
 		int32_t m_isMono;
 		int32_t ret;

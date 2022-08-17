@@ -32,7 +32,6 @@ void YangAudioDecoderOpus::unloadLib(){
 YangAudioDecoderOpus::YangAudioDecoderOpus(YangAudioParam *pcontext) {
 	m_context = pcontext;
 	isConvert = 0;
-	m_frameSize = 1024;
 	ret = 0;
 	m_out = NULL;
 	m_output = NULL;
@@ -41,6 +40,7 @@ YangAudioDecoderOpus::YangAudioDecoderOpus(YangAudioParam *pcontext) {
 	m_channel = pcontext->channel;
 	m_isMono = (m_channel == 1);
 	m_frameSize = m_sample / 50;
+	m_frameTime = m_sample / 50;
 
 	m_prePts = 0;
 	m_fec = m_context->fec;
@@ -107,7 +107,7 @@ int32_t YangAudioDecoderOpus::decode(YangFrame *pframe,
 	if (m_fec) {
 		if (m_prePts) {
 
-			if (pframe->pts - m_prePts > 960) {
+			if (pframe->pts - m_prePts > m_frameTime) {
 
 				ret = yang_opus_decode(m_decoder, pframe->payload, pframe->nb,
 						m_out, MAX_FRAME_SIZE, 1);
