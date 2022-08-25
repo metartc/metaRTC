@@ -16,7 +16,7 @@ YangContext* g_context = nullptr;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void g_push_initContext(YangContext* context){
-	context->avinfo.rtc.usingDatachannel=0;
+
 	context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm
 	context->avinfo.video.videoEncoderType=Yang_VED_264; //h264
 
@@ -29,10 +29,10 @@ void g_push_initContext(YangContext* context){
 	context->avinfo.video.rotate=Yang_Rotate0;
 
 
-    context->avinfo.audio.usingMono=0;
+    context->avinfo.audio.enableMono=yangfalse;
     context->avinfo.audio.sample=48000;
     context->avinfo.audio.channel=2;
-    context->avinfo.audio.hasAec=0;
+    context->avinfo.audio.enableAudioFec=yangfalse;
     context->avinfo.audio.audioCacheNum=8;
     context->avinfo.audio.audioCacheSize=8;
     context->avinfo.audio.audioPlayCacheNum=8;
@@ -50,12 +50,12 @@ void g_push_initContext(YangContext* context){
     memset(context->avinfo.sys.localIp,0,sizeof(context->avinfo.sys.localIp));
     yang_getLocalInfo(context->avinfo.sys.localIp);
     context->avinfo.enc.enc_threads=4; //x264编码线程数
-    context->avinfo.enc.createMeta=0;
+    context->avinfo.enc.createMeta=yangfalse;
 
-    context->avinfo.rtc.usingDatachannel=0;
+    context->avinfo.rtc.enableDatachannel=yangfalse;
 
-    context->avinfo.rtc.hasAudioBuffer=yangtrue;
-    context->avinfo.audio.hasAec=yangfalse;
+    context->avinfo.rtc.enableAudioBuffer=yangtrue;
+    context->avinfo.audio.enableAec=yangfalse;
 
     yang_setLogLevel(5);
 	yang_setLogFile(1);

@@ -19,7 +19,7 @@ void g_player_initContext(YangContext* context){
    // context->avinfo.rtc.iceStunPort=3478;
    // context->avinfo.rtc.hasIceServer=0;
 	context->streams.m_playBuffer=new YangSynBuffer();
-	context->avinfo.rtc.usingDatachannel=0;
+	context->avinfo.rtc.enableDatachannel=yangfalse;
 	context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm
 
 	//YangV_Hw_Android mediacodec
@@ -30,8 +30,8 @@ void g_player_initContext(YangContext* context){
     memset(context->avinfo.sys.localIp,0,sizeof(context->avinfo.sys.localIp));
     yang_getLocalInfo(context->avinfo.sys.localIp);
 
-    context->avinfo.rtc.hasAudioBuffer=yangtrue;
-    context->avinfo.audio.hasAec=yangfalse;
+    context->avinfo.rtc.enableAudioBuffer=yangtrue;
+    context->avinfo.audio.enableAec=yangfalse;
 
 	yang_setLogLevel(5);
 	yang_setLogFile(1);
