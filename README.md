@@ -151,7 +151,12 @@ webrtc/rtmp 协议实现和基础应用C类库，可集成到ffmpeg
 p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p拉流  
 和metapushstream与metaplayer不同，metap2p支持全双工，即一个连接同时支持推拉流   
 ### yangwincodec
-nvidia/intel gpu编码
+nvidia/intel gpu编码  
+
+## rtmp支持和录制mp4
+修改配置文件include/yang_config.h 设置Yang_Enable_Openh264为0  
+修改配置文件yang_config.ini enc项 createMeta=1  
+或者程序设置m_context->avinfo.enc.createMeta=1  
 
 ## demo compile
 ### linux
