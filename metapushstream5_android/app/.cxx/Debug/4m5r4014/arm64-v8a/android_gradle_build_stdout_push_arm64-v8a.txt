@@ -1,3 +1,0 @@
-ninja: Entering directory `/home/yang/yangpro/metartc5/metapushstream5_android/app/.cxx/Debug/4m5r4014/arm64-v8a'
-[1/2] Building CXX object CMakeFiles/push.dir/native-lib.cpp.o
-[2/2] Linking CXX shared library /home/yang/yangpro/metartc5/metapushstream5_android/app/build/intermediates/cxx/Debug/4m5r4014/obj/arm64-v8a/libpush.so

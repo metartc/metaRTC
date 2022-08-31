@@ -1,8 +1,0 @@
-# ninja log v5
-0	317	1656303612	CMakeFiles/push.dir/native-lib.cpp.o	e0898c2c6c41fb94
-0	2	0	clean	86bc5d9861107cd1
-1	299	1656303864	CMakeFiles/push.dir/native-lib.cpp.o	e0898c2c6c41fb94
-299	505	1656303865	/home/yang/yangpro/metartc5/metapushstream5_android/app/build/intermediates/cxx/Debug/4m5r4014/obj/x86_64/libpush.so	2f438399cfd3daca
-0	2	0	clean	86bc5d9861107cd1
-2	435	1656304110	CMakeFiles/push.dir/native-lib.cpp.o	e0898c2c6c41fb94
-435	752	1656304110	/home/yang/yangpro/metartc5/metapushstream5_android/app/build/intermediates/cxx/Debug/4m5r4014/obj/x86_64/libpush.so	2f438399cfd3daca
