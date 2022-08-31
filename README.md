@@ -16,6 +16,9 @@ Remark:metaRTC5.0 is stable，metaRTC6.0 is not stable
 ## metaRTC服务微信群
 可加微信taihang82  
 
+## Learning metaRTC 教程
+https://github.com/metartc/metaRTC/wiki/metaRTC-Learning  
+
 ### metaRTC5.0稳定版本下载
 https://github.com/metartc/metaRTC/releases/tag/v5.0-b4  
 ### 纯C版IPC第三方库下载
@@ -23,7 +26,7 @@ https://github.com/metartc/metaRTC/releases/tag/v5.0-b1
 
 ### metaRTC5.0 API
 https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API  
-https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API-Sample  
+https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API-Sample   
 
 ## metaRTC4产品展区
 ### p2p云桌面demo
@@ -163,11 +166,9 @@ nvidia/intel gpu编码
 sudo apt install libasound2-dev  
 sudo apt install libgl1-mesa-dev 
 
+
 下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。  
 The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.   
 
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-
-## Learning metaRTC 教程
-https://github.com/metartc/metaRTC/wiki/metaRTC-Learning   
 
