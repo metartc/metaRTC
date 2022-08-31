@@ -168,39 +168,6 @@ The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situati
 
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
-## compile the tutorial 编译教程
-### Video Compilation Tutorial 视频编译教程
-https://www.bilibili.com/video/BV1d3411r742/  
-### metaRTC4.0与浏览器webrtc的P2P音视频对讲demo
-https://blog.csdn.net/m0_56595685/article/details/124784019  
-### metaRTC实现webrtc的P2P应用之音视频对讲和视频会议
-https://blog.csdn.net/m0_56595685/article/details/124067383
-### metaRTC4.0与浏览器webrtc的P2P音视频对讲demo
-https://blog.csdn.net/m0_56595685/article/details/124784019
-### metaRTC与浏览器webrtc的P2P通信编程指南
-https://blog.csdn.net/m0_56595685/article/details/124015458  
-### metaRTC实现安卓webrtc推流直播
-https://blog.csdn.net/m0_56595685/article/details/123657024  
-### metaRTC(ARM linux64)编译指南
-https://blog.csdn.net/m0_56595685/article/details/123900651  
-### MetaRTC Embedded Webrtc Programming Guide  metaRTC嵌入式webrtc编程指南 
-https://blog.csdn.net/m0_56595685/article/details/122139482   
-https://blog.csdn.net/m0_56595685/article/details/122010285  
-### metaRTC搭建视频会议
-https://blog.csdn.net/m0_56595685/article/details/122775443  
-### 搭建低延迟并节省一半码率的H265的webrtc应用
-https://blog.csdn.net/m0_56595685/article/details/121880362  
-### 搭建支持H264和H265的linux和嵌入式的高清录播直播系统 
-https://blog.csdn.net/m0_56595685/article/details/121735106  
-### 搭建跨平台支持嵌入式智能终端的双师课堂实现远程互动教学 
-https://blog.csdn.net/m0_56595685/article/details/121735106  
-### metaRTC集成FFmpeg实现回声消除(3A)等音频功能
-https://blog.csdn.net/m0_56595685/article/details/122682713
-### metaRTC集成到ffmpeg实现srs的webrtc推拉流
-https://blog.csdn.net/m0_56595685/article/details/122642347
-### metaRTC集成到ffmpeg实现srs的webrtc拉流播放
-https://blog.csdn.net/m0_56595685/article/details/122594797
-### SRS+metaRTC+FFmpeg助力直播进入webrtc直播互动新时代
-https://blog.csdn.net/m0_56595685/article/details/122697381
-
+## Learning metaRTC 教程
+https://github.com/metartc/metaRTC/wiki/metaRTC-Learning   
 
