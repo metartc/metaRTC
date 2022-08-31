@@ -10,8 +10,8 @@ The webrtc support is original, without citing the Google webrtc code, and can i
 Support windows/linux/android etc.  
 
 Remark:metaRTC3.0/metaRTC4.0等停止更新  
-Remark:metaRTC5.0为稳定版本，metaRTC5.0正常更新    
-Remark:metaRTC5.0 is stable  
+Remark:metaRTC5.0为稳定版本，metaRTC6.0为非稳定版本   
+Remark:metaRTC5.0 is stable，metaRTC6.0 is not stable    
 
 ## metaRTC服务微信群
 可加微信taihang82  
