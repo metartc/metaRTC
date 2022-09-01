@@ -27,19 +27,6 @@ https://github.com/metartc/metaRTC/releases/tag/v5.0-b1
 ### metaRTC5.0 API
 https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API  
 https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API-Sample   
-
-## metaRTC4产品展区
-### p2p云桌面demo
-https://github.com/yangrtc/yangrtc/releases/tag/4.0.020  
-https://gitee.com/yangrtc/yangrtc/releases/4.0.020  
-
-## metaRTC3产品展区
-### metaRTC云桌面(浏览器/嵌入式/GPU编码/H264/H265/webrtc)
-下载：
-https://github.com/metartc/metaRTC/releases/tag/3.0.009  
-https://download.csdn.net/download/m0_56595685/82167672  
-详情参见：
-https://blog.csdn.net/m0_56595685/article/details/123104236  
  
 ## MetaRTC和谷歌Webrtc的区别
 ### MetaRTC编译简单
