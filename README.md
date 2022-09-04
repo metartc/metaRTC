@@ -9,12 +9,15 @@ MetaRTC implements the webrtc protocol, supports webrtc/srt/rtmp, and has two ve
 The webrtc support is original, without citing the Google webrtc code, and can interoperate with the Google Webrtc library and browser.  
 Support windows/linux/android etc.  
 
-Remark:metaRTC3.0/metaRTC4.0等停止更新  
-Remark:metaRTC5.0为稳定版本，metaRTC5.0正常更新    
-Remark:metaRTC5.0 is stable  
+Remark:metaRTC3.0/metaRTC4.0等停止更新，推荐使用稳定版metaRTC5.0  
+Remark:metaRTC5.0为稳定版本，metaRTC6.0为非稳定版本   
+Remark:metaRTC5.0 is stable，metaRTC6.0 is not stable    
 
 ## metaRTC服务微信群
 可加微信taihang82  
+
+## Learning metaRTC 教程
+https://github.com/metartc/metaRTC/wiki/metaRTC-Learning  
 
 ### metaRTC5.0稳定版本下载
 https://github.com/metartc/metaRTC/releases/tag/v5.0-b4  
@@ -23,20 +26,7 @@ https://github.com/metartc/metaRTC/releases/tag/v5.0-b1
 
 ### metaRTC5.0 API
 https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API  
-https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API-Sample  
-
-## metaRTC4产品展区
-### p2p云桌面demo
-https://github.com/yangrtc/yangrtc/releases/tag/4.0.020  
-https://gitee.com/yangrtc/yangrtc/releases/4.0.020  
-
-## metaRTC3产品展区
-### metaRTC云桌面(浏览器/嵌入式/GPU编码/H264/H265/webrtc)
-下载：
-https://github.com/metartc/metaRTC/releases/tag/3.0.009  
-https://download.csdn.net/download/m0_56595685/82167672  
-详情参见：
-https://blog.csdn.net/m0_56595685/article/details/123104236  
+https://github.com/metartc/metaRTC/wiki/metaRTC5.0-API-Sample   
  
 ## MetaRTC和谷歌Webrtc的区别
 ### MetaRTC编译简单
@@ -163,44 +153,9 @@ nvidia/intel gpu编码
 sudo apt install libasound2-dev  
 sudo apt install libgl1-mesa-dev 
 
+
 下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。  
 The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.   
 
 ![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-
-## compile the tutorial 编译教程
-### Video Compilation Tutorial 视频编译教程
-https://www.bilibili.com/video/BV1d3411r742/  
-### metaRTC4.0与浏览器webrtc的P2P音视频对讲demo
-https://blog.csdn.net/m0_56595685/article/details/124784019  
-### metaRTC实现webrtc的P2P应用之音视频对讲和视频会议
-https://blog.csdn.net/m0_56595685/article/details/124067383
-### metaRTC4.0与浏览器webrtc的P2P音视频对讲demo
-https://blog.csdn.net/m0_56595685/article/details/124784019
-### metaRTC与浏览器webrtc的P2P通信编程指南
-https://blog.csdn.net/m0_56595685/article/details/124015458  
-### metaRTC实现安卓webrtc推流直播
-https://blog.csdn.net/m0_56595685/article/details/123657024  
-### metaRTC(ARM linux64)编译指南
-https://blog.csdn.net/m0_56595685/article/details/123900651  
-### MetaRTC Embedded Webrtc Programming Guide  metaRTC嵌入式webrtc编程指南 
-https://blog.csdn.net/m0_56595685/article/details/122139482   
-https://blog.csdn.net/m0_56595685/article/details/122010285  
-### metaRTC搭建视频会议
-https://blog.csdn.net/m0_56595685/article/details/122775443  
-### 搭建低延迟并节省一半码率的H265的webrtc应用
-https://blog.csdn.net/m0_56595685/article/details/121880362  
-### 搭建支持H264和H265的linux和嵌入式的高清录播直播系统 
-https://blog.csdn.net/m0_56595685/article/details/121735106  
-### 搭建跨平台支持嵌入式智能终端的双师课堂实现远程互动教学 
-https://blog.csdn.net/m0_56595685/article/details/121735106  
-### metaRTC集成FFmpeg实现回声消除(3A)等音频功能
-https://blog.csdn.net/m0_56595685/article/details/122682713
-### metaRTC集成到ffmpeg实现srs的webrtc推拉流
-https://blog.csdn.net/m0_56595685/article/details/122642347
-### metaRTC集成到ffmpeg实现srs的webrtc拉流播放
-https://blog.csdn.net/m0_56595685/article/details/122594797
-### SRS+metaRTC+FFmpeg助力直播进入webrtc直播互动新时代
-https://blog.csdn.net/m0_56595685/article/details/122697381
-
 
