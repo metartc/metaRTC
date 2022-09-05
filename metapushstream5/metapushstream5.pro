@@ -32,7 +32,7 @@ unix{
 
  LIBS += -L$$HOME_BASE/thirdparty/lib -lmetartc5  -lmetartccore5 -lyuv -lopenh264 -lspeexdsp -lopus -lusrsctp -lpthread -lasound -ldl
 #screen share
- LIBS +=  -lX11 -lXext -lXtst
+ LIBS +=  -lX11 -lXext
 #openssl
  #LIBS += -lssl2 -lcrypto2 -lsrtp2
 #mbtls
