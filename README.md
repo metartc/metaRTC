@@ -152,10 +152,3 @@ nvidia/intel gpu编码
 ### linux
 sudo apt install libasound2-dev  
 sudo apt install libgl1-mesa-dev 
-
-
-下面是一热心网友使用metaRTC(yangwebrtc)测试情况，端到端延迟时间为40ms。  
-The following is an enthusiastic netizen using metaRTC (yangwebrtc) test situation, end-to-end latency of 40ms.   
-
-![](https://img-blog.csdnimg.cn/fbd331e04ad94910804a5786f725a297.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAeWFuZ3J0Yw==,size_20,color_FFFFFF,t_70,g_se,x_16)
-
