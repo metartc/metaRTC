@@ -144,7 +144,7 @@ p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p拉流
 ### yangwincodec
 nvidia/intel gpu编码  
 
-## rtmp支持和录制mp4
+## 录制mp4
 修改配置文件include/yang_config.h 设置Yang_Enable_Openh264为0  
 修改配置文件yang_config.ini enc项 createMeta=1  
 或者程序设置m_context->avinfo.enc.createMeta=1  
