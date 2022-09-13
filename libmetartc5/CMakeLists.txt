@@ -3,7 +3,7 @@ project(libmetartc5)
 
 add_definitions(-D__STDC_FORMAT_MACROS)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -std=gnu++11 ")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -std=gnu11  ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -std=gnu++11 ")
 set(HOME_BASE_REL "../")
 get_filename_component(HOME_BASE ${HOME_BASE_REL} REALPATH)

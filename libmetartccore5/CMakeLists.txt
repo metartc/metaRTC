@@ -5,8 +5,8 @@ add_definitions(-D__STDC_FORMAT_MACROS)
 
 set(CMAKE_BUILD_TYPE "RELEASE")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -std=gnu11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -std=gnu++11")
 set(HOME_BASE "../")
 
 # 头文件目录
