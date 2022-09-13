@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 2.8)
-project(libmetartccore5)
+project(libmetartccore6)
 add_definitions(-D__STDC_FORMAT_MACROS)
 
 
 set(CMAKE_BUILD_TYPE "RELEASE")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -std=gnu11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -std=gnu++11")
 set(HOME_BASE "../")
 
 # 头文件目录
@@ -19,7 +19,7 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
 add_definitions(-D_TIMESPEC_DEFINED)
 include_directories(${HOME_BASE}/thirdparty/include/win/include)
 endif()
-include_directories(${HOME_BASE}/libmetartccore5/src)
+include_directories(${HOME_BASE}/libmetartccore6/src)
 
 
 # 发现目录下的源文件
@@ -42,4 +42,4 @@ include(utils.cmake)
 # 排除不参与编译的文件
 
 
-add_library(metartccore5 ${DIR_SRCS})
+add_library(metartccore6 ${DIR_SRCS})

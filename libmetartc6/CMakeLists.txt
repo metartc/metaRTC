@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
-project(libmetartc5)
+project(libmetartc6)
 
 add_definitions(-D__STDC_FORMAT_MACROS)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -std=gnu++11 ")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -std=gnu11 ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -std=gnu++11 ")
 set(HOME_BASE_REL "../")
 get_filename_component(HOME_BASE ${HOME_BASE_REL} REALPATH)
@@ -14,7 +14,7 @@ include_directories(${HOME_BASE}/include)
 include_directories(${HOME_BASE}/thirdparty/include)
 include_directories(${HOME_BASE}/thirdparty/user_include)
 include_directories(${HOME_BASE}/thirdparty/user_include/ffmpeg)
-include_directories(${HOME_BASE}/libmetartc5/src)
+include_directories(${HOME_BASE}/libmetartc6/src)
 
 if (NOT NoCapture)
 # 发现目录下的源文件
@@ -62,7 +62,7 @@ endif()
 
 include(utils.cmake)
 # 排除不参与编译的文件
-add_library(metartc5 ${DIR_SRCS})
+add_library(metartc6 ${DIR_SRCS})
 #if ((CMAKE_SYSTEM_NAME MATCHES "Windows") OR (CMAKE_SYSTEM_NAME MATCHES "Linux"))
 #add_library(metartc5 ${DIR_SRCS})
 #else()
