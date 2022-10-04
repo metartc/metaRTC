@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>metaRTC p2p demo</title>
+    <meta charset="utf-8">
+    <style>
+        body{
+            padding-top: 30px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/adapter-7.4.0.min.js"></script>
+    <script type="text/javascript" src="js/srs.sdk.p2p.js"></script>
+    <script type="text/javascript" src="js/winlin.utility.js"></script>
+    <script type="text/javascript" src="js/srs.page.js"></script>
+  
+</head>
+<body>
+<div class="container" width="100%" height="100%">
+    <div class="form-inline">
+        URL:
+        <input type="text" id="txt_url" class="input-xxlarge" value="webrtc://192.168.1.101:1988/live/livestream">
+        <button class="btn btn-primary" id="btn_play">播放视频</button>
+        <button class="btn btn-primary" id="btn_play_stop">停止视频</button><br>
+   
+    
+    </div>
+    <br>
+    <div  class="form-inline" id="datachannel_form">
+         接收：<input type="text" id="datachannel_recv" width="200" value=""> 
+        <input type="text" id="datachannel_send" width="200" value="hello,metaRTC html"> 
+        <button class="btn btn-primary" id="btn_play_send">发送</button>
+    </div>
+
+    <video id="rtc_media_player" width="100%" height="100%" autoplay></video>   
+</div>
+<script type="text/javascript">
+//
+// Copyright (c) 2019-2022 yanggaofeng
+//
+$(function(){
+	$('#datachannel_form').hide();
+    var sdk = null; // Global handler to do cleanup when replaying.
+     $('#rtc_media_player').show();
+    var startPlay = function() {
+       
+
+        // Close PC when user replay.
+        if (sdk) {
+            sdk.close();
+        }
+        sdk = new SrsRtcPlayerAsync();
+
+        // https://webrtc.org/getting-started/remote-streams
+        $('#rtc_media_player').prop('srcObject', sdk.stream);
+            var url = $("#txt_url").val();
+       // parse_webrtc(url);
+        sdk.play(url).then(function(session){
+			 console.log("play url ",$("#txt_url").val());
+			 $('#datachannel_form').show();
+        }).catch(function (reason) {
+            sdk.close();
+ 
+        });
+    };
+    $("#btn_play_send").click(function(e) {
+		    console.log("peer connection readyState: ", sdk.pc.connectionState);
+            if (!datachannel) return;     
+         
+            console.log("send message readyState: ", datachannel.readyState);
+            if(datachannel.readyState == "open") datachannel.send($('#datachannel_send').val());
+        });
+
+    $("#btn_play").click(function() {
+        $('#rtc_media_player').prop('muted', false);
+        startPlay();
+    });
+
+    $("#btn_play_stop").click(function() {
+        $('#rtc_media_player').prop('muted', false);
+      sdk.close();
+    });
+});
+</script>
+</body>
+</html>
