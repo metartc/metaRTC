@@ -1,0 +1,16 @@
+[
+  {
+    "level_": 0,
+    "message_": "ABIs [x86_64,x86] set by \u0027android.injected.build.abi\u0027 gradle flag contained \u0027X86\u0027 not targeted by this project.",
+    "file_": "",
+    "tag_": "",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -20607263
+  }
+]

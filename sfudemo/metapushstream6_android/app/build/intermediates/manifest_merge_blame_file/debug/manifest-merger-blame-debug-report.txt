@@ -1,0 +1,77 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.metartc.push"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="29"
+8-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:4:5-67
+11-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:5:5-65
+12-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:5:22-62
+13    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+13-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:6:5-71
+13-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:6:22-68
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:7:5-81
+14-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:7:22-78
+15    <uses-permission android:name="android.permission.FLASHLIGHT" />
+15-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:8:5-69
+15-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:8:22-66
+16
+17    <uses-feature android:name="android.hardware.camera.autofocus" />
+17-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:10:5-70
+17-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:10:19-67
+18    <uses-feature
+18-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:11:5-78
+19        android:glEsVersion="0x00020000"
+19-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:11:19-51
+20        android:required="true" />
+20-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:11:52-75
+21
+22    <application
+22-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:12:5-28:19
+23        android:allowBackup="true"
+23-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:13:9-35
+24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+24-->[androidx.core:core:1.5.0] /home/yang/.gradle/caches/transforms-3/b1fe9740f6c86f0b7649a763c3bf2b85/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+25        android:debuggable="true"
+26        android:extractNativeLibs="false"
+27        android:icon="@mipmap/ic_launcher"
+27-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:14:9-43
+28        android:label="@string/app_name"
+28-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:15:9-41
+29        android:roundIcon="@mipmap/ic_launcher_round"
+29-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:16:9-54
+30        android:supportsRtl="true"
+30-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:17:9-35
+31        android:testOnly="true"
+32        android:theme="@style/Theme.Metapushstream4" >
+32-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:18:9-53
+33        <activity
+33-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:19:9-27:20
+34            android:name="com.metartc.push.YangMainActivity"
+34-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:20:13-45
+35            android:exported="true" >
+35-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:21:13-36
+36            <intent-filter>
+36-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:22:13-26:29
+37                <action android:name="android.intent.action.MAIN" />
+37-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:23:17-69
+37-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:23:25-66
+38
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:25:17-77
+39-->/home/yang/yangpro/metartc5/metapushstream5_android/app/src/main/AndroidManifest.xml:25:27-74
+40            </intent-filter>
+41        </activity>
+42    </application>
+43
+44</manifest>

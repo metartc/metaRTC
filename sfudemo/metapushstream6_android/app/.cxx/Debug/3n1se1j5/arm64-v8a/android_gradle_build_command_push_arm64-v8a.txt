@@ -1,0 +1,7 @@
+Executable : /home/yang/pro/android/android-sdk-linux/cmake/3.18.1/bin/ninja
+arguments : 
+-C
+/home/yang/yangpro/metartc4/metapushstream4_android/app/.cxx/Debug/3n1se1j5/arm64-v8a
+push
+jvmArgs : 
+

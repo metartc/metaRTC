@@ -1,0 +1,2 @@
+ninja: Entering directory `/home/yang/yangpro/metartc5/metapushstream5_android/app/.cxx/Debug/4m5r4014/x86_64'
+ninja: no work to do.
