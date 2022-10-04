@@ -1,3 +1,0 @@
-/home/yang/yangpro/metartc6/libmetartc6/build/CMakeFiles/metartc6.dir
-/home/yang/yangpro/metartc6/libmetartc6/build/CMakeFiles/edit_cache.dir
-/home/yang/yangpro/metartc6/libmetartc6/build/CMakeFiles/rebuild_cache.dir
