@@ -1,0 +1,3 @@
+/home/yang/yangpro/metartc4/metaplayer4_android/app/.cxx/Debug/2w3v3b3v/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/home/yang/yangpro/metartc4/metaplayer4_android/app/.cxx/Debug/2w3v3b3v/arm64-v8a/CMakeFiles/edit_cache.dir
+/home/yang/yangpro/metartc4/metaplayer4_android/app/.cxx/Debug/2w3v3b3v/arm64-v8a/CMakeFiles/player.dir

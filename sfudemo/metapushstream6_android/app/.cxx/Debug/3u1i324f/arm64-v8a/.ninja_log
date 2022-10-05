@@ -1,0 +1,10 @@
+# ninja log v5
+0	11	1664971939	build.ninja	c5120f7015e39172
+0	2	0	clean	86bc5d9861107cd1
+0	2	0	clean	86bc5d9861107cd1
+0	26	1664971951	build.ninja	c5120f7015e39172
+0	16	1664972040	build.ninja	c5120f7015e39172
+0	2	0	clean	86bc5d9861107cd1
+0	1	0	clean	86bc5d9861107cd1
+0	385	1664972044	CMakeFiles/push.dir/native-lib.cpp.o	ad8c82f2144610ac
+385	772	1664972044	/home/yang/yangpro/metartc6/sfudemo/metapushstream6_android/app/build/intermediates/cxx/Debug/3u1i324f/obj/arm64-v8a/libpush.so	5ad9cd4947f3b3c8
