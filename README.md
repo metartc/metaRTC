@@ -35,18 +35,22 @@ webrtc/rtmp 协议实现和基础应用C类库，可集成到ffmpeg
 如果平台已有采集和编解吗，只需要libmetartccore即可，不需要libmetartc
 ### libmetartc
 实现采集、编码、解码、传输(SRT实现)以及推拉流等实现
-### libdemo/libmetaApp和libdemo/libmetaCApp
+### demo
+#### demo/libmetaApp和demo/libmetaCApp
 sfudemo和p2pdemo的C++和C语言的sdk库  
-### sfudemo/metapushstream和sfudemo/metapushstream_android
-推流和录制 demo metapushstream_android为安卓版
-### sfudemo/metaplayer和sfudemo/metaplayer_android
-拉流demo,metaplayer_android为安卓版
-### p2pdemo/metap2p和p2pdemo/metaipc 
-p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p拉流  
-和metapushstream与metaplayer不同，metap2p支持全双工，即一个连接同时支持推拉流   
-### p2pdemo/metaipc6_jz和p2pdemo/metaipc6_rk1109
+### demo/metaipc6_jz和demo/metaipc6_rk1109及metap2p6_html
 嵌入式p2p ipc demo，metaipc6_jz为君正demo  
 metaipc6_rk1109为瑞芯微rk1109demo  
+metap2p6_html为浏览器的直播和互动demo  
+
+### demo/metapushstream和demo/metapushstream_android
+推流和录制 demo metapushstream_android为安卓版
+### demo/metaplayer和demo/metaplayer_android
+拉流demo,metaplayer_android为安卓版
+### demo/metap2p和demo/metaipc 
+p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p拉流  
+和metapushstream与metaplayer不同，metap2p支持全双工，即一个连接同时支持推拉流   
+
 ### codec/yangwincodec
 nvidia/intel gpu编码   
  
