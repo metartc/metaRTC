@@ -38,7 +38,7 @@ webrtc/rtmp 协议实现和基础应用C类库，可集成到ffmpeg
 ### libdemo/libmetaApp和libdemo/libmetaCApp
 sfudemo和p2pdemo的C++和C语言的sdk库  
 ### sfudemo/metapushstream和sfudemo/metapushstream_android
-推流和录制 demo metapushstream3_android为安卓版
+推流和录制 demo metapushstream_android为安卓版
 ### sfudemo/metaplayer和sfudemo/metaplayer_android
 拉流demo,metaplayer_android为安卓版
 ### p2pdemo/metap2p和p2pdemo/metaipc 
