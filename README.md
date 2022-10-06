@@ -35,13 +35,13 @@ webrtc/rtmp 协议实现和基础应用C类库，可集成到ffmpeg
 如果平台已有采集和编解吗，只需要libmetartccore即可，不需要libmetartc
 ### libmetartc
 实现采集、编码、解码、传输(SRT实现)以及推拉流等实现
-### libmetaApp
+### libdemo/libmetaApp和libdemo/libmetaCApp
 sfudemo和p2pdemo的C++和C语言的sdk库  
-### sfudemo/metapushstream/metapushstream_android
+### sfudemo/metapushstream和sfudemo/metapushstream_android
 推流和录制 demo metapushstream3_android为安卓版
-### sfudemo/metaplayer/metaplayer_android
+### sfudemo/metaplayer和sfudemo/metaplayer_android
 拉流demo,metaplayer_android为安卓版
-### p2pdemo/metap2p
+### p2pdemo/metap2p p2pdemo/metaipc 
 p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p拉流  
 和metapushstream与metaplayer不同，metap2p支持全双工，即一个连接同时支持推拉流   
 ### codec/yangwincodec
