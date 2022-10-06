@@ -41,7 +41,7 @@ sfudemo和p2pdemo的C++和C语言的sdk库
 推流和录制 demo metapushstream3_android为安卓版
 ### sfudemo/metaplayer和sfudemo/metaplayer_android
 拉流demo,metaplayer_android为安卓版
-### p2pdemo/metap2p p2pdemo/metaipc 
+### p2pdemo/metap2p和p2pdemo/metaipc 
 p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p拉流  
 和metapushstream与metaplayer不同，metap2p支持全双工，即一个连接同时支持推拉流   
 ### p2pdemo/metaipc6_jz和p2pdemo/metaipc6_rk1109
