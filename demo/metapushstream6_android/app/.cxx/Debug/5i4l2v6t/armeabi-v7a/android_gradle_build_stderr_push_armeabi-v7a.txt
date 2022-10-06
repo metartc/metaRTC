@@ -1,0 +1,1 @@
+ninja: error: '/home/yang/yangpro/metartc3/bin/lib_android/armeabi-v7a/libmetartc3.a', needed by '/home/yang/yangpro/metartc3/metapushstream3_android/app/build/intermediates/cxx/Debug/5i4l2v6t/obj/armeabi-v7a/libpush.so', missing and no known rule to make it
