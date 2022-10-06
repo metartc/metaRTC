@@ -1,7 +1,0 @@
-# ninja log v5
-0	236	1664972090	CMakeFiles/player.dir/native-lib.cpp.o	9a38875561d11f50
-236	380	1664972090	/home/yang/yangpro/metartc6/sfudemo/metaplayer6_android/app/build/intermediates/cxx/Debug/2d2x4n60/obj/x86_64/libplayer.so	fc60220554c96a97
-0	1	0	clean	86bc5d9861107cd1
-0	1	0	clean	86bc5d9861107cd1
-0	319	1664972574	CMakeFiles/player.dir/native-lib.cpp.o	9a38875561d11f50
-319	477	1664972575	/home/yang/yangpro/metartc6/sfudemo/metaplayer6_android/app/build/intermediates/cxx/Debug/2d2x4n60/obj/x86_64/libplayer.so	fc60220554c96a97
