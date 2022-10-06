@@ -44,6 +44,9 @@ sfudemo和p2pdemo的C++和C语言的sdk库
 ### p2pdemo/metap2p p2pdemo/metaipc 
 p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p拉流  
 和metapushstream与metaplayer不同，metap2p支持全双工，即一个连接同时支持推拉流   
+### p2pdemo/metaipc6_jz和p2pdemo/metaipc6_rk1109
+嵌入式p2p ipc demo，metaipc6_jz为君正demo  
+metaipc6_rk1109为瑞芯微rk1109demo  
 ### codec/yangwincodec
 nvidia/intel gpu编码   
  
