@@ -53,6 +53,9 @@ p2p demo，支持一对一和一对多，metaplayer3可直接从metap2p拉流
 
 ### codec/yangwincodec
 nvidia/intel gpu编码   
+
+### vsproject
+windows vs2019 project  
  
 ## MetaRTC和谷歌Webrtc的区别
 ### MetaRTC编译简单
