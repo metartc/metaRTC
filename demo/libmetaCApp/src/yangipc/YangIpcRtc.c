@@ -15,7 +15,8 @@
 
 #include <stdio.h>
 
-
+#include "YangIpc_H.h"
+#if !Yang_IPCRTC_Enable_Datachannel_H265
 yang_vector_impl2(YangPeerConnection)
 
 yang_vector_impl(yangint32)
@@ -364,3 +365,4 @@ void yang_destroy_p2prtc(YangIpcRtc* rtc){
 	session->in_videoBuffer = NULL;
 	pthread_mutex_destroy(&session->mutex);
 }
+#endif
