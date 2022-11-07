@@ -11,7 +11,7 @@
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
-    </ProjectConfiguration>  
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{12FE6569-B32E-386C-A651-F6CE39768C7F}</ProjectGuid>
@@ -118,7 +118,6 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
-  
   <ItemGroup>
     <ClCompile Include="..\src\yangutil\sys\YangAmf.c" />
     <ClCompile Include="..\src\yangutil\sys\YangAvtype.c" />
@@ -136,6 +135,7 @@
     <ClCompile Include="..\src\yangutil\sys\YangSctp.c" />
     <ClCompile Include="..\src\yangutil\sys\YangSocket.c" />
     <ClCompile Include="..\src\yangutil\sys\YangSsrc.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangThread.c" />
     <ClCompile Include="..\src\yangutil\sys\YangTime.c" />
     <ClCompile Include="..\src\yangutil\sys\YangUrl.c" />
     <ClCompile Include="..\src\yangutil\sys\YangVector.c" />
