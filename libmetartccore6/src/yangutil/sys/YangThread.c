@@ -73,21 +73,21 @@ DWORD WINAPI yang_thread_beginFn2( LPVOID lpParam ){
 
 // Condition
  int yang_thread_cond_destroy(yang_thread_cond_t* const condition) {
-  int ok = 1;
-  ok &= (CloseHandle(condition->waiting_sem_) != 0);
-  ok &= (CloseHandle(condition->received_sem_) != 0);
-  ok &= (CloseHandle(condition->signal_event_) != 0);
-  return !ok;
+  int err = 1;
+  err &= (CloseHandle(condition->waiting_sem) != 0);
+  err &= (CloseHandle(condition->received_sem) != 0);
+  err &= (CloseHandle(condition->signal_event) != 0);
+  return !err;
 }
 
  int yang_thread_cond_init(yang_thread_cond_t* const condition, void* cond_attr) {
   (void)cond_attr;
-  condition->waiting_sem_ = CreateSemaphore(NULL, 0, 1, NULL);
-  condition->received_sem_ = CreateSemaphore(NULL, 0, 1, NULL);
-  condition->signal_event_ = CreateEvent(NULL, FALSE, FALSE, NULL);
-  if (condition->waiting_sem_ == NULL ||
-      condition->received_sem_ == NULL ||
-      condition->signal_event_ == NULL) {
+  condition->waiting_sem = CreateSemaphore(NULL, 0, 1, NULL);
+  condition->received_sem = CreateSemaphore(NULL, 0, 1, NULL);
+  condition->signal_event = CreateEvent(NULL, FALSE, FALSE, NULL);
+  if (condition->waiting_sem == NULL ||
+      condition->received_sem == NULL ||
+      condition->signal_event == NULL) {
     yang_thread_cond_destroy(condition);
     return 1;
   }
@@ -95,16 +95,16 @@ DWORD WINAPI yang_thread_beginFn2( LPVOID lpParam ){
 }
 
  int yang_thread_cond_signal(yang_thread_cond_t* const condition) {
-  int ok = 1;
-  if (WaitForSingleObject(condition->waiting_sem_, 0) == WAIT_OBJECT_0) {
+  int err = 1;
+  if (WaitForSingleObject(condition->waiting_sem, 0) == WAIT_OBJECT_0) {
     // a thread is waiting in yang_thread_cond_wait: allow it to be notified
-    ok = SetEvent(condition->signal_event_);
+    err = SetEvent(condition->signal_event);
     // wait until the event is consumed so the signaler cannot consume
     // the event via its own yang_thread_cond_wait.
-    ok &= (WaitForSingleObject(condition->received_sem_, INFINITE) !=
+    err &= (WaitForSingleObject(condition->received_sem, INFINITE) !=
            WAIT_OBJECT_0);
   }
-  return !ok;
+  return !err;
 }
 
  int yang_thread_cond_wait(yang_thread_cond_t* const condition,
@@ -112,13 +112,13 @@ DWORD WINAPI yang_thread_beginFn2( LPVOID lpParam ){
   int err=1;
             // note that there is a consumer available so the signal isn't dropped in
   // yang_thread_cond_signal
-  if (!ReleaseSemaphore(condition->waiting_sem_, 1, NULL))
+  if (!ReleaseSemaphore(condition->waiting_sem, 1, NULL))
     return 1;
   // now unlock the mutex so yang_thread_cond_signal may be issued
   yang_thread_mutex_unlock(mutex);
-  err = (WaitForSingleObject(condition->signal_event_, INFINITE) ==
+  err = (WaitForSingleObject(condition->signal_event, INFINITE) ==
         WAIT_OBJECT_0);
-  err &= ReleaseSemaphore(condition->received_sem_, 1, NULL);
+  err &= ReleaseSemaphore(condition->received_sem, 1, NULL);
   yang_thread_mutex_lock(mutex);
   return !err;
 }

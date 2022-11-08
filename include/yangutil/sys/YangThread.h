@@ -31,9 +31,9 @@
 		typedef HANDLE yang_thread_t;
 		typedef CRITICAL_SECTION yang_thread_mutex_t;
 		typedef struct {
-		  HANDLE waiting_sem_;
-		  HANDLE received_sem_;
-		  HANDLE signal_event_;
+                  HANDLE waiting_sem;
+                  HANDLE received_sem;
+                  HANDLE signal_event;
 		} yang_thread_cond_t;
 #ifdef __cplusplus
 extern "C"{
