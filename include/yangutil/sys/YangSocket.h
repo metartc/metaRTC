@@ -41,6 +41,7 @@ extern "C"{
 yang_socket_t yang_socket_create(YangSocketProtocol protocol);
 int yang_socket_close(int32_t fd);
 int yang_socket_setsockopt_timeout(int fd,int ptimeoutMs);
+int yang_socket_setsockopt_delay(int fd,yangbool isDelay);
 
 int32_t yang_getLocalInfo(char* p);
 int32_t yang_getLocalInfoList(YangStringVector* p);
