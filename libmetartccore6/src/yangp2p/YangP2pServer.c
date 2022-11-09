@@ -143,7 +143,7 @@ void* yang_run_p2pserver_thread(void *obj) {
 
 	YangP2pServer *p2p = (YangP2pServer*) obj;
 	p2p->isStart = yangtrue;
-	p2p->serverfd = yang_socket_create(Yang_Socket_Protocol_Tcp);//socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	p2p->serverfd = yang_socket_create(Yang_Socket_Protocol_Tcp);
 	yang_socket_setsockopt_timeout(p2p->serverfd,800);
 
 	yang_trace("\nhttp tcp server is starting,listenPort==%d", p2p->serverPort);
@@ -152,7 +152,7 @@ void* yang_run_p2pserver_thread(void *obj) {
 		yang_error("http server bind error(%d)",GetSockError());
 		exit(1);
 	}
-	listen(p2p->serverfd, 5);
+	yang_socket_listen(p2p->serverfd, 5);
 
 	p2p->isLoop = yangtrue;
 	socklen_t src_len = sizeof(yang_socket_addr);
@@ -164,12 +164,7 @@ void* yang_run_p2pserver_thread(void *obj) {
 			yang_thread_t th;
 			p2p->connFd=connfd;
 			memset(p2p->remoteIp,0,sizeof(p2p->remoteIp));
-#ifdef _WIN32
 			inet_ntop(AF_INET,&src.sin_addr.s_addr, p2p->remoteIp, sizeof(p2p->remoteIp));
-#else
-			inet_ntop(AF_INET,&src.sin_addr.s_addr, p2p->remoteIp, sizeof(p2p->remoteIp));
-#endif
-
 			yang_thread_create(&th, 0, yang_run_http_thread, p2p);
 		}
 	}

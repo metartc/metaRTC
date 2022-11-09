@@ -30,6 +30,9 @@ int yang_socket_close(yang_socket_t fd){
 	return Yang_Ok;
 }
 
+int yang_socket_listen(yang_socket_t fd,int32_t nc){
+	return listen(fd,nc);
+}
 
 int yang_socket_bind(yang_socket_t fd,yang_socket_addr* addr){
 	return bind(fd, (const struct sockaddr*) addr,sizeof(struct sockaddr_in));

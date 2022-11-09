@@ -37,6 +37,7 @@ int yang_socket_close(yang_socket_t fd);
 int yang_socket_setsockopt_timeout(yang_socket_t fd,int ptimeoutMs);
 int yang_socket_setsockopt_tcpdelay(yang_socket_t fd,yangbool isDelay);
 
+int yang_socket_listen(yang_socket_t fd,int32_t nc);
 int yang_socket_bind(yang_socket_t fd,yang_socket_addr* addr);
 int yang_socket_connect(yang_socket_t fd,yang_socket_addr* remoteAddr);
 int yang_socket_recvfrom(yang_socket_t fd,char* buffer,int32_t bufferLen,yang_socket_addr* addr,socklen_t* addrLen);
