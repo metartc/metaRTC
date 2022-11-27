@@ -50,11 +50,11 @@ int32_t yang_decode_rtcpCompound(YangRtcpCompound* rtcps,YangBuffer *buffer){
 				yang_decode_rtcpNack(rtcp,buffer);
 
 			} else if (15 == header->rc) {
-#if Yang_Enable_TWCC
+
 				//twcc
 				yang_create_rtcptwcc(rtcp);
 				yang_twcc_rtcp_decode(rtcp,buffer);
-#endif
+
 			}
 		} else if(header->type == YangRtcpType_psfb) {
 			if(1 == header->rc) {
@@ -64,6 +64,8 @@ int32_t yang_decode_rtcpCompound(YangRtcpCompound* rtcps,YangBuffer *buffer){
 
 			} else if(2 == header->rc) {
 				//sli
+				yang_create_rtcpSli(rtcp,rtcp->ssrc);
+				err=yang_decode_rtcpSli(rtcp,buffer);
 
 			} else if(3 == header->rc) {
 				//rpsi

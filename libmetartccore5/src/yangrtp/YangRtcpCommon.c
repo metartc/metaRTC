@@ -29,6 +29,8 @@ int32_t yang_decode_rtcpCommon(YangRtcpCommon* comm,YangBuffer *buffer){
                 "payload require payload len=%u, buffer left=%u", payload_len, yang_buffer_left(buffer));
     }
     comm->ssrc = yang_read_4bytes(buffer);
+    comm->payloadLen=payload_len-sizeof(YangRtcpHeader);
+    yang_read_bytes(buffer,(char*)comm->payload,comm->payloadLen);
 
 	    return Yang_Ok;
 }
