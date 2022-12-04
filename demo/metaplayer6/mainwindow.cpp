@@ -41,6 +41,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_context->streams.m_playBuffer=new YangSynBuffer();
 
     m_context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm
+    m_context->avinfo.rtc.rtcSocketProtocol=Yang_Socket_Protocol_Udp;//
+
     m_context->avinfo.sys.rtcLocalPort=10000+yang_random()%15000;
     memset(m_context->avinfo.sys.localIp,0,sizeof(m_context->avinfo.sys.localIp));
     yang_getLocalInfo(m_context->avinfo.sys.localIp);
@@ -59,6 +61,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_context->avinfo.rtc.enableDatachannel=yangfalse;
     m_context->avinfo.rtc.iceCandidateType=YangIceHost;
+     m_context->avinfo.rtc.turnSocketProtocol=Yang_Socket_Protocol_Udp;
 
     m_context->avinfo.rtc.enableAudioBuffer=yangtrue; //use audio buffer
     m_context->avinfo.audio.enableAudioFec=yangfalse; //srs not use audio fec
