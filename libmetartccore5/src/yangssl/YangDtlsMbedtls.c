@@ -251,16 +251,17 @@ int32_t yang_process_dtls_data(void* user,YangDtlsSession *dtls, char *data, int
 	int32_t ret=0, readBytes = 0;
 	int32_t err=Yang_Ok;
 	yangbool flag = yangtrue;
-	YangBuffer* buf=&dtls->mbbuf;
+
 
 	if(dtls->isServer&&dtls->state != YangDtlsStateClientDone){
 		if(dtls->isStart==0) yang_start_rtcdtls(dtls);
 	}
 
-	yang_write_bytes(buf,data,nb_data);
+	memcpy(dtls->buffer+dtls->bufferLen,data,nb_data);
+	dtls->bufferLen += nb_data;
 	// read application data
-	while (flag && yang_buffer_pos(buf)) {
-		ret = mbedtls_ssl_read(dtls->ssl, (uint8_t*)data + readBytes, (size_t)yang_buffer_pos(buf));
+	while (flag && dtls->bufferLen>0) {
+		ret = mbedtls_ssl_read(dtls->ssl, (uint8_t*)data + readBytes, (size_t)dtls->bufferLen);
 
 		if (ret > 0) {
 			readBytes += ret;
@@ -351,12 +352,14 @@ int32_t yang_mbed_receiveCallback(void* user, unsigned char* buf, size_t len)
 	YangDtlsSession* dtls = (YangDtlsSession*) user;
 	uint32_t dataLen = MBEDTLS_ERR_SSL_WANT_READ;
 
-	YangBuffer* mbuf=&dtls->mbbuf;
+	if(dtls->bufferLen==0) return dataLen;
 
-	if(yang_buffer_pos(mbuf)==0) return dataLen;
-	dataLen=yang_min(yang_buffer_pos(mbuf),len);
-	memcpy(buf,mbuf->data,dataLen);
-	mbuf->head-=dataLen;
+	dataLen=yang_min(dtls->bufferLen,len);
+	memcpy(buf,dtls->buffer,dataLen);
+
+	dtls->bufferLen-=dataLen;
+	if(dtls->bufferLen<0) dtls->bufferLen=0;
+	if(dtls->bufferLen>0) memmove(dtls->buffer,dtls->buffer+dataLen,dtls->bufferLen);
 	return dataLen;
 }
 
@@ -369,7 +372,7 @@ void yang_dtls_debug(void *user, int level, const char *file, int line, const ch
 	yang_trace("\n%s,%d:,%s",file,line,str);
 }
 void yang_mbed_initDtls(YangDtlsSession* session){
-	yang_trace("\n dtls is mbedtls");
+	yang_trace("\ndtls is mbedtls");
 	mbedtls_entropy_init(session->entropy);
 	mbedtls_ctr_drbg_init(session->ctrDrbg);
 	mbedtls_ssl_config_init(session->sslConfig);
@@ -393,8 +396,8 @@ void yang_mbed_initDtls(YangDtlsSession* session){
 		yang_error("mbedtls set certificate fail");
 	}
 
-	//mbedtls_ssl_conf_dbg(session->sslConfig,yang_dtls_debug,session);
-	//mbedtls_debug_set_threshold(5);
+	mbedtls_ssl_conf_dbg(session->sslConfig,yang_dtls_debug,session);
+	mbedtls_debug_set_threshold(5);
 
 	mbedtls_ssl_conf_dtls_cookies(session->sslConfig, NULL, NULL, NULL);
 
@@ -439,7 +442,6 @@ int32_t yang_create_rtcdtls(YangRtcDtls *dtls,int32_t isServer) {
 	session->sslConfig=(mbedtls_ssl_config*)calloc(sizeof(mbedtls_ssl_config),1);
 
 	memset(session->buffer,0,sizeof(session->buffer));
-	yang_init_buffer(&session->mbbuf, (char*)session->buffer, kRtpPacketSize);
 
 	yang_mbed_initDtls(session);
 

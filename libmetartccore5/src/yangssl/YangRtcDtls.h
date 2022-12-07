@@ -84,7 +84,7 @@ typedef struct {
 	void* datachannel;
 	uint8_t randBytes[2 * 32];
 	uint8_t buffer[kRtpPacketSize];
-	YangBuffer mbbuf;
+	int32_t bufferLen;
 #endif
 
 
