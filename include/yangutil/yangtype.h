@@ -8,7 +8,9 @@
 #include <stdint.h>
 #include <yang_config.h>
 #include <yangutil/yang_unistd.h>
-#include "YangErrorCode.h"
+#include <yangutil/YangErrorCode.h>
+#include <yangutil/yangmemory.h>
+
 #define Yang_Server_Srs 0
 #define Yang_Server_Zlm 1
 #define Yang_Server_P2p 9

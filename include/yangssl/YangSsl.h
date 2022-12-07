@@ -9,4 +9,8 @@
 #else
 #include <yangssl/YangMbedtls.h>
 #endif
+
+void* yang_get_global_certificate();
+void yang_destroy_global_certificate();
+
 #endif /* INCLUDE_YANGSSL_YANGSSL_H_ */

@@ -3,7 +3,7 @@
 //
 #ifndef __YangVideoBuffer__
 #define __YangVideoBuffer__
-#include <string.h>
+
 #include <yangutil/buffer/YangMediaBuffer.h>
 
 

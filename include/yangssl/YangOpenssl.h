@@ -8,7 +8,7 @@
 
 #include <yangutil/yangtype.h>
 #include <stdint.h>
-#include <string.h>
+
 #if Yang_Enable_Openssl
 #if Yang_Enable_Dtls
 

@@ -3,7 +3,7 @@
 //
 #ifndef __YangVideoEncoderBuffer__
 #define __YangVideoEncoderBuffer__
-#include <string.h>
+
 #include <yangutil/buffer/YangMediaBuffer.h>
 
 class YangVideoEncoderBuffer:public YangMediaBuffer

@@ -5,7 +5,7 @@
 #define __YangVideoEncoderBuffer2__
 
 #include <yangutil/buffer2/YangMediaBuffer2.h>
-#include <string.h>
+
 typedef struct{
 	YangMediaBuffer2 mediaBuffer;
 	void (*getEVideo)(YangMediaBuffer2* buf,YangFrame* pframe);

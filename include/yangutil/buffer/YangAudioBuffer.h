@@ -3,7 +3,7 @@
 //
 #ifndef ___YangAudioBuffer__
 #define ___YangAudioBuffer__
-#include <string.h>
+
 
 #include <yangutil/buffer/YangMediaBuffer.h>
 class YangAudioBuffer:public YangMediaBuffer

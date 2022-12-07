@@ -6,7 +6,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
-#include <string.h>
+
 
 typedef struct {
     int32_t capacity;
@@ -24,7 +24,7 @@ void yang_destroy_strings(YangStrings* strs);
 int32_t yang_cstr_userfindindex(char* p,char c);
 int32_t yang_cstr_userfindupindex(char* p,char c,int32_t n);
 int32_t yang_cstr_isnumber(char* p,int32_t n);
-int32_t yang_strcmp(char* str1,char* str2);
+int32_t yang_yang_strcmp(char* str1,char* str2);
 void yang_itoa(int32_t num,char* data,int32_t n);
 void yang_itoa2(uint32_t num,char* data,int32_t n);
 #ifdef __cplusplus
