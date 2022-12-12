@@ -25,56 +25,35 @@ public:
 	int eglOpen();
 	int eglClose();
 	YangEglContext m_context;
-	 GLint m_width;
-		 GLint m_height;
+	GLint m_width;
+	GLint m_height;
 private:
+	GLint m_program;
+	GLint m_position;
+	GLint m_textCoord;
+	GLuint m_texture_id[3];
+	GLuint m_sample[3];
+	float matrix_scale[16];
+	float vertex_coords[8] = {//世界坐标
+			-1.0f, -1.0f,
+			 1.0f, -1.0f,
+			-1.0f,  1.0f,
+			 1.0f,	1.0f
+	};
 
-
-	  GLint gl_program;
-	    GLint gl_position;
-	    GLint gl_textCoord;
-	    GLuint gl_texture_id[3];
-
-	    uint8_t *y_data;
-	    uint8_t *u_data;
-	    uint8_t *v_data;
-
-	    float matrix_scale[16];
-
-	    /**  float vertex_coords[12] = {//世界坐标
-	            -1, -1, 0, // left bottom
-	            1, -1, 0, // right bottom
-	            -1, 1, 0,  // left top
-	            1, 1, 0,   // right top
-	    };**/
-
-	     float vertex_coords[12] = {//世界坐标
-	    		1.0f, -1.0f, 0.0f,
-	    		-1.0f, -1.0f, 0.0f,
-	    		1.0f, 1.0f, 0.0f,
-	    		-1.0f, 1.0f, 0.0f
-		    };
-
-	     /**   float fragment_coords[8] = {//纹理坐标
-	              0, 1,//left bottom
-	              1, 1,//right bottom
-	              0, 0,//left top
-	              1, 0,//right top
-	      };**/
-	   float fragment_coords[8] = {//纹理坐标
-	    		  1.0f, 0.0f,
-	    			               0.0f, 0.0f,
-	    			               1.0f, 1.0f,
-	    			               0.0f, 1.0f
-		      };
-
+	float fragment_coords[8] = {//纹理坐标
+			0.0f, 1.0f,
+			1.0f, 1.0f,
+			0.0f, 0.0f,
+			1.0f, 0.0f
+	};
 private:
-		//void initDefMatrix();
-	   // void orthoM(float *m, int mOffset, float left, float right, float bottom, float top,
-	   //                        float near, float far);
-	    //void changeVideoRotation();
-	    GLuint LoadProgram(const char *vShaderStr, const char *fShaderStr);
-	   	GLuint LoadShader(GLenum type, const char *shaderSrc);
+	void initDefMatrix();
+	void orthoM(float *m, int mOffset, float left, float right, float bottom, float top,
+			float near, float far);
+	void changeVideoRotation();
+	GLuint LoadProgram(const char *vShaderStr, const char *fShaderStr);
+	GLuint LoadShader(GLenum type, const char *shaderSrc);
 
 };
 #endif

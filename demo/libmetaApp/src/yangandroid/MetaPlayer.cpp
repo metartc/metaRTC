@@ -17,12 +17,12 @@ MetaPlayer::MetaPlayer(YangContext* pcontext) {
 	m_player=NULL;
 	m_player=new YangPlayerAndroid(pcontext);
 	m_gl=NULL;
-	scale_video_width=0;
-	scale_video_height=0;
+	m_render_width=0;
+	m_render_height=0;
 
 
-	m_video_width = 0;
-	m_video_height = 0;
+	m_width = 0;
+	m_height = 0;
 	this->m_isloop = false;
 	m_isSoftdecoder=pcontext->avinfo.video.videoDecHwType==Yang_Hw_Soft?true:false;
 
@@ -70,7 +70,7 @@ void MetaPlayer::startPlayerTask() {
 	if(m_gl) m_gl->eglOpen();
 	m_isloop=true;
 	uint8_t* data=NULL;
-	uint8_t* scale_frame_data=NULL;
+	uint8_t* render_data=NULL;
 	uint8_t* yuvData=NULL;
 	int64_t timestamp=0;
 
@@ -80,35 +80,31 @@ void MetaPlayer::startPlayerTask() {
 		data=NULL;
 		if(m_player)            data=m_player->getVideoRef(&timestamp);
 		if(data==NULL) continue;
-		if(m_video_width==0){
-			m_video_width=m_player->getWidth();
-			m_video_height=m_player->getHeight();
+		if(m_width==0){
+			m_width=m_player->getWidth();
+			m_height=m_player->getHeight();
 			adjustVideoScaleResolution();
-			m_gl->m_width=scale_video_width;
-			m_gl->m_height=scale_video_height;
-			if(scale_video_width!=m_video_width) scale_frame_data=new uint8_t[scale_video_width * scale_video_height*3/2];
-			//if(!m_isSoftdecoder&&yuvData==NULL) 	yuvData=new uint8_t[scale_video_width * scale_video_height*3/2];
+			yang_trace("width=%d,height=%d,render width=%d,render height=%d",m_width,m_height,m_render_width,m_render_height);
+			m_gl->m_width=m_render_width;
+			m_gl->m_height=m_render_height;
+			if((m_render_width!=m_width||m_render_height!=m_height)&&render_data==NULL) render_data=new uint8_t[m_render_width * m_render_height*3/2];
+
 
 			m_gl->createProgram();
 		}
 
-		if((scale_video_width == m_video_width) && (scale_video_height == m_video_height)) {
+		if((m_render_width == m_width) && (m_render_height == m_height)) {
 
 			m_gl->render(data);
-			/**if(m_isSoftdecoder){
-				m_gl->render(data);
-			}else{
-				yuv.nv21toI420(data, yuvData, scale_video_width, m_video_height);
-				m_gl->render(yuvData);
-			}**/
 		} else {
-			yuv.scaleI420(data, scale_frame_data,this->m_video_width, this->m_video_height,scale_video_width , scale_video_height, kFilterNone);
-			m_gl->render(scale_frame_data);
+			if(render_data==NULL) render_data=new uint8_t[m_render_width * m_render_height*3/2];
+			yuv.scaleI420(data, render_data,m_width, m_height,m_render_width , m_render_height, kFilterNone);
+			m_gl->render(render_data);
 		}
 
 
 	}
-	yang_deleteA( scale_frame_data);
+	yang_deleteA( render_data);
 	yang_deleteA( yuvData);
 	m_isloop = false;
 	yang_trace("startPlayerTask out");
@@ -118,15 +114,20 @@ void MetaPlayer::startPlayerTask() {
 
 
 void MetaPlayer::adjustVideoScaleResolution() {
-	if(this->m_video_width % 8 != 0) {
-		this->scale_video_width = ((this->m_video_width / 8) + 1) * 8;
+
+
+		if(m_width % 64 != 0) {
+			m_render_width = YANGALIGN(m_width,64);
+		} else {
+			m_render_width = this->m_width;
+		}
+
+
+	if(m_height % 2 != 0) {
+		m_render_height = ((this->m_height / 2) + 1) * 2;
 	} else {
-		this->scale_video_width = this->m_video_width;
+		m_render_height = this->m_height;
 	}
-	if(this->m_video_height % 2 != 0) {
-		this->scale_video_height = ((this->m_video_height / 2) + 1) * 2;
-	} else {
-		this->scale_video_height = this->m_video_height;
-	}
+
 }
 
