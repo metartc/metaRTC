@@ -80,7 +80,7 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
 
     char s[128]={0};
     memset(m_context->avinfo.sys.localIp,0,sizeof(m_context->avinfo.sys.localIp));
-    yang_getLocalInfo(m_context->avinfo.sys.localIp);
+    yang_getLocalInfo(m_context->avinfo.sys.familyType,m_context->avinfo.sys.localIp);
     sprintf(s,"webrtc://%s/live/livestream",m_context->avinfo.sys.localIp);
     ui->m_url->setText(s);
 
