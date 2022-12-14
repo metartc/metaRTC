@@ -238,8 +238,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	audiotype->payload_type = 111;
 	yang_strcpy(audiotype->encoding_name, "opus");
 	audiotype->clock_rate = session->context.avinfo->audio.sample; //48000;
-	yang_itoa(session->context.avinfo->audio.channel,
-			audiotype->encoding_param, 10);
+	yang_itoa2(session->context.avinfo->audio.channel,audiotype->encoding_param, 10);
 
 	yang_strcpy(audiotype->format_specific_param, "minptime=10;useinbandfec=1");
 	yang_create_stringVector(&audiotype->rtcp_fb);
