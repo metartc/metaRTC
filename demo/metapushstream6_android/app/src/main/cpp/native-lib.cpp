@@ -11,6 +11,10 @@
 #include <yangutil/sys/YangMath.h>
 #include <yangandroid/YangPushAndroid.h>
 #include <android/log.h>
+
+#include <camera/NdkCameraDevice.h>
+#include <camera/NdkCameraManager.h>
+#include <media/NdkImageReader.h>
 YangPushAndroid *g_push = nullptr;
 YangContext* g_context = nullptr;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -48,7 +52,7 @@ void g_push_initContext(YangContext* context){
     context->avinfo.audio.audioEncoderType=Yang_AED_OPUS;
     context->avinfo.sys.rtcLocalPort=10000+yang_random()%15000;
     memset(context->avinfo.sys.localIp,0,sizeof(context->avinfo.sys.localIp));
-    yang_getLocalInfo(context->avinfo.sys.localIp);
+    yang_getLocalInfo(context->avinfo.sys.familyType,context->avinfo.sys.localIp);
     context->avinfo.enc.enc_threads=4; //x264编码线程数
     context->avinfo.enc.createMeta=yangfalse;
 
@@ -93,6 +97,7 @@ Java_com_metartc_push_YangAndroidPush_setSurfaceSize(JNIEnv *env, jobject, jint 
     //g_push->m_gl->m_context.window_width = width;
     //g_push->m_gl->m_context.window_height = height;
     //if(g_push) g_push-
+
     pthread_mutex_unlock(&mutex);
     yang_trace("setSurfaceSize out");
 }
@@ -121,6 +126,7 @@ Java_com_metartc_push_YangAndroidPush_stopPush(JNIEnv *env, jobject) {
     if(nullptr != g_push) {
         g_push->stopPush();
     }
+    
 }
 
 extern "C"
