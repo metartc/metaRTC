@@ -155,9 +155,9 @@ void yang_ini_initVideo(char* filename,YangVideoInfo* video){
 	video->evideoCacheNum = yang_ini_readIntValue(filename,"video", "evideoCacheNum", 50);
 	video->videoPlayCacheNum = yang_ini_readIntValue(filename,"video", "videoPlayCacheNum", 5);
 
-	video->videoCaptureFormat = (YangYuvType)yang_ini_readIntValue(filename,"video", "videoCaptureFormat", YangYuy2);
-	video->videoEncoderFormat = (YangYuvType)yang_ini_readIntValue(filename,"video", "videoEncoderFormat", YangI420);
-	video->videoDecoderFormat = (YangYuvType)yang_ini_readIntValue(filename,"video", "videoDecoderFormat", YangI420);
+	video->videoCaptureFormat = (YangColorSpace)yang_ini_readIntValue(filename,"video", "videoCaptureFormat", YangYuy2);
+	video->videoEncoderFormat = (YangColorSpace)yang_ini_readIntValue(filename,"video", "videoEncoderFormat", YangI420);
+	video->videoDecoderFormat = (YangColorSpace)yang_ini_readIntValue(filename,"video", "videoDecoderFormat", YangI420);
 
 	video->videoEncoderType = yang_ini_readIntValue(filename,"video", "videoEncoderType", 0);
 	video->videoDecoderType = yang_ini_readIntValue(filename,"video", "videoDecoderType", 0);

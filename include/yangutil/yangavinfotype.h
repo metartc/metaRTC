@@ -27,7 +27,7 @@ typedef struct YangAudioInfo {
 
 	int32_t enableAudioHeader;
 	int32_t audioEncoderType;
-	int audioDecoderType;
+	int32_t audioDecoderType;
 	int32_t audioPlayType;
 
 	int32_t aIndex;
@@ -48,9 +48,9 @@ typedef struct YangVideoInfo {
 	int32_t evideoCacheNum;
 	int32_t videoPlayCacheNum;
 
-	enum YangYuvType videoCaptureFormat;
-	enum YangYuvType videoEncoderFormat;
-	enum YangYuvType videoDecoderFormat;
+	YangColorSpace videoCaptureFormat;
+	YangColorSpace videoEncoderFormat;
+	YangColorSpace videoDecoderFormat;
 
 	int32_t videoEncoderType;
 	int32_t videoDecoderType;

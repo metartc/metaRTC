@@ -73,11 +73,11 @@ void YangH264DecoderSoft::parseRtmpHeader(uint8_t *p, int32_t pLen, int32_t *pwi
 void YangH264DecoderSoft::init(){
 	if(context==NULL) context=yang_getYangH264DecContext();
 }
-int32_t YangH264DecoderSoft::decode(YangFrame* videoFrame,YangYuvType yuvtype,YangDecoderCallback* pcallback){
+int32_t YangH264DecoderSoft::decode(YangFrame* videoFrame,YangColorSpace yuvtype,YangDecoderCallback* pcallback){
     if(videoFrame==NULL||videoFrame->payload==NULL) return ERROR_CODEC_Decode;
     int32_t ret=0;
 
-	if(context)  ret=yang_decode(context,1,videoFrame->payload,videoFrame->nb,yuvtype,m_buffer,&m_bufLen);
+	if(context)  ret=yang_decode(context,1,videoFrame->payload,videoFrame->nb,(enum YangYuvType)yuvtype,m_buffer,&m_bufLen);
 	videoFrame->payload=m_buffer;
 	videoFrame->nb=m_bufLen;
 	if(pcallback&&m_bufLen) pcallback->onVideoData(videoFrame);

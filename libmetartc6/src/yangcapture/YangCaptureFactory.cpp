@@ -13,8 +13,7 @@
 #include <yangaudiodev/android/YangAudioCaptureAndroid.h>
 #include <yangcapture/android/YangVideoCaptureAndroid.h>
 #else
-#include <yangaudiodev/linux/YangAlsaDeviceHandle.h>
-#include <yangaudiodev/linux/YangAlsaHandle.h>
+#include <yangaudiodev/linux/YangAudioAecLinux.h>
 #include <yangaudiodev/linux/YangAudioCaptureLinux.h>
 #include <yangcapture/linux/YangVideoCaptureLinux.h>
 #endif
@@ -40,7 +39,7 @@ YangAudioCapture* YangCaptureFactory::createAudioCapture(YangContext *pcontext){
 #ifdef __ANDROID__
 	return NULL;
 #else
-	return new YangAlsaDeviceHandle(pcontext);//new YangAlsaHandle(pcontext);//YangAudioCaptureImpl(pcontext);
+	return new YangAudioAecLinux(pcontext);//new YangAlsaHandle(pcontext);//YangAudioCaptureImpl(pcontext);
 #endif
 #endif
 

@@ -18,7 +18,7 @@ public:
 	virtual ~YangH264DecoderSoft();
 	void parseRtmpHeader(uint8_t *p, int32_t pLen, int32_t *pwid, int32_t *phei, int32_t *pfps);
 	void init();
-	int32_t decode(YangFrame* videoFrame,YangYuvType yuvtype,YangDecoderCallback* pcallback);
+	int32_t decode(YangFrame* videoFrame,YangColorSpace yuvtype,YangDecoderCallback* pcallback);
 
 private:
 	uint8_t* m_buffer;

@@ -47,7 +47,7 @@ typedef enum YangYuvType{
     YangBgra,
 	YangP010,
     YangP016
-}YangYuvType;
+}YangColorSpace;
 
 typedef enum YangRatate{
 	Yang_Rotate0 = 0,      // No rotation.
