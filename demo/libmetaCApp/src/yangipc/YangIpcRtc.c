@@ -10,9 +10,6 @@
 
 #include <yangutil/sys/YangLog.h>
 
-#include <yangutil/yang_unistd.h>
-
-
 #include <stdio.h>
 
 #include "YangIpc_H.h"
