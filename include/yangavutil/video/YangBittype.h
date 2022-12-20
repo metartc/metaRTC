@@ -144,7 +144,7 @@ enum YangColorPrimaries {
     Yang_PRI_JEDEC_P22   = 22, ///< JEDEC P22 phosphors
     Yang_PRI_NB                ///< Not part of ABI
 };
-enum YangColorSpace {
+enum YangColorSpace2 {
     Yang_SPC_RGB         = 0,  ///< order of coefficients is actually GBR, also IEC 61966-2-1 (sRGB)
     Yang_SPC_BT709       = 1,  ///< also ITU-R BT1361 / IEC 61966-2-4 xvYCC709 / SMPTE RP177 Annex B
     Yang_SPC_UNSPECIFIED = 2,
