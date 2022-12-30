@@ -194,7 +194,7 @@ SLresult yang_audioAndroid_openSLPlayOpen(YangOpensl *p)
 
     return SL_RESULT_SUCCESS;
     cleanup:
-    	yang_trace("android open audio sl play error(%u)",result);
+		yang_error("android open audio sl play error(%u)",result);
     	return result;
 }
 void g_yang_bqRecorderCallback(SLAndroidSimpleBufferQueueItf bq, void *context)
@@ -280,7 +280,7 @@ SLresult yang_audioAndroid_openSLRecordOpen(YangOpensl *p)
 
     return SL_RESULT_SUCCESS;
     cleanup:
-    	yang_trace("android open audio sl capture error(%u)",result);
+		yang_error("android open audio sl capture error(%u)",result);
     	return result;
 }
 // close the OpenSL IO and destroy the audio engine
