@@ -40,6 +40,7 @@ typedef struct{
     SLPlaybackRateItf bqPlayerRate;
     SLPitchItf bqPlayerVolume;
 }YangOpenslPlay;
+
 typedef struct YangOpensl {
 
     // engine interfaces
@@ -197,6 +198,7 @@ SLresult yang_audioAndroid_openSLPlayOpen(YangOpensl *p)
 		yang_error("android open audio sl play error(%u)",result);
     	return result;
 }
+
 void g_yang_bqRecorderCallback(SLAndroidSimpleBufferQueueItf bq, void *context)
 {
     // for streaming recording, here we would call Enqueue to give recorder the next buffer to fill
@@ -283,6 +285,7 @@ SLresult yang_audioAndroid_openSLRecordOpen(YangOpensl *p)
 		yang_error("android open audio sl capture error(%u)",result);
     	return result;
 }
+
 // close the OpenSL IO and destroy the audio engine
 void yang_audioAndroid_destroy(YangOpensl *p)
 {
@@ -353,6 +356,7 @@ void yang_audioAndroid_bqPlayerCallback(SLAndroidSimpleBufferQueueItf bq, void *
     p->play.inputDataCount --;
     // free(p->inputBuffer);
 }
+
 int32_t yang_audioAndroid_getInputdataCount(void* context){
 	YangOpensl *p=(YangOpensl*)context;
 	return p->play.inputDataCount;
@@ -386,8 +390,9 @@ int yang_audioAndroid_setPlayRate(void* context,int rateChange){
     } else
         return ERROR_SYS_AudioRender;
 }
+
 int32_t yang_create_audioAndroid_play(YangAudioAndroid* aa,int32_t sample,int32_t channels){
-    aa->context=yang_audioAndroid_open(sample,channels,channels);
+	if(aa->context==NULL) aa->context=yang_audioAndroid_open(sample,channels,channels);
     YangOpensl* opensl=(YangOpensl*)aa->context;
     opensl->isRecord=0;
     if(yang_audioAndroid_openSLCreateEngine(opensl)!= SL_RESULT_SUCCESS){
@@ -403,8 +408,9 @@ int32_t yang_create_audioAndroid_play(YangAudioAndroid* aa,int32_t sample,int32_
     return Yang_Ok;
 
 }
+
 int32_t yang_create_audioAndroid_record(YangAudioAndroid* aa,void* user,int32_t sample,int32_t channels){
-	aa->context=yang_audioAndroid_open(sample,channels,channels);
+	if(aa->context==NULL) aa->context=yang_audioAndroid_open(sample,channels,channels);
 	YangOpensl* opensl=(YangOpensl*)aa->context;
 	opensl->isRecord=1;
 	if(yang_audioAndroid_openSLCreateEngine(opensl)!= SL_RESULT_SUCCESS){
