@@ -13,14 +13,14 @@
 #define bool int32_t
 #endif
 
-typedef enum YangRtspPacketPayloadType {
-	YangRtspPacketPayloadTypeRaw,
-	YangRtspPacketPayloadTypeFUA2,
-	YangRtspPacketPayloadTypeFUA,
-	YangRtspPacketPayloadTypeNALU,
-	YangRtspPacketPayloadTypeSTAP,
-	YangRtspPacketPayloadTypeUnknown,
-} YangRtspPacketPayloadType;
+typedef enum YangRtpPacketPayloadType {
+	YangRtpPacketPayloadTypeRaw,
+	YangRtpPacketPayloadTypeFUA2,
+	YangRtpPacketPayloadTypeFUA,
+	YangRtpPacketPayloadTypeNALU,
+	YangRtpPacketPayloadTypeSTAP,
+	YangRtpPacketPayloadTypeUnknown,
+} YangRtpPacketPayloadType;
 
 typedef enum YangRtpExtensionType {
 	kRtpExtensionNone,

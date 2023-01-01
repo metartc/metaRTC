@@ -28,12 +28,12 @@ int32_t yang_h265_encodeVideo(YangRtcSession *session, YangPushH265Rtp *rtp,
 		return yang_error_wrap(err, "rtp header(%d) encode packet fail",
 				pkt->payload_type);
 	}
-	if (pkt->payload_type == YangRtspPacketPayloadTypeRaw) {
+	if (pkt->payload_type == YangRtpPacketPayloadTypeRaw) {
 		err = yang_encode_h264_raw(&rtp->buf, &rtp->videoRawData);
-	} else if (pkt->payload_type == YangRtspPacketPayloadTypeFUA2) {
+	} else if (pkt->payload_type == YangRtpPacketPayloadTypeFUA2) {
 		err = yang_encode_h265_fua2(&rtp->buf, &rtp->videoFua2Data);
 
-	} else if (pkt->payload_type == YangRtspPacketPayloadTypeSTAP) {
+	} else if (pkt->payload_type == YangRtpPacketPayloadTypeSTAP) {
 		err = yang_encode_h265_stap(&rtp->buf, &rtp->stapData);
 		yang_reset_h2645_stap(&rtp->stapData);
 	}
@@ -70,7 +70,7 @@ int32_t yang_push_h265_package_stap_a(void *psession,
 	rtp->videoStapPacket.header.sequence = rtp->videoSeq++;
 	rtp->videoStapPacket.header.timestamp = videoFrame->pts;
 
-	rtp->videoStapPacket.payload_type = YangRtspPacketPayloadTypeSTAP;
+	rtp->videoStapPacket.payload_type = YangRtpPacketPayloadTypeSTAP;
 
 	YangSample vps_sample;
 	YangSample sps_sample;
@@ -103,7 +103,7 @@ int32_t yang_h265_package_single_nalu2(YangRtcSession *session,
 	rtp->videoRawPacket.header.sequence = rtp->videoSeq++;
 	rtp->videoRawPacket.header.timestamp = videoFrame->pts;
 	rtp->videoRawPacket.header.marker = yangtrue;
-	rtp->videoRawPacket.payload_type = YangRtspPacketPayloadTypeRaw;
+	rtp->videoRawPacket.payload_type = YangRtpPacketPayloadTypeRaw;
 
 	rtp->videoRawData.payload = rtp->videoBuf;
 	rtp->videoRawData.nb = videoFrame->nb;
@@ -127,7 +127,7 @@ int32_t yang_h265_package_single_nalu(YangRtcSession *session,
 	rtp->videoRawPacket.header.sequence = rtp->videoSeq++;
 	rtp->videoRawPacket.header.timestamp = timestamp;
 
-	rtp->videoRawPacket.payload_type = YangRtspPacketPayloadTypeRaw;
+	rtp->videoRawPacket.payload_type = YangRtpPacketPayloadTypeRaw;
 	rtp->videoRawData.payload = rtp->videoBuf;
 	rtp->videoRawData.nb = plen;
 	yang_memcpy(rtp->videoRawData.payload, p, plen);
@@ -160,7 +160,7 @@ int32_t yang_h265_package_fu_a(YangRtcSession *session, YangPushH265Rtp *rtp,
 		rtp->videoFuaPacket.header.timestamp = videoFrame->pts;
 		rtp->videoFuaPacket.header.marker = (i == num_of_packet - 1) ? 1 : 0;
 
-		rtp->videoFuaPacket.payload_type = YangRtspPacketPayloadTypeFUA2;
+		rtp->videoFuaPacket.payload_type = YangRtpPacketPayloadTypeFUA2;
 
 		yang_memset(&rtp->videoFua2Data, 0, sizeof(YangFua2H265Data));
 		rtp->videoFua2Data.nri = (YangHevcNaluType) header;

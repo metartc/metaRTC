@@ -15,7 +15,7 @@
 
 void yang_create_rtpPacket(YangRtpPacket* pkt){
 	yang_memset(&pkt->header,0,sizeof(YangRtpHeader));
-	pkt->payload_type = YangRtspPacketPayloadTypeUnknown;
+	pkt->payload_type = YangRtpPacketPayloadTypeUnknown;
 	pkt->actual_buffer_size = 0;
 
 	pkt->nalu_type = YangAvcNaluTypeReserved;
@@ -34,7 +34,7 @@ void yang_reset_rtpPacket(YangRtpPacket* pkt){
 	if(pkt==NULL) return;
 	yang_free(pkt->header.extensions);
 	yang_memset(&pkt->header,0,sizeof(YangRtpHeader));
-	pkt->payload_type = YangRtspPacketPayloadTypeUnknown;
+	pkt->payload_type = YangRtpPacketPayloadTypeUnknown;
 	pkt->actual_buffer_size = 0;
 
 	pkt->nalu_type = YangAvcNaluTypeReserved;
@@ -62,7 +62,7 @@ int32_t yang_decode_rtpPacket(YangRtpPacket* pkt,YangBuffer *buf) {
 	buf->size=buf->size - padding;
 	pkt->payload=buf->head;
 	pkt->nb=yang_buffer_left(buf);
-    pkt->payload_type = YangRtspPacketPayloadTypeRaw;
+    pkt->payload_type = YangRtpPacketPayloadTypeRaw;
 
 	return err;
 }

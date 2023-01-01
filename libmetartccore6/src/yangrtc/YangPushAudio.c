@@ -55,7 +55,7 @@ int32_t yang_push_audio_rtp(void *psession, YangPushAudioRtp *rtp,
 	rtp->audioRawPacket.header.sequence = rtp->audioSeq++;
 	rtp->audioRawPacket.header.timestamp = audioFrame->pts;
 	rtp->audioRawPacket.header.padding_length = 0;
-	rtp->audioRawPacket.payload_type = YangRtspPacketPayloadTypeRaw;
+	rtp->audioRawPacket.payload_type = YangRtpPacketPayloadTypeRaw;
 
 	rtp->audioRawData.payload = rtp->audioBuffer;
     rtp->audioRawData.nb = audioFrame->nb;

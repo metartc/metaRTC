@@ -15,7 +15,7 @@ typedef struct YangRtpPacket{
 	    int32_t actual_buffer_size;
 	    int32_t nalu_type;
 	    int32_t frame_type;
-	    YangRtspPacketPayloadType payload_type;
+	    YangRtpPacketPayloadType payload_type;
 	    int32_t nb;
 	    int32_t cached_payload_size;  // The cached payload size for packet.
 	    char* payload;
