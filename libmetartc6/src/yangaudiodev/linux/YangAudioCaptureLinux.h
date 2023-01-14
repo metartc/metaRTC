@@ -40,7 +40,7 @@ private:
 	snd_pcm_uframes_t m_frames;
 	uint8_t *m_buffer;
 	snd_pcm_t *m_handle;
-	int32_t onlySupportSingle;
+	yangbool onlySupportSingle;
 
 };
 #endif

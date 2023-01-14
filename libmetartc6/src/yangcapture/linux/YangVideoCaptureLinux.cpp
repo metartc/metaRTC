@@ -50,8 +50,7 @@ YangVideoCaptureLinux::~YangVideoCaptureLinux() {
 	stop_capturing();
 	uninit_camer_device();
 	close_camer_device();
-	delete m_vhandle;
-	m_vhandle = NULL;
+	yang_delete(m_vhandle);
 }
 void YangVideoCaptureLinux::setVideoCaptureStart() {
 	m_vhandle->m_isCapture = 1;

@@ -194,8 +194,8 @@ void yang_streamcapture_initAudio(void* pcontext,int32_t transType,int32_t sampl
 	context->audio.transType = transType;
 	context->audio.audioType=audioType;
 	if(audioType == Yang_AED_OPUS){
-		context->audio.perSt=channel==1?320:960;
-		context->audio.unitAudioTime=(channel==1)?320:960;
+		context->audio.perSt=channel==1?320:sample/50;
+		context->audio.unitAudioTime=(channel==1)?320:sample/50;
 
 	}else if (audioType == Yang_AED_MP3){
 		context->audio.perSt = 1152 * 1000 / sample;

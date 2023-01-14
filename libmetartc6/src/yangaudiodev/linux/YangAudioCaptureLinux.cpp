@@ -31,7 +31,7 @@ YangAudioCaptureLinux::YangAudioCaptureLinux(YangContext *pcontext) //:YangAudio
 	}
 
 
-	onlySupportSingle = 0;
+	onlySupportSingle = yangfalse;
 
 }
 
@@ -133,7 +133,7 @@ int32_t YangAudioCaptureLinux::init() {
 			yang_error("cannot set single channel  (%s)\n", snd_strerror(err));
 			_exit(1);
 		}
-		onlySupportSingle = 1;
+		onlySupportSingle = yangtrue;
 		//_exit(1);
 	}
 
@@ -206,10 +206,8 @@ void YangAudioCaptureLinux::startLoop() {
 
 	snd_pcm_close(m_handle);
 	yang_deleteA(tmp);
-	free(m_buffer);
+	yang_free(m_buffer);
 	m_handle = NULL;
-	m_buffer = NULL;
-
 }
 
 void YangAudioCaptureLinux::stopLoop() {

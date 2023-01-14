@@ -13,7 +13,7 @@
 #define Yang_Enable_GPU_Encoding 0
 #define Yang_Enable_Phtread 0
 #else
-#define Yang_Enable_Openssl 0
+#define Yang_Enable_Openssl 1
 #define Yang_Enable_GPU_Encoding 0
 #define Yang_Enable_Phtread 1
 #endif
