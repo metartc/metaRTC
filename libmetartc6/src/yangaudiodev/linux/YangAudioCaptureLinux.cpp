@@ -32,7 +32,7 @@ YangAudioCaptureLinux::YangAudioCaptureLinux(YangContext *pcontext) //:YangAudio
 
 
 	onlySupportSingle = yangfalse;
-
+	m_readN=0;
 }
 
 YangAudioCaptureLinux::~YangAudioCaptureLinux() {
@@ -156,11 +156,61 @@ int32_t YangAudioCaptureLinux::init() {
 	return Yang_Ok;
 }
 
+int32_t YangAudioCaptureLinux::alsa_device_capture_ready(struct pollfd *pfds,
+		uint32_t  nfds) {
+	unsigned short revents = 0;
+	int32_t ret=0;
+	if ((ret = snd_pcm_poll_descriptors_revents(m_handle, pfds,
+			m_readN, &revents)) < 0) {
+
+		yang_error("error in alsa_device_capture_ready: %s",snd_strerror(ret));
+		return pfds[0].revents & POLLIN;
+	}
+
+	return revents & POLLIN;
+}
+
+int32_t YangAudioCaptureLinux::alsa_device_read(short *pcm, int32_t len) {
+	int32_t ret=0;
+	if ((ret = snd_pcm_readi(m_handle, pcm, len)) != len) {
+		if (ret < 0) {
+			if (ret == -EPIPE) {
+
+				yang_error("An overrun has occured, reseting capture");
+			} else {
+
+				yang_error("read from audio interface failed (%s)",
+						snd_strerror(ret));
+
+			}
+			if ((ret = snd_pcm_prepare(m_handle)) < 0) {
+
+				yang_error("cannot prepare audio interface for use (%s)",
+						snd_strerror(ret));
+			}
+			if ((ret = snd_pcm_start(m_handle)) < 0) {
+
+				yang_error("cannot prepare audio interface for use (%s)",
+						snd_strerror(ret));
+			}
+
+		} else {
+
+			yang_error(
+					"Couldn't read as many samples as I wanted (%d instead of %d)",
+					ret, len);
+		}
+		return 1;
+	}
+	return Yang_Ok;
+}
+
+
 void YangAudioCaptureLinux::startLoop() {
 
 	m_loops = 1;
 	unsigned long status = 0;
-
+	int32_t err=0;
 	uint8_t *tmp = NULL;
 	if (onlySupportSingle) {
 		tmp = new uint8_t[m_frames * 2 * 2];
@@ -172,36 +222,32 @@ void YangAudioCaptureLinux::startLoop() {
 		_exit(1);
 	}
 	int32_t audiolen = m_frames * m_channel * 2;
+	m_readN = snd_pcm_poll_descriptors_count(m_handle);
+	pollfd* read_fd = (pollfd*) malloc(m_readN * sizeof(*read_fd));
+		if ((err=snd_pcm_poll_descriptors(m_handle, read_fd,
+				m_readN) )!= m_readN) {
+
+			yang_error("cannot obtain capture file descriptors (%s)",
+					snd_strerror(err));
+			_exit(1);
+		}
+
+	int32_t nfds=m_readN;
+
+	struct pollfd *pfds = (pollfd*) yang_malloc(sizeof(struct pollfd) * nfds);
+	pfds[0]=read_fd[0];
 	while (m_loops == 1) {
-		if ((status = snd_pcm_readi(m_handle, m_buffer, m_frames))
-				!= m_frames) {
+		poll(pfds, nfds, -1);
+		if (alsa_device_capture_ready(pfds, nfds)) {
+			alsa_device_read((short*) m_buffer, m_frames);
 
-			yang_error("read from audio interface failed (%s)\n",
-					snd_strerror(status));
-			//   exit (1);
-		}
-		if (status == -EAGAIN) {
-			//snd_pcm_wait(m_handle, 2 * m_channel);
-			yang_error("An overrun has occured: %s\n", snd_strerror(status));
-			status = 0;
-		} else if (status < 0) {
-			status = snd_pcm_recover(m_handle, status, 0);
-			if (status < 0) {
-				yang_error("ALSA read failed (unrecoverable): %s\n",
-						snd_strerror(status));
-				//return;
+			if (onlySupportSingle) {
+				MonoToStereo((int16_t*) m_buffer, (int16_t*) tmp, m_frames);
+				m_ahandle->putBuffer2(tmp, audiolen);
+			} else {
+				m_ahandle->putBuffer2(m_buffer, audiolen);
 			}
-			continue;
 		}
-
-		if (onlySupportSingle) {
-			MonoToStereo((int16_t*) m_buffer, (int16_t*) tmp, m_frames);
-			m_ahandle->putBuffer2(tmp,audiolen);
-		} else {
-			m_ahandle->putBuffer2(m_buffer,audiolen);
-		}
-
-
 	}
 
 	snd_pcm_close(m_handle);

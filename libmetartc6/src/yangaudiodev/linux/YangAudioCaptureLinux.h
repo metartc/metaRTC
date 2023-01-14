@@ -31,12 +31,15 @@ public:
 protected:
 	void startLoop();
 	void stopLoop();
+	int32_t alsa_device_capture_ready(struct pollfd *pfds,uint32_t  nfds);
+	int32_t alsa_device_read(short *pcm, int32_t len);
 private:
 	//YangContext *m_context;
 	int32_t m_size;
 	int32_t m_loops;
 	int32_t m_channel;
 	uint32_t  m_sample;
+	int32_t  m_readN;
 	snd_pcm_uframes_t m_frames;
 	uint8_t *m_buffer;
 	snd_pcm_t *m_handle;
