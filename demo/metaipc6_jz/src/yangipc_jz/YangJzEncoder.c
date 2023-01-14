@@ -4,8 +4,6 @@
 #include <yangipc/YangIpcEncoder.h>
 #include <yangipc_jz/YangJzCommon.h>
 
-#include <yangutil/yang_unistd.h>
-
 #include <yangutil/yangavinfotype.h>
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/sys/YangEndian.h>
