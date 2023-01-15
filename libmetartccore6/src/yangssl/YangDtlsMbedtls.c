@@ -264,7 +264,10 @@ int32_t yang_process_dtls_data(void* user,YangDtlsSession *dtls, char *data, int
 		if (ret > 0) {
 			readBytes += ret;
 		} else if (ret == 0 || ret == MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY) {
-			if(ret == MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY) dtls->sslCallback->sslAlert(dtls->sslCallback->context,dtls->uid,"warning","CN");
+			if(ret == MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY){
+				dtls->isStop = yangtrue;
+				dtls->sslCallback->sslAlert(dtls->sslCallback->context,dtls->uid,"warning","CN");
+			}
 			flag = yangfalse;
 		} else if (ret == MBEDTLS_ERR_SSL_WANT_READ || ret == MBEDTLS_ERR_SSL_WANT_WRITE) {
 			flag = yangfalse;

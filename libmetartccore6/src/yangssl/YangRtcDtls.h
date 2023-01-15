@@ -54,7 +54,7 @@ typedef struct {
 	YangDtlsVersion version;
 	int32_t handshake_done;
 	int32_t isStart;
-	int32_t isStop;
+	yangbool isStop;
 	int32_t isLoop;
 	int32_t reset_timer_;
 	int32_t uid;

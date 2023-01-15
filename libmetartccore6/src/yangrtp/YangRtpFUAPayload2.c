@@ -29,7 +29,7 @@ int32_t yang_decode_h264_fua2(YangBuffer* buf,Fua2H264DataCache* pkt){
 
 int32_t yang_encode_h264_fua2(YangBuffer* buf,YangFua2H264Data* pkt){
 	if (!yang_buffer_require(buf,2 + pkt->nb)) {
-			return yang_error_wrap(ERROR_RTC_RTP_MUXER, "requires %d bytes", 1);
+			return yang_error_wrap(ERROR_RTC_RTP_MUXER, "requires %d bytes", 2 + pkt->nb);
 		}
 		char *p = buf->head;
 

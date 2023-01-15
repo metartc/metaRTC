@@ -22,7 +22,7 @@ int32_t yang_push_h264_encodeVideo(YangRtcSession *session, YangPushH264Rtp *rtp
 	yang_init_buffer(&rtp->buf, yang_get_rtpBuffer(rtp->videoRtpBuffer),	kRtpPacketSize);
 
 	if ((err = yang_encode_rtpHeader(&rtp->buf, &pkt->header)) != Yang_Ok) {
-		return yang_error_wrap(err, "rtp header(%d) encode packet fail",
+		return yang_error_wrap(err, "h264 rtp header(%d) encode packet fail",
 				pkt->payload_type);
 	}
 
@@ -37,7 +37,7 @@ int32_t yang_push_h264_encodeVideo(YangRtcSession *session, YangPushH264Rtp *rtp
 	}
 
 	if (err != Yang_Ok) {
-		return yang_error_wrap(err, "rtp payload(%d) encode packet fail",
+		return yang_error_wrap(err, "h264 rtp payload(%d) encode packet fail",
 				pkt->payload_type);
 	}
 	if (pkt->header.padding_length > 0) {

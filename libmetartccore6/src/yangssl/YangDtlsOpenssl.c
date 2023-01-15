@@ -46,15 +46,15 @@ void ssl_on_info(const SSL *ssl, int32_t where, int32_t ret) {
 		const char* type=SSL_alert_type_string_long(ret);
 		const char* desc=SSL_alert_desc_string(ret);
 		// @see https://www.openssl.org/docs/man1.0.2/man3/SSL_alert_type_string_long.html
-		if(dtls->sslCallback&&dtls->sslCallback->sslAlert)
-			dtls->sslCallback->sslAlert(dtls->sslCallback->context,dtls->uid,(char*)type,(char*)desc);
-
 		if(yang_strcmp(type,"warning")==0&&yang_strcmp(desc,"CN")==0){
-			dtls->isStop=1;
+			dtls->isStop = yangtrue;
 		}
 		// Notify the DTLS to handle the ALERT message, which maybe means media connection disconnect.
 		yang_info("dtls info method=%s,retcode=%d,type==%s,desc==%s",method,ret,
 				type,desc );
+
+		if(dtls->sslCallback&&dtls->sslCallback->sslAlert)
+					dtls->sslCallback->sslAlert(dtls->sslCallback->context,dtls->uid,(char*)type,(char*)desc);
 	}
 }
 uint32_t dtls_timer_cb(SSL *dtls, uint32_t previous_us) {

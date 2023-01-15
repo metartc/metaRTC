@@ -17,12 +17,12 @@ int32_t yang_push_audio_encodeAudio(YangRtcSession *session, YangPushAudioRtp *r
 	yang_init_buffer(&rtp->buf, yang_get_rtpBuffer(rtp->audioRtpBuffer),	kRtpPacketSize);
 
 	if ((err = yang_encode_rtpHeader(&rtp->buf, &pkt->header)) != Yang_Ok) {
-		return yang_error_wrap(err, "rtp header(%d) encode packet fail",
+		return yang_error_wrap(err, "audio rtp header(%d) encode packet fail",
 				pkt->payload_type);
 	}
 	err = yang_encode_h264_raw(&rtp->buf, &rtp->audioRawData);
 	if (err != Yang_Ok) {
-		return yang_error_wrap(err, "rtp payload(%d) encode packet fail",
+		return yang_error_wrap(err, "audio rtp payload(%d) encode packet fail",
 				pkt->payload_type);
 	}
 	if (pkt->header.padding_length > 0) {
