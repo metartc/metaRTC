@@ -143,11 +143,6 @@ metaRTC集成FFmpeg新版本支持回声消除等AEC/AGC/ANC功能
 实现浏览器p2p通信  
 实现双向对讲和会议  
 
-## 支持多种传输协议
-
-metaRTC4.0支持WEBRTC/RTMP/SRT/  
-
-metaRTC5.0将支持RTSP/GB2811/QUIC  
 ## ARM支持
 
 支持ARM-Linux  
