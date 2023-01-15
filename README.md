@@ -10,9 +10,9 @@ MetaRTC implements the webrtc protocol, supports webrtc/srt/rtmp, and has two ve
 The webrtc support is original, without citing the Google webrtc code, and can interoperate with the Google Webrtc library and browser.  
 Support windows/linux/android etc.  
 
-Remark:metaRTC3.0/metaRTC4.0等停止更新，推荐使用稳定版metaRTC5.0  
-Remark:metaRTC5.0为稳定版本，metaRTC6.0为非稳定版本   
-Remark:metaRTC5.0 is stable，metaRTC6.0 is not stable    
+Remark:metaRTC3.0/metaRTC4.0等停止更新，推荐使用稳定版metaRTC6.0  
+Remark:metaRTC6.0为稳定版本   
+Remark:metaRTC6.0 is stable    
 
 ## metaRTC服务微信群
 可加微信taihang82  
@@ -20,8 +20,8 @@ Remark:metaRTC5.0 is stable，metaRTC6.0 is not stable
 ## Learning metaRTC 教程
 https://github.com/metartc/metaRTC/wiki/metaRTC-Learning  
 
-### metaRTC5.0稳定版本下载
-https://github.com/metartc/metaRTC/releases/tag/v5.0-b6  
+### metaRTC6.0稳定版本下载
+https://github.com/metartc/metaRTC/releases/tag/v6.0-b0  
 ### 纯C版IPC第三方库下载
 https://github.com/metartc/metaRTC/releases/tag/v5.0-b1   
 
