@@ -340,7 +340,7 @@ int32_t yang_mbed_sendCallback(void* user, const unsigned char* data, size_t len
 	YangDtlsSession* dtls = (YangDtlsSession*) user;
 
 	if (len > 0&& dtls->sock->sendData(&dtls->sock->session,(char*)data, len)!= Yang_Ok) {
-		return yang_error_wrap(0, "error dtls send size=%u",len);
+		return yang_error_wrap(-1, "error dtls send size=%u",len);
 	}
 	yang_filter_data(dtls,(uint8_t*)data,len);
 	return len;
@@ -353,7 +353,7 @@ int32_t yang_mbed_receiveCallback(void* user, unsigned char* buf, size_t len)
 	YangDtlsSession* dtls = (YangDtlsSession*) user;
 	uint32_t dataLen = MBEDTLS_ERR_SSL_WANT_READ;
 
-	if(dtls->bufferLen==0) return 0;
+	if(dtls->bufferLen==0) return dataLen;
 
 	dataLen=yang_min(dtls->bufferLen,len);
 	yang_memcpy(buf,dtls->buffer,dataLen);
