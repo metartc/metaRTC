@@ -30,7 +30,7 @@ YangIpc::YangIpc() {
        m_context->avinfo.sys.mediaServer=Yang_Server_P2p;//Yang_Server_Srs/Yang_Server_Zlm/Yang_Server_P2p
        m_context->avinfo.sys.rtcLocalPort=10000+yang_random()%15000;
        memset(m_context->avinfo.sys.localIp,0,sizeof(m_context->avinfo.sys.localIp));
-       yang_getLocalInfo(m_context->avinfo.sys.localIp);
+       yang_getLocalInfo(m_context->avinfo.sys.familyType,m_context->avinfo.sys.localIp);
        m_hasAudio=true;
 
          //using h264 h265

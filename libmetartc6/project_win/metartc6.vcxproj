@@ -49,7 +49,6 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metartc6.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metartc6</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
-    
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -119,7 +118,6 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
- 
   <ItemGroup>
     <ClCompile Include="..\src\yangaudiodev\YangAudioCapture.cpp" />
     <ClCompile Include="..\src\yangaudiodev\YangAudioCaptureData.cpp" />
@@ -180,7 +178,6 @@
     <ClCompile Include="..\src\yangutil\buffer\YangVideoEncoderBuffer.cpp" />
     <ClCompile Include="..\src\yangavutil\YangImageConvert.cpp" />
     <ClCompile Include="..\src\yangavutil\YangMakeWave.cpp" />
-    <ClCompile Include="..\src\yangavutil\YangPicUtilFfmpeg.cpp" />
     <ClCompile Include="..\src\yangavutil\YangVideoEncoderMeta.cpp" />
     <ClCompile Include="..\src\yangavutil\YangYuvConvert.cpp" />
     <ClCompile Include="..\src\yangstream\YangStreamManager.cpp" />
