@@ -7,14 +7,13 @@
 #include <yangutil/yangavinfotype.h>
 
 YangMediaBuffer::YangMediaBuffer() {
+	yang_thread_mutex_init(&m_lock,NULL);
 	resetIndex();
 	m_cache_num = 5;
 	m_mediaType = 1;
 	m_uid = -1;
 	m_frames = NULL;
 	m_bufferManager = NULL;
-
-	yang_thread_mutex_init(&m_lock,NULL);
 }
 
 
@@ -30,12 +29,14 @@ YangMediaBuffer::~YangMediaBuffer() {
 }
 
 void YangMediaBuffer::resetIndex() {
+	yang_thread_mutex_lock(&m_lock);
 	m_putIndex = 0;
 	m_getIndex = 0;
 	m_nextIndex=0;
 
 	m_ret=0;
 	m_size = 0;
+	yang_thread_mutex_unlock(&m_lock);
 }
 uint32_t YangMediaBuffer::size(){
 
@@ -54,39 +55,48 @@ void YangMediaBuffer::initFrames(int32_t pnum, int unitsize) {
 		}
 	}
 }
+
 void YangMediaBuffer::putFrame(YangFrame *pframe) {
-
-	if (!pframe||size()>=m_cache_num)		return;
-
+	if (!pframe)		return;
 	yang_thread_mutex_lock(&m_lock);
+	if(m_size>=m_cache_num) goto cleanup;
 	yang_frame_copy_buffer(pframe, m_frames[m_putIndex++]);
 	if (m_putIndex >= m_cache_num)		m_putIndex = 0;
 	m_size++;
+	cleanup:
 	yang_thread_mutex_unlock(&m_lock);
+	return;
 
 }
+
 void YangMediaBuffer::getFrame(YangFrame *pframe) {
-	if (!pframe||!size())	return;
+	if (!pframe)	return;
 
 	yang_thread_mutex_lock(&m_lock);
+	if(m_size==0) goto cleanup;
 	yang_frame_copy_buffer(m_frames[m_getIndex++], pframe);
 	if (m_getIndex >= m_cache_num)		m_getIndex = 0;
 	m_size--;
+	cleanup:
 	yang_thread_mutex_unlock(&m_lock);
+	return;
 }
+
 uint8_t* YangMediaBuffer::getFrameRef(YangFrame *pframe) {
-	if (!size()||!pframe)				return NULL;
+	uint8_t *p=NULL;
+	if (!pframe)				return p;
 	yang_thread_mutex_lock(&m_lock);
+	if(m_size==0) goto cleanup;
 	yang_frame_copy_nobuffer(m_frames[m_getIndex], pframe);
-	uint8_t *p = m_frames[m_getIndex]->payload;
+	p = m_frames[m_getIndex]->payload;
 	m_getIndex++;
 	if (m_getIndex >= m_cache_num)		m_getIndex = 0;
 	m_size--;
+	cleanup:
 	yang_thread_mutex_unlock(&m_lock);
-
 	return p;
-
 }
+
 YangFrame* YangMediaBuffer::getCurFrameRef() {
 	if(!size()) return NULL;
     m_nextIndex=m_getIndex;

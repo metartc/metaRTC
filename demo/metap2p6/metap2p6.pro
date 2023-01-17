@@ -32,12 +32,12 @@ unix{
 
  LIBS += -L$$HOME_BASE/thirdparty/lib -lmetaApp -lmetartc6  -lmetartccore6  -lyuv -lopus -lopenh264 -lspeexdsp -lusrsctp -lpthread -lasound -ldl
 #openssl
- #LIBS += -lssl2 -lcrypto2 -lsrtp2
+ LIBS += -lssl2 -lcrypto2 -lsrtp2
 #gmssl
  #LIBS += -lssl_gm -lcrypto_gm -lmetasrtp3
 
 #mbtls
- LIBS += -lmbedtls -lmbedx509 -lmbedcrypto -lsrtp2_mbed
+ #LIBS += -lmbedtls -lmbedx509 -lmbedcrypto -lsrtp2_mbed
 }
 
 win32{

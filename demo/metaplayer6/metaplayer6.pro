@@ -28,10 +28,10 @@ unix{
 
  LIBS += -lmetaApp -lmetartc6  -lmetartccore6 -lyuv -lspeexdsp -lopus -lopenh264 -lusrsctp -lpthread -lasound -ldl
     #openssl
- #LIBS += -lssl2 -lcrypto2 -lsrtp2
+ LIBS += -lssl2 -lcrypto2 -lsrtp2
 
 #mbtls
- LIBS += -lmbedtls -lmbedx509 -lmbedcrypto -lsrtp2_mbed
+ #LIBS += -lmbedtls -lmbedx509 -lmbedcrypto -lsrtp2_mbed
     #gmssl
  #LIBS += -lssl_gm -lcrypto_gm -lmetasrtp3
 }
