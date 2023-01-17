@@ -31,7 +31,7 @@ void yang_mediaBuffer2_initFrames(YangMediaBufferSession2* session,int32_t pnum,
 	}
 }
 void yang_mediaBuffer2_putFrame(YangMediaBufferSession2* session,YangFrame *pframe) {
-	if (!pframe)		return;
+	if (session==NULL||pframe==NULL)		return;
 	yang_thread_mutex_lock(&session->mlock);
 	if(session->size>=session->cache_num) goto cleanup;
 	yang_frame_copy_buffer(pframe, session->frames[session->putIndex++]);
@@ -43,7 +43,7 @@ void yang_mediaBuffer2_putFrame(YangMediaBufferSession2* session,YangFrame *pfra
 
 }
 void yang_mediaBuffer2_getFrame(YangMediaBufferSession2* session,YangFrame *pframe) {
-	if (!pframe)	return;
+	if (session==NULL || pframe==NULL)	return;
 	yang_thread_mutex_lock(&session->mlock);
 	if(session->size==0) goto cleanup;
 	yang_frame_copy_buffer(session->frames[session->getIndex++], pframe);
@@ -54,7 +54,7 @@ void yang_mediaBuffer2_getFrame(YangMediaBufferSession2* session,YangFrame *pfra
 	return;
 }
 uint8_t* yang_mediaBuffer2_getFrameRef(YangMediaBufferSession2* session,YangFrame *pframe) {
-	if (!pframe)				return NULL;
+	if (session==NULL|| pframe==NULL)				return NULL;
 	yang_thread_mutex_lock(&session->mlock);
 	if(session->size==0) goto cleanup;
 	yang_frame_copy_nobuffer(session->frames[session->getIndex], pframe);
@@ -68,7 +68,7 @@ uint8_t* yang_mediaBuffer2_getFrameRef(YangMediaBufferSession2* session,YangFram
 
 }
 YangFrame* yang_mediaBuffer2_getCurFrameRef(YangMediaBufferSession2* session) {
-	if(!session->size) return NULL;
+	if(session==NULL ||session->size==0) return NULL;
     session->nextIndex=session->getIndex;
     if(session->nextIndex>=session->cache_num) session->nextIndex=0;
     return session->frames[session->nextIndex];
