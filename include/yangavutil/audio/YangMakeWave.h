@@ -4,38 +4,36 @@
 #ifndef  _YangMakeWave_H_
 #define  _YangMakeWave_H_
 
-#include <stdint.h>
-#include "stdio.h"
+#include <yangutil/yangtype.h>
 
-typedef  short Int16;
-typedef  int32_t Int32;
-typedef struct  {
+typedef struct {
 	char fileID[4];
-	Int32 fileleth;
+	int32_t fileleth;
 	char wavTag[4];
 	char FmtHdrID[4];
-	Int32  FmtHdrLeth;
-	Int16 FormatTag;
-	Int16 Channels;
-	Int32 SamplesPerSec;
-	Int32 AvgBytesPerSec;
-	Int16 BlockAlign;
-	Int16 BitsPerSample;
+	int32_t FmtHdrLeth;
+	int16_t FormatTag;
+	int16_t Channels;
+	int32_t SamplesPerSec;
+	int32_t AvgBytesPerSec;
+	int16_t BlockAlign;
+	int16_t BitsPerSample;
 	char DataHdrID[4];
-	Int32  DataHdrLeth;
+	int32_t DataHdrLeth;
 } WaveHdr;
-class YangMakeWave{
+class YangMakeWave {
 public:
 	YangMakeWave();
 	FILE *waveFile;
 	void init();
-	void start(int32_t pisMono,char * filename);
-	void write(uint8_t *data,int32_t len);
+	void start(int32_t pisMono, int32_t sample, char *filename);
+	void write(uint8_t *data, int32_t len);
 	void stop();
-void writeHeader(int32_t isMono,FILE *WavFile,unsigned long len);
-int32_t isMp3(char* p);
+	void writeHeader(int32_t isMono, int32_t sample, FILE *WavFile,
+			int32_t len);
 
-int32_t PCMSize;
-int32_t m_isMono;
+	int32_t m_pcmLength;
+	int32_t m_channel;
+	int32_t m_sample;
 };
 #endif
