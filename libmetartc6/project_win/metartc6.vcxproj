@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{46F7A260-1577-3D51-91C6-2D6761C79AB7}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>metartc6</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\bin\lib_win_debug</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">metartc6.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">metartc6</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\bin\lib_win_release</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metartc6.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metartc6</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\thirdparty\include;..\..\thirdparty\user_include;..\..\thirdparty\user_include\ffmpeg;..\src;%(AdditionalIncludeDirectories);..\..\thirdparty\include\win\include</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=gnu++11</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__STDC_FORMAT_MACROS;HAVE_STRUCT_TIMESPEC;WIN32_LEAN_AND_MEAN;_AMD64_;__STDC_FORMAT_MACROS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;__STDC_FORMAT_MACROS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\thirdparty\include..\..\thirdparty\user_include..\..\thirdparty\user_include\ffmpeg..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\thirdparty\include..\..\thirdparty\user_include..\..\thirdparty\user_include\ffmpeg..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\thirdparty\include;..\..\thirdparty\user_include;..\..\thirdparty\user_include\ffmpeg;..\src;%(AdditionalIncludeDirectories);..\..\thirdparty\include\win\include</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=gnu++11</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__STDC_FORMAT_MACROS;HAVE_STRUCT_TIMESPEC;WIN32_LEAN_AND_MEAN;_AMD64_;NDEBUG;__STDC_FORMAT_MACROS;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__STDC_FORMAT_MACROS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\thirdparty\include..\..\thirdparty\user_include..\..\thirdparty\user_include\ffmpeg..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\thirdparty\include..\..\thirdparty\user_include..\..\thirdparty\user_include\ffmpeg..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\yangaudiodev\YangAudioCapture.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\YangAudioCaptureData.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\YangAudioCaptureHandle.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\YangAudioPlay.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\YangAudioRenderData.cpp" />
+    <ClCompile Include="..\src\yangcapture\YangCaptureFactory.cpp" />
+    <ClCompile Include="..\src\yangcapture\YangScreenCaptureImpl.cpp" />
+    <ClCompile Include="..\src\yangcapture\YangScreenShare.cpp" />
+    <ClCompile Include="..\src\yangcapture\YangVideoCapture.cpp" />
+    <ClCompile Include="..\src\yangcapture\YangVideoCaptureHandle.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangAudioEncoder.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangAudioEncoderAac.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangAudioEncoderHandle.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangAudioEncoderHandleCb.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangAudioEncoderMeta.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangAudioEncoderMp3.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangAudioEncoderOpus.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangAudioEncoderSpeex.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangEncoderFactory.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangEncoderMediacodec.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangFfmpegEncoderMeta.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangH264EncoderMeta.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangH264EncoderSoft.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangH265EncoderMeta.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangH265EncoderSoft.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangOpenH264Encoder.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangVideoEncoder.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangVideoEncoderFfmpeg.cpp" />
+    <ClCompile Include="..\src\yangencoder\YangVideoEncoderHandle.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangAudioDecoder.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangAudioDecoderHandle.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangAudioDecoderHandles.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangAudioDecoderOpus.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangDecoderFactory.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangDecoderH264.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangDecoderLibde265.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangDecoderMediacodec.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangDecoderOpenh264.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangH264DecoderSoft.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangH264DecoderSoft2.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangVideoDecoderHandle.cpp" />
+    <ClCompile Include="..\src\yangdecoder\YangVideoDecoderHandles.cpp" />
+    <ClCompile Include="..\src\yangutil\YangAvinfo.cpp" />
+    <ClCompile Include="..\src\yangutil\YangLoadLib.cpp" />
+    <ClCompile Include="..\src\yangutil\YangString.cpp" />
+    <ClCompile Include="..\src\yangutil\YangSysMessageHandle.cpp" />
+    <ClCompile Include="..\src\yangutil\YangThread.cpp" />
+    <ClCompile Include="..\src\yangutil\YangTimer.cpp" />
+    <ClCompile Include="..\src\yangutil\YangYuvGl.cpp" />
+    <ClCompile Include="..\src\yangutil\buffer\YangAudioBuffer.cpp" />
+    <ClCompile Include="..\src\yangutil\buffer\YangAudioEncoderBuffer.cpp" />
+    <ClCompile Include="..\src\yangutil\buffer\YangAudioPlayBuffer.cpp" />
+    <ClCompile Include="..\src\yangutil\buffer\YangMediaBuffer.cpp" />
+    <ClCompile Include="..\src\yangutil\buffer\YangVideoBuffer.cpp" />
+    <ClCompile Include="..\src\yangutil\buffer\YangVideoDecoderBuffer.cpp" />
+    <ClCompile Include="..\src\yangutil\buffer\YangVideoEncoderBuffer.cpp" />
+    <ClCompile Include="..\src\yangavutil\YangImageConvert.cpp" />
+    <ClCompile Include="..\src\yangavutil\YangMakeWave.cpp" />
+    <ClCompile Include="..\src\yangavutil\YangVideoEncoderMeta.cpp" />
+    <ClCompile Include="..\src\yangavutil\YangYuvConvert.cpp" />
+    <ClCompile Include="..\src\yangstream\YangStreamManager.cpp" />
+    <ClCompile Include="..\src\yangstream\YangSynBuffer.cpp" />
+    <ClCompile Include="..\src\yangrtc\YangPeerConnection2.cpp" />
+    <ClCompile Include="..\src\yangdecoder\pc\YangAudioDecoderAac.cpp" />
+    <ClCompile Include="..\src\yangdecoder\pc\YangAudioDecoderSpeex.cpp" />
+    <ClCompile Include="..\src\yangdecoder\pc\YangHeaderParseFfmpeg.cpp" />
+    <ClCompile Include="..\src\yangdecoder\pc\YangVideoDecoderFfmpeg.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\win\YangAudioCaptureWindows.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\win\YangRecAudioCaptureHandle.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\win\YangWinAudioApi.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\win\YangWinAudioApiAec.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\win\YangWinAudioApiCapture.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\win\YangWinAudioApiDevice.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\win\YangWinAudioApiRender.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\win\YangWinAudioCapture.cpp" />
+    <ClCompile Include="..\src\yangaudiodev\win\YangWinAudioCaptureHandle.cpp" />
+    <ClCompile Include="..\src\yangcapture\win\YangDXGIManager.cpp" />
+    <ClCompile Include="..\src\yangcapture\win\YangVideoCaptureWindows.cpp" />
+    <ClCompile Include="..\src\yangcapture\win\YangVideoSrc.cpp" />
+    <ClCompile Include="..\src\yangcapture\win\YangWinVideoCaptureHandle.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
