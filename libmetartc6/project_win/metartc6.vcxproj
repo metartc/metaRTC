@@ -175,7 +175,6 @@
     <ClCompile Include="..\src\yangutil\buffer\YangVideoBuffer.cpp" />
     <ClCompile Include="..\src\yangutil\buffer\YangVideoDecoderBuffer.cpp" />
     <ClCompile Include="..\src\yangutil\buffer\YangVideoEncoderBuffer.cpp" />
-    <ClCompile Include="..\src\yangavutil\YangImageConvert.cpp" />
     <ClCompile Include="..\src\yangavutil\YangMakeWave.cpp" />
     <ClCompile Include="..\src\yangavutil\YangVideoEncoderMeta.cpp" />
     <ClCompile Include="..\src\yangavutil\YangYuvConvert.cpp" />

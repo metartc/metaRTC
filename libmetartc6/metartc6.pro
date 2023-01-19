@@ -68,7 +68,6 @@ SOURCES += \
     src/yangaudiodev/win/YangWinAudioApiRender.cpp \
     src/yangaudiodev/win/YangWinAudioCapture.cpp \
     src/yangaudiodev/win/YangWinAudioCaptureHandle.cpp \
-    src/yangavutil/YangImageConvert.cpp \
     src/yangavutil/YangMakeWave.cpp \
     src/yangavutil/YangVideoEncoderMeta.cpp \
     src/yangavutil/YangYuvConvert.cpp \
@@ -158,7 +157,6 @@ HEADERS += \
     src/yangaudiodev/win/YangWinAudioCapture.h \
     src/yangaudiodev/win/YangWinAudioCaptureHandle.h \
     src/yangaudiodev/win/YangWinAudioDevice.h \
-    src/yangavutil/YangImageConvert.h \
     src/yangcapture/YangScreenCaptureImpl.h \
     src/yangcapture/YangScreenShare.h \
     src/yangcapture/YangVideoCaptureHandle.h \
