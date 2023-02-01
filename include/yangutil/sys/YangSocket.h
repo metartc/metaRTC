@@ -11,6 +11,7 @@
 #include <ws2tcpip.h>
 #include <errno.h>
 #define socklen_t int
+#define yang_be32toh ntohl
 #define GetSockError()	WSAGetLastError()
 #define SetSockError(e)	WSASetLastError(e)
 #define setsockopt(a,b,c,d,e)	(setsockopt)(a,b,c,(const char *)d,(int)e)
@@ -19,11 +20,18 @@
 #else
 #include <netinet/in.h>
 #include <errno.h>
+#define yang_be32toh be32toh
 #define yang_poll poll
 #define GetSockError()	errno
 #define Yang_No_Signal MSG_NOSIGNAL
 #define SetSockError(e)	errno = e
 #endif
+
+#define yang_ntohl ntohl
+#define yang_htons htons
+#define yang_inet_addr inet_addr
+#define yang_inet_pton inet_pton
+
 
 #define yang_socket_t int
 typedef struct sockaddr_in yang_socket_addr4;

@@ -19,13 +19,6 @@
 
 #include <yangssl/YangSsl.h>
 
-#ifdef _WIN32
-#include <winsock2.h>
-#define be32toh ntohl
-#else
-#include <arpa/inet.h>
-#endif
-
 
 uint32_t yang_stun_encode_hmac2(char* hmac_buf, const int32_t hmac_buf_len,char** str)
 {
@@ -847,7 +840,7 @@ int32_t yang_stun_createRequestStunPacket(void* psession,char* ice_pwd){
 		yang_memset(session->context.avinfo->sys.localIp,0,sizeof(session->context.avinfo->sys.localIp));
 		yang_getLocalInfo(session->context.avinfo->sys.familyType,session->context.avinfo->sys.localIp);
 	}
-	uint32_t addr = be32toh(inet_addr(session->context.avinfo->sys.localIp));
+	uint32_t addr = yang_be32toh(yang_inet_addr(session->context.avinfo->sys.localIp));
 	YangStunPacket packet;
 	yang_memset(&packet,0,sizeof(YangStunPacket));
 	packet.message_type=StunBindingRequest;
@@ -875,7 +868,7 @@ int32_t yang_stun_encode(YangStunMessageType stunType,YangBuffer* stream,void* p
 	yang_cstr_random(12,tid);
     char localIp[128]={0};
     yang_getLocalInfo(udp->session.familyType,localIp);
-    uint32_t addr = be32toh(inet_addr(localIp));
+    uint32_t addr = yang_be32toh(yang_inet_addr(localIp));
 
 
 	YangStunPacket packet;

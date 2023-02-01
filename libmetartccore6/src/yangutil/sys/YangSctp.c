@@ -22,7 +22,7 @@ int g_sctp_receive_cb(struct socket *sock, union sctp_sockstore addr, void *data
 {
 	YangSctp* sctp=(YangSctp*)ulp_info;
 	uint16_t streamId = rcv.rcv_sid;
-	uint32_t ppid     = ntohl(rcv.rcv_ppid);
+	uint32_t ppid     = yang_ntohl(rcv.rcv_ppid);
 	uint16_t ssn      = rcv.rcv_ssn;
 	int32_t eor = flags & MSG_EOR;
 	(void)eor;
@@ -107,11 +107,11 @@ void yang_create_sctp(YangSctp* sctp){
 	yang_memset(&remoteConn, 0, sizeof(struct sockaddr_conn));
 
 	localConn.sconn_family = AF_CONN;
-	localConn.sconn_port=htons(YANG_SCTP_ASSOCIATION_DEFAULT_PORT);
+	localConn.sconn_port=yang_htons(YANG_SCTP_ASSOCIATION_DEFAULT_PORT);
 	localConn.sconn_addr = sctp;
 
 	remoteConn.sconn_family = AF_CONN;
-	remoteConn.sconn_port=htons(YANG_SCTP_ASSOCIATION_DEFAULT_PORT);
+	remoteConn.sconn_port=yang_htons(YANG_SCTP_ASSOCIATION_DEFAULT_PORT);
 	remoteConn.sconn_addr = sctp;
 
 	usrsctp_register_address(sctp);

@@ -12,12 +12,7 @@
 
 #include <yangssl/YangSsl.h>
 
-#ifdef _WIN32
-#include <winsock2.h>
-#define be32toh ntohl
-#else
-#include <arpa/inet.h>
-#endif
+
 
 int32_t yang_turnconn_receive(YangTurnSession *session, char *data, int32_t nb);
 
@@ -775,7 +770,7 @@ int32_t yang_turnconn_addPeer(YangTurnSession *session, int32_t uid,
 
 	YangTurnPeer *peer = (YangTurnPeer*) yang_calloc(sizeof(YangTurnPeer), 1);
 
-	peer->address.mapAddress = be32toh(inet_addr(remoteIp));
+	peer->address.mapAddress = yang_be32toh(yang_inet_addr(remoteIp));
 	peer->address.port = port;
 
 	peer->receiveUser = rtcSession;

@@ -29,16 +29,16 @@ void yang_addr_set(YangIpAddress* addr,char* ip,int32_t port,YangIpFamilyType fa
 	yang_memcpy(addr->address,ip,yang_strlen(ip));
 	if(familyType==Yang_IpFamilyType_IPV4){
 		addr->addr4.sin_family = AF_INET;
-		addr->addr4.sin_port = htons(addr->port);
+		addr->addr4.sin_port = yang_htons(addr->port);
 #ifdef _WIN32
-		addr->addr4.sin_addr.S_un.S_addr=inet_addr(ip);
+		addr->addr4.sin_addr.S_un.S_addr=yang_inet_addr(ip);
 #else
-		addr->addr4.sin_addr.s_addr = inet_addr(ip);
+		addr->addr4.sin_addr.s_addr = yang_inet_addr(ip);
 #endif
 	}else{
 		addr->addr6.sin6_family = AF_INET6;
-		addr->addr6.sin6_port = htons(addr->port);
-		inet_pton(AF_INET6, ip, &addr->addr6.sin6_addr);
+		addr->addr6.sin6_port = yang_htons(addr->port);
+		yang_inet_pton(AF_INET6, ip, &addr->addr6.sin6_addr);
 
 	}
 }
@@ -62,7 +62,7 @@ void yang_addr_setIPV4(YangIpAddress* addr,int32_t ip,int32_t port,YangSocketPro
 
 
 		addr->addr4.sin_family = AF_INET;
-		addr->addr4.sin_port = htons(addr->port);
+		addr->addr4.sin_port = yang_htons(addr->port);
 #ifdef _WIN32
 		addr->addr4.sin_addr.S_un.S_addr=ip;
 #else
@@ -78,7 +78,7 @@ void yang_addr_setIPV6(YangIpAddress* addr,uint8_t ip[16],int32_t port,YangSocke
 	addr->familyType=Yang_IpFamilyType_IPV6;
 	addr->protocol=protocol;
 	addr->addr6.sin6_family = AF_INET6;
-	addr->addr6.sin6_port = htons(addr->port);
+	addr->addr6.sin6_port = yang_htons(addr->port);
 	yang_memcpy(&addr->addr6.sin6_addr,ip,16);
 
 }
@@ -100,7 +100,7 @@ uint32_t yang_addr_getIP(YangIpAddress* addr){
 }
 
 uint16_t yang_addr_getPort(YangIpAddress* addr){
-	return htons(addr->familyType == Yang_IpFamilyType_IPV4?addr->addr4.sin_port:addr->addr6.sin6_port);
+	return yang_htons(addr->familyType == Yang_IpFamilyType_IPV4?addr->addr4.sin_port:addr->addr6.sin6_port);
 }
 
 uint16_t yang_addr_getSinPort(YangIpAddress* addr){
