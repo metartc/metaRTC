@@ -62,8 +62,6 @@ void yang_setCLogFile(int32_t isSetLogFile) {
 
 void yang_setCLogFile2(int32_t isSetLogFile, char *fullpathfile) {
 #if Yang_Enable_Logfile
-	if (g_hasLogFile)
-		return;
 	g_hasLogFile = isSetLogFile;
 	if (g_fmsg == NULL)
 		g_fmsg = fopen(fullpathfile, "wb+");
