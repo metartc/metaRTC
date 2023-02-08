@@ -134,7 +134,7 @@ yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol
 #endif
 
 	int value = 1;
-	setsockopt(fd, SOL_SOCKET, Yang_No_Signal, &value, sizeof(value));
+	setsockopt(fd, SOL_SOCKET, YANG_NO_SIGNAL, &value, sizeof(value));
 
 
 	if(protocol==Yang_Socket_Protocol_Tcp){

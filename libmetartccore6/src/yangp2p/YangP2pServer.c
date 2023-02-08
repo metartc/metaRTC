@@ -122,7 +122,7 @@ void* yang_run_http_thread(void *obj){
 	yang_memset(rets,0,1024*16);
 	yang_cstr_replace(tmp,rets,"}","");
 	p2p->receive(rets, yang_strlen(rets)+1, answer,remoteIp,p2p->user);
-	nBytes = yang_socket_send(connfd, answer, yang_strlen(answer), Yang_No_Signal);
+	nBytes = yang_socket_send(connfd, answer, yang_strlen(answer), YANG_NO_SIGNAL);
 	yang_sleep(1);
 	yang_socket_close(connfd);
 	yang_free(tmp);

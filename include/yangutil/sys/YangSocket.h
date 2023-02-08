@@ -15,7 +15,7 @@
 #define GetSockError()	WSAGetLastError()
 #define SetSockError(e)	WSASetLastError(e)
 #define setsockopt(a,b,c,d,e)	(setsockopt)(a,b,c,(const char *)d,(int)e)
-#define Yang_No_Signal SO_NOSIGPIPE
+#define YANG_NO_SIGNAL SO_NOSIGPIPE
 #define yang_poll WSAPoll
 #else
 #include <netinet/in.h>
@@ -23,7 +23,7 @@
 #define yang_be32toh be32toh
 #define yang_poll poll
 #define GetSockError()	errno
-#define Yang_No_Signal MSG_NOSIGNAL
+#define YANG_NO_SIGNAL MSG_NOSIGNAL
 #define SetSockError(e)	errno = e
 #endif
 
