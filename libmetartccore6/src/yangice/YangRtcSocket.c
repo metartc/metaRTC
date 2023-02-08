@@ -25,7 +25,7 @@ int32_t yang_rtc_sendData(YangRtcSocketSession *session, char *data, int32_t nb)
 int32_t yang_rtc_tcp_sendData(YangRtcSocketSession *session,char *data, int32_t nb) {
 	if (session == NULL || !session->isStart || session->notRemoteInit || data==NULL)	return ERROR_RTC_SOCKET;
 	yang_thread_mutex_lock(&session->sendLock);
-	int32_t nbytes=yang_socket_send(session->fd, data, nb, 0);
+	int32_t nbytes=yang_socket_send(session->fd, data, nb, Yang_No_Signal);
 	yang_thread_mutex_unlock(&session->sendLock);
 	if(nbytes==-1) yang_error("rtc tcp send error(%d)",nbytes);
 	if(nbytes!=nb) yang_error("rtc tcp send data(%d),should send data(%d)",nbytes,nb);
@@ -41,12 +41,12 @@ int32_t yang_rtc_tcp_sendData(YangRtcSocketSession *session,char *data, int32_t 
 
 		yang_put_be16(session->buffer,(uint16_t)nb);
 
-		int32_t nbytes=yang_socket_send(session->fd, session->buffer, sendBytes,0);
+		int32_t nbytes=yang_socket_send(session->fd, session->buffer, sendBytes,Yang_No_Signal);
 
 		if(nbytes==-1 ||nbytes!=sendBytes) goto fail;
 
 		sendBytes = nb;
-		nbytes=yang_socket_send(session->fd, data, sendBytes,0);// Yang_No_Signal) ;
+		nbytes=yang_socket_send(session->fd, data, sendBytes,Yang_No_Signal);// Yang_No_Signal) ;
 
 		if(nbytes==-1 ||nbytes!=sendBytes) goto fail;
 

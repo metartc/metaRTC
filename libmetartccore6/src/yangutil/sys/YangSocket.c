@@ -133,8 +133,8 @@ yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol
 	setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, (const char*) &tv,	sizeof(struct timeval));
 #endif
 
-	//int value = 1;
-	//setsockopt(fd, SOL_SOCKET, Yang_No_Signal, &value, sizeof(value));
+	int value = 1;
+	setsockopt(fd, SOL_SOCKET, Yang_No_Signal, &value, sizeof(value));
 
 
 	if(protocol==Yang_Socket_Protocol_Tcp){

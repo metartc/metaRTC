@@ -45,7 +45,7 @@ int32_t yang_http_post(YangIpFamilyType familyType,char *rets, char *ip, int32_t
 			"\r\n%s";
 	int len = yang_sprintf(buf, s, api, ip, port, plen, data);
 
-	int32_t nBytes = yang_socket_send(socketfd, buf, len, 0);
+	int32_t nBytes = yang_socket_send(socketfd, buf, len, Yang_No_Signal);
 
 	if (nBytes < 1) {
 		yang_socket_close(socketfd);
