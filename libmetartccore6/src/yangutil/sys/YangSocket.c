@@ -189,7 +189,11 @@ int32_t yang_socket_sendto(yang_socket_t fd,char* data,int32_t nb,YangIpAddress*
 	return sendto(fd, data, nb, flag, yang_sockaddr(remote_addr),addrLen);
 }
 
-int32_t yang_socket_send(yang_socket_t fd,char* data,int32_t nb,int32_t flag){
+int32_t yang_socket_send(yang_socket_t fd,char* data,int32_t nb){
+	return send(fd, data, nb, YANG_NO_SIGNAL);
+}
+
+int32_t yang_socket_send2(yang_socket_t fd,char* data,int32_t nb,int32_t flag){
 	return send(fd, data, nb, flag);
 }
 

@@ -74,7 +74,8 @@ int32_t yang_socket_recvfrom(yang_socket_t fd,char* buffer,int32_t bufferLen,Yan
 int32_t yang_socket_accept(yang_socket_t fd,YangIpAddress* addr);
 
 int32_t yang_socket_sendto(yang_socket_t fd,char* data,int32_t nb,YangIpAddress* remote_addr,int32_t flag);
-int32_t yang_socket_send(yang_socket_t fd,char* data,int32_t nb,int32_t flag);
+int32_t yang_socket_send(yang_socket_t fd,char* data,int32_t nb);
+int32_t yang_socket_send2(yang_socket_t fd,char* data,int32_t nb,int32_t flag);
 int32_t yang_socket_recv(yang_socket_t fd,char* data,int32_t nb,int32_t flag);
 
 

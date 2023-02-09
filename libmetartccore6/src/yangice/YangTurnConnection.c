@@ -409,7 +409,7 @@ int32_t yang_rtc_turn_sendData(YangRtcSocketSession *session, char *data, int32_
 	if(session->socketProtocol==Yang_Socket_Protocol_Udp)
 		nbytes=yang_socket_sendto(session->fd, session->buffer, nb + 4, &session->remote_addr,0);
 	else
-		nbytes=yang_socket_send(session->fd, session->buffer, nb + 4, YANG_NO_SIGNAL);
+		nbytes=yang_socket_send(session->fd, session->buffer, nb + 4);
 
 	yang_thread_mutex_unlock(&session->sendLock);
 
@@ -446,7 +446,7 @@ int32_t yang_turnconn_sendData(YangTurnSession *psession, int32_t uid,
 			if(session->socketProtocol==Yang_Socket_Protocol_Udp)
 				nbytes=yang_socket_sendto(session->fd, session->buffer, nb + 4+blank, &session->remote_addr,0);
 			else
-				nbytes=yang_socket_send(session->fd, session->buffer, nb + 4+blank,YANG_NO_SIGNAL);
+				nbytes=yang_socket_send(session->fd, session->buffer, nb + 4+blank);
 
 			yang_thread_mutex_unlock(&session->sendLock);
 
