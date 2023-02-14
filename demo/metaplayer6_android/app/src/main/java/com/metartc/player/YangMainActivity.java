@@ -4,6 +4,7 @@
 package com.metartc.player;
 
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.View;
@@ -32,6 +33,14 @@ public class YangMainActivity extends YangBaseActivity implements View.OnClickLi
 
         init();
         initSurfaceView();
+    }
+
+    @Override
+    protected void onResume() {
+        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        super.onResume();
     }
 
     private void init() {
