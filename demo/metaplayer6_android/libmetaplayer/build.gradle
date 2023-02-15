@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.metartc.push'
+    namespace 'com.metartc'
     compileSdk 29
 
     defaultConfig {
-        minSdk 29
+        minSdk 28
         targetSdk 29
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

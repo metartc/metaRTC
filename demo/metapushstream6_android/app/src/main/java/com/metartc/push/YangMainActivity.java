@@ -45,6 +45,15 @@ public class YangMainActivity extends AppCompatActivity implements View.OnClickL
 
         requestPermission();
     }
+
+    @Override
+    protected void onResume() {
+        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        super.onResume();
+    }
+
     private void init() {
         m_b_play = findViewById(R.id.m_b_player);
         m_url=findViewById(R.id.m_t_url);
