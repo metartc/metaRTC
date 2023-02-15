@@ -14,8 +14,9 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/tcp.h>
-
 #endif
+
+#include <fcntl.h>
 
 #define yang_sockaddr(x) x->familyType==Yang_IpFamilyType_IPV4?(const struct sockaddr*)(&x->addr4):(const struct sockaddr*)(&x->addr6)
 #define yang_sockaddr2(x) x->familyType==Yang_IpFamilyType_IPV4?(struct sockaddr*)(&x->addr4):(struct sockaddr*)(&x->addr6)
@@ -133,8 +134,8 @@ yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol
 	setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, (const char*) &tv,	sizeof(struct timeval));
 #endif
 
-	int value = 1;
-	setsockopt(fd, SOL_SOCKET, YANG_NO_SIGNAL, &value, sizeof(value));
+	//int value = 1;
+	//setsockopt(fd, SOL_SOCKET, YANG_NO_SIGNAL, &value, sizeof(value));
 
 
 	if(protocol==Yang_Socket_Protocol_Tcp){
@@ -148,8 +149,21 @@ yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol
 	return fd;
 
 }
+int32_t yang_socket_setNonblock(yang_socket_t fd) {
+#ifdef _WIN32
+	if (fd != INVALID_SOCKET) {
+		int iMode = 1;
+		ioctlsocket(fd, FIONBIO,  & iMode);
+	}
+#else
+	if (fd != -1) fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) | O_NONBLOCK);
+#endif
+	return Yang_Ok;
+}
 
-int yang_socket_close(yang_socket_t fd){
+
+
+int32_t yang_socket_close(yang_socket_t fd){
 #ifdef _WIN32
 	closesocket(fd);
 #else

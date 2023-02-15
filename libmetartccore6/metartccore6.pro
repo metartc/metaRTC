@@ -67,6 +67,8 @@ SOURCES += \
     src/yangice/YangRtcSocket.c \
     src/yangice/YangRtcStun.c \
     src/yangice/YangTurnConnection.c \
+    src/yangmqtt/YangMqtt.c \
+    src/yangmqtt/YangMqttImpl.c \
     src/yangp2p/YangP2pConnection.c \
     src/yangp2p/YangP2pConnection2.c \
     src/yangp2p/YangP2pServer.c \
@@ -168,6 +170,7 @@ HEADERS += \
     src/yangice/YangRtcSocket.h \
     src/yangice/YangRtcStun.h \
     src/yangice/YangTurnConnection.h \
+    src/yangmqtt/YangMqttImpl.h \
     src/yangp2p/YangP2pConnection.h \
     src/yangp2p/YangP2pConnection2.h \
     src/yangrtc/YangBandwidth.h \

@@ -157,6 +157,8 @@
     <ClCompile Include="..\src\yangice\YangRtcSocket.c" />
     <ClCompile Include="..\src\yangice\YangRtcStun.c" />
     <ClCompile Include="..\src\yangice\YangTurnConnection.c" />
+    <ClCompile Include="..\src\yangmqtt\YangMqtt.c" />
+    <ClCompile Include="..\src\yangmqtt\YangMqttImpl.c" />
     <ClCompile Include="..\src\yangsrs\YangSrsConnection.c" />
     <ClCompile Include="..\src\yangsdp\YangAnswerSdp.c" />
     <ClCompile Include="..\src\yangsdp\YangAudioPayload.c" />

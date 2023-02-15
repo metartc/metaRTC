@@ -29,6 +29,7 @@
 
 #define yang_ntohl ntohl
 #define yang_htons htons
+#define yang_ntohs ntohs
 #define yang_inet_addr inet_addr
 #define yang_inet_pton inet_pton
 
@@ -64,6 +65,8 @@ void yang_addr_getIPStr(YangIpAddress* addr,char* addrstr,int32_t strLen);
 uint16_t yang_addr_getPort(YangIpAddress* addr);
 uint16_t yang_addr_getSinPort(YangIpAddress* addr);
 yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol protocol);
+//non-block socket
+int32_t yang_socket_setNonblock(yang_socket_t fd);
 int32_t yang_socket_close(yang_socket_t fd);
 
 int32_t yang_socket_listen(yang_socket_t fd,YangIpAddress* addr);

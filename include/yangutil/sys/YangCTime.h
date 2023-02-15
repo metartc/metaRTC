@@ -5,6 +5,8 @@
 #ifndef INCLUDE_YANGUTIL_SYS_YANGCTIME_H_
 #define INCLUDE_YANGUTIL_SYS_YANGCTIME_H_
 #include <yangutil/yangtype.h>
+#define yang_time_t time_t
+
 int64_t yang_get_system_micro_time();
 int64_t yang_get_system_micro_time();
 
