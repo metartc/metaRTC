@@ -21,8 +21,8 @@ public:
 	void putMessage(YangSysMessageI *handle,int32_t pst, int32_t puid, int32_t handleState,void* user=NULL);
 
 	static YangSysMessageHandle* m_instance;
-	int32_t m_isStart;
-	int32_t m_loop;
+	yangbool m_isStart;
+	yangbool m_loop;
 	void stop();
 protected:
 	void run();
@@ -30,12 +30,12 @@ protected:
 	void stopLoop();
 
 private:
-
 	vector<YangSysMessage*> m_sysMessages;
+	yang_thread_mutex_t m_mutex;
 	yang_thread_mutex_t m_lock;
 	yang_thread_cond_t m_cond_mess;
 
-	int32_t m_waitState;
+	yangbool m_waitState;
 	YangSysMessageHandleI* m_receive;
 
 };
