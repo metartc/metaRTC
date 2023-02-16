@@ -1,8 +1,8 @@
 //
 // Copyright (c) 2019-2022 yanggaofeng
 //
-#ifndef __YYangIni__
-#define __YYangIni__
+#ifndef __YangIni__H_
+#define __YangIni__H_
 #include <yangutil/yangavinfotype.h>
 #ifndef __ANDROID__
 

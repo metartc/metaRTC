@@ -71,27 +71,27 @@ typedef struct YangVideoEncInfo {
 
 typedef struct YangSysInfo {
 	YangIpFamilyType familyType;
-	int32_t enableMultCamera;
+	yangbool enableHttps;
+	yangbool enableMqttTls;
+	yangbool enableLogFile;
+
 	int32_t mediaServer;
-	int32_t transType;
-	int32_t enableDataServer;
+
 	int32_t rtmpPort;
-	int32_t srtPort;
 	int32_t rtcPort;
 	int32_t rtcLocalPort;
 	int32_t httpPort;
-	int32_t dataPort;
-	int32_t enableLogFile;
+	int32_t mqttPort;
+
+	int32_t transType;
 	int32_t logLevel;
-	int32_t cameraCount;
+
 	char localIp[32];
 	char rtcServerIP[32];
-	char cameraIndexs[50];
 	char rtmpServerIP[32];
-	char srtServerIP[32];
-
-	char httpServerIP[32];
-	char dataServerIP[32];
+	char mqttServerIP[32];
+	char mqttUserName[32];
+	char mqttPassword[64];
 }YangSysInfo;
 
 typedef struct YangRtcInfo {

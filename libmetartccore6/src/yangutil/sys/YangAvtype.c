@@ -77,28 +77,24 @@ void yang_avinfo_initAudio(YangAudioInfo *audio) {
 
 void yang_avinfo_initSys(YangSysInfo *sys) {
 	sys->familyType=Yang_IpFamilyType_IPV4;
+	sys->enableHttps=yangfalse;
+	sys->enableLogFile = yangfalse;
+	sys->enableMqttTls=yangfalse;
+
 	sys->mediaServer=Yang_Server_Srs;
 	sys->transType = Yang_Webrtc;
-	sys->enableMultCamera = 0;
-	sys->enableDataServer = 0;
 
 	sys->rtmpPort = 1935;
-	sys->srtPort = 8080;
+	sys->mqttPort = 1883;
 	sys->rtcPort = 1985;
 	sys->rtcLocalPort = 16000;
-	sys->httpPort = 8080;
-	sys->dataPort = 9999;
-	sys->enableLogFile = 0;
-	sys->logLevel = 1;
-	sys->logLevel = 1;
-	sys->cameraCount = 3;
+	sys->httpPort=1988;
 
-	yang_strcpy(sys->cameraIndexs, "1");
+	sys->logLevel = 1;
+
 	yang_strcpy(sys->rtmpServerIP, "127.0.0.1");
-	yang_strcpy(sys->srtServerIP, "127.0.0.1");
 	yang_strcpy(sys->rtcServerIP, "127.0.0.1");
-	yang_strcpy(sys->httpServerIP, "127.0.0.1");
-	yang_strcpy(sys->dataServerIP, "127.0.0.1");
+	yang_strcpy(sys->mqttServerIP, "127.0.0.1");
 }
 
 void yang_avinfo_initEnc(YangVideoEncInfo *enc) {

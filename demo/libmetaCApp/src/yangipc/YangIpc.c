@@ -10,6 +10,8 @@
 #include <yangutil/sys/YangSocket.h>
 #include <yangutil/sys/YangMath.h>
 #ifndef __ANDROID__
+#include <yangutil/sys/YangIni.h>
+
 int32_t yang_ipc_startRtc(YangIpcSession* session,char* remoteIp,char* sdp,char* response );
 
 void g_ipc_receive(char *data, int32_t nb_data,char* response,char* remoteIp, void *user) {

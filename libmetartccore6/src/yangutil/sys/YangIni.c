@@ -198,27 +198,30 @@ void yang_ini_initSys(char* filename,YangSysInfo *sys){
 	yang_memset(sys,0,sizeof(YangSysInfo));
 
 	sys->familyType = (YangIpFamilyType)yang_ini_readIntValue(filename,"sys", "familyType", Yang_IpFamilyType_IPV4);
+
+	sys->enableHttps=(yangbool)yang_ini_readIntValue(filename,"sys", "enableHttps", yangfalse);
+	sys->enableMqttTls = yang_ini_readIntValue(filename,"sys", "enableMqttTls", 0);
+	sys->enableLogFile=yang_ini_readIntValue(filename,"sys", "enableLogFile", yangtrue);
+
 	sys->transType = yang_ini_readIntValue(filename,"sys", "transType", 0);
 	sys->mediaServer = yang_ini_readIntValue(filename,"sys", "mediaServer", 0);
-	sys->enableMultCamera = yang_ini_readIntValue(filename,"sys", "enableMultCamera", 0);
-	sys->enableDataServer = yang_ini_readIntValue(filename,"sys", "enableDataServer", 0);
 
+	sys->httpPort = yang_ini_readIntValue(filename,"sys", "httpPort", 1988);
 	sys->rtmpPort = yang_ini_readIntValue(filename,"sys", "rtmpPort", 1935);
-	sys->srtPort = yang_ini_readIntValue(filename,"sys", "srtPort", 8080);
 	sys->rtcPort = yang_ini_readIntValue(filename,"sys", "rtcPort", 1985);
 	sys->rtcLocalPort = yang_ini_readIntValue(filename,"sys", "rtcLocalPort", 16000);
-	sys->httpPort = yang_ini_readIntValue(filename,"sys", "httpPort", 8080);
-	sys->dataPort = yang_ini_readIntValue(filename,"sys", "dataPort", 9999);
-	sys->enableLogFile=yang_ini_readIntValue(filename,"sys", "enableLogFile", 1);
+	sys->mqttPort = yang_ini_readIntValue(filename,"sys", "mqttPort", sys->enableMqttTls?8883:1883);
+
 	sys->logLevel = yang_ini_readIntValue(filename,"sys", "logLevel", 1);
-	sys->logLevel = yang_ini_readIntValue(filename,"sys", "logLevel", 1);
-	sys->cameraCount = yang_ini_readIntValue(filename,"sys", "cameraCount", 3);
-	yang_ini_readStringValue(filename,"sys", "cameraIndexs", sys->cameraIndexs, "1");
+
+
+
 	yang_ini_readStringValue(filename,"sys", "rtmpServerIP", sys->rtmpServerIP, "127.0.0.1");
-	yang_ini_readStringValue(filename,"sys", "srtServerIP", sys->srtServerIP, "127.0.0.1");
 	yang_ini_readStringValue(filename,"sys", "rtcServerIP", sys->rtcServerIP, "127.0.0.1");
-	yang_ini_readStringValue(filename,"sys", "httpServerIP", sys->httpServerIP, "127.0.0.1");
-	yang_ini_readStringValue(filename,"sys", "dataServerIP", sys->dataServerIP, "127.0.0.1");
+
+	yang_ini_readStringValue(filename,"sys", "mqttServerIP", sys->mqttServerIP, "127.0.0.1");
+	yang_ini_readStringValue(filename,"sys", "mqttUserName", sys->mqttUserName, "");
+	yang_ini_readStringValue(filename,"sys", "mqttPassword", sys->mqttPassword, "");
 }
 
 void yang_ini_initEnc(char* filename,YangVideoEncInfo *enc){
@@ -268,31 +271,31 @@ void yang_create_ini(YangIni *ini, const char *p_filename) {
 #ifdef _MSC_VER
 	if(_getcwd(file_path_getcwd, 255)){
 #else
-	if (getcwd(file_path_getcwd, 255)) {
+		if (getcwd(file_path_getcwd, 255)) {
 #endif
-		yang_sprintf(file1, "%s/%s", file_path_getcwd, p_filename);
-		yang_create_ini2(ini,file1);
+			yang_sprintf(file1, "%s/%s", file_path_getcwd, p_filename);
+			yang_create_ini2(ini,file1);
+		}
+
 	}
 
-}
+	void yang_create_ini2(YangIni *ini, char *p_filename) {
+		int32_t len = yang_strlen(p_filename) + 1;
+		ini->filename = (char*) yang_malloc(len);
+		yang_memset(ini->filename, 0, len);
+		yang_memcpy(ini->filename, p_filename, len - 1);
+		ini->initAudio = yang_ini_initAudio;
+		ini->initVideo = yang_ini_initVideo;
+		ini->initEnc = yang_ini_initEnc;
+		ini->initRtc = yang_ini_initRtc;
+		ini->initSys = yang_ini_initSys;
+		ini->initAvinfo = yang_ini_initAvinfo;
+		ini->readStringValue = yang_ini_readStringValue;
+		ini->readIntValue = yang_ini_readIntValue;
+	}
 
-void yang_create_ini2(YangIni *ini, char *p_filename) {
-	int32_t len = yang_strlen(p_filename) + 1;
-	ini->filename = (char*) yang_malloc(len);
-	yang_memset(ini->filename, 0, len);
-	yang_memcpy(ini->filename, p_filename, len - 1);
-	ini->initAudio = yang_ini_initAudio;
-	ini->initVideo = yang_ini_initVideo;
-	ini->initEnc = yang_ini_initEnc;
-	ini->initRtc = yang_ini_initRtc;
-	ini->initSys = yang_ini_initSys;
-	ini->initAvinfo = yang_ini_initAvinfo;
-	ini->readStringValue = yang_ini_readStringValue;
-	ini->readIntValue = yang_ini_readIntValue;
-}
-
-void yang_destroy_ini(YangIni *ini) {
-	yang_free(ini->filename);
-}
+	void yang_destroy_ini(YangIni *ini) {
+		yang_free(ini->filename);
+	}
 
 #endif
