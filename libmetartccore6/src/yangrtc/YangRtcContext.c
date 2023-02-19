@@ -74,7 +74,7 @@ void yang_destroy_rtcContext(YangRtcContext *context) {
 	if (context == NULL)	return;
 	context->streamConfig = NULL;
 	yang_free(context->stun.data);
-	if (context->sock&&context->sock->session.isStart)
+	if (context->sock&&context->sock->stop&&context->sock->session.isStart)
 		context->sock->stop(&context->sock->session);
 	yang_destroy_rtcsocket(context->sock);
 	yang_free(context->sock);

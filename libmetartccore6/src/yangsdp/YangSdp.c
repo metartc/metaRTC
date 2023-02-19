@@ -55,7 +55,7 @@ void yang_sdp_init_direction(YangMediaDesc* media_desc,YangStreamOptType role){
 #define Yang_SDP_BUFFERLEN 1024*12
 int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *dst, YangStreamOptType role) {
 	int32_t mediaServer=session->context.avinfo->sys.mediaServer;
-	int32_t redPayloadtype=1;
+	//int32_t redPayloadtype=1;
 	int32_t midNum=0;
 	char *src = (char*) yang_calloc(1, Yang_SDP_BUFFERLEN);
 
@@ -260,7 +260,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 		videotype->payload_type = YangH265PayloadType;
 		yang_strcpy(videotype->encoding_name, "H265");
 		yang_sdp_genLocalSdp_payloadType(videotype);
-		redPayloadtype=2;
+		//redPayloadtype=2;
 	}else{
 		if (session->context.avinfo->video.videoEncoderType	== Yang_VED_264) {
 			videotype->payload_type = YangH264PayloadType;
