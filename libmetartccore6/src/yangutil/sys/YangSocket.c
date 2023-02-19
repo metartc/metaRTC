@@ -97,7 +97,7 @@ uint32_t yang_addr_getIP(YangIpAddress* addr){
 #else
 	return addr->addr4.sin_addr.s_addr;
 #endif
-	//return addr->familyType == Yang_IpFamilyType_IPV4 ?addr->addr4.sin_addr.s_addr:addr->addr6.sin6_addr.__in6_u;
+
 }
 
 uint16_t yang_addr_getPort(YangIpAddress* addr){
@@ -121,6 +121,7 @@ yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol
 
 	if(fd==-1){
 		yang_error("create socket error: %d ", GetSockError());
+		return fd;
 	}
 
 	int32_t timeoutMs=800;
@@ -132,11 +133,9 @@ yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol
 	tv.tv_sec = 0;
     tv.tv_usec = timeoutMs*1000;  //  ms
 	setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, (const char*) &tv,	sizeof(struct timeval));
+	int value = 1;
+	setsockopt(fd, SOL_SOCKET, YANG_NO_SIGNAL, &value, sizeof(value));
 #endif
-
-	//int value = 1;
-	//setsockopt(fd, SOL_SOCKET, YANG_NO_SIGNAL, &value, sizeof(value));
-
 
 	if(protocol==Yang_Socket_Protocol_Tcp){
 		//int sendBufSize=32*1024;

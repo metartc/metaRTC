@@ -62,6 +62,12 @@ typedef enum{
 	YangIceTurn
 }YangIceCandidateType;
 
+typedef enum {
+	YangIceNew,
+    YangIceSuccess,
+    YangIceFail
+}YangIceCandidateState;
+
 typedef struct{
 	int32_t mediaType;
 	int32_t uid;

@@ -82,7 +82,11 @@
 #define ERROR_P2P                           4000
 #define ERROR_P2P_SERVER                    4001
 
-#define ERROR_RTC_TURN                      4100
+#define ERROR_RTC_ICE                       4100
+#define ERROR_RTC_STUN                      4101
+#define ERROR_RTC_TURN                      4102
+#define ERROR_RTC_SDP						4200
+#define ERROR_RTC_SDP_EXCHANGE              4218
 #define ERROR_RTC_PORT                      5000
 #define ERROR_RTP_PACKET_CREATE             5001
 #define ERROR_OpenSslCreateSSL              5002
@@ -91,7 +95,6 @@
 #define ERROR_OpenSslBIONew                 5005
 #define ERROR_RTC_RTP                       5006
 #define ERROR_RTC_RTCP                      5007
-#define ERROR_RTC_STUN                      5008
 #define ERROR_RTC_DTLS                      5009
 #define ERROR_RTC_SOCKET                    5010
 #define ERROR_RTC_RTP_MUXER                 5011
@@ -101,7 +104,6 @@
 #define ERROR_RTC_SRTP_UNPROTECT            5015
 #define ERROR_RTC_RTCP_CHECK                5016
 #define ERROR_RTC_SOURCE_CHECK              5017
-#define ERROR_RTC_SDP_EXCHANGE              5018
 #define ERROR_RTC_API_BODY                  5019
 #define ERROR_RTC_SOURCE_BUSY               5020
 #define ERROR_RTC_DISABLED                  5021
@@ -120,4 +122,5 @@
 #define ERROR_RTC_PUBLISH                   5034
 #define ERROR_RTC_PEERCONNECTION            6000
 #define ERROR_RTC_CONNECT                   6001
+#define ERROR_RTC_CALLBACK                  6002
 #endif /* INCLUDE_YANGUTIL_YANGERRORCODE_H_ */

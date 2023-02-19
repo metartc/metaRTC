@@ -239,7 +239,9 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	audiotype->clock_rate = session->context.avinfo->audio.sample; //48000;
 	yang_itoa2(session->context.avinfo->audio.channel,audiotype->encoding_param, 10);
 
-	yang_strcpy(audiotype->format_specific_param, "minptime=10;useinbandfec=1");
+
+	yang_strcpy(audiotype->format_specific_param,
+				session->context.avinfo->audio.enableAudioFec?"minptime=10;useinbandfec=1":"minptime=10;useinbandfec=0");
 	yang_create_stringVector(&audiotype->rtcp_fb);
 	yang_insert_stringVector(&audiotype->rtcp_fb, "transport-cc");
 #endif
@@ -279,11 +281,11 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	}
 
 	//insert red
-	yang_insert_YangMediaPayloadTypeVector(&video_media_desc->payload_types,NULL);
-	videotype =&video_media_desc->payload_types.payload[redPayloadtype];
-	yang_strcpy(videotype->encoding_name, "red");
-	videotype->payload_type = 114;
-	videotype->clock_rate = 90000;
+	//yang_insert_YangMediaPayloadTypeVector(&video_media_desc->payload_types,NULL);
+	//videotype =&video_media_desc->payload_types.payload[redPayloadtype];
+	//yang_strcpy(videotype->encoding_name, "red");
+	//videotype->payload_type = 114;
+	//videotype->clock_rate = 90000;
 #endif
 	//ssrc info
 

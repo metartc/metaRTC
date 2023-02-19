@@ -102,7 +102,7 @@ int32_t yang_turn_encode_allocate(YangTurnSession *session, uint8_t protocol,
 	stream.data[2] = ((yang_buffer_pos(&stream) - 20) & 0x0000FF00) >> 8;
 	stream.data[3] = ((yang_buffer_pos(&stream) - 20) & 0x000000FF);
 
-	return session->sock->sendData(&session->sock->session, s,
+	return session->sock->write(&session->sock->session, s,
 			yang_buffer_pos(&stream));
 }
 
@@ -150,7 +150,7 @@ int32_t yang_turn_encode_refresh(YangTurnSession *session, yangbool isClose) {
 	stream.data[2] = ((yang_buffer_pos(&stream) - 20) & 0x0000FF00) >> 8;
 	stream.data[3] = ((yang_buffer_pos(&stream) - 20) & 0x000000FF);
 
-	return session->sock->sendData(&session->sock->session, s,
+	return session->sock->write(&session->sock->session, s,
 			yang_buffer_pos(&stream));
 }
 
@@ -196,7 +196,7 @@ int32_t yang_turn_encode_permission(YangTurnSession *session,
 
 	stream.data[2] = ((yang_buffer_pos(&stream) - 20) & 0x0000FF00) >> 8;
 	stream.data[3] = ((yang_buffer_pos(&stream) - 20) & 0x000000FF);
-	return session->sock->sendData(&session->sock->session, s,
+	return session->sock->write(&session->sock->session, s,
 			yang_buffer_pos(&stream));
 }
 
@@ -249,7 +249,7 @@ int32_t yang_turn_encode_bindChannel(YangTurnSession *session,
 
 	stream.data[2] = ((yang_buffer_pos(&stream) - 20) & 0x0000FF00) >> 8;
 	stream.data[3] = ((yang_buffer_pos(&stream) - 20) & 0x000000FF);
-	return session->sock->sendData(&session->sock->session, s,
+	return session->sock->write(&session->sock->session, s,
 			yang_buffer_pos(&stream));
 }
 
@@ -283,7 +283,7 @@ int32_t yang_turn_encode_sendIndication(YangTurnSession *session,
 	stream.data[2] = ((yang_buffer_pos(&stream) - 20) & 0x0000FF00) >> 8;
 	stream.data[3] = ((yang_buffer_pos(&stream) - 20) & 0x000000FF);
 
-	return session->sock->sendData(&session->sock->session, s,
+	return session->sock->write(&session->sock->session, s,
 			yang_buffer_pos(&stream));
 }
 
@@ -295,7 +295,7 @@ int32_t yang_turn_encode_request(YangTurnSession *session) {
 
 	session->stun.encode_request(&stream, session->sock,
 			session->server->username, session->server->password);
-	return session->sock->sendData(&session->sock->session, stream.data,
+	return session->sock->write(&session->sock->session, stream.data,
 			yang_buffer_pos(&stream));
 
 }

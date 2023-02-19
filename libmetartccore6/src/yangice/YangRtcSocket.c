@@ -92,7 +92,7 @@ void* yang_run_rtcudp_thread(void *obj) {
 
 			if(sock->notRemoteInit){
 				yang_memcpy((char*)&sock->remote_addr,(char*)&src,sizeof(YangIpAddress));
-				sock->notRemoteInit=0;
+				sock->notRemoteInit=yangfalse;
 			}
 			if (sock->receive)	sock->receive(buffer, len, sock->user);
 		}
@@ -372,6 +372,10 @@ int32_t yang_create_rtcsocket(YangRtcSocket *psock,YangIpFamilyType familyType, 
 	yang_addr_setAnyAddr(&sock->local_addr,plocalPort,familyType,protocol);
 
 	sock->fd = yang_socket_create(familyType,protocol);
+	if(sock->fd==-1){
+		return yang_error_wrap(ERROR_RTC_SOCKET,"create rtc socket fail,familtype=%s,protocol=%s",
+				familyType==Yang_IpFamilyType_IPV4?"IPV4":"IPV6",protocol==Yang_Socket_Protocol_Udp?"UDP":"TCP");
+	}
 
 
 	sock->notRemoteInit=yangtrue;
@@ -381,9 +385,9 @@ int32_t yang_create_rtcsocket(YangRtcSocket *psock,YangIpFamilyType familyType, 
 	psock->start=yang_start_rtcudp;
 	psock->stop=yang_stop_rtcudp;
 	if(protocol == Yang_Socket_Protocol_Udp)
-		psock->sendData=yang_rtc_sendData;
+		psock->write=yang_rtc_sendData;
 	else
-		psock->sendData=yang_rtc_tcp_sendData;
+		psock->write=yang_rtc_tcp_sendData;
 
 
 	psock->updateRemoteAddress=yang_rtcudp_update_remoteAddr;
@@ -397,7 +401,7 @@ int32_t yang_create_rtcsocket(YangRtcSocket *psock,YangIpFamilyType familyType, 
 int32_t yang_create_rtcsocket_srs(YangRtcSocket* psock,YangSocketProtocol protocol){
 	if(protocol!=Yang_Socket_Protocol_Tcp) return Yang_Ok;
 	psock->session.headerLen=2;
-	psock->sendData=yang_rtc_tcp_sendData_srs;
+	psock->write=yang_rtc_tcp_sendData_srs;
 
 	if(psock->session.buffer==NULL) psock->session.buffer=(char*)yang_calloc(2,1);
 	return Yang_Ok;

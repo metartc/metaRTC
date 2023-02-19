@@ -51,7 +51,7 @@ void* yang_mqttc_rtcrecv_start_thread(void *obj) {
 	return NULL;
 }
 
-int32_t yang_mqttc_connect(void* psession,char *remoteIp,int32_t remotePort) {
+int32_t yang_mqttc_connect(void* psession,char *remoteIp,int32_t remotePort,char* username,char* password) {
 	if(psession == NULL || remoteIp == NULL) return 1;
 	YangMqttSession *session=(YangMqttSession*)psession;
 
@@ -79,7 +79,7 @@ int32_t yang_mqttc_connect(void* psession,char *remoteIp,int32_t remotePort) {
 	session->client.publish_response_callback_state=session;
 	char clientId[13]={0};
 	yang_cstr_random(12,clientId);
-	int32_t err=yang_mqtt_connect(&session->client, clientId, NULL, NULL, 0, NULL, NULL,
+	int32_t err=yang_mqtt_connect(&session->client, clientId, NULL, NULL, 0, username, password,
 			connect_flags, 400);
 	if(err!=MQTT_OK){
 		yang_error("\nmqtt_connect fail(%d)",err);

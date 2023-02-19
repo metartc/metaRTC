@@ -45,7 +45,7 @@ void g_yang_doTask(int32_t taskId, void *user) {
 	if (!session->isServer && session->isSendStun && taskId == 1) {
 
 		if (session->context.stun.data&& session->context.stun.nb > 0) {
-			if(session->context.sock->sendData(&session->context.sock->session,session->context.stun.data, session->context.stun.nb)!=Yang_Ok){
+			if(session->context.sock->write(&session->context.sock->session,session->context.stun.data, session->context.stun.nb)!=Yang_Ok){
 				yang_error("send stun fail!");
 			}
 		}
@@ -256,6 +256,7 @@ int32_t yang_rtcconn_dispatch_rtcp(YangRtcSession *session,YangRtcpCommon *rtcp)
 
 void yang_rtcconn_setSsrc(YangRtcSession *session, uint32_t audioSsrc,
 		uint32_t videoSsrc) {
+	if(session==NULL) return;
 #if Yang_Enable_RTC_Audio
 	if(session->pushAudio)
 		session->pushAudio->push->audioSsrc=audioSsrc;
@@ -362,9 +363,9 @@ int32_t yang_rtcconn_send_video_meta(YangRtcSession *session, YangFrame *p) {
 int32_t yang_rtcconn_onVideo(YangRtcSession *session, YangFrame *p) {
 #if Yang_Enable_RTC_Video
 	#if Yang_Enable_Dtls
-	if (session==NULL||session->context.dtls->session.state!=YangDtlsStateClientDone)	return Yang_Ok;
+	if (session==NULL || p==NULL || session->context.dtls->session.state!=YangDtlsStateClientDone)	return Yang_Ok;
 	#else
-	if (session==NULL||!session->context.state)	return Yang_Ok;
+	if (session==NULL|| p==NULL || !session->context.state)	return Yang_Ok;
 	#endif
 	if (p->frametype == YANG_Frametype_Spspps)
 		return yang_rtcconn_send_video_meta(session, p);
@@ -383,9 +384,9 @@ int32_t yang_rtcconn_onVideo(YangRtcSession *session, YangFrame *p) {
 int32_t yang_rtcconn_onAudio(YangRtcSession *session, YangFrame *p) {
 
 #if Yang_Enable_Dtls
-	if (session==NULL||session->context.dtls->session.state!=YangDtlsStateClientDone)	return Yang_Ok;
+	if (session==NULL||p==NULL||session->context.dtls->session.state!=YangDtlsStateClientDone)	return Yang_Ok;
 #else
-	if (session==NULL||!session->context.state)	return Yang_Ok;
+	if (session==NULL||p==NULL||!session->context.state)	return Yang_Ok;
 #endif
 #if Yang_Enable_RTC_Audio
 	if (session->pushAudio)
@@ -399,7 +400,10 @@ int32_t yang_rtcconn_onAudio(YangRtcSession *session, YangFrame *p) {
 int32_t yang_rtcconn_onMessage(YangRtcSession *session, YangFrame *p) {
 #if Yang_Enable_Dtls
 #if Yang_Enable_Datachannel
-	if(session==NULL||session->context.dtls->session.state!=YangDtlsStateClientDone||session->context.dtls->session.isStop==1||session->context.state!=1)	return Yang_Ok;
+	if(session==NULL || p==NULL ||session->context.dtls->session.state!=YangDtlsStateClientDone||
+			session->context.dtls->session.isStop==yangtrue||session->context.state!=yangtrue)
+		return Yang_Ok;
+
 	if(session->datachannel&&session->datachannel->send_message) session->datachannel->send_message(session->datachannel->context,p);
 #endif
 #endif
@@ -434,7 +438,7 @@ void yang_rtcconn_close(YangRtcSession *session) {
 
 int32_t yang_rtcconn_notify(YangRtcSession *session, YangRtcMessageType mess) {
 #if Yang_Enable_RTC_Video
-	if(session==NULL||session->play==NULL||session->play->playStream->videoTrack==NULL) return 1;
+	if(session==NULL||session->play==NULL||session->play->playStream->videoTrack==NULL) return ERROR_RTC_CALLBACK;
 	YangPlayTrackVideo *videotrack=session->play->playStream->videoTrack;
 	if (mess == YangRTC_Decoder_Error) {
 		if(videotrack) videotrack->setRequestKeyframeState(&videotrack->session,yangfalse);
@@ -535,10 +539,12 @@ void yang_rtcconn_receive(YangRtcSession *session, char *data, int32_t size) {
 }
 
 void yang_rtcconn_on_ice(YangRtcSession *session,char* remoteIp,int32_t port) {
+	if(session==NULL || remoteIp==NULL) return;
 	session->context.sock->updateRemoteAddress(&session->context.sock->session,remoteIp,port);
 }
 
 int32_t yang_rtcconn_getRemoteSdp(YangRtcSession *session, char *sdpstr){
+	if(session==NULL) return ERROR_RTC_SDP;
 	int32_t err = Yang_Ok;
 
 	YangSdp sdp;
@@ -565,6 +571,7 @@ int32_t yang_rtcconn_getRemoteSdp(YangRtcSession *session, char *sdpstr){
 
 
 void yang_rtcconn_turn_receive(void *psession, char *data, int32_t size){
+	if(psession==NULL || data==NULL) return;
 	YangRtcSession *session=(YangRtcSession*)psession;
 	yang_rtcconn_receive(session,data,size);
 }
@@ -580,20 +587,21 @@ int32_t yang_rtcconn_turn_sendData(YangRtcSocketSession *psession, char *data, i
 	return  ERROR_RTC_TURN;
 }
 
-
-
-
 int32_t yang_rtcconn_createOffer(YangRtcSession *session, char **psdp){
+	if(session==NULL) return ERROR_RTC_CONNECT;
+
 	int32_t localport=session->context.streamConfig->localPort;
 	YangStreamOptType role=session->context.streamConfig->streamOptType;
-	if(session->context.avinfo->rtc.iceUsingLocalIp==0)
-		session->ice.initIce(&session->ice.session);
+	int32_t err = Yang_Ok;
+	if(!session->context.avinfo->rtc.iceUsingLocalIp&&(err=session->ice.initIce(&session->ice.session))!=Yang_Ok){
+		return yang_error_wrap(err,"ice request fail(%s)",session->ice.session.candidateType==YangIceStun?"STUN":"TURN");
+	}
 
 	return yang_sdp_genLocalSdp(session,localport, psdp,role);
 }
 
 int32_t yang_rtcconn_createAnswer(YangRtcSession *session, char *answer){
-
+	if(session==NULL || answer==NULL) return ERROR_RTC_CONNECT;
 	session->context.streamConfig->isServer=yangtrue;
 	session->isServer=yangtrue;
 
@@ -603,52 +611,68 @@ int32_t yang_rtcconn_createAnswer(YangRtcSession *session, char *answer){
 }
 
 int32_t yang_rtcconn_createHttpAnswer(YangRtcSession *session, char *answer){
-
+	if(session==NULL || answer==NULL) return ERROR_RTC_CONNECT;
 	return yang_sdp_getAnswerSdp(session, answer);
 }
 
 
 int32_t yang_rtcconn_startRtc(YangRtcSession* session,char* sdp){
-
-	yang_trace("\nstartRtc,port=%d",session->context.streamConfig->localPort);
-
-	session->isServer=session->context.streamConfig->isServer;
-
-	yang_rtcconn_getRemoteSdp(session,sdp);
-
-	session->ice.session.stun.createRequestStunPacket(session,session->remoteIcePwd);
-
-
-	if(session->context.avinfo->sys.mediaServer==Yang_Server_P2p){
-		if(session->context.avinfo->rtc.iceUsingLocalIp==0 &&
-				session->ice.iceHandle(&session->ice.session,session,yang_rtcconn_turn_receive,
-						session->context.streamConfig->remoteIp,session->context.streamConfig->remotePort)==YangIceTurn){
-			yang_create_rtcsocket(session->context.sock,session->context.avinfo->sys.familyType,Yang_Socket_Protocol_Udp,session->context.streamConfig->localPort);
-			session->context.sock->sendData=yang_rtcconn_turn_sendData;
-			yang_rtcconn_startudp(session);
-			g_yang_startStunTimer(session->context.sock->session.user);
-			return Yang_Ok;
+	if(session==NULL || sdp==NULL) return ERROR_RTC_PEERCONNECTION;
+		int32_t err=Yang_Ok;
+		if(session->context.avinfo->sys.mediaServer==Yang_Server_P2p && !session->context.avinfo->rtc.iceUsingLocalIp
+					&& session->ice.session.iceState==YangIceFail) {
+			yang_error("p2p ice error!");
+			return ERROR_RTC_PEERCONNECTION;
 		}
-	}
 
-	yang_create_rtcsocket(session->context.sock,session->context.avinfo->sys.familyType,(YangSocketProtocol)session->context.avinfo->rtc.rtcSocketProtocol,session->context.streamConfig->localPort);
+		yang_trace("\nstartRtc,port=%d",session->context.streamConfig->localPort);
 
-#if Yang_Enable_Tcp_Srs
-	if(session->context.avinfo->sys.mediaServer==Yang_Server_Srs)
-			yang_create_rtcsocket_srs(session->context.sock,(YangSocketProtocol)session->context.avinfo->rtc.rtcSocketProtocol);
-#endif
-	session->context.sock->updateRemoteAddress(&session->context.sock->session,session->context.streamConfig->remoteIp,session->isServer?0:session->context.streamConfig->remotePort);
-	yang_rtcconn_startudp(session);
-	session->context.sock->start(&session->context.sock->session);
-	return Yang_Ok;
+
+		session->isServer=session->context.streamConfig->isServer;
+
+		yang_rtcconn_getRemoteSdp(session,sdp);
+
+		session->ice.session.stun.createRequestStunPacket(session,session->remoteIcePwd);
+
+		if(session->context.avinfo->sys.mediaServer==Yang_Server_P2p&&!session->context.avinfo->rtc.iceUsingLocalIp){
+
+			if(session->ice.session.candidateType>YangIceHost)
+				yang_trace("\nstart ice %s",session->ice.session.candidateType==YangIceTurn?"TRUN":"STUN");
+
+			if((err=session->ice.iceHandle(&session->ice.session,session,yang_rtcconn_turn_receive,
+					session->context.streamConfig->remoteIp,session->context.streamConfig->remotePort))!=Yang_Ok){
+				return yang_error_wrap(err,"setRemoteDescription error!");
+			}
+
+			if(session->ice.session.candidateType==YangIceTurn&&session->ice.session.iceState==YangIceSuccess){
+				err=yang_create_rtcsocket(session->context.sock,session->context.avinfo->sys.familyType,Yang_Socket_Protocol_Udp,session->context.streamConfig->localPort);
+				if(err!=Yang_Ok) return yang_error_wrap(err,"setRemoteDescription error!");
+				session->context.sock->write=yang_rtcconn_turn_sendData;
+				yang_rtcconn_startudp(session);
+				g_yang_startStunTimer(session->context.sock->session.user);
+				return Yang_Ok;
+			}
+		}
+
+		err=yang_create_rtcsocket(session->context.sock,session->context.avinfo->sys.familyType,(YangSocketProtocol)session->context.avinfo->rtc.rtcSocketProtocol,session->context.streamConfig->localPort);
+		if(err!=Yang_Ok) return yang_error_wrap(err,"setRemoteDescription error!");
+	#if Yang_Enable_Tcp_Srs
+		if(session->context.avinfo->sys.mediaServer==Yang_Server_Srs)
+				yang_create_rtcsocket_srs(session->context.sock,(YangSocketProtocol)session->context.avinfo->rtc.rtcSocketProtocol);
+	#endif
+		session->context.sock->updateRemoteAddress(&session->context.sock->session,session->context.streamConfig->remoteIp,session->isServer?0:session->context.streamConfig->remotePort);
+		yang_rtcconn_startudp(session);
+		session->context.sock->start(&session->context.sock->session);
+		return Yang_Ok;
 }
 
 int32_t yang_rtcconn_isConnected(YangRtcSession* session){
+	if (session == NULL)		return yangfalse;
 	return session->context.state;
 }
 
-void yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* streamconfig,YangAVInfo* avinfo){
-	if (conn == NULL)		return;
+int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* streamconfig,YangAVInfo* avinfo){
+	if (conn == NULL ||streamconfig == NULL || avinfo==NULL)		return ERROR_RTC_CONNECT;
     YangRtcSession* session=(YangRtcSession*)yang_calloc(sizeof(YangRtcSession),1);
 	conn->session=session;
 	yang_create_rtcContext(&session->context);
@@ -686,6 +710,7 @@ void yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* streamc
 	conn->createHttpAnswer=yang_rtcconn_createHttpAnswer;
 
 	conn->isConnected=yang_rtcconn_isConnected;
+	return Yang_Ok;
 
 }
 

@@ -339,7 +339,7 @@ int32_t yang_mbed_sendCallback(void* user, const unsigned char* data, size_t len
 {
 	YangDtlsSession* dtls = (YangDtlsSession*) user;
 
-	if (len > 0&& dtls->sock->sendData(&dtls->sock->session,(char*)data, len)!= Yang_Ok) {
+	if (len > 0&& dtls->sock->write(&dtls->sock->session,(char*)data, len)!= Yang_Ok) {
 		return yang_error_wrap(-1, "error dtls send size=%u",len);
 	}
 	yang_filter_data(dtls,(uint8_t*)data,len);

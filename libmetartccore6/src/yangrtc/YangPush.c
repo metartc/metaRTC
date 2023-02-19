@@ -18,7 +18,7 @@ int32_t yang_send_avpacket(YangRtcSession *session, YangRtpPacket *pkt,	YangBuff
 	}
 #endif
 
-	return session->context.sock->sendData(&session->context.sock->session, pbuf->data, nn_encrypt);
+	return session->context.sock->write(&session->context.sock->session, pbuf->data, nn_encrypt);
 }
 
 int32_t yang_send_nackpacket(YangRtcContext *context, char *data, int32_t nb) {
@@ -29,5 +29,5 @@ int32_t yang_send_nackpacket(YangRtcContext *context, char *data, int32_t nb) {
 		return yang_error_wrap(err, "srtp protect");
 	}
 #endif
-	return context->sock->sendData(&context->sock->session, data, nn_encrypt);
+	return context->sock->write(&context->sock->session, data, nn_encrypt);
 }

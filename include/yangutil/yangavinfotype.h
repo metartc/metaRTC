@@ -14,18 +14,18 @@ typedef struct YangAudioInfo {
 	int32_t bitrate;
 	int32_t channel;
 
-	int32_t enableMono;
-	int32_t enableAec;
+	yangbool enableMono;
+	yangbool enableAec;
 	int32_t echoPath;
 
-	int32_t enableAudioFec;
+	yangbool enableAudioFec;
 
 	int32_t aecBufferFrames;
 	int32_t audioCacheSize;
 	int32_t audioCacheNum;
 	int32_t audioPlayCacheNum;
 
-	int32_t enableAudioHeader;
+	yangbool enableAudioHeader;
 	int32_t audioEncoderType;
 	int32_t audioDecoderType;
 	int32_t audioPlayType;
@@ -96,11 +96,11 @@ typedef struct YangSysInfo {
 
 typedef struct YangRtcInfo {
 	int32_t sessionTimeout;
-	int32_t enableDatachannel;
+	yangbool enableDatachannel;
 	int32_t iceCandidateType;
-	int32_t iceUsingLocalIp;
+	yangbool iceUsingLocalIp;
 	int32_t iceServerPort;
-	int32_t enableAudioBuffer;
+	yangbool enableAudioBuffer;
 	int32_t rtcSocketProtocol;
 	int32_t turnSocketProtocol;
 	char iceServerIP[64];

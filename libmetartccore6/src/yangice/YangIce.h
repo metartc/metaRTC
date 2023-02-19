@@ -19,6 +19,7 @@ typedef struct{
 	YangSocketProtocol turnSocketProtocol;
 	YangSocketProtocol rtcSocketProtocol;
 	YangIceCandidateType candidateType;
+	YangIceCandidateState iceState;
 	YangTurnConnection* turnconn;
 	YangIceServer server;
 	YangRtcStun stun;
@@ -26,8 +27,8 @@ typedef struct{
 
 typedef struct{
 	YangIceSession session;
-	void (*initIce)(YangIceSession *session);
-	YangIceCandidateType (*iceHandle)(YangIceSession* session,void* rtcSession,yang_turn_receive receive,char* remoteIp,int32_t remotePort);
+	int32_t (*initIce)(YangIceSession *session);
+	int32_t (*iceHandle)(YangIceSession* session,void* rtcSession,yang_turn_receive receive,char* remoteIp,int32_t remotePort);
 }YangIce;
 
 void yang_create_ice(YangIce* ice,YangStreamConfig* config,YangAVInfo* avinfo);

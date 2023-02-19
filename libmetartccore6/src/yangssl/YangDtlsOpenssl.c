@@ -192,7 +192,7 @@ int32_t yang_run_rtcdtls_app(YangDtlsSession *dtls) {
 		uint8_t *data = NULL;
 		int32_t size = BIO_get_mem_data(dtls->bioOut, (char** )&data);
 		arq_count++;
-		if (size > 0&& (err = dtls->sock->sendData(&dtls->sock->session,(char*)data, size)) != Yang_Ok) {
+		if (size > 0&& (err = dtls->sock->write(&dtls->sock->session,(char*)data, size)) != Yang_Ok) {
 			return yang_error_wrap(ERROR_RTC_DTLS, "error dtls send size=%u",size);
 		}
 	}
@@ -328,7 +328,7 @@ int32_t yang_doHandshake(YangDtlsSession *dtls) {
 
 	yang_filter_data(dtls, data, size);
 
-	if (size > 0)	dtls->sock->sendData(&dtls->sock->session, (char*) data, size);
+	if (size > 0)	dtls->sock->write(&dtls->sock->session, (char*) data, size);
 
 
 
@@ -386,7 +386,7 @@ int32_t yang_process_dtls_data(void* user,YangDtlsSession *dtls, char *data, int
 			uint8_t *data = NULL;
 			int32_t size = BIO_get_mem_data(dtls->bioOut, (char** )&data);
 			if (size > 0 && dtls->sock)
-				dtls->sock->sendData(&dtls->sock->session, (char*) data, size);
+				dtls->sock->write(&dtls->sock->session, (char*) data, size);
 			continue;
 		}else{
 			if(user==NULL) continue;
@@ -422,7 +422,7 @@ int32_t yang_sendDtlsAlert(YangDtlsSession *dtls) {
 	uint8_t *data = NULL;
 	int32_t size = BIO_get_mem_data(dtls->bioOut, (char** )&data);
 	if (size > 0 && dtls->sock)
-		dtls->sock->sendData(&dtls->sock->session, (char*) data, size);
+		dtls->sock->write(&dtls->sock->session, (char*) data, size);
 
 	return Yang_Ok;
 }
@@ -441,7 +441,7 @@ int32_t yang_dtls_sendSctpData(YangDtlsSession* dtls,uint8_t* pdata, int32_t nb)
 
 	if ((pending = BIO_ctrl_pending(dtls->bioOut)) > 0) {
 		pending = BIO_read(dtls->bioOut, data, pending);
-		if (pending > 0&& (err = dtls->sock->sendData(&dtls->sock->session,(char*)data, pending)) != Yang_Ok) {
+		if (pending > 0&& (err = dtls->sock->write(&dtls->sock->session,(char*)data, pending)) != Yang_Ok) {
 			return yang_error_wrap(ERROR_RTC_DTLS, "error dtls send size=%u",pending);
 		}
 	}

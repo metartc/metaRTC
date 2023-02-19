@@ -109,11 +109,11 @@ void yang_avinfo_initEnc(YangVideoEncInfo *enc) {
 
 void yang_avinfo_initRtc(YangRtcInfo *rtc) {
 	rtc->sessionTimeout= 30*1000000;
-	rtc->enableDatachannel=1;
+	rtc->enableDatachannel = yangtrue;
 	rtc->iceCandidateType = 0;
-	rtc->enableAudioBuffer = 0;
+	rtc->enableAudioBuffer = yangfalse;
 
-	rtc->iceUsingLocalIp=0;
+	rtc->iceUsingLocalIp=yangfalse;
 	rtc->iceServerPort=3478;
 
 	rtc->rtcSocketProtocol=Yang_Socket_Protocol_Udp;

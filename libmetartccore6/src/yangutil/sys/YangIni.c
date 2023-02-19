@@ -165,13 +165,13 @@ void yang_ini_initVideo(char* filename,YangVideoInfo* video){
 }
 void yang_ini_initAudio(char* filename,YangAudioInfo* audio){
 	yang_memset(audio,0,sizeof(YangAudioInfo));
-	audio->sample=yang_ini_readIntValue(filename,"audio", "sample", 44100);
-	audio->frameSize=yang_ini_readIntValue(filename,"audio", "frameSize", 1024);
+	audio->sample=yang_ini_readIntValue(filename,"audio", "sample", 48000);
+	audio->frameSize=yang_ini_readIntValue(filename,"audio", "frameSize", 960);
 	audio->channel=yang_ini_readIntValue(filename,"audio", "channel", 2);
 	audio->bitrate = yang_ini_readIntValue(filename,"audio", "bitrate", 128);
-	audio->enableMono=yang_ini_readIntValue(filename,"audio", "enableMono", 0);
-	audio->enableAec = yang_ini_readIntValue(filename,"audio", "enableAec", 0);
-	audio->enableAudioFec = yang_ini_readIntValue(filename,"audio", "enableAudioFec", 1);
+	audio->enableMono=yang_ini_readIntValue(filename,"audio", "enableMono", yangfalse);
+	audio->enableAec = yang_ini_readIntValue(filename,"audio", "enableAec", yangfalse);
+	audio->enableAudioFec = yang_ini_readIntValue(filename,"audio", "enableAudioFec", yangtrue);
 
 	audio->echoPath = yang_ini_readIntValue(filename,"audio", "echoPath", 10);
 	audio->aecBufferFrames=yang_ini_readIntValue(filename,"audio", "aecBufferFrames", 0);
@@ -200,10 +200,10 @@ void yang_ini_initSys(char* filename,YangSysInfo *sys){
 	sys->familyType = (YangIpFamilyType)yang_ini_readIntValue(filename,"sys", "familyType", Yang_IpFamilyType_IPV4);
 
 	sys->enableHttps=(yangbool)yang_ini_readIntValue(filename,"sys", "enableHttps", yangfalse);
-	sys->enableMqttTls = yang_ini_readIntValue(filename,"sys", "enableMqttTls", 0);
+	sys->enableMqttTls = yang_ini_readIntValue(filename,"sys", "enableMqttTls", yangfalse);
 	sys->enableLogFile=yang_ini_readIntValue(filename,"sys", "enableLogFile", yangtrue);
 
-	sys->transType = yang_ini_readIntValue(filename,"sys", "transType", 0);
+	sys->transType = yang_ini_readIntValue(filename,"sys", "transType", Yang_Webrtc);
 	sys->mediaServer = yang_ini_readIntValue(filename,"sys", "mediaServer", 0);
 
 	sys->httpPort = yang_ini_readIntValue(filename,"sys", "httpPort", 1988);
@@ -239,7 +239,7 @@ void yang_ini_initEnc(char* filename,YangVideoEncInfo *enc){
 void yang_ini_initRtc(char* filename,YangRtcInfo *rtc){
 	yang_memset(rtc,0,sizeof(YangRtcInfo));
 	rtc->sessionTimeout = yang_ini_readIntValue(filename,"rtc", "sessionTimeout",  30*1000000);
-	rtc->enableDatachannel = yang_ini_readIntValue(filename,"rtc", "enableDatachannel", 1);
+	rtc->enableDatachannel = yang_ini_readIntValue(filename,"rtc", "enableDatachannel", yangtrue);
 	rtc->iceCandidateType = yang_ini_readIntValue(filename,"rtc", "iceCandidateType", 0);
 	rtc->iceUsingLocalIp = yang_ini_readIntValue(filename,"rtc", "iceUsingLocalIp", 0);
 	rtc->iceServerPort = yang_ini_readIntValue(filename,"rtc", "iceServerPort", 3478);
@@ -247,7 +247,6 @@ void yang_ini_initRtc(char* filename,YangRtcInfo *rtc){
 
 	rtc->rtcSocketProtocol = yang_ini_readIntValue(filename,"rtc", "rtcSocketProtocol", Yang_Socket_Protocol_Udp);
 	rtc->turnSocketProtocol = yang_ini_readIntValue(filename,"rtc", "turnSocketProtocol",Yang_Socket_Protocol_Udp);
-	//rtc->videoQueueCount = yang_ini_readIntValue(filename,"rtc", "videoQueueCount", 5);
 
 	yang_ini_readStringValue(filename,"rtc", "iceServerIP", rtc->iceServerIP, "127.0.0.1");
 	yang_ini_readStringValue(filename,"rtc", "iceLocalIP", rtc->iceLocalIP, "127.0.0.1");

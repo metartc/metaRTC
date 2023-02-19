@@ -23,7 +23,7 @@ int32_t yang_send_rtcppacket(YangRtcContext *context, char *data, int32_t nb) {
 	}
 #endif
 
-	return context->sock->sendData(&context->sock->session, data, nn_encrypt);
+	return context->sock->write(&context->sock->session, data, nn_encrypt);
 }
 
 
@@ -211,7 +211,7 @@ int32_t yang_check_send_nacks(YangRtcContext *context, YangRtpRecvNack *nack,
 	}
 #endif
 
-	context->sock->sendData(&context->sock->session, stream.data, nb_protected_buf);
+	context->sock->write(&context->sock->session, stream.data, nb_protected_buf);
 	yang_rtcpNack_clear(nack->rtcp.nack);
 
 	return Yang_Ok;

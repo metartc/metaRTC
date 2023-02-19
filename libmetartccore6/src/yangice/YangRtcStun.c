@@ -569,12 +569,13 @@ int32_t yang_stun_createResponseStunPacket(YangStunPacket* request,void* psessio
 
 	packet.mapped_address=yang_addr_getIP(&session->context.sock->session.remote_addr);
 	packet.mapped_port=yang_addr_getPort(&session->context.sock->session.remote_addr);
+
 	yang_memcpy(packet.transcation_id,request->transcation_id,12);
 	yang_strcpy(packet.local_ufrag,session->local_ufrag);
 	yang_strcpy(packet.remote_ufrag,session->remote_ufrag);
 	yang_stun_encode_binding_response(&packet,session->localIcePwd,&stream);
 
-	return session->context.sock->sendData(&session->context.sock->session,stream.data, yang_buffer_pos(&stream));
+	return session->context.sock->write(&session->context.sock->session,stream.data, yang_buffer_pos(&stream));
 }
 
 

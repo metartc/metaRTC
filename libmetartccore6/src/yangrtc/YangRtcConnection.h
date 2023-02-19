@@ -34,7 +34,7 @@ typedef struct{
 extern "C"{
 #endif
 
-void yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* streamconfig,YangAVInfo* avinfo);
+int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* streamconfig,YangAVInfo* avinfo);
 void yang_destroy_rtcConnection(YangRtcConnection* conn);
 
 

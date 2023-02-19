@@ -13,7 +13,6 @@ typedef void* (*yang_rtcsocket_thread_app)(void *obj);
 
 
 typedef struct{
-	//int32_t mediaServer;
 	yang_socket_t fd;
 
 	yangbool isStart;
@@ -43,9 +42,8 @@ typedef struct {
 	YangRtcSocketSession session;
 	void (*updateRemoteAddress)(YangRtcSocketSession *sock,char* remoteIp,int32_t port);
 	void (*start)(YangRtcSocketSession* sock);
-    //void (*start2)(YangRtcSocketSession2* sock,yang_rtcsocket_thread_app thread_app);
 	void (*stop)(YangRtcSocketSession* sock);
-	int32_t (*sendData)(YangRtcSocketSession* sock,char* p,int32_t plen);
+	int32_t (*write)(YangRtcSocketSession* sock,char* buffer,int32_t bufferLen);
 }YangRtcSocket;
 
 int32_t yang_create_rtcsocket(YangRtcSocket* sock,YangIpFamilyType familyType,YangSocketProtocol protocol,int32_t plocalPort);
