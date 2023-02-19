@@ -180,7 +180,7 @@ void YangP2pRtc::sendRtcMessage(int32_t puid,YangRtcMessageType mess){
 
 //向对端发起连接
 int32_t YangP2pRtc::connectPeer(int32_t nettype, char* server,int32_t localPort,int32_t pport,char* app,char* stream) {
-	int32_t ret = 0;
+	int32_t err = 0;
 	YangPeerConnection* sh=(YangPeerConnection*)calloc(sizeof(YangPeerConnection),1);
 
 	strcpy(sh->peer.streamconfig.app,app);
@@ -205,23 +205,27 @@ int32_t YangP2pRtc::connectPeer(int32_t nettype, char* server,int32_t localPort,
 	yang_create_peerConnection(sh);
     sh->init(&sh->peer);
 
+	char* localSdp=NULL;
+	char* remoteSdp=NULL;
+	if((err=sh->createOffer(&sh->peer, &localSdp))!=Yang_Ok){
+		yang_error("createOffer fail,app=%s,stream=%s",app,stream);
+		goto cleanup;
+	}
 
-	if (sh->isConnected(&sh->peer))		return Yang_Ok;
-	char* localSdp;
-	char* remoteSdp=(char*)calloc(12*1000,1);
-
-	sh->createOffer(&sh->peer, &localSdp);
+	remoteSdp=(char*)yang_calloc(12*1000,1);
     //连接对端http服务交换sdp
-	yang_p2p_getHttpSdp(m_context->avinfo.sys.familyType,server,pport,localSdp,remoteSdp);
-	ret=sh->setRemoteDescription(&sh->peer,remoteSdp);
+    yang_p2p_getHttpSdp(m_context->avinfo.sys.familyType,server,pport,localSdp,remoteSdp);
+	if((err=sh->setRemoteDescription(&sh->peer,remoteSdp))!=Yang_Ok){
+		yang_error("setRemoteDescription fail,app=%s,stream=%s",app,stream);
+		goto cleanup;
+	}
 
-	yang_free(localSdp);
-	yang_free(remoteSdp);
-	if (ret)		return ret;
 	yang_thread_mutex_lock(&m_mutex);
 	m_pushs.insert(&m_pushs.vec,sh);
 	yang_thread_mutex_unlock(&m_mutex);
+
 	if(m_context) m_context->streams.connectNotify(sh->peer.streamconfig.uid,sh->peer.streamconfig.streamOptType, true);
+
 	if(m_pushs.vec.vsize==1){
 		yang_reindex(m_in_audioBuffer);
 		yang_reindex(m_in_videoBuffer);
@@ -229,11 +233,15 @@ int32_t YangP2pRtc::connectPeer(int32_t nettype, char* server,int32_t localPort,
 	if(m_p2pRtcI) m_p2pRtcI->sendKeyframe();
 
 	return Yang_Ok;
+	cleanup:
+		yang_free(localSdp);
+		yang_free(remoteSdp);
+		return err;
 
 }
 //取得对端sdp后，启动metartc并answer sdp
 int32_t YangP2pRtc::addPeer(char* sdp,char* answer,char* remoteIp,int32_t localPort,int* phasplay) {
-	int32_t ret = 0;
+	int32_t err = 0;
 	YangPeerConnection* sh=(YangPeerConnection*)calloc(sizeof(YangPeerConnection),1);
 	memset(&sh->peer.streamconfig,0,sizeof(sh->peer.streamconfig));
 	sh->peer.streamconfig.uid=m_uidSeq++;
@@ -253,13 +261,14 @@ int32_t YangP2pRtc::addPeer(char* sdp,char* answer,char* remoteIp,int32_t localP
 	yang_create_peerConnection(sh);
 
     sh->init(&sh->peer);
-	if (sh->isConnected(&sh->peer))		return Yang_Ok;
 
-	ret = sh->setRemoteDescription(&sh->peer,sdp);
+	if ((err= sh->setRemoteDescription(&sh->peer,sdp))!=Yang_Ok)
+		return yang_error_wrap(err,"setRemoteDescription fail!");
 
-	if (ret)		return ret;
 	//取得answer传回对端
-	ret = sh->createHttpAnswer(&sh->peer,answer);
+	if ((err = sh->createHttpAnswer(&sh->peer,answer))!=Yang_Ok)
+			return yang_error_wrap(err,"createHttpAnswer fail!");
+
 	yang_thread_mutex_lock(&m_mutex);
 	m_pushs.insert(&m_pushs.vec,sh);
 	yang_thread_mutex_unlock(&m_mutex);
