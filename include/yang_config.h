@@ -6,6 +6,7 @@
 #define INCLUDE_YANG_CONFIG_H_
 
 #define Yang_Enable_Datachannel 1
+#define Yang_Enable_Mqtt     1
 #define Yang_Enable_Openh264 1
 
 #if _WIN32

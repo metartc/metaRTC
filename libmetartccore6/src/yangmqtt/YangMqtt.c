@@ -5,7 +5,7 @@
 
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/sys/YangCString.h>
-
+#if Yang_Enable_Mqtt
 #include "YangMqttImpl.h"
 
 typedef struct {
@@ -280,4 +280,4 @@ int32_t yang_mqtt_recvmsg(yang_socket_t fd, void* buf, int32_t bufsz, int32_t fl
     return (char*)buf - (const char*)start;
 }
 #endif
-
+#endif

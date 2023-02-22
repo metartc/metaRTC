@@ -16,6 +16,8 @@
 typedef SSIZE_T ssize_t;
 #endif
 
+#if Yang_Enable_Mqtt
+
  typedef enum {
     MQTT_CONTROL_CONNECT=1u,
     MQTT_CONTROL_CONNACK=2u,
@@ -372,5 +374,5 @@ YangmqttErrors yang_mqtt_reconnect(yang_mqtt_client *client);
 
 int32_t yang_mqtt_sendmsg(yang_socket_t fd, const void* buf, int32_t len);
 int32_t yang_mqtt_recvmsg(yang_socket_t fd, void* buf, int32_t bufsz, int32_t flags);
-
+#endif
 #endif

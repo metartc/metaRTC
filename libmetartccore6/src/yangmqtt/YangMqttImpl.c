@@ -3,7 +3,7 @@
 // base on Liam Bindle MQTT-C
 //
 #include "YangMqttImpl.h"
-
+#if Yang_Enable_Mqtt
 
 YangmqttErrors yang_mqtt_sync(yang_mqtt_client *client) {
    // Recover from any errors
@@ -1742,3 +1742,4 @@ const char* yang_mqtt_error_str(YangmqttErrors error) {
         return MQTT_ERRORS_STR[0];
     }
 }
+#endif
