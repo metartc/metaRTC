@@ -4,15 +4,14 @@
 #ifndef INCLUDE_YANGUTIL_SYS_YANGCSTRING_H_
 #define INCLUDE_YANGUTIL_SYS_YANGCSTRING_H_
 
-#include <stdint.h>
-#include <stdlib.h>
-
+#include <yangutil/yangtype.h>
 
 typedef struct {
     int32_t capacity;
     int32_t vsize;
     char **str;
 }YangStrings;
+
 #ifdef __cplusplus
 extern "C"{
 #endif

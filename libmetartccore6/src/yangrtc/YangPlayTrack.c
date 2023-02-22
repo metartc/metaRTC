@@ -158,7 +158,7 @@ void yang_playtrack_receiveVideo(YangRtcContext *context,YangFrame *videoFrame) 
     if (first == 0x17) {
 
 #if Yang_Rtp_I_Withmeta
-    	if(context->avcontext->avinfo->video.videoDecHwType==Yang_Hw_Soft){
+    	if(context->avinfo->video.videoDecHwType==Yang_Hw_Soft){
     		videoFrame->frametype =YANG_Frametype_I;
     		goto sendevideo;
     	}

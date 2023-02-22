@@ -16,8 +16,8 @@ typedef struct {
 	YangAVInfo* avinfo;
 	YangMqttCallback callback;
 	yang_mqtt_client client;
-	uint8_t sendbuf[2048];
-	uint8_t recvbuf[1024];
+	uint8_t *sendbuf;
+	uint8_t *recvbuf;
 } YangMqttSession;
 
 void yang_mqttc_publish_callback(void *state, yang_mqtt_response_publish *published) {
@@ -51,7 +51,7 @@ void* yang_mqttc_rtcrecv_start_thread(void *obj) {
 	return NULL;
 }
 
-int32_t yang_mqttc_connect(void* psession,char *remoteIp,int32_t remotePort,char* username,char* password) {
+int32_t yang_mqttc_connect(void* psession,int32_t sendBufferSize,int32_t recvBufferSize,char *remoteIp,int32_t remotePort,char* username,char* password) {
 	if(psession == NULL || remoteIp == NULL) return 1;
 	YangMqttSession *session=(YangMqttSession*)psession;
 
@@ -72,8 +72,11 @@ int32_t yang_mqttc_connect(void* psession,char *remoteIp,int32_t remotePort,char
 
 	yang_socket_setNonblock(session->sockfd);
 
-	yang_mqtt_init(&session->client, session->sockfd, session->sendbuf, sizeof(session->sendbuf),
-			session->recvbuf, sizeof(session->recvbuf), yang_mqttc_publish_callback);
+	if(session->sendbuf==NULL) session->sendbuf=(uint8_t*)yang_calloc(sendBufferSize,1);
+	if(session->recvbuf==NULL) session->recvbuf=(uint8_t*)yang_calloc(recvBufferSize,1);
+
+	yang_mqtt_init(&session->client, session->sockfd, session->sendbuf, sendBufferSize,
+			session->recvbuf, recvBufferSize, yang_mqttc_publish_callback);
 
 	uint8_t connect_flags = MQTT_CONNECT_CLEAN_SESSION;
 	session->client.publish_response_callback_state=session;
@@ -136,6 +139,8 @@ int32_t yang_mqttc_close(void* psession){
 		yang_socket_close(session->sockfd);
 	}
 	session->sockfd=-1;
+	yang_free(session->sendbuf);
+	yang_free(session->recvbuf);
 
 	return Yang_Ok;
 }
@@ -157,6 +162,9 @@ int32_t yang_create_mqtt(YangMqtt* mqtt,YangAVInfo* avinfo,YangMqttCallback* mqt
 	session->isLoop=yangfalse;
 	session->isStart=yangfalse;
 	session->sockfd=-1;
+
+	session->sendbuf=NULL;
+	session->recvbuf=NULL;
 
 	mqtt->session=session;
 	mqtt->connect=yang_mqttc_connect;
