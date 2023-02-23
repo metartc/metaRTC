@@ -14,10 +14,14 @@ typedef struct {
 	yangbool isStart;
 
 	YangAVInfo* avinfo;
-	YangMqttCallback callback;
-	yang_mqtt_client client;
+
 	uint8_t *sendbuf;
 	uint8_t *recvbuf;
+
+	char clientId[13];
+
+	YangMqttCallback callback;
+	yang_mqtt_client client;
 } YangMqttSession;
 
 void yang_mqttc_publish_callback(void *state, yang_mqtt_response_publish *published) {
@@ -80,9 +84,8 @@ int32_t yang_mqttc_connect(void* psession,int32_t sendBufferSize,int32_t recvBuf
 
 	uint8_t connect_flags = MQTT_CONNECT_CLEAN_SESSION;
 	session->client.publish_response_callback_state=session;
-	char clientId[13]={0};
-	yang_cstr_random(12,clientId);
-	int32_t err=yang_mqtt_connect(&session->client, clientId, NULL, NULL, 0, username, password,
+
+	int32_t err=yang_mqtt_connect(&session->client, session->clientId, NULL, NULL, 0, username, password,
 			connect_flags, 400);
 	if(err!=MQTT_OK){
 		yang_error("\nmqtt_connect fail(%d)",err);
@@ -152,6 +155,13 @@ int32_t yang_mqttc_publish(void* psession,char* topic,char* msg){
 	return Yang_Ok;
 }
 
+char* 	yang_mqttc_getClientId(void* psession){
+	if(psession==NULL ) return NULL;
+	YangMqttSession* session=(YangMqttSession*)psession;
+	return session->clientId;
+}
+
+
 int32_t yang_create_mqtt(YangMqtt* mqtt,YangAVInfo* avinfo,YangMqttCallback* mqttcb){
 	if(mqtt==NULL || avinfo==NULL || mqttcb==NULL) return 1;
 	YangMqttSession* session=(YangMqttSession*)yang_calloc(sizeof(YangMqttSession),1);
@@ -165,6 +175,10 @@ int32_t yang_create_mqtt(YangMqtt* mqtt,YangAVInfo* avinfo,YangMqttCallback* mqt
 
 	session->sendbuf=NULL;
 	session->recvbuf=NULL;
+
+
+	yang_cstr_random(12,session->clientId);
+	mqtt->getClientId=yang_mqttc_getClientId;
 
 	mqtt->session=session;
 	mqtt->connect=yang_mqttc_connect;

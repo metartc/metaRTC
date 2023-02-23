@@ -6,8 +6,9 @@
 #define INCLUDE_YANG_CONFIG_H_
 
 #define Yang_Enable_Datachannel 1
-#define Yang_Enable_Mqtt     1
-#define Yang_Enable_Openh264 1
+#define Yang_Enable_Mqtt        1
+#define Yang_Enable_Json        0
+#define Yang_Enable_Openh264    1
 
 #if _WIN32
 #define Yang_Enable_Openssl 1
@@ -65,7 +66,6 @@
 #define Yang_Enable_PicUtilFfmpeg 0
 #define Yang_Enable_Websockets 1 //using libwebsockets
 #define Yang_Enable_Curl 0   //using libcurl
-#define Yang_Enable_Json 0 //using jsonlib
 
 #define Yang_Enable_RtcpXr 0
 #define Yang_Rtp_I_Withmeta 0

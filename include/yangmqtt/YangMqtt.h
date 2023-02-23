@@ -19,6 +19,7 @@ typedef struct{
 	int32_t (*publish)(void* session,char* topic,char* msg);
 	int32_t (*subscribe)(void* session,char* topic);
 	int32_t (*unsubscribe)(void* session,char* topic);
+	char* 	(*getClientId)(void* session);
 }YangMqtt;
 
 #ifdef __cplusplus
