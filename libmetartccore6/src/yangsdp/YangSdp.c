@@ -128,8 +128,10 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 #endif
 
 	yang_sprintf(local_sdp->group_policy,"%s","BUNDLE");
-	for(int a=0;a<midNum;a++){
-		yang_sprintf(local_sdp->group_policy,"%s %d",local_sdp->group_policy,a);
+	char* group_policy=NULL;
+	for(int32_t a=0;a<midNum;a++){
+		group_policy=local_sdp->group_policy+yang_strlen(local_sdp->group_policy);
+		yang_sprintf(group_policy," %d",a);
 	}
 
 	//sendrecv

@@ -20,13 +20,14 @@ yang_vector_impl2(YangTurnPeer)
 
 void yang_turn_addFingerprint(YangTurnSession *session, YangBuffer *stream,
 		yangbool addFingerprint) {
+	if(session==NULL || stream==NULL) return;
 	uint32_t ret = 0;
 	stream->data[2] = ((yang_buffer_pos(stream) - 20 + 24) & 0x0000FF00) >> 8;
 	stream->data[3] = ((yang_buffer_pos(stream) - 20 + 24) & 0x000000FF);
 
-	char keystr[128] = { 0 };
+	char keystr[256] = { 0 };
 	char key[128] = { 0 };
-	yang_snprintf(keystr, sizeof(keystr), "%s:%s:%s", session->server->username,
+	yang_snprintf(keystr, sizeof(keystr),"%s:%s:%s", session->server->username,
 			session->realm, session->server->password);
 
 
@@ -51,7 +52,7 @@ void yang_turn_addFingerprint(YangTurnSession *session, YangBuffer *stream,
 
 int32_t yang_turn_encode_allocate(YangTurnSession *session, uint8_t protocol,
 		yangbool beforCredential) {
-
+	if(session==NULL) return ERROR_RTC_TURN;
 	uint32_t ret = 0;
 	char s[1024] = { 0 };
 	YangBuffer stream;
@@ -107,7 +108,7 @@ int32_t yang_turn_encode_allocate(YangTurnSession *session, uint8_t protocol,
 }
 
 int32_t yang_turn_encode_refresh(YangTurnSession *session, yangbool isClose) {
-
+	if(session==NULL) return ERROR_RTC_TURN;
 	uint32_t ret = 0;
 	char s[1024] = { 0 };
 	YangBuffer stream;
@@ -156,7 +157,7 @@ int32_t yang_turn_encode_refresh(YangTurnSession *session, yangbool isClose) {
 
 int32_t yang_turn_encode_permission(YangTurnSession *session,
 		YangTurnPeer *peer) {
-
+	if(session==NULL || peer==NULL) return ERROR_RTC_TURN;
 	uint32_t ret = 0;
 	char s[1024] = { 0 };
 	YangBuffer stream;
@@ -202,7 +203,7 @@ int32_t yang_turn_encode_permission(YangTurnSession *session,
 
 int32_t yang_turn_encode_bindChannel(YangTurnSession *session,
 		YangTurnPeer *peer) {
-
+	if(session==NULL || peer==NULL) return ERROR_RTC_TURN;
 	uint32_t ret = 0;
 	char s[1024] = { 0 };
 	YangBuffer stream;
@@ -255,7 +256,7 @@ int32_t yang_turn_encode_bindChannel(YangTurnSession *session,
 
 int32_t yang_turn_encode_sendIndication(YangTurnSession *session,
 		YangTurnPeer *peer, char *data) {
-
+	if(session==NULL || peer==NULL || data==NULL) return ERROR_RTC_TURN;
 	uint32_t ret = 0;
 	char s[1024] = { 0 };
 	YangBuffer stream;
@@ -288,6 +289,7 @@ int32_t yang_turn_encode_sendIndication(YangTurnSession *session,
 }
 
 int32_t yang_turn_encode_request(YangTurnSession *session) {
+	if(session==NULL) return ERROR_RTC_TURN;
 	char tmp[1024] = { 0 };
 
 	YangBuffer stream;
@@ -302,6 +304,7 @@ int32_t yang_turn_encode_request(YangTurnSession *session) {
 
 int32_t yang_turn_decode(YangTurnSession *session, char *buf,
 		const int32_t nb_buf) {
+	if(session==NULL || buf==NULL) return ERROR_RTC_TURN;
 	int32_t err = Yang_Ok;
 
 	YangBuffer stream;
@@ -461,7 +464,7 @@ int32_t yang_turnconn_sendData(YangTurnSession *psession, int32_t uid,
 
 
 void yang_turnconn_updateNonce(YangTurnSession *session) {
-
+	if(session==NULL) return ;
 	if (session->response.nonceLen > 0) {
 
 		yang_memset(session->nonce, 0, sizeof(session->nonce));
@@ -473,7 +476,7 @@ void yang_turnconn_updateNonce(YangTurnSession *session) {
 
 int32_t yang_turnconn_handleError(YangTurnSession *session, char *data,
 		int32_t nb) {
-
+	if(session==NULL || data==NULL) return ERROR_RTC_TURN;
 	uint16_t stuntype = yang_get_be16((uint8_t*) data);
 	switch (stuntype) {
 	case StunAllocateErrorResponse:
@@ -519,6 +522,7 @@ int32_t yang_turnconn_handleError(YangTurnSession *session, char *data,
 
 int32_t yang_turnconn_handleRecv(YangTurnSession *session, char *data,
 		int32_t nb) {
+	if(session==NULL || data==NULL) return ERROR_RTC_TURN;
 	int32_t err = Yang_Ok;
 	uint16_t stuntype = yang_get_be16((uint8_t*) data);
 
@@ -591,6 +595,7 @@ int32_t yang_turnconn_handleRecv(YangTurnSession *session, char *data,
 }
 
 int32_t yang_turnconn_receive(YangTurnSession *session, char *data, int32_t nb) {
+	if(session==NULL || data==NULL) return ERROR_RTC_TURN;
 	int32_t err = Yang_Ok;
 	uint16_t stuntype = 0;
 	int32_t len = 0;
@@ -631,7 +636,7 @@ int32_t yang_turnconn_receive(YangTurnSession *session, char *data, int32_t nb) 
 }
 
 void yang_turnconn_refreshAllocate(YangTurnSession *session) {
-
+	if(session==NULL) return ;
 	YangTurnPeer *peer = NULL;
 	for (int32_t i = 0; i < session->peers.vec.vsize; i++) {
 		peer = session->peers.vec.payload[i];
@@ -656,6 +661,7 @@ void yang_turnconn_refreshAllocate(YangTurnSession *session) {
 }
 
 int32_t yang_run_turnconn_app(YangTurnSession *session) {
+	if(session==NULL) return ERROR_RTC_TURN;
 	int32_t err = Yang_Ok;
 	session->isLoop = 1;
 
@@ -734,6 +740,7 @@ void* yang_run_turnconn_handle_thread(void *obj) {
 }
 
 int32_t yang_turnconn_start(YangTurnSession *session) {
+	if(session==NULL) return ERROR_RTC_TURN;
 	if (session->isStart == 1)		return Yang_Ok;
 	int32_t err = Yang_Ok;
 
@@ -767,7 +774,7 @@ void yang_turnconn_stop(YangTurnSession *session) {
 int32_t yang_turnconn_addPeer(YangTurnSession *session, int32_t uid,
 		void *rtcSession, yang_turn_receive receive, char *remoteIp,
 		uint16_t port) {
-
+	if(session==NULL || remoteIp==NULL) return ERROR_RTC_TURN;
 	YangTurnPeer *peer = (YangTurnPeer*) yang_calloc(sizeof(YangTurnPeer), 1);
 
 	peer->address.mapAddress = yang_be32toh(yang_inet_addr(remoteIp));
@@ -797,6 +804,7 @@ int32_t yang_turnconn_addPeer(YangTurnSession *session, int32_t uid,
 }
 
 int32_t yang_turnconn_removePeer(YangTurnSession *session, int32_t uid) {
+	if(session==NULL) return ERROR_RTC_TURN;
 	yang_thread_mutex_lock(&session->turnLock);
 	YangTurnPeer *peer = NULL;
 	for (int32_t i = 0; i < session->peers.vec.vsize; i++) {
@@ -813,15 +821,18 @@ int32_t yang_turnconn_removePeer(YangTurnSession *session, int32_t uid) {
 }
 
 yangbool yang_turnconn_isReady(YangTurnSession *session) {
+	if(session==NULL) return yangfalse;
 	return session->state == YangTurnReady ? yangtrue : yangfalse;
 }
 
 yangbool yang_turnconn_isAllocated(YangTurnSession *session) {
+	if(session==NULL) return yangfalse;
 	return session->state == YangTurnPermission ? yangtrue : yangfalse;
 }
 
 void yang_create_turnConnection(YangTurnConnection *conn, YangIceServer *server,
 		YangRtcSocket *sock, int32_t localport) {
+	if(conn==NULL || server==NULL || sock==NULL) return;
 	YangTurnSession *session = &conn->session;
 	session->sock = sock;
 	session->server = server;
@@ -870,7 +881,7 @@ void yang_create_turnConnection(YangTurnConnection *conn, YangIceServer *server,
 }
 
 void yang_destroy_turnConnection(YangTurnConnection *conn) {
-
+	if(conn==NULL) return;
 	YangTurnSession *session = &conn->session;
 
 	yang_turnconn_stop(session);
