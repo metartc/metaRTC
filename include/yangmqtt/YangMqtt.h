@@ -16,7 +16,7 @@ typedef struct{
 	void* session;
 	int32_t (*connect)(void* session,int32_t sendBufferSize,int32_t recvBufferSize,char *remoteIp,int32_t remotePort,char* username,char* password);
 	int32_t (*close)(void* session);
-	int32_t (*publish)(void* session,char* topic,char* msg);
+	int32_t (*publish)(void* session,char* topic,char* msg,int32_t msgLen);
 	int32_t (*subscribe)(void* session,char* topic);
 	int32_t (*unsubscribe)(void* session,char* topic);
 	char* 	(*getClientId)(void* session);

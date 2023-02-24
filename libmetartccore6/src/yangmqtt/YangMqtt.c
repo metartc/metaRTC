@@ -148,10 +148,10 @@ int32_t yang_mqttc_close(void* psession){
 	return Yang_Ok;
 }
 
-int32_t yang_mqttc_publish(void* psession,char* topic,char* msg){
+int32_t yang_mqttc_publish(void* psession,char* topic,char* msg,int32_t msgLen){
 	if(psession==NULL || msg==NULL) return 1;
 	YangMqttSession* session=(YangMqttSession*)psession;
-	yang_mqtt_publish(&session->client, topic, msg, strlen(msg) + 1, MQTT_PUBLISH_QOS_0);
+	yang_mqtt_publish(&session->client, topic, msg, msgLen, MQTT_PUBLISH_QOS_0);
 	return Yang_Ok;
 }
 

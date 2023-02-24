@@ -42,6 +42,7 @@
 #define yang_ntohs ntohs
 #define yang_inet_addr inet_addr
 #define yang_inet_pton inet_pton
+#define yang_inet_ntoa inet_ntoa
 
 
 #define yang_socket_t int

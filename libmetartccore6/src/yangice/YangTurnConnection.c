@@ -840,8 +840,6 @@ void yang_create_turnConnection(YangTurnConnection *conn, YangIceServer *server,
 	sock->session.user = session;
 	sock->session.receive = g_yang_turn_receive_data;
 
-
-
 	yang_create_stunlib(&session->stun);
 
 	yang_create_YangTurnPeerVector2(&session->peers);
@@ -853,7 +851,6 @@ void yang_create_turnConnection(YangTurnConnection *conn, YangIceServer *server,
 
 	session->icePwd = (char*) yang_calloc(33, 1);
 	yang_cstr_random(32, session->icePwd);
-
 
 	session->isLoop = 0;
 	session->isStart = 0;
@@ -868,8 +865,6 @@ void yang_create_turnConnection(YangTurnConnection *conn, YangIceServer *server,
 	session->waitTime = 20;
 
 	yang_thread_mutex_init(&session->turnLock, NULL);
-
-
 
 	conn->start = yang_turnconn_start;
 	conn->stop = yang_turnconn_stop;

@@ -356,15 +356,15 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 
 	   	if(session->context.avinfo->rtc.iceUsingLocalIp){
 	   		localip=session->context.avinfo->rtc.iceLocalIP;
-	   	}else if(session->ice.session.candidateType==YangIceStun&&session->ice.session.server.stunPort>0){
+	   	}else if(session->ice.session.candidateType==YangIceStun&&session->ice.session.iceState==YangIceSuccess){
 	   		struct sockaddr_in addr;
 	   		addr.sin_addr.s_addr= session->ice.session.server.stunIp;
-	   		localip=inet_ntoa(addr.sin_addr);
+	   		localip=yang_inet_ntoa(addr.sin_addr);
 	   		localport=session->ice.session.server.stunPort;
 	   	}else if(session->ice.session.candidateType==YangIceTurn&&(session->ice.session.isTurnReady||session->ice.session.isTurnAllocated)){
 	   		struct sockaddr_in addr;
 	   		addr.sin_addr.s_addr= session->ice.session.server.relayIp;	   	
-            localip=inet_ntoa(addr.sin_addr);       
+            localip=yang_inet_ntoa(addr.sin_addr);
 	   		localport=session->ice.session.server.relayPort;
 	   	}else{
 	   		hasIplist=1;
