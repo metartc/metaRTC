@@ -238,6 +238,7 @@ void yang_ini_initEnc(char* filename,YangVideoEncInfo *enc){
 
 void yang_ini_initRtc(char* filename,YangRtcInfo *rtc){
 	yang_memset(rtc,0,sizeof(YangRtcInfo));
+	rtc->enableHttpServerSdp = yang_ini_readIntValue(filename,"rtc", "enableHttpServerSdp", yangtrue);
 	rtc->sessionTimeout = yang_ini_readIntValue(filename,"rtc", "sessionTimeout",  30*1000000);
 	rtc->enableDatachannel = yang_ini_readIntValue(filename,"rtc", "enableDatachannel", yangtrue);
 	rtc->iceCandidateType = yang_ini_readIntValue(filename,"rtc", "iceCandidateType", 0);

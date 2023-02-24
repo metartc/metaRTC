@@ -95,6 +95,8 @@ typedef struct YangSysInfo {
 }YangSysInfo;
 
 typedef struct YangRtcInfo {
+	yangbool enableHttpServerSdp;
+
 	int32_t sessionTimeout;
 	yangbool enableDatachannel;
 	int32_t iceCandidateType;
