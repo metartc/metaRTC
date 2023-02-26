@@ -169,7 +169,6 @@ void yang_rtcconn_init(YangRtcSession *session, YangStreamOptType role) {
 
 	if (role == Yang_Stream_Publish || role==Yang_Stream_Both)  {
 
-
 #if Yang_Enable_RTC_Video
 		if(session->pushVideoRtpBuffer == NULL) {
 			session->pushVideoRtpBuffer = (YangRtpBuffer*) yang_calloc(1,sizeof(YangRtpBuffer));
@@ -426,11 +425,9 @@ int32_t yang_rtcconn_onMessage(YangRtcSession *session, YangFrame *p) {
 void yang_rtcconn_close(YangRtcSession *session) {
 	if (session == NULL)	return;
 #if Yang_Enable_Dtls
-	if(yang_rtcconn_isAlive(session)){
-		if (session->context.dtls&&!session->context.dtls->session.isStop)	session->context.dtls->sendDtlsAlert(&session->context.dtls->session);
-	}else{
 
-	}
+	if (session->context.dtls&&!session->context.dtls->session.isStop)	session->context.dtls->sendDtlsAlert(&session->context.dtls->session);
+
 
 #else
 	if(session->isServer==0){
