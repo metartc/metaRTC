@@ -44,21 +44,15 @@ int32_t g_yang_pc_connectServer(YangPeer* peer){
 	return yang_srs_connectRtcServer(conn);
 }
 
-int32_t g_yang_pc_disconnectServer(YangPeer* peer){
-	if(peer==NULL||peer->conn==NULL) return  ERROR_RTC_PEERCONNECTION;
-	YangRtcConnection *conn = (YangRtcConnection*) peer->conn;
-	yang_trace("\nwebrtc disconnect\n");
-	if (conn->isConnected(conn->session))		conn->close(conn->session);
-	yang_destroy_rtcConnection(conn);
-	yang_free(peer->conn);
-	return Yang_Ok;
-}
-
 int32_t g_yang_pc_stopRtc(YangPeer* peer){
 	if(peer==NULL||peer->conn==NULL) return  ERROR_RTC_PEERCONNECTION;
 	YangRtcConnection *conn = (YangRtcConnection*) peer->conn;
-	yang_trace("\nwebrtc stop\n");
-	if (conn->session->context.state)		conn->close(conn->session);
+	if(conn->session->context.state==Yang_Conn_State_Disconnected || conn->session->context.state==Yang_Conn_State_Closed)
+		return Yang_Ok;
+	conn->session->context.state = Yang_Conn_State_Disconnected;
+	if(conn->onConnectionStateChange) conn->onConnectionStateChange(conn->session,Yang_Conn_State_Disconnected);
+	yang_trace("\nwebrtc disconnected\n");
+	conn->close(conn->session);
 	yang_destroy_rtcConnection(conn);
 	yang_free(peer->conn);
 	return Yang_Ok;
@@ -99,6 +93,12 @@ int32_t g_yang_pc_isAlive(YangPeer* peer){
 	if(peer==NULL||peer->conn==NULL) return Yang_Ok;
 	YangRtcConnection *conn = (YangRtcConnection*) peer->conn;
 	return conn->isAlive(conn->session);
+}
+
+YangRtcConnectionState g_yang_pc_getConnectionState(YangPeer* peer){
+	if(peer==NULL || peer->conn==NULL) return Yang_Conn_State_New;
+	YangRtcConnection *conn = (YangRtcConnection*) peer->conn;
+	return conn->session->context.state;
 }
 
 void g_yang_pc_parseHeader(YangVideoCodec codec,uint8_t *buf, uint8_t *src, int32_t *hLen){
@@ -158,6 +158,7 @@ void yang_create_peerConnection(YangPeerConnection* peerconn){
 	peerconn->on_message=g_yang_pc_onMessage;
 	peerconn->isConnected=g_yang_pc_isConnected;
 	peerconn->isAlive=g_yang_pc_isAlive;
+	peerconn->getConnectionState=g_yang_pc_getConnectionState;
 	peerconn->sendRtcMessage=g_yang_pc_sendRtcMessage;
 
 	g_yang_pc_init(&peerconn->peer);
@@ -165,11 +166,7 @@ void yang_create_peerConnection(YangPeerConnection* peerconn){
 
 void yang_destroy_peerConnection(YangPeerConnection* peerconn){
 	if(peerconn==NULL||peerconn->peer.conn==NULL) return;
-	YangRtcConnection *conn = (YangRtcConnection*) peerconn->peer.conn;
-	if(conn->session->context.state) g_yang_pc_disconnectServer(&peerconn->peer);
-	if(peerconn->peer.conn){
-		yang_destroy_rtcConnection(conn);
-		yang_free(peerconn->peer.conn);
-	}
+	g_yang_pc_stopRtc(&peerconn->peer);
+
 }
 

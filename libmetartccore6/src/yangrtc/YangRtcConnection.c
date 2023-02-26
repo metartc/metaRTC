@@ -39,6 +39,15 @@ void g_yang_startStunTimer(void *user) {
 
 }
 
+static void yang_onConnectionStateChange(YangRtcSession *session,YangRtcConnectionState state){
+	if(session->context.streamConfig&&session->context.streamConfig->iceCallback.onConnectionStateChange){
+						session->context.streamConfig->iceCallback.onConnectionStateChange(
+								session->context.streamConfig->iceCallback.context,
+								session->context.streamConfig->uid,
+								state);
+	}
+}
+
 void g_yang_doTask(int32_t taskId, void *user) {
 	if (user == NULL)	return;
 	YangRtcSession *session = (YangRtcSession*) user;
@@ -48,10 +57,14 @@ void g_yang_doTask(int32_t taskId, void *user) {
 			if(session->context.sock->write(&session->context.sock->session,session->context.stun.data, session->context.stun.nb)!=Yang_Ok){
 				yang_error("send stun fail!");
 			}
+			if(session->context.state==Yang_Conn_State_New) {
+				session->context.state=Yang_Conn_State_Connecting;
+				yang_onConnectionStateChange(session,Yang_Conn_State_Connecting);
+			}
 		}
 
 	}
-	if(!session->context.state) return;
+	if(session->context.state!=Yang_Conn_State_Connected) return;
 
 
 	if (session->startRecv&&session->play) {
@@ -133,7 +146,7 @@ void yang_rtcconn_init(YangRtcSession *session, YangStreamOptType role) {
 	session->tm_100ms->doTask = g_yang_doTask;
 
 	session->startRecv = 0;
-	session->isSendStun = 0;
+	session->isSendStun = yangfalse;
 
 #if Yang_Enable_Dtls
 	yang_create_rtcdtls(session->context.dtls,session->isServer);
@@ -285,13 +298,13 @@ void yang_rtcconn_setSsrc(YangRtcSession *session, uint32_t audioSsrc,
 
 void yang_rtcconn_startStunTimer(YangRtcSession *session) {
 
-	if (session->tm_1s&&session->tm_1s->isStart==0)
+	if (session->tm_1s&&!session->tm_1s->isStart)
 		yang_timer_start(session->tm_1s);
-	session->isSendStun = 1;
+	session->isSendStun = yangtrue;
 }
 
 void yang_rtcconn_startTimers(YangRtcSession *session) {
-	if (session->tm_1s&&session->tm_1s->isStart==0)		yang_timer_start(session->tm_1s);
+	if (session->tm_1s&&!session->tm_1s->isStart)		yang_timer_start(session->tm_1s);
 
 	// if (session->20ms&&!session->20ms->session->isStart)		session->20ms->start();
 #if Yang_Enable_TWCC
@@ -335,9 +348,9 @@ int32_t yang_rtcconn_on_rtcp(YangRtcSession *session, char *data,int32_t nb_data
 
 }
 
-int32_t yang_rtcconn_isAlive(YangRtcSession* session){
-	if(session==NULL) return 0;
-	return session->lastStunTime + session->sessionTimeout > yang_get_system_time()?1:0;
+yangbool yang_rtcconn_isAlive(YangRtcSession* session){
+	if(session==NULL||session->context.state!=Yang_Conn_State_Connected) return yangfalse;
+	return session->lastStunTime + session->sessionTimeout > yang_get_system_time();
 }
 
 
@@ -363,9 +376,9 @@ int32_t yang_rtcconn_send_video_meta(YangRtcSession *session, YangFrame *p) {
 int32_t yang_rtcconn_onVideo(YangRtcSession *session, YangFrame *p) {
 #if Yang_Enable_RTC_Video
 	#if Yang_Enable_Dtls
-	if (session==NULL || p==NULL || session->context.dtls->session.state!=YangDtlsStateClientDone)	return Yang_Ok;
+	if (session==NULL || p==NULL || session->context.state!=Yang_Conn_State_Connected)	return Yang_Ok;
 	#else
-	if (session==NULL|| p==NULL || !session->context.state)	return Yang_Ok;
+	if (session==NULL|| p==NULL || session->context.state!=Yang_Conn_State_Connected)	return Yang_Ok;
 	#endif
 	if (p->frametype == YANG_Frametype_Spspps)
 		return yang_rtcconn_send_video_meta(session, p);
@@ -384,9 +397,9 @@ int32_t yang_rtcconn_onVideo(YangRtcSession *session, YangFrame *p) {
 int32_t yang_rtcconn_onAudio(YangRtcSession *session, YangFrame *p) {
 
 #if Yang_Enable_Dtls
-	if (session==NULL||p==NULL||session->context.dtls->session.state!=YangDtlsStateClientDone)	return Yang_Ok;
+	if (session==NULL||p==NULL||session->context.state!=Yang_Conn_State_Connected)	return Yang_Ok;
 #else
-	if (session==NULL||p==NULL||!session->context.state)	return Yang_Ok;
+	if (session==NULL||p==NULL||session->context.state!=Yang_Conn_State_Connected)	return Yang_Ok;
 #endif
 #if Yang_Enable_RTC_Audio
 	if (session->pushAudio)
@@ -400,7 +413,7 @@ int32_t yang_rtcconn_onAudio(YangRtcSession *session, YangFrame *p) {
 int32_t yang_rtcconn_onMessage(YangRtcSession *session, YangFrame *p) {
 #if Yang_Enable_Dtls
 #if Yang_Enable_Datachannel
-	if(session==NULL || p==NULL ||session->context.dtls->session.state!=YangDtlsStateClientDone||
+	if(session==NULL || p==NULL ||session->context.state!=Yang_Conn_State_Connected||
 			session->context.dtls->session.isStop==yangtrue||session->context.state!=yangtrue)
 		return Yang_Ok;
 
@@ -432,7 +445,8 @@ void yang_rtcconn_close(YangRtcSession *session) {
 		}
 	}
 #endif
-	session->context.state = 0;
+	session->context.state = Yang_Conn_State_Closed;
+	yang_onConnectionStateChange(session,Yang_Conn_State_Closed);
 }
 
 
@@ -472,16 +486,22 @@ void yang_rtcconn_receive(YangRtcSession *session, char *data, int32_t size) {
 		if(session->isServer){
 			YangStunPacket request;
 			yang_memset(&request,0,sizeof(YangStunPacket));
+
 			if ((err = session->ice.session.stun.decode(&request,data, size)) != Yang_Ok) {
 				yang_error("decode stun packet failed");
+				session->context.state=Yang_Conn_State_Failed;
+				yang_onConnectionStateChange(session,Yang_Conn_State_Failed);
 				return;
 			}
 			if ((err =session->ice.session.stun.createResponseStunPacket(&request,session)) != Yang_Ok) {
 				yang_error("create response stun packet failed");
 				return;
 			}
-			if(!session->context.state)	session->context.state=1;
-		//	session->lastStunTime=yang_get_system_time();
+			if(session->context.state==Yang_Conn_State_New) {
+				session->context.state=Yang_Conn_State_Connecting;
+				yang_onConnectionStateChange(session,Yang_Conn_State_Connecting);
+			}
+			//	session->lastStunTime=yang_get_system_time();
 
 		}else{
 			if ((err = session->ice.session.stun.decode2(data, size)) != Yang_Ok) {
@@ -492,10 +512,10 @@ void yang_rtcconn_receive(YangRtcSession *session, char *data, int32_t size) {
 #if Yang_Enable_Dtls
 			if (!session->isSendDtls) {
 				if (session->context.dtls->startHandShake(&session->context.dtls->session)) yang_error("dtls start handshake failed!");
-				session->isSendDtls = 1;
+				session->isSendDtls = yangtrue;
 			}
 #else
-			if(!session->context.state)	goto client_sucess;
+			if(session->context.state==Yang_Conn_State_Connecting)	goto client_sucess;
 
 #endif
 		}
@@ -508,14 +528,17 @@ void yang_rtcconn_receive(YangRtcSession *session, char *data, int32_t size) {
 #if Yang_Enable_Dtls
 			if(session->context.dtls==NULL) return;
 #if Yang_Enable_Datachannel
-			if (session->context.dtls->processData(session->datachannel,&session->context.dtls->session, data,size) == Yang_Ok && session->context.state ==0) {
+			if (session->context.dtls->processData(session->datachannel,&session->context.dtls->session, data,size) == Yang_Ok && session->context.state == Yang_Conn_State_Connecting) {
 #else
-			if (session->context.dtls->processData(NULL,&session->context.dtls->session, data,size) == Yang_Ok && session->context.state ==0) {
+			if (session->context.dtls->processData(NULL,&session->context.dtls->session, data,size) == Yang_Ok && session->context.state == Yang_Conn_State_Connecting) {
 #endif
 
 				if(session->isServer){
-					if(session->context.dtls->session.handshake_done) session->context.state = 1;
-					yang_rtcconn_startTimers(session);
+					if( session->context.dtls->session.handshake_done ) {
+										session->context.state = Yang_Conn_State_Connected;
+										yang_onConnectionStateChange(session,Yang_Conn_State_Connected);
+										yang_rtcconn_startTimers(session);
+					}
 					return;
 				}else if (session->context.dtls->session.state == YangDtlsStateClientDone) {
 					goto client_sucess;
@@ -531,10 +554,13 @@ void yang_rtcconn_receive(YangRtcSession *session, char *data, int32_t size) {
 		}
 
 	client_sucess:
-	yang_rtcconn_startTimers(session);
-	session->context.state = 1;
-	if (session->context.streamConfig&&session->context.streamConfig->rtcCallback.sendRequest)
-		session->context.streamConfig->rtcCallback.sendRequest(session->context.streamConfig->rtcCallback.context,session->context.streamConfig->uid, 0,Yang_Req_Connected);
+	if(session->context.state == Yang_Conn_State_Connecting) {
+		session->context.state = Yang_Conn_State_Connected;
+		yang_onConnectionStateChange(session,Yang_Conn_State_Connected);
+		yang_rtcconn_startTimers(session);
+		if (session->context.streamConfig&&session->context.streamConfig->rtcCallback.sendRequest)
+				session->context.streamConfig->rtcCallback.sendRequest(session->context.streamConfig->rtcCallback.context,session->context.streamConfig->uid, 0,Yang_Req_Connected);
+	}
 	return;
 }
 
@@ -666,9 +692,9 @@ int32_t yang_rtcconn_startRtc(YangRtcSession* session,char* sdp){
 		return Yang_Ok;
 }
 
-int32_t yang_rtcconn_isConnected(YangRtcSession* session){
+yangbool yang_rtcconn_isConnected(YangRtcSession* session){
 	if (session == NULL)		return yangfalse;
-	return session->context.state;
+	return session->context.state == Yang_Conn_State_Connected;
 }
 
 int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* streamconfig,YangAVInfo* avinfo){
@@ -691,7 +717,7 @@ int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* stre
 	if(streamconfig->remotePort==0)
 		streamconfig->remotePort=8000;
 
-	session->isServer=0;
+	session->isServer=yangfalse;
 
 
 	conn->close=yang_rtcconn_close;
@@ -704,6 +730,7 @@ int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* stre
 
 	conn->receive=yang_rtcconn_receive;
 	conn->updateCandidateAddress=yang_rtcconn_on_ice;
+	conn->onConnectionStateChange=yang_onConnectionStateChange;
 	conn->setRemoteDescription=yang_rtcconn_startRtc;
 	conn->createOffer=yang_rtcconn_createOffer;
 	conn->createAnswer=yang_rtcconn_createAnswer;

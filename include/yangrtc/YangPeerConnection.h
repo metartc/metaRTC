@@ -27,8 +27,9 @@ typedef struct {
 	int32_t (*connectSfuServer)(YangPeer* peer);//srs zlm
 	int32_t (*close)(YangPeer* peer);
 
-	int32_t (*isAlive)(YangPeer* peer);
-	int32_t (*isConnected)(YangPeer* peer);
+	yangbool (*isAlive)(YangPeer* peer);
+	yangbool (*isConnected)(YangPeer* peer);
+	YangRtcConnectionState (*getConnectionState)(YangPeer* peer);
 
 	int32_t (*on_audio)(YangPeer* peer,YangFrame* audioFrame);
 	int32_t (*on_video)(YangPeer* peer,YangFrame* videoFrame);

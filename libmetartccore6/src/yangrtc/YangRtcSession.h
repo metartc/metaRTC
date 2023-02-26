@@ -19,11 +19,11 @@
 #include <yangrtp/YangRtcpCompound.h>
 
 typedef struct {
-	int32_t isSendDtls;
+	yangbool isSendDtls;
 	int32_t startRecv;
 
 	int32_t sendTwccId;
-	int32_t isSendStun;
+	yangbool isSendStun;
 	int32_t activeState;
 
 	yangbool isServer;

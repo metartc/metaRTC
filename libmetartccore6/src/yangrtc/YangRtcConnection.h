@@ -23,10 +23,11 @@ typedef struct{
 	int32_t (*on_audio)(YangRtcSession* session,YangFrame *p);
 	int32_t (*on_message)(YangRtcSession *session, YangFrame *p);
 	int32_t (*notify)(YangRtcSession *session, YangRtcMessageType mess);
-	int32_t (*isAlive)(YangRtcSession* session);
-	int32_t (*isConnected)(YangRtcSession* session);
+	yangbool (*isAlive)(YangRtcSession* session);
+	yangbool (*isConnected)(YangRtcSession* session);
 	void (*receive)(YangRtcSession *session, char *data, int32_t size);
 	void (*updateCandidateAddress)(YangRtcSession *session,char* ip,int32_t port) ;
+	void (*onConnectionStateChange)(YangRtcSession *session,YangRtcConnectionState state);
 
 }YangRtcConnection;
 

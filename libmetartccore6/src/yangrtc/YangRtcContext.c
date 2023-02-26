@@ -38,6 +38,7 @@ yang_vector_impl(YangRtcTrack)
 void yang_create_rtcContext(YangRtcContext *context) {
 	if (context == NULL)
 		return;
+	context->state = Yang_Conn_State_New;
 	context->codec = Yang_VED_264;
 
 	context->audioSsrc = yang_generate_ssrc();
@@ -45,7 +46,6 @@ void yang_create_rtcContext(YangRtcContext *context) {
 
 	context->twccId=-1;
 
-	context->state = 0;
 	context->sock = ( YangRtcSocket*) yang_calloc(sizeof(YangRtcSocket),1);
 
 	yang_memset(context->sock, 0, sizeof(YangRtcSocket));

@@ -12,20 +12,18 @@
 
 #define Yang_MJPEG_Header 0x37
 
-
 typedef enum  {
 	Yang_Stream_Play, Yang_Stream_Publish, Yang_Stream_Both
 }YangStreamOptType;
 
 typedef enum {
-    YANG_CONNECTION_STATE_NONE = 0,
-    YANG_CONNECTION_STATE_NEW,
-    YANG_CONNECTION_STATE_CONNECTING,
-    YANG_CONNECTION_STATE_CONNECTED,
-    YANG_CONNECTION_STATE_DISCONNECTED,
-    YANG_CONNECTION_STATE_FAILED,
-    YANG_CONNECTION_STATE_CLOSED
-} YANG_RTC_CONNECTION_STATE;
+    Yang_Conn_State_New,
+    Yang_Conn_State_Connecting,
+    Yang_Conn_State_Connected,
+    Yang_Conn_State_Disconnected,
+    Yang_Conn_State_Failed,
+    Yang_Conn_State_Closed
+}YangRtcConnectionState;
 
 typedef enum YangAudioCodec{
 	Yang_AED_AAC,
@@ -124,8 +122,8 @@ typedef struct {
 
 typedef struct{
 	void* context;
-	int32_t (*onIceCandidate)(void* context,YangIceServer* iceServer);
-	void (*onIceConnectionStateChange)(void* context, YANG_RTC_CONNECTION_STATE connectionState);
+	void (*onIceStateChange)(void* context,int32_t uid,YangIceCandidateType iceCandidateType,YangIceCandidateState iceState);
+	void (*onConnectionStateChange)(void* context, int32_t uid,YangRtcConnectionState connectionState);
 }YangIceCallback;
 
 typedef struct{

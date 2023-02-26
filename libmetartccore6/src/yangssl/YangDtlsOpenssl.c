@@ -50,8 +50,7 @@ void ssl_on_info(const SSL *ssl, int32_t where, int32_t ret) {
 			dtls->isStop = yangtrue;
 		}
 		// Notify the DTLS to handle the ALERT message, which maybe means media connection disconnect.
-		yang_info("dtls info method=%s,retcode=%d,type==%s,desc==%s",method,ret,
-				type,desc );
+		yang_info("dtls info method=%s,retcode=%d,type==%s,desc==%s",method,ret,type,desc );
 
 		if(dtls->sslCallback&&dtls->sslCallback->sslAlert)
 					dtls->sslCallback->sslAlert(dtls->sslCallback->context,dtls->uid,(char*)type,(char*)desc);
@@ -84,7 +83,7 @@ int32_t yang_filter_data(YangDtlsSession *dtls, uint8_t *data, int32_t size) {
 		return err;
 	}
 
-	if (dtls->state == 1 && size > 14 && data[0] == 22 && data[13] == 11) {
+	if (dtls->state == YangDtlsStateClientHello && size > 14 && data[0] == 22 && data[13] == 11) {
 		dtls->state = YangDtlsStateClientCertificate;
         dtls->reset_timer_ = yangtrue;
 		yang_trace("\nDTLS: Reset the timer for ServerHello");

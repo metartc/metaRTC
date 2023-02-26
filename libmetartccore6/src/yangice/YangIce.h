@@ -23,6 +23,7 @@ typedef struct{
 	YangTurnConnection* turnconn;
 	YangIceServer server;
 	YangRtcStun stun;
+	YangIceCallback callback;
 }YangIceSession;
 
 typedef struct{

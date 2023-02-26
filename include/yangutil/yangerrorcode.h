@@ -47,6 +47,12 @@
 #define ERROR_SERVER_Logout 210
 #define ERROR_SERVER_ConnectFailure 211
 
+#define ERROR_TLS 300
+
+#define ERROR_STRING               300
+
+#define ERROR_JSON					320
+
 #define ERROR_SSL 300
 
 

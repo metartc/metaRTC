@@ -25,7 +25,7 @@ int32_t yang_filter_data(YangDtlsSession *dtls, uint8_t *data, int32_t size) {
 		return err;
 	}
 
-	if (dtls->state == 1 && size > 14 && data[0] == 22 && data[13] == 11) {
+	if (dtls->state == YangDtlsStateClientHello && size > 14 && data[0] == 22 && data[13] == 11) {
 		dtls->state = YangDtlsStateClientCertificate;
 		dtls->reset_timer_ = yangtrue;
 		yang_trace("\nDTLS: Reset the timer for ServerHello");

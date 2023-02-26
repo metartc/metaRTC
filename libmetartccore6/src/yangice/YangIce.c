@@ -63,6 +63,12 @@ void g_yang_ice_stun_receive(char *data, int32_t size, void *user) {
 
 }
 
+static void ice_onIceStateChange(YangIceSession* session,YangIceCandidateType iceCandidateType,YangIceCandidateState iceState){
+	if(session->callback.onIceStateChange){
+		session->callback.onIceStateChange(session->callback.context,session->uid,iceCandidateType,iceState);
+	}
+}
+
 int32_t yang_ice_stun_request(YangIceServer* server,int32_t localport){
 
 	char tmp[1024]={0};
@@ -206,19 +212,25 @@ void yang_ice_closeTurn(YangIceSession *session){
 
 int32_t yang_ice_initIce(YangIceSession *session){
 	if(session==NULL) return ERROR_RTC_ICE;
-		if(session->candidateType==YangIceHost) return Yang_Ok;
+		if(session->candidateType==YangIceHost) {
+			session->iceState=YangIceSuccess;
+			return Yang_Ok;
+		}
 
 		if(session->candidateType==YangIceStun){
 			if(yang_ice_requestStunServer(session)!=Yang_Ok){
 				yang_error("request stun server fail,change to turn");
+				//ice_onIceStateChange(session,session->candidateType,YangIceFail);
 			}else{
 				session->iceState=YangIceSuccess;
+				ice_onIceStateChange(session,session->candidateType,YangIceSuccess);
 				return Yang_Ok;
 			}
 		}
 
 		if(yang_ice_initTurn(session)!=Yang_Ok) {
 			session->iceState=YangIceFail;
+			ice_onIceStateChange(session,session->candidateType,YangIceFail);
 			return yang_error_wrap(ERROR_RTC_ICE,"request turn server fail");
 		}
 
@@ -230,15 +242,20 @@ int32_t yang_ice_initIce(YangIceSession *session){
 
 int32_t yang_ice_handle(YangIceSession* session,void* prtcSession,yang_turn_receive receive,char* remoteIp,int32_t remotePort){
 	if(session==NULL || prtcSession==NULL ||receive==NULL || remoteIp==NULL) return ERROR_RTC_ICE;
+
 	if(session->candidateType==YangIceHost) {
         session->iceState=YangIceSuccess;
+        ice_onIceStateChange(session,session->candidateType,YangIceSuccess);
 		return Yang_Ok;
 	}
+
+	if(session->iceState==YangIceFail) return ERROR_RTC_ICE;
 
 	if(session->candidateType==YangIceStun){
 		if(session->iceState==YangIceSuccess) return Yang_Ok;
 		if(session->iceState==YangIceNew&&yang_ice_requestStunServer(session)==Yang_Ok){
 			session->iceState=YangIceSuccess;
+			ice_onIceStateChange(session,session->candidateType,YangIceSuccess);
 			return Yang_Ok;
 		}
 
@@ -247,6 +264,7 @@ int32_t yang_ice_handle(YangIceSession* session,void* prtcSession,yang_turn_rece
 
 	if(yang_ice_requestTurnServer(session,prtcSession,receive,remoteIp,remotePort)!=Yang_Ok) {
 		session->iceState=YangIceFail;
+		ice_onIceStateChange(session,session->candidateType,YangIceFail);
 		yang_ice_closeTurn(session);
 		yang_error("request turn server fail");
 		return ERROR_RTC_ICE;
@@ -272,6 +290,10 @@ void yang_create_ice(YangIce* ice,YangStreamConfig* config,YangAVInfo* avinfo){
 	session->localPort=config->localPort;
 	session->rtcSocketProtocol=avinfo->rtc.rtcSocketProtocol;
 	session->turnSocketProtocol=avinfo->rtc.turnSocketProtocol;
+
+	session->callback.context=config->iceCallback.context;
+	session->callback.onIceStateChange=config->iceCallback.onIceStateChange;
+	session->callback.onConnectionStateChange=config->iceCallback.onConnectionStateChange;
 
 	session->server.familyType=avinfo->sys.familyType;
 	session->server.serverPort=avinfo->rtc.iceServerPort;

@@ -9,6 +9,7 @@
 #define yang_memcpy memcpy
 #define yang_malloc malloc
 #define yang_calloc calloc
+#define yangfree    free
 #define yang_memset memset
 #define yang_memmove memmove
 #define yang_memcmp memcmp
@@ -39,7 +40,7 @@
 #define yang_tolower    tolower
 #define yang_toupper toupper
 
-
+#define yang_static_strlen(string_literal) (sizeof(string_literal) - sizeof(""))
 
 
 #endif /* INCLUDE_YANGUTIL_YANGMEMORY_H_ */
