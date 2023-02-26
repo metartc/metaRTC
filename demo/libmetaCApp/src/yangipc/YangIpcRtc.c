@@ -91,7 +91,8 @@ void yang_ipc_rtcrecv_checkAlive(YangIpcRtcSession* session){
 int32_t yang_ipc_rtcrecv_addPeer(YangIpcRtcSession* session,char* sdp,char* answer,char* remoteIp,int32_t localPort,int* phasplay){
 	int32_t ret = 0;
 	YangPeerConnection* sh=(YangPeerConnection*)calloc(sizeof(YangPeerConnection),1);
-	memset(&sh->peer.streamconfig,0,sizeof(sh->peer.streamconfig));
+	yang_memset(&sh->peer.streamconfig,0,sizeof(sh->peer.streamconfig));
+	session->avinfo->rtc.enableHttpServerSdp = yangtrue;
 	sh->peer.streamconfig.uid=session->uidSeq++;
 	sh->peer.streamconfig.localPort=localPort;
 	sh->peer.streamconfig.isServer=1;

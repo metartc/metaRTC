@@ -243,21 +243,25 @@ int32_t YangP2pRtc::connectPeer(int32_t nettype, char* server,int32_t localPort,
 int32_t YangP2pRtc::addPeer(char* sdp,char* answer,char* remoteIp,int32_t localPort,int* phasplay) {
 	int32_t err = 0;
 	YangPeerConnection* sh=(YangPeerConnection*)calloc(sizeof(YangPeerConnection),1);
-	memset(&sh->peer.streamconfig,0,sizeof(sh->peer.streamconfig));
-	sh->peer.streamconfig.uid=m_uidSeq++;
-	sh->peer.streamconfig.localPort=localPort;
-	sh->peer.streamconfig.isServer=1;
-	sh->peer.streamconfig.streamOptType=Yang_Stream_Both;
-	strcpy(sh->peer.streamconfig.remoteIp,remoteIp);
+	m_context->avinfo.rtc.enableHttpServerSdp = yangtrue;
+	memset(&sh->peer.streamconfig, 0, sizeof(sh->peer.streamconfig));
+	sh->peer.streamconfig.uid = m_uidSeq++;
+	sh->peer.streamconfig.localPort = localPort;
+	sh->peer.streamconfig.isServer = yangtrue;
+	sh->peer.streamconfig.streamOptType = Yang_Stream_Both;
+	strcpy(sh->peer.streamconfig.remoteIp, remoteIp);
 
-	sh->peer.streamconfig.sslCallback.context=this;
-	sh->peer.streamconfig.sslCallback.sslAlert=g_p2p_rtcrecv_sslAlert;
-	sh->peer.streamconfig.recvCallback.context=this;
-	sh->peer.streamconfig.recvCallback.receiveAudio=g_p2p_rtcrecv_receiveAudio;
-	sh->peer.streamconfig.recvCallback.receiveVideo=g_p2p_rtcrecv_receiveVideo;
-	sh->peer.streamconfig.recvCallback.receiveMsg=g_p2p_rtcrecv_receiveMsg;
-	memcpy(&sh->peer.streamconfig.rtcCallback,&m_context->rtcCallback,sizeof(YangRtcCallback));
-	sh->peer.avinfo=&m_context->avinfo;
+	sh->peer.streamconfig.sslCallback.context = this;
+	sh->peer.streamconfig.sslCallback.sslAlert = g_p2p_rtcrecv_sslAlert;
+	sh->peer.streamconfig.recvCallback.context = this;
+	sh->peer.streamconfig.recvCallback.receiveAudio =
+			g_p2p_rtcrecv_receiveAudio;
+	sh->peer.streamconfig.recvCallback.receiveVideo =
+			g_p2p_rtcrecv_receiveVideo;
+	sh->peer.streamconfig.recvCallback.receiveMsg = g_p2p_rtcrecv_receiveMsg;
+	memcpy(&sh->peer.streamconfig.rtcCallback, &m_context->rtcCallback,
+			sizeof(YangRtcCallback));
+	sh->peer.avinfo = &m_context->avinfo;
 	yang_create_peerConnection(sh);
 
     sh->init(&sh->peer);

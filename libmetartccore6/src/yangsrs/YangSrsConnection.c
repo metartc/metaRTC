@@ -205,6 +205,8 @@ int32_t yang_srs_connectRtcServer(YangRtcConnection* conn){
 	yang_memset(&srs,0,sizeof(SrsSdpResponseType));
 #if Yang_Enable_Json
 	session->context.avinfo->rtc.enableHttpServerSdp=yangfalse;
+#else
+	session->context.avinfo->rtc.enableHttpServerSdp=yangtrue;
 #endif
 	char *tsdp=NULL;
 	conn->createOffer(session, &tsdp);

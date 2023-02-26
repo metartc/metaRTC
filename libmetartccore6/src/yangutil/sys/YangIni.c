@@ -130,12 +130,6 @@ int32_t yang_ini_readIntValue(char* filename,const char *section, const char *ke
 	return (atoi(strValue));
 }
 
-
-
-
-
-
-
 void yang_ini_initVideo(char* filename,YangVideoInfo* video){
 	yang_memset(video,0,sizeof(YangVideoInfo));
 	video->width = yang_ini_readIntValue(filename,"video", "width", 1280);
@@ -238,7 +232,7 @@ void yang_ini_initEnc(char* filename,YangVideoEncInfo *enc){
 
 void yang_ini_initRtc(char* filename,YangRtcInfo *rtc){
 	yang_memset(rtc,0,sizeof(YangRtcInfo));
-	rtc->enableHttpServerSdp = yang_ini_readIntValue(filename,"rtc", "enableHttpServerSdp", yangtrue);
+	rtc->enableHttpServerSdp = yang_ini_readIntValue(filename,"rtc", "enableHttpServerSdp", yangfalse);
 	rtc->sessionTimeout = yang_ini_readIntValue(filename,"rtc", "sessionTimeout",  30*1000000);
 	rtc->enableDatachannel = yang_ini_readIntValue(filename,"rtc", "enableDatachannel", yangtrue);
 	rtc->iceCandidateType = yang_ini_readIntValue(filename,"rtc", "iceCandidateType", 0);
