@@ -52,13 +52,16 @@ typedef enum{
 typedef struct {
 	YangDtlsState state;
 	YangDtlsVersion version;
-	int32_t handshake_done;
-	int32_t isStart;
-	yangbool isStop;
-	int32_t isLoop;
-	int32_t reset_timer_;
+	yangbool handshake_done;
+	yangbool isRecvAlert;
+	yangbool isSendAlert;
+
+	yangbool isStart;
+	yangbool isLoop;
+	yangbool reset_timer_;
+	yangbool isServer;
+
 	int32_t uid;
-	int32_t isServer;
 	yang_thread_t threadId;
 
 	YangRtcSocket* sock;
@@ -106,7 +109,7 @@ typedef struct{
 	int32_t (*sendSctpData)(YangDtlsSession* session,uint8_t* pdata, int32_t nb);
 }YangRtcDtls;
 
-int32_t yang_create_rtcdtls(YangRtcDtls* dtls,int32_t isServer);
+int32_t yang_create_rtcdtls(YangRtcDtls* dtls,yangbool isServer);
 void yang_destroy_rtcdtls(YangRtcDtls* dtls);
 
 #endif

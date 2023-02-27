@@ -413,7 +413,7 @@ int32_t yang_rtcconn_onMessage(YangRtcSession *session, YangFrame *p) {
 #if Yang_Enable_Dtls
 #if Yang_Enable_Datachannel
 	if(session==NULL || p==NULL ||session->context.state!=Yang_Conn_State_Connected||
-			session->context.dtls->session.isStop==yangtrue||session->context.state!=yangtrue)
+			session->context.dtls->session.isRecvAlert||session->context.state!=yangtrue)
 		return Yang_Ok;
 
 	if(session->datachannel&&session->datachannel->send_message) session->datachannel->send_message(session->datachannel->context,p);
@@ -425,8 +425,11 @@ int32_t yang_rtcconn_onMessage(YangRtcSession *session, YangFrame *p) {
 void yang_rtcconn_close(YangRtcSession *session) {
 	if (session == NULL)	return;
 #if Yang_Enable_Dtls
+	session->context.dtls->session.isSendAlert = yangtrue;
+	if (session->context.dtls&&!session->context.dtls->session.isRecvAlert&&session->context.dtls->sendDtlsAlert){
+		session->context.dtls->sendDtlsAlert(&session->context.dtls->session);
+	}
 
-	if (session->context.dtls&&!session->context.dtls->session.isStop)	session->context.dtls->sendDtlsAlert(&session->context.dtls->session);
 
 
 #else

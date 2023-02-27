@@ -41,7 +41,7 @@ void yang_datachannelsend_dtls_msg(void* user,char* data,int32_t nb){
 	if(user==NULL||data==NULL) return;
 
 	YangRtcContext* context=(YangRtcContext*)user;
-	if(context->dtls->session.state!=YangDtlsStateClientDone||context->dtls->session.isStop||context->state!=Yang_Conn_State_Connected)	return;
+	if(context->dtls->session.state!=YangDtlsStateClientDone||context->dtls->session.isRecvAlert||context->state!=Yang_Conn_State_Connected)	return;
 
 	context->dtls->sendSctpData(&context->dtls->session,(uint8_t*)data,nb);
 }

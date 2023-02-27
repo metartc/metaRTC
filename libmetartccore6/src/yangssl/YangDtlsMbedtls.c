@@ -265,7 +265,8 @@ int32_t yang_process_dtls_data(void* user,YangDtlsSession *dtls, char *data, int
 			readBytes += ret;
 		} else if (ret == 0 || ret == MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY) {
 			if(ret == MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY){
-				dtls->isStop = yangtrue;
+				dtls->isRecvAlert = yangtrue;
+				if(!dtls->isSendAlert)
 				dtls->sslCallback->sslAlert(dtls->sslCallback->context,dtls->uid,"warning","CN");
 			}
 			flag = yangfalse;
@@ -424,18 +425,23 @@ void yang_mbed_initDtls(YangDtlsSession* session){
 }
 
 
-int32_t yang_create_rtcdtls(YangRtcDtls *dtls,int32_t isServer) {
+int32_t yang_create_rtcdtls(YangRtcDtls *dtls,yangbool isServer) {
 	if (!dtls)	return ERROR_RTC_DTLS;
 	YangDtlsSession* session=&dtls->session;
 
 	session->version = YangDtlsVersionAuto;
 	session->reset_timer_ = yangfalse;
 	session->handshake_done = yangfalse;
-	session->isStart = 0;
-	session->isStop=0;
-	session->isLoop = 0;
-	session->state = YangDtlsStateInit;
+
+	session->isRecvAlert = yangfalse;
+	session->isSendAlert = yangfalse;
+
+	session->isStart = yangfalse;
+	session->isLoop = yangfalse;
+
 	session->isServer=isServer;
+
+	session->state = YangDtlsStateInit;
 
 	session->ssl=(mbedtls_ssl_context*)yang_calloc(sizeof(mbedtls_ssl_context),1);
 	session->ctrDrbg=(mbedtls_ctr_drbg_context*)yang_calloc(sizeof(mbedtls_ctr_drbg_context),1);

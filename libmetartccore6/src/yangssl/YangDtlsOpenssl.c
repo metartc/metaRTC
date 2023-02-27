@@ -47,12 +47,12 @@ void ssl_on_info(const SSL *ssl, int32_t where, int32_t ret) {
 		const char* desc=SSL_alert_desc_string(ret);
 		// @see https://www.openssl.org/docs/man1.0.2/man3/SSL_alert_type_string_long.html
 		if(yang_strcmp(type,"warning")==0&&yang_strcmp(desc,"CN")==0){
-			dtls->isStop = yangtrue;
+			dtls->isRecvAlert = yangtrue;
 		}
 		// Notify the DTLS to handle the ALERT message, which maybe means media connection disconnect.
 		yang_info("dtls info method=%s,retcode=%d,type==%s,desc==%s",method,ret,type,desc );
 
-		if(dtls->sslCallback&&dtls->sslCallback->sslAlert)
+		if(!dtls->isSendAlert&&dtls->sslCallback&&dtls->sslCallback->sslAlert)
 					dtls->sslCallback->sslAlert(dtls->sslCallback->context,dtls->uid,(char*)type,(char*)desc);
 	}
 }
@@ -453,7 +453,7 @@ int32_t yang_dtls_sendSctpData(YangDtlsSession* dtls,uint8_t* pdata, int32_t nb)
 
 
 
-int32_t yang_create_rtcdtls(YangRtcDtls *pdtls,int32_t isServer) {
+int32_t yang_create_rtcdtls(YangRtcDtls *pdtls,yangbool isServer) {
 	if (!pdtls)	return ERROR_RTC_DTLS;
 	YangDtlsSession* dtls=&pdtls->session;
 	dtls->sslctx = NULL;
@@ -463,11 +463,16 @@ int32_t yang_create_rtcdtls(YangRtcDtls *pdtls,int32_t isServer) {
 	dtls->version = YangDtlsVersionAuto;
     dtls->reset_timer_ = yangfalse;
     dtls->handshake_done = yangfalse;
-	dtls->isStart = 0;
-	dtls->isStop=0;
-	dtls->isLoop = 0;
+	dtls->isRecvAlert = yangfalse;
+	dtls->isSendAlert = yangfalse;
+
+	dtls->isStart = yangfalse;
+	dtls->isLoop = yangfalse;
+
+	dtls->isServer = isServer;
+
 	dtls->state = YangDtlsStateInit;
-	dtls->isServer=isServer;
+
 	yang_trace("\n dtls is openssl");
 
 	dtls->sslctx = yang_build_dtls_ctx(dtls, "actpass");
