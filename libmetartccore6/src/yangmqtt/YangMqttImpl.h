@@ -12,11 +12,12 @@
 #include <limits.h>
 
 #define yang_pal_time() time(NULL)
+
+#if Yang_Enable_Mqtt
+
 #ifdef _WIN32
 typedef SSIZE_T ssize_t;
 #endif
-
-#if Yang_Enable_Mqtt
 
  typedef enum {
     MQTT_CONTROL_CONNECT=1u,
