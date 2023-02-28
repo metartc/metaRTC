@@ -203,13 +203,13 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	if(data_media_desc) yang_strcpy(data_media_desc->session_info.fingerprint,"EF:7A:50:9C:05:8C:EF:84:4D:72:B2:74:30:BA:FD:82:76:D1:C3:FE:0C:A0:10:43:B8:6C:B2:ED:B3:F7:77:8B");
 #endif
 	#if Yang_Enable_RTC_Audio
-	yang_strcpy(audio_media_desc->session_info.setup, session->isServer?"passive":"actpass");
+	yang_strcpy(audio_media_desc->session_info.setup, session->isServer?"passive":"active");
 	#endif
 	#if Yang_Enable_RTC_Video
-	yang_strcpy(video_media_desc->session_info.setup, session->isServer?"passive":"actpass");
+	yang_strcpy(video_media_desc->session_info.setup, session->isServer?"passive":"active");
 	#endif
 #if Yang_Enable_Datachannel
-	if(data_media_desc) yang_strcpy(data_media_desc->session_info.setup, session->isServer?"passive":"actpass");
+	if(data_media_desc) yang_strcpy(data_media_desc->session_info.setup, session->isServer?"passive":"active");
 #endif
 	//extmaps twcc
 
