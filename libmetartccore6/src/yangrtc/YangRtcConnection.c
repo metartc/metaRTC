@@ -375,7 +375,7 @@ int32_t yang_rtcconn_send_video_meta(YangRtcSession *session, YangFrame *p) {
 int32_t yang_rtcconn_onVideo(YangRtcSession *session, YangFrame *p) {
 #if Yang_Enable_RTC_Video
 	#if Yang_Enable_Dtls
-	if (session==NULL || p==NULL || session->context.state!=Yang_Conn_State_Connected)	return Yang_Ok;
+	if (session==NULL || p==NULL || session->context.state!=Yang_Conn_State_Connected||session->context.dtls->session.state!=YangDtlsStateClientDone)	return Yang_Ok;
 	#else
 	if (session==NULL|| p==NULL || session->context.state!=Yang_Conn_State_Connected)	return Yang_Ok;
 	#endif
@@ -396,7 +396,7 @@ int32_t yang_rtcconn_onVideo(YangRtcSession *session, YangFrame *p) {
 int32_t yang_rtcconn_onAudio(YangRtcSession *session, YangFrame *p) {
 
 #if Yang_Enable_Dtls
-	if (session==NULL||p==NULL||session->context.state!=Yang_Conn_State_Connected)	return Yang_Ok;
+	if (session==NULL||p==NULL||session->context.state!=Yang_Conn_State_Connected||session->context.dtls->session.state!=YangDtlsStateClientDone)	return Yang_Ok;
 #else
 	if (session==NULL||p==NULL||session->context.state!=Yang_Conn_State_Connected)	return Yang_Ok;
 #endif
@@ -413,7 +413,7 @@ int32_t yang_rtcconn_onMessage(YangRtcSession *session, YangFrame *p) {
 #if Yang_Enable_Dtls
 #if Yang_Enable_Datachannel
 	if(session==NULL || p==NULL ||session->context.state!=Yang_Conn_State_Connected||
-			session->context.dtls->session.isRecvAlert||session->context.state!=yangtrue)
+			session->context.dtls->session.isRecvAlert||session->context.dtls->session.state!=YangDtlsStateClientDone)
 		return Yang_Ok;
 
 	if(session->datachannel&&session->datachannel->send_message) session->datachannel->send_message(session->datachannel->context,p);
