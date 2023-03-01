@@ -527,7 +527,7 @@ int32_t yang_mediadesc_parse_attr_ssrc(YangMediaDesc *desc, char *value) {
 
 	char *p = yang_strstr(value, ":");
 	yang_memcpy(intstr, value, p - value);
-	ssrc = atoi(intstr);
+	ssrc = yang_strtol(intstr);
 
 	char ssrc_attr[16];
 	yang_memset(ssrc_attr, 0, sizeof(ssrc_attr));
