@@ -40,6 +40,9 @@
 #define yang_tolower    tolower
 #define yang_toupper toupper
 
+#define yang_atoi atoi
+#define yang_atol atol
+
 #define yang_static_strlen(string_literal) (sizeof(string_literal) - sizeof(""))
 
 

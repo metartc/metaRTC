@@ -327,7 +327,7 @@ int32_t yang_mediadesc_parse_attr_extmap(YangMediaDesc *desc, char *value) {
 	char intstr[32];
 	yang_memset(intstr, 0, sizeof(intstr));
 	yang_memcpy(intstr, value, p - value);
-	int32_t id = atoi(intstr);
+	int32_t id = yang_atoi(intstr);
 
 	for (int i = 0; i < desc->extmaps.vsize; i++) { //= desc->extmaps.find(id)) {
 		if (desc->extmaps.payload[i].mapid == id)
@@ -355,7 +355,7 @@ int32_t yang_mediadesc_parse_attr_rtpmap(YangMediaDesc *desc, char *value) {
 	char intstr[32];
 	yang_memset(intstr, 0, sizeof(intstr));
 	yang_memcpy(intstr, value, p - value);
-	int32_t payload_type = atoi(intstr);
+	int32_t payload_type = yang_atoi(intstr);
 
 
 
@@ -376,7 +376,7 @@ int32_t yang_mediadesc_parse_attr_rtpmap(YangMediaDesc *desc, char *value) {
 	}
 
 	yang_strcpy(payload->encoding_name, str.str[0]);
-	payload->clock_rate = atoi(str.str[1]);
+	payload->clock_rate = yang_atoi(str.str[1]);
 
 	if (str.vsize == 3) {
 		yang_strcpy(payload->encoding_param, str.str[2]);
@@ -403,7 +403,7 @@ int32_t yang_mediadesc_parse_attr_rtcp_fb(YangMediaDesc *desc, char *value) {
 	char intstr[32];
 	yang_memset(intstr, 0, sizeof(intstr));
 	yang_memcpy(intstr, value, p - value);
-	int32_t payload_type = atoi(intstr);
+	int32_t payload_type = yang_atoi(intstr);
 	YangMediaPayloadType *payload = yang_mediadesc_find_media_with_payload_type(
 			desc, payload_type);
 	if (payload == NULL) {
@@ -430,7 +430,7 @@ int32_t yang_mediadesc_parse_attr_fmtp(YangMediaDesc *desc, char *value) {
 				"can not find payload when pase fmtp");
 	}
 
-	int32_t payload_type = atoi(str.str[0]);
+	int32_t payload_type = yang_atoi(str.str[0]);
 
 	YangMediaPayloadType *payload = yang_mediadesc_find_media_with_payload_type(
 			desc, payload_type);
@@ -490,7 +490,7 @@ int32_t yang_mediadesc_parse_attr_ssrc_group(YangMediaDesc *desc, char *value) {
 	yang_create_yangsdpintVector(&group.groups);
 
     for (size_t i = 1; i < str.vsize; ++i) {
-		uint32_t ssrc = atoi(str.str[i]);
+		uint32_t ssrc = yang_atoi(str.str[i]);
 		yang_insert_yangsdpintVector(&group.groups, &ssrc);
 	}
 	yang_insert_YangSSRCGroupVector(&desc->ssrc_groups, &group);
@@ -527,7 +527,7 @@ int32_t yang_mediadesc_parse_attr_ssrc(YangMediaDesc *desc, char *value) {
 
 	char *p = yang_strstr(value, ":");
 	yang_memcpy(intstr, value, p - value);
-	ssrc = yang_strtol(intstr);
+	ssrc = yang_atol(intstr);
 
 	char ssrc_attr[16];
 	yang_memset(ssrc_attr, 0, sizeof(ssrc_attr));
