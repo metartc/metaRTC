@@ -216,7 +216,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 #if Yang_Enable_RTC_Audio
 	yang_create_YangExtmapVector(&audio_media_desc->extmaps);
 	yang_insert_YangExtmapVector(&audio_media_desc->extmaps, NULL);
-	audio_media_desc->extmaps.payload[0].mapid = session->sendTwccId;
+	audio_media_desc->extmaps.payload[0].mapid = session->context.twccId>-1?session->context.twccId:session->sendTwccId;
 	yang_strcpy(audio_media_desc->extmaps.payload[0].extmap,
 			"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01");
 #endif
@@ -224,7 +224,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 #if Yang_Enable_RTC_Video
 	yang_create_YangExtmapVector(&video_media_desc->extmaps);
 	yang_insert_YangExtmapVector(&video_media_desc->extmaps, NULL);
-	video_media_desc->extmaps.payload[0].mapid = session->sendTwccId;
+	video_media_desc->extmaps.payload[0].mapid = session->context.twccId>-1?session->context.twccId:session->sendTwccId;
 	yang_strcpy(video_media_desc->extmaps.payload[0].extmap,
 			"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01");
 #endif
@@ -505,14 +505,14 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 				}
 
 
-				int32_t hasRtcpfbTwcc=0;
+				//int32_t hasRtcpfbTwcc=0;
 				for(k=0;k<desc->payload_types.vsize;k++){
 					YangMediaPayloadType* payload=&desc->payload_types.payload[k];
-					for(int j=0;j<payload->rtcp_fb.vsize;j++){
-						if(yang_strcmp(payload->rtcp_fb.payload[j],"transport-cc")==0){
-							hasRtcpfbTwcc=1;
-						}
-					}
+					//for(int j=0;j<payload->rtcp_fb.vsize;j++){
+						//if(yang_strcmp(payload->rtcp_fb.payload[j],"transport-cc")==0){
+							//hasRtcpfbTwcc=1;
+						//}
+					//}
 					if(yang_yang_strcmp(payload->encoding_name,"H264")==0){
 						session->remote_video->encode=Yang_VED_264;
 						session->context.codec=Yang_VED_264;
@@ -538,7 +538,7 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 					session->remote_video->videoClock=90000;
 				}
 				for (k = 0; k < desc->extmaps.vsize; k++) {
-					if (yang_strstr(desc->extmaps.payload[k].extmap,	"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01")&&hasRtcpfbTwcc) {
+					if (yang_strstr(desc->extmaps.payload[k].extmap,	"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01")) {
 						session->context.twccId = desc->extmaps.payload[k].mapid;
 					}
 				}
