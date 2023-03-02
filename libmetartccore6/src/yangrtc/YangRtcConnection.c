@@ -718,6 +718,8 @@ int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* stre
 		streamconfig->remotePort=8000;
 
 	session->isServer=yangfalse;
+	session->h264PayloadType=YangH264PayloadType;
+	session->h265PayloadType=YangH265PayloadType;
 
 
 	conn->close=yang_rtcconn_close;

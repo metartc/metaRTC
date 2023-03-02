@@ -254,21 +254,21 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	yang_insert_YangMediaPayloadTypeVector(&video_media_desc->payload_types,NULL);
 	YangMediaPayloadType *videotype =&video_media_desc->payload_types.payload[0];
 	if(mediaServer==Yang_Server_Zlm&&role==Yang_Stream_Play){
-		videotype->payload_type = YangH264PayloadType;
+		videotype->payload_type = session->h264PayloadType;
 		yang_strcpy(videotype->encoding_name, "H264");
 		yang_sdp_genLocalSdp_payloadType(videotype);
 		yang_insert_YangMediaPayloadTypeVector(&video_media_desc->payload_types,NULL);
 		videotype =&video_media_desc->payload_types.payload[1];
-		videotype->payload_type = YangH265PayloadType;
+		videotype->payload_type = session->h265PayloadType;
 		yang_strcpy(videotype->encoding_name, "H265");
 		yang_sdp_genLocalSdp_payloadType(videotype);
 		//redPayloadtype=2;
 	}else{
 		if (session->context.avinfo->video.videoEncoderType	== Yang_VED_264) {
-			videotype->payload_type = YangH264PayloadType;
+			videotype->payload_type = session->h264PayloadType;
 			yang_strcpy(videotype->encoding_name, "H264");
 		} else if (session->context.avinfo->video.videoEncoderType == Yang_VED_265) {
-			videotype->payload_type = YangH265PayloadType;
+			videotype->payload_type = session->h265PayloadType;
 			yang_strcpy(videotype->encoding_name, "H265");
 		} else if(session->context.avinfo->video.videoEncoderType	== Yang_VED_AV1){
 			videotype->payload_type = YangAV1PayloadType;
@@ -515,9 +515,17 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 					if(yang_yang_strcmp(payload->encoding_name,"H264")==0){
 						session->remote_video->encode=Yang_VED_264;
 						session->context.codec=Yang_VED_264;
+
+						if(yang_strstr(payload->format_specific_param,"packetization-mode=1;profile-level-id=42e01f")){
+								session->h264PayloadType=payload->payload_type;
+						}
 					}else if(yang_yang_strcmp(payload->encoding_name,"H265")==0){
 						session->context.codec=Yang_VED_265;
 						session->remote_video->encode=Yang_VED_265;
+
+						if(yang_strstr(payload->format_specific_param,"packetization-mode=1;profile-level-id=42e01f")){
+								session->h265PayloadType=payload->payload_type;
+						}
 					}else if(yang_yang_strcmp(payload->encoding_name,Yang_AV1_Name)==0){
 						session->context.codec=Yang_VED_AV1;
 						session->remote_video->encode=Yang_VED_AV1;

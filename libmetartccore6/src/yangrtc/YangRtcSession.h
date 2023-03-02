@@ -27,6 +27,8 @@ typedef struct {
 	int32_t activeState;
 
 	yangbool isServer;
+	int32_t h264PayloadType;
+	int32_t h265PayloadType;
 
 	int32_t usingDatachannel;
 	int64_t lastStunTime;
