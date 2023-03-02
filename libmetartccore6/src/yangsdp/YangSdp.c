@@ -236,7 +236,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 			NULL);
 	YangMediaPayloadType *audiotype =
 			&audio_media_desc->payload_types.payload[0];
-	audiotype->payload_type = 111;
+	audiotype->payload_type = session->opusPayloadType;
 	yang_strcpy(audiotype->encoding_name, "opus");
 	audiotype->clock_rate = session->context.avinfo->audio.sample; //48000;
 	yang_itoa2(session->context.avinfo->audio.channel,audiotype->encoding_param, 10);
@@ -476,6 +476,7 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 	                    session->remote_audio->sample=desc->payload_types.payload[k].clock_rate;
 						session->remote_audio->channel=atoi(desc->payload_types.payload[k].encoding_param);
 	                    session->remote_audio->audioClock=desc->payload_types.payload[k].clock_rate;
+	                    session->opusPayloadType=desc->payload_types.payload[k].payload_type;
 					}
 				}
 #endif
