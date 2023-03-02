@@ -720,6 +720,7 @@ int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* stre
 	session->isServer=yangfalse;
 	session->h264PayloadType=YangH264PayloadType;
 	session->h265PayloadType=YangH265PayloadType;
+	session->opusPayloadType = YangAudioPayloadType;
 
 
 	conn->close=yang_rtcconn_close;
