@@ -16,7 +16,7 @@
 
 #define YangAudioPayloadType 111
 #define YangAV1PayloadType 123
-#define YangH264PayloadType 125
+#define YangH264PayloadType 106
 #define YangH265PayloadType 126
 #define YangMjpegPayloadType 26
 
