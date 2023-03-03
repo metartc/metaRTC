@@ -713,7 +713,7 @@ int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* stre
 
 	session->context.avinfo=avinfo;
 
-	session->sendTwccId=Yang_TWCC_ID;
+
 	if(streamconfig->remotePort==0)
 		streamconfig->remotePort=8000;
 

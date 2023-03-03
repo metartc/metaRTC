@@ -20,10 +20,9 @@
 
 typedef struct {
 	yangbool isSendDtls;
-	int32_t startRecv;
-
-	int32_t sendTwccId;
 	yangbool isSendStun;
+
+	int32_t startRecv;
 	int32_t activeState;
 
 	yangbool isServer;

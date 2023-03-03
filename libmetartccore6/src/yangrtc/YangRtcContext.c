@@ -44,7 +44,7 @@ void yang_create_rtcContext(YangRtcContext *context) {
 	context->audioSsrc = yang_generate_ssrc();
 	context->videoSsrc = yang_generate_ssrc();
 
-	context->twccId=-1;
+	context->twccId = Yang_TWCC_ID;
 
 	context->sock = ( YangRtcSocket*) yang_calloc(sizeof(YangRtcSocket),1);
 
