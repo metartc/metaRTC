@@ -442,6 +442,11 @@ YangRtcTrack* yang_sdp_find_track(YangRtcSession* session,uint32_t ssrc){
 	return NULL;
 }
 
+static yangbool yang_is_h2645PayoadType(char* str) {
+	if (yang_strstr(str, "packetization-mode=1") && yang_strstr(str, "profile-level-id=42e01f")) return yangtrue;
+	return yangfalse;
+}
+
 int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 	int32_t k=0;
 		for(int32_t i=0;i<sdp->media_descs.vsize;i++){
@@ -517,14 +522,14 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 						session->remote_video->encode=Yang_VED_264;
 						session->context.codec=Yang_VED_264;
 
-						if(yang_strstr(payload->format_specific_param,"packetization-mode=1;profile-level-id=42e01f")){
+						if(yang_is_h2645PayoadType(payload->format_specific_param)){
 								session->h264PayloadType=payload->payload_type;
 						}
 					}else if(yang_yang_strcmp(payload->encoding_name,"H265")==0){
 						session->context.codec=Yang_VED_265;
 						session->remote_video->encode=Yang_VED_265;
 
-						if(yang_strstr(payload->format_specific_param,"packetization-mode=1;profile-level-id=42e01f")){
+						if(yang_is_h2645PayoadType(payload->format_specific_param)){
 								session->h265PayloadType=payload->payload_type;
 						}
 					}else if(yang_yang_strcmp(payload->encoding_name,Yang_AV1_Name)==0){
