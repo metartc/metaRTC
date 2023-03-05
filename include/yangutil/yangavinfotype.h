@@ -109,6 +109,8 @@ typedef struct YangRtcInfo {
 typedef struct{
 	yangbool enableMqttTls;
 	int32_t mqttPort;
+	int32_t maxReconnectTimes;
+	int32_t reconnectIntervalTime;
 	char mqttServerIP[32];
 	char mqttUserName[32];
 	char mqttPassword[64];

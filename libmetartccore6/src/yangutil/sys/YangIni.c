@@ -246,6 +246,8 @@ void yang_ini_initMqtt(char* filename,YangMqttInfo *mqtt){
 	yang_memset(mqtt,0,sizeof(YangSysInfo));
 	mqtt->enableMqttTls = yang_ini_readIntValue(filename,"mqtt", "enableMqttTls", yangfalse);
 	mqtt->mqttPort = yang_ini_readIntValue(filename,"mqtt", "mqttPort", mqtt->enableMqttTls?8883:1883);
+	mqtt->maxReconnectTimes = yang_ini_readIntValue(filename,"mqtt", "maxReconnectTimes",1000);
+	mqtt->reconnectIntervalTime = yang_ini_readIntValue(filename,"mqtt", "reconnectIntervalTime", 1000);
 	yang_ini_readStringValue(filename,"mqtt", "mqttServerIP", mqtt->mqttServerIP, "127.0.0.1");
 	yang_ini_readStringValue(filename,"mqtt", "mqttUserName", mqtt->mqttUserName, "");
 	yang_ini_readStringValue(filename,"mqtt", "mqttPassword", mqtt->mqttPassword, "");
@@ -288,6 +290,7 @@ void yang_create_ini(YangIni *ini, const char *p_filename) {
 		ini->initEnc = yang_ini_initEnc;
 		ini->initRtc = yang_ini_initRtc;
 		ini->initSys = yang_ini_initSys;
+		ini->initMqtt=yang_ini_initMqtt;
 		ini->initAvinfo = yang_ini_initAvinfo;
 		ini->readStringValue = yang_ini_readStringValue;
 		ini->readIntValue = yang_ini_readIntValue;

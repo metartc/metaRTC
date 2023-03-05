@@ -125,6 +125,8 @@ void yang_avinfo_initRtc(YangRtcInfo *rtc) {
 void yang_avinfo_initMqtt(YangMqttInfo *mqtt){
 	mqtt->enableMqttTls=yangfalse;
 	mqtt->mqttPort = 1883;
+	mqtt->maxReconnectTimes = 1000;
+	mqtt->reconnectIntervalTime = 1000;
 	yang_strcpy(mqtt->mqttServerIP, "127.0.0.1");
 }
 

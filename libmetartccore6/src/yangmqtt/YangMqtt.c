@@ -220,7 +220,7 @@ int32_t yang_mqtt_recvmsg(yang_socket_t fd, void* buf, int32_t bufsz, int32_t fl
 			// successfully read bytes from the socket 
 			buf = (char*)buf + rv;
 			bufsz -= rv;
-		}else if (rv < 0) {
+		}else if (rv <= 0) {
 			int err = WSAGetLastError();
 			if (err != WSAEWOULDBLOCK) {
 				// an error occurred that wasn't "nothing to read".
