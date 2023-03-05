@@ -108,8 +108,6 @@ int32_t yang_enc_rtcp(YangSRtp* srtp,void* packet, int* nb_cipher)
 
 int32_t yang_dec_rtp(YangSRtp* srtp,void* packet, int* nb_plaintext)
 {
-    int32_t err = Yang_Ok;
-
     // If DTLS/SRTP is not ready, fail.
     if (!srtp->recvCtx) {
         return yang_error_wrap(ERROR_RTC_SRTP_UNPROTECT, "not ready");
@@ -121,12 +119,11 @@ int32_t yang_dec_rtp(YangSRtp* srtp,void* packet, int* nb_plaintext)
         return yang_error_wrap(ERROR_RTC_SRTP_UNPROTECT, "rtp unprotect r0=%u", r0);
     }
 
-    return err;
+    return Yang_Ok;
 }
 
 int32_t yang_dec_rtcp(YangSRtp* srtp,void* packet, int* nb_plaintext)
 {
-    int32_t err = Yang_Ok;
 
     // If DTLS/SRTP is not ready, fail.
     if (!srtp->recvCtx) {
@@ -135,10 +132,10 @@ int32_t yang_dec_rtcp(YangSRtp* srtp,void* packet, int* nb_plaintext)
 
     srtp_err_status_t r0 = srtp_err_status_ok;
     if ((r0 = srtp_unprotect_rtcp(srtp->recvCtx, packet, nb_plaintext)) != srtp_err_status_ok) {
-    	if (r0 == srtp_err_status_replay_fail)	return Yang_Ok;
+    	if (r0 == srtp_err_status_replay_fail)	return r0;
     	return yang_error_wrap(ERROR_RTC_SRTP_UNPROTECT, "rtcp unprotect r0=%u", r0);
     }
 
-    return err;
+    return Yang_Ok;
 }
 #endif
