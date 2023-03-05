@@ -79,13 +79,10 @@ void yang_avinfo_initSys(YangSysInfo *sys) {
 	sys->familyType=Yang_IpFamilyType_IPV4;
 	sys->enableHttps=yangfalse;
 	sys->enableLogFile = yangfalse;
-	sys->enableMqttTls=yangfalse;
-
 	sys->mediaServer=Yang_Server_Srs;
 	sys->transType = Yang_Webrtc;
 
 	sys->rtmpPort = 1935;
-	sys->mqttPort = 1883;
 	sys->rtcPort = 1985;
 	sys->rtcLocalPort = 16000;
 	sys->httpPort=1988;
@@ -94,7 +91,6 @@ void yang_avinfo_initSys(YangSysInfo *sys) {
 
 	yang_strcpy(sys->rtmpServerIP, "127.0.0.1");
 	yang_strcpy(sys->rtcServerIP, "127.0.0.1");
-	yang_strcpy(sys->mqttServerIP, "127.0.0.1");
 }
 
 void yang_avinfo_initEnc(YangVideoEncInfo *enc) {
@@ -126,6 +122,13 @@ void yang_avinfo_initRtc(YangRtcInfo *rtc) {
 	yang_strcpy(rtc->icePassword, "metartc");
 }
 
+void yang_avinfo_initMqtt(YangMqttInfo *mqtt){
+	mqtt->enableMqttTls=yangfalse;
+	mqtt->mqttPort = 1883;
+	yang_strcpy(mqtt->mqttServerIP, "127.0.0.1");
+}
+
+
 void yang_init_avinfo(YangAVInfo* avinfo){
 
 	yang_memset(&avinfo->video, 0, sizeof(YangVideoInfo));
@@ -139,4 +142,8 @@ void yang_init_avinfo(YangAVInfo* avinfo){
 	yang_avinfo_initSys(&avinfo->sys);
 	yang_avinfo_initEnc(&avinfo->enc);
 	yang_avinfo_initRtc(&avinfo->rtc);
+#if	Yang_Enable_Mqtt
+	yang_memset(&avinfo->mqtt, 0, sizeof(YangMqttInfo));
+	yang_avinfo_initMqtt(&avinfo->mqtt);
+#endif
 }

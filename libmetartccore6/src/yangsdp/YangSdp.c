@@ -30,7 +30,6 @@ void  yang_sdp_genLocalSdp_candidate(YangRtcSession *session,YangMediaDesc *medi
 
     if(session->ice.session.candidateType>YangIceHost){
     	yang_strcpy(media_desc->candidates.payload[index].type, session->ice.session.candidateType==YangIceTurn?"relay":"srflx");
-    	//yang_strcpy(media_desc->candidates.payload[index].type, session->ice.session.candidateType==YangIceTurn?"host":"srflx");
     }else{
     	yang_strcpy(media_desc->candidates.payload[index].type, "host");
     }
@@ -80,7 +79,11 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	yang_create_stringVector(&local_sdp->msids);
 	char streamnames[164];
 	yang_memset(streamnames, 0, sizeof(streamnames));
-	yang_sprintf(streamnames, "%s/%s", session->context.streamConfig->app,session->context.streamConfig->stream);
+	if(yang_strlen(session->context.streamConfig->stream)==0)
+		yang_sprintf(streamnames, "metaRTCLiveStream");
+	else
+		yang_sprintf(streamnames, "%s/%s", session->context.streamConfig->app,session->context.streamConfig->stream);
+
 	yang_insert_stringVector(&local_sdp->msids, streamnames);
 
 	yang_strcpy(local_sdp->group_policy,"BUNDLE 0 1");
@@ -217,16 +220,14 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	yang_create_YangExtmapVector(&audio_media_desc->extmaps);
 	yang_insert_YangExtmapVector(&audio_media_desc->extmaps, NULL);
 	audio_media_desc->extmaps.payload[0].mapid = session->context.twccId;
-	yang_strcpy(audio_media_desc->extmaps.payload[0].extmap,
-			"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01");
+	yang_strcpy(audio_media_desc->extmaps.payload[0].extmap,Yang_SDP_kTWCCExt);
 #endif
 
 #if Yang_Enable_RTC_Video
 	yang_create_YangExtmapVector(&video_media_desc->extmaps);
 	yang_insert_YangExtmapVector(&video_media_desc->extmaps, NULL);
 	video_media_desc->extmaps.payload[0].mapid = session->context.twccId;
-	yang_strcpy(video_media_desc->extmaps.payload[0].extmap,
-			"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01");
+	yang_strcpy(video_media_desc->extmaps.payload[0].extmap,Yang_SDP_kTWCCExt);
 #endif
 
 #if Yang_Enable_RTC_Audio
@@ -543,7 +544,7 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 					session->remote_video->videoClock=90000;
 				}
 				for (k = 0; k < desc->extmaps.vsize; k++) {
-					if (yang_strstr(desc->extmaps.payload[k].extmap,	"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01")) {
+					if (yang_strstr(desc->extmaps.payload[k].extmap,Yang_SDP_kTWCCExt)) {
 						session->context.twccId = desc->extmaps.payload[k].mapid;
 					}
 				}

@@ -13,7 +13,7 @@
 
 
 
-#define kTWCCExt  (char*)"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01"
+#define Yang_SDP_kTWCCExt  (char*)"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01"
 
 typedef struct
 {

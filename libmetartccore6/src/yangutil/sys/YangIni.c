@@ -194,7 +194,6 @@ void yang_ini_initSys(char* filename,YangSysInfo *sys){
 	sys->familyType = (YangIpFamilyType)yang_ini_readIntValue(filename,"sys", "familyType", Yang_IpFamilyType_IPV4);
 
 	sys->enableHttps=(yangbool)yang_ini_readIntValue(filename,"sys", "enableHttps", yangfalse);
-	sys->enableMqttTls = yang_ini_readIntValue(filename,"sys", "enableMqttTls", yangfalse);
 	sys->enableLogFile=yang_ini_readIntValue(filename,"sys", "enableLogFile", yangtrue);
 
 	sys->transType = yang_ini_readIntValue(filename,"sys", "transType", Yang_Webrtc);
@@ -204,18 +203,12 @@ void yang_ini_initSys(char* filename,YangSysInfo *sys){
 	sys->rtmpPort = yang_ini_readIntValue(filename,"sys", "rtmpPort", 1935);
 	sys->rtcPort = yang_ini_readIntValue(filename,"sys", "rtcPort", 1985);
 	sys->rtcLocalPort = yang_ini_readIntValue(filename,"sys", "rtcLocalPort", 16000);
-	sys->mqttPort = yang_ini_readIntValue(filename,"sys", "mqttPort", sys->enableMqttTls?8883:1883);
 
 	sys->logLevel = yang_ini_readIntValue(filename,"sys", "logLevel", 1);
-
-
 
 	yang_ini_readStringValue(filename,"sys", "rtmpServerIP", sys->rtmpServerIP, "127.0.0.1");
 	yang_ini_readStringValue(filename,"sys", "rtcServerIP", sys->rtcServerIP, "127.0.0.1");
 
-	yang_ini_readStringValue(filename,"sys", "mqttServerIP", sys->mqttServerIP, "127.0.0.1");
-	yang_ini_readStringValue(filename,"sys", "mqttUserName", sys->mqttUserName, "");
-	yang_ini_readStringValue(filename,"sys", "mqttPassword", sys->mqttPassword, "");
 }
 
 void yang_ini_initEnc(char* filename,YangVideoEncInfo *enc){
@@ -247,7 +240,15 @@ void yang_ini_initRtc(char* filename,YangRtcInfo *rtc){
 	yang_ini_readStringValue(filename,"rtc", "iceLocalIP", rtc->iceLocalIP, "127.0.0.1");
 	yang_ini_readStringValue(filename,"rtc", "iceUserName", rtc->iceUserName, "metartc");
 	yang_ini_readStringValue(filename,"rtc", "icePassword", rtc->icePassword, "metartc");
+}
 
+void yang_ini_initMqtt(char* filename,YangMqttInfo *mqtt){
+	yang_memset(mqtt,0,sizeof(YangSysInfo));
+	mqtt->enableMqttTls = yang_ini_readIntValue(filename,"mqtt", "enableMqttTls", yangfalse);
+	mqtt->mqttPort = yang_ini_readIntValue(filename,"mqtt", "mqttPort", mqtt->enableMqttTls?8883:1883);
+	yang_ini_readStringValue(filename,"mqtt", "mqttServerIP", mqtt->mqttServerIP, "127.0.0.1");
+	yang_ini_readStringValue(filename,"mqtt", "mqttUserName", mqtt->mqttUserName, "");
+	yang_ini_readStringValue(filename,"mqtt", "mqttPassword", mqtt->mqttPassword, "");
 }
 
 void yang_ini_initAvinfo(char* filename,YangAVInfo* avinfo){
@@ -256,7 +257,11 @@ void yang_ini_initAvinfo(char* filename,YangAVInfo* avinfo){
 	yang_ini_initSys(filename,&avinfo->sys);
 	yang_ini_initEnc(filename,&avinfo->enc);
 	yang_ini_initRtc(filename,&avinfo->rtc);
+#if	Yang_Enable_Mqtt
+	yang_ini_initMqtt(filename,&avinfo->mqtt);
+#endif
 }
+
 void yang_create_ini(YangIni *ini, const char *p_filename) {
 	char file1[300];
 	yang_memset(file1, 0, 300);

@@ -72,7 +72,6 @@ typedef struct YangVideoEncInfo {
 typedef struct YangSysInfo {
 	YangIpFamilyType familyType;
 	yangbool enableHttps;
-	yangbool enableMqttTls;
 	yangbool enableLogFile;
 
 	int32_t mediaServer;
@@ -81,7 +80,6 @@ typedef struct YangSysInfo {
 	int32_t rtcPort;
 	int32_t rtcLocalPort;
 	int32_t httpPort;
-	int32_t mqttPort;
 
 	int32_t transType;
 	int32_t logLevel;
@@ -89,9 +87,6 @@ typedef struct YangSysInfo {
 	char localIp[32];
 	char rtcServerIP[32];
 	char rtmpServerIP[32];
-	char mqttServerIP[32];
-	char mqttUserName[32];
-	char mqttPassword[64];
 }YangSysInfo;
 
 typedef struct YangRtcInfo {
@@ -111,12 +106,23 @@ typedef struct YangRtcInfo {
 	char icePassword[64];
 }YangRtcInfo;
 
+typedef struct{
+	yangbool enableMqttTls;
+	int32_t mqttPort;
+	char mqttServerIP[32];
+	char mqttUserName[32];
+	char mqttPassword[64];
+}YangMqttInfo;
+
 typedef struct YangAVInfo{
 	YangAudioInfo audio;
 	YangVideoInfo video;
 	YangVideoEncInfo enc;
 	YangSysInfo sys;
 	YangRtcInfo rtc;
+#if	Yang_Enable_Mqtt
+	YangMqttInfo mqtt;
+#endif
 }YangAVInfo;
 
 typedef struct{
