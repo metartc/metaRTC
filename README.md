@@ -21,7 +21,7 @@ Remark:metaRTC6.0 is stable
 https://github.com/metartc/metaRTC/wiki/metaRTC-Learning  
 
 ### metaRTC6.0稳定版本下载
-https://github.com/metartc/metaRTC/releases/tag/v6.0-b0  
+https://github.com/metartc/metaRTC/releases/tag/v6.0-b1  
 ### 纯C版IPC第三方库下载
 https://github.com/metartc/metaRTC/releases/tag/v5.0-b1   
 
