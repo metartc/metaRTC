@@ -217,17 +217,17 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	//extmaps twcc
 
 #if Yang_Enable_RTC_Audio
-	yang_create_YangExtmapVector(&audio_media_desc->extmaps);
+/*	yang_create_YangExtmapVector(&audio_media_desc->extmaps);
 	yang_insert_YangExtmapVector(&audio_media_desc->extmaps, NULL);
 	audio_media_desc->extmaps.payload[0].mapid = session->context.twccId;
-	yang_strcpy(audio_media_desc->extmaps.payload[0].extmap,Yang_SDP_kTWCCExt);
+	yang_strcpy(audio_media_desc->extmaps.payload[0].extmap,Yang_SDP_kTWCCExt);*/
 #endif
 
 #if Yang_Enable_RTC_Video
-	/*yang_create_YangExtmapVector(&video_media_desc->extmaps);
+	yang_create_YangExtmapVector(&video_media_desc->extmaps);
 	yang_insert_YangExtmapVector(&video_media_desc->extmaps, NULL);
 	video_media_desc->extmaps.payload[0].mapid = session->context.twccId;
-	yang_strcpy(video_media_desc->extmaps.payload[0].extmap,Yang_SDP_kTWCCExt);*/
+	yang_strcpy(video_media_desc->extmaps.payload[0].extmap,Yang_SDP_kTWCCExt);
 #endif
 
 #if Yang_Enable_RTC_Audio
