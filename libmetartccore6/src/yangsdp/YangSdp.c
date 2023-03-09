@@ -224,10 +224,10 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 #endif
 
 #if Yang_Enable_RTC_Video
-	yang_create_YangExtmapVector(&video_media_desc->extmaps);
+	/*yang_create_YangExtmapVector(&video_media_desc->extmaps);
 	yang_insert_YangExtmapVector(&video_media_desc->extmaps, NULL);
 	video_media_desc->extmaps.payload[0].mapid = session->context.twccId;
-	yang_strcpy(video_media_desc->extmaps.payload[0].extmap,Yang_SDP_kTWCCExt);
+	yang_strcpy(video_media_desc->extmaps.payload[0].extmap,Yang_SDP_kTWCCExt);*/
 #endif
 
 #if Yang_Enable_RTC_Audio
@@ -237,16 +237,16 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 			NULL);
 	YangMediaPayloadType *audiotype =
 			&audio_media_desc->payload_types.payload[0];
-	audiotype->payload_type = session->opusPayloadType;
+	audiotype->payload_type = session->audioPayloadType;
 	yang_strcpy(audiotype->encoding_name, "opus");
 	audiotype->clock_rate = session->context.avinfo->audio.sample; //48000;
 	yang_itoa2(session->context.avinfo->audio.channel,audiotype->encoding_param, 10);
 
 
 	yang_strcpy(audiotype->format_specific_param,
-				session->context.avinfo->audio.enableAudioFec?"minptime=10;useinbandfec=1":"minptime=10;useinbandfec=0");
-	yang_create_stringVector(&audiotype->rtcp_fb);
-	yang_insert_stringVector(&audiotype->rtcp_fb, "transport-cc");
+				session->context.avinfo->audio.enableAudioFec?"minptime=10;useinbandfec=1":"minptime=10");
+	//yang_create_stringVector(&audiotype->rtcp_fb);
+	//yang_insert_stringVector(&audiotype->rtcp_fb, "transport-cc");
 #endif
 
 #if Yang_Enable_RTC_Video
@@ -482,7 +482,7 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 	                    session->remote_audio->sample=desc->payload_types.payload[k].clock_rate;
 						session->remote_audio->channel=atoi(desc->payload_types.payload[k].encoding_param);
 	                    session->remote_audio->audioClock=desc->payload_types.payload[k].clock_rate;
-	                    session->opusPayloadType=desc->payload_types.payload[k].payload_type;
+	                    session->audioPayloadType=desc->payload_types.payload[k].payload_type;
 					}
 				}
 #endif

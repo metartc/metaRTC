@@ -49,7 +49,7 @@ int32_t yang_push_audio_rtp(void *psession, YangPushAudioRtp *rtp,
 	int err = 0;
 	YangRtcSession *session=(YangRtcSession*)psession;
 	yang_reset_rtpPacket(&rtp->audioRawPacket);
-	rtp->audioRawPacket.header.payload_type = YangAudioPayloadType;
+	rtp->audioRawPacket.header.payload_type = session->audioPayloadType;
 	rtp->audioRawPacket.header.ssrc = rtp->audioSsrc;
 	rtp->audioRawPacket.frame_type = YangFrameTypeAudio;
 	rtp->audioRawPacket.header.marker = yangtrue;

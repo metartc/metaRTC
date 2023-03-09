@@ -28,7 +28,7 @@ typedef struct {
 	yangbool isServer;
 	int32_t h264PayloadType;
 	int32_t h265PayloadType;
-	int32_t opusPayloadType;
+	int32_t audioPayloadType;
 
 	int32_t usingDatachannel;
 	int64_t lastStunTime;

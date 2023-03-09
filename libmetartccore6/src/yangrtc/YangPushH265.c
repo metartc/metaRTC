@@ -65,7 +65,7 @@ int32_t yang_push_h265_package_stap_a(void *psession,
 	int err = Yang_Ok;
 	YangRtcSession *session=(YangRtcSession*)psession;
 	yang_reset_rtpPacket(&rtp->videoStapPacket);
-	rtp->videoStapPacket.header.payload_type = YangH265PayloadType;
+	rtp->videoStapPacket.header.payload_type = session->h265PayloadType;
 	rtp->videoStapPacket.header.ssrc = rtp->videoSsrc;
 	rtp->videoStapPacket.frame_type = YangFrameTypeVideo;
 	rtp->videoStapPacket.nalu_type = (YangAvcNaluType) kStapA;
@@ -100,7 +100,7 @@ int32_t yang_h265_package_single_nalu2(YangRtcSession *session,
 
 
 	yang_reset_rtpPacket(&rtp->videoRawPacket);
-	rtp->videoRawPacket.header.payload_type = YangH265PayloadType;
+	rtp->videoRawPacket.header.payload_type = session->h265PayloadType;
 	rtp->videoRawPacket.header.ssrc = rtp->videoSsrc;
 	rtp->videoRawPacket.frame_type = YangFrameTypeVideo;
 	rtp->videoRawPacket.header.sequence = rtp->videoSeq++;
@@ -124,7 +124,7 @@ int32_t yang_h265_package_single_nalu(YangRtcSession *session,
 	int32_t err = Yang_Ok;
 
 	yang_reset_rtpPacket(&rtp->videoRawPacket);
-	rtp->videoRawPacket.header.payload_type = YangH265PayloadType;
+	rtp->videoRawPacket.header.payload_type = session->h265PayloadType;
 	rtp->videoRawPacket.header.ssrc = rtp->videoSsrc;
 	rtp->videoRawPacket.frame_type = YangFrameTypeVideo;
 	rtp->videoRawPacket.header.sequence = rtp->videoSeq++;
@@ -156,7 +156,7 @@ int32_t yang_h265_package_fu_a(YangRtcSession *session, YangPushH265Rtp *rtp,
 		int32_t packet_size = yang_min(nb_left, fu_payload_size);
 
 		yang_reset_rtpPacket(&rtp->videoFuaPacket);
-		rtp->videoFuaPacket.header.payload_type = YangH265PayloadType;
+		rtp->videoFuaPacket.header.payload_type = session->h265PayloadType;
 		rtp->videoFuaPacket.header.ssrc = rtp->videoSsrc;
 		rtp->videoFuaPacket.frame_type = YangFrameTypeVideo;
 		rtp->videoFuaPacket.header.sequence = rtp->videoSeq++;
