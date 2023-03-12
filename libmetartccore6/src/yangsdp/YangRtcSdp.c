@@ -272,7 +272,7 @@ int32_t yang_rtcsdp_parse_attribute(YangSdp *sdp, char *content) {
 }
 
 int32_t yang_rtcsdp_is_unified(YangSdp *sdp) {
-	// TODO: FIXME: Maybe we should consider other situations.
+
 	return sdp->media_descs.vsize > 2 ? 1 : 0;
 }
 
@@ -355,7 +355,6 @@ int32_t yang_rtcsdp_encode(YangSdp *sdp, YangBuffer *os) {
 	if (!sdp->groups.vsize) {
 		p = yang_rtcsdp_getnull(tmp);
 		yang_sprintf(p, "a=group:%s", sdp->group_policy);
-		//os << "a=group:" << sdp->group_policy
 		for (int i = 0; i < sdp->groups.vsize; i++) {
 			p = yang_rtcsdp_getnull(tmp);
 			yang_sprintf(p, " %s", sdp->groups.payload[i]);

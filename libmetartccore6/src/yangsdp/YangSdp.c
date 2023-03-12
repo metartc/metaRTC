@@ -86,8 +86,6 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 
 	yang_insert_stringVector(&local_sdp->msids, streamnames);
 
-	yang_strcpy(local_sdp->group_policy,"BUNDLE 0 1");
-
 	char tmps[5][16];
 	yang_create_YangMediaDescVector(&local_sdp->media_descs);
 
@@ -124,7 +122,6 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 		yang_strcpy(data_media_desc->protos, "UDP/DTLS/SCTP webrtc-datachannel");
 		data_media_desc->rtcp_mux = yangfalse;
 		data_media_desc->rtcp_rsize = yangfalse;
-		//yang_strcpy(data_media_desc->mid, "2");
 		yang_sprintf(data_media_desc->mid,"%d",midNum++);
 
 	}
