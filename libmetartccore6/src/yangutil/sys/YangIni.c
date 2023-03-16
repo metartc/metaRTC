@@ -170,8 +170,8 @@ void yang_ini_initAudio(char* filename,YangAudioInfo* audio){
 	audio->echoPath = yang_ini_readIntValue(filename,"audio", "echoPath", 10);
 	audio->aecBufferFrames=yang_ini_readIntValue(filename,"audio", "aecBufferFrames", 0);
 	audio->enableAudioHeader = yang_ini_readIntValue(filename,"audio", "enableAudioHeader", 0);
-	audio->audioEncoderType = yang_ini_readIntValue(filename,"audio", "audioEncoderType", 0);
-	audio->audioDecoderType = yang_ini_readIntValue(filename,"audio", "audioDecoderType", 0);
+	audio->audioEncoderType = yang_ini_readIntValue(filename,"audio", "audioEncoderType", Yang_AED_OPUS);
+	audio->audioDecoderType = yang_ini_readIntValue(filename,"audio", "audioDecoderType", Yang_AED_OPUS);
 	audio->audioPlayType = yang_ini_readIntValue(filename,"audio", "audioPlayType", 0);
 	audio->audioCacheNum = yang_ini_readIntValue(filename,"audio", "audioCacheNum", 100);
 	audio->audioCacheSize = yang_ini_readIntValue(filename,"audio", "audioCacheSize", 100);
