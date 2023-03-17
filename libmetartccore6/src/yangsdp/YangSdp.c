@@ -569,7 +569,7 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 				yangbool replaceIp=yangtrue;
 				for (k = 0; k < desc->candidates.vsize; k++) {
 					YangCandidate *candidate = &desc->candidates.payload[k];
-					if(yang_memcmp(session->context.streamConfig->remoteIp,candidate->ip,yang_strlen(session->context.streamConfig->remoteIp))==0){
+					if(yang_memcmp(session->context.streamConfig->remoteIp,candidate->ip,yang_strlen(candidate->ip))==0){
 						replaceIp=yangfalse;
 						break;
 					}
