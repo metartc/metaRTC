@@ -17,7 +17,7 @@ Remark:metaRTC6.0 is stable
 ## metaRTC问答星球
     
   ![xingqiu2](https://user-images.githubusercontent.com/87118023/227077884-0163fcb6-ab0d-4933-88c9-0164b80f4d02.jpg)  
-s://t.zsxq.com/0cfpXQYoX  
+https://t.zsxq.com/0cfpXQYoX
 ## metaRTC服务微信群
 可加微信taihang82  
 
