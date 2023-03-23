@@ -14,6 +14,8 @@ Remark:metaRTC3.0/metaRTC4.0等停止更新，推荐使用稳定版metaRTC6.0
 Remark:metaRTC6.0为稳定版本   
 Remark:metaRTC6.0 is stable    
 
+## metaRTC问答星球
+https://t.zsxq.com/0cfpXQYoX  
 ## metaRTC服务微信群
 可加微信taihang82  
 
