@@ -8,7 +8,7 @@
 #include <yangrtc/YangRtcConnection.h>
 
 #include <yangsdp/YangSdp.h>
-#include <yangjson/YangJson.h>
+
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/sys/YangCString.h>
 #include <yangutil/sys/YangHttpSocket.h>
@@ -37,49 +37,7 @@ int32_t yang_zlm_query(YangRtcSession* session,ZlmSdpResponseType* zlm,int32_t i
 		yang_free(sdp);
 		return yang_error_wrap(1,"query zlm sdp failure!");
 	}
-#if Yang_Enable_Json
-	YangJsonReader reader;
-	char* p=yang_strstr(sdp,"{");
-	if(p==NULL) return ERROR_STRING;
 
-	if(yang_create_jsonReader(&reader,p)!=Yang_Ok){
-		yang_error("read srs response json error!");
-		err=ERROR_STRING;
-		goto cleanup;
-	}
-
-	YangJson* jcode = reader.getObjectItemCaseSensitive(reader.session, "code");
-	if (reader.isNumber(jcode))
-	{
-		err=jcode->valueint==0?Yang_Ok:ERROR_SERVER_ConnectFailure;
-		if(err!=Yang_Ok) goto cleanup;
-	}
-
-	zlm->retcode=jcode->valueint;
-
-	YangJson* sessionid = reader.getObjectItemCaseSensitive(reader.session, "id");
-	YangJson* jsdp = reader.getObjectItemCaseSensitive(reader.session, "sdp");
-
-
-	if (reader.isString(sessionid) && (sessionid->valuestring != NULL))
-	{
-		zlm->id=(char*)yang_calloc(yang_strlen(sessionid->valuestring)+1,1);
-		yang_memcpy(zlm->id,sessionid->valuestring,yang_strlen(sessionid->valuestring));
-
-	}
-
-	if (reader.isString(jsdp) && (jsdp->valuestring != NULL))
-	{
-		zlm->sdp=(char*)yang_calloc(yang_strlen(jsdp->valuestring)+1,1);
-		yang_cstr_replace(jsdp->valuestring,zlm->sdp, "\r\n", "\n");
-	}
-
-	cleanup:
-	yang_destroy_jsonReader(&reader);
-	yang_free(sdp);
-	return err;
-
-#else
 
 	char* sBuffer=(char*)yang_calloc(1,Yang_SDP_BUFFERLEN);
 	yang_cstr_replace(sdp,sBuffer, "{", "");
@@ -137,7 +95,6 @@ int32_t yang_zlm_query(YangRtcSession* session,ZlmSdpResponseType* zlm,int32_t i
 	yang_free(sBuffer);
 	yang_free(sdp);
 	return err;
-#endif
 
 }
 
