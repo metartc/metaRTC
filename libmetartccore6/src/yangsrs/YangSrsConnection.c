@@ -135,7 +135,7 @@ int32_t yang_srs_connectRtcServer(YangRtcConnection* conn){
 	SrsSdpResponseType srs;
 	yang_memset(&srs,0,sizeof(SrsSdpResponseType));
 
-	session->context.avinfo->rtc.enableHttpServerSdp=yangtrue;
+	//session->context.avinfo->rtc.enableHttpServerSdp=yangtrue;
 
 	char *tsdp=NULL;
 	conn->createOffer(session, &tsdp);
