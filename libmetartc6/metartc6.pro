@@ -129,7 +129,6 @@ SOURCES += \
     src/yangutil/YangSysMessageHandle.cpp \
     src/yangutil/YangThread.cpp \
     src/yangutil/YangTimer.cpp \
-    src/yangutil/YangYuvGl.cpp \
     src/yangutil/buffer/YangAudioBuffer.cpp \
     src/yangutil/buffer/YangAudioEncoderBuffer.cpp \
     src/yangutil/buffer/YangAudioPlayBuffer.cpp \

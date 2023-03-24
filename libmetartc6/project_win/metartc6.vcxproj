@@ -167,7 +167,6 @@
     <ClCompile Include="..\src\yangutil\YangSysMessageHandle.cpp" />
     <ClCompile Include="..\src\yangutil\YangThread.cpp" />
     <ClCompile Include="..\src\yangutil\YangTimer.cpp" />
-    <ClCompile Include="..\src\yangutil\YangYuvGl.cpp" />
     <ClCompile Include="..\src\yangutil\buffer\YangAudioBuffer.cpp" />
     <ClCompile Include="..\src\yangutil\buffer\YangAudioEncoderBuffer.cpp" />
     <ClCompile Include="..\src\yangutil\buffer\YangAudioPlayBuffer.cpp" />
