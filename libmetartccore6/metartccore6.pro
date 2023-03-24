@@ -67,10 +67,6 @@ SOURCES += \
     src/yangice/YangRtcSocket.c \
     src/yangice/YangRtcStun.c \
     src/yangice/YangTurnConnection.c \
-    src/yangjson/YangJson.c \
-    src/yangjson/YangJsonImpl.c \
-    src/yangmqtt/YangMqtt.c \
-    src/yangmqtt/YangMqttImpl.c \
     src/yangp2p/YangP2pConnection.c \
     src/yangp2p/YangP2pConnection2.c \
     src/yangp2p/YangP2pServer.c \
