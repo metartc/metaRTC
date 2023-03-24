@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1150</width>
-    <height>868</height>
+    <height>833</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -112,19 +112,6 @@ QMenu {
      <enum>QFrame::Raised</enum>
     </property>
    </widget>
-   <widget class="QCheckBox" name="m_c_screen">
-    <property name="geometry">
-     <rect>
-      <x>880</x>
-      <y>660</y>
-      <width>91</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>屏幕</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="m_l_url">
     <property name="geometry">
      <rect>
@@ -148,63 +135,11 @@ QMenu {
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="m_t_data">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>713</y>
-      <width>361</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>hello,metaRTC5.0!</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="m_b_senddc">
-    <property name="geometry">
-     <rect>
-      <x>890</x>
-      <y>710</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Senddata</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="m_l_recv">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>710</y>
-      <width>301</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="m_l_url_2">
-    <property name="geometry">
-     <rect>
-      <x>59</x>
-      <y>710</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>RECV:</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="m_l_err">
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>770</y>
+      <y>710</y>
       <width>861</width>
       <height>34</height>
      </rect>
@@ -217,7 +152,7 @@ QMenu {
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>770</y>
+      <y>710</y>
       <width>91</width>
       <height>31</height>
      </rect>

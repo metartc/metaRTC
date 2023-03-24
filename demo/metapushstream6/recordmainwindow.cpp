@@ -14,10 +14,7 @@
 //#include <QMessageBox>
 #include <QDesktopWidget>
 #include <QSettings>
-void g_qt_push_receiveData(void* context,YangFrame* msgFrame){
-    RecordMainWindow* win=(RecordMainWindow*)context;
-    win->setRecvText((char*)msgFrame->payload,msgFrame->nb);
-}
+
 RecordMainWindow::RecordMainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::RecordMainWindow)
@@ -53,18 +50,9 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     m_context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm
     m_context->avinfo.rtc.rtcLocalPort=10000+yang_random()%15000;
     //m_showev->event=1;
-#if    Yang_SendVideo_
-    m_videoType=Yang_VideoSrc_OutInterface;
-    m_outInfo.width=1920;
-    m_outInfo.height=1080;
-   // YangPushFactory pf;
-   // YangSendVideoI* send=pf.getSendVideo(this->m_message);
-   // send->putVideoRgba( data,len);
-   // send->putVideoI420( data,len);
 
-#else
     m_videoType=Yang_VideoSrc_Camera;//Yang_VideoSrc_Camera/Yang_VideoSrc_Screen;
-#endif
+
     m_isStartpush=0;
 
     m_win0=NULL;
@@ -89,19 +77,11 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     m_hasAudio=m_videoType==Yang_VideoSrc_Screen?false:true;
 
     m_isStartRecord=false;
-    m_filename=NULL;
+
     m_initRecord=false;
 
+    m_context->avinfo.rtc.enableDatachannel=yangfalse;
 
-    //using datachannel
-    if(m_context->avinfo.sys.mediaServer!=Yang_Server_Srs){
-        m_context->avinfo.rtc.enableDatachannel=yangtrue;
-        m_context->channeldataRecv.context=this;
-        m_context->channeldataRecv.receiveData=g_qt_push_receiveData;
-
-    }else{
-             m_context->avinfo.rtc.enableDatachannel=yangfalse;
-      }
     //using h264 h265
     m_context->avinfo.video.videoEncoderType=Yang_VED_264;//Yang_VED_265;
     if(m_context->avinfo.video.videoEncoderType==Yang_VED_265){
@@ -110,8 +90,6 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     }
     m_context->avinfo.rtc.iceCandidateType=YangIceHost;
 
-   // m_hasAudio=false;
-
     //srs do not use audio fec
     m_context->avinfo.audio.enableAudioFec=yangfalse;
 
@@ -119,7 +97,7 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
 
 RecordMainWindow::~RecordMainWindow()
 {
-    yang_deleteA(m_filename);
+
     closeAll();
 
 }
@@ -130,14 +108,7 @@ void RecordMainWindow::closeEvent( QCloseEvent * event ){
     exit(0);
 }
 
-void RecordMainWindow::screenEvent(char* str)
-{
 
-
-}
-void RecordMainWindow::setRecvText(char* data,int32_t nb){
-    ui->m_l_recv->setText(data);
-}
 void RecordMainWindow::receiveSysMessage(YangSysMessage *mss, int32_t err){
     switch (mss->messageId) {
     case YangM_Push_Connect:
@@ -200,8 +171,7 @@ void RecordMainWindow::closeAll(){
 
 void RecordMainWindow::initPreview(){
     if(m_videoType==Yang_VideoSrc_Screen) {
-        ui->m_c_screen->setCheckState(Qt::Checked);
-        ui->m_c_screen->setEnabled(false);
+
         yang_post_message(YangM_Push_StartScreenCapture,0,NULL);
     }else if(m_videoType==Yang_VideoSrc_Camera){
         yang_post_message(YangM_Push_StartVideoCapture,0,NULL);
@@ -266,25 +236,6 @@ void RecordMainWindow::on_m_b_rec_clicked()
 
 }
 
-
-
-void RecordMainWindow::switchToCamera(){
-      yang_post_message(YangM_Push_SwitchToCamera,0,NULL);
-}
-void RecordMainWindow::switchToScreen(){
-     if(m_context->avinfo.video.videoEncHwType==YangV_Hw_Nvdia) m_context->avinfo.video.videoCaptureFormat=YangArgb;
-     yang_post_message(YangM_Push_SwitchToScreen,0,NULL);
-    ui->m_c_screen->setCheckState(Qt::Checked);
-    ui->m_c_screen->setEnabled(false);
-
-}
-
-void RecordMainWindow::on_m_c_screen_clicked()
-{
-        switchToScreen();
-
-}
-
 void RecordMainWindow::initRecord(){
     if(!m_initRecord){
         m_context->avinfo.audio.audioEncoderType=Yang_AED_AAC;
@@ -301,13 +252,3 @@ void RecordMainWindow::initRecord(){
 
 
 
-void RecordMainWindow::on_m_b_senddc_clicked()
-{
-    YangFrame frame;
-    memset(&frame,0,sizeof(YangFrame));
-    frame.mediaType=YANG_DATA_CHANNEL_STRING;
-    frame.payload=(uint8_t*)ui->m_t_data->text().toLatin1().data();
-    frame.nb=strlen(ui->m_t_data->text().toLatin1().data());
-    if(m_context->channeldataSend.sendData)
-        m_context->channeldataSend.sendData(m_context->channeldataSend.context,&frame);
-}
