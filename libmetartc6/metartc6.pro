@@ -79,7 +79,6 @@ SOURCES += \
     src/yangcapture/android/YangCameraAndroid.cpp \
     src/yangcapture/android/YangVideoCaptureAndroid.cpp \
     src/yangcapture/linux/YangVideoCaptureLinux.cpp \
-    src/yangcapture/linux/YangX11Screen.cpp \
     src/yangcapture/win/YangDXGIManager.cpp \
     src/yangcapture/win/YangVideoCaptureWindows.cpp \
     src/yangcapture/win/YangVideoSrc.cpp \
@@ -162,7 +161,6 @@ HEADERS += \
     src/yangcapture/android/YangCameraAndroid.h \
     src/yangcapture/android/YangVideoCaptureAndroid.h \
     src/yangcapture/linux/YangVideoCaptureLinux.h \
-    src/yangcapture/linux/YangX11Screen.h \
     src/yangcapture/win/YangDXGIManager.h \
     src/yangcapture/win/YangVideoCaptureWindows.h \
     src/yangcapture/win/YangVideoSrc.h \
