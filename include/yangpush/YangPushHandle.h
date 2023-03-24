@@ -18,10 +18,6 @@ public:
 
     virtual void init()=0;
     virtual void changeSrc(int videoSrcType,bool pisinit)=0;
-
-    virtual void setScreenVideoInfo(int videoSrcType,YangVideoInfo* pvideo)=0;
-    virtual void setScreenInterval(int32_t pinterval)=0;
-    virtual void setDrawmouse(bool isDraw)=0;
     virtual YangVideoBuffer* getPreVideoBuffer()=0;
 
     virtual YangSendVideoI* getSendVideo()=0;

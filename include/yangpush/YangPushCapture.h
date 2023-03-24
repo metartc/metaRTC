@@ -19,9 +19,9 @@ public:
 	virtual ~YangPushCapture();
 public:
         void startCamera();
-        void startScreen();
+
         void stopCamera();
-        void stopScreen();
+
         void setScreenInterval(int32_t pinterval);
         void setDrawmouse(bool isDraw);
 	void startVideoCaptureState();
@@ -29,7 +29,7 @@ public:
 	void stopVideoCaptureState();
 	void stopScreenCaptureState();
 	int32_t initVideo();
-	int32_t initScreen();
+
 	void startVideoCapture();
 	void startScreenCapture();
 	YangVideoBuffer * getOutVideoBuffer();

@@ -19,13 +19,13 @@ public:
 	void setCaptureType(int pct);
 
 	void startCamera();
-	void startScreen();
+
 	void stopCamera();
-	void stopScreen();
+
 	void setScreenInterval(int32_t pinterval);
 	void setDrawmouse(bool isDraw);
 	void setRtcNetBuffer(YangRtcPublish *prr);
-	//void setRtmpNetBuffer(YangRtmpPublish *prr);
+
 	void startPubVideo();
 	void startPubAudio();
 	void initAudioEncoding();
@@ -33,7 +33,7 @@ public:
 	void setVideoInfo(YangVideoInfo *pvideo);
 	int32_t startAudioCapture();
 	int32_t startVideoCapture();
-	int32_t startScreenCapture();
+
 
 	void initVideoMeeting();
 	void startAudioEncoding();
@@ -41,22 +41,18 @@ public:
 	void deleteVideoEncoding();
 	void startAudioCaptureState();
 	void startVideoCaptureState();
-	void startScreenCaptureState();
+
 	void stopAudioCaptureState();
 	void stopVideoCaptureState();
 	void stopScreenCaptureState();
 	YangVideoBuffer* getPreVideoBuffer();
-	YangVideoBuffer* getScreenPreVideoBuffer();
-	YangVideoBuffer* getScreenOutVideoBuffer();
+
 	YangVideoBuffer* getOutPreVideoBuffer();
 	YangVideoBuffer* getOutVideoBuffer();
 	void stopAll();
 	void setInAudioBuffer(vector<YangAudioPlayBuffer*> *pbuf);
 	void change(int32_t st);
-#if Yang_Enable_Vr
-	void addVr();
-	void delVr();
-#endif
+
 	void sendRequest(int32_t puid, uint32_t ssrc, YangRequestType req);
 	void sendMsgToEncoder(YangRequestType req);
 	YangPushCapture* getPushCapture();
