@@ -36,12 +36,6 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     m_context->avinfo.video.videoEncoderFormat=YangI420;//YangI420;//YangArgb;
     m_context->avinfo.enc.createMeta=0;
 #endif
-#if Yang_Enable_Vr
-    //using vr bg file name
-    memset(m_context->avinfo.bgFilename,0,sizeof(m_ini->bgFilename));
-    QSettings settingsread((char*)"yang_config.ini",QSettings::IniFormat);
-    strcpy(m_context->avinfo.bgFilename, settingsread.value("sys/bgFilename",QVariant("d:\\bg.jpeg")).toString().toStdString().c_str());
-#endif
 
      init();
     yang_setLogLevel(m_context->avinfo.sys.logLevel);
