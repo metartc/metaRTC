@@ -31,8 +31,7 @@ unix{
     }
 
  LIBS += -L$$HOME_BASE/thirdparty/lib -lmetaApp -lmetartc6 -lmetartccore6 -lyuv -lopenh264 -lspeexdsp -lopus -lusrsctp -lpthread -lasound -ldl
-#screen share
- #LIBS +=  -lX11 -lXext
+
 #openssl
  LIBS += -lssl2 -lcrypto2 -lsrtp2
 #mbtls
