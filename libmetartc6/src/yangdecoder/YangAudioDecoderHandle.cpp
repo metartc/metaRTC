@@ -10,7 +10,7 @@
 
 YangAudioDecoderHandle::YangAudioDecoderHandle(YangContext *pcontext) {
 	m_context=pcontext;
-	m_context->streams.setDecoderMediaConfigCallback(this);
+	m_context->streams->setDecoderMediaConfigCallback(this);
 	m_isInit = 0;
 	m_isStart = 0;
 	m_isConvert = 1;
@@ -94,7 +94,8 @@ void YangAudioDecoderHandle::setInAudioBuffer(YangAudioEncoderBuffer *pbuf) {
 }
 void YangAudioDecoderHandle::setOutAudioBuffer(YangAudioPlayBuffer *pbuf) {
 	m_out_audioBuffer = pbuf;
-	if(m_context&&m_context->streams.m_playBuffer)  m_context->streams.m_playBuffer->setInAudioBuffer(pbuf);
+	if(m_context&&m_context->synMgr.session->playBuffer)
+		m_context->synMgr.session->playBuffer->setInAudioBuffer(m_context->synMgr.session->playBuffer->session,pbuf);
 }
 
 void YangAudioDecoderHandle::onAudioData(YangFrame *pframe) {

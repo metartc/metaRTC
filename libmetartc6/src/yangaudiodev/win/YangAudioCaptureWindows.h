@@ -5,19 +5,19 @@
 #define Yang_YangAudioCaptureWindows_H1
 #include <yangaudiodev/win/YangRecAudioCaptureHandle.h>
 #include <yangaudiodev/YangAudioCapture.h>
+
 #include <yangavutil/audio/YangPreProcess.h>
 #include <yangavutil/audio/YangAudioMix.h>
 #include <yangavutil/audio/YangRtcAec.h>
-
 #ifdef _WIN32
+
 #include <amstream.h>
 #include <control.h>
 #include <qedit.h>
 
-
 class YangAudioCaptureWindows: public YangAudioCapture {
 public:
-    YangAudioCaptureWindows(YangContext *pcontext);
+    YangAudioCaptureWindows(YangAVInfo *avinfo);
 	~YangAudioCaptureWindows();
 
 public:

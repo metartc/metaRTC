@@ -2,13 +2,10 @@
 // Copyright (c) 2019-2022 yanggaofeng
 //
 #include <yangaudiodev/win/YangWinAudioApiDevice.h>
-#ifdef _WIN32
 #include <yangaudiodev/win/YangWinAudioApiAec.h>
 #include <yangavutil/audio/YangAudioUtil.h>
-#include <yangutil/yangtype.h>
 
-
-
+#ifdef _WIN32
 YangWinAudioApiDevice::YangWinAudioApiDevice(YangContext *pcontext,bool isRecord,
 		bool usingBuiltinAec) {
 	m_usingBuiltinAec = usingBuiltinAec;
@@ -16,7 +13,7 @@ YangWinAudioApiDevice::YangWinAudioApiDevice(YangContext *pcontext,bool isRecord
 	m_isInit = 0;
 	m_loops = 0;
 	m_player=NULL;
-    m_context=pcontext;
+    //m_context=pcontext;
 #ifdef _MSC_VER
 	if (m_usingBuiltinAec&&!isRecord)
         m_capture = new YangWinAudioApiAec();
@@ -29,8 +26,8 @@ YangWinAudioApiDevice::YangWinAudioApiDevice(YangContext *pcontext,bool isRecord
 	m_usingBuiltinAec=false;
 #endif
 	m_outLen=640;
-	m_ahandle = new YangAudioCaptureHandle(pcontext);
-    if(!isRecord) m_player = new YangWinAudioApiRender(pcontext);
+	m_ahandle = new YangAudioCaptureHandle(&pcontext->avinfo);
+    if(!isRecord) m_player = new YangWinAudioApiRender(&pcontext->avinfo,&pcontext->synMgr);
 
 }
 
@@ -49,10 +46,10 @@ YangWinAudioApiDevice::~YangWinAudioApiDevice() {
 }
 
 void YangWinAudioApiDevice::setCatureStart() {
-	if(m_ahandle) m_ahandle->isBuf = 1;
+    if(m_ahandle) m_ahandle->m_enableBuf = 1;
 }
 void YangWinAudioApiDevice::setCatureStop() {
-	if(m_ahandle) m_ahandle->isBuf = 0;
+    if(m_ahandle) m_ahandle->m_enableBuf = 0;
 }
 void YangWinAudioApiDevice::setOutAudioBuffer(YangAudioBuffer *pbuffer) {
 	if(m_ahandle) m_ahandle->setOutAudioBuffer(pbuffer);

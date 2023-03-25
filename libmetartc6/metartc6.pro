@@ -121,6 +121,7 @@ SOURCES += \
     src/yangrtc/YangPeerConnection2.cpp \
     src/yangstream/YangStreamManager.cpp \
     src/yangstream/YangSynBuffer.cpp \
+    src/yangstream/YangSynBufferManager.cpp \
     src/yangutil/YangAvinfo.cpp \
     src/yangutil/YangLoadLib.cpp \
     src/yangutil/YangString.cpp \

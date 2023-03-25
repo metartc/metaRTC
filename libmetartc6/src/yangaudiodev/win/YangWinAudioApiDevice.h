@@ -3,21 +3,19 @@
 //
 #ifndef SRC_YANGCAPTURE_SRC_WIN_YANGWINAUDIOAPI_H_
 #define SRC_YANGCAPTURE_SRC_WIN_YANGWINAUDIOAPI_H_
-
-#ifdef _WIN32
 #include <yangaudiodev/win/YangWinAudioApiCapture.h>
 #include <yangaudiodev/win/YangWinAudioApiRender.h>
 #include <yangaudiodev/YangCaptureCallback.h>
 #include <yangaudiodev/YangAudioCapture.h>
-#include <yangavutil/audio/YangAudioMix.h>
-#include <yangavutil/audio/YangPreProcess.h>
-#include <yangutil/buffer/YangAudioPlayBuffer.h>
 
+#include <yangutil/buffer/YangAudioPlayBuffer.h>
+#include <yangavutil/audio/YangPreProcess.h>
+#include <yangavutil/audio/YangAudioMix.h>
 #include <yangutil/sys/YangLoadLib.h>
 #include <vector>
 
+#ifdef _WIN32
 #include "YangWinAudioCaptureHandle.h"
-
 
 class YangWinAudioApiDevice: public YangAudioCapture,public YangCaptureCallback {
 public:

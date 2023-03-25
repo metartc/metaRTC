@@ -144,8 +144,10 @@ void YangVideoDecoderHandles::addVideoStream(uint8_t *ps, int32_t puid,
 		yang_trace("\nwidth==%d,height==%d,fps==%d\n",wid,hei,fps);
 
 		int ind=0;
-		if(m_context&&(ind=m_context->streams.getIndex(puid))>-1){
-			m_context->streams.m_playBuffers->at(ind)->setInVideoBuffer(m_out_videoBuffer->back());
+		if(m_context&&(ind=m_context->synMgr.getPlayBufferIndex(m_context->synMgr.session,puid))>-1){
+			m_context->synMgr.session->playBuffers->vec.payload[ind]->setInVideoBuffer(
+					m_context->synMgr.session->playBuffers->vec.payload[ind]->session,
+					m_out_videoBuffer->back());
 		}
 
 	} else {

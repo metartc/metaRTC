@@ -21,16 +21,12 @@ public:
 
 public:
 	YangStreamStateNotify* m_streamState;
-	std::vector<YangSynBuffer*>* m_playBuffers;
-	YangSynBuffer* m_playBuffer;
 
-
-	int getIndex(int puid);
-	YangSynBuffer* getSynBuffer(int puid);
 
 	int32_t getPlayOnlineCount();
 	int32_t getPushOnlineCount();
 	void connectNotify(int32_t puid,YangStreamOptType opt,bool isConnect);
+
 public:
 	void setMediaConfig(int32_t puid,YangAudioParam* audio,YangVideoParam* video);
 	void sendRequest(int32_t puid,uint32_t ssrc,YangRequestType req);
@@ -49,9 +45,9 @@ private:
 	int32_t m_videoClock;
 	int32_t m_audioClock;
 private:
+
 	std::vector<int32_t> m_onlinePlayUsers;
 	std::vector<int32_t> m_onlinePushUsers;
-
 };
 
 #endif /* INCLUDE_YANGSTREAM_YANGSTREAMMANAGER_H_ */

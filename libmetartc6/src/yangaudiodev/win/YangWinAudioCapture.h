@@ -3,16 +3,16 @@
 //
 #ifndef Yang_YangWinAudioCapture_H1
 #define Yang_YangWinAudioCapture_H1
-
-#ifdef _WIN32
 #include <yangaudiodev/win/YangWinAudioCaptureHandle.h>
 #include <yangaudiodev/YangAudioCapture.h>
-#include <yangavutil/audio/YangPreProcess.h>
-#include <yangavutil/audio/YangRtcAec.h>
-#include <yangavutil/audio/YangAudioMix.h>
 
-#include <amstream.h>
+#include <yangavutil/audio/YangPreProcess.h>
+#include <yangavutil/audio/YangAudioMix.h>
+#include <yangavutil/audio/YangRtcAec.h>
+
+#ifdef _WIN32
 #include <control.h>
+#include <amstream.h>
 #include <qedit.h>
 
 class YangWinAudioCapture: public YangAudioCapture {

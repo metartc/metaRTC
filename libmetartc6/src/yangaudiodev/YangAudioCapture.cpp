@@ -1,19 +1,21 @@
 //
 // Copyright (c) 2019-2022 yanggaofeng
 //
+
 #include <yangaudiodev/YangAudioCapture.h>
 #include <yangutil/sys/YangLog.h>
+
 
 YangAudioCapture::YangAudioCapture()
 {
 	aIndex=0;
-	m_isStart=0;
-	m_context=NULL;
+	m_isStart=yangfalse;
+
 }
 
 YangAudioCapture::~YangAudioCapture()
 {
-	m_context=NULL;
+
 }
 
 

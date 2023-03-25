@@ -3,13 +3,12 @@
 //
 #ifndef YANGCAPTURE_WIN_API_YANGWINAUDIOAPIAEC_H_
 #define YANGCAPTURE_WIN_API_YANGWINAUDIOAPIAEC_H_
-#ifdef _MSC_VER
 #include <yangaudiodev/win/YangAudioApiCapture.h>
 #include <yangaudiodev/win/YangWinAudioApi.h>
 #include <yangaudiodev/YangAudioCaptureData.h>
 #include <yangutil/sys/YangLoadLib.h>
 #include <yangutil/yangavinfotype.h>
-
+#ifdef _MSC_VER
 #include <mmdeviceapi.h>
 #include <dmo.h>
 

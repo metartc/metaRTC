@@ -57,10 +57,10 @@ void YangRecordThread::setBlackBk(){
 }
 void YangRecordThread::render(){
     if(m_isRender&&m_syn){
-           uint8_t* t_vb=m_syn->getVideoRef(&m_frame);
+            uint8_t* t_vb=m_syn->getVideoRef(m_syn->session,&m_frame);
 
         if(t_vb&&m_video){
-            m_video->playVideo(t_vb,m_syn->m_width,m_syn->m_height);
+           m_video->playVideo(t_vb,m_syn->width(m_syn->session),m_syn->height(m_syn->session));
         }
 
         t_vb=NULL;

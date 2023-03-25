@@ -90,7 +90,8 @@ void YangVideoDecoderHandle::setInVideoBuffer(YangVideoDecoderBuffer *pbuf) {
 }
 void YangVideoDecoderHandle::setOutVideoBuffer(YangVideoBuffer *pbuf) {
 	m_out_videoBuffer = pbuf;
-	if(m_context&&m_context->streams.m_playBuffer)  m_context->streams.m_playBuffer->setInVideoBuffer(pbuf);
+	if(m_context&&m_context->synMgr.session->playBuffer)
+		m_context->synMgr.session->playBuffer->setInVideoBuffer(m_context->synMgr.session->playBuffer->session,pbuf);
 }
 
 void YangVideoDecoderHandle::onAudioData(YangFrame* pframe){

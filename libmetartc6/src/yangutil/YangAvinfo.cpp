@@ -35,12 +35,15 @@ YangContext::YangContext() {
 	memset(&rtcCallback,0,sizeof(YangRtcCallback));
 	memset(&sendRtcMessage,0,sizeof(YangSendRtcMessage));
 
-	rtcCallback.context=&streams;
+	streams=new YangStreamManager();
+
+	rtcCallback.context=streams;
 	rtcCallback.setMediaConfig=yang_context_setMediaConfig;
 	rtcCallback.sendRequest=yang_context_sendRequest;
 
 	memset(&channeldataRecv,0,sizeof(YangChannelDataRecvI));
 	memset(&channeldataSend,0,sizeof(YangChannelDataSendI));
+	yang_create_synBufferManager(&synMgr);
 	init();
 #ifdef __ANDROID__
 	nativeWindow=NULL;

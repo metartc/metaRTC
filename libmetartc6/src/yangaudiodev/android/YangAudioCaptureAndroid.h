@@ -4,17 +4,18 @@
 #ifndef YANGCAPTURE_SRC_YANGAUDIOCAPTUREIMPL_H_
 #define YANGCAPTURE_SRC_YANGAUDIOCAPTUREIMPL_H_
 #include <yangaudiodev/YangAudioCaptureHandle.h>
+#include <yangavutil/audio/YangPreProcess.h>
 #include <yangaudiodev/YangAudioCapture.h>
-#include "yangavutil/audio/YangPreProcess.h"
+#include <vector>
+
 #ifdef __ANDROID__
 #include <yangaudiodev/android/YangAudioAndroid.h>
-#include <vector>
-using namespace std;
 
+using namespace std;
 
 class YangAudioCaptureAndroid: public YangAudioCapture {
 public:
-	YangAudioCaptureAndroid(YangContext *pcontext);
+	YangAudioCaptureAndroid(YangAVInfo *avinfo);
 	~YangAudioCaptureAndroid();
 public:
 	YangAudioCaptureHandle *m_ahandle;

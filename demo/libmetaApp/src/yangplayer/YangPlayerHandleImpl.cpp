@@ -49,13 +49,11 @@ void YangPlayerHandleImpl::stopPlay(){
 int YangPlayerHandleImpl::play(char* url) {
 	memset(m_url.server,0,sizeof(m_url.server));
 	m_url.port=0;
-	if(yang_url_parse(m_context->avinfo.sys.familyType,url,&m_url)) return 1;
+    if(yang_url_parse(m_context->avinfo.sys.familyType,url,&m_url)) return 1;
 
 	stopPlay();
 	yang_trace("\nnetType==%d,server=%s,port=%d,app=%s,stream=%s\n",m_url.netType,m_url.server,m_url.port,m_url.app,m_url.stream);
 	m_context->avinfo.sys.transType=m_url.netType;
-	if(m_context->streams.m_playBuffer) m_context->streams.m_playBuffer->setTranstype(m_url.netType);
-
     return playRtc(0,m_url.server,m_url.server,m_url.port,m_url.app,m_url.stream);
 
 }

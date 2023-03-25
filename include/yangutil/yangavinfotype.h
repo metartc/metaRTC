@@ -120,6 +120,7 @@ typedef struct{
 }YangChannelDataSendI;
 #ifdef __cplusplus
 #include <yangstream/YangStreamManager.h>
+#include <yangstream/YangSynBufferManager.h>
 class YangContext {
 public:
 	YangContext();
@@ -144,7 +145,8 @@ public:
         char bgFilename[256];
 #endif
 
-	YangStreamManager streams;
+        YangSynBufferManager synMgr;
+        YangStreamManager* streams;
 };
 extern "C"{
 void yang_init_avinfo(YangAVInfo* avinfo);

@@ -3,11 +3,12 @@
 //
 #ifndef ___YangWinAudioCaptureHandlee__
 #define ___YangWinAudioCaptureHandlee__
-#ifdef _WIN32
 #include <yangaudiodev/YangAudioCaptureHandle.h>
 #include <yangutil/buffer/YangAudioBuffer.h>
 #include <yangavutil/audio/YangPreProcess.h>
 
+#ifdef _WIN32
+#include <qedit.h>
 
 #define Yang_Enable_RenderApi 1
 
@@ -17,7 +18,6 @@
 #include "YangAudioPlaySdl.h"
 #endif
 
-#include "qedit.h"
 
 class YangWinAudioCaptureHandle: public ISampleGrabberCB,public YangAudioCaptureHandle
 {

@@ -3,13 +3,12 @@
 //
 #include <yangaudiodev/win/YangWinAudioCapture.h>
 #ifdef _WIN32
-
 #include <uuids.h>
 
 using namespace std;
 #define SAFE_RELEASE(x) { if (x) x->Release(); x = NULL; }
 YangWinAudioCapture::YangWinAudioCapture(YangContext *pcontext){ // @suppress("Class members should be properly initialized")
-    m_context = pcontext;
+    //m_context = pcontext;
     m_ahandle = new YangWinAudioCaptureHandle(pcontext);
 
 	aIndex = 0;
@@ -33,7 +32,7 @@ YangWinAudioCapture::YangWinAudioCapture(YangContext *pcontext){ // @suppress("C
 	 m_moniker = NULL;
 	m_mt = NULL;
 	aIndex = 1;
-    if (m_context->avinfo.audio.enableMono) {
+    if (pcontext->avinfo.audio.enableMono) {
 		m_frames = 320;
 		m_channel = 1;
 		m_sample = 16000;
@@ -65,10 +64,10 @@ YangWinAudioCapture::~YangWinAudioCapture() {
 	}
 }
 void YangWinAudioCapture::setCatureStart() {
-	m_ahandle->isBuf = 1;
+    m_ahandle->m_enableBuf = 1;
 }
 void YangWinAudioCapture::setCatureStop() {
-	m_ahandle->isBuf = 0;
+    m_ahandle->m_enableBuf = 0;
 }
 void YangWinAudioCapture::setOutAudioBuffer(YangAudioBuffer *pbuffer) {
 	m_ahandle->setOutAudioBuffer(pbuffer);

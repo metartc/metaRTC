@@ -3,6 +3,7 @@
 //
 #ifndef YANGPLAYER_SRC_YANGAUDIOPLAYALSA_H_
 #define YANGPLAYER_SRC_YANGAUDIOPLAYALSA_H_
+
 #include <yangaudiodev/YangAudioPlay.h>
 
 #ifndef _WIN32
@@ -11,7 +12,7 @@
 
 class YangAudioPlayLinux:public YangAudioPlay{
 public:
-	YangAudioPlayLinux(YangContext *pcontext);
+	YangAudioPlayLinux(YangAVInfo* avinfo,YangSynBufferManager* streams);
 	~YangAudioPlayLinux();
 
     int init();

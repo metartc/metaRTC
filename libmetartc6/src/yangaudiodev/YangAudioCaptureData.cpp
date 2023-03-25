@@ -1,7 +1,6 @@
 ﻿//
 // Copyright (c) 2019-2022 yanggaofeng
 //
-
 #include <yangaudiodev/YangAudioCaptureData.h>
 #include <yangavutil/audio/YangAudioUtil.h>
 #include <yangutil/sys/YangLog.h>

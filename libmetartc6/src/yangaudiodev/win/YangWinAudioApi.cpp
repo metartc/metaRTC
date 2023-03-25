@@ -6,8 +6,8 @@
 #ifdef _WIN32
 #include <endpointvolume.h>
 #include <audioclient.h>
-#include <uuids.h>
 #include <assert.h>
+#include <uuids.h>
 
 #define SAFE_RELEASE(x) if(x){x->Release();x=NULL;}
 

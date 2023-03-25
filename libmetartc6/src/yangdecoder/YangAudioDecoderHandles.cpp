@@ -92,8 +92,18 @@ int32_t YangAudioDecoderHandles::getDecoderIndex(int32_t puid) {
 
 void YangAudioDecoderHandles::removeAllStream() {
 	size_t i = 0;
-	if(m_context&&m_context->streams.m_playBuffers&&m_context->streams.m_playBuffers->size()>0){
-		m_context->streams.m_playBuffers->clear();
+	if(m_context&&m_context->synMgr.session->playBuffers&&m_context->synMgr.session->playBuffers->vec.vsize>0){
+		for(int32_t ind=0;ind<m_context->synMgr.session->playBuffers->vec.vsize;ind++){
+			YangSynBuffer* syn=m_context->synMgr.session->playBuffers->vec.payload[ind];
+
+
+			yang_destroy_synBuffer(syn);
+			yang_free(syn);
+
+
+		}
+
+		m_context->synMgr.session->playBuffers->clear(&m_context->synMgr.session->playBuffers->vec);
 	}
 
 	if (m_decs && m_decs->size() > 0) {
@@ -120,11 +130,14 @@ void YangAudioDecoderHandles::removeAllStream() {
 void YangAudioDecoderHandles::removeAudioStream(int32_t puid) {
 	size_t i = 0;
 
-	int ind=m_context->streams.getIndex(puid);
-	if(m_context&&m_context->streams.m_playBuffers&&ind>-1){
-		YangSynBuffer* syn=m_context->streams.m_playBuffers->at(ind);
-		m_context->streams.m_playBuffers->erase(m_context->streams.m_playBuffers->begin() + ind);
-		yang_delete(syn);
+	int ind=m_context->synMgr.getPlayBufferIndex(m_context->synMgr.session,puid);
+	if(m_context&&m_context->synMgr.session->playBuffers&&ind>-1){
+		YangSynBuffer* syn=m_context->synMgr.session->playBuffers->vec.payload[ind];
+
+		m_context->synMgr.session->playBuffers->remove(&m_context->synMgr.session->playBuffers->vec, ind);
+		yang_destroy_synBuffer(syn);
+		yang_free(syn);
+		//yang_delete(syn);
 
 	}
 
@@ -196,11 +209,12 @@ void YangAudioDecoderHandles::onAudioData(YangFrame* pframe){
 		m_out_audioBuffer->push_back(t_vb);
 
 		int ind=0;
-		if(m_context&&(ind=m_context->streams.getIndex(pframe->uid))==-1){
-			YangSynBuffer* syn=new YangSynBuffer();
-			syn->m_uid=pframe->uid;
-			syn->setInAudioBuffer(t_vb);
-			m_context->streams.m_playBuffers->push_back(syn);
+		if(m_context&&(ind=m_context->synMgr.getPlayBufferIndex(m_context->synMgr.session,pframe->uid))==-1){
+			YangSynBuffer* syn=(YangSynBuffer*)yang_calloc(sizeof(YangSynBuffer),1);
+			yang_create_synBuffer(syn);
+			syn->setUid(syn->session,pframe->uid);
+			syn->setInAudioBuffer(syn->session,t_vb);
+			m_context->synMgr.session->playBuffers->insert(&m_context->synMgr.session->playBuffers->vec,syn);
 		}
 	}
 	if (t_vb)		{

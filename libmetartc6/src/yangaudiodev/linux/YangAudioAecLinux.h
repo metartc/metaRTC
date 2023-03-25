@@ -4,8 +4,9 @@
 #ifndef Yang_ALSA_DEVICE_H1
 #define Yang_ALSA_DEVICE_H1
 #include <yangaudiodev/YangAudioCaptureHandle.h>
-#include <yangaudiodev/YangAudioCapture.h>
 #include <yangaudiodev/YangAudioRenderData.h>
+#include <yangaudiodev/YangAudioCapture.h>
+
 #include <yangavutil/audio/YangPreProcess.h>
 
 #ifndef _WIN32
@@ -24,7 +25,7 @@ struct YangAlsaDevice {
 
 class YangAudioAecLinux: public YangAudioCapture {
 public:
-	YangAudioAecLinux(YangContext *pcontext);
+	YangAudioAecLinux(YangAVInfo *avinfo,YangSynBufferManager* streams);
 	~YangAudioAecLinux();
 
 public:
@@ -65,6 +66,7 @@ private:
 	void alsa_device_getfds(struct pollfd *pfds, uint32_t  nfds);
 
 private:
+	YangAVInfo* m_avinfo;
 	YangAlsaDevice *m_dev;
 	int32_t playDeviceState=1;
 	int32_t catpureDeviceState = 1;
@@ -75,6 +77,7 @@ private:
 	uint32_t m_sample,m_channel;
 	snd_pcm_uframes_t m_captureFrames,m_frames;
 	int32_t m_audioPlayCacheNum;
+
 };
 
 #endif

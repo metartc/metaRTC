@@ -2,13 +2,14 @@
 // Copyright (c) 2019-2022 yanggaofeng
 //
 #include <yangaudiodev/linux/YangAudioAecLinux.h>
-#include <yangutil/sys/YangLog.h>
 #ifndef _WIN32
 
-YangAudioAecLinux::YangAudioAecLinux(YangContext *pcontext) {
-	m_context = pcontext;
-    m_ahandle = new YangAudioCaptureHandle(pcontext);
-	m_audioPlayCacheNum = m_context->avinfo.audio.audioPlayCacheNum;
+YangAudioAecLinux::YangAudioAecLinux(YangAVInfo *avinfo,YangSynBufferManager* streams) {
+
+	m_audioData.setContext(streams);
+    m_ahandle = new YangAudioCaptureHandle(avinfo);
+    m_avinfo=avinfo;
+	m_audioPlayCacheNum = m_avinfo->audio.audioPlayCacheNum;
 	aIndex = 0;
 	m_ret = 0;
 	m_size = 0;
@@ -22,18 +23,17 @@ YangAudioAecLinux::YangAudioAecLinux(YangContext *pcontext) {
 	m_captureChannel = 1;
 	m_captureSample = 16000;
 
-	m_sample= m_context->avinfo.audio.sample;
-	m_channel= m_context->avinfo.audio.channel;
+	m_sample= m_avinfo->audio.sample;
+	m_channel= m_avinfo->audio.channel;
 	m_frames=m_sample/50;
 
 	m_preProcess = NULL;
 
 	m_audioData.initPlay(m_sample,m_channel);
 	m_audioData.initRender(m_captureSample,m_captureChannel);
-	m_audioData.setInAudioBuffers(pcontext->streams.m_playBuffers);
+
 
 }
-
 YangAudioAecLinux::~YangAudioAecLinux() {
 
 	if (m_isStart) {
@@ -47,13 +47,13 @@ YangAudioAecLinux::~YangAudioAecLinux() {
 	yang_free(m_buffer);
 	yang_delete(m_ahandle);
 }
+
 void YangAudioAecLinux::setCatureStart() {
-	m_ahandle->isBuf = yangtrue;
+	m_ahandle->m_enableBuf = yangtrue;
 }
 
-
 void YangAudioAecLinux::setCatureStop() {
-	m_ahandle->isBuf = yangfalse;
+	m_ahandle->m_enableBuf = yangfalse;
 }
 
 void YangAudioAecLinux::setOutAudioBuffer(YangAudioBuffer *pbuffer) {
@@ -478,11 +478,9 @@ void YangAudioAecLinux::alsa_device_getfds(struct pollfd *pfds,
 	for (i = 0; i < m_dev->writeN; i++)
 		pfds[i + m_dev->readN] = m_dev->write_fd[i];
 }
-
 void YangAudioAecLinux::setInAudioBuffer(vector<YangAudioPlayBuffer*> *pal) {
 
 }
-
 void YangAudioAecLinux::stopLoop() {
 	m_loops = yangfalse;
 }

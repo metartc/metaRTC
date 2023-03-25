@@ -3,6 +3,8 @@
 //
 #ifndef YangWinAudioApi_H
 #define YangWinAudioApi_H
+#include <yangutil/yangtype.h>
+
 #ifdef _WIN32
 #include <windows.h>
 #include <mmdeviceapi.h>

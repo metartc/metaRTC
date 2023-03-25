@@ -6,14 +6,14 @@
 
 #include <yangaudiodev/YangAudioCaptureHandle.h>
 #include <yangutil/buffer/YangAudioBuffer.h>
-#ifdef _WIN32
 
-#include "qedit.h"
+#ifdef _WIN32
+#include <qedit.h>
 
 class YangRecAudioCaptureHandle: public ISampleGrabberCB,public YangAudioCaptureHandle
 {
 public:
-    YangRecAudioCaptureHandle(YangContext *pcontext);
+    YangRecAudioCaptureHandle(YangAVInfo* avinfo);
 	virtual ~YangRecAudioCaptureHandle(void);
 	int32_t   readStart;
 

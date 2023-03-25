@@ -9,8 +9,9 @@
 #include <endpointvolume.h>
 #include <audioclient.h>
 #include <audiopolicy.h>
-#include <uuids.h>
+
 #include <Errors.h>
+#include <uuids.h>
 #include <avrt.h>
 
 #define Yang_Release(x) if(x){x->Release();x=NULL;}
@@ -22,7 +23,7 @@
 const float MAX_SPEAKER_VOLUME = 255.0f;
 const float MIN_SPEAKER_VOLUME = 0.0f;
 
-YangWinAudioApiRender::YangWinAudioApiRender(YangContext *pcontext):YangAudioPlay(pcontext) {
+YangWinAudioApiRender::YangWinAudioApiRender(YangAVInfo* avinfo,YangSynBufferManager* streams):YangAudioPlay(avinfo,streams) {
     m_outputDeviceIndex = 0;
     m_renderCollection = NULL;
     m_deviceOut = NULL;
@@ -41,11 +42,12 @@ YangWinAudioApiRender::YangWinAudioApiRender(YangContext *pcontext):YangAudioPla
     flags = 0;
     padding = 0;
     framesAvailable = 0;
-    m_audioPlayCacheNum = pcontext->avinfo.audio.audioPlayCacheNum;
-    m_audioData.initPlay(pcontext->avinfo.audio.sample, pcontext->avinfo.audio.channel);
-    m_sample=pcontext->avinfo.audio.sample;
+    m_audioPlayCacheNum = avinfo->audio.audioPlayCacheNum;
+    m_audioData.setContext(streams);
+    m_audioData.initPlay(avinfo->audio.sample, avinfo->audio.channel);
+    m_sample=avinfo->audio.sample;
 
-    m_size = (pcontext->avinfo.audio.sample / 50) * pcontext->avinfo.audio.channel * 2;
+    m_size = (avinfo->audio.sample / 50) * avinfo->audio.channel * 2;
 
 
     m_loops=0;

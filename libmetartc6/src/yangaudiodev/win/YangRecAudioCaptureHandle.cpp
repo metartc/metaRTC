@@ -6,16 +6,16 @@
 #include <strmif.h>
 #include "YangRecAudioCaptureHandle.h"
 
-YangRecAudioCaptureHandle::YangRecAudioCaptureHandle(YangContext *pcontext):YangAudioCaptureHandle(pcontext)
+YangRecAudioCaptureHandle::YangRecAudioCaptureHandle(YangAVInfo* avinfo):YangAudioCaptureHandle(avinfo)
 {
 	readStart=0;
 
-    if (pcontext->avinfo.audio.enableMono) {
+    if (avinfo->audio.enableMono) {
 		m_len=320*2;
 	} else {
 		m_len = 1024*4;
 	}
-    if(pcontext->avinfo.audio.sample==48000) m_len=960*6;
+    if(avinfo->audio.sample==48000) m_len=960*6;
 	m_buf=new uint8_t[m_len];
 
 	m_aec=NULL;

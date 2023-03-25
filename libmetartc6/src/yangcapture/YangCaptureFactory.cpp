@@ -38,23 +38,24 @@ YangAudioCapture* YangCaptureFactory::createAudioCapture(YangContext *pcontext){
 #ifdef __ANDROID__
 	return NULL;
 #else
-	return new YangAudioAecLinux(pcontext);//new YangAlsaHandle(pcontext);//YangAudioCaptureImpl(pcontext);
+	return new YangAudioAecLinux(&pcontext->avinfo,&pcontext->synMgr);//new YangAlsaHandle(pcontext);//YangAudioCaptureImpl(pcontext);
 #endif
 #endif
 
 }
-YangAudioCapture* YangCaptureFactory::createRecordAudioCapture(YangContext *pcontext){
+YangAudioCapture* YangCaptureFactory::createRecordAudioCapture(YangAVInfo *avinfo){
 #ifdef _WIN32
-	 return new YangAudioCaptureWindows(pcontext);
+	 return new YangAudioCaptureWindows(avinfo);
 	 //return new YangWinAudioApiDevice(pcontext,1);
 #else
 #ifdef __ANDROID__
-	 return new YangAudioCaptureAndroid(pcontext);
+	 return new YangAudioCaptureAndroid(avinfo);
 #else
-	 return new YangAudioCaptureLinux(pcontext);//new YangAlsaHandle(pcontext);//YangAudioCaptureImpl(pcontext);
+	 return new YangAudioCaptureLinux(avinfo);//new YangAlsaHandle(pcontext);//YangAudioCaptureImpl(pcontext);
 #endif
 #endif
 }
+
 
 
 YangMultiVideoCapture* YangCaptureFactory::createVideoCapture(YangVideoInfo *pcontext){

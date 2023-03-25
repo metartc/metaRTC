@@ -7,7 +7,7 @@
 
 YangPushPublish::YangPushPublish(YangContext *pcontext) {
 	m_context = pcontext;
-	m_context->streams.setSendRequestCallback(this);
+	m_context->streams->setSendRequestCallback(this);
 	m_videoInfo=&pcontext->avinfo.video;
 	m_encoder = NULL;
 	m_capture = NULL;

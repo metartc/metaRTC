@@ -4,6 +4,7 @@
 
 #include <yangplayer/YangPlayerPlay.h>
 #include <yangplayer/YangPlayFactory.h>
+
 #include <yangutil/sys/YangLog.h>
 #include <yangaudiodev/android/YangAudioPlayAndroid.h>
 
@@ -25,12 +26,12 @@ void YangPlayerPlay::initAudioPlay(YangContext* paudio){
 
 	if (m_audioPlay == NULL) {
 #ifdef _WIN32
-    m_audioPlay = new YangWinAudioApiRender(paudio);
+    m_audioPlay = new YangWinAudioApiRender(&paudio->avinfo,&paudio->synMgr);
 #else
 #ifdef __ANDROID__
-    m_audioPlay = new YangAudioPlayAndroid(paudio);
+    m_audioPlay = new YangAudioPlayAndroid(&paudio->avinfo,&paudio->synMgr);
 #else
-		m_audioPlay = new YangAudioPlayLinux(paudio);
+		m_audioPlay = new YangAudioPlayLinux(&paudio->avinfo,&paudio->synMgr);
 #endif
 #endif
 		m_audioPlay->init();

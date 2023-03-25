@@ -5,24 +5,25 @@
 #include <yangaudiodev/YangAudioPlay.h>
 #include <yangstream/YangStreamManager.h>
 
-YangAudioPlay::YangAudioPlay(YangContext* pcontext) {        //m_rc=0;
+YangAudioPlay::YangAudioPlay(YangAVInfo* avinfo,YangSynBufferManager* streams) {        //m_rc=0;
 
-	m_context = pcontext;
+	m_avinfo = avinfo;
 	m_ace = NULL;
 	aIndex = 0;
 	m_frames = 0;
-	m_channel = pcontext->avinfo.audio.channel;
+	m_channel = m_avinfo->audio.channel;
 	m_isStart = 0;
 
-	m_sample = pcontext->avinfo.audio.sample;
+	m_sample = m_avinfo->audio.sample;
 	m_isStart=0;
-	m_audioData.setInAudioBuffer(pcontext->streams.m_playBuffer);
-	m_audioData.setInAudioBuffers(pcontext->streams.m_playBuffers);
-	m_audioData.initPlay(pcontext->avinfo.audio.sample,pcontext->avinfo.audio.channel);
+    m_audioData.setContext(streams);
+	m_audioData.setInAudioBuffer(streams->session->playBuffer);
+
+	m_audioData.initPlay(m_avinfo->audio.sample,m_avinfo->audio.channel);
 }
 
 YangAudioPlay::~YangAudioPlay() {
-	m_context = NULL;
+	m_avinfo = NULL;
 	m_ace = NULL;
 }
 void YangAudioPlay::run() {

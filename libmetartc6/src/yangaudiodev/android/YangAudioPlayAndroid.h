@@ -3,17 +3,14 @@
 //
 #ifndef YANGPLAYER_SRC_YANGAUDIOPLAYAndroid_H_
 #define YANGPLAYER_SRC_YANGAUDIOPLAYAndroid_H_
-
+#include <yangaudiodev/YangAudioPlay.h>
 #ifdef __ANDROID__
 
 #include "YangAudioAndroid.h"
 
-
-#include <yangaudiodev/YangAudioPlay.h>
-
 class YangAudioPlayAndroid:public YangAudioPlay{
 public:
-	YangAudioPlayAndroid(YangContext *pcontext);
+	YangAudioPlayAndroid(YangAVInfo* avinfo,YangSynBufferManager* streams);
 	~YangAudioPlayAndroid();
     int init();
 

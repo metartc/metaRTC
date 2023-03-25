@@ -3,22 +3,21 @@
 //
 #ifndef YangWinAudioApiRender_H
 #define YangWinAudioApiRender_H
-#ifdef _WIN32
 #include <yangutil/buffer/YangAudioPlayBuffer.h>
 #include <yangaudiodev/win/YangWinAudioApi.h>
-#include <yangaudiodev/YangAudioPlay.h>
-
 #include <yangavutil/audio/YangResample.h>
 #include <yangavutil/audio/YangAudioMix.h>
+#include <yangaudiodev/YangAudioPlay.h>
 #include <yangutil/yangavinfotype.h>
-
-#include <audioclient.h>
 #include <vector>
+
+#ifdef _WIN32
+#include <audioclient.h>
 
 class YangWinAudioApiRender:public YangWinAudioApi,public YangAudioPlay
 {
 public:
-    YangWinAudioApiRender(YangContext *pcontext);
+    YangWinAudioApiRender(YangAVInfo* avinfo,YangSynBufferManager* stream);
 virtual ~YangWinAudioApiRender();
 public:
     int initRender();

@@ -200,7 +200,7 @@ void YangRtcPublish::startLoop() {
 
 		if(stream->isConnected()){
 			if(notifyState&&m_transType<Yang_Webrtc){
-						if(m_context) m_context->streams.sendRequest(0,0,Yang_Req_Connected);
+						if(m_context) m_context->streams->sendRequest(0,0,Yang_Req_Connected);
 						notifyState=0;
 					}
 

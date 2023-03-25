@@ -3,7 +3,6 @@
 //
 #ifndef ___YangAudioCaptureHandle__
 #define ___YangAudioCaptureHandle__
-
 #include <yangutil/buffer/YangAudioBuffer.h>
 #include <yangavutil/audio/YangAudioUtil.h>
 #include <yangavutil/audio/YangRtcAec.h>
@@ -11,7 +10,7 @@
 
 class YangAudioCaptureHandle {
 public:
-    YangAudioCaptureHandle(YangContext *pcontext);
+    YangAudioCaptureHandle(YangAVInfo *avinfo);
 	virtual ~YangAudioCaptureHandle(void);
     YangRtcAec *m_aec;
 
@@ -25,12 +24,12 @@ public:
 	void stopRecordWave();
 	void setOutAudioBuffer(YangAudioBuffer *plist);
 	YangAudioBuffer *m_aecPlayBuffer;
-	yangbool isBuf;
+	yangbool m_enableBuf;
 private:
 
 	int32_t hasPlayData;
 	int32_t m_aecBufferFrames;
-	yangbool isFirst;
+	int32_t isFirst;
 	int32_t m_audioLen;
 	short *pcm;
 

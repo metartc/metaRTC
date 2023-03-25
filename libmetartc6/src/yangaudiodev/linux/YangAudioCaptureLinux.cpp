@@ -1,5 +1,4 @@
-﻿
-//
+﻿//
 // Copyright (c) 2019-2022 yanggaofeng
 //
 #ifndef _WIN32
@@ -7,28 +6,28 @@
 #include <yangavutil/audio/YangAudioUtil.h>
 
 
-YangAudioCaptureLinux::YangAudioCaptureLinux(YangContext *pcontext) //:YangAudioCapture(pcontext)
+YangAudioCaptureLinux::YangAudioCaptureLinux(YangAVInfo *avinfo) //:YangAudioCapture(pcontext)
 		{
 
-	m_context = pcontext;
-    m_ahandle = new YangAudioCaptureHandle(pcontext);
+	m_avinfo = avinfo;
+	m_ahandle = new YangAudioCaptureHandle(avinfo);
 	aIndex = 0;
 	m_size = 0;
 	m_loops = 0;
 	m_handle = NULL;
 	m_buffer = NULL;
 
-	m_channel = pcontext->avinfo.audio.channel;
-	m_sample = pcontext->avinfo.audio.sample;
-	if(pcontext->avinfo.audio.audioEncoderType==Yang_AED_AAC){
+	m_channel = avinfo->audio.channel;
+	m_sample = avinfo->audio.sample;
+	if (avinfo->audio.audioEncoderType == Yang_AED_AAC) {
 		m_frames = 1024;
-	}else{
-		m_frames=m_sample/50;
+	} else {
+		m_frames = m_sample / 50;
 	}
-
 
 	onlySupportSingle = yangfalse;
 	m_readN=0;
+
 }
 
 YangAudioCaptureLinux::~YangAudioCaptureLinux() {
@@ -48,10 +47,10 @@ YangAudioCaptureLinux::~YangAudioCaptureLinux() {
 	yang_delete(m_ahandle);
 }
 void YangAudioCaptureLinux::setCatureStart() {
-	m_ahandle->isBuf = 1;
+	m_ahandle->m_enableBuf = 1;
 }
 void YangAudioCaptureLinux::setCatureStop() {
-	m_ahandle->isBuf = 0;
+	m_ahandle->m_enableBuf = 0;
 }
 void YangAudioCaptureLinux::setOutAudioBuffer(YangAudioBuffer *pbuffer) {
 	m_ahandle->setOutAudioBuffer(pbuffer);
@@ -62,24 +61,25 @@ void YangAudioCaptureLinux::setPlayAudoBuffer(YangAudioBuffer *pbuffer) {
 void YangAudioCaptureLinux::setAec(YangRtcAec *paec) {
 	m_ahandle->m_aec = paec;
 }
-void YangAudioCaptureLinux::setInAudioBuffer(vector<YangAudioPlayBuffer*> *pal) {
+void YangAudioCaptureLinux::setInAudioBuffer(
+		vector<YangAudioPlayBuffer*> *pal) {
 
 }
 void YangAudioCaptureLinux::setPreProcess(YangPreProcess *pp) {
 
 }
 
-
 int32_t YangAudioCaptureLinux::init() {
 	int32_t dir = 0;
 	snd_pcm_hw_params_t *hw_params;
 	int32_t err = 0;
 	char device_name[64] = { 0 };
-	if (m_context->avinfo.audio.aIndex > -1)
-		sprintf(device_name, "hw:%d,%d", m_context->avinfo.audio.aIndex, m_context->avinfo.audio.aSubIndex);
+	if (m_avinfo->audio.aIndex > -1)
+		sprintf(device_name, "hw:%d,%d", m_avinfo->audio.aIndex,
+				m_avinfo->audio.aSubIndex);
 
 	if ((err = snd_pcm_open(&m_handle,
-			m_context->avinfo.audio.aIndex == -1 ? "default" : device_name,
+			m_avinfo->audio.aIndex == -1 ? "default" : device_name,
 			SND_PCM_STREAM_CAPTURE, 0)) < 0) {
 
 		yang_error("unable to open pcm device: %s\n", snd_strerror(err));
@@ -112,7 +112,6 @@ int32_t YangAudioCaptureLinux::init() {
 		yang_error("cannot set sample format (%s)\n", snd_strerror(err));
 		_exit(1);
 	}
-
 
 	if ((err = snd_pcm_hw_params_set_rate_near(m_handle, hw_params, &m_sample,
 			0)) < 0) {
@@ -151,7 +150,6 @@ int32_t YangAudioCaptureLinux::init() {
 	m_buffer = (uint8_t*) malloc(m_size);
 	return Yang_Ok;
 }
-
 int32_t YangAudioCaptureLinux::alsa_device_capture_ready(struct pollfd *pfds,
 		uint32_t  nfds) {
 	unsigned short revents = 0;
@@ -201,7 +199,6 @@ int32_t YangAudioCaptureLinux::alsa_device_read(short *pcm, int32_t len) {
 	return Yang_Ok;
 }
 
-
 void YangAudioCaptureLinux::startLoop() {
 
 	m_loops = 1;
@@ -232,7 +229,7 @@ void YangAudioCaptureLinux::startLoop() {
 
 	struct pollfd *pfds = (pollfd*) yang_malloc(sizeof(struct pollfd) * nfds);
 	pfds[0]=read_fd[0];
-	while (m_loops == 1) {
+	while (m_loops) {
 		poll(pfds, nfds, -1);
 		if (alsa_device_capture_ready(pfds, nfds)) {
 			alsa_device_read((short*) m_buffer, m_frames);
@@ -244,12 +241,15 @@ void YangAudioCaptureLinux::startLoop() {
 				m_ahandle->putBuffer2(m_buffer, audiolen);
 			}
 		}
+
 	}
 
 	snd_pcm_close(m_handle);
 	yang_deleteA(tmp);
 	yang_free(m_buffer);
+	yang_free(pfds);
 	m_handle = NULL;
+
 }
 
 void YangAudioCaptureLinux::stopLoop() {

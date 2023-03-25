@@ -2,12 +2,11 @@
 // Copyright (c) 2019-2022 yanggaofeng
 //
 #include <yangaudiodev/android/YangAudioPlayAndroid.h>
+#include <yangutil/yangautofree.h>
+#include <yangutil/sys/YangLog.h>
 #ifdef __ANDROID__
 
-#include <yangutil/yangautofree.h>
-#include <stdio.h>
-#include <yangutil/sys/YangLog.h>
-YangAudioPlayAndroid::YangAudioPlayAndroid(YangContext *pcontext):YangAudioPlay(pcontext){
+YangAudioPlayAndroid::YangAudioPlayAndroid(YangAVInfo* avinfo,YangSynBufferManager* streams):YangAudioPlay(avinfo,streams){
 	m_audioAndroid=(YangAudioAndroid*)calloc(sizeof(YangAudioAndroid),1);
 
 	m_loops = 0;
@@ -24,8 +23,8 @@ int YangAudioPlayAndroid::init() {
 	if (m_isInit == 1)
 		return Yang_Ok;
 
-	m_frames = m_context->avinfo.audio.sample / 50;
-	if(yang_create_audioAndroid_play(m_audioAndroid, m_context->avinfo.audio.sample,m_context->avinfo.audio.channel)!=Yang_Ok){
+	m_frames = m_avinfo->audio.sample / 50;
+	if(yang_create_audioAndroid_play(m_audioAndroid, m_avinfo->audio.sample,m_avinfo->audio.channel)!=Yang_Ok){
 		return yang_error_wrap(ERROR_SYS_AudioRender,"init android play fail");
 	}
 	uint32_t val = 0;

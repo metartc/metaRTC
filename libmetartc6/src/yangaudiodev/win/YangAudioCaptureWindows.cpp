@@ -8,9 +8,10 @@
 using namespace std;
 
 #define SAFE_RELEASE(x) { if (x) x->Release(); x = NULL; }
-YangAudioCaptureWindows::YangAudioCaptureWindows(YangContext *pcontext) {
-    m_context = pcontext;
-    m_ahandle = new YangRecAudioCaptureHandle(pcontext);
+YangAudioCaptureWindows::YangAudioCaptureWindows(YangAVInfo *avinfo) {
+	if(avinfo==NULL) return;
+
+    m_ahandle = new YangRecAudioCaptureHandle(avinfo);
 
 	aIndex = 0;
 	m_ret = 0;
@@ -20,8 +21,8 @@ YangAudioCaptureWindows::YangAudioCaptureWindows(YangContext *pcontext) {
 	m_isInit = 0;
 
 	m_frames=960;
-    m_channel = pcontext->avinfo.audio.channel;
-    m_sample = pcontext->avinfo.audio.sample;
+    m_channel = avinfo->audio.channel;
+    m_sample = avinfo->audio.sample;
 
 	m_pg = NULL;
 	m_pb = NULL;
@@ -63,10 +64,10 @@ YangAudioCaptureWindows::~YangAudioCaptureWindows() {
 	}
 }
 void YangAudioCaptureWindows::setCatureStart() {
-	m_ahandle->isBuf = 1;
+    m_ahandle->m_enableBuf = 1;
 }
 void YangAudioCaptureWindows::setCatureStop() {
-	m_ahandle->isBuf = 0;
+    m_ahandle->m_enableBuf = 0;
 }
 void YangAudioCaptureWindows::setOutAudioBuffer(YangAudioBuffer *pbuffer) {
 	m_ahandle->setOutAudioBuffer(pbuffer);

@@ -6,265 +6,388 @@
 #include<cmath>
 
 
+typedef struct{
+    int32_t uid;
+    int32_t width;
+    int32_t height;
+    int32_t maxAudioMinus;
+     int32_t maxVideoMinus;
+     yangbool isFirstVideo;
+     yangbool isFirstAudio;
+     int32_t video_time_state;
 
-YangSynBuffer::YangSynBuffer() {
-    m_transtype = Yang_Webrtc;
-    if (m_transtype == Yang_Webrtc) {
-        m_videoClock = 90000;
-        m_audioClock = 48000;
-    } else if (m_transtype == Yang_Rtmp) {
-        m_videoClock = 1000;
-        m_audioClock = 1000;
-    }
+     YangSynType synType;
+     int32_t paused;
+     int64_t baseClock;
 
-    m_videoCacheTime=Yang_Video_Cache_time;
+     int64_t audio_startClock;
+     int32_t audioClock;
+     int64_t audioBase;
+     int64_t audioTime;
+     int32_t audioMinus;
+     int32_t audioDelay;
+     int32_t lostAudioCount;
+     int32_t audioNegativeCount;
+     int32_t audioTimeoutCount;
 
-    resetAudioClock();
-    resetVideoClock();
+
+     int64_t videoBase;
+     int32_t videoClock;
+     int64_t videoTime;
+     int32_t videoMinus;
+     int32_t videoNegativeCount;
+     int32_t videoTimeoutCount;
+     int32_t videoCacheTime;
+     int64_t video_startClock;
+
+     int64_t pre_audioTime;
+     int64_t pre_videoTime;
+
+     int32_t transtype;
+
+     YangVideoBuffer *videoBuffer;
+     YangAudioPlayBuffer* audioBuffer;
 
 
-    m_baseClock = 0;
+}YangSynBufferSession;
 
-    m_paused = 0;
-    m_uid = 0;
-    m_width = 0;
-    m_height = 0;
 
-    m_synType = YANG_SYNC_AUDIO_MASTER;
-    m_maxAudioMinus = Yang_Max_Audio_Intervaltime;
-    m_maxVideoMinus = Yang_Max_Video_Intervaltime;
-    m_videoBuffer = NULL;
-    m_audioBuffer = NULL;
+void yang_synBuf_updateVideoBaseTimestamp(void* psession,int64_t pts){
+	if(psession==NULL) return ;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+			session->videoBase = pts;
+	        session->video_startClock=yang_get_milli_tick();
+}
+void yang_synBuf_updateAudioBaseTimestamp(void* psession,int64_t pts){
+	if(psession==NULL) return ;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	session->audioBase=pts;
+	session->audio_startClock = yang_get_milli_tick();
 }
 
-YangSynBuffer::~YangSynBuffer() {
-    m_videoBuffer = NULL;
-    m_audioBuffer = NULL;
-}
-void YangSynBuffer::resetVideoClock(){
-    m_videoBase = 0;
-    m_videoTime = 0;
-    m_videoMinus = 0;
-    m_pre_videoTime = 0;
 
-    m_video_startClock=0;
-    m_videoNegativeCount=0;
-    m_videoTimeoutCount=0;
+int yang_synBuf_playAudioFrame(void* psession,int64_t pts) {
+	if(psession==NULL) return 1;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
 
-    m_isFirstVideo=false;
-    m_video_time_state=0;
-
-}
-void YangSynBuffer::resetAudioClock(){
-    m_audioBase = 0;
-    m_audioTime = 0;
-    m_audioMinus = 0;
-    m_pre_audioTime = 0;
-    m_lostAudioCount=0;
-    m_audio_startClock = 0;
-    m_audioNegativeCount=0;
-    m_audioTimeoutCount=0;
-    m_audioDelay=0;
-    m_isFirstAudio=false;
-}
-void YangSynBuffer::setAudioClock(int paudioclock){
-    if(paudioclock<=0) return;
-    m_audioClock = paudioclock;
-}
-void YangSynBuffer::setVideoClock(int pvideoclock){
-    if(pvideoclock<=0) return;
-    m_videoClock = pvideoclock;
-
-}
-
-void YangSynBuffer::setVideoCacheTime(int pctime){
-    m_videoCacheTime=pctime;
-}
-void YangSynBuffer::setInVideoBuffer(YangVideoBuffer *pbuf) {
-	m_videoBuffer = pbuf;
-}
-void YangSynBuffer::setInAudioBuffer(YangAudioPlayBuffer *pbuf) {
-	m_audioBuffer = pbuf;
-}
-void YangSynBuffer::setTranstype(int transtype) {
-	m_transtype = transtype;
-
-	if (m_transtype == Yang_Webrtc) {
-		m_videoClock = 90000;
-		m_audioClock = 48000;
-	} else if (m_transtype == Yang_Rtmp) {
-		m_videoClock = 1000;
-		m_audioClock = 1000;
-	}
-}
-uint8_t* YangSynBuffer::getVideoRef(YangFrame *pframe) {
-	if (!m_videoBuffer || !m_videoBuffer->size())
-		return NULL;
-	uint8_t *tmp = NULL;
-    int err=0;
-
-
-    if ((err=playVideoFrame(m_videoBuffer->getCurVideoFrame()))==Yang_Ok) {
-
-		tmp = m_videoBuffer->getVideoRef(pframe);
-		m_width = m_videoBuffer->m_width;
-		m_height = m_videoBuffer->m_height;
-		return tmp;
-    }else  if(err==-1){
-        tmp = m_videoBuffer->getVideoRef(pframe);
-        m_width = m_videoBuffer->m_width;
-        m_height = m_videoBuffer->m_height;
-        return NULL;
-    }
-
-	return tmp;
-}
-
-uint8_t* YangSynBuffer::getAudioRef(YangFrame *audioFrame) {
-	if (!m_audioBuffer || !m_audioBuffer->size())
-		return NULL;
-
-	//return m_audioBuffer->getAudios(audioFrame);
-
-	int err=0;
-	if ((err=playAudioFrame(m_audioBuffer->getNextTimestamp()))==Yang_Ok){
-
-		return m_audioBuffer->getAudios(audioFrame);
-	}
-	if(err==-1){
-		m_audioBuffer->getAudios(audioFrame);
-
-		return getAudioRef(audioFrame);
-	}
-
-	return NULL;
-
-}
-
-int32_t YangSynBuffer::getAudioSize() {
-	if (m_audioBuffer)
-		return m_audioBuffer->size();
-	return 0;
-}
-int32_t YangSynBuffer::getVideoSize() {
-	if (m_videoBuffer)
-		return m_videoBuffer->size();
-	return 0;
-}
-
-int YangSynBuffer::playAudioFrame(int64_t pts) {
-
-	if (m_audioBase == 0) {
-        if(!m_isFirstAudio){
+	if (session->audioBase == 0) {
+        if(!session->isFirstAudio){
             //clear cache
-            yang_reindex(m_audioBuffer);
-            m_isFirstAudio=true;
+            yang_reindex(session->audioBuffer);
+            session->isFirstAudio=true;
             return false;
         }
-        updateAudioBaseTimestamp(pts);
+        yang_synBuf_updateAudioBaseTimestamp(psession,pts);
 	}
 
-    if(m_transtype == Yang_Webrtc){
+    if(session->transtype == Yang_Webrtc){
     	//get relative time
-        m_audioTime = (pts - m_audioBase) * 1000 / m_audioClock;
+        session->audioTime = (pts - session->audioBase) * 1000 / session->audioClock;
     }else{
-        m_audioTime = (pts - m_audioBase);
+        session->audioTime = (pts - session->audioBase);
     }
 
-	m_audioMinus = m_audioTime +Yang_Audio_Cache_time- (yang_get_milli_tick() - m_audio_startClock);
+	session->audioMinus = session->audioTime +Yang_Audio_Cache_time- (yang_get_milli_tick() - session->audio_startClock);
 
-	m_pre_audioTime = m_audioTime;
+	session->pre_audioTime = session->audioTime;
 
-	if(m_audioMinus<0) {
-		m_audioNegativeCount++;
-		if(m_audioNegativeCount>10){
-			updateAudioBaseTimestamp(pts);
-			m_audioNegativeCount=0;
+	if(session->audioMinus<0) {
+		session->audioNegativeCount++;
+		if(session->audioNegativeCount>10){
+			yang_synBuf_updateAudioBaseTimestamp(psession,pts);
+			session->audioNegativeCount=0;
 		}
 		return -1;
 	}
-	if(m_audioMinus <= m_maxAudioMinus) {
-		if(m_audioTime>Yang_Audio_Base_Update_Interval) {
+	if(session->audioMinus <= session->maxAudioMinus) {
+		if(session->audioTime>Yang_Audio_Base_Update_Interval) {
 
 
-			if(m_lostAudioCount>5){
+			if(session->lostAudioCount>5){
 				YangFrame frame;
 				memset(&frame,0,sizeof(YangFrame));
 
-				m_audioBuffer->getAudios(&frame);
-				m_audioBuffer->getAudios(&frame);
-				m_lostAudioCount=0;
+				session->audioBuffer->getAudios(&frame);
+				session->audioBuffer->getAudios(&frame);
+				session->lostAudioCount=0;
 			}
-			if(m_audioBuffer->size()>2) m_lostAudioCount++;
-			updateAudioBaseTimestamp(pts);
+			if(session->audioBuffer->size()>2) session->lostAudioCount++;
+			yang_synBuf_updateAudioBaseTimestamp(psession,pts);
 
 		}
 		return Yang_Ok;
 	}
-	m_audioTimeoutCount++;
-	if(m_audioTimeoutCount>10){
-		m_audioTimeoutCount=0;
-		updateAudioBaseTimestamp(pts);
+	session->audioTimeoutCount++;
+	if(session->audioTimeoutCount>10){
+		session->audioTimeoutCount=0;
+		yang_synBuf_updateAudioBaseTimestamp(psession,pts);
 	}
 	return 1;
 }
 
-int YangSynBuffer::playVideoFrame(YangFrame* frame) {
-
-    if(m_videoBase==0) {
-        if(!m_isFirstVideo){
+int yang_synBuf_playVideoFrame(void* psession,YangFrame* frame) {
+	if(psession==NULL) return 1;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+    if(session->videoBase==0) {
+        if(!session->isFirstVideo){
    	            //clear cache
-   	            yang_reindex(m_videoBuffer);
-   	            m_isFirstVideo=true;
-   	            return false;
+   	            yang_reindex(session->videoBuffer);
+   	            session->isFirstVideo=yangtrue;
+   	            return yangfalse;
    	        }
 
-    	updateVideoBaseTimestamp(frame->pts);
+        yang_synBuf_updateVideoBaseTimestamp(psession,frame->pts);
     }
-    if(!m_video_time_state&&frame->frametype==YANG_Frametype_I){
+    if(!session->video_time_state&&frame->frametype==YANG_Frametype_I){
 
-    	updateVideoBaseTimestamp(frame->pts);
-    	m_video_time_state=1;
+    	yang_synBuf_updateVideoBaseTimestamp(psession,frame->pts);
+    	session->video_time_state=1;
     }
 
-	if (m_transtype == Yang_Webrtc)
-		m_videoTime = (frame->pts - m_videoBase) * 1000 / m_videoClock;
+	if (session->transtype == Yang_Webrtc)
+		session->videoTime = (frame->pts - session->videoBase) * 1000 / session->videoClock;
 	else
-		m_videoTime = frame->pts - m_videoBase;
+		session->videoTime = frame->pts - session->videoBase;
 
-    m_videoMinus = m_videoTime+m_videoCacheTime - (yang_get_milli_tick() - m_video_startClock);
+    session->videoMinus = session->videoTime+session->videoCacheTime - (yang_get_milli_tick() - session->video_startClock);
 
-    if(m_videoMinus<0) {
-        m_videoNegativeCount++;
-        if(m_videoNegativeCount>6){
-            updateVideoBaseTimestamp(frame->pts);
-            m_videoNegativeCount=0;
+    if(session->videoMinus<0) {
+        session->videoNegativeCount++;
+        if(session->videoNegativeCount>6){
+        	yang_synBuf_updateVideoBaseTimestamp(psession,frame->pts);
+            session->videoNegativeCount=0;
         }
         return -1;
     }
-    if(m_videoMinus <= m_maxVideoMinus) {
-    	if(frame->frametype==YANG_Frametype_I) updateVideoBaseTimestamp(frame->pts);
+    if(session->videoMinus <= session->maxVideoMinus) {
+    	if(frame->frametype==YANG_Frametype_I) yang_synBuf_updateVideoBaseTimestamp(psession,frame->pts);
     	return Yang_Ok;
     }
-    m_videoTimeoutCount++;
-    if(m_videoTimeoutCount>6){
-        m_videoTimeoutCount=0;
-        updateVideoBaseTimestamp(frame->pts);
+    session->videoTimeoutCount++;
+    if(session->videoTimeoutCount>6){
+        session->videoTimeoutCount=0;
+        yang_synBuf_updateVideoBaseTimestamp(psession,frame->pts);
     }
 
     return 1;
 
 }
 
-void YangSynBuffer::updateVideoBaseTimestamp(int64_t pts){
-			m_videoBase = pts;
-	        m_video_startClock=yang_get_milli_tick();
+void yang_synBuf_resetVideoClock(void* psession){
+	if(psession==NULL) return ;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+    session->videoBase = 0;
+    session->videoTime = 0;
+    session->videoMinus = 0;
+    session->pre_videoTime = 0;
+
+    session->video_startClock=0;
+    session->videoNegativeCount=0;
+    session->videoTimeoutCount=0;
+
+    session->isFirstVideo=yangfalse;
+    session->video_time_state=0;
+
 }
-void YangSynBuffer::updateAudioBaseTimestamp(int64_t pts){
-	m_audioBase=pts;
-	m_audio_startClock = yang_get_milli_tick();
+void yang_synBuf_resetAudioClock(void* psession){
+	if(psession==NULL) return ;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+    session->audioBase = 0;
+    session->audioTime = 0;
+    session->audioMinus = 0;
+    session->pre_audioTime = 0;
+    session->lostAudioCount=0;
+    session->audio_startClock = 0;
+    session->audioNegativeCount=0;
+    session->audioTimeoutCount=0;
+    session->audioDelay=0;
+    session->isFirstAudio=yangfalse;
 }
-void YangSynBuffer::setClock() {
-	m_audio_startClock = yang_get_milli_tick();
+void yang_synBuf_setAudioClock(void* psession,int paudioclock){
+    if(psession==NULL||paudioclock<=0) return;
+    YangSynBufferSession* session=(YangSynBufferSession*)psession;
+    session->audioClock = paudioclock;
 }
+void yang_synBuf_setVideoClock(void* psession,int pvideoclock){
+	if(psession==NULL) return ;
+    if(pvideoclock<=0) return;
+    YangSynBufferSession* session=(YangSynBufferSession*)psession;
+    session->videoClock = pvideoclock;
+
+}
+
+void yang_synBuf_setVideoCacheTime(void* psession,int pctime){
+	if(psession==NULL) return ;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+    session->videoCacheTime=pctime;
+}
+void yang_synBuf_setInVideoBuffer(void* psession,YangVideoBuffer *pbuf) {
+	if(psession==NULL) return ;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	session->videoBuffer = pbuf;
+}
+void yang_synBuf_setInAudioBuffer(void* psession,YangAudioPlayBuffer *pbuf) {
+	if(psession==NULL) return ;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	session->audioBuffer = pbuf;
+}
+void yang_synBuf_setTranstype(void* psession,int transtype) {
+	if(psession==NULL) return;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	session->transtype = transtype;
+
+	if (session->transtype == Yang_Webrtc) {
+		session->videoClock = 90000;
+		session->audioClock = 48000;
+	} else if (session->transtype == Yang_Rtmp) {
+		session->videoClock = 1000;
+		session->audioClock = 1000;
+	}
+}
+uint8_t* yang_synBuf_getVideoRef(void* psession,YangFrame *pframe) {
+	if(psession==NULL||pframe==NULL) return NULL;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	if (!session->videoBuffer || !session->videoBuffer->size())
+		return NULL;
+	uint8_t *tmp = NULL;
+    int err=0;
+
+
+    if ((err=yang_synBuf_playVideoFrame(psession,session->videoBuffer->getCurVideoFrame()))==Yang_Ok) {
+
+		tmp = session->videoBuffer->getVideoRef(pframe);
+		session->width = session->videoBuffer->m_width;
+		session->height = session->videoBuffer->m_height;
+		return tmp;
+    }else  if(err==-1){
+        tmp = session->videoBuffer->getVideoRef(pframe);
+        session->width = session->videoBuffer->m_width;
+        session->height = session->videoBuffer->m_height;
+        return NULL;
+    }
+
+	return tmp;
+}
+
+uint8_t* yang_synBuf_getAudioRef(void* psession,YangFrame *audioFrame) {
+	if(psession==NULL||audioFrame==NULL) return NULL;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	if (!session->audioBuffer || !session->audioBuffer->size())
+		return NULL;
+
+	int err=0;
+	if ((err=yang_synBuf_playAudioFrame(psession,session->audioBuffer->getNextTimestamp()))==Yang_Ok){
+
+		return session->audioBuffer->getAudios(audioFrame);
+	}
+	if(err==-1){
+		session->audioBuffer->getAudios(audioFrame);
+
+		return yang_synBuf_getAudioRef(psession,audioFrame);
+	}
+
+	return NULL;
+
+}
+
+int32_t yang_synBuf_getAudioSize(void* psession) {
+	if(psession==NULL) return 0;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	if (session->audioBuffer)
+		return session->audioBuffer->size();
+	return 0;
+}
+int32_t yang_synBuf_getVideoSize(void* psession) {
+	if(psession==NULL) return 0;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	if (session->videoBuffer)
+		return session->videoBuffer->size();
+	return 0;
+}
+
+int32_t yang_synBuf_getUid(void* psession){
+	if(psession==NULL) return -1;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	return session->uid;
+}
+
+void yang_synBuf_setUid(void* psession,int32_t uid){
+	if(psession==NULL) return ;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	session->uid=uid;
+}
+
+void yang_synBuf_setClock(void* psession) {
+	if(psession==NULL) return ;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	session->audio_startClock = yang_get_milli_tick();
+}
+
+int32_t yang_synBuf_width(void* psession){
+	if(psession==NULL) return 0;
+	YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	return session->width;
+}
+  int32_t yang_synBuf_height(void* psession){
+	  if(psession==NULL) return 0;
+	  YangSynBufferSession* session=(YangSynBufferSession*)psession;
+	  return session->height;
+  }
+
+
+void yang_create_synBuffer(YangSynBuffer* syn) {
+	if(syn==NULL) return;
+	YangSynBufferSession* session=(YangSynBufferSession*)yang_calloc(sizeof(YangSynBufferSession),1);
+	syn->session=session;
+    session->transtype = Yang_Webrtc;
+    if (session->transtype == Yang_Webrtc) {
+        session->videoClock = 90000;
+        session->audioClock = 48000;
+    } else if (session->transtype == Yang_Rtmp) {
+        session->videoClock = 1000;
+        session->audioClock = 1000;
+    }
+
+    session->videoCacheTime=Yang_Video_Cache_time;
+
+    yang_synBuf_resetAudioClock(session);
+    yang_synBuf_resetVideoClock(session);
+
+    session->baseClock = 0;
+
+    session->paused = 0;
+    session->uid = 0;
+    session->width = 0;
+    session->height = 0;
+
+    session->synType = YANG_SYNC_AUDIO_MASTER;
+    session->maxAudioMinus = Yang_Max_Audio_Intervaltime;
+    session->maxVideoMinus = Yang_Max_Video_Intervaltime;
+    session->videoBuffer = NULL;
+    session->audioBuffer = NULL;
+    session->transtype=Yang_Webrtc;
+
+    syn->setInVideoBuffer=yang_synBuf_setInVideoBuffer;
+    syn->setInAudioBuffer=yang_synBuf_setInAudioBuffer;
+    syn->getAudioRef=yang_synBuf_getAudioRef;
+    syn->getVideoRef=yang_synBuf_getVideoRef;
+    syn->setAudioClock=yang_synBuf_setAudioClock;
+    syn->setVideoClock=yang_synBuf_setVideoClock;
+    syn->setUid=yang_synBuf_setUid;
+    syn->getUid=yang_synBuf_getUid;
+    syn->getAudioSize=yang_synBuf_getAudioSize;
+    syn->getVideoSize=yang_synBuf_getVideoSize;
+    syn->resetAudioClock=yang_synBuf_resetAudioClock;
+    syn->resetVideoClock=yang_synBuf_resetVideoClock;
+    syn->width=yang_synBuf_width;
+    syn->height=yang_synBuf_height;
+
+
+}
+
+void yang_destroy_synBuffer(YangSynBuffer* syn) {
+	if(syn==NULL) return;
+	yang_free(syn->session);
+}
+
 

@@ -4,16 +4,13 @@
 #include <yangaudiodev/linux/YangAudioPlayLinux.h>
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/yangautofree.h>
-
 #ifndef _WIN32
 #ifndef __ANDROID__
-
-#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/ioctl.h>
+#include <fcntl.h>
 
-
-YangAudioPlayLinux::YangAudioPlayLinux(YangContext *pcontext):YangAudioPlay(pcontext){
+YangAudioPlayLinux::YangAudioPlayLinux(YangAVInfo* avinfo,YangSynBufferManager* streams):YangAudioPlay(avinfo,streams){
 	m_handle = NULL;
 	m_loops = 0;
 	ret = 0;
@@ -31,7 +28,7 @@ int YangAudioPlayLinux::init() {
 	if (m_contextt == 1)
 		return Yang_Ok;
 
-	m_frames = m_context->avinfo.audio.sample / 50;
+	m_frames = m_avinfo->audio.sample / 50;
 
 	uint32_t val = 0;
 	int32_t dir = 0;

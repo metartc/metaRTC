@@ -14,8 +14,7 @@ public:
 	YangCaptureFactory();
 	virtual ~YangCaptureFactory();
 	YangAudioCapture *createAudioCapture(YangContext *pcontext);
-	YangAudioCapture *createRecordAudioCapture(YangContext *pcontext);
-
+	YangAudioCapture *createRecordAudioCapture(YangAVInfo *avinfo);
 	YangMultiVideoCapture *createVideoCapture(YangVideoInfo *pcontext);
     YangMultiVideoCapture *createRecordVideoCapture(YangVideoInfo *pcontext);
     YangMultiVideoCapture *createRecordVideoCaptureAndroid(YangVideoInfo *pcontext,void* pwindow);

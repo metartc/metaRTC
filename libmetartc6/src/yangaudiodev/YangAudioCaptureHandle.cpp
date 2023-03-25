@@ -5,24 +5,25 @@
 
 #include <yangutil/sys/YangLog.h>
 
-YangAudioCaptureHandle::YangAudioCaptureHandle(YangContext *pcontext)
+YangAudioCaptureHandle::YangAudioCaptureHandle(YangAVInfo *avinfo)
 {
 
-    isBuf=yangfalse;
+	if(avinfo==NULL) return;
+    m_enableBuf=yangfalse;
     m_audioList=NULL;
     m_aec=NULL;
     m_aecPlayBuffer=NULL;
     pcm=new short[4096/2];
-    m_audioLen=pcontext->avinfo.audio.sample*pcontext->avinfo.audio.channel*2/50;
+    m_audioLen=avinfo->audio.sample*avinfo->audio.channel*2/50;
 
     hasPlayData=1;
-    isFirst=yangtrue;
-    m_aecBufferFrames=pcontext->avinfo.audio.aecBufferFrames;
+    isFirst=1;
+    m_aecBufferFrames=avinfo->audio.aecBufferFrames;
     memset(&m_audioFrame,0,sizeof(YangFrame));
 
     memset(&m_resample,0,sizeof(YangAudioResample));
     yang_create_audioresample(&m_resample);
-    m_resample.init(m_resample.context,16000,1,pcontext->avinfo.audio.sample,pcontext->avinfo.audio.channel,20);
+    m_resample.init(m_resample.context,16000,1,avinfo->audio.sample,avinfo->audio.channel,20);
 
 }
 YangAudioCaptureHandle::~YangAudioCaptureHandle(void)
@@ -52,7 +53,7 @@ void  YangAudioCaptureHandle::setOutAudioBuffer(YangAudioBuffer *pbuf)
 
     void YangAudioCaptureHandle::putBuffer(uint8_t *pBuffer,int32_t plen)
     {
-		if(!isBuf) return;
+		if(!m_enableBuf) return;
 		if(m_aec) {
 			if(hasPlayData)		{
                 m_aec->echoCapture(m_aec->session,(short*)pBuffer,pcm);
@@ -98,11 +99,11 @@ void  YangAudioCaptureHandle::setOutAudioBuffer(YangAudioBuffer *pbuf)
 
     }
     void YangAudioCaptureHandle::putEchoPlay(short* pbuf,int32_t plen){
-    	if(!isBuf) return;
+    	if(!m_enableBuf) return;
         if(m_aec) m_aec->echoPlayback(m_aec->session,pbuf);
     }
     void YangAudioCaptureHandle::putEchoBuffer( uint8_t *pBuffer,int32_t plen){
-    	if (!isBuf)		return;
+    	if (!m_enableBuf)		return;
     	if (m_aec) {
             m_aec->echoCapture(m_aec->session, (short*) pBuffer, pcm);
             m_aec->preprocessRun(m_aec->session, pcm);
@@ -117,7 +118,7 @@ void  YangAudioCaptureHandle::setOutAudioBuffer(YangAudioBuffer *pbuf)
 
     }
     void YangAudioCaptureHandle::putEchoBuffer2( uint8_t *pBuffer,int32_t plen){
-    	if (!isBuf)		return;
+    	if (!m_enableBuf)		return;
 
     	m_audioFrame.payload = pBuffer;
     	m_audioFrame.nb = plen;
@@ -130,7 +131,7 @@ void  YangAudioCaptureHandle::setOutAudioBuffer(YangAudioBuffer *pbuf)
     }
     void YangAudioCaptureHandle::putBuffer2( uint8_t *pBuffer,int32_t plen){
 
-	if (!isBuf)
+	if (!m_enableBuf)
 		return;
 
 	if (m_audioList) {

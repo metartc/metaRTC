@@ -3,10 +3,12 @@
 //
 
 #include <yangpush/YangPushCapture.h>
+
+#include <yangavutil/video/YangYuvConvert.h>
+#include <yangavutil/video/YangYuvUtil.h>
+
 #include <yangcapture/YangCaptureFactory.h>
 
-#include <yangavutil/video/YangYuvUtil.h>
-#include <yangavutil/video/YangYuvConvert.h>
 
 YangPushCapture::YangPushCapture(YangContext *pcontext) {
 	m_context=pcontext;
@@ -82,7 +84,7 @@ int32_t YangPushCapture::initAudio(YangPreProcess *pp) {
 	}
 	if (m_audioCapture == NULL) {
 		YangCaptureFactory m_capture;
-		m_audioCapture = m_capture.createRecordAudioCapture(m_context); //new YangAudioCapture(m_context);
+		m_audioCapture = m_capture.createRecordAudioCapture(&m_context->avinfo); //new YangAudioCapture(m_context);
 		int32_t ret=m_audioCapture->init();
 		if(ret){
 			if(ret==ERROR_SYS_NoAudioDevice||ret==ERROR_SYS_NoAudioCaptureDevice) {
@@ -160,7 +162,6 @@ int32_t YangPushCapture::initVideo(){
 
 }
 
-
 void YangPushCapture::startVideoCapture(){
 		if(m_videoCapture&&!m_videoCapture->m_isStart) m_videoCapture->start();
 }
@@ -202,12 +203,12 @@ void YangPushCapture::startCamera() {
 }
 
 
+
 void YangPushCapture::stopCamera() {
 	yang_stop(m_videoCapture);
 	yang_stop_thread(m_videoCapture);
 	yang_delete(m_videoCapture);
 }
-
 
 
 void YangPushCapture::setScreenInterval(int32_t pinterval) {

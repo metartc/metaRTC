@@ -4,14 +4,14 @@
 #ifndef YangWinAudioApiCapture_H1
 #define YangWinAudioApiCapture_H1
 
-#ifdef _WIN32
 #include <yangaudiodev/win/YangAudioApiCapture.h>
 #include <yangaudiodev/win/YangWinAudioApi.h>
 #include <yangaudiodev/YangAudioCaptureData.h>
 #include <yangutil/yangavtype.h>
 
-#include <endpointvolume.h>
+#ifdef _WIN32
 #include <audioclient.h>
+#include <endpointvolume.h>
 
 class YangWinAudioApiCapture:public YangAudioApiCapture,public YangWinAudioApi
 {

@@ -125,7 +125,6 @@
     <ClCompile Include="..\src\yangaudiodev\YangAudioPlay.cpp" />
     <ClCompile Include="..\src\yangaudiodev\YangAudioRenderData.cpp" />
     <ClCompile Include="..\src\yangcapture\YangCaptureFactory.cpp" />
-    <ClCompile Include="..\src\yangcapture\YangScreenCaptureImpl.cpp" />
     <ClCompile Include="..\src\yangcapture\YangScreenShare.cpp" />
     <ClCompile Include="..\src\yangcapture\YangVideoCapture.cpp" />
     <ClCompile Include="..\src\yangcapture\YangVideoCaptureHandle.cpp" />
@@ -161,6 +160,7 @@
     <ClCompile Include="..\src\yangdecoder\YangH264DecoderSoft2.cpp" />
     <ClCompile Include="..\src\yangdecoder\YangVideoDecoderHandle.cpp" />
     <ClCompile Include="..\src\yangdecoder\YangVideoDecoderHandles.cpp" />
+    <ClCompile Include="..\src\yangstream\YangSynBufferManager.cpp" />
     <ClCompile Include="..\src\yangutil\YangAvinfo.cpp" />
     <ClCompile Include="..\src\yangutil\YangLoadLib.cpp" />
     <ClCompile Include="..\src\yangutil\YangString.cpp" />

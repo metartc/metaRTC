@@ -38,7 +38,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_context=new YangContext();
     m_context->init();
 
-    m_context->streams.m_playBuffer=new YangSynBuffer();
+    m_context->synMgr.session->playBuffer=(YangSynBuffer*)yang_calloc(sizeof(YangSynBuffer),1);//new YangSynBuffer();
+    yang_create_synBuffer(m_context->synMgr.session->playBuffer);
 
     m_context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm
     m_context->avinfo.rtc.rtcSocketProtocol=Yang_Socket_Protocol_Udp;//
@@ -95,15 +96,15 @@ void MainWindow::initVideoThread(YangRecordThread *prt){
     m_videoThread=prt;
     m_videoThread->m_video=m_videoWin;
     m_videoThread->initPara();
-    m_videoThread->m_syn= m_context->streams.m_playBuffer;
+     m_videoThread->m_syn= m_context->synMgr.session->playBuffer;
 
 }
 
 void MainWindow::on_m_b_play_clicked()
 {
     if(!m_isStartplay){
-         m_videoThread->m_syn=m_context->streams.m_playBuffer;
-         m_videoThread->m_syn->resetVideoClock();
+        m_videoThread->m_syn=m_context->synMgr.session->playBuffer;
+        m_videoThread->m_syn->resetVideoClock(m_videoThread->m_syn->session);
            if(m_player&&m_player->play((char*)ui->m_url->text().toStdString().c_str())==Yang_Ok){
                ui->m_b_play->setText("stop");
 

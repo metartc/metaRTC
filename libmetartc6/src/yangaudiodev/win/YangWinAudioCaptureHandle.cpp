@@ -1,17 +1,17 @@
 ﻿//
 // Copyright (c) 2019-2022 yanggaofeng
 //
+#include <yangutil/sys/YangLog.h>
 
 #ifdef _WIN32
-#include "YangWinAudioCaptureHandle.h"
-#include <yangutil/sys/YangLog.h>
 #include <strmif.h>
+#include "YangWinAudioCaptureHandle.h"
 
-YangWinAudioCaptureHandle::YangWinAudioCaptureHandle(YangContext *pcontext):YangAudioCaptureHandle(pcontext)
+YangWinAudioCaptureHandle::YangWinAudioCaptureHandle(YangContext *pcontext):YangAudioCaptureHandle(&pcontext->avinfo)
 {
     readStart=0;
 #if Yang_Enable_RenderApi
-    m_player = new YangWinAudioApiRender(pcontext);
+    m_player = new YangWinAudioApiRender(&pcontext->avinfo,&pcontext->synMgr);
     if (m_player)     m_player->init();
     m_isStartRender=0;
 #else

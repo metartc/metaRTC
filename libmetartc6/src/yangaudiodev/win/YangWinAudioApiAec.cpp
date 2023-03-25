@@ -1,23 +1,30 @@
 ﻿//
 // Copyright (c) 2019-2022 yanggaofeng
 //
+
 #include <yangaudiodev/win/YangWinAudioApiAec.h>
-#include <yangutil/sys/YangLog.h>
 #include <yangutil/yangautofree.h>
+#include <yangutil/sys/YangLog.h>
+
 #ifdef _MSC_VER
-#include <mmdeviceapi.h>
+#include <windows.h>
+#include <Functiondiscoverykeys_devpkey.h>
+#include <functiondiscoverykeys.h>
+
 #include <endpointvolume.h>
 #include <audioclient.h>
-#include <dmo.h>
-#include <avrt.h>
+#include <mmdeviceapi.h>
+
 #include <audiopolicy.h>
 #include <wmcodecdsp.h>
-#include <windows.h>
+
+#include <propvarutil.h>
 #include <uuids.h>
 #include <iostream>
-#include <Functiondiscoverykeys_devpkey.h>
-#include <propvarutil.h>
-#include <functiondiscoverykeys.h>
+
+#include <avrt.h>
+#include <dmo.h>
+
 #pragma comment (lib,"wmcodecdspuuid.lib")
 #pragma comment (lib,"dmoguids.lib")
 #pragma comment (lib,"msdmo.lib")
@@ -113,6 +120,7 @@ YangWinAudioApiAec::YangWinAudioApiAec() {
 	   if(m_dmo) m_dmo->QueryInterface(IID_IPropertyStore, reinterpret_cast<void**>(&m_ps));
 	   m_dwStatus=0;
 	   memset(&m_audioFrame,0,sizeof(YangFrame));
+
 	   m_audioData.initIn(16000, 1);
        m_audioData.initOut(48000, 2);
        m_shutdownEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
@@ -129,10 +137,12 @@ YangWinAudioApiAec::~YangWinAudioApiAec() {
     delete[] m_dataBuf;
 
 }
+
 void YangWinAudioApiAec::setCaptureCallback(YangCaptureCallback* cb){
     m_audioData.m_cb=cb;
 
 }
+
 int YangWinAudioApiAec::initCapture() {
       getDefaultDeviceIndex(m_enum,eCapture,eConsole,&m_micIndex);
      int ret=initRecordingDMO();
@@ -147,12 +157,15 @@ int YangWinAudioApiAec::initCapture() {
 void YangWinAudioApiAec::captureThread(){
 	run();
 }
+
   int YangWinAudioApiAec::startCpature(){
 	  return Yang_Ok;
   }
+
   int YangWinAudioApiAec::stopCapture(){
 	  return Yang_Ok;
   }
+
   void YangWinAudioApiAec::stop(){
   	stopLoop();
   }
@@ -186,6 +199,7 @@ void YangWinAudioApiAec::captureThread(){
       }
       return 0;
   }
+
   int YangWinAudioApiAec::setBoolProperty(IPropertyStore* ptrPS, REFPROPERTYKEY key,VARIANT_BOOL value) {
       PROPVARIANT pv;
       PropVariantInit(&pv);
