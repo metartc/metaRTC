@@ -5,7 +5,7 @@
 #include <yangstream/YangStreamManager.h>
 #include <yangutil/sys/YangLog.h>
 
-YangStreamManager::YangStreamManager() {
+YangStreamManager::YangStreamManager(YangSynBufferManager* synMgr) {
 
 	m_sendRequestCb=NULL;
 	m_mediaConfig_dec=NULL;
@@ -15,6 +15,7 @@ YangStreamManager::YangStreamManager() {
 	m_audioClock=48000;
 	m_videoClock=90000;
 	m_streamState=NULL;
+	m_synMgr=synMgr;
 }
 
 YangStreamManager::~YangStreamManager() {
@@ -52,6 +53,26 @@ void YangStreamManager::setRenderMediaConfigCallback(YangMediaConfigCallback* re
 void YangStreamManager::setMediaConfig(int32_t puid,YangAudioParam* audio,YangVideoParam* video){
 	if(m_mediaConfig_dec) m_mediaConfig_dec->setMediaConfig(puid,audio,video);
 	if(m_mediaConfig_render) m_mediaConfig_render->setMediaConfig(puid,audio,video);
+	if(m_synMgr==NULL) return;
+	int32_t i=0;
+	if(audio){
+		if(m_synMgr->session->playBuffer) m_synMgr->session->playBuffer->setAudioClock(m_synMgr->session->playBuffer->session,audio->audioClock);
+		if(m_synMgr->session->playBuffers){
+			for(i=0;i<m_synMgr->session->playBuffers->vec.vsize;i++){
+				m_synMgr->session->playBuffers->vec.payload[i]->setAudioClock(m_synMgr->session->playBuffers->vec.payload[i]->session,audio->audioClock);
+			}
+		}
+		m_audioClock=audio->audioClock;
+	}
+	if(video){
+		if(m_synMgr->session->playBuffer) m_synMgr->session->playBuffer->setVideoClock(m_synMgr->session->playBuffer->session,video->videoClock);
+		if(m_synMgr->session->playBuffers){
+			for(i=0;i<m_synMgr->session->playBuffers->vec.vsize;i++){
+				m_synMgr->session->playBuffers->vec.payload[i]->setVideoClock(m_synMgr->session->playBuffers->vec.payload[i]->session,video->videoClock);
+			}
+		}
+		m_videoClock=video->videoClock;
+	}
 
 }
 

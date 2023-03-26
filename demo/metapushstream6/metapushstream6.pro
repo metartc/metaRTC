@@ -19,6 +19,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #vc
 
 HOME_BASE=../../
+
+INCLUDEPATH += $$HOME_BASE/libmetartc6/src
+INCLUDEPATH += $$HOME_BASE/thirdparty/include
 unix{
 
     INCLUDEPATH += $$HOME_BASE/include
@@ -30,7 +33,7 @@ unix{
         DESTDIR += $$HOME_BASE/bin/app_release
     }
 
- LIBS += -L$$HOME_BASE/thirdparty/lib -lmetaApp -lmetartc6 -lmetartccore6 -lyuv -lopenh264 -lspeexdsp -lopus -lusrsctp -lpthread -lasound -ldl
+ LIBS += -L$$HOME_BASE/thirdparty/lib -lmetartc6 -lmetartccore6 -lyuv -lopenh264 -lspeexdsp -lopus -lusrsctp -lpthread -lasound -ldl
 
 #openssl
  LIBS += -lssl2 -lcrypto2 -lsrtp2
@@ -50,7 +53,7 @@ win32{
         LIBS += -L$$HOME_BASE/bin/lib_win_release
         DESTDIR += $$HOME_BASE/bin/app_win_release
     }
-    LIBS += -lmetaApp -lmetartc6  -lmetartccore6 -lyuv -lopenh264 -lspeexdsp -lopus -lavutil -lavcodec -lusrsctp -lksuser -lwinmm  -lole32 -lStrmiids
+    LIBS += -lmetartc6  -lmetartccore6 -lyuv -lopenh264 -lspeexdsp -lopus -lavutil -lavcodec -lusrsctp -lksuser -lwinmm  -lole32 -lStrmiids
     #gpu encode and decode
     #LIBS +=  -lyangwincodec6  -ld3d11 -ld3d9 -ldxva2
     #using vr
@@ -82,7 +85,15 @@ SOURCES += \
     recordmainwindow.cpp \
     video/YangPlayWidget.cpp \
     video/yangrecordthread.cpp \
-    video/yangrecordvideowin.cpp
+    video/yangrecordvideowin.cpp \
+    yangpush/YangPushCapture.cpp \
+    yangpush/YangPushEncoder.cpp \
+    yangpush/YangPushFactory.cpp \
+    yangpush/YangPushHandleImpl.cpp \
+    yangpush/YangPushMessageHandle.cpp \
+    yangpush/YangPushPublish.cpp \
+    yangpush/YangRtcPublish.cpp \
+    yangpush/YangSendVideoImpl.cpp
 
 
 HEADERS += \
@@ -90,7 +101,11 @@ HEADERS += \
     video/YangPlayWidget.h \
     video/yangrecordthread.h \
     video/yangrecordvideowin.h \
-    video/yangvideotype.h
+    video/yangvideotype.h \
+    yangpush/YangPushEncoder.h \
+    yangpush/YangPushHandleImpl.h \
+    yangpush/YangPushMessageHandle.h \
+    yangpush/YangSendVideoImpl.h
 
 FORMS += \
     recordmainwindow.ui

@@ -14,6 +14,8 @@ CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_WIN_MSC
 HOME_BASE=../../
+INCLUDEPATH += $$HOME_BASE/libmetartc6/src
+
 unix{
 
     INCLUDEPATH += $$HOME_BASE/include
@@ -26,7 +28,7 @@ unix{
     }
  LIBS +=  -L$$HOME_BASE/thirdparty/lib
 
- LIBS += -lmetaApp -lmetartc6  -lmetartccore6 -lyuv -lspeexdsp -lopus -lopenh264 -lusrsctp -lpthread -lasound -ldl
+ LIBS += -lmetartc6  -lmetartccore6 -lyuv -lspeexdsp -lopus -lopenh264 -lusrsctp -lpthread -lasound -ldl
     #openssl
  LIBS += -lssl2 -lcrypto2 -lsrtp2
 
@@ -47,7 +49,7 @@ win32{
         LIBS += -L$$HOME_BASE/bin/lib_win_release
         DESTDIR += $$HOME_BASE/bin/app_win_release
     }
-    LIBS += -lmetaApp -lmetartc6  -lmetartccore6 -lyuv -lspeexdsp -lopenh264 -lopus -lusrsctp -lavutil -lavcodec -lwinmm -ldmoguids -lole32 -lStrmiids
+    LIBS += -lmetartc6  -lmetartccore6 -lyuv -lspeexdsp -lopenh264 -lopus -lusrsctp -lavutil -lavcodec -lwinmm -ldmoguids -lole32 -lStrmiids
     YANG_LIB= -L$$HOME_BASE/thirdparty/lib/win -lsrtp2 -lssl  -lcrypto
     msvc{
         QMAKE_CFLAGS += /utf-8
@@ -75,13 +77,21 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     video/yangrecordthread.cpp \
-    yangplayer/YangPlayWidget.cpp
+    yangplayer/YangPlayFactory.cpp \
+    yangplayer/YangPlayWidget.cpp \
+    yangplayer/YangPlayerBase.cpp \
+    yangplayer/YangPlayerDecoder.cpp \
+    yangplayer/YangPlayerHandleImpl.cpp \
+    yangplayer/YangPlayerPlay.cpp \
+    yangplayer/YangRtcReceive.cpp
 
 
 HEADERS += \
     mainwindow.h \
     video/yangrecordthread.h \
-    yangplayer/YangPlayWidget.h
+    yangplayer/YangPlayWidget.h \
+    yangplayer/YangPlayerHandleImpl.h \
+    yangplayer/YangRtcReceive.h
 
 
 FORMS += \

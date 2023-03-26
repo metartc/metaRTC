@@ -35,7 +35,7 @@ YangContext::YangContext() {
 	memset(&rtcCallback,0,sizeof(YangRtcCallback));
 	memset(&sendRtcMessage,0,sizeof(YangSendRtcMessage));
 
-	streams=new YangStreamManager();
+	streams=new YangStreamManager(&synMgr);
 
 	rtcCallback.context=streams;
 	rtcCallback.setMediaConfig=yang_context_setMediaConfig;

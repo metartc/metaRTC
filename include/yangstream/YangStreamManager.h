@@ -5,8 +5,9 @@
 #define INCLUDE_YANGSTREAM_YANGSTREAMMANAGER1_H_
 #include <yangstream/YangStreamType.h>
 #include <yangstream/YangSynBuffer.h>
+#include <yangstream/YangSynBufferManager.h>
 #include <vector>
-#include <map>
+
 class YangStreamStateNotify{
 public:
 	YangStreamStateNotify(){};
@@ -16,7 +17,7 @@ public:
 
 class YangStreamManager {
 public:
-	YangStreamManager();
+	YangStreamManager(YangSynBufferManager* synMgr);
 	virtual ~YangStreamManager();
 
 public:
@@ -41,7 +42,7 @@ private:
 	YangSendRequestCallback* m_sendRequestCb;
 	YangMediaConfigCallback* m_mediaConfig_dec;
 	YangMediaConfigCallback* m_mediaConfig_render;
-
+	YangSynBufferManager* m_synMgr;
 	int32_t m_videoClock;
 	int32_t m_audioClock;
 private:
