@@ -148,7 +148,6 @@ int32_t yang_push_h264_package_fu_a(YangRtcSession *session, YangPushH264Rtp *rt
 	uint8_t header = pdata[0];
 	uint8_t nal_type = header & kNalTypeMask;
 
-
 	int32_t num_of_packet = ((plen - 1) % fu_payload_size==0)?0:1 + (plen - 1) / fu_payload_size;
 	for (int32_t i = 0; i < num_of_packet; ++i) {
 		int32_t packet_size = yang_min(nb_left, fu_payload_size);
@@ -192,8 +191,6 @@ int32_t yang_push_h264_package_fu_a(YangRtcSession *session, YangPushH264Rtp *rt
 
 	return err;
 }
-
-
 
 int32_t yang_push_h264_video(void *psession, YangPushH264Rtp *rtp,
 		YangFrame *videoFrame) {

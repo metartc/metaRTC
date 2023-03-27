@@ -112,7 +112,6 @@ int32_t yang_zlm_doHandleSignal(YangRtcSession* session,ZlmSdpResponseType* zlm,
 }
 
 int32_t yang_zlm_connectRtcServer(YangRtcConnection* conn){
-
 	int err=Yang_Ok;
 	ZlmSdpResponseType zlm;
 	YangRtcSession* session=conn->session;
@@ -120,7 +119,6 @@ int32_t yang_zlm_connectRtcServer(YangRtcConnection* conn){
 	char *tsdp=NULL;
 	conn->createOffer(session, &tsdp);
     if ((err=yang_zlm_doHandleSignal(session,&zlm,tsdp,session->context.streamConfig->localPort,session->context.streamConfig->streamOptType))  == Yang_Ok) {
-
 		conn->setRemoteDescription(conn->session,zlm.sdp);
 	}
 	yang_free(tsdp);

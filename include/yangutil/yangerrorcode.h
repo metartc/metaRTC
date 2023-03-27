@@ -53,7 +53,7 @@
 
 #define ERROR_JSON					320
 
-#define ERROR_SSL 300
+#define ERROR_SSL 330
 
 
 
