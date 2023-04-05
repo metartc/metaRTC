@@ -20,7 +20,7 @@ metaRTC version:社区版/标准版/专业版
 https://t.zsxq.com/0cfpXQYoX
 
 ## metaRTC服务支持
-微信号: taihang82 
+微信号: taihang82  
 email: yangrtc@aliyun.com  
 
 ## Learning metaRTC 教程
