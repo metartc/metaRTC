@@ -18,8 +18,10 @@ metaRTC version:社区版/标准版/专业版
 ## metaRTC问答星球      
   ![xingqiu2](https://user-images.githubusercontent.com/87118023/227077884-0163fcb6-ab0d-4933-88c9-0164b80f4d02.jpg)  
 https://t.zsxq.com/0cfpXQYoX
-## metaRTC服务微信群
-可加微信taihang82  
+
+## metaRTC服务支持
+微信号: taihang82 
+email: yangrtc@aliyun.com  
 
 ## Learning metaRTC 教程
 https://github.com/metartc/metaRTC/wiki/metaRTC-Learning  
