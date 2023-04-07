@@ -24,7 +24,7 @@ int32_t yang_stream_parseUrl(char* url,YangStreamConfig* stream,YangAVInfo* avin
 	stream->uid = 0;
 	stream->streamOptType = opt;//Yang_Stream_Play;
 
-	yang_init_avinfo(avinfo);
+
 
 return err;
 

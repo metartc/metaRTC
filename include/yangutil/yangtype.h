@@ -14,7 +14,8 @@
 
 #define Yang_Server_Srs 0
 #define Yang_Server_Zlm 1
-#define Yang_Server_P2p 9
+#define Yang_Server_P2p 7
+#define Yang_Server_Whip_Whep 9
 
 #define Yang_Rtmp 0
 #define Yang_Srt 1

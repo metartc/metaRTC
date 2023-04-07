@@ -198,6 +198,8 @@ void yang_ini_initSys(char* filename,YangSysInfo *sys){
 	sys->mediaServer = yang_ini_readIntValue(filename,"sys", "mediaServer", 0);
 	sys->httpPort = yang_ini_readIntValue(filename,"sys", "httpPort", 1988);
 	sys->logLevel = yang_ini_readIntValue(filename,"sys", "logLevel", 1);
+	yang_ini_readStringValue(filename,"sys", "whipUrl", sys->whipUrl, "rtc/v1/whip/?app=%s&stream=%s");
+	yang_ini_readStringValue(filename,"sys", "whepUrl", sys->whepUrl, "rtc/v1/whip-play/?app=%s&stream=%s");
 }
 
 void yang_ini_initEnc(char* filename,YangVideoEncInfo *enc){

@@ -83,6 +83,8 @@ void yang_avinfo_initSys(YangSysInfo *sys) {
 	sys->transType = Yang_Webrtc;
 	sys->httpPort=1988;
 	sys->logLevel = 1;
+	yang_strcpy(sys->whipUrl, "rtc/v1/whip/?app=%s&stream=%s");
+	yang_strcpy(sys->whepUrl, "rtc/v1/whip-play/?app=%s&stream=%s");
 }
 
 void yang_avinfo_initEnc(YangVideoEncInfo *enc) {

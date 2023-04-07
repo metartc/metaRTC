@@ -33,7 +33,7 @@ int32_t yang_zlm_query(YangRtcSession* session,ZlmSdpResponseType* zlm,int32_t i
 	int32_t err=Yang_Ok;
 
 	char* sdp=(char*)yang_calloc(1,Yang_SDP_BUFFERLEN);
-	if(yang_http_post(session->context.avinfo->sys.familyType,sdp,ip, port, purl, (uint8_t*)psdp, yang_strlen(psdp))){
+	if(yang_http_post(yangfalse,session->context.avinfo->sys.familyType,sdp,ip, port, purl, (uint8_t*)psdp, yang_strlen(psdp))){
 		yang_free(sdp);
 		return yang_error_wrap(1,"query zlm sdp failure!");
 	}

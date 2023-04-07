@@ -40,6 +40,7 @@ void g_yang_mt_init(void* pcontext,YangStreamConfig* stream,void* user){
 		context->conn->session = (YangRtcSession*)yang_calloc(1, sizeof(YangRtcSession));
 
 	context->avinfo=(YangAVInfo*)yang_calloc(sizeof(YangAVInfo),1);
+	yang_init_avinfo(context->avinfo);
 	context->streamconfig=(YangStreamConfig*)yang_calloc(sizeof(YangStreamConfig),1);
 	yang_memcpy(context->streamconfig,stream,sizeof(YangStreamConfig));
 
@@ -160,6 +161,13 @@ int32_t g_yang_mt_publishVideo(void* peer,YangFrame* videoFrame){
 
 
 }
+
+
+int32_t g_yang_mt_onmessage(void* peer,YangFrame *msgFrame){
+	if(peer==NULL||msgFrame==NULL) return 1;
+	YangMetaSession *session = (YangMetaSession*) peer;
+	return  session->conn->on_message(session->conn->session,msgFrame);
+}
 int32_t g_yang_mt_publishAudio(void* peer,YangFrame *audioFrame){
 	if(peer==NULL||audioFrame==NULL) return 1;
 	YangMetaSession *session = (YangMetaSession*) peer;
@@ -199,8 +207,9 @@ void yang_create_metaConnection(YangMetaConnection* metaconn){
 	metaconn->connectSfuServer=g_yang_mt_connectServer;
 	metaconn->close=g_yang_mt_disconnectServer;
 	metaconn->setExtradata=g_yang_mt_setExtradata;
-	metaconn->publishAudio=g_yang_mt_publishAudio;
-	metaconn->publishVideo=g_yang_mt_publishVideo;
+	metaconn->on_audio=g_yang_mt_publishAudio;
+	metaconn->on_video=g_yang_mt_publishVideo;
+	metaconn->on_message=g_yang_mt_onmessage;
 	metaconn->isConnected=g_yang_mt_getState;
 	metaconn->recvvideoNotify=g_yang_mt_recvvideo_notify;
 }

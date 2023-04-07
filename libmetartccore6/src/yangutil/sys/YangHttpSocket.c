@@ -20,7 +20,7 @@ int32_t yang_httpsocket_getIndex(char *buf, int plen) {
 }
 
 
-int32_t yang_http_post(YangIpFamilyType familyType,char *rets, char *ip, int32_t port, char *api,
+int32_t yang_http_post(yangbool isWhip,YangIpFamilyType familyType,char *rets, char *ip, int32_t port, char *api,
 		uint8_t *data, int32_t plen) {
 
 	yang_socket_t socketfd=-1;
@@ -40,10 +40,10 @@ int32_t yang_http_post(YangIpFamilyType familyType,char *rets, char *ip, int32_t
 	const char *s = "POST /%s HTTP/1.1\r\n"
 			"Host: %s:%d\r\n"
 			"Accept: */*\r\n"
-			"Content-Type:application/json;charset=UTF-8\r\n"
+			"Content-Type:application/%s;charset=UTF-8\r\n"
 			"Content-Length: %u\r\n"
 			"\r\n%s";
-	int len = yang_sprintf(buf, s, api, ip, port, plen, data);
+	int32_t len = yang_sprintf(buf, s, api, ip, port,isWhip?"sdp":"json", plen, data);
 
 	int32_t nBytes = yang_socket_send(socketfd, buf, len);
 

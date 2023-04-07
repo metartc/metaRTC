@@ -33,7 +33,7 @@ int32_t yang_sdp_queryP2p(P2pSdpResponseType* p2p,YangIpFamilyType familyType,ch
 	int32_t err=Yang_Ok;
 
 	char* sdp=(char*)yang_calloc(1,Yang_SDP_BUFFERLEN);
-	if(yang_http_post(familyType,sdp,ip, port, purl, (uint8_t*)psdp, yang_strlen(psdp))){
+	if(yang_http_post(yangfalse,familyType,sdp,ip, port, purl, (uint8_t*)psdp, yang_strlen(psdp))){
 		yang_free(sdp);
 		return yang_error_wrap(1,"query p2p sdp failure!");
 	}

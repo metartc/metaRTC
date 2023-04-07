@@ -25,8 +25,9 @@ typedef struct {
 	int32_t (*connectSfuServer)(void* session,int32_t mediaServer);
 	int32_t (*close)(void* session);
 	void (*setExtradata)(void* session,YangVideoCodec codec,uint8_t *extradata,int32_t extradata_size);
-	int32_t (*publishAudio)(void* session,YangFrame* audioFrame);
-	int32_t (*publishVideo)(void* session,YangFrame* videoFrame);
+	int32_t (*on_audio)(void* session,YangFrame* audioFrame);
+	int32_t (*on_video)(void* session,YangFrame* videoFrame);
+	int32_t (*on_message)(void* session,YangFrame* videoFrame);
 	int32_t (*isConnected)(void* session);
 	int32_t (*recvvideoNotify)(void* session, YangRtcMessageType mess);
 }YangMetaConnection;

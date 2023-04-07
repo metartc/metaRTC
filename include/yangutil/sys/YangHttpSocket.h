@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C"{
 #endif
- int32_t yang_http_post(YangIpFamilyType familyType,char* rets,char* ip,int32_t port,char* api,uint8_t *p, int32_t plen);
+ int32_t yang_http_post(yangbool isWhip,YangIpFamilyType familyType,char* rets,char* ip,int32_t port,char* api,uint8_t *p, int32_t plen);
 #ifdef __cplusplus
 }
 #endif

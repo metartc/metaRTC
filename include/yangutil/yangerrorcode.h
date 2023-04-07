@@ -91,6 +91,7 @@
 #define ERROR_RTC_ICE                       4100
 #define ERROR_RTC_STUN                      4101
 #define ERROR_RTC_TURN                      4102
+#define ERROR_RTC_Whip						4103
 #define ERROR_RTC_SDP						4200
 #define ERROR_RTC_SDP_EXCHANGE              4218
 #define ERROR_RTC_PORT                      5000

@@ -159,6 +159,7 @@ SOURCES += \
     src/yangutil/sys/YangUrl.c \
     src/yangutil/sys/YangVector.c \
     src/yangutil/sys/YangWebsocket.c \
+    src/yangwhip/YangWhip.c \
     src/yangzlm/YangZlmConnection.c
 
 

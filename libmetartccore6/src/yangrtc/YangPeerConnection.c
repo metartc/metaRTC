@@ -12,7 +12,7 @@
 #include <yangzlm/YangZlmConnection.h>
 #include <yangsrs/YangSrsConnection.h>
 #include <yangp2p/YangP2pConnection.h>
-
+#include <yangwhip/YangWhip.h>
 
 void g_yang_pc_init(YangPeer* peer){
 	if(peer==NULL || peer->conn!=NULL) return;
@@ -40,8 +40,9 @@ int32_t g_yang_pc_connectServer(YangPeer* peer){
 	YangRtcConnection *conn = (YangRtcConnection*)peer->conn;
 	if(conn->isConnected(conn->session)) return Yang_Ok;
 
-	if(mediaServer==Yang_Server_Zlm) return yang_zlm_connectRtcServer(conn);
-	return yang_srs_connectRtcServer(conn);
+		if(mediaServer==Yang_Server_Zlm) return yang_zlm_connectRtcServer(conn);
+	if(mediaServer==Yang_Server_Srs) return yang_srs_connectRtcServer(conn);
+	return yang_whip_connectPeer(conn);
 }
 
 int32_t g_yang_pc_stopRtc(YangPeer* peer){

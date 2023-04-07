@@ -76,6 +76,8 @@ typedef struct YangSysInfo {
 	int32_t httpPort;
 	int32_t transType;
 	int32_t logLevel;
+	char whipUrl[64];
+	char whepUrl[64];
 }YangSysInfo;
 
 typedef struct YangRtcInfo {
