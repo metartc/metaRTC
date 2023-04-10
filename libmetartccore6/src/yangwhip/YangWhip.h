@@ -6,6 +6,6 @@
 
 #include <yangrtc/YangRtcConnection.h>
 
-int32_t yang_whip_connectPeer(YangRtcConnection* conn);
+int32_t yang_whip_connectPeer(YangRtcConnection* conn,yangbool isHttpUrl);
 
 #endif

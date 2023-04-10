@@ -304,12 +304,12 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	yang_memset(randstr, 0, sizeof(randstr));
 	yang_cstr_random(16, randstr);
 #if Yang_Enable_RTC_Audio
-	yang_strcpy(audio_media_desc->ssrc_infos.payload[0].cname, randstr);
-	yang_strcpy(audio_media_desc->ssrc_infos.payload[0].mslabel, "-");
+	yang_strcpy(audio_media_desc->ssrc_infos.payload[0].cname, "metaRTC");
+	yang_strcpy(audio_media_desc->ssrc_infos.payload[0].mslabel, "metaRTC");
 #endif
 #if Yang_Enable_RTC_Video
-	yang_strcpy(video_media_desc->ssrc_infos.payload[0].cname, randstr);
-	yang_strcpy(video_media_desc->ssrc_infos.payload[0].mslabel, "-");
+	yang_strcpy(video_media_desc->ssrc_infos.payload[0].cname, "metaRTC");
+	yang_strcpy(video_media_desc->ssrc_infos.payload[0].mslabel, "metaRTC");
 #endif
 
 #if Yang_Enable_RTC_Audio
@@ -322,7 +322,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	yang_memset(randstr, 0, sizeof(randstr));
 	yang_sprintf(randstr, "%s-%s-%s-%s-%s", tmps[0], tmps[1], tmps[2], tmps[3],tmps[4]);
 
-	yang_strcpy(audio_media_desc->ssrc_infos.payload[0].msid, "-");
+	yang_strcpy(audio_media_desc->ssrc_infos.payload[0].msid, "metaRTC");
 	yang_strcpy(audio_media_desc->ssrc_infos.payload[0].msid_tracker, randstr);
 	yang_strcpy(audio_media_desc->ssrc_infos.payload[0].label, randstr);
 #endif
@@ -337,7 +337,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	yang_memset(randstr, 0, sizeof(randstr));
 	yang_sprintf(randstr, "%s-%s-%s-%s-%s", tmps[0], tmps[1], tmps[2], tmps[3],
 			tmps[4]);
-    yang_strcpy(video_media_desc->ssrc_infos.payload[0].msid, "-");
+    yang_strcpy(video_media_desc->ssrc_infos.payload[0].msid, "metaRTC");
     yang_strcpy(video_media_desc->ssrc_infos.payload[0].msid_tracker, randstr);
     yang_strcpy(video_media_desc->ssrc_infos.payload[0].label, randstr);
 #endif

@@ -107,6 +107,10 @@ int32_t yang_getLocalInfoList(YangIpFamilyType familyType,YangStringVector* vecs
     ifAddr=address;
     while (ifAddr!=NULL)
     {
+    	if(ifAddr->ifa_addr==NULL){
+        		ifAddr=ifAddr->ifa_next;
+        		continue;
+        	}
         if((ifAddr->ifa_flags & IFF_LOOPBACK) == 0&&(ifAddr->ifa_flags & IFF_RUNNING) > 0){
             yang_memset(ip,0,sizeof(ip));
             if (ifAddr->ifa_addr->sa_family==AF_INET) { //ipv4
@@ -197,6 +201,10 @@ int32_t yang_getLocalInfo(YangIpFamilyType familyType,char* ipAddress)
     ifAddr=address;
     while (ifAddr!=NULL)
     {
+    	if(ifAddr->ifa_addr==NULL){
+        		ifAddr=ifAddr->ifa_next;
+        		continue;
+        	}
         if((ifAddr->ifa_flags & IFF_LOOPBACK) == 0&&(ifAddr->ifa_flags & IFF_RUNNING) > 0){
         	yang_memset(ip,0,sizeof(ip));
             if (ifAddr->ifa_addr->sa_family==AF_INET) { //ipv4

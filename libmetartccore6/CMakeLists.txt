@@ -40,6 +40,7 @@ aux_source_directory(./src/yangzlm DIR_SRCS)
 aux_source_directory(./src/yangp2p DIR_SRCS)
 aux_source_directory(./src/yangipc DIR_SRCS)
 aux_source_directory(./src/yangssl DIR_SRCS)
+aux_source_directory(./src/yangwhip DIR_SRCS)
 include(utils.cmake)
 # 排除不参与编译的文件
 

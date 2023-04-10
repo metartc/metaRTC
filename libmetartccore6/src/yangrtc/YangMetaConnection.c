@@ -13,6 +13,7 @@
 #include <yangsrs/YangSrsConnection.h>
 #include <yangzlm/YangZlmConnection.h>
 #include <yangp2p/YangP2pConnection.h>
+#include <yangwhip/YangWhip.h>
 #include <yangrtc/YangStreamUrl.h>
 
 typedef struct{
@@ -57,14 +58,14 @@ int32_t g_yang_mt_connectServer(void* peer,int32_t pmediaServer){
 	YangRtcConnection* conn=((YangMetaSession*)peer)->conn;
 	if(conn==NULL) return 1;
 	if(pmediaServer==Yang_Server_Zlm) return yang_zlm_connectRtcServer(conn);
-//	if(pmediaServer==Yang_Server_P2p) return yang_p2p_connectRtcServer(conn);
-	return yang_srs_connectRtcServer(conn);
+	if(pmediaServer==Yang_Server_Srs) return yang_srs_connectRtcServer(conn);
+	return yang_whip_connectPeer(conn,yangtrue);
 }
 
 int32_t g_yang_mt_initParam(void* pcontext,char* url,YangStreamOptType opt){
 	if(pcontext==NULL) return 1;
 	YangMetaSession* context=(YangMetaSession*)pcontext;
-	return yang_stream_parseUrl(url, context->streamconfig, context->avinfo, opt);
+	return yang_stream_parseUrl2(url, context->streamconfig, context->avinfo, opt);
 }
 
 int32_t g_yang_mt_disconnectServer(void* peer){

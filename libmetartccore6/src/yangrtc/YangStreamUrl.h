@@ -7,4 +7,5 @@
 
 #include <yangrtc/YangRtcContext.h>
 int32_t yang_stream_parseUrl(char* url,YangStreamConfig* stream,YangAVInfo* avinfo,YangStreamOptType opt);
+int32_t yang_stream_parseUrl2(char* url,YangStreamConfig* stream,YangAVInfo* avinfo,YangStreamOptType opt);
 #endif /* SRC_YANGRTC_YANGSTREAMURL_H_ */

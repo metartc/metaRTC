@@ -24,6 +24,6 @@ int32_t yang_url_parse(YangIpFamilyType familyType,char* purl, YangUrlData* data
 //http://host:port/path ws://host:port/path wss://host:port/path
 int32_t yang_ws_url_parse(YangIpFamilyType familyType,char* purl, YangUrlData* data);
 
-
+int32_t yang_http_url_parse(YangIpFamilyType familyType,char* purl, YangUrlData* data);
 
 #endif /* INCLUDE_YANGUTIL_SYS_YANGCURL_H_ */

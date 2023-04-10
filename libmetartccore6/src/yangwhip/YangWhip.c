@@ -19,7 +19,7 @@
 
 
 
-int32_t yang_whip_getSignal(YangRtcSession* session,char** premoteSdp,char* localSdp) {
+int32_t yang_whip_getSignal(YangRtcSession* session,yangbool isHttpUrl,char** premoteSdp,char* localSdp) {
 	int32_t err=Yang_Ok;
 	YangStreamOptType role=session->context.streamConfig->streamOptType;
 	char* whipUrl=session->context.avinfo->sys.whipUrl;
@@ -28,12 +28,14 @@ int32_t yang_whip_getSignal(YangRtcSession* session,char** premoteSdp,char* loca
 	char apiurl[256] ;
 	yang_memset(apiurl,0,sizeof(apiurl));
 	yang_trace("\nsession->context.avinfo->sys.whipUrl=%s",session->context.avinfo->sys.whipUrl);
-
-	if(role==Yang_Stream_Publish)
-		yang_sprintf(apiurl, whipUrl, session->context.streamConfig->app,session->context.streamConfig->stream);
-	else
-		yang_sprintf(apiurl, whepUrl, session->context.streamConfig->app,session->context.streamConfig->stream);
-
+	if(isHttpUrl){
+		yang_strcpy(apiurl,role==Yang_Stream_Publish?whipUrl:whepUrl);
+	}else{
+		if(role==Yang_Stream_Publish)
+			yang_sprintf(apiurl, whipUrl, session->context.streamConfig->app,session->context.streamConfig->stream);
+		else
+			yang_sprintf(apiurl, whepUrl, session->context.streamConfig->app,session->context.streamConfig->stream);
+	}
 	char* remoteSdp=(char*)yang_calloc(1,Yang_SDP_BUFFERLEN);
 
 
@@ -60,7 +62,7 @@ int32_t yang_whip_getSignal(YangRtcSession* session,char** premoteSdp,char* loca
 
 }
 
-int32_t yang_whip_connectPeer(YangRtcConnection* conn){
+int32_t yang_whip_connectPeer(YangRtcConnection* conn,yangbool isHttpUrl){
 	YangRtcSession* session=conn->session;
 	int err=Yang_Ok;
 	char* remoteSdp=NULL;
@@ -70,7 +72,7 @@ int32_t yang_whip_connectPeer(YangRtcConnection* conn){
 	conn->createOffer(session, &localSdp);
 
 
-	if ((err=yang_whip_getSignal(conn->session,&remoteSdp,localSdp))  == Yang_Ok) {
+	if ((err=yang_whip_getSignal(conn->session,isHttpUrl,&remoteSdp,localSdp))  == Yang_Ok) {
 		if(remoteSdp) conn->setRemoteDescription(conn->session,remoteSdp);
 	}
 	yang_free(localSdp);

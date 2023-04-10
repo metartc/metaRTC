@@ -42,7 +42,7 @@ int32_t g_yang_pc_connectServer(YangPeer* peer){
 
 		if(mediaServer==Yang_Server_Zlm) return yang_zlm_connectRtcServer(conn);
 	if(mediaServer==Yang_Server_Srs) return yang_srs_connectRtcServer(conn);
-	return yang_whip_connectPeer(conn);
+	return yang_whip_connectPeer(conn,yangfalse);
 }
 
 int32_t g_yang_pc_stopRtc(YangPeer* peer){
