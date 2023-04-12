@@ -9,12 +9,17 @@ MetaRTC is a webRTC library for embedded/IoT, providing webRTC capabilities for 
 MetaRTC implements the webrtc protocol, supports webrtc/srt/rtmp, and has two versions of pure C and C++.  
 The webrtc support is original, without citing the Google webrtc code, and can interoperate with the Google Webrtc library and browser.  
 Support windows/linux/android etc.  
-metaRTC version:**社区版/标准版/专业版**  
-当前开源版本为社区版  星球用户免费享受标准版  
-标准版和专业版api相同，开源社区版有较大差异，标准版在实现协议基础上提供了更多实用的类库与demo  
-**metaRTC6.0 API及相关文档在metaRTC问答星球上持续更新**  
 
-Remark:metaRTC3.0/metaRTC4.0等停止更新，推荐使用稳定版metaRTC6.0  
+**metaRTC6.0 API及相关文档在metaRTC问答星球上持续更新**  
+## metaRTC Version
+metaRTC version:**社区版/标准版/专业版**  
+当前开源版本为社区版  星球用户免费享受标准版 
+### Vesion Feature
+社区版：webrtc协议栈的基础实现  
+标准版：webrtc协议栈优化实现+实用类库(如mqtt/json/静态编解码库等)+各种demo
+专业版：webrtc协议深度优化实现+产生sdk
+### Version State
+metaRTC3.0/metaRTC4.0等停止更新，推荐使用稳定版metaRTC6.0  
 Remark:metaRTC6.0为稳定版本   
 Remark:metaRTC6.0 is stable    
  
