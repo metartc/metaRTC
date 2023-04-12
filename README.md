@@ -15,6 +15,7 @@ Remark:metaRTC6.0为稳定版本
 Remark:metaRTC6.0 is stable    
 metaRTC version:社区版/标准版/专业版  
 当前开源版本为社区版  星球用户版本为标准版  
+metaRTC6.0相关文档在metaRTC问答星球上持续更新  
 ## metaRTC问答星球      
   ![xingqiu2](https://user-images.githubusercontent.com/87118023/227077884-0163fcb6-ab0d-4933-88c9-0164b80f4d02.jpg)  
 https://t.zsxq.com/0cfpXQYoX
