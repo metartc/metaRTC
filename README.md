@@ -35,7 +35,7 @@ email: yangrtc@aliyun.com
 https://github.com/metartc/metaRTC/wiki/metaRTC-Learning  
 
 ### metaRTC6.0稳定版本下载
-https://github.com/metartc/metaRTC/releases/tag/v6.0-b1  
+https://github.com/metartc/metaRTC/releases/tag/v6.0-b2  
 ### 纯C版IPC第三方库下载
 https://github.com/metartc/metaRTC/releases/tag/v5.0-b1   
 
