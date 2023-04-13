@@ -16,8 +16,8 @@ metaRTC version:**社区版/标准版/专业版**
 当前开源版本为社区版  星球用户免费享受标准版 
 ### Vesion Feature
 社区版：webrtc协议栈的基础实现  
-标准版：webrtc协议栈优化实现+实用类库(如mqtt/json/静态编解码库等)+各种demo  
-专业版：webrtc协议深度优化实现+定制化的低代码产品sdk
+标准版：webrtc协议栈优化实现+实用类库(如mqtt/json/静态编解码库等)+demo  
+专业版：webrtc协议栈深度优化实现+定制化的低代码产品sdk
 ### Version State
 metaRTC3.0/metaRTC4.0等停止更新，推荐使用稳定版metaRTC6.0  
 Remark:metaRTC6.0为稳定版本   
