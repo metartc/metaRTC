@@ -13,7 +13,7 @@ Support windows/linux/android etc.
 **metaRTC6.0 API及相关文档在metaRTC问答星球上持续更新**  
 ## metaRTC Version
 metaRTC version:**社区版/标准版/专业版**  
-当前开源版本为社区版  星球用户免费享受标准版 
+当前开源版本为社区版  星球用户享受标准版及技术支持 
 ### Vesion Feature
 社区版：webrtc协议栈的基础实现  
 标准版：webrtc协议栈优化实现+实用类库(如mqtt/json/静态编解码库等)+demo  
