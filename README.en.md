@@ -3,10 +3,10 @@ MetaRTC is a webRTC library for embedded/IoT, providing webRTC capabilities for 
 MetaRTC implements the webrtc protocol, supports webrtc/srt/rtmp, and has two versions of pure C and C++.  
 The webrtc support is original, without citing the Google webrtc code, and can interoperate with the Google Webrtc library and browser.  
 Support windows/linux/android etc.  
-Remark: metaRTC2.0/metaRTC3.0 stops updating  
-Remark:metaRTC5.0 is stable    
-## metaRTC5.0 stable version download
-https://github.com/metartc/metaRTC/releases/tag/v5.0-b0  
+Remark: metaRTC2.0/metaRTC3.0/metaRTC4.0 stops updating  
+Remark:metaRTC6.0 is stable    
+## metaRTC6.0 stable version download
+https://github.com/metartc/metaRTC/releases/tag/v6.0-b2
 
 ## The difference between MetaRTC and Google Webrtc  
 advantage:  
