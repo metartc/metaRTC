@@ -92,11 +92,6 @@ one-to-many live broadcast
 browser p2p communication  
 two-way intercom and conference  
 
-## Supports multiple transport protocols
-metaRTC4.0 supports WEBRTC/RTMP/SRT/  
-
-metaRTC5.0 will support RTSP/GB2811/QUIC  
-
 ## ARM support
 Support ARM-Linux  
 Support ARM-Android  
@@ -106,21 +101,21 @@ Provide third-party ARM compilation documents
 You can add WeChat taihang82
 
 ## module
-### libmetartccore5
+### libmetartccore6
 webrtc/rtmp protocol implementation and basic application C library, which can be integrated into ffmpeg  
 . If the platform has acquisition and decoding, only libmetartccore5 is needed, libmetartc5 is not required  
 
-### libmetartc5
+### libmetartc6
 Realize acquisition, encoding, decoding, transmission (SRT implementation), and push-pull streaming
 
-### metapushstream5/metapushstream5_android
+### metapushstream6/metapushstream6_android
 Push stream and record demo metapushstream3_android for Android
 
-### metaplayer5/metaplayer5_android
+### metaplayer6/metaplayer6_android
 Pull stream demo, metaplayer5_android is Android version
 
-### metap2p5
-p2p demo, supports one-to-one and one-to-many, metaplayer5 can pull streams directly from metap2p5
+### metap2p6
+p2p demo, supports one-to-one and one-to-many, metaplayer5 can pull streams directly from metap2p6
 Unlike metapushstream5 and metaplayer5, metap2p5 supports full duplex, that is, one connection supports both push and pull streams
 
 ### yangwincodec
