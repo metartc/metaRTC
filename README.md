@@ -70,7 +70,7 @@ email: yangrtc@aliyun.com
 
 ./cmake_android.sh  
 
-#### qt
+#### Qt
 
 libmetartccore6/libmetartccore6.pro
 
@@ -82,7 +82,7 @@ libmetartc6/libmetartc6.pro
 
 vsproject/metaRTC6.sln
 
-#### qt(msvc)
+#### Qt(msvc)
 
 libmetartccore6/libmetartccore6.pro
 
