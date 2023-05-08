@@ -18,9 +18,10 @@ AAC/H264
 AAC/H265(HEVC)
 ## module
 ### libmetartccore6
-Implementation of webRTC protocol stack and related pure C library for audio and video processing
+Implementation of webRTC protocol stack    
+AEC/ANS/AGC and other audio and video processing libraries
 ### libmetartc6
-Realize audio and video collection, encoding, decoding, transmission, rendering, and push-pull streaming
+Realize audio and video collection, encoding, decoding, transmission, rendering, and push-pull streaming  
 
 ## Dependencies
 To compile libmetartccore6, you'll need to satisfy the following dependencies:  
