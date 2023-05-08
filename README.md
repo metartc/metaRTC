@@ -1,19 +1,33 @@
 ## MetaRTC Overview
-MetaRTC是一个为嵌入式/物联网打造的webRTC库，为第三代互联网 元宇宙提供webRTC能力。  
-MetaRTC实现了webrtc协议，提供纯C和C++两种版本接口。   
-srt/rtmp支持转入yangwebrtc，metaRTC不再支持  
-webrtc支持为原创，没有引用谷歌webrtc代码,可与谷歌Webrtc库和浏览器互通。  
-支持windows/linux/android等     
-
-MetaRTC is a webRTC library for embedded/IoT, providing webRTC capabilities for the third generation Internet Metaverse.  
-MetaRTC implements the webrtc protocol, supports webrtc/srt/rtmp, and has two versions of pure C and C++.  
-The webrtc support is original, without citing the Google webrtc code, and can interoperate with the Google Webrtc library and browser.  
-Support windows/linux/android etc.  
+MetaRTC是一个跨平台的webRTC SDK,更适合嵌入式/物联网的webRTC应用  
+MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of Things webRTC applications.    
 **Remark:metaRTC6.0 is stable**  
-## metaRTC6.0 stable version download
-https://github.com/metartc/metaRTC/releases/tag/v6.0-b2
-
 **metaRTC6.0 API及相关文档在metaRTC问答星球上持续更新**  
+## Key Features
++ Audio/Video Support  
+H264/H265  
+Opus/AAC/MP3/SPEEX  
+AEC/ANS/AGC
++ DataChannels
++ NACKs/PLI/FEC/TWCC
++ STUN/TURN Support
++ IPv4/IPv6
++ Linux/Android/Windows
++ MP4/FLV Recording  
+AAC/H264  
+AAC/H265(HEVC)
+## module
+### libmetartccore6
+Implementation of webRTC protocol stack and related pure C library for audio and video processing
+### libmetartc6
+Realize audio and video collection, encoding, decoding, transmission, rendering, and push-pull streaming
+
+## Dependencies
+To compile libmetartccore6, you'll need to satisfy the following dependencies:  
+[OpenSSL](https://www.openssl.org/) or [Mbedtls](https://github.com/Mbed-TLS/mbedtls)  
+[libsrtp](https://github.com/cisco/libsrtp)  
+[usrsctp](https://github.com/sctplab/usrsctp)  
+
 ## metaRTC Version
 metaRTC version:**社区版/标准版/企业版**  
 当前开源版本为社区版  星球用户享受标准版及技术支持 
@@ -29,18 +43,12 @@ https://t.zsxq.com/0cfpXQYoX
 ## metaRTC服务支持
 微信号: taihang82  
 email: yangrtc@aliyun.com  
-
 ## Learning metaRTC 
-https://github.com/metartc/metaRTC/wiki/metaRTC-Learning  
- 
- ## module
-### libmetartccore
-Implementation of webRTC protocol stack and related pure C library for audio and video processing
-### libmetartc
-Realize audio and video collection, encoding, decoding, transmission, rendering, and push-pull streaming
- 
+https://github.com/metartc/metaRTC/wiki/metaRTC-Learning   
 ## MetaRTC和谷歌Webrtc的区别
 https://github.com/metartc/metaRTC/wiki/metaRTC-vs-webrtc
-
 ## metaRTC功能
 https://github.com/metartc/metaRTC/wiki/metaRTC-Features
+
+
+
