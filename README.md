@@ -18,10 +18,10 @@ AEC/ANS/AGC
 AAC/H264  
 AAC/H265(HEVC)
 ## module
-### libmetartccore6
+### libmetartccore6(pure C)
 Implementation of webRTC protocol stack    
 AEC/ANS/AGC and other audio and video processing libraries
-### libmetartc6
+### libmetartc6(C++)
 Realize audio and video collection, encoding, decoding, transmission, rendering, and push-pull streaming  
 
 ## Dependencies
