@@ -45,6 +45,49 @@ https://t.zsxq.com/0cfpXQYoX
 ## metaRTC服务支持
 微信号: taihang82  
 email: yangrtc@aliyun.com  
+
+## Compile
+
+### linux/android
+
+#### cmake
+
+`./cmake_lib_x64.sh `
+
+`./cmake_lib_android.sh `
+
+##### module
+
+./cmake_mips32.sh  
+
+#arm64
+
+./cmake_arm.sh  
+
+./cmake_x64.sh 
+
+#arm64-v8a armeabi x86_64
+
+./cmake_android.sh  
+
+#### qt
+
+libmetartccore6/libmetartccore6.pro
+
+libmetartc6/libmetartc6.pro
+
+### windows
+
+#### visual studio
+
+vsproject/metaRTC6.sln
+
+#### qt(msvc)
+
+libmetartccore6/libmetartccore6.pro
+
+libmetartc6/libmetartc6.pro
+
 ## Learning metaRTC 
 https://github.com/metartc/metaRTC/wiki/metaRTC-Learning   
 ## MetaRTC和谷歌Webrtc的区别
