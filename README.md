@@ -93,7 +93,7 @@ libmetartc6/libmetartc6.pro
 demo/metapushstream6/metapushstream6.pro  
 demo/metaplayer6/metaplayer6.pro
 ### android demo
-android studio ide  
+android studio ide(api:29)  
 demo/metapushstream6_android  
 demo/metaplayer6_android  
 
