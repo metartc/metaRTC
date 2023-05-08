@@ -88,6 +88,15 @@ libmetartccore6/libmetartccore6.pro
 
 libmetartc6/libmetartc6.pro
 
+## demo compile
+### Qt demo
+demo/metapushstream6/metapushstream6.pro  
+demo/metaplayer6/metaplayer6.pro
+### android demo
+android studio ide  
+demo/metapushstream6_android  
+demo/metaplayer6_android  
+
 ## Learning metaRTC 
 https://github.com/metartc/metaRTC/wiki/metaRTC-Learning   
 ## MetaRTC和谷歌Webrtc的区别
