@@ -22,7 +22,7 @@ public:
 	void handleMessage(YangSysMessage* mss);
 	YangPushHandleImpl* m_push;
 private:
-	int32_t pushPublish(char* user);
+    int32_t pushPublish(char* user,yangbool isWhip);
 	YangContext *m_context;
 	YangSysMessageHandleI *m_receive;
 

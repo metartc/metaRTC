@@ -14,6 +14,7 @@ enum YangPushMessageType {
 	YangM_Push_StartScreenCapture,
     YangM_Push_StartOutCapture,
 	YangM_Push_Connect,
+    YangM_Push_Connect_Whip,
 	YangM_Push_Disconnect,
 	YangM_Push_Record_Start,
 	YangM_Push_Record_Stop,

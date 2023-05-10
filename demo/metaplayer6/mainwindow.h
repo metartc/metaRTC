@@ -46,6 +46,8 @@ private slots:
 
 void on_m_b_play_clicked();
 
+void on_m_c_whep_clicked();
+
 private:
     Ui::MainWindow *ui;
 

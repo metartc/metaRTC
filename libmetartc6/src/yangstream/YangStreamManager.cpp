@@ -89,17 +89,17 @@ int32_t YangStreamManager::getPushOnlineCount(){
 int32_t YangStreamManager::getPlayOnlineCount(){
 	return m_onlinePlayUsers.size();
 }
-void YangStreamManager::connectNotify(int32_t puid,YangStreamOptType opt,bool isConnect){
+void YangStreamManager::connectNotify(int32_t puid,YangStreamDirection opt,bool isConnect){
 
 	size_t i=0;
 
-	if(opt==Yang_Stream_Play||opt==Yang_Stream_Both){
+	if(opt==YangRecvonly||opt==YangSendrecv){
 		for(i=0;i<m_onlinePlayUsers.size();i++){
 			if(puid==m_onlinePlayUsers.at(i)) 	m_onlinePlayUsers.erase(m_onlinePlayUsers.begin()+i);
 		}
 		if(isConnect) m_onlinePlayUsers.push_back(puid);
 	}
-	if(opt==Yang_Stream_Publish||opt==Yang_Stream_Both){
+	if(opt==YangSendonly||opt==YangSendrecv){
 		for(i=0;i<m_onlinePushUsers.size();i++){
 			if(puid==m_onlinePushUsers.at(i)) 	m_onlinePushUsers.erase(m_onlinePushUsers.begin()+i);
 		}

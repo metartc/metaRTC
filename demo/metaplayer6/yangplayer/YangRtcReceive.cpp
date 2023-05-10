@@ -41,14 +41,13 @@ YangRtcReceive::YangRtcReceive(YangContext* pcontext,YangSysMessageI* pmessage) 
 	m_loops = 0;
 	m_headLen = 1; //pcontext->audio.audioDecoderType == 0 ? 2 : 1;
 	m_recv = NULL;
+    m_url=NULL;
 	m_waitState = 0;
 	yang_thread_mutex_init(&m_lock,NULL);
 	yang_thread_cond_init(&m_cond_mess,NULL);
 
-
 	m_context->sendRtcMessage.context=this;
 	m_context->sendRtcMessage.sendRtcMessage=g_rtcrecv_sendRtcMessage;
-
 
 }
 
@@ -67,6 +66,7 @@ YangRtcReceive::~YangRtcReceive() {
 	m_message=NULL;
 	yang_thread_mutex_destroy(&m_lock);
 	yang_thread_cond_destroy(&m_cond_mess);
+    yang_free(m_url);
 }
 
 void YangRtcReceive::disConnect() {
@@ -119,7 +119,7 @@ int32_t YangRtcReceive::init(int32_t puid, char* localIp,
 	strcpy(m_recv->peer.streamconfig.app,app);
 	strcpy(m_recv->peer.streamconfig.stream,stream);
 	m_recv->peer.streamconfig.uid = puid;
-	m_recv->peer.streamconfig.streamOptType = Yang_Stream_Play;
+    m_recv->peer.streamconfig.streamDirection = YangRecvonly;
 
 	m_recv->peer.streamconfig.recvCallback.context=this;
 	m_recv->peer.streamconfig.recvCallback.receiveAudio=g_rtcrecv_receiveAudio;
@@ -133,8 +133,37 @@ int32_t YangRtcReceive::init(int32_t puid, char* localIp,
 	yang_create_peerConnection(m_recv);
     m_recv->init(&m_recv->peer);
 	return Yang_Ok;
-
 }
+
+
+
+int32_t YangRtcReceive::init(int32_t puid,char* url){
+    if (!m_recv) m_recv=(YangPeerConnection*)calloc(sizeof(YangPeerConnection),1);
+    //memset(&m_recv->peer.streamconfig,0,sizeof(m_recv->peer.streamconfig));
+    m_recv->peer.streamconfig.localPort = m_context->avinfo.rtc.rtcLocalPort++;
+
+    m_recv->peer.streamconfig.uid = puid;
+    m_recv->peer.streamconfig.streamDirection = YangRecvonly;
+
+    m_recv->peer.streamconfig.recvCallback.context=this;
+    m_recv->peer.streamconfig.recvCallback.receiveAudio=g_rtcrecv_receiveAudio;
+    m_recv->peer.streamconfig.recvCallback.receiveVideo=g_rtcrecv_receiveVideo;
+    m_recv->peer.streamconfig.recvCallback.receiveMsg=g_rtcrecv_receiveMsg;
+
+    m_recv->peer.streamconfig.recvCallback.context=this;
+
+    memcpy(&m_recv->peer.streamconfig.rtcCallback,&m_context->rtcCallback,sizeof(YangRtcCallback));
+    m_recv->peer.avinfo=&m_context->avinfo;
+    yang_create_peerConnection(m_recv);
+
+    int len=strlen(url);
+    if(m_url==NULL) m_url=(char*)yang_malloc(len+1);
+    memcpy(m_url,url,len);
+    m_url[len]=0;
+    return Yang_Ok;
+}
+
+
 void YangRtcReceive::stop() {
 	m_loops = 0;
 	if (m_recv)
@@ -157,14 +186,14 @@ void YangRtcReceive::startLoop() {
 	yang_reindex(m_out_videoBuffer);
 	m_loops = 1;
 	m_isReceived = 1;
-	int err=Yang_Ok;
-	if ((err=m_recv->connectSfuServer(&m_recv->peer))!=Yang_Ok) {
+    int32_t err=m_url?m_recv->connectWhipWhepServer(&m_recv->peer,m_url):m_recv->connectSfuServer(&m_recv->peer);
+    if (err!=Yang_Ok) {
 		m_loops=0;
 		if(m_message) m_message->failure(err);
 	}else{
 		if(m_message) m_message->success();
 	}
-
+    yang_free(m_url);
 	yang_thread_mutex_lock(&m_lock);
 	while (m_loops == 1) {
 		m_waitState = 1;

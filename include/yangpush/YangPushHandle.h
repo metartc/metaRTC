@@ -13,7 +13,7 @@ class YangPushHandle {
 public:
     YangPushHandle();
     virtual ~YangPushHandle();
-    virtual int publish(char* url)=0;
+    virtual int publish(char* url,yangbool isWhip)=0;
     virtual void disconnect()=0;
 
     virtual void init()=0;

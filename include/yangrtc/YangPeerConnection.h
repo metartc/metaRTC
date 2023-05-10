@@ -25,6 +25,7 @@ typedef struct {
 
 	int32_t (*setRemoteDescription)(YangPeer* peer,char* sdp);
 	int32_t (*connectSfuServer)(YangPeer* peer);//srs zlm
+	int32_t (*connectWhipWhepServer)(YangPeer* peer,char* url);
 	int32_t (*close)(YangPeer* peer);
 
 	yangbool (*isAlive)(YangPeer* peer);

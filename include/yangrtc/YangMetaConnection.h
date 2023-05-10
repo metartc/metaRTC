@@ -20,7 +20,7 @@ typedef struct{
 typedef struct {
 	void* session;
 	void (*init)(void* session,YangStreamConfig* stream,void* user);
-	int32_t (*initParam)(void* session,char* url,YangStreamOptType opt);
+	int32_t (*initParam)(void* session,char* url,YangStreamDirection opt);
 	void  (*parseHeader)(YangVideoCodec codec,uint8_t *buf, uint8_t *src, int32_t *hLen);
 	int32_t (*connectSfuServer)(void* session,int32_t mediaServer);
 	int32_t (*close)(void* session);

@@ -62,7 +62,7 @@ int32_t g_yang_mt_connectServer(void* peer,int32_t pmediaServer){
 	return yang_whip_connectPeer(conn,yangtrue);
 }
 
-int32_t g_yang_mt_initParam(void* pcontext,char* url,YangStreamOptType opt){
+int32_t g_yang_mt_initParam(void* pcontext,char* url,YangStreamDirection opt){
 	if(pcontext==NULL) return 1;
 	YangMetaSession* context=(YangMetaSession*)pcontext;
 	return yang_stream_parseUrl2(url, context->streamconfig, context->avinfo, opt);

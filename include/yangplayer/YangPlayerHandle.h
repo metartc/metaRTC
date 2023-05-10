@@ -14,7 +14,8 @@ public:
 	virtual YangVideoBuffer* getVideoBuffer()=0;
 	virtual int play(char* url)=0;
 	virtual int32_t playRtc(int32_t puid,char* localIp, char* server, int32_t pport,char* app,char* stream)=0;
-    virtual void stopPlay()=0;
+	virtual int32_t playRtc(int32_t puid,char* url)=0;
+	virtual void stopPlay()=0;
     static YangPlayerHandle* createPlayerHandle(YangContext* pcontext,YangSysMessageI* pmessage);
 };
 

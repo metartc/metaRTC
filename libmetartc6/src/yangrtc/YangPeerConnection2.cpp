@@ -43,6 +43,11 @@ int32_t YangPeerConnection2::setRemoteDescription(char* sdp){
 int32_t YangPeerConnection2::connectSfuServer(){
 	return m_conn.connectSfuServer(&m_conn.peer);
 }
+
+int32_t YangPeerConnection2::connectWhipServer(char* url){
+	return m_conn.connectWhipWhepServer(&m_conn.peer,url);
+}
+
 int32_t YangPeerConnection2::close(){
 	return m_conn.close(&m_conn.peer);
 }

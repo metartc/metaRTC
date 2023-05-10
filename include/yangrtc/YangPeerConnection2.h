@@ -21,6 +21,8 @@ public:
 
 	int32_t setRemoteDescription(char* sdp);
 	int32_t connectSfuServer();//srs zlm
+	int32_t connectWhipServer(char* url);
+
 	int32_t close();
 
 	int32_t isAlive();

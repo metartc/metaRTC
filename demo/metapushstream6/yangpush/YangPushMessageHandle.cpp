@@ -28,10 +28,10 @@ void YangPushMessageHandle::deleteAll(){
 		m_context=NULL;
 		yang_delete(m_push);
 }
-int32_t YangPushMessageHandle::pushPublish(char* user){
+int32_t YangPushMessageHandle::pushPublish(char* user,yangbool isWhip){
 	if(m_push==NULL) return 1;
 
-	return m_push->publish(user);
+    return m_push->publish(user,isWhip);
 }
 void YangPushMessageHandle::handleMessage(YangSysMessage *mss) {
 
@@ -54,11 +54,16 @@ void YangPushMessageHandle::handleMessage(YangSysMessage *mss) {
         if(m_push) m_push->changeSrc(Yang_VideoSrc_OutInterface,false);
         break;
     }
-	case YangM_Push_Connect:	
-	{
-        if(mss->user&&m_push) ret = pushPublish((char*)mss->user);
-		break;
-	}
+    case YangM_Push_Connect:
+    {
+        if(mss->user&&m_push) ret = pushPublish((char*)mss->user,yangfalse);
+        break;
+    }
+    case YangM_Push_Connect_Whip:
+    {
+        if(mss->user&&m_push) ret = pushPublish((char*)mss->user,yangtrue);
+        break;
+    }
 	case YangM_Push_Disconnect:
 	{
             if(m_push)  m_push->disconnect();

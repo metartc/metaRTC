@@ -41,7 +41,7 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     yang_setLogLevel(m_context->avinfo.sys.logLevel);
     yang_setLogFile(m_context->avinfo.sys.enableLogFile);
 
-    m_context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm
+    m_context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm/Yang_Server_Whip_Whep
     m_context->avinfo.rtc.rtcLocalPort=10000+yang_random()%15000;
     //m_showev->event=1;
 
@@ -63,7 +63,7 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     char s[128]={0};
     memset(m_context->avinfo.rtc.localIp,0,sizeof(m_context->avinfo.rtc.localIp));
     yang_getLocalInfo(m_context->avinfo.sys.familyType,m_context->avinfo.rtc.localIp);
-    sprintf(s,"webrtc://%s/live/livestream",m_context->avinfo.rtc.localIp);
+    sprintf(s,"http://%s:1985/rtc/v1/whip/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
     ui->m_url->setText(s);
 
     m_isDrawmouse=true; //screen draw mouse
@@ -221,7 +221,8 @@ void RecordMainWindow::on_m_b_rec_clicked()
         m_isStartpush=!m_isStartpush;
         qDebug()<<"url========="<<ui->m_url->text().toLatin1().data();
         m_url=ui->m_url->text().toLatin1().data();
-        yang_post_message(YangM_Push_Connect,0,NULL,(void*)m_url.c_str());
+        yang_post_message(ui->m_c_whip->checkState()==Qt::CheckState::Checked?YangM_Push_Connect_Whip:YangM_Push_Connect,0,NULL,(void*)m_url.c_str());
+       // yang_post_message(YangM_Push_Connect,0,NULL,(void*)m_url.c_str());
     }else{
         ui->m_b_rec->setText("开始");
        yang_post_message(YangM_Push_Disconnect,0,NULL);
@@ -246,3 +247,15 @@ void RecordMainWindow::initRecord(){
 
 
 
+
+void RecordMainWindow::on_m_c_whip_clicked()
+{
+    char s[128]={0};
+
+    if(ui->m_c_whip->checkState()==Qt::CheckState::Checked)
+        sprintf(s,"http://%s:1985/rtc/v1/whip/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
+    else
+        sprintf(s,"webrtc://%s:1985/live/livestream",m_context->avinfo.rtc.localIp);
+
+    ui->m_url->setText(s);
+}

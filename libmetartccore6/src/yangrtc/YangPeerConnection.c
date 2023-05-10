@@ -26,7 +26,7 @@ int32_t g_yang_pc_isConnected(YangPeer* peer){
 	return conn->isConnected(conn->session);
 }
 
-int32_t g_yang_pc_initParam(char* url,YangStreamConfig* stream,YangAVInfo* avinfo,YangStreamOptType opt){
+int32_t g_yang_pc_initParam(char* url,YangStreamConfig* stream,YangAVInfo* avinfo,YangStreamDirection opt){
 	return yang_stream_parseUrl(url, stream, avinfo, opt);
 }
 
@@ -40,9 +40,16 @@ int32_t g_yang_pc_connectServer(YangPeer* peer){
 	YangRtcConnection *conn = (YangRtcConnection*)peer->conn;
 	if(conn->isConnected(conn->session)) return Yang_Ok;
 
-		if(mediaServer==Yang_Server_Zlm) return yang_zlm_connectRtcServer(conn);
-	if(mediaServer==Yang_Server_Srs) return yang_srs_connectRtcServer(conn);
-	return yang_whip_connectPeer(conn,yangfalse);
+	if(mediaServer==Yang_Server_Zlm) return yang_zlm_connectRtcServer(conn);
+
+	return yang_srs_connectRtcServer(conn);
+}
+
+
+int32_t g_yang_pc_connectWhipWhepServer(YangPeer* peer,char* url){
+	if(peer==NULL||url==NULL) return ERROR_RTC_PEERCONNECTION;
+	YangRtcConnection *conn = (YangRtcConnection*) peer->conn;
+	return yang_whip_connectPeer(conn,url);
 }
 
 int32_t g_yang_pc_stopRtc(YangPeer* peer){
@@ -146,7 +153,10 @@ void yang_create_peerConnection(YangPeerConnection* peerconn){
 	peerconn->peer.conn=NULL;
 	peerconn->init=g_yang_pc_init;
 	peerconn->getIceCandidateType=g_yang_pc_getIceCandidateType;
+
 	peerconn->connectSfuServer=g_yang_pc_connectServer;
+	peerconn->connectWhipWhepServer=g_yang_pc_connectWhipWhepServer;
+
 	peerconn->createOffer=g_yang_pc_createOffer;
 	peerconn->createAnswer=g_yang_pc_getAnswerSdp;
 	peerconn->createHttpAnswer=g_yang_pc_gethttpanswersdp;

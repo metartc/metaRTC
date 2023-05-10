@@ -107,11 +107,20 @@ YangVideoBuffer* YangPushHandleImpl::getPreVideoBuffer() {
 
 
 
-int YangPushHandleImpl::publish(char* url) {
+int YangPushHandleImpl::publish(char* url,yangbool isWhip) {
 
 	int err = Yang_Ok;
 	memset(&m_url,0,sizeof(m_url));
-	if (yang_url_parse(m_context->avinfo.sys.familyType,url, &m_url))	return 1;
+    if(!isWhip){
+        if(yang_url_parse(m_context->avinfo.sys.familyType,url, &m_url)==Yang_Ok){
+            yang_trace("\nnetType==%d,server=%s,port=%d,app=%s,stream=%s\n",
+                    m_url.netType, m_url.server, m_url.port, m_url.app,
+                    m_url.stream);
+
+        }else{
+            return 1;
+        }
+    }
 	m_context->avinfo.sys.transType=m_url.netType;
 	 m_context->avinfo.audio.audioEncoderType=Yang_AED_OPUS;
 	 m_context->avinfo.audio.sample=48000;
@@ -140,11 +149,17 @@ int YangPushHandleImpl::publish(char* url) {
 		if (m_hasAudio)
 			m_cap->startAudioEncoding();
 		m_cap->startVideoEncoding();
-	if ((err = m_rtcPub->init(m_url.netType, m_url.server,
-			m_url.port, m_url.app, m_url.stream)) != Yang_Ok) {
-		return yang_error_wrap(err, " connect server failure!");
-	}
 
+        if(isWhip){
+             err = m_rtcPub->init(url);
+
+        }else{
+            err = m_rtcPub->init(m_url.netType, m_url.server,
+                                       m_url.port, m_url.app, m_url.stream) ;
+        }
+
+            if (err != Yang_Ok)
+                    return yang_error_wrap(err, " connect server failure!");
 	m_rtcPub->start();
 	if (m_hasAudio)
 		m_cap->startAudioCaptureState();

@@ -55,6 +55,8 @@ public:
 
 private slots:
     void on_m_b_rec_clicked();
+    void on_m_c_whip_clicked();
+
 private:
     void init();
     void initRecord();

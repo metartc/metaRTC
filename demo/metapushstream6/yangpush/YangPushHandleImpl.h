@@ -17,7 +17,7 @@ public:
 	virtual ~YangPushHandleImpl();
 	void init();
 	void startCapture();
-    int32_t publish(char* url);
+    int32_t publish(char* url,yangbool isWihp);
 
 	YangVideoBuffer* getPreVideoBuffer();
 

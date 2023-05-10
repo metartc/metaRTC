@@ -89,6 +89,39 @@ int32_t YangPlayerHandleImpl::playRtc(int32_t puid,char* localIp,char* server, i
 	 return Yang_Ok;
 }
 
+
+
+int32_t YangPlayerHandleImpl::playRtc(int32_t puid,char* url){
+
+    stopPlay();
+    if (!m_play)	{
+        m_play = new YangPlayerBase();
+
+        m_context->avinfo.audio.sample=48000;
+        m_context->avinfo.audio.channel=2;
+        m_context->avinfo.audio.audioDecoderType=Yang_AED_OPUS;//3;
+        m_context->avinfo.audio.enableMono=yangfalse;
+        m_context->avinfo.audio.aIndex=-1;
+        m_play->init(m_context);
+    }
+    initList();
+    m_play->startAudioDecoder(m_outAudioBuffer);
+    m_play->startVideoDecoder(m_outVideoBuffer);
+
+    m_play->startAudioPlay(m_context);
+
+
+    if(m_rtcRecv==NULL) {
+        m_rtcRecv=new YangRtcReceive(m_context,m_message);
+        m_rtcRecv->setBuffer(m_outAudioBuffer, m_outVideoBuffer);
+        m_rtcRecv->init(puid,url);
+    }
+
+     m_rtcRecv->start();
+
+     return Yang_Ok;
+}
+
 YangVideoBuffer* YangPlayerHandleImpl::getVideoBuffer(){
 	if(m_play) return m_play->m_ydb->getOutVideoBuffer();
 	return NULL;

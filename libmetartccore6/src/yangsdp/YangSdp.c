@@ -37,22 +37,22 @@ void  yang_sdp_genLocalSdp_candidate(YangRtcSession *session,YangMediaDesc *medi
 }
 
 
-void yang_sdp_init_direction(YangMediaDesc* media_desc,YangStreamOptType role){
-	if (role == Yang_Stream_Play) {
+void yang_sdp_init_direction(YangMediaDesc* media_desc,YangStreamDirection role){
+	if (role == YangRecvonly) {
 		media_desc->recvonly = yangtrue;
 
 
-	} else if (role == Yang_Stream_Publish) {
+	} else if (role == YangSendonly) {
 		media_desc->sendonly = yangtrue;
 
-	} else if (role == Yang_Stream_Both) {
+	} else if (role == YangSendrecv) {
 		media_desc->sendrecv = yangtrue;
 
 	}
 }
 
 #define Yang_SDP_BUFFERLEN 1024*12
-int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *dst, YangStreamOptType role) {
+int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *dst, YangStreamDirection role) {
 	int32_t mediaServer=session->context.avinfo->sys.mediaServer;
 	//int32_t redPayloadtype=1;
 	int32_t midNum=0;
@@ -251,7 +251,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	//insert h264/h265
 	yang_insert_YangMediaPayloadTypeVector(&video_media_desc->payload_types,NULL);
 	YangMediaPayloadType *videotype =&video_media_desc->payload_types.payload[0];
-	if(mediaServer==Yang_Server_Zlm&&role==Yang_Stream_Play){
+	if(mediaServer==Yang_Server_Zlm&&role==YangRecvonly){
 		videotype->payload_type = session->h264PayloadType;
 		yang_strcpy(videotype->encoding_name, "H264");
 		yang_sdp_genLocalSdp_payloadType(videotype);
@@ -425,7 +425,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 
 }
 
-int32_t yang_sdp_genLocalSdp(YangRtcSession *session, int32_t localport,char **psdp, YangStreamOptType role){
+int32_t yang_sdp_genLocalSdp(YangRtcSession *session, int32_t localport,char **psdp, YangStreamDirection role){
 	char *dst = (char*) yang_calloc(1, Yang_SDP_BUFFERLEN);
 	*psdp=dst;
 	return yang_sdp_genLocalSdp2(session,localport,dst,role);
@@ -463,11 +463,11 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 #if Yang_Enable_RTC_Audio
 				if(session->context.avinfo->sys.mediaServer==Yang_Server_P2p){
 					if(desc->sendonly){
-						session->context.streamConfig->streamOptType=Yang_Stream_Play;
+						session->context.streamConfig->streamDirection=YangRecvonly;
 					}else if(desc->recvonly){
-						session->context.streamConfig->streamOptType=Yang_Stream_Publish;
+						session->context.streamConfig->streamDirection=YangSendonly;
 					}else if(desc->sendrecv){
-						session->context.streamConfig->streamOptType=Yang_Stream_Both;
+						session->context.streamConfig->streamDirection=YangSendrecv;
 					}
 				}
 				if(desc->ssrc_infos.vsize>0) session->context.audioTrack.ssrc=desc->ssrc_infos.payload[0].ssrc;
@@ -488,11 +488,11 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 #if Yang_Enable_RTC_Video
 				if(session->context.avinfo->sys.mediaServer==Yang_Server_P2p){
 					if(desc->sendonly){
-						session->context.streamConfig->streamOptType=Yang_Stream_Play;
+						session->context.streamConfig->streamDirection=YangRecvonly;
 					}else if(desc->recvonly){
-						session->context.streamConfig->streamOptType=Yang_Stream_Publish;
+						session->context.streamConfig->streamDirection=YangSendonly;
 					}else if(desc->sendrecv){
-						session->context.streamConfig->streamOptType=Yang_Stream_Both;
+						session->context.streamConfig->streamDirection=YangSendrecv;
 					}
 				}
 				if(desc->ssrc_infos.vsize>0) {

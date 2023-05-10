@@ -73,7 +73,7 @@ void g_yang_doTask(int32_t taskId, void *user) {
 
 			if (session->play->send_rtcp_rr(&session->context,session->play->playStream))	yang_error("RTCP Error:RR err ");
 #if Yang_Enable_RtcpXr
-			if (session->context.streamConfig->streamOptType==Yang_Stream_Play && session->play->send_rtcp_xr_rrtr(&session->context,session->play->playStream))
+			if (session->context.streamConfig->streamDirection==YangRecvonly && session->play->send_rtcp_xr_rrtr(&session->context,session->play->playStream))
 				yang_error("RTCP Error:XR err ");
 #endif
 
@@ -107,14 +107,14 @@ void g_yang_doTask(int32_t taskId, void *user) {
 
 
 
-void yang_rtcconn_init(YangRtcSession *session, YangStreamOptType role) {
+void yang_rtcconn_init(YangRtcSession *session, YangStreamDirection role) {
 	if (session == NULL)	return;
 
 	session->codec =(YangVideoCodec) session->context.avinfo->video.videoEncoderType;
 	session->isSendDtls = 0;
 
 	session->sessionTimeout=session->context.avinfo->rtc.sessionTimeout;
-    if (role == Yang_Stream_Publish || role==Yang_Stream_Both)  {
+    if (role == YangSendonly || role==YangSendrecv)  {
 #if Yang_Enable_RTC_Audio
     	if(session->pushAudio==NULL){
     		session->pushAudio=(YangPushAudio*) yang_calloc(1,sizeof(YangPushAudio));
@@ -155,7 +155,7 @@ void yang_rtcconn_init(YangRtcSession *session, YangStreamOptType role) {
 #endif
 
 
-	if (role == Yang_Stream_Play || role==Yang_Stream_Both) {
+	if (role == YangRecvonly || role==YangSendrecv) {
 		if(session->playRtpBuffer == NULL) {
 			session->playRtpBuffer = (YangRtpBuffer*) yang_calloc(1,sizeof(YangRtpBuffer));
 			yang_create_rtpBuffer(session->playRtpBuffer, 1500, kRtpPacketSize);
@@ -167,7 +167,7 @@ void yang_rtcconn_init(YangRtcSession *session, YangStreamOptType role) {
 		}
 	}
 
-	if (role == Yang_Stream_Publish || role==Yang_Stream_Both)  {
+	if (role == YangSendonly || role==YangSendrecv)  {
 
 #if Yang_Enable_RTC_Video
 		if(session->pushVideoRtpBuffer == NULL) {
@@ -307,8 +307,8 @@ void yang_rtcconn_startTimers(YangRtcSession *session) {
 
 	// if (session->20ms&&!session->20ms->session->isStart)		session->20ms->start();
 #if Yang_Enable_TWCC
-	YangStreamOptType opt=session->context.streamConfig->streamOptType;
-	if (session->context.twccId>0&&(opt==Yang_Stream_Play||opt==Yang_Stream_Both)&&session->tm_100ms&&!session->tm_100ms->isStart)
+	YangStreamDirection opt=session->context.streamConfig->streamDirection;
+	if (session->context.twccId>0&&(opt==YangRecvonly||opt==YangSendrecv)&&session->tm_100ms&&!session->tm_100ms->isStart)
 		yang_timer_start(session->tm_100ms);
 #endif
 }
@@ -354,7 +354,7 @@ yangbool yang_rtcconn_isAlive(YangRtcSession* session){
 
 
 void yang_rtcconn_startudp(YangRtcSession *session) {
-	yang_rtcconn_init(session, session->context.streamConfig->streamOptType);
+	yang_rtcconn_init(session, session->context.streamConfig->streamDirection);
 	yang_rtcconn_setSsrc(session, session->context.audioSsrc,session->context.videoSsrc);
 }
 
@@ -433,7 +433,7 @@ void yang_rtcconn_close(YangRtcSession *session) {
 
 
 #else
-	if(session->isServer==0){
+	if(session->isControlled==0){
 		char alerts[15];
 		yang_memset(alerts,0,15);
 		alerts[0]=30;
@@ -546,7 +546,7 @@ void yang_rtcconn_receive(YangRtcSession *session, char *data, int32_t size) {
 			}
 
 #else
-		if(session->isServer){
+		if(session->isControlled){
 			void* context=session->context.streamConfig->sslCallback.context;
 			session->context.streamConfig->sslCallback.sslAlert(context,session->context.streamConfig->uid,"warning","CN");
 		}
@@ -617,7 +617,7 @@ int32_t yang_rtcconn_createOffer(YangRtcSession *session, char **psdp){
 	if(session==NULL) return ERROR_RTC_CONNECT;
 
 	int32_t localport=session->context.streamConfig->localPort;
-	YangStreamOptType role=session->context.streamConfig->streamOptType;
+	YangStreamDirection role=session->context.streamConfig->streamDirection;
 	int32_t err = Yang_Ok;
 	if(!session->context.avinfo->rtc.iceUsingLocalIp&&(err=session->ice.initIce(&session->ice.session))!=Yang_Ok){
 		return yang_error_wrap(err,"ice request fail(%s)",session->ice.session.candidateType==YangIceStun?"STUN":"TURN");
@@ -628,11 +628,11 @@ int32_t yang_rtcconn_createOffer(YangRtcSession *session, char **psdp){
 
 int32_t yang_rtcconn_createAnswer(YangRtcSession *session, char *answer){
 	if(session==NULL || answer==NULL) return ERROR_RTC_CONNECT;
-	session->context.streamConfig->isServer=yangtrue;
+	session->context.streamConfig->isControlled=yangtrue;
 	session->isServer=yangtrue;
 
 	int32_t localport=session->context.streamConfig->localPort;
-	YangStreamOptType role=session->context.streamConfig->streamOptType;
+	YangStreamDirection role=session->context.streamConfig->streamDirection;
 	return yang_sdp_genLocalSdp2(session,localport, answer,role);
 }
 
@@ -654,7 +654,7 @@ int32_t yang_rtcconn_startRtc(YangRtcSession* session,char* sdp){
 		yang_trace("\nstartRtc,port=%d",session->context.streamConfig->localPort);
 
 
-		session->isServer=session->context.streamConfig->isServer;
+		session->isServer=session->context.streamConfig->isControlled;
 
 		yang_rtcconn_getRemoteSdp(session,sdp);
 

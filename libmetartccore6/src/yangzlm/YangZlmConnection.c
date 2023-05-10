@@ -8,7 +8,7 @@
 #include <yangrtc/YangRtcConnection.h>
 
 #include <yangsdp/YangSdp.h>
-
+#include <yangjson/YangJson.h>
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/sys/YangCString.h>
 #include <yangutil/sys/YangHttpSocket.h>
@@ -38,75 +38,58 @@ int32_t yang_zlm_query(YangRtcSession* session,ZlmSdpResponseType* zlm,int32_t i
 		return yang_error_wrap(1,"query zlm sdp failure!");
 	}
 
+	YangJsonReader reader;
+	char* p=yang_strstr(sdp,"{");
+	if(p==NULL) return ERROR_STRING;
 
-	char* sBuffer=(char*)yang_calloc(1,Yang_SDP_BUFFERLEN);
-	yang_cstr_replace(sdp,sBuffer, "{", "");
-	yang_memset(sdp,0,Yang_SDP_BUFFERLEN);
-	yang_strcpy(sdp,sBuffer);
-	yang_memset(sBuffer,0,Yang_SDP_BUFFERLEN);
-	yang_cstr_replace(sdp,sBuffer, "}", "");
+	if(yang_create_jsonReader(&reader,p)!=Yang_Ok){
+		yang_error("read zlm response json error!");
+		err=ERROR_STRING;
+		goto cleanup;
+	}
 
-	yang_memset(sdp,0,Yang_SDP_BUFFERLEN);
-	yang_strcpy(sdp,sBuffer);
-	yang_memset(sBuffer,0,Yang_SDP_BUFFERLEN);
-	yang_cstr_replace(sdp,sBuffer, "\\r\\n", "\n");
+	YangJson* jcode = reader.getObjectItemCaseSensitive(reader.session, "code");
+	if (reader.isNumber(jcode))
+	{
+		err=jcode->valueint==0?Yang_Ok:ERROR_SERVER_ConnectFailure;
+		if(err!=Yang_Ok) goto cleanup;
+	}
 
-	YangStrings strs;
-	yang_memset(&strs,0,sizeof(YangStrings));
-	yang_cstr_split(sBuffer, (char*)",",&strs);
+	zlm->retcode=jcode->valueint;
 
-
-	char* p=NULL;
-	for (int32_t i = 0; i < strs.vsize; i++) {
-
-		if ((p = yang_strstr(strs.str[i], "\"code\""))) {
-			char *buf = (char*) yang_calloc(1, yang_strlen(p) + 1);
-			yang_cstr_replace(p + yang_strlen("\"code\" : "), buf, "\"", "");
-
-			zlm->retcode = abs(atoi(buf));
-			yang_free(buf);
-
-			if ((err = zlm->retcode) != 0)	break;
-
-			continue;
-		}
+	YangJson* sessionid = reader.getObjectItemCaseSensitive(reader.session, "id");
+	YangJson* jsdp = reader.getObjectItemCaseSensitive(reader.session, "sdp");
 
 
-
-		if ((p = yang_strstr(strs.str[i], "\"id\""))) {
-			zlm->id = (char*) yang_calloc(1, yang_strlen(p) + 1);
-			yang_cstr_replace(p + yang_strlen("\"id\" : "), zlm->id, "\"","");
-			continue;
-		}
-
-		if ((p = yang_strstr(strs.str[i], "\"sdp\""))) {
-			char* sdptmp=(char*) yang_calloc(1, yang_strlen(p) + 1);
-			zlm->sdp = (char*) yang_calloc(1, yang_strlen(p) + 1);
-
-            yang_cstr_replace(p + yang_strlen("\"sdp\" : "), sdptmp, "\"", "");
-            yang_cstr_replace(sdptmp, zlm->sdp, "\r", "");
-
-			continue;
-		}
+	if (reader.isString(sessionid) && (sessionid->valuestring != NULL))
+	{
+		zlm->id=(char*)yang_calloc(yang_strlen(sessionid->valuestring)+1,1);
+		yang_memcpy(zlm->id,sessionid->valuestring,yang_strlen(sessionid->valuestring));
 
 	}
 
-	yang_destroy_strings(&strs);
-	yang_free(sBuffer);
+	if (reader.isString(jsdp) && (jsdp->valuestring != NULL))
+	{
+		zlm->sdp=(char*)yang_calloc(yang_strlen(jsdp->valuestring)+1,1);
+		yang_cstr_replace(jsdp->valuestring,zlm->sdp, "\r\n", "\n");
+	}
+
+	cleanup:
+	yang_destroy_jsonReader(&reader);
 	yang_free(sdp);
 	return err;
 
 }
 
 
-int32_t yang_zlm_doHandleSignal(YangRtcSession* session,ZlmSdpResponseType* zlm,char* sdp,int32_t localport, YangStreamOptType role) {
+int32_t yang_zlm_doHandleSignal(YangRtcSession* session,ZlmSdpResponseType* zlm,char* sdp,int32_t localport, YangStreamDirection role) {
 	int32_t err = Yang_Ok;
 
 	char apiurl[256] ;
 	yang_memset(apiurl,0,sizeof(apiurl));
 
-	yang_sprintf(apiurl, "index/api/webrtc?app=%s&stream=%s&type=%s", session->context.streamConfig->app,session->context.streamConfig->stream,role==Yang_Stream_Play?"play":"push");
-	err=yang_zlm_query(session,zlm,role==Yang_Stream_Play?1:0,(char*)session->context.streamConfig->remoteIp,session->context.streamConfig->remotePort,apiurl, sdp);
+	yang_sprintf(apiurl, "index/api/webrtc?app=%s&stream=%s&type=%s", session->context.streamConfig->app,session->context.streamConfig->stream,role==YangRecvonly?"play":"push");
+	err=yang_zlm_query(session,zlm,role==YangRecvonly?1:0,(char*)session->context.streamConfig->remoteIp,session->context.streamConfig->remotePort,apiurl, sdp);
 
 	return err;
 }
@@ -118,7 +101,7 @@ int32_t yang_zlm_connectRtcServer(YangRtcConnection* conn){
 	yang_memset(&zlm,0,sizeof(ZlmSdpResponseType));
 	char *tsdp=NULL;
 	conn->createOffer(session, &tsdp);
-    if ((err=yang_zlm_doHandleSignal(session,&zlm,tsdp,session->context.streamConfig->localPort,session->context.streamConfig->streamOptType))  == Yang_Ok) {
+    if ((err=yang_zlm_doHandleSignal(session,&zlm,tsdp,session->context.streamConfig->localPort,session->context.streamConfig->streamDirection))  == Yang_Ok) {
 		conn->setRemoteDescription(conn->session,zlm.sdp);
 	}
 	yang_free(tsdp);

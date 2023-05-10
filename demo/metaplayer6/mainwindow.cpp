@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_hb1->addWidget(ui->m_l_url);
     m_hb1->addWidget(ui->m_url);
     m_hb1->addWidget(ui->m_b_play);
+    m_hb1->addWidget(ui->m_c_whep);
 
     m_hb2->addWidget(m_videoWin);
     m_vb->addLayout(m_hb1);
@@ -53,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     char s[128]={0};
 
-    sprintf(s,"webrtc://%s/live/livestream",m_context->avinfo.rtc.localIp);
+    sprintf(s,"http://%s:1985/rtc/v1/whip-play/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
     yang_trace("\nurl===%s",s);
     ui->m_url->setText(s);
     m_isStartplay=false;
@@ -105,7 +106,13 @@ void MainWindow::on_m_b_play_clicked()
     if(!m_isStartplay){
         m_videoThread->m_syn=m_context->synMgr.session->playBuffer;
         m_videoThread->m_syn->resetVideoClock(m_videoThread->m_syn->session);
-           if(m_player&&m_player->play((char*)ui->m_url->text().toStdString().c_str())==Yang_Ok){
+        int32_t err=Yang_Ok;
+        if(ui->m_c_whep->checkState()==Qt::CheckState::Checked){
+             err=m_player->playRtc(0,(char*)ui->m_url->text().toStdString().c_str());
+        }else{
+            err=m_player->play((char*)ui->m_url->text().toStdString().c_str());
+        }
+           if(err==Yang_Ok){
                ui->m_b_play->setText("stop");
 
                m_isStartplay=!m_isStartplay;
@@ -128,3 +135,15 @@ void MainWindow::on_m_b_play_clicked()
 }
 
 
+
+void MainWindow::on_m_c_whep_clicked()
+{
+    char s[128]={0};
+
+    if(ui->m_c_whep->checkState()==Qt::CheckState::Checked)
+        sprintf(s,"http://%s:1985/rtc/v1/whip-play/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
+    else
+        sprintf(s,"webrtc://%s:1985/live/livestream",m_context->avinfo.rtc.localIp);
+
+    ui->m_url->setText(s);
+}

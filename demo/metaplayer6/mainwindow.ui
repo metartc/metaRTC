@@ -32,7 +32,7 @@
      <rect>
       <x>130</x>
       <y>10</y>
-      <width>521</width>
+      <width>651</width>
       <height>29</height>
      </rect>
     </property>
@@ -40,7 +40,7 @@
    <widget class="QPushButton" name="m_b_play">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>810</x>
       <y>10</y>
       <width>106</width>
       <height>41</height>
@@ -48,6 +48,22 @@
     </property>
     <property name="text">
      <string>Play</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="m_c_whep">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>20</y>
+      <width>121</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>whep</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

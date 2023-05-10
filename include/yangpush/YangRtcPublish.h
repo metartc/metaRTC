@@ -16,7 +16,7 @@ class YangRtcPublish: public YangThread {
 public:
 	YangRtcPublish(YangContext *pcontext);
 	virtual ~YangRtcPublish();
-
+        int32_t init(char* url);
 	int32_t init(int32_t nettype, char* server, int32_t pport,char* app,char* stream);
 	int32_t connectServer(int32_t puid);
 	int32_t connectMediaServer();

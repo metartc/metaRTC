@@ -16,7 +16,7 @@ typedef struct{
 	int32_t (*createHttpAnswer)(YangRtcSession* session,char* answer);
 	int32_t (*setRemoteDescription)(YangRtcSession* session,char* sdp);
 
-	void (*init)(YangRtcSession* session,YangStreamOptType role);
+	void (*init)(YangRtcSession* session,YangStreamDirection role);
 	void (*close)(YangRtcSession *session);
 
 	int32_t (*on_video)(YangRtcSession* session,YangFrame* p);

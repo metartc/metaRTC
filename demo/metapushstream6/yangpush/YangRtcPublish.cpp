@@ -90,7 +90,7 @@ int32_t YangRtcPublish::init(int32_t nettype, char* server, int32_t pport,
 	YangStreamConfig streamconfig;
 	memset(&streamconfig,0,sizeof(YangStreamConfig));
 	strcpy(streamconfig.app,app);
-	streamconfig.streamOptType=Yang_Stream_Publish;
+    streamconfig.streamDirection=YangSendonly;
 
 	strcpy(streamconfig.remoteIp,server);
 	streamconfig.remotePort=pport;
@@ -122,7 +122,34 @@ int32_t YangRtcPublish::init(int32_t nettype, char* server, int32_t pport,
 	return Yang_Ok;
 
 }
+int32_t YangRtcPublish::init(char* url) {
 
+    int32_t ret = 0;
+    YangStreamConfig streamconfig;
+    memset(&streamconfig,0,sizeof(YangStreamConfig));
+    streamconfig.streamDirection=YangSendonly;
+    streamconfig.uid=0;
+
+    streamconfig.localPort=m_context->avinfo.rtc.rtcLocalPort;
+
+    streamconfig.recvCallback.context=this;
+    streamconfig.recvCallback.receiveMsg=g_pushstream_receiveMsg;
+
+    memcpy(&streamconfig.rtcCallback,&m_context->rtcCallback,sizeof(YangRtcCallback));
+
+    YangPeerConnection2* sh=new YangPeerConnection2(&m_context->avinfo,&streamconfig);
+    sh->init();
+    m_pushs.push_back(sh);
+
+    ret = m_pushs.back()->connectWhipServer(url);
+
+    if (ret)		return ret;
+
+    yang_reindex(m_in_audioBuffer);
+    yang_reindex(m_in_videoBuffer);
+    return Yang_Ok;
+
+}
 int32_t YangRtcPublish::connectMediaServer() {
 	if(m_pushs.size()>0) return Yang_Ok;
 

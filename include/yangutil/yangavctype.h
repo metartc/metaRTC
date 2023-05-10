@@ -13,8 +13,8 @@
 #define Yang_MJPEG_Header 0x37
 
 typedef enum  {
-	Yang_Stream_Play, Yang_Stream_Publish, Yang_Stream_Both
-}YangStreamOptType;
+	YangRecvonly, YangSendonly, YangSendrecv
+}YangStreamDirection;
 
 typedef enum {
     Yang_Conn_State_New,
@@ -137,9 +137,9 @@ typedef struct  {
 	int32_t localPort;
 	int32_t remotePort;
 	int32_t uid;
-	int32_t isServer;
+	yangbool isControlled;
 
-	YangStreamOptType streamOptType;
+	YangStreamDirection streamDirection;
 	YangSslCallback sslCallback;
 	YangRtcCallback rtcCallback;
 	YangReceiveCallback recvCallback;
