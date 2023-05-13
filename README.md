@@ -45,6 +45,7 @@ https://t.zsxq.com/0cfpXQYoX
 ## metaRTC服务支持
 微信号: taihang82  
 email: yangrtc@aliyun.com  
+twitter: metaRTC@metartc_sdk
 
 ## Compile
 
