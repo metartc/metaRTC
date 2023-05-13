@@ -99,9 +99,9 @@ demo/metaplayer6_android
 
 ## Learning metaRTC 
 https://github.com/metartc/metaRTC/wiki/metaRTC-Learning   
-## MetaRTC和谷歌Webrtc的区别
+## MetaRTC vs webrtc
 https://github.com/metartc/metaRTC/wiki/metaRTC-vs-webrtc
-## metaRTC功能
+## metaRTC features
 https://github.com/metartc/metaRTC/wiki/metaRTC-Features
 
 
