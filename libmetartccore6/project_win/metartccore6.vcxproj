@@ -126,7 +126,7 @@
     <ClCompile Include="..\src\yangutil\sys\YangCTimer.c" />
     <ClCompile Include="..\src\yangutil\sys\YangEndian.c" />
     <ClCompile Include="..\src\yangutil\sys\YangFile.c" />
-    <ClCompile Include="..\src\yangutil\sys\YangHttpSocket.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangHttp.c" />
     <ClCompile Include="..\src\yangutil\sys\YangIni.c" />
     <ClCompile Include="..\src\yangutil\sys\YangLibHandle.c" />
     <ClCompile Include="..\src\yangutil\sys\YangMath.c" />

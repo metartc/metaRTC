@@ -483,7 +483,7 @@ void yang_rtcconn_receive(YangRtcSession *session, char *data, int32_t size) {
 	//is stun
 	if(size>0&&(bt==0x00 || bt==0x01)){
 		int32_t err = 0;
-		if(session->isServer){
+		if(bt==0x00){
 			YangStunPacket request;
 			yang_memset(&request,0,sizeof(YangStunPacket));
 
@@ -503,7 +503,7 @@ void yang_rtcconn_receive(YangRtcSession *session, char *data, int32_t size) {
 			}
 			//	session->lastStunTime=yang_get_system_time();
 
-		}else{
+		}else if(bt==0x01&&data[1]==0x01){
 			if ((err = session->ice.session.stun.decode2(data, size)) != Yang_Ok) {
 				yang_error("decode stun packet failed");
 				return;

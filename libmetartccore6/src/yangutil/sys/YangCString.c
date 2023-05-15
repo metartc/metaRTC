@@ -58,6 +58,26 @@ void yang_itoa2(uint32_t num,char* data,int32_t n){
 	yang_sprintf(data,"%u",num);
 }
 
+int32_t yang_get_line(char* buf,char *line, int32_t line_size)
+{
+	char* q=line;
+	char* ch;
+    for (int32_t i=0;i<line_size;i++) {
+    	ch=buf[i];
+        if (ch == '\n') {
+             if (q > line && q[-1] == '\r')
+                 q--;
+             *q = '\0';
+
+             return 0;
+         } else {
+             if ((q - line) < line_size - 1)
+                 *q++ = ch;
+         }
+    }
+    return 1;
+}
+
 
 int32_t yang_yang_strcmp(char* str1,char* str2){
 	int32_t len=yang_strlen(str1);

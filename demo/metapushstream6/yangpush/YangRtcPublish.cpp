@@ -11,17 +11,7 @@
 #include <yangavutil/video/YangMeta.h>
 #include <yangavutil/video/YangVideoEncoderMeta.h>
 
-void g_pushstream_sendData(void* context,YangFrame* msgFrame){
-	YangRtcPublish* push=(YangRtcPublish*)context;
-	push->publishMsg(msgFrame);
-}
 
-void g_pushstream_receiveMsg(void* user,YangFrame *msgFrame){
-	if(user==NULL) return;
-	YangRtcPublish* rtcHandle=(YangRtcPublish*)user;
-	rtcHandle->receiveMsg(msgFrame);
-
-}
 
 YangRtcPublish::YangRtcPublish(YangContext *pcontext) {
 	m_context = pcontext;
@@ -39,8 +29,7 @@ YangRtcPublish::YangRtcPublish(YangContext *pcontext) {
 	m_transType=Yang_Webrtc;
 	notifyState=0;
 
-	m_context->channeldataSend.context=this;
-    m_context->channeldataSend.sendData=g_pushstream_sendData;
+
 }
 
 YangRtcPublish::~YangRtcPublish() {
@@ -78,8 +67,6 @@ int32_t YangRtcPublish::publishMsg(YangFrame* msgFrame){
 
 int32_t YangRtcPublish::receiveMsg(YangFrame* msgFrame){
 
-	if(m_context->channeldataRecv.receiveData)
-        m_context->channeldataRecv.receiveData(m_context->channeldataRecv.context,msgFrame);
 	return Yang_Ok;
 }
 
@@ -99,9 +86,6 @@ int32_t YangRtcPublish::init(int32_t nettype, char* server, int32_t pport,
 	streamconfig.uid=0;
 
 	streamconfig.localPort=m_context->avinfo.rtc.rtcLocalPort;
-
-	streamconfig.recvCallback.context=this;
-	streamconfig.recvCallback.receiveMsg=g_pushstream_receiveMsg;
 
 	memcpy(&streamconfig.rtcCallback,&m_context->rtcCallback,sizeof(YangRtcCallback));
 
@@ -131,9 +115,6 @@ int32_t YangRtcPublish::init(char* url) {
     streamconfig.uid=0;
 
     streamconfig.localPort=m_context->avinfo.rtc.rtcLocalPort;
-
-    streamconfig.recvCallback.context=this;
-    streamconfig.recvCallback.receiveMsg=g_pushstream_receiveMsg;
 
     memcpy(&streamconfig.rtcCallback,&m_context->rtcCallback,sizeof(YangRtcCallback));
 

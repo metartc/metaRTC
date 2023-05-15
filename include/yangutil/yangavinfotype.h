@@ -112,14 +112,7 @@ typedef struct YangAVInfo{
 	YangRtcInfo rtc;
 }YangAVInfo;
 
-typedef struct{
-	void* context;
-	void (*receiveData)(void* context,YangFrame* msgFrame);
-}YangChannelDataRecvI;
-typedef struct{
-	void* context;
-	void (*sendData)(void* context,YangFrame* msgFrame);
-}YangChannelDataSendI;
+
 #ifdef __cplusplus
 #include <yangstream/YangStreamManager.h>
 #include <yangstream/YangSynBufferManager.h>
@@ -137,14 +130,9 @@ public:
 	YangAVInfo avinfo;
 	YangRtcCallback rtcCallback;
 	YangSendRtcMessage sendRtcMessage;
-	YangChannelDataRecvI channeldataRecv;
-	YangChannelDataSendI channeldataSend;
+
 #ifdef __ANDROID__
 	void* nativeWindow;
-#endif
-
-#if Yang_Enable_Vr
-        char bgFilename[256];
 #endif
 
         YangSynBufferManager synMgr;

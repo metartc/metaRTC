@@ -11,7 +11,7 @@
 #include <yangutil/yangtype.h>
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/sys/YangCString.h>
-#include <yangutil/sys/YangHttpSocket.h>
+#include <yangutil/sys/YangHttp.h>
 typedef struct{
 	int32_t retcode;
 		char* sdp;

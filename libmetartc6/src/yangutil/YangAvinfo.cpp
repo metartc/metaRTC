@@ -41,8 +41,7 @@ YangContext::YangContext() {
 	rtcCallback.setMediaConfig=yang_context_setMediaConfig;
 	rtcCallback.sendRequest=yang_context_sendRequest;
 
-	memset(&channeldataRecv,0,sizeof(YangChannelDataRecvI));
-	memset(&channeldataSend,0,sizeof(YangChannelDataSendI));
+
 	yang_create_synBufferManager(&synMgr);
 	init();
 #ifdef __ANDROID__

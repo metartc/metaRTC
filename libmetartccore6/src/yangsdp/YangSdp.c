@@ -415,7 +415,8 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 		if(session->context.avinfo->rtc.enableHttpServerSdp)
 			yang_cstr_replace(src, dst, (char*) "\r\n", (char*) "\\r\\n");
 		else
-			yang_cstr_replace(src, dst, (char*) "\r\n", (char*) "\n");
+			yang_strcpy(dst,src);
+			//yang_cstr_replace(src, dst, (char*) "\r\n", (char*) "\n");
 	}
 
 	yang_destroy_rtcsdp(local_sdp);

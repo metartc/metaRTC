@@ -1,28 +1,35 @@
 ﻿//
 // Copyright (c) 2019-2022 yanggaofeng
 //
-#include <yangutil/sys/YangHttpSocket.h>
 #include <yangutil/sys/YangCString.h>
 #include <yangutil/sys/YangSocket.h>
 #include <yangutil/sys/YangLog.h>
 
 #include <errno.h>
+#include <yangutil/sys/YangHttp.h>
 
 #define Yang_Http_Content (char*)"Content-Length:"
 #define Yang_Http_Buffer 1024*12
 
-int32_t yang_httpsocket_getIndex(char *buf, int plen) {
-	for (int i = 0; i < plen; i++) {
-		if (*(buf + i) == '{')
-			return i;
+static int32_t yang_http_content_length(char *buf) {
+	int32_t contentLength=0;
+	char line[64];
+	if(yang_get_line(buf,line,sizeof(line))!=Yang_Ok)
+		return contentLength;
+
+
+	int numberIndex=yang_cstr_isnumber(line,sizeof(line));
+	if(numberIndex>-1&&numberIndex<sizeof(line)){
+		contentLength=yang_atoi(line+numberIndex);
 	}
-	return -1;
+
+	return contentLength;
 }
 
 
 int32_t yang_http_post(yangbool isWhip,YangIpFamilyType familyType,char *rets, char *ip, int32_t port, char *api,
 		uint8_t *data, int32_t plen) {
-
+	int32_t err=1;
 	yang_socket_t socketfd=-1;
 	YangIpAddress serverAddress;
 	yang_addr_set(&serverAddress,ip,port,familyType,Yang_Socket_Protocol_Tcp);
@@ -40,10 +47,10 @@ int32_t yang_http_post(yangbool isWhip,YangIpFamilyType familyType,char *rets, c
 	const char *s = "POST /%s HTTP/1.1\r\n"
 			"Host: %s:%d\r\n"
 			"Accept: */*\r\n"
-			"Content-Type:application/%s;charset=UTF-8\r\n"
+			"Content-Type: application/%s\r\n"
 			"Content-Length: %u\r\n"
 			"\r\n%s";
-	int32_t len = yang_sprintf(buf, s, api, ip, port,isWhip?"sdp":"json", plen, data);
+	int32_t len = yang_sprintf(buf, s, api, ip, port,isWhip?"sdp":"json;charset=UTF-8", plen, data);
 
 	int32_t nBytes = yang_socket_send(socketfd, buf, len);
 
@@ -68,23 +75,16 @@ int32_t yang_http_post(yangbool isWhip,YangIpFamilyType familyType,char *rets, c
 		if (nBytes > 0) {
 			yang_memcpy(rets + recvLen, buf, nBytes);
 			recvLen += nBytes;
-			if(recvtimes==0&&yang_strstr(buf, "HTTP")==NULL) break;
+			if(recvtimes==0){
+				char line[32];
+				if(yang_get_line(buf,line,sizeof(line))!=Yang_Ok) break;
+				if(yang_strstr(line, "HTTP")==NULL) break;
+				if(yang_strstr(line,"200")||yang_strstr(line,"201"))	err=Yang_Ok;
+			}
 			recvtimes++;
 			if(contentLen==0){
 				p=yang_strstr(rets,Yang_Http_Content);
-				if(recvtimes>0&&p==NULL) break;
-				if(p==NULL) continue;
-
-				int32_t ind=yang_cstr_userfindindex(p,'\r');
-				if(ind==0) continue;
-				if(ind>contetSize){
-					yang_memset(contentLenStr,0,sizeof(contentLenStr));
-					yang_memcpy(contentLenStr,p+contetSize,ind-contetSize);
-					int numberIndex=yang_cstr_isnumber(contentLenStr,sizeof(contentLenStr));
-					if(numberIndex>-1&&numberIndex<sizeof(contentLenStr)){
-						contentLen=atoi(contentLenStr+numberIndex);
-					}
-				}
+				if(p) contentLen=yang_http_content_length(p);
 			}
 			if(headerLen==0){
 				char* headerp=yang_strstr(rets,"\r\n\r\n");
@@ -93,9 +93,14 @@ int32_t yang_http_post(yangbool isWhip,YangIpFamilyType familyType,char *rets, c
 					int32_t contentPos = headerp - rets;
 					if (contentPos > 0) 	headerLen = contentPos + 4;
 				}
+				if(yang_strstr(headerp+4,"\r\n\r\n")) 	goto cleanup;
+
+			}else{
+				if(yang_strstr(rets,"\r\n\r\n")) 	goto cleanup;
+
 			}
 
-			if(recvLen >= headerLen+contentLen) goto success;
+			if(contentLen&&recvLen >= headerLen+contentLen) goto cleanup;
 			continue;
 
 		} else if (nBytes == -1) {
@@ -116,14 +121,10 @@ int32_t yang_http_post(yangbool isWhip,YangIpFamilyType familyType,char *rets, c
 		}
 		break;
 	}
+	cleanup:
 	yang_socket_close(socketfd);
 	yang_free(buf);
-	return 1;
-
-	success:
-	yang_socket_close(socketfd);
-	yang_free(buf);
-	return Yang_Ok;
+	return err;
 
 }
 

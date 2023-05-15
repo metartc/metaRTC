@@ -147,7 +147,7 @@ SOURCES += \
     src/yangutil/sys/YangCTimer.c \
     src/yangutil/sys/YangEndian.c \
     src/yangutil/sys/YangFile.c \
-    src/yangutil/sys/YangHttpSocket.c \
+    src/yangutil/sys/YangHttp.c \
     src/yangutil/sys/YangIni.c \
     src/yangutil/sys/YangLibHandle.c \
     src/yangutil/sys/YangMath.c \

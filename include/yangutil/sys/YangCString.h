@@ -26,6 +26,7 @@ int32_t yang_cstr_isnumber(char* p,int32_t n);
 int32_t yang_yang_strcmp(char* str1,char* str2);
 void yang_itoa(int32_t num,char* data,int32_t n);
 void yang_itoa2(uint32_t num,char* data,int32_t n);
+int32_t yang_get_line(char* buf,char *line, int32_t n);
 #ifdef __cplusplus
 }
 #endif

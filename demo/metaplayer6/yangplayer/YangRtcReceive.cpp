@@ -94,8 +94,7 @@ int32_t YangRtcReceive::publishMsg(YangFrame* msgFrame){
 }
 int32_t YangRtcReceive::receiveMsg(YangFrame* msgFrame){
 
-	if(m_context->channeldataRecv.receiveData)
-        m_context->channeldataRecv.receiveData(m_context->channeldataRecv.context,msgFrame);
+
 	return Yang_Ok;
 }
 

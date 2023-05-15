@@ -11,8 +11,7 @@
 #include <yangjson/YangJson.h>
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/sys/YangCString.h>
-#include <yangutil/sys/YangHttpSocket.h>
-
+#include <yangutil/sys/YangHttp.h>
 #define Yang_SDP_BUFFERLEN 1024*12
 
 typedef struct{
