@@ -61,7 +61,7 @@ void yang_itoa2(uint32_t num,char* data,int32_t n){
 int32_t yang_get_line(char* buf,char *line, int32_t line_size)
 {
 	char* q=line;
-	char* ch;
+	char ch;
     for (int32_t i=0;i<line_size;i++) {
     	ch=buf[i];
         if (ch == '\n') {

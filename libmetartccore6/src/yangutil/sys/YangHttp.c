@@ -62,10 +62,7 @@ int32_t yang_http_post(yangbool isWhip,YangIpFamilyType familyType,char *rets, c
 
 	int32_t recvtimes=0;
 	int32_t contentLen=0;
-	char contentLenStr[20];
-	int32_t contetSize=sizeof(Yang_Http_Content);
 	char* p=NULL;
-
 
 	int32_t headerLen=0;
 	while (yangtrue) {
