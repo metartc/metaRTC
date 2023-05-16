@@ -86,6 +86,7 @@ SOURCES += \
     video/YangPlayWidget.cpp \
     video/yangrecordthread.cpp \
     video/yangrecordvideowin.cpp \
+    yangjanus.cpp \
     yangpush/YangPushCapture.cpp \
     yangpush/YangPushEncoder.cpp \
     yangpush/YangPushFactory.cpp \
@@ -102,13 +103,15 @@ HEADERS += \
     video/yangrecordthread.h \
     video/yangrecordvideowin.h \
     video/yangvideotype.h \
+    yangjanus.h \
     yangpush/YangPushEncoder.h \
     yangpush/YangPushHandleImpl.h \
     yangpush/YangPushMessageHandle.h \
     yangpush/YangSendVideoImpl.h
 
 FORMS += \
-    recordmainwindow.ui
+    recordmainwindow.ui \
+    yangjanus.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

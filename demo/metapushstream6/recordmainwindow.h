@@ -17,7 +17,7 @@
 //#include <yangutil/sys/YangWindowsMouse.h>
 #include <yangutil/sys/YangSysMessageHandle.h>
 #include <yangpush/YangPushFactory.h>
-
+#include "yangjanus.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class RecordMainWindow; }
 QT_END_NAMESPACE
@@ -57,6 +57,8 @@ private slots:
     void on_m_b_rec_clicked();
     void on_m_c_whip_clicked();
 
+    void on_m_c_janus_clicked();
+
 private:
     void init();
     void initRecord();
@@ -75,6 +77,6 @@ private:
     string m_url;
     int32_t m_screenInternal;
     YangPushFactory m_pushfactory;
-
+    YangJanus m_janus;
 };
 #endif // MAINWINDOW_H

@@ -259,3 +259,14 @@ void RecordMainWindow::on_m_c_whip_clicked()
 
     ui->m_url->setText(s);
 }
+
+void RecordMainWindow::on_m_c_janus_clicked()
+{
+    char s[128]={0};
+    if(ui->m_c_janus->checkState()==Qt::CheckState::Checked){
+        sprintf(s,"http://%s:7080/whip/endpoint/metaRTC",m_context->avinfo.rtc.localIp);
+         ui->m_url->setText(s);
+        m_janus.show();
+    }
+
+}
