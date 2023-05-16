@@ -93,7 +93,7 @@ QMenu {
      </rect>
     </property>
     <property name="text">
-     <string>推流</string>
+     <string>start</string>
     </property>
    </widget>
    <widget class="QFrame" name="vdMain">

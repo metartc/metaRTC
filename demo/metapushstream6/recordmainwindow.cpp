@@ -217,14 +217,14 @@ void RecordMainWindow::on_m_b_rec_clicked()
    // ui->m_b_record->setEnabled(false);
     if(!m_isStartpush){
         ui->m_l_err->setText("");
-        ui->m_b_rec->setText("停止");
+        ui->m_b_rec->setText("stop");
         m_isStartpush=!m_isStartpush;
         qDebug()<<"url========="<<ui->m_url->text().toLatin1().data();
         m_url=ui->m_url->text().toLatin1().data();
         yang_post_message(ui->m_c_whip->checkState()==Qt::CheckState::Checked?YangM_Push_Connect_Whip:YangM_Push_Connect,0,NULL,(void*)m_url.c_str());
        // yang_post_message(YangM_Push_Connect,0,NULL,(void*)m_url.c_str());
     }else{
-        ui->m_b_rec->setText("开始");
+        ui->m_b_rec->setText("start");
        yang_post_message(YangM_Push_Disconnect,0,NULL);
               m_isStartpush=!m_isStartpush;
     }
