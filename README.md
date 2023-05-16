@@ -98,6 +98,9 @@ android studio ide(api:29)
 demo/metapushstream6_android  
 demo/metaplayer6_android  
 
+## metaRTC streams to janus via the whip protocol  
+https://github.com/metartc/metaRTC/wiki/metaRTC-streams-to-janus-via-the-whip-protocol
+
 ## Learning metaRTC 
 https://github.com/metartc/metaRTC/wiki/metaRTC-Learning   
 ## MetaRTC vs webrtc
