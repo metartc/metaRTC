@@ -23,9 +23,9 @@
                       /**  background-color:rgba(250,170,0,150);**/
   }
 
-/*TabWidget*/
+
 QTabWidget{
-/*给tabwidget设置etAttribute(Qt::WA_StyledBackground)*/
+
 border: 1px solid white;
 background-color:rgb(20,50,70);
 }
@@ -38,10 +38,10 @@ QTabWidget::pane {
 border:1px solid white;
 } 
 QTabBar{
-/*只有有按钮的地方才是tabbar，空白处是tabwidget的*/
+
 background-color:white;
 }
-QTabBar::tab{/*页签*/
+QTabBar::tab{
 min-height:28px;
 padding:0 10px;
 border:0;
@@ -65,21 +65,20 @@ QTabBar::tear{
 QTabBar::scroller{
 }
 QMenu {
-     background-color: rgb(20,50,70); /* sets background of the menu 设置整个菜单区域的背景色，我用的是白色：white*/
-     border: 1px solid white;/*整个菜单区域的边框粗细、样式、颜色*/
+     background-color: rgb(20,50,70); 
+     border: 1px solid white;
  }
   
  QMenu::item {
-     /* sets background of menu item. set this to something non-transparent
-         if you want menu color and menu item color to be different */
+
      background-color: transparent;
-     padding:8px 32px;/*设置菜单项文字上下和左右的内边距，效果就是菜单中的条目左右上下有了间隔*/
-     margin:0px 8px;/*设置菜单项的外边距*/
-     border-bottom:1px solid #DBDBDB;/*为菜单项之间添加横线间隔*/
+     padding:8px 32px;
+     margin:0px 8px;
+     border-bottom:1px solid #DBDBDB;
  }
   
- QMenu::item:selected { /* when user selects item using mouse or keyboard */
-     background-color: #2dabf9;/*这一句是设置菜单项鼠标经过选中的样式*/
+ QMenu::item:selected { 
+     background-color: #2dabf9;
  }</string>
   </property>
   <widget class="QWidget" name="centralwidget">

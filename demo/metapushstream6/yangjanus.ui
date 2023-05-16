@@ -13,6 +13,74 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget, QLabel{
+                        color:white;
+                        border: 1px solid white;
+                        padding:0;
+                        border-radius:5px;
+							background-color:rgb(20,50,70);
+                      /**  background-color:rgba(250,170,0,150);**/
+  }
+
+
+QTabWidget{
+
+border: 1px solid white;
+background-color:rgb(20,50,70);
+}
+QTabWidget::tab-bar{
+alignment:left;
+left:1px;
+}
+QTabWidget::pane { 
+/*background-color:rgb(20,50,70);*/
+border:1px solid white;
+} 
+QTabBar{
+
+background-color:white;
+}
+QTabBar::tab{
+min-height:28px;
+padding:0 10px;
+border:0;
+margin:1px 1px 0 0;
+background-color:rgb(20,50,70);
+}
+QTabBar::tab:first{
+margin-left:1px;
+}
+QTabBar::tab:hover{
+color:cyan;
+}
+QTabBar::tab:selected{
+background-color: rgb(20, 100, 150);
+}
+QTabBar::tab:selected:hover{
+}
+
+QTabBar::tear{
+}
+QTabBar::scroller{
+}
+QMenu {
+     background-color: rgb(20,50,70); 
+     border: 1px solid white;
+ }
+  
+ QMenu::item {
+
+     background-color: transparent;
+     padding:8px 32px;
+     margin:0px 8px;
+     border-bottom:1px solid #DBDBDB;
+ }
+  
+ QMenu::item:selected { 
+     background-color: #2dabf9;
+ }</string>
+  </property>
   <widget class="QPushButton" name="m_b_rec">
    <property name="geometry">
     <rect>
