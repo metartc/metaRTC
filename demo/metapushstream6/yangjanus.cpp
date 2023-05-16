@@ -28,7 +28,7 @@ void YangJanus::on_m_b_rec_clicked()
     }
 
     int32_t err=yang_http_post(yangfalse,Yang_IpFamilyType_IPV4,remoteSdp,urlData.server,
-            urlData.port, "whip/create", (uint8_t*)ui->m_data->text().toLatin1().data(), yang_strlen(ui->m_data->text().toLatin1().data()));
+            urlData.port, (char*)"whip/create", (uint8_t*)ui->m_data->text().toLatin1().data(), yang_strlen(ui->m_data->text().toLatin1().data()));
     char* endp=yang_strstr(remoteSdp,"\r\n\r\n");
     ui->m_retInfo->setText(endp);
      yang_free(remoteSdp);

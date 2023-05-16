@@ -68,7 +68,7 @@ win32{
         DEFINES +=HAVE_STRUCT_TIMESPEC
         DEFINES +=WIN32_LEAN_AND_MEAN
         INCLUDEPATH += $$HOME_BASE\thirdparty\include\win\include   #vc
-        YANG_LIB=  -L$$HOME_BASE/thirdparty/lib/win/msvc -lpthreadVC2 -lavrt -luser32 -lAdvapi32
+        YANG_LIB=  -L$$HOME_BASE/thirdparty/lib/win/msvc -lavrt -luser32 -lAdvapi32
         #openssl
         YANG_LIB+= -lsrtp2  -llibcrypto -llibssl
         #gmssl
