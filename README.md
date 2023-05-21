@@ -9,7 +9,7 @@ H264/H265
 Opus/G711A/G711U/AAC/MP3/SPEEX  
 AEC/ANS/AGC
 + DataChannels
-+ NACKs/PLI/FEC/TWCC
++ NACKs/PLI/FIR/FEC/TWCC
 + STUN/TURN Support
 + IPv4/IPv6
 + Whip/Whep  
