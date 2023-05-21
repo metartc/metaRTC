@@ -165,6 +165,13 @@ int32_t yang_rtcpush_on_rtcp_ps_feedback(YangRtcContext *context,
 		yang_info("rpsi");
 		break;
 	}
+	case kFIR: {
+		uint32_t ssrc = pub->videoSsrc;
+		if (ssrc) {
+			yang_rtcpush_do_request_keyframe(context, ssrc);
+		}
+		break;
+	}
 	case kAFB: {
 		yang_info("afb");
 		break;

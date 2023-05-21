@@ -164,7 +164,7 @@ int32_t yang_http_url_parse(YangIpFamilyType familyType,char* url,YangUrlData* d
 	if (*p == ':') {
 		uint32_t  p2;
 		p++;
-		p2 = atoi(p);
+		p2 = yang_atoi(p);
 		if (p2 > 65535) {
 			yang_warn("Invalid port number!");
 		} else {

@@ -71,9 +71,10 @@ const uint8_t kEnd              = 0x40; // Fu-header end bit
 #define  kFuA     0x1c
 #define  kStart             0x80 // Fu-header start bit
 #define  kEnd               0x40 // Fu-header end bit
-#define  kPLI  0x01
+#define  kPLI   0x01
 #define  kSLI   0x02
 #define  kRPSI  0x03
+#define  kFIR   0x04
 #define  kAFB   0x0F
 #define  kRtcpVersion  0x2
 #define  kSR   (uint8_t)200
