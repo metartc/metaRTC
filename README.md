@@ -7,7 +7,7 @@ MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of T
 + Audio/Video Support  
   + H264/H265 
   + Opus/G711A/G711U/AAC/MP3/SPEEX  
-  + AEC/ANS/AGC/VAD 
+  + AEC/ANS/AGC/VAD/CNG 
 
 + DataChannels
 + NACK/PLI/FIR/FEC/TWCC
