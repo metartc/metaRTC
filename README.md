@@ -5,9 +5,10 @@ MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of T
 **metaRTC6.0 API及相关文档在metaRTC问答星球上持续更新**  
 ## Key Features
 + Audio/Video Support  
-H264/H265  
-Opus/G711A/G711U/AAC/MP3/SPEEX  
-AEC/ANS/AGC/VAD  
+  + H264/H265 
+  + Opus/G711A/G711U/AAC/MP3/SPEEX  
+  + AEC/ANS/AGC/VAD 
+
 + DataChannels
 + NACK/PLI/FIR/FEC/TWCC
 + STUN/TURN Support
@@ -15,8 +16,8 @@ AEC/ANS/AGC/VAD
 + Whip/Whep  
 + Linux/Android/Windows
 + MP4/FLV Recording  
-AAC/H264  
-AAC/H265(HEVC)
+  + AAC/H264  
+  + AAC/H265(HEVC)
 ## module
 ### libmetartccore6(pure C)
 Implementation of webRTC protocol stack    
