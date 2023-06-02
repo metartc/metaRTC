@@ -93,7 +93,7 @@ int32_t yang_http_post(yangbool isWhip,YangIpFamilyType familyType,char *rets, c
 				if(yang_strstr(headerp+4,"\r\n\r\n")) 	goto cleanup;
 
 			}else{
-				if(yang_strstr(rets,"\r\n\r\n")) 	goto cleanup;
+				if(yang_strstr(buf,"\r\n\r\n")) 	goto cleanup;
 
 			}
 

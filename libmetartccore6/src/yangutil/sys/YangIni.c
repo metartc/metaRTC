@@ -230,7 +230,7 @@ void yang_ini_initRtc(char* filename,YangRtcInfo *rtc){
 	rtc->rtcPort = yang_ini_readIntValue(filename,"rtc", "rtcPort", 1985);
 	rtc->rtcLocalPort = yang_ini_readIntValue(filename,"rtc", "rtcLocalPort", 16000);
 
-	yang_ini_readStringValue(filename,"sys", "rtcServerIP", rtc->rtcServerIP, "127.0.0.1");
+	yang_ini_readStringValue(filename,"rtc", "rtcServerIP", rtc->rtcServerIP, "127.0.0.1");
 	yang_ini_readStringValue(filename,"rtc", "iceServerIP", rtc->iceServerIP, "127.0.0.1");
 	yang_ini_readStringValue(filename,"rtc", "iceLocalIP", rtc->iceLocalIP, "127.0.0.1");
 	yang_ini_readStringValue(filename,"rtc", "iceUserName", rtc->iceUserName, "metartc");
