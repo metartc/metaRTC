@@ -74,7 +74,6 @@ SOURCES += \
     src/yangrtc/YangAec.c \
     src/yangrtc/YangBandwidth.c \
     src/yangrtc/YangDatachannel.c \
-    src/yangrtc/YangMetaConnection.c \
     src/yangrtc/YangPeerConnection.c \
     src/yangrtc/YangPlayStream.c \
     src/yangrtc/YangPlayTrack.c \

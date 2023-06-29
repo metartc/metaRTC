@@ -202,7 +202,6 @@
     <ClCompile Include="..\src\yangrtc\YangAec.c" />
     <ClCompile Include="..\src\yangrtc\YangBandwidth.c" />
     <ClCompile Include="..\src\yangrtc\YangDatachannel.c" />
-    <ClCompile Include="..\src\yangrtc\YangMetaConnection.c" />
     <ClCompile Include="..\src\yangrtc\YangPeerConnection.c" />
     <ClCompile Include="..\src\yangrtc\YangPlayStream.c" />
     <ClCompile Include="..\src\yangrtc\YangPlayTrack.c" />
