@@ -14,11 +14,11 @@
 
 #include <openssl/ssl.h>
 typedef struct{
-    char fingerprint[128];
     int32_t ecdsa_mode;
     X509* dtls_cert;
     EVP_PKEY* dtls_pkey;
     EC_KEY* eckey;
+    char fingerprint[128];
 }YangCertificate;
 
 
