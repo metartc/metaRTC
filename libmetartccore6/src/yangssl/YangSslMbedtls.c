@@ -18,7 +18,7 @@
 #include <mbedtls/md5.h>
 #include <srtp2/srtp.h>
 
-int32_t hmac_encode(const char *algo, const char *key, const int32_t key_length,
+int32_t yang_hmac_encode(const char *algo, const char *key, const int32_t key_length,
 		const char *input, const int32_t input_length, char *output,
 		uint32_t *output_length) {
 	int32_t err = Yang_Ok;

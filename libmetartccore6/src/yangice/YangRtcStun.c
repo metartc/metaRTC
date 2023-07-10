@@ -63,7 +63,7 @@ uint32_t yang_stun_encode_hmac(YangBuffer *pstream,char* pwd,char** str)
 	YangBuffer stream ;
 	yang_init_buffer(&stream,buf, sizeof(buf));
 
-	if ((ret=hmac_encode("sha1", pwd, yang_strlen(pwd), pstream->data, yang_buffer_pos(pstream), hmac_buf, &hmac_buf_len)) != Yang_Ok) {
+	if ((ret=yang_hmac_encode("sha1", pwd, yang_strlen(pwd), pstream->data, yang_buffer_pos(pstream), hmac_buf, &hmac_buf_len)) != Yang_Ok) {
 		return yang_error_wrap(ret, "hmac encode failed");
 	}
 
@@ -415,7 +415,7 @@ int32_t yang_stun_encode_binding_request(YangStunPacket* pkt, YangBuffer* stream
 #if Yang_Enable_Dtls
 	char hmac_buf[20] = {0};
 	uint32_t  hmac_buf_len = 0;
-	if ((err = hmac_encode("sha1", pwd, yang_strlen(pwd), stream->data, yang_buffer_pos(stream), hmac_buf, &hmac_buf_len)) != Yang_Ok) {
+	if ((err = yang_hmac_encode("sha1", pwd, yang_strlen(pwd), stream->data, yang_buffer_pos(stream), hmac_buf, &hmac_buf_len)) != Yang_Ok) {
 		return yang_error_wrap(err, "hmac encode failed");
 	}
 
@@ -530,7 +530,7 @@ int32_t yang_stun_encode_binding_response(YangStunPacket* pkt,char* pwd, YangBuf
 #if Yang_Enable_Dtls
 	char hmac_buf[20] = {0};
 	uint32_t  hmac_buf_len = 0;
-	if ((err = hmac_encode("sha1", pwd, yang_strlen(pwd), stream->data, yang_buffer_pos(stream), hmac_buf, &hmac_buf_len)) != Yang_Ok) {
+	if ((err = yang_hmac_encode("sha1", pwd, yang_strlen(pwd), stream->data, yang_buffer_pos(stream), hmac_buf, &hmac_buf_len)) != Yang_Ok) {
 		return yang_error_wrap(err, "hmac encode failed");
 	}
 #else
@@ -799,7 +799,7 @@ int32_t yang_stun_encode_binding_request2(YangStunPacket* pkt, YangBuffer* strea
 
 	char hmac_buf[20] = {0};
 	uint32_t  hmac_buf_len = 0;
-	if ((err = hmac_encode("sha1", pwd, yang_strlen(pwd), stream->data, yang_buffer_pos(stream), hmac_buf, &hmac_buf_len)) != Yang_Ok) {
+	if ((err = yang_hmac_encode("sha1", pwd, yang_strlen(pwd), stream->data, yang_buffer_pos(stream), hmac_buf, &hmac_buf_len)) != Yang_Ok) {
 		return yang_error_wrap(err, "hmac encode failed");
 	}
 
