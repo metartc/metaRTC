@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) 2019-2022 yanggaofeng blueskiner
 //
 #ifndef SRC_YANGUTIL_SRC_YANGCTIMER_H_
@@ -8,9 +8,9 @@
 #include <yangutil/sys/YangThread.h>
 
 #if __APPLE__
-	#import <dispatch/source.h>
-#endif
+	#include <dispatch/dispatch.h>
 
+#endif
 typedef struct YangCTimer{
 	int32_t taskId;
 
