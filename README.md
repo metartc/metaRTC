@@ -92,7 +92,7 @@ libmetartccore7/libmetartccore7.pro
 libmetartc7/libmetartc7.pro
 ### mac/ios
 ### xcode
-project_xcode
+project_xcode/
 
 ## demo compile
 ### Qt demo
