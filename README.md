@@ -14,19 +14,19 @@ MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of T
 + STUN/TURN Support
 + IPv4/IPv6
 + Whip/Whep  
-+ Linux/Android/Windows
++ Linux/Windows/Mac/Android/IOS
 + MP4/FLV Recording  
   + AAC/H264  
   + AAC/H265(HEVC)
 ## module
-### libmetartccore6(pure C)
+### libmetartccore7(pure C)
 Implementation of webRTC protocol stack    
 AEC/ANS/AGC and other audio and video processing libraries
-### libmetartc6(C++)
+### libmetartc7(C++)
 Realize audio and video collection, encoding, decoding, transmission, rendering, and push-pull streaming  
 
 ## Dependencies
-To compile libmetartccore6, you'll need to satisfy the following dependencies:  
+To compile libmetartccore7, you'll need to satisfy the following dependencies:  
 [OpenSSL](https://www.openssl.org/) or [Mbedtls](https://github.com/Mbed-TLS/mbedtls)  
 [libsrtp](https://github.com/cisco/libsrtp)  
 [usrsctp](https://github.com/sctplab/usrsctp)  
@@ -75,30 +75,30 @@ twitter: metaRTC@metartc_sdk
 
 #### Qt
 
-libmetartccore6/libmetartccore6.pro
+libmetartccore7/libmetartccore7.pro
 
-libmetartc6/libmetartc6.pro
+libmetartc7/libmetartc7.pro
 
 ### windows
 
 #### visual studio
 
-vsproject/metaRTC6.sln
+vsproject/metaRTC7.sln
 
 #### Qt(msvc)
 
-libmetartccore6/libmetartccore6.pro
+libmetartccore7/libmetartccore7.pro
 
-libmetartc6/libmetartc6.pro
+libmetartc7/libmetartc7.pro
 
 ## demo compile
 ### Qt demo
-demo/metapushstream6/metapushstream6.pro  
-demo/metaplayer6/metaplayer6.pro
+demo/metapushstream6/metapushstream7.pro  
+demo/metaplayer6/metaplayer7.pro
 ### android demo
 android studio ide(api:29)  
-demo/metapushstream6_android  
-demo/metaplayer6_android  
+demo/metapushstream7_android  
+demo/metaplayer7_android  
 
 ## metaRTC streams to janus via the whip protocol  
 https://github.com/metartc/metaRTC/wiki/metaRTC-streams-to-janus-via-the-whip-protocol
