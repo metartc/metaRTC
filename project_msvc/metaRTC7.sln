@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "metartccore7", "..\libmetartccore7\project_win\metartccore7.vcxproj", "{12FE6569-B32E-386C-A651-F6CE39768C7F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "metartc7", "..\libmetartc7\project_win\metartc7.vcxproj", "{46F7A260-1577-3D51-91C6-2D6761C79AB7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yangwincodec7", "..\codec\yangwincodec7\project_win\yangwincodec7.vcxproj", "{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}"
+EndProject
+
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Debug|x64.ActiveCfg = Debug|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Debug|x64.Build.0 = Debug|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Debug|x86.ActiveCfg = Debug|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Release|x64.ActiveCfg = Release|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Release|x64.Build.0 = Release|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Release|x86.ActiveCfg = Release|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Debug|x64.ActiveCfg = Debug|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Debug|x64.Build.0 = Debug|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Debug|x86.ActiveCfg = Debug|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Release|x64.ActiveCfg = Release|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Release|x64.Build.0 = Release|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Release|x86.ActiveCfg = Release|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Debug|x64.ActiveCfg = Debug|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Debug|x64.Build.0 = Debug|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Debug|x86.ActiveCfg = Debug|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Release|x64.ActiveCfg = Release|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Release|x64.Build.0 = Release|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Release|x86.ActiveCfg = Release|x64
+		{3C1B30BF-D633-32F4-BB0A-629F2D2A4ABE}.Debug|x64.ActiveCfg = Debug|x64
+		{3C1B30BF-D633-32F4-BB0A-629F2D2A4ABE}.Debug|x64.Build.0 = Debug|x64
+		{3C1B30BF-D633-32F4-BB0A-629F2D2A4ABE}.Debug|x86.ActiveCfg = Debug|x64
+		{3C1B30BF-D633-32F4-BB0A-629F2D2A4ABE}.Release|x64.ActiveCfg = Release|x64
+		{3C1B30BF-D633-32F4-BB0A-629F2D2A4ABE}.Release|x64.Build.0 = Release|x64
+		{3C1B30BF-D633-32F4-BB0A-629F2D2A4ABE}.Release|x86.ActiveCfg = Release|x64
+		{7AD942EE-3263-3430-AC51-83AE4721D494}.Debug|x64.ActiveCfg = Debug|x64
+		{7AD942EE-3263-3430-AC51-83AE4721D494}.Debug|x64.Build.0 = Debug|x64
+		{7AD942EE-3263-3430-AC51-83AE4721D494}.Debug|x86.ActiveCfg = Debug|x64
+		{7AD942EE-3263-3430-AC51-83AE4721D494}.Release|x64.ActiveCfg = Release|x64
+		{7AD942EE-3263-3430-AC51-83AE4721D494}.Release|x64.Build.0 = Release|x64
+		{7AD942EE-3263-3430-AC51-83AE4721D494}.Release|x86.ActiveCfg = Release|x64
+		{DE70E2D1-6A4D-4984-BD82-CE750889F0D5}.Debug|x64.ActiveCfg = Debug|x64
+		{DE70E2D1-6A4D-4984-BD82-CE750889F0D5}.Debug|x64.Build.0 = Debug|x64
+		{DE70E2D1-6A4D-4984-BD82-CE750889F0D5}.Debug|x86.ActiveCfg = Debug|Win32
+		{DE70E2D1-6A4D-4984-BD82-CE750889F0D5}.Debug|x86.Build.0 = Debug|Win32
+		{DE70E2D1-6A4D-4984-BD82-CE750889F0D5}.Release|x64.ActiveCfg = Release|x64
+		{DE70E2D1-6A4D-4984-BD82-CE750889F0D5}.Release|x64.Build.0 = Release|x64
+		{DE70E2D1-6A4D-4984-BD82-CE750889F0D5}.Release|x86.ActiveCfg = Release|Win32
+		{DE70E2D1-6A4D-4984-BD82-CE750889F0D5}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9832F894-E4EB-4206-B343-0C8A4358517E}
+	EndGlobalSection
+EndGlobal

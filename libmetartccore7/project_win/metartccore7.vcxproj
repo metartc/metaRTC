@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{12FE6569-B32E-386C-A651-F6CE39768C7F}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>metartccore7</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\bin\lib_win_debug</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">metartccore7.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">metartccore7</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\bin\lib_win_release</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metartccore7.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metartccore7</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\thirdparty\include;..\..\thirdparty\user_include;..\..\thirdparty\user_include\gmssl;..\..\thirdparty\user_include\mbedtls3;..\..\thirdparty\include\win\include;..\..\libmetartccore7\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=gnu11</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__STDC_FORMAT_MACROS;HAVE_STRUCT_TIMESPEC;WIN32_LEAN_AND_MEAN;_TIMESPEC_DEFINED;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;__STDC_FORMAT_MACROS;_TIMESPEC_DEFINED;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\thirdparty\include;..\..\thirdparty\user_include;..\..\thirdparty\user_include\gmssl;..\..\thirdparty\user_include\mbedtls3;..\..\thirdparty\include\win\include;..\..\libmetartccore7\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\include;..\..\thirdparty\include;..\..\thirdparty\user_include;..\..\thirdparty\user_include\gmssl;..\..\thirdparty\user_include\mbedtls3;..\..\thirdparty\include\win\include;..\..\libmetartccore7\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\thirdparty\include;..\..\thirdparty\user_include;..\..\thirdparty\user_include\gmssl;..\..\thirdparty\user_include\mbedtls3;..\..\thirdparty\include\win\include;..\..\libmetartccore7\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) -std=gnu11</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__STDC_FORMAT_MACROS;HAVE_STRUCT_TIMESPEC;WIN32_LEAN_AND_MEAN;_TIMESPEC_DEFINED;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__STDC_FORMAT_MACROS;_TIMESPEC_DEFINED;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\thirdparty\include;..\..\thirdparty\user_include;..\..\thirdparty\user_include\gmssl;..\..\thirdparty\user_include\mbedtls3;..\..\thirdparty\include\win\include;..\..\libmetartccore7\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\include;..\..\thirdparty\include;..\..\thirdparty\user_include;..\..\thirdparty\user_include\gmssl;..\..\thirdparty\user_include\mbedtls3;..\..\thirdparty\include\win\include;..\..\libmetartccore7\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\yangutil\sys\YangAvtype.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangBuffer.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangCLog.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangCString.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangCTimer.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangEndian.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangFile.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangHttp.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangIni.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangLibHandle.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangMath.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangSocketIP.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangSRtp.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangSctp.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangSocket.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangSsrc.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangThread.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangTime.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangUrl.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangVector.c" />
+    <ClCompile Include="..\src\yangutil\sys\YangWebsocket.c" />
+    <ClCompile Include="..\src\yangutil\buffer2\YangMediaBuffer2.c" />
+    <ClCompile Include="..\src\yangutil\buffer2\YangSortBuffer.c" />
+    <ClCompile Include="..\src\yangutil\buffer2\YangVideoEncoderBuffer2.c" />
+    <ClCompile Include="..\src\yangavutil\YangAudioMix.c" />
+    <ClCompile Include="..\src\yangavutil\YangAudioUtil.c" />
+    <ClCompile Include="..\src\yangavutil\YangConvert.c" />
+    <ClCompile Include="..\src\yangavutil\YangMeta.c" />
+    <ClCompile Include="..\src\yangavutil\YangNalu.c" />
+    <ClCompile Include="..\src\yangavutil\YangPreProcess.c" />
+    <ClCompile Include="..\src\yangavutil\YangResample.c" />
+    <ClCompile Include="..\src\yangavutil\YangRtcAec.c" />
+    <ClCompile Include="..\src\yangavutil\YangSpspps.c" />
+    <ClCompile Include="..\src\yangavutil\YangYuvUtil.c" />
+    <ClCompile Include="..\src\yangice\YangIce.c" />
+    <ClCompile Include="..\src\yangice\YangRtcSocket.c" />
+    <ClCompile Include="..\src\yangice\YangRtcStun.c" />
+    <ClCompile Include="..\src\yangice\YangTurnConnection.c" />
+    <ClCompile Include="..\src\yangjson\YangJson.c" />
+    <ClCompile Include="..\src\yangjson\YangJsonImpl.c" />
+    <ClCompile Include="..\src\yangsrs\YangSrsConnection.c" />
+    <ClCompile Include="..\src\yangsdp\YangAnswerSdp.c" />
+    <ClCompile Include="..\src\yangsdp\YangAudioPayload.c" />
+    <ClCompile Include="..\src\yangsdp\YangCodecPayload.c" />
+    <ClCompile Include="..\src\yangsdp\YangMediaDesc.c" />
+    <ClCompile Include="..\src\yangsdp\YangMediaPayloadType.c" />
+    <ClCompile Include="..\src\yangsdp\YangRedPayload.c" />
+    <ClCompile Include="..\src\yangsdp\YangRtcSdp.c" />
+    <ClCompile Include="..\src\yangsdp\YangRtxPayloadDes.c" />
+    <ClCompile Include="..\src\yangsdp\YangSSRCInfo.c" />
+    <ClCompile Include="..\src\yangsdp\YangSdp.c" />
+    <ClCompile Include="..\src\yangsdp\YangSdpHandle.c" />
+    <ClCompile Include="..\src\yangstream\YangStream.c" />
+    <ClCompile Include="..\src\yangstream\YangStreamCapture.c" />
+    <ClCompile Include="..\src\yangstream\YangStreamRtc.c" />
+    <ClCompile Include="..\src\yangrtp\YangPublishNackBuffer.c" />
+    <ClCompile Include="..\src\yangrtp\YangReceiveNackBuffer.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcp.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpApp.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpBye.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpCommon.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpCompound.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpNack.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpPli.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpPsfbCommon.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpRR.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpRpsi.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpSR.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpSli.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpTWCC.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtcpXr.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtp.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtpBuffer.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtpFUAPayload.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtpFUAPayload2.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtpHeader.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtpPacket.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtpRawPayload.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtpRecvNack.c" />
+    <ClCompile Include="..\src\yangrtp\YangRtpSTAPPayload.c" />
+    <ClCompile Include="..\src\yangrtc\YangBandwidth.c" />
+    <ClCompile Include="..\src\yangrtc\YangDatachannel.c" />
+    <ClCompile Include="..\src\yangrtc\YangPeerConnection.c" />
+    <ClCompile Include="..\src\yangrtc\YangPlayStream.c" />
+    <ClCompile Include="..\src\yangrtc\YangPlayTrack.c" />
+    <ClCompile Include="..\src\yangrtc\YangPlayTrackAudio.c" />
+    <ClCompile Include="..\src\yangrtc\YangPlayTrackH264.c" />
+    <ClCompile Include="..\src\yangrtc\YangPlayTrackH265.c" />
+    <ClCompile Include="..\src\yangrtc\YangPlayTrackVideo.c" />
+    <ClCompile Include="..\src\yangrtc\YangPush.c" />
+    <ClCompile Include="..\src\yangrtc\YangPushAudio.c" />
+    <ClCompile Include="..\src\yangrtc\YangPushH264.c" />
+    <ClCompile Include="..\src\yangrtc\YangPushH265.c" />
+    <ClCompile Include="..\src\yangrtc\YangPushStream.c" />
+    <ClCompile Include="..\src\yangrtc\YangRtcConnection.c" />
+    <ClCompile Include="..\src\yangrtc\YangRtcContext.c" />
+    <ClCompile Include="..\src\yangrtc\YangRtcRtcp.c" />
+    <ClCompile Include="..\src\yangrtc\YangRtcStats.c" />
+    <ClCompile Include="..\src\yangrtc\YangRtcTwcc.c" />
+    <ClCompile Include="..\src\yangrtc\YangStreamUrl.c" />
+    <ClCompile Include="..\src\yangzlm\YangZlmConnection.c" />
+    <ClCompile Include="..\src\yangp2p\YangP2pConnection.c" />
+    <ClCompile Include="..\src\yangp2p\YangP2pConnection2.c" />
+    <ClCompile Include="..\src\yangssl\YangDtlsMbedtls.c" />
+    <ClCompile Include="..\src\yangssl\YangDtlsOpenssl.c" />
+    <ClCompile Include="..\src\yangssl\YangSslMbedtls.c" />
+    <ClCompile Include="..\src\yangssl\YangSslOpenssl.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
