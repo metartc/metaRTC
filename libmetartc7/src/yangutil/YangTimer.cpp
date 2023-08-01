@@ -4,6 +4,7 @@
 #include <yangutil/sys/YangTimer.h>
 #include <yangutil/sys/YangTime.h>
 #include <yangutil/sys/YangLog.h>
+#if !defined(__APPLE__)
 
 #ifdef _WIN32
 
@@ -213,4 +214,4 @@ void YangTimer::startLoop() {
 }
 
 
-
+#endif

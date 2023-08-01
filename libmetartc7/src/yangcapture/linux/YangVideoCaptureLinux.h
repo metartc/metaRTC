@@ -7,7 +7,7 @@
 
 #include <yangcapture/YangVideoCaptureHandle.h>
 #include <yangcapture/YangMultiVideoCapture.h>
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__APPLE__)
 #include <linux/videodev2.h>
 
 #define REQ_BUF_NUM 4		//申请的缓冲区个数，最多5个，缓冲区太少可能会导致图像有间断

@@ -1,21 +1,21 @@
 //
 // Copyright (c) 2019-2022 yanggaofeng
 //
-#ifndef YANGCAPTURE_SRC_YANGAUDIOCAPTUREIMPL_H_
-#define YANGCAPTURE_SRC_YANGAUDIOCAPTUREIMPL_H_
+#ifndef YANGCAPTURE_YangAudioCaptureMac_H_
+#define YANGCAPTURE_YangAudioCaptureMac_H_
 #include <yangaudiodev/YangAudioCaptureHandle.h>
 #include <yangaudiodev/YangAudioCapture.h>
 #include <yangavutil/audio/YangPreProcess.h>
 #include <vector>
 
-#if !defined(_WIN32) && !defined(__APPLE__)
-#include <alsa/asoundlib.h>
+#if defined(__APPLE__)
+
 using namespace std;
 
-class YangAudioCaptureLinux: public YangAudioCapture {
+class YangAudioCaptureMac: public YangAudioCapture {
 public:
-	YangAudioCaptureLinux(YangAVInfo *avinfo);
-	~YangAudioCaptureLinux();
+	YangAudioCaptureMac(YangAVInfo *avinfo);
+	~YangAudioCaptureMac();
 public:
 	YangAudioCaptureHandle *m_ahandle;
 	int32_t init();
@@ -40,9 +40,9 @@ private:
 	int32_t m_channel;
 	uint32_t  m_sample;
 	int32_t  m_readN ;
-	snd_pcm_uframes_t m_frames;
+    int32_t m_frames;
 	uint8_t *m_buffer;
-	snd_pcm_t *m_handle;
+
 	yangbool onlySupportSingle;
 
 };

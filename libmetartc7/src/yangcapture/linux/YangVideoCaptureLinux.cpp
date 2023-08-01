@@ -5,7 +5,7 @@
 #include <yangcapture/linux/YangVideoCaptureLinux.h>
 #include <yangutil/yangavinfotype.h>
 #include <fcntl.h>
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__APPLE__)
 
 #include <linux/fb.h>
 #include <sys/types.h>

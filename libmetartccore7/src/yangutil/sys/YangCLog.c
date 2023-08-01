@@ -39,7 +39,7 @@ void yang_setCLogFile(int32_t isSetLogFile) {
 #if Yang_Enable_Logfile
 	if (g_hasLogFile)
 		return;
-	g_hasLogFile = isSetLogFile;
+    g_hasLogFile = isSetLogFile;
 	if (isSetLogFile&&g_fmsg==NULL) {
 		char file1[300];
 		yang_memset(file1, 0, 300);
@@ -50,8 +50,8 @@ void yang_setCLogFile(int32_t isSetLogFile) {
 #else
         if (getcwd(file_path_getcwd, 255)) {
 #endif
-			yang_sprintf(file1, "%s/yang_log.log", file_path_getcwd);
-			yang_setCLogFile2(yangtrue, file1);
+            yang_sprintf(file1, "%s/yang_log.log", file_path_getcwd);
+            yang_setCLogFile2(yangtrue, file1);
 
 		}
 

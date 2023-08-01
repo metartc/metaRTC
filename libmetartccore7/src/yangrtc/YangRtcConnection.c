@@ -54,6 +54,7 @@ void g_yang_doTask(int32_t taskId, void *user) {
 	if (!session->isServer && session->isSendStun && taskId == 1) {
 
 		if (session->context.stun.data&& session->context.stun.nb > 0) {
+
 			if(session->context.sock->write(&session->context.sock->session,session->context.stun.data, session->context.stun.nb)!=Yang_Ok){
 				yang_error("send stun fail!");
 			}

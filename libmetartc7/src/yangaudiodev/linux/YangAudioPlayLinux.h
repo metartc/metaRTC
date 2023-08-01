@@ -6,7 +6,7 @@
 
 #include <yangaudiodev/YangAudioPlay.h>
 
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__APPLE__)
 #ifndef __ANDROID__
 #include <alsa/asoundlib.h>
 

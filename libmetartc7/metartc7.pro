@@ -59,6 +59,8 @@ SOURCES += \
     src/yangaudiodev/linux/YangAudioAecLinux.cpp \
     src/yangaudiodev/linux/YangAudioCaptureLinux.cpp \
     src/yangaudiodev/linux/YangAudioPlayLinux.cpp \
+    src/yangaudiodev/mac/YangAudioCaptureMac.cpp \
+    src/yangaudiodev/mac/YangAudioPlayMac.cpp \
     src/yangaudiodev/win/YangAudioCaptureWindows.cpp \
     src/yangaudiodev/win/YangRecAudioCaptureHandle.cpp \
     src/yangaudiodev/win/YangWinAudioApi.cpp \
@@ -144,6 +146,8 @@ HEADERS += \
     src/yangaudiodev/linux/YangAudioAecLinux.h \
     src/yangaudiodev/linux/YangAudioCaptureLinux.h \
     src/yangaudiodev/linux/YangAudioPlayLinux.h \
+    src/yangaudiodev/mac/YangAudioCaptureMac.h \
+    src/yangaudiodev/mac/YangAudioPlayMac.h \
     src/yangaudiodev/win/YangAudioApiCapture.h \
     src/yangaudiodev/win/YangAudioCaptureWindows.h \
     src/yangaudiodev/win/YangRecAudioCaptureHandle.h \

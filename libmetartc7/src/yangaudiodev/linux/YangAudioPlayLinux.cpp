@@ -4,7 +4,7 @@
 #include <yangaudiodev/linux/YangAudioPlayLinux.h>
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/yangautofree.h>
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__APPLE__)
 #ifndef __ANDROID__
 #include <sys/types.h>
 #include <sys/ioctl.h>

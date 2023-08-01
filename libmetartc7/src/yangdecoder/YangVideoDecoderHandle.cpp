@@ -99,6 +99,7 @@ void YangVideoDecoderHandle::onAudioData(YangFrame* pframe){
 }
 
 void YangVideoDecoderHandle::onVideoData(YangFrame* pframe){
+
 	if(m_out_videoBuffer) {
 		m_out_videoBuffer->putVideo(pframe);
 	}

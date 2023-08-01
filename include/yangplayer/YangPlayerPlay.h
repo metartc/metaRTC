@@ -11,6 +11,7 @@
 
 #include <yangdecoder/YangVideoDecoderHandles.h>
 #include <yangaudiodev/linux/YangAudioPlayLinux.h>
+#include <yangaudiodev/mac/YangAudioPlayMac.h>
 #include <yangaudiodev/win/YangWinAudioApiRender.h>
 
 #include <yangaudiodev/android/YangAudioPlayAndroid.h>
@@ -34,7 +35,11 @@ private:
 #ifdef __ANDROID__
         YangAudioPlayAndroid *m_audioPlay;
 #else
+    #if defined(__APPLE__)
+        YangAudioPlayMac *m_audioPlay;
+    #else
         YangAudioPlayLinux *m_audioPlay;
+    #endif
 #endif
 
 

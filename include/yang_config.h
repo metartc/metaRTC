@@ -44,7 +44,7 @@
 #else
 #define Yang_Enable_H264Decoder 1
 #ifndef __ANDROID__
-#define Yang_Enable_H264Decoder_So 1
+#define Yang_Enable_H264Decoder_So 0
 #else
 #define Yang_Enable_H264Decoder_So 0
 #endif
