@@ -33,8 +33,11 @@ unix{
         DESTDIR += $$HOME_BASE/bin/app_release
     }
 
- LIBS += -L$$HOME_BASE/thirdparty/lib -lmetartc7 -lmetartccore7 -lyuv -lopenh264 -lspeexdsp -lopus -lusrsctp -lpthread -lasound -ldl
-
+ LIBS += -L$$HOME_BASE/thirdparty/lib -lmetartc7 -lmetartccore7 -lyuv -lopenh264 -lspeexdsp -lopus -lusrsctp -lpthread  -ldl
+#linux
+LIBS += -lasound
+#mac/ios
+ #LIBS += -framework CoreAudio -framework AudioUnit
 #openssl
  LIBS += -lssl2 -lcrypto2 -lsrtp2
 #mbtls

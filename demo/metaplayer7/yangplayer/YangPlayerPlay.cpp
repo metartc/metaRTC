@@ -31,7 +31,11 @@ void YangPlayerPlay::initAudioPlay(YangContext* paudio){
 #ifdef __ANDROID__
     m_audioPlay = new YangAudioPlayAndroid(&paudio->avinfo,&paudio->synMgr);
 #else
-		m_audioPlay = new YangAudioPlayLinux(&paudio->avinfo,&paudio->synMgr);
+        #if defined(__APPLE__)
+            m_audioPlay = new YangAudioPlayMac(&paudio->avinfo,&paudio->synMgr);
+        #else
+            m_audioPlay = new YangAudioPlayLinux(&paudio->avinfo,&paudio->synMgr);
+        #endif
 #endif
 #endif
 		m_audioPlay->init();

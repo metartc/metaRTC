@@ -7,7 +7,7 @@
 #include <yangaudiodev/YangAudioPlay.h>
 
 #if defined(__APPLE__)
-
+#include <yangaudiodev/mac/YangAudioMac.h>
 
 
 class YangAudioPlayMac:public YangAudioPlay{
@@ -15,26 +15,34 @@ public:
 	YangAudioPlayMac(YangAVInfo* avinfo,YangSynBufferManager* streams);
 	~YangAudioPlayMac();
 
-    int init();
+    int32_t init();
+    int32_t on_audio(YangFrame* audioFrame);
 
-
-
+    void start();
 protected:
 	void startLoop();
 	void stopLoop();
+    void closeAudio();
 
 private:
-	 int32_t m_loops;
+     yangbool m_loops;
+    // yangbool m_isStart;
+     yangbool m_isInited;
 
 private:
-
-    int32_t m_contextt;
-
     int32_t m_frames;
-
-
-	void closeAudio();
 	int32_t ret;
+    int32_t m_channel;
+    uint32_t  m_sample;
+    uint32_t m_macSample;
+    uint32_t m_macChannel;
+    uint32_t m_audiolen;
+
+    YangAudioMac* m_macAudio;
+    YangMacAudioCallback m_callback;
+    uint8_t* m_buffer;
+    //YangAudioResample m_resample;
+    //YangFrame m_audioFrame;
 
 };
 #endif

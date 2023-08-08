@@ -28,7 +28,11 @@ unix{
     }
  LIBS +=  -L$$HOME_BASE/thirdparty/lib
 
- LIBS += -lmetartc7  -lmetartccore7 -lyuv -lspeexdsp -lopus -lopenh264 -lusrsctp -lpthread -lasound -ldl
+ LIBS += -lmetartc7  -lmetartccore7 -lyuv -lspeexdsp -lopus -lyangh264decoder -lusrsctp -lpthread  -ldl
+#mac/ios
+ #LIBS += -framework CoreAudio -framework AudioUnit
+#linux
+LIBS += -lasound
     #openssl
  LIBS += -lssl2 -lcrypto2 -lsrtp2
 

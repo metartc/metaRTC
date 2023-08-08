@@ -69,6 +69,7 @@ void YangPushCapture::setInAudioBuffer(vector<YangAudioPlayBuffer*> *pbuf){
 	if(m_audioCapture!=NULL) m_audioCapture->setInAudioBuffer(pbuf);
 }
 void YangPushCapture::startAudioCapture() {
+
 	if (m_audioCapture && !m_audioCapture->m_isStart)
 		m_audioCapture->start();
 }

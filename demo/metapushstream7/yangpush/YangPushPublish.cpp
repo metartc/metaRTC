@@ -60,9 +60,10 @@ YangPushCapture* YangPushPublish::getPushCapture(){
 }
 
 int32_t YangPushPublish::startAudioCapture() {
+    int32_t err=Yang_Ok;
 	if (isStartAudioCapture == 1)	return Yang_Ok;
 	if (m_capture == NULL)		m_capture=new YangPushCapture(m_context);
-	int32_t err=Yang_Ok;
+
 	if((err=m_capture->initAudio(NULL))!=Yang_Ok) return yang_error_wrap(err,"init audioCapture fail");
 
 	m_capture->startAudioCapture();

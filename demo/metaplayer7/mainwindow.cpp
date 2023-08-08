@@ -98,7 +98,8 @@ void MainWindow::initVideoThread(YangRecordThread *prt){
     m_videoThread->m_video=m_videoWin;
     m_videoThread->initPara();
      m_videoThread->m_syn= m_context->synMgr.session->playBuffer;
-
+     m_videoWin->resize(700,500);
+    qDebug()<<"win width=="<<m_videoWin->width()<<" height="<<m_videoWin->height();
 }
 
 void MainWindow::on_m_b_play_clicked()

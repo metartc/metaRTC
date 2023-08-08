@@ -58,7 +58,11 @@ if (NOT NoCapture)
 	aux_source_directory(./src/yangcapture/android DIR_SRCS)
 	aux_source_directory(./src/yangandroid DIR_SRCS)
 	endif()
+	aux_source_directory(./src/yangaudiodev/mac DIR_SRCS)
+	aux_source_directory(./src/yangcapture/mac DIR_SRCS)
 endif()
+
+
 
 include(utils.cmake)
 # 排除不参与编译的文件

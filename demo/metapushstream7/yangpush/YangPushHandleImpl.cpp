@@ -135,6 +135,7 @@ int YangPushHandleImpl::publish(char* url,yangbool isWhip) {
 		m_rtcPub = new YangRtcPublish(m_context);
 
 	}
+
 	  if(m_hasAudio) {
 	        m_hasAudio=bool(m_cap->startAudioCapture()==Yang_Ok);
 	    }

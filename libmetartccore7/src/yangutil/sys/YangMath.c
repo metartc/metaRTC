@@ -8,6 +8,15 @@
 #define random rand
 #define srandom srand
 #endif
+
+int16_t yang_floattoint16(float f){
+    return (int16_t)(f * 32767 + 0.5);
+}
+
+float yang_int16tofloat(int16_t i16){
+    return (float)i16/32767;
+}
+
 uint64_t yang_random() {
 	static yangbool _random_contexttialized = yangfalse;
 	if (!_random_contexttialized) {

@@ -19,7 +19,10 @@
 #include <yangcapture/linux/YangVideoCaptureLinux.h>
 #endif
 #endif
-
+#if defined(__APPLE__)
+#include <yangaudiodev/mac/YangAudioCaptureMac.h>
+#include <yangcapture/mac/YangVideoCaptureMac.h>
+#endif
 YangCaptureFactory::YangCaptureFactory() {
 
 
@@ -56,7 +59,7 @@ YangAudioCapture* YangCaptureFactory::createRecordAudioCapture(YangAVInfo *avinf
 	 return new YangAudioCaptureAndroid(avinfo);
 #else
     #if defined(__APPLE__)
-        return NULL;
+        return new YangAudioCaptureMac(avinfo);
     #else
          return new YangAudioCaptureLinux(avinfo);//new YangAlsaHandle(pcontext);//YangAudioCaptureImpl(pcontext);
     #endif
@@ -90,7 +93,7 @@ YangMultiVideoCapture* YangCaptureFactory::createRecordVideoCapture(YangVideoInf
 	return NULL;
 #else
     #if defined(__APPLE__)
-        return NULL;
+        return new YangVideoCaptureMac(pcontext);
     #else
         return new YangVideoCaptureLinux(pcontext);
     #endif

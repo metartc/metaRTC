@@ -12,7 +12,8 @@ static inline int16_t yang_rtp_seq_distance(const uint16_t prev_value, const uin
 #ifdef __cplusplus
 extern "C"{
 #endif
-
+int16_t yang_floattoint16(float f);
+float yang_int16tofloat(int16_t i16);
 uint64_t yang_random();
 int32_t yang_insert_uint16_sort(uint16_t a[],uint16_t value,uint32_t* alen);
 #ifdef __cplusplus

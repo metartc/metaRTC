@@ -4,12 +4,14 @@
 #ifndef YANGCAPTURE_YangAudioCaptureMac_H_
 #define YANGCAPTURE_YangAudioCaptureMac_H_
 #include <yangaudiodev/YangAudioCaptureHandle.h>
+
 #include <yangaudiodev/YangAudioCapture.h>
 #include <yangavutil/audio/YangPreProcess.h>
+#include <yangutil/buffer/YangAudioPlayBuffer.h>
 #include <vector>
 
 #if defined(__APPLE__)
-
+#include <yangaudiodev/mac/YangAudioMac.h>
 using namespace std;
 
 class YangAudioCaptureMac: public YangAudioCapture {
@@ -26,24 +28,32 @@ public:
 	void setPlayAudoBuffer(YangAudioBuffer *pbuffer);
 	void setInAudioBuffer(vector<YangAudioPlayBuffer*> *pal);
 	void setAec(YangRtcAec *paec);
-
+    void on_audio(uint8_t* data,uint32_t nb);
 
 protected:
 	void startLoop();
 	void stopLoop();
-	int32_t alsa_device_capture_ready(struct pollfd *pfds,uint32_t  nfds);
-	int32_t alsa_device_read(short *pcm, int32_t len);
+
 private:
 	YangAVInfo *m_avinfo;
-	int32_t m_size;
+
 	int32_t m_loops;
 	int32_t m_channel;
 	uint32_t  m_sample;
-	int32_t  m_readN ;
-    int32_t m_frames;
+    uint32_t m_macSample;
+    uint32_t m_macChannel;
+    uint32_t m_size;
 	uint8_t *m_buffer;
+    uint32_t m_bufferLen;
+    yangbool m_isInited;
+
+    YangAudioMac* m_macAudio;
+    YangAudioPlayBuffer* m_bufferList;
 
 	yangbool onlySupportSingle;
+    YangMacAudioCallback m_callback;
+    YangAudioResample m_resample;
+    YangFrame m_audioFrame;
 
 };
 #endif

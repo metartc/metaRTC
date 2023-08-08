@@ -60,6 +60,8 @@ SOURCES += \
     src/yangaudiodev/linux/YangAudioCaptureLinux.cpp \
     src/yangaudiodev/linux/YangAudioPlayLinux.cpp \
     src/yangaudiodev/mac/YangAudioCaptureMac.cpp \
+    src/yangaudiodev/mac/YangAudioDeviceMac.cpp \
+    src/yangaudiodev/mac/YangAudioMac.cpp \
     src/yangaudiodev/mac/YangAudioPlayMac.cpp \
     src/yangaudiodev/win/YangAudioCaptureWindows.cpp \
     src/yangaudiodev/win/YangRecAudioCaptureHandle.cpp \
@@ -80,6 +82,7 @@ SOURCES += \
     src/yangcapture/android/YangCameraAndroid.cpp \
     src/yangcapture/android/YangVideoCaptureAndroid.cpp \
     src/yangcapture/linux/YangVideoCaptureLinux.cpp \
+    src/yangcapture/mac/YangVideoCaptureMac.cpp \
     src/yangcapture/win/YangDXGIManager.cpp \
     src/yangcapture/win/YangVideoCaptureWindows.cpp \
     src/yangcapture/win/YangVideoSrc.cpp \
@@ -147,6 +150,7 @@ HEADERS += \
     src/yangaudiodev/linux/YangAudioCaptureLinux.h \
     src/yangaudiodev/linux/YangAudioPlayLinux.h \
     src/yangaudiodev/mac/YangAudioCaptureMac.h \
+    src/yangaudiodev/mac/YangAudioMac.h \
     src/yangaudiodev/mac/YangAudioPlayMac.h \
     src/yangaudiodev/win/YangAudioApiCapture.h \
     src/yangaudiodev/win/YangAudioCaptureWindows.h \
@@ -165,6 +169,7 @@ HEADERS += \
     src/yangcapture/android/YangCameraAndroid.h \
     src/yangcapture/android/YangVideoCaptureAndroid.h \
     src/yangcapture/linux/YangVideoCaptureLinux.h \
+    src/yangcapture/mac/YangVideoCaptureMac.h \
     src/yangcapture/win/YangDXGIManager.h \
     src/yangcapture/win/YangVideoCaptureWindows.h \
     src/yangcapture/win/YangVideoSrc.h \
