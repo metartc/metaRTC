@@ -1,4 +1,7 @@
-﻿#ifndef YANGAUDIODEVICEMAC_H
+﻿//
+// Copyright (c) 2019-2023 yanggaofeng
+//
+#ifndef YANGAUDIODEVICEMAC_H
 #define YANGAUDIODEVICEMAC_H
 
 #if defined(__APPLE__)

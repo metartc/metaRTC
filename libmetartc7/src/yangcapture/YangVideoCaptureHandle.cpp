@@ -47,7 +47,7 @@ YangVideoCaptureHandle::~YangVideoCaptureHandle(void) {
 
 }
 void YangVideoCaptureHandle::setCaptureFormat(int32_t pformat){
-	if(pformat==YangYuy2&&!m_buf) m_buf=new uint8_t[m_bufLen];
+    if((pformat==YangYuy2||pformat==YangNv12)&&!m_buf) m_buf=new uint8_t[m_bufLen];
 }
 void  YangVideoCaptureHandle::setVideoBuffer(YangVideoBuffer *pbuf){
 	 m_out_videoBuffer=pbuf;
@@ -116,13 +116,29 @@ void YangVideoCaptureHandle::putBuffer(int64_t pstamtime,	uint8_t *pBuffer, int3
 	uint8_t* tmp=NULL;
 	if(m_buf){
 		if(m_captureVideoFormat==YangYuy2){
+
 			if(m_encoderVideoFormat==YangI420) m_yuv.yuy2toI420(pBuffer,m_buf,m_width,m_height);
 			if(m_encoderVideoFormat==YangNv12) m_yuv.yuy2tonv12(pBuffer,m_buf,m_width,m_height);
 			if(m_encoderVideoFormat==YangArgb) m_yuv.yuy2toargb(pBuffer,m_buf,m_width,m_height);
 			tmp=m_buf;
-		}else if(m_captureVideoFormat==YangI420){
-			if(m_encoderVideoFormat==YangI420) tmp=m_buf;
-			if(m_encoderVideoFormat==YangNv12) m_yuv.i420tonv12(pBuffer,m_buf,m_width,m_height);
+        }else if(m_captureVideoFormat==YangNv12){
+
+            if(m_encoderVideoFormat==YangI420){
+                m_yuv.nv12toI420(pBuffer,m_buf,m_width,m_height);
+                tmp=m_buf;
+
+            }else if(m_encoderVideoFormat==YangNv12)
+
+                tmp=pBuffer;
+            //if(m_encoderVideoFormat==YangArgb) m_yuv.i420torgba(pBuffer,m_buf,m_width,m_height);
+        }else if(m_captureVideoFormat==YangI420){
+
+            if(m_encoderVideoFormat==YangI420){
+                tmp=pBuffer;
+
+            }else if(m_encoderVideoFormat==YangNv12)
+                m_yuv.i420tonv12(pBuffer,m_buf,m_width,m_height);
+                tmp=m_buf;
 			//if(m_encoderVideoFormat==YangArgb) m_yuv.i420torgba(pBuffer,m_buf,m_width,m_height);
 		}else if(m_captureVideoFormat==YangArgb){
 			tmp=pBuffer;

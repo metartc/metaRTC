@@ -15,8 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_WIN_MSC
 HOME_BASE=../../
 INCLUDEPATH += $$HOME_BASE/libmetartc7/src
-
-unix{
+macx{
 
     INCLUDEPATH += $$HOME_BASE/include
     CONFIG(debug, debug|release) {
@@ -29,8 +28,26 @@ unix{
  LIBS +=  -L$$HOME_BASE/thirdparty/lib
 
  LIBS += -lmetartc7  -lmetartccore7 -lyuv -lspeexdsp -lopus -lyangh264decoder -lusrsctp -lpthread  -ldl
-#mac/ios
- #LIBS += -framework CoreAudio -framework AudioUnit
+
+ LIBS += -framework CoreAudio -framework AudioUnit
+
+    #openssl
+ LIBS += -lssl2 -lcrypto2 -lsrtp2
+}
+unix:!macx{
+
+    INCLUDEPATH += $$HOME_BASE/include
+    CONFIG(debug, debug|release) {
+        LIBS += -L$$HOME_BASE/bin/lib_debug
+        DESTDIR += $$HOME_BASE/bin/app_debug
+    }else{
+        LIBS += -L$$HOME_BASE/bin/lib_release
+        DESTDIR += $$HOME_BASE/bin/app_release
+    }
+ LIBS +=  -L$$HOME_BASE/thirdparty/lib
+
+ LIBS += -lmetartc7  -lmetartccore7 -lyuv -lspeexdsp -lopus -lyangh264decoder -lusrsctp -lpthread  -ldl
+
 #linux
 LIBS += -lasound
     #openssl
@@ -41,6 +58,7 @@ LIBS += -lasound
     #gmssl
  #LIBS += -lssl_gm -lcrypto_gm -lmetasrtp3
 }
+
 win32{
     DEFINES += __WIN32__
     DEFINES +=_AMD64_

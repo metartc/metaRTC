@@ -7,7 +7,9 @@
 
 #include <yangcapture/YangVideoCaptureHandle.h>
 #include <yangcapture/YangMultiVideoCapture.h>
+
 #if defined(__APPLE__)
+#include <yangcapture/mac/YangVideoDeviceMac.h>
 
 class YangVideoCaptureMac: public YangMultiVideoCapture {
 public:
@@ -33,28 +35,18 @@ public:
 	void setFilmOutVideoBuffer(YangVideoBuffer *pbuf);
 	void setFilmVideoCaptureStart();
 	void setFilmVideoCaptureStop();
+    void on_video(uint8_t* data,uint32_t nb,uint64_t ts);
 protected:
 	void startLoop();
 	long m_difftime(struct timeval *p_start, struct timeval *p_end);
 private:
-	int32_t setPara();
-
-	void process_image(char *p_addr, int32_t p_length);
-	int32_t read_buffer();
-	void stop_capturing();
-	void uninit_camer_device();
-	void close_camer_device();
-	int32_t enum_camera_frmival(int32_t fd, struct v4l2_frmsizeenum *framesize);
-
-	int32_t m_hasYuy2, m_hasI420, m_hasNv12, m_hasYv12, m_hasP010, m_hasP016;
+    YangVideoDeviceMac* m_device;
 	int32_t m_width, m_height;
-	int32_t m_vd_id;
+    yangbool m_isloop;
+    yangbool m_waitState;
+    yang_thread_mutex_t m_lock;
+    yang_thread_cond_t m_cond_mess;
 
-	int32_t m_buffer_count;
-	int32_t m_isloop;
-	int32_t m_isFirstFrame;
-	struct timeval m_startTime;
-	long m_timestatmp;
 
 };
 #endif

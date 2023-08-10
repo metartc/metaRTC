@@ -10,7 +10,7 @@
 #if !defined(_WIN32) && !defined(__APPLE__)
 #include <linux/videodev2.h>
 
-#define REQ_BUF_NUM 4		//申请的缓冲区个数，最多5个，缓冲区太少可能会导致图像有间断
+#define REQ_BUF_NUM 4
 typedef struct buffer_type_r buffer_type;
 struct buffer_type_r {
 	uint8_t *start;

@@ -1,4 +1,7 @@
-﻿#include "YangAudioMac.h"
+﻿//
+// Copyright (c) 2019-2023 yanggaofeng
+//
+#include "YangAudioMac.h"
 #include <yangutil/sys/YangLog.h>
 #if defined(__APPLE__)
 #include <CoreFoundation/CFString.h>

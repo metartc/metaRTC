@@ -1,4 +1,7 @@
-﻿#include "YangAudioDeviceMac.h"
+﻿//
+// Copyright (c) 2019-2023 yanggaofeng
+//
+#include "YangAudioDeviceMac.h"
 #if defined(__APPLE__)
 #include <yangutil/sys/YangLog.h>
 

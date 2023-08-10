@@ -1,4 +1,7 @@
-﻿#ifndef YANGAUDIOMAC_H
+﻿//
+// Copyright (c) 2019-2023 yanggaofeng
+//
+#ifndef YANGAUDIOMAC_H
 #define YANGAUDIOMAC_H
 #include <yangutil/yangtype.h>
 #include <yangutil/yangavctype.h>
@@ -28,7 +31,6 @@ public:
     uint32_t getChannel();
 public:
     AudioUnit           m_unit;
-
     AudioDeviceID       m_deviceId;
 
     AudioBufferList*    m_bufferList;

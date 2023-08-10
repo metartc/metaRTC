@@ -22,7 +22,26 @@ HOME_BASE=../../
 
 INCLUDEPATH += $$HOME_BASE/libmetartc7/src
 INCLUDEPATH += $$HOME_BASE/thirdparty/include
-unix{
+macx{
+
+    INCLUDEPATH += $$HOME_BASE/include
+    CONFIG(debug, debug|release) {
+        LIBS += -L$$HOME_BASE/bin/lib_debug
+        DESTDIR += $$HOME_BASE/bin/app_debug
+    }else{
+        LIBS += -L$$HOME_BASE/bin/lib_release
+        DESTDIR += $$HOME_BASE/bin/app_release
+    }
+
+ LIBS += -L$$HOME_BASE/thirdparty/lib -lmetartc7 -lmetartccore7 -lyuv -lopenh264 -lspeexdsp -lopus -lusrsctp -lpthread  -ldl
+
+LIBS += -framework CoreAudio -framework AudioUnit -framework AVFoundation -framework CoreVideo -framework CoreMedia
+
+#openssl
+ LIBS += -lssl2 -lcrypto2 -lsrtp2
+
+}
+unix:!macx{
 
     INCLUDEPATH += $$HOME_BASE/include
     CONFIG(debug, debug|release) {
@@ -36,8 +55,7 @@ unix{
  LIBS += -L$$HOME_BASE/thirdparty/lib -lmetartc7 -lmetartccore7 -lyuv -lopenh264 -lspeexdsp -lopus -lusrsctp -lpthread  -ldl
 #linux
 LIBS += -lasound
-#mac/ios
- #LIBS += -framework CoreAudio -framework AudioUnit
+
 #openssl
  LIBS += -lssl2 -lcrypto2 -lsrtp2
 #mbtls

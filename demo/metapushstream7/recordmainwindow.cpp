@@ -87,6 +87,10 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     //srs do not use audio fec
     m_context->avinfo.audio.enableAudioFec=yangfalse;
 
+#if defined (__APPLE__)
+    m_context->avinfo.video.videoCaptureFormat=YangNv12;
+#endif
+
 }
 
 RecordMainWindow::~RecordMainWindow()

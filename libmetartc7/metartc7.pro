@@ -25,6 +25,7 @@ unix{
 
         DESTDIR += $$HOME_BASE/bin/lib_release
     }
+
 }
 win32{
     DEFINES += _AMD64_
@@ -82,7 +83,6 @@ SOURCES += \
     src/yangcapture/android/YangCameraAndroid.cpp \
     src/yangcapture/android/YangVideoCaptureAndroid.cpp \
     src/yangcapture/linux/YangVideoCaptureLinux.cpp \
-    src/yangcapture/mac/YangVideoCaptureMac.cpp \
     src/yangcapture/win/YangDXGIManager.cpp \
     src/yangcapture/win/YangVideoCaptureWindows.cpp \
     src/yangcapture/win/YangVideoSrc.cpp \
@@ -139,8 +139,12 @@ SOURCES += \
     src/yangutil/buffer/YangMediaBuffer.cpp \
     src/yangutil/buffer/YangVideoBuffer.cpp \
     src/yangutil/buffer/YangVideoDecoderBuffer.cpp \
-    src/yangutil/buffer/YangVideoEncoderBuffer.cpp
+    src/yangutil/buffer/YangVideoEncoderBuffer.cpp\
+    src/yangcapture/mac/YangVideoCaptureMac.cpp \
 
+macx{
+    SOURCES += src/yangcapture/mac/YangVideoDeviceMac.mm
+}
 
 
 HEADERS += \
@@ -170,6 +174,7 @@ HEADERS += \
     src/yangcapture/android/YangVideoCaptureAndroid.h \
     src/yangcapture/linux/YangVideoCaptureLinux.h \
     src/yangcapture/mac/YangVideoCaptureMac.h \
+    src/yangcapture/mac/YangVideoDeviceMac.h \
     src/yangcapture/win/YangDXGIManager.h \
     src/yangcapture/win/YangVideoCaptureWindows.h \
     src/yangcapture/win/YangVideoSrc.h \
