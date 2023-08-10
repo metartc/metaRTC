@@ -53,13 +53,15 @@ if (NOT NoCapture)
 	elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
 	aux_source_directory(./src/yangaudiodev/linux DIR_SRCS)
 	aux_source_directory(./src/yangcapture/linux DIR_SRCS)
+	elseif(APPLE)
+	aux_source_directory(./src/yangaudiodev/mac DIR_SRCS)
+	aux_source_directory(./src/yangcapture/mac DIR_SRCS)
 	else()
 	aux_source_directory(./src/yangaudiodev/android DIR_SRCS)
 	aux_source_directory(./src/yangcapture/android DIR_SRCS)
 	aux_source_directory(./src/yangandroid DIR_SRCS)
 	endif()
-	aux_source_directory(./src/yangaudiodev/mac DIR_SRCS)
-	aux_source_directory(./src/yangcapture/mac DIR_SRCS)
+
 endif()
 
 
