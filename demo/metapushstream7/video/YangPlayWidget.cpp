@@ -5,7 +5,9 @@
 #include <QOpenGLTexture>
 #include <QOpenGLBuffer>
 #include <QMouseEvent>
-
+#if !defined(__APPLE__)
+#define ATTRIB_VERTEX 3
+#define ATTRIB_TEXTURE 4
 YangPlayWidget::YangPlayWidget(QWidget *parent) : QOpenGLWidget(parent)
 {
     textureUniformY = 0;
@@ -43,7 +45,7 @@ YangPlayWidget::~YangPlayWidget()
 
 //函数功能读取一张yuv图像数据进行显示,每单击一次，就显示一张图片
 
-void YangPlayWidget::PlayOneFrame(unsigned char *p,int32_t wid,int32_t hei)
+void YangPlayWidget::playVideo(unsigned char *p,int32_t wid,int32_t hei)
 {
     if(m_nVideoW != wid)
     {
@@ -219,3 +221,4 @@ void YangPlayWidget::paintGL()
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     return;
  }
+#endif

@@ -57,7 +57,7 @@ void YangRecordThread::render(){
                 uint8_t* t_vb=m_videoBuffer->getVideoRef(&m_frame);
 
                     if(t_vb&&m_video&&m_videoBuffer->m_width>0){
-                        m_video->PlayOneFrame(t_vb,m_videoBuffer->m_width,m_videoBuffer->m_height);
+                        m_video->playVideo(t_vb,m_videoBuffer->m_width,m_videoBuffer->m_height);
                     }
 
                     t_vb=NULL;

@@ -20,8 +20,12 @@ MainWindow::MainWindow(QWidget *parent)
     m_centerWdiget->setLayout(m_vb);
     m_vb->setMargin(0);
     m_vb->setSpacing(0);
+#if defined (__APPLE__)
+     m_videoWin=new YangYuvPlayWidget(this);
+#else
+     m_videoWin=new YangPlayWidget(this);
+#endif
 
-    m_videoWin=new YangPlayWidget(this);
 
 
     m_hb1=new QHBoxLayout();
@@ -32,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_hb1->addWidget(ui->m_c_whep);
 
     m_hb2->addWidget(m_videoWin);
+
     m_vb->addLayout(m_hb1);
     m_vb->addLayout(m_hb2);
     m_vb->setStretchFactor(m_hb1,1);
@@ -98,8 +103,8 @@ void MainWindow::initVideoThread(YangRecordThread *prt){
     m_videoThread->m_video=m_videoWin;
     m_videoThread->initPara();
      m_videoThread->m_syn= m_context->synMgr.session->playBuffer;
-     m_videoWin->resize(700,500);
-    qDebug()<<"win width=="<<m_videoWin->width()<<" height="<<m_videoWin->height();
+
+
 }
 
 void MainWindow::on_m_b_play_clicked()

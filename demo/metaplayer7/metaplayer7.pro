@@ -2,6 +2,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+
 CONFIG += c++11
 
 
@@ -105,7 +106,8 @@ SOURCES += \
     yangplayer/YangPlayerDecoder.cpp \
     yangplayer/YangPlayerHandleImpl.cpp \
     yangplayer/YangPlayerPlay.cpp \
-    yangplayer/YangRtcReceive.cpp
+    yangplayer/YangRtcReceive.cpp \
+    yangplayer/YangYuvPlayWidget.cpp
 
 
 HEADERS += \
@@ -113,7 +115,8 @@ HEADERS += \
     video/yangrecordthread.h \
     yangplayer/YangPlayWidget.h \
     yangplayer/YangPlayerHandleImpl.h \
-    yangplayer/YangRtcReceive.h
+    yangplayer/YangRtcReceive.h \
+    yangplayer/YangYuvPlayWidget.h
 
 
 FORMS += \

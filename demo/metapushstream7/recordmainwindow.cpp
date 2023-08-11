@@ -55,7 +55,12 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
 
     m_hb0=new QHBoxLayout();
     ui->vdMain->setLayout(m_hb0);
-    m_win0=new YangPlayWidget(this);
+
+#if defined (__APPLE__)
+     m_win0=new YangYuvPlayWidget(this);
+#else
+     m_win0=new YangPlayWidget(this);
+#endif
     m_hb0->addWidget(m_win0);
     m_hb0->setMargin(0);
     m_hb0->setSpacing(0);

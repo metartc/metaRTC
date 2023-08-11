@@ -105,6 +105,7 @@ SOURCES += \
     main.cpp \
     recordmainwindow.cpp \
     video/YangPlayWidget.cpp \
+    video/YangYuvPlayWidget.cpp \
     video/yangrecordthread.cpp \
     video/yangrecordvideowin.cpp \
     yangjanus.cpp \
@@ -121,6 +122,7 @@ SOURCES += \
 HEADERS += \
     recordmainwindow.h \
     video/YangPlayWidget.h \
+    video/YangYuvPlayWidget.h \
     video/yangrecordthread.h \
     video/yangrecordvideowin.h \
     video/yangvideotype.h \

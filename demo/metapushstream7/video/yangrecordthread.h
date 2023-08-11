@@ -7,7 +7,7 @@
 #include <QVector>
 
 #include "YangPlayWidget.h"
-
+#include "YangYuvPlayWidget.h"
 #include "yangplayer/YangWinPlayFactroy.h"
 #include "yangutil/buffer/YangVideoBuffer.h"
 #include "video/yangrecordvideowin.h"
@@ -19,7 +19,12 @@ public:
     virtual ~YangRecordThread();
      int32_t m_isLoop;
     void initPara(YangContext *par);
+
+#if defined (__APPLE__)
+    YangYuvPlayWidget *m_video;
+#else
     YangPlayWidget *m_video;
+#endif
     YangVideoBuffer *m_videoBuffer;
     int32_t m_sid;
     void stopAll();

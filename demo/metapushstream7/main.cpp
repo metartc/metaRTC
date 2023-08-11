@@ -14,6 +14,12 @@
 #include <QTextCodec>
 int main(int argc, char *argv[])
 {
+#if defined (__APPLE__)
+    QSurfaceFormat format;
+    format.setVersion(4,1);
+    format.setProfile(QSurfaceFormat::CoreProfile);
+   QSurfaceFormat::setDefaultFormat(format);
+#endif
     QApplication a(argc, argv);
 
 #if (QT_VERSION <= QT_VERSION_CHECK(5,0,0))

@@ -7,8 +7,8 @@
 #include <QVector>
 
 #include <yangutil/buffer/YangVideoBuffer.h>
+#include <yangplayer/YangYuvPlayWidget.h>
 #include <yangplayer/YangPlayWidget.h>
-
 #include <yangstream/YangSynBuffer.h>
 
 class YangRecordThread : public QThread
@@ -20,8 +20,12 @@ public:
     int m_isLoop;
     void initPara();
 
-    YangPlayWidget *m_video;
 
+#if defined (__APPLE__)
+    YangYuvPlayWidget *m_video;
+#else
+    YangPlayWidget *m_video;
+#endif
 
     YangSynBuffer* m_syn;
     bool m_isRender;

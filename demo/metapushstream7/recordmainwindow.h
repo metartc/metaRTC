@@ -11,6 +11,7 @@
 #include <video/yangrecordthread.h>
 #include <video/yangrecordvideowin.h>
 #include <video/YangPlayWidget.h>
+#include <video/YangYuvPlayWidget.h>
 #include <yangutil/yangavinfotype.h>
 //#include <yangpush/YangPushHandle.h>
 #include <yangutil/sys/YangSysMessageI.h>
@@ -33,7 +34,12 @@ public:
    // YangPushHandle *m_rec;
     YangContext *m_context;
     YangRecordThread* m_rt;
+
+#if defined (__APPLE__)
+    YangYuvPlayWidget *m_win0;
+#else
     YangPlayWidget *m_win0;
+#endif
     QHBoxLayout *m_hb0;
     int m_videoType;
      bool m_hasAudio;

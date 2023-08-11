@@ -3,15 +3,14 @@
 //
 #ifndef YangPlayWidget_H
 #define YangPlayWidget_H
-
+#if !defined(__APPLE__)
 #include <QOpenGLWidget>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLFunctions>
 #include <QOpenGLTexture>
 
 
-#define ATTRIB_VERTEX 3
-#define ATTRIB_TEXTURE 4
+
 
 class YangPlayWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
@@ -19,7 +18,7 @@ class YangPlayWidget : public QOpenGLWidget, protected QOpenGLFunctions
 public:
     YangPlayWidget(QWidget* parent);
     ~YangPlayWidget();
-    void PlayOneFrame(unsigned char *p,int wid,int hei);
+    void playVideo(unsigned char *p,int wid,int hei);
 protected:
     void initializeGL() Q_DECL_OVERRIDE;
     void resizeGL(int w, int h) Q_DECL_OVERRIDE;
@@ -42,5 +41,5 @@ private:
     unsigned char* m_pBufYuv420p;
 
 };
-
+#endif
 #endif // CPLAYWIDGET_H

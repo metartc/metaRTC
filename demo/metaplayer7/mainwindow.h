@@ -11,6 +11,7 @@
 #include "yangplayer/YangPlayerHandle.h"
 #include "yangstream/YangStreamType.h"
 #include "yangplayer/YangPlayWidget.h"
+#include "yangplayer/YangYuvPlayWidget.h"
 #include <yangutil/yangavinfotype.h>
 #include <yangutil/sys/YangSysMessageI.h>
 
@@ -27,8 +28,11 @@ public:
     ~MainWindow();
     YangRecordThread *m_videoThread;
     YangPlayerHandle *m_player;
-
+#if defined (__APPLE__)
+    YangYuvPlayWidget *m_videoWin;
+#else
     YangPlayWidget *m_videoWin;
+#endif
 
     YangStreamConfig m_conf;
     void initVideoThread(YangRecordThread *prt);
