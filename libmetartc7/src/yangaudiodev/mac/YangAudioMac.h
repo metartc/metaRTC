@@ -6,7 +6,7 @@
 #include <yangutil/yangtype.h>
 #include <yangutil/yangavctype.h>
 #if defined(__APPLE__)
-#include <AudioUnit/AudioUnit.h>
+
 #include <CoreAudio/CoreAudio.h>
 
 typedef struct{
@@ -30,7 +30,7 @@ public:
     uint32_t getSample();
     uint32_t getChannel();
 public:
-    AudioUnit           m_unit;
+
     AudioDeviceID       m_deviceId;
 
     AudioBufferList*    m_bufferList;
@@ -42,6 +42,7 @@ public:
 private:
     uint32_t m_sample;
     uint32_t m_channel;
+    AudioDeviceIOProcID _deviceIOProcID;
 
 };
 #endif

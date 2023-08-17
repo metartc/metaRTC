@@ -35,7 +35,7 @@ macx{
 
  LIBS += -L$$HOME_BASE/thirdparty/lib -lmetartc7 -lmetartccore7 -lyuv -lopenh264 -lspeexdsp -lopus -lusrsctp -lpthread  -ldl
 
-LIBS += -framework CoreAudio -framework AudioUnit -framework AVFoundation -framework CoreVideo -framework CoreMedia
+LIBS += -framework CoreAudio -framework AVFoundation -framework CoreVideo -framework CoreMedia
 
 #openssl
  LIBS += -lssl2 -lcrypto2 -lsrtp2

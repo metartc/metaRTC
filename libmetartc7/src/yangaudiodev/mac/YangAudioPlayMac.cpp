@@ -54,9 +54,9 @@ int YangAudioPlayMac::init() {
         m_macChannel=m_macAudio->getChannel();
     }
 
-    m_frames = m_macSample / 100;
-    m_audiolen=m_frames*2*m_channel;
-    if(m_buffer==NULL) m_buffer=(uint8_t*)malloc(m_frames*m_channel*sizeof(float));
+    m_frames = m_macSample *m_channel/ 50;
+    m_audiolen=m_frames*2;
+    if(m_buffer==NULL) m_buffer=(uint8_t*)malloc(m_frames*sizeof(float));
     m_audioData.initRender(m_macSample,m_macChannel);
     m_audioData.initPlay(m_sample,m_channel);
     m_isInited=yangtrue;
@@ -70,7 +70,7 @@ int32_t YangAudioPlayMac::on_audio(YangFrame* audioFrame){
     if(audioFrame==NULL) return 1;
     tmp =(int16_t*)m_audioData.getRenderAudioData(m_audiolen);
     if(tmp){
-        for(int i=0;i<m_frames*2;i++)
+        for(int i=0;i<m_frames;i++)
             data[i]=yang_int16tofloat(tmp[i]);
         audioFrame->nb=m_audiolen*2;
         audioFrame->payload=m_buffer;

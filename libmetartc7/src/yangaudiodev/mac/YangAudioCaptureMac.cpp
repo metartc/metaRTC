@@ -39,7 +39,7 @@ YangAudioCaptureMac::YangAudioCaptureMac(YangAVInfo *avinfo) //:YangAudioCapture
     m_macChannel=2;
     memset(&m_audioFrame,0,sizeof(YangFrame));
     memset(&m_resample,0,sizeof(YangAudioResample));
-     yang_create_audioresample(&m_resample);
+    yang_create_audioresample(&m_resample);
 
 }
 
@@ -145,27 +145,20 @@ void YangAudioCaptureMac::startLoop() {
         if(pcm==NULL) continue;
 
         nb=audioFrame.nb/2;
-        data=(int16_t*)(m_buffer+m_bufferLen);
+        data=(int16_t*)m_buffer;
         float* fpcm=(float*)pcm;
         frames=audioFrame.nb/4;
         for(uint32_t i=0;i<frames;i++){
             data[i]=yang_floattoint16(fpcm[i]);
         }
-        m_bufferLen+=nb;
-        if(m_bufferLen<m_size) continue;
-        pcm=m_buffer;
-        while(m_bufferLen>=m_size){
-            audioFrame.payload = pcm;
-            audioFrame.nb = m_size;
-            m_resample.resample(m_resample.context,&audioFrame);
 
-            if(m_ahandle)
-                m_ahandle->putBuffer(audioFrame.payload,audioFrame.nb);
-            m_bufferLen-=m_size;
-            pcm=pcm+m_size;
-        }
-        if(pcm&&m_bufferLen>0)
-            memcpy(m_buffer,pcm,m_bufferLen);
+
+        audioFrame.payload = m_buffer;
+        audioFrame.nb = m_size;
+        m_resample.resample(m_resample.context,&audioFrame);
+
+        if(m_ahandle)
+            m_ahandle->putBuffer(audioFrame.payload,audioFrame.nb);
 
     }
 

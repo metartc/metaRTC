@@ -30,7 +30,7 @@ macx{
 
  LIBS += -lmetartc7  -lmetartccore7 -lyuv -lspeexdsp -lopus -lyangh264decoder -lusrsctp -lpthread  -ldl
 
- LIBS += -framework CoreAudio -framework AudioUnit
+ LIBS += -framework CoreAudio
 
     #openssl
  LIBS += -lssl2 -lcrypto2 -lsrtp2
