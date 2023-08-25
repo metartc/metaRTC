@@ -34,7 +34,7 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 ## metaRTC Version
 metaRTC version:**Community Edition/Standard Edition/Enterprise Edition (社区版/标准版/企业版)**  
 The open source version is the community version  
-星球用户享受标准版及技术支持  
+ 
 ### Vesion Feature
 社区版：webrtc协议栈的基础实现  
 标准版：webrtc协议栈优化实现+实用类库(如mqtt/json/静态编解码库等)+demo  
