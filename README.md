@@ -31,14 +31,6 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 [libsrtp](https://github.com/cisco/libsrtp)  
 [usrsctp](https://github.com/sctplab/usrsctp)  
 
-## metaRTC Version
-metaRTC version:**Community Edition/Standard Edition/Enterprise Edition (社区版/标准版/企业版)**  
-The open source version is the community version  
- 
-### Vesion Feature
-社区版：webrtc协议栈的基础实现  
-标准版：webrtc协议栈优化实现+实用类库(如mqtt/json/静态编解码库等)+demo  
-企业版：webrtc协议栈深度优化实现+定制化的低代码产品sdk  
  
 ## metaRTC问答星球      
   ![xingqiu2](https://user-images.githubusercontent.com/87118023/227077884-0163fcb6-ab0d-4933-88c9-0164b80f4d02.jpg)  
