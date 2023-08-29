@@ -31,15 +31,16 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 [libsrtp](https://github.com/cisco/libsrtp)  
 [usrsctp](https://github.com/sctplab/usrsctp)  
 
- 
-## metaRTC问答星球      
-  ![xingqiu2](https://user-images.githubusercontent.com/87118023/227077884-0163fcb6-ab0d-4933-88c9-0164b80f4d02.jpg)  
-https://t.zsxq.com/0cfpXQYoX
 
-## metaRTC服务支持
+
+## metaRTC服务支持(service support)
 微信号: taihang82  
 email: yangrtc@aliyun.com yangrtc@outlook.com   
-twitter: metaRTC@metartc_sdk
+twitter: metaRTC@metartc_sdk  
+ 
+### metaRTC问答星球      
+  ![xingqiu2](https://user-images.githubusercontent.com/87118023/227077884-0163fcb6-ab0d-4933-88c9-0164b80f4d02.jpg)  
+https://t.zsxq.com/0cfpXQYoX
 
 ## Compile
 
