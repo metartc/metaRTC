@@ -4,7 +4,7 @@
 #ifndef INCLUDE_YANGUTIL_SYS_YANGBITS_H_
 #define INCLUDE_YANGUTIL_SYS_YANGBITS_H_
 #include <stdint.h>
-#ifdef _WIN32
+#if Yang_OS_WIN
 static __inline uint16_t
 uint16_identity (uint16_t __x)
 {

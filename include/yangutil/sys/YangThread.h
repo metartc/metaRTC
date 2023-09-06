@@ -25,7 +25,7 @@
 #define yang_thread_cond_init pthread_cond_init
 #define yang_thread_cond_destroy pthread_cond_destroy
 #else
-	#if _WIN32
+	#if Yang_OS_WIN
 		#include <windows.h>
 
 		typedef HANDLE yang_thread_t;

@@ -13,12 +13,12 @@
 
 
 
-#ifdef __ANDROID__
+#if !(Yang_OS_ANDROID || Yang_OS_IOS)
 #define Yang_Enable_Logfile 0
 #else
 #define Yang_Enable_Logfile 1
 #endif
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <io.h>
 #ifdef _MSC_VER
 #include <direct.h>
@@ -168,7 +168,7 @@ int32_t yang_error_wrap(int32_t errcode, const char *fmt, ...) {
 
     time_t t_now=time(NULL);
     struct tm* ntm=localtime(&t_now);
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
     yang_error("Yang Error(%d): %s\n",  errcode,buf);
 #else
     yang_printf("Yang Error(%d): %s\n",  errcode,buf);

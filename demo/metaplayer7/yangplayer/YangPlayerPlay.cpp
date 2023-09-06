@@ -25,13 +25,13 @@ void YangPlayerPlay::stopAll(){
 void YangPlayerPlay::initAudioPlay(YangContext* paudio){
 
 	if (m_audioPlay == NULL) {
-#ifdef _WIN32
+#if Yang_OS_WIN
     m_audioPlay = new YangWinAudioApiRender(&paudio->avinfo,&paudio->synMgr);
 #else
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
     m_audioPlay = new YangAudioPlayAndroid(&paudio->avinfo,&paudio->synMgr);
 #else
-        #if defined(__APPLE__)
+        #if Yang_OS_APPLE
             m_audioPlay = new YangAudioPlayMac(&paudio->avinfo,&paudio->synMgr);
         #else
             m_audioPlay = new YangAudioPlayLinux(&paudio->avinfo,&paudio->synMgr);

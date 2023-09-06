@@ -6,7 +6,7 @@
 #include <yangutil/sys/YangLog.h>
 
 #if !Yang_Enable_Timer_Phtread
-#ifdef _WIN32
+#if Yang_OS_WIN
 void  CALLBACK g_yang_TimeEvent(PVOID user, BOOLEAN TimerOrWaitFired2)
 {
     YangCTimer* timer=(YangCTimer*)user;
@@ -31,7 +31,7 @@ void g_yang_startWindowsEventTime2(int pwaitTime,YangCTimer *timer)
 }
 #else
 #include <sys/time.h>
-    #if !defined(__APPLE__)
+    #if !Yang_OS_APPLE
 		#include <sys/timerfd.h>
 		#include <sys/epoll.h>
 	#endif
@@ -51,11 +51,11 @@ void yang_create_timer(YangCTimer *timer, void *user, int32_t taskId,
 	yang_thread_mutex_init(&timer->t_lock,NULL);
 	yang_thread_cond_init(&timer->t_cond_mess,NULL);
 #else
-#ifdef _WIN32
+#if Yang_OS_WIN
     timer->hTimerQueue=NULL;
     timer->hTimerQueueTimer=NULL;
     timer->winEvent=CreateEvent(NULL,TRUE,FALSE,NULL);
-#elif __APPLE__
+#elif Yang_OS_APPLE
 	timer->_timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
 #else
     timer->timerfd = timerfd_create(CLOCK_REALTIME, 0);//TFD_NONBLOCK | TFD_CLOEXEC);
@@ -98,7 +98,7 @@ void* yang_run_timer_thread(void *obj) {
     }
     yang_thread_mutex_unlock(&timer->t_lock);
 #else
-    #ifdef _WIN32
+    #if Yang_OS_WIN
     g_yang_startWindowsEventTime2(timer->waitTime,timer);
     if(WaitForSingleObject(timer->winEvent,INFINITE) !=WAIT_OBJECT_0)
     {
@@ -107,7 +107,7 @@ void* yang_run_timer_thread(void *obj) {
 
     CloseHandle(timer->winEvent);
     timer->winEvent=NULL;
-	#elif __APPLE__
+	#elif Yang_OS_APPLE
 
     #else
 	struct itimerspec itimer;
@@ -158,7 +158,7 @@ void yang_timer_start(YangCTimer *timer) {
 	if (timer == NULL||timer->isStart)
 		return;
 
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 	dispatch_source_set_timer(timer->_timer, DISPATCH_TIME_NOW, timer->waitTime * NSEC_PER_MSEC, timer->waitTime * NSEC_PER_MSEC);
 	dispatch_source_set_event_handler(timer->_timer, ^{
          if(timer->doTask) timer->doTask(timer->taskId,timer->user);
@@ -191,7 +191,7 @@ void yang_timer_stop(YangCTimer *timer) {
 					yang_usleep(1000);
 #else
 
-    #ifdef _WIN32
+    #if Yang_OS_WIN
     if (timer->hTimerQueueTimer != NULL)
         DeleteTimerQueueTimer(timer->hTimerQueue, timer->hTimerQueueTimer, INVALID_HANDLE_VALUE);
     if (timer->hTimerQueue != NULL)
@@ -201,7 +201,7 @@ void yang_timer_stop(YangCTimer *timer) {
     timer->hTimerQueue = NULL;
     SetEvent(timer->winEvent);
      while (timer->isStart)			yang_usleep(1000);
-	#elif __APPLE__
+	#elif Yang_OS_APPLE
 		dispatch_source_cancel(timer->_timer);
         timer->isStart = yangfalse;
 

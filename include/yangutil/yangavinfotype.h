@@ -131,7 +131,7 @@ public:
 	YangRtcCallback rtcCallback;
 	YangSendRtcMessage sendRtcMessage;
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 	void* nativeWindow;
 #endif
 

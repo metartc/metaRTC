@@ -35,7 +35,7 @@ void yang_setCLogLevel(int32_t plevel);
 #endif
 
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <android/log.h>
 #define yang_fatal( fmt, ...) __android_log_print(ANDROID_LOG_FATAL,fmt, ##__VA_ARGS__)
 

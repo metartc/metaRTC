@@ -6,7 +6,7 @@
 
 #include <yangaudiodev/YangAudioPlay.h>
 
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 #include <yangaudiodev/mac/YangAudioMac.h>
 
 

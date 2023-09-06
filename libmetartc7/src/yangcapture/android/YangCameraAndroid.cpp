@@ -6,7 +6,7 @@
 #include <yangcapture/YangVideoCaptureHandle.h>
 #include <yangutil/sys/YangLog.h>
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <android/native_window_jni.h>
 #include <assert.h>
 #include <jni.h>

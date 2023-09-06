@@ -85,7 +85,6 @@ SOURCES += \
     src/yangcapture/linux/YangVideoCaptureLinux.cpp \
     src/yangcapture/win/YangDXGIManager.cpp \
     src/yangcapture/win/YangVideoCaptureWindows.cpp \
-    src/yangcapture/win/YangVideoSrc.cpp \
     src/yangcapture/win/YangWinVideoCaptureHandle.cpp \
     src/yangdecoder/YangAudioDecoder.cpp \
     src/yangdecoder/YangAudioDecoderHandle.cpp \

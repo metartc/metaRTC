@@ -8,7 +8,7 @@
 #include <yangutil/yangtype.h>
 
 #if !Yang_Enable_Timer_Phtread
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <windows.h>
 #endif
 #endif
@@ -38,7 +38,7 @@ public:
 	void stop();
 
 #if !Yang_Enable_Timer_Phtread
-#ifdef _WIN32
+#if Yang_OS_WIN
 	static void  CALLBACK TimeEvent(PVOID lpParam, BOOLEAN TimerOrWaitFired);
 #endif
 #endif
@@ -57,7 +57,7 @@ private:
     yang_thread_mutex_t m_lock;
     yang_thread_cond_t m_cond_mess;
 #else
-#ifdef _WIN32
+#if Yang_OS_WIN
         void startWindowsEventTime(int pwaitTime,DWORD_PTR duser);
 	HANDLE	m_hTimerQueue;
 	HANDLE	m_hTimerQueueTimer;

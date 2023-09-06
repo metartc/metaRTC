@@ -8,7 +8,7 @@
 #include <yangaudiodev/YangAudioCapture.h>
 #include <vector>
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <yangaudiodev/android/YangAudioAndroid.h>
 
 using namespace std;

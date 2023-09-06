@@ -1,5 +1,5 @@
 ﻿//
-// Copyright (c) 2019-2022 yanggaofeng
+// Copyright (c) 2019-2023 yanggaofeng
 //
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
@@ -28,7 +28,7 @@ public:
     ~MainWindow();
     YangRecordThread *m_videoThread;
     YangPlayerHandle *m_player;
-#if defined (__APPLE__)
+#if Yang_OS_APPLE
     YangYuvPlayWidget *m_videoWin;
 #else
     YangPlayWidget *m_videoWin;
@@ -55,9 +55,6 @@ void on_m_c_whep_clicked();
 private:
     Ui::MainWindow *ui;
 
-    //std::string serverIp,app,stream;
-   // std::string localServer;
-    //int localPort;
     QWidget *m_centerWdiget;
     QVBoxLayout *m_vb;
     QHBoxLayout *m_hb1;

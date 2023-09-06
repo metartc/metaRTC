@@ -3,7 +3,7 @@
 //
 #ifndef __YangWinVideoCaptureHandle__
 #define __YangWinVideoCaptureHandle__
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <yangutil/buffer/YangVideoBuffer.h>
 #include <yangutil/yangavinfotype.h>
 #include "qedit.h"

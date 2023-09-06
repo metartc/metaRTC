@@ -5,7 +5,7 @@
 #include <yangcapture/mac/YangVideoCaptureMac.h>
 #include <yangutil/yangavinfotype.h>
 
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 void yang_macv_on_video(uint8_t* data,uint32_t nb,uint64_t ts,void* user){
     YangVideoCaptureMac* mac;
     if(data==NULL || user==NULL) return;

@@ -10,7 +10,7 @@
 #include <yangutil/buffer/YangAudioPlayBuffer.h>
 #include <vector>
 
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 #include <yangaudiodev/mac/YangAudioMac.h>
 using namespace std;
 

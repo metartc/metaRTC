@@ -71,7 +71,7 @@ YangAudioEncoder* YangEncoderFactory::createAudioEncoder(
 
 YangVideoEncoder* YangEncoderFactory::createVideoEncoder(YangVideoCodec paet,
 		YangVideoInfo *pcontext) {
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 	if(pcontext->videoEncHwType==0){
 #if Yang_Enable_Openh264
 		return new YangOpenH264Encoder();

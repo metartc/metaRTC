@@ -9,7 +9,7 @@
 #include <yangaudiodev/YangAudioCaptureData.h>
 #include <yangutil/yangavtype.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <audioclient.h>
 #include <endpointvolume.h>
 

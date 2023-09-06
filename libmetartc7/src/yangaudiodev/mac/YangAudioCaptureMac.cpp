@@ -1,7 +1,8 @@
 ﻿//
 // Copyright (c) 2019-2022 yanggaofeng
 //
-#if defined(__APPLE__)
+#include <yangutil/yangtype.h>
+#if Yang_OS_APPLE
 #include <yangaudiodev/mac/YangAudioCaptureMac.h>
 
 #include <yangutil/sys/YangMath.h>

@@ -2,7 +2,7 @@
 // Copyright (c) 2019-2022 yanggaofeng
 //
 #include <yangaudiodev/linux/YangAudioAecLinux.h>
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if Yang_OS_LINUX
 
 YangAudioAecLinux::YangAudioAecLinux(YangAVInfo *avinfo,YangSynBufferManager* streams) {
 

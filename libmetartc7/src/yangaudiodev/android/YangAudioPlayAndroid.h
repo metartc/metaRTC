@@ -4,7 +4,7 @@
 #ifndef YANGPLAYER_SRC_YANGAUDIOPLAYAndroid_H_
 #define YANGPLAYER_SRC_YANGAUDIOPLAYAndroid_H_
 #include <yangaudiodev/YangAudioPlay.h>
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 
 #include "YangAudioAndroid.h"
 

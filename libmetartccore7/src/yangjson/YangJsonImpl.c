@@ -19,7 +19,7 @@
 #endif
 
 #ifndef NAN
-#ifdef _WIN32
+#if Yang_OS_WIN
 #define NAN sqrt(-1.0)
 #else
 #define NAN 0.0/0.0

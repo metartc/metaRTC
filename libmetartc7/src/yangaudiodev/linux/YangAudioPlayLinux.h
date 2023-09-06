@@ -6,8 +6,8 @@
 
 #include <yangaudiodev/YangAudioPlay.h>
 
-#if !defined(_WIN32) && !defined(__APPLE__)
-#ifndef __ANDROID__
+#if Yang_OS_LINUX
+
 #include <alsa/asoundlib.h>
 
 class YangAudioPlayLinux:public YangAudioPlay{
@@ -38,5 +38,5 @@ private:
 
 };
 #endif
-#endif
+
 #endif /* YANGPLAYER_SRC_YANGAUDIOPLAYALSA_H_ */

@@ -5,7 +5,7 @@
 #include <yangutil/sys/YangTime.h>
 #include <inttypes.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <random>
 #define srandom srand
 #define random rand

@@ -4,7 +4,7 @@
 #ifndef YANGAUDIODEVICEMAC_H
 #define YANGAUDIODEVICEMAC_H
 
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 #include <yangutil/yangtype.h>
 //#include <CoreFoundation/CFString.h>
 //#include <AudioUnit/AudioUnit.h>

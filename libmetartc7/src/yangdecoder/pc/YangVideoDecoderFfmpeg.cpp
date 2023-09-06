@@ -230,7 +230,7 @@ void YangVideoDecoderFfmpeg::parseRtmpHeader(uint8_t *p, int32_t pLen, int32_t *
 	int32_t headerLen = 0;
 	if(m_encDecType==Yang_VED_264){
 		yang_getH264RtmpHeader(p, headers, &headerLen);
-#ifdef _WIN32
+#if Yang_OS_WIN
 		uint8_t* sps=NULL;
 		int32_t spsLen=0;
 		yang_h264_decode_getH264RtmpHeader(p,&sps,&spsLen);

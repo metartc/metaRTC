@@ -4,7 +4,7 @@
 
 #include <yangcapture/win/YangVideoCaptureWindows.h>
 #include <yangutil/sys/YangLog.h>
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <iostream>
 #include <sys/types.h>
 #include <sys/stat.h>

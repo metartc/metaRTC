@@ -8,7 +8,7 @@
 #include <yangcapture/YangVideoCaptureHandle.h>
 #include <yangcapture/YangMultiVideoCapture.h>
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <yangcapture/android/YangCameraAndroid.h>
 
 class YangVideoCaptureAndroid: public YangMultiVideoCapture {

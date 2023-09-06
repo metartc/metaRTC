@@ -5,7 +5,7 @@
 #include <yangutil/sys/YangLog.h>
 #include <errno.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <Iphlpapi.h>
@@ -63,7 +63,7 @@ int32_t yang_getLocalInfoList(YangIpFamilyType familyType,YangStringVector* vecs
 {
 
     char ip[128];
-#ifdef _WIN32
+#if Yang_OS_WIN
     DWORD ret, outBufLen;
     IP_ADAPTER_ADDRESSES *adapterAddresses=NULL, *adress  = NULL;
     PIP_ADAPTER_UNICAST_ADDRESS uaddress = NULL;
@@ -138,7 +138,7 @@ int32_t yang_getLocalInfoList(YangIpFamilyType familyType,YangStringVector* vecs
 
 }
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 int32_t yang_getLocalInfo(YangIpFamilyType familyType,char* ipAddress){
     int32_t err = ERROR_SOCKET;
     char ip[128];

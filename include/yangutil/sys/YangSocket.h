@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <yangutil/sys/YangVector.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <errno.h>
@@ -20,7 +20,7 @@
 #else
 #include <netinet/in.h>
 #include <errno.h>
-	#if __APPLE__
+	#if Yang_OS_APPLE
 		#include <TargetConditionals.h>
         #include <libkern/OSByteOrder.h>
         #define yang_be32toh OSSwapBigToHostInt32

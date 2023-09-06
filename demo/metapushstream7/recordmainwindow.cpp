@@ -56,7 +56,7 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     m_hb0=new QHBoxLayout();
     ui->vdMain->setLayout(m_hb0);
 
-#if defined (__APPLE__)
+#if Yang_OS_APPLE
      m_win0=new YangYuvPlayWidget(this);
 #else
      m_win0=new YangPlayWidget(this);
@@ -92,7 +92,7 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     //srs do not use audio fec
     m_context->avinfo.audio.enableAudioFec=yangfalse;
 
-#if defined (__APPLE__)
+#if Yang_OS_APPLE
     m_context->avinfo.video.videoCaptureFormat=YangNv12;
 #endif
 

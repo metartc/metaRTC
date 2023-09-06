@@ -15,7 +15,7 @@ extern "C"{
 #endif
 using namespace libyuv;
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #define Yang_Enable_YuvSo 0
 #else
 #define Yang_Enable_YuvSo 0

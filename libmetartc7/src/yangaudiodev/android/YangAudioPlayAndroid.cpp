@@ -4,7 +4,7 @@
 #include <yangaudiodev/android/YangAudioPlayAndroid.h>
 #include <yangutil/yangautofree.h>
 #include <yangutil/sys/YangLog.h>
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 
 YangAudioPlayAndroid::YangAudioPlayAndroid(YangAVInfo* avinfo,YangSynBufferManager* streams):YangAudioPlay(avinfo,streams){
 	m_audioAndroid=(YangAudioAndroid*)calloc(sizeof(YangAudioAndroid),1);

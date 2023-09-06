@@ -5,11 +5,13 @@
 #ifndef INCLUDE_YANG_CONFIG_H_
 #define INCLUDE_YANG_CONFIG_H_
 
+#include "yang_config_os.h"
+
 #define Yang_Enable_Datachannel 1
 #define Yang_Enable_Openh264    1
 #define Yang_Enable_Json        1
 
-#if _WIN32
+#if Yang_OS_WIN
 #define Yang_Enable_Openssl 1
 #define Yang_Enable_GPU_Encoding 0
 #define Yang_Enable_Phtread 0
@@ -37,13 +39,13 @@
 #define Yang_Enable_Dtls 1 //default:using dtls
 #define Yang_Enable_TWCC 0
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #define Yang_Enable_H264Decoder 0
 #define Yang_Enable_H264Decoder_So 1
 #define Yang_Enable_FfmpegSo 0
 #else
 #define Yang_Enable_H264Decoder 1
-#ifndef __ANDROID__
+#if !Yang_OS_ANDROID
 #define Yang_Enable_H264Decoder_So 0
 #else
 #define Yang_Enable_H264Decoder_So 0

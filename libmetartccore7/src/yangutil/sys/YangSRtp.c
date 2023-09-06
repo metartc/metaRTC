@@ -6,7 +6,7 @@
 
 
 #if Yang_Enable_Dtls
-#ifdef _WIN32
+#if Yang_OS_WIN
 #define bzero(a, b) yang_memset(a, 0, b)
 #endif
 

@@ -7,7 +7,7 @@
 #include <yangutil/sys/YangFile.h>
 
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <windows.h>
 #include <basetyps.h>
 #ifdef _MSC_VER
@@ -20,7 +20,7 @@
 
 
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <minwindef.h>
 #define YangModule HMODULE
 
@@ -28,7 +28,7 @@
 #define YangModule void*
 #endif
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 char *yang_libhandle_dlerror(){
     return (char*)"loadlib error";
 }
@@ -45,7 +45,7 @@ void* yang_libhandle_loadSysObject(void* pcontext,const char *sofile)
 {
  if(pcontext==NULL) return NULL;
  YangLibContext* context=(YangLibContext*)pcontext;
-#ifdef _WIN32
+#if Yang_OS_WIN
    // LPCSTR
  context->handle = LoadLibraryA(sofile);
 #else
@@ -71,7 +71,7 @@ void* yang_libhandle_loadObject(void* pcontext,const char *sofile)
 		return NULL;
 	}
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 	yang_sprintf(file1, "%s/%s.dll", file_path_getcwd, sofile);
 	context->handle =  LoadLibraryA(file1);
 #else
@@ -91,7 +91,7 @@ void* yang_libhandle_loadFunction(void* pcontext,const char *name)
 {
 	 if(pcontext==NULL) return NULL;
 	 YangLibContext* context=(YangLibContext*)pcontext;
-#ifdef _WIN32
+#if Yang_OS_WIN
 	void *symbol = (void *) GetProcAddress(context->handle, name);
 #else
 	void *symbol = dlsym(context->handle, name);
@@ -108,7 +108,7 @@ void yang_libhandle_unloadObject(void* pcontext)
 	 if(pcontext==NULL) return;
 	 YangLibContext* context=(YangLibContext*)pcontext;
     if (context->handle) {
-#ifdef _WIN32
+#if Yang_OS_WIN
     	 FreeLibrary( context->handle);
 #else
 	 dlclose(context->handle);;

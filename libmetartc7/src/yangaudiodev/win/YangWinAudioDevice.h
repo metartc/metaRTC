@@ -3,7 +3,7 @@
 //
 #ifndef YANGWINAUDIODEVICE_H
 #define YANGWINAUDIODEVICE_H
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <mmdeviceapi.h>
 #include <endpointvolume.h>
 #include <audioclient.h>

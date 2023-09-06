@@ -12,7 +12,7 @@ extern "C"{
 #include <yangencoder/lame.h>
 }
 
-#ifndef _WIN32
+#if !Yang_OS_WIN
 typedef int32_t DWORD ;
 #endif
 class YangAudioEncoderMp3:public YangAudioEncoder

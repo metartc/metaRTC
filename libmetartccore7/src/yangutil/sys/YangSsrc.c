@@ -4,7 +4,7 @@
 #include <yangutil/sys/YangSsrc.h>
 #include <yangrtp/YangRtpConstant.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <Windows.h>
 #else
 #include <sys/time.h>

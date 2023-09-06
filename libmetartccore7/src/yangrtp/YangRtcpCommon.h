@@ -8,7 +8,7 @@
 #include <yangrtp/YangRtpConstant.h>
 #include <yangutil/buffer/YangBuffer.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #else

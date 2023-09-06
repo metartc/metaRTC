@@ -2,7 +2,7 @@
 // Copyright (c) 2019-2022 yanggaofeng
 //
 #include <yangaudiodev/win/YangWinAudioCapture.h>
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <uuids.h>
 
 using namespace std;

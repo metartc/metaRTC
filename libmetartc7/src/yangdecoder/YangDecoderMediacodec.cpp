@@ -3,7 +3,7 @@
 //
 
 #include <yangdecoder/YangDecoderMediacodec.h>
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <yangutil/sys/YangLog.h>
 #include <yangavutil/video/YangMeta.h>
 #include <yangavutil/video/YangSpspps.h>

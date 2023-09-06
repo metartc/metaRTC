@@ -7,7 +7,7 @@
 #include <stdint.h>
 #include <yangutil/sys/YangThread.h>
 
-#if __APPLE__
+#if Yang_OS_APPLE
 	#include <dispatch/dispatch.h>
 
 #endif
@@ -23,11 +23,11 @@ typedef struct YangCTimer{
 	yang_thread_mutex_t t_lock;
 	yang_thread_cond_t t_cond_mess;
 #else
-    #ifdef _WIN32   
+    #if Yang_OS_WIN   
         HANDLE	hTimerQueue;
         HANDLE	hTimerQueueTimer;
         HANDLE  winEvent;
-	#elif __APPLE__
+	#elif Yang_OS_APPLE
 		dispatch_source_t _timer;
 	#else
         int32_t timerfd;

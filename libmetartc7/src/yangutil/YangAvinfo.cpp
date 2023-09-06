@@ -44,7 +44,7 @@ YangContext::YangContext() {
 
 	yang_create_synBufferManager(&synMgr);
 	init();
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 	nativeWindow=NULL;
 #endif
 
@@ -55,7 +55,7 @@ YangContext::~YangContext() {
 
 }
 void YangContext::init(char *filename) {
-#ifndef __ANDROID__
+#if !(Yang_OS_ANDROID || Yang_OS_IOS)
 	YangIni ini;
 	ini.filename=NULL;
 	yang_create_ini(&ini,filename);

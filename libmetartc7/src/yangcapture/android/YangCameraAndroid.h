@@ -4,7 +4,7 @@
 
 #ifndef METAPUSHSTREAM3_YANGCAMERAANDROID_H
 #define METAPUSHSTREAM3_YANGCAMERAANDROID_H
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <camera/NdkCameraDevice.h>
 #include <camera/NdkCameraManager.h>
 #include <media/NdkImageReader.h>

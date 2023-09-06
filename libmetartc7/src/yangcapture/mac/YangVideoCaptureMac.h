@@ -8,7 +8,7 @@
 #include <yangcapture/YangVideoCaptureHandle.h>
 #include <yangcapture/YangMultiVideoCapture.h>
 
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 #include <yangcapture/mac/YangVideoDeviceMac.h>
 
 class YangVideoCaptureMac: public YangMultiVideoCapture {

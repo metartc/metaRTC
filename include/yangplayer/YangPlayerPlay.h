@@ -28,14 +28,14 @@ public:
 	void setInAudioList(YangAudioPlayBuffer *paudioList);
 	void stopAll();
 private:
-#ifdef _WIN32
+#if Yang_OS_WIN
         YangWinAudioApiRender *m_audioPlay;
 #else
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
         YangAudioPlayAndroid *m_audioPlay;
 #else
-    #if defined(__APPLE__)
+    #if Yang_OS_APPLE
         YangAudioPlayMac *m_audioPlay;
     #else
         YangAudioPlayLinux *m_audioPlay;

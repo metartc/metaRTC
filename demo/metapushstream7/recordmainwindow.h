@@ -7,15 +7,12 @@
 #include <QMainWindow>
 #include <QHBoxLayout>
 
-
 #include <video/yangrecordthread.h>
 #include <video/yangrecordvideowin.h>
 #include <video/YangPlayWidget.h>
 #include <video/YangYuvPlayWidget.h>
 #include <yangutil/yangavinfotype.h>
-//#include <yangpush/YangPushHandle.h>
 #include <yangutil/sys/YangSysMessageI.h>
-//#include <yangutil/sys/YangWindowsMouse.h>
 #include <yangutil/sys/YangSysMessageHandle.h>
 #include <yangpush/YangPushFactory.h>
 #include "yangjanus.h"
@@ -35,7 +32,7 @@ public:
     YangContext *m_context;
     YangRecordThread* m_rt;
 
-#if defined (__APPLE__)
+#if Yang_OS_APPLE
     YangYuvPlayWidget *m_win0;
 #else
     YangPlayWidget *m_win0;

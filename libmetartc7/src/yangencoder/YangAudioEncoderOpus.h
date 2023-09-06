@@ -9,7 +9,7 @@
 #include <opus/opus.h>
 
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #define Yang_Opus_So 0
 #else
 #define Yang_Opus_So 0

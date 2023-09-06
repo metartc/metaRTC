@@ -5,7 +5,7 @@
 #ifndef YANGUTIL_SYS_YANGLOADLIB_H_
 #define YANGUTIL_SYS_YANGLOADLIB_H_
 #include <yangutil/yangtype.h>
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <minwindef.h>
 #endif
 class YangLoadLib{
@@ -18,7 +18,7 @@ void *loadSysObject(const char *sofile);
 void *loadFunction(const char *name);
 void unloadObject();
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 HMODULE m_handle;
 char *dlerror();
 #else

@@ -17,7 +17,7 @@ int64_t yang_get_micro_time();//weimiao
 #define yang_get_micro_tick  yang_get_micro_time
 
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <winsock2.h>
 int gettimeofday(struct timeval *tp, void *tzp);
 #endif

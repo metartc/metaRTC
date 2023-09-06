@@ -8,7 +8,7 @@
 #include <yangavutil/audio/YangPreProcess.h>
 #include <vector>
 
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if Yang_OS_LINUX
 #include <alsa/asoundlib.h>
 using namespace std;
 

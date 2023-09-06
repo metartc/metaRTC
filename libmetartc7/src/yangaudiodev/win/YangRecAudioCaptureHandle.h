@@ -7,7 +7,7 @@
 #include <yangaudiodev/YangAudioCaptureHandle.h>
 #include <yangutil/buffer/YangAudioBuffer.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <qedit.h>
 
 class YangRecAudioCaptureHandle: public ISampleGrabberCB,public YangAudioCaptureHandle

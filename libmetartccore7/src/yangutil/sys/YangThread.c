@@ -4,7 +4,7 @@
 
 #include <yangutil/sys/YangThread.h>
 #if !Yang_Enable_Phtread
-#if _WIN32
+#if Yang_OS_WIN
 #include <process.h>
 
 

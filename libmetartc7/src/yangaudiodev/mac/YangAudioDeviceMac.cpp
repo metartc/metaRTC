@@ -2,7 +2,7 @@
 // Copyright (c) 2019-2023 yanggaofeng
 //
 #include "YangAudioDeviceMac.h"
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 #include <yangutil/sys/YangLog.h>
 
 

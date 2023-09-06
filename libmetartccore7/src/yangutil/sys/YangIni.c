@@ -3,7 +3,7 @@
 //
 #include <yangutil/sys/YangIni.h>
 
-#ifndef __ANDROID__
+#if !(Yang_OS_ANDROID || Yang_OS_IOS)
 #ifdef _MSC_VER
 #include <direct.h>
 #endif

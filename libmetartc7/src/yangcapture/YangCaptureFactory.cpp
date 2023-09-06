@@ -4,13 +4,13 @@
 
 #include <yangcapture/YangCaptureFactory.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <yangaudiodev/win/YangWinAudioCapture.h>
 #include <yangaudiodev/win/YangWinAudioApiDevice.h>
 #include <yangaudiodev/win/YangAudioCaptureWindows.h>
 #include "win/YangVideoCaptureWindows.h"
 #else
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <yangaudiodev/android/YangAudioCaptureAndroid.h>
 #include <yangcapture/android/YangVideoCaptureAndroid.h>
 #else
@@ -19,7 +19,7 @@
 #include <yangcapture/linux/YangVideoCaptureLinux.h>
 #endif
 #endif
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 #include <yangaudiodev/mac/YangAudioCaptureMac.h>
 #include <yangcapture/mac/YangVideoCaptureMac.h>
 #endif
@@ -33,15 +33,15 @@ YangCaptureFactory::~YangCaptureFactory() {
 }
 
 YangAudioCapture* YangCaptureFactory::createAudioCapture(YangContext *pcontext){
-#ifdef _WIN32
+#if Yang_OS_WIN
 	return new YangWinAudioApiDevice(pcontext,0,true);
 	// return new YangWinAudioCapture(pcontext);
 #else
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 	return NULL;
 #else
-    #if defined(__APPLE__)
+    #if Yang_OS_APPLE
         return NULL;
     #else
         return new YangAudioAecLinux(&pcontext->avinfo,&pcontext->synMgr);//new YangAlsaHandle(pcontext);//YangAudioCaptureImpl(pcontext);
@@ -51,14 +51,14 @@ YangAudioCapture* YangCaptureFactory::createAudioCapture(YangContext *pcontext){
 
 }
 YangAudioCapture* YangCaptureFactory::createRecordAudioCapture(YangAVInfo *avinfo){
-#ifdef _WIN32
+#if Yang_OS_WIN
 	 return new YangAudioCaptureWindows(avinfo);
 	 //return new YangWinAudioApiDevice(pcontext,1);
 #else
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 	 return new YangAudioCaptureAndroid(avinfo);
 #else
-    #if defined(__APPLE__)
+    #if Yang_OS_APPLE
         return new YangAudioCaptureMac(avinfo);
     #else
          return new YangAudioCaptureLinux(avinfo);//new YangAlsaHandle(pcontext);//YangAudioCaptureImpl(pcontext);
@@ -70,14 +70,14 @@ YangAudioCapture* YangCaptureFactory::createRecordAudioCapture(YangAVInfo *avinf
 
 
 YangMultiVideoCapture* YangCaptureFactory::createVideoCapture(YangVideoInfo *pcontext){
-#ifdef _WIN32
+#if Yang_OS_WIN
 	return new YangVideoCaptureWindows(pcontext);
 
 #else
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 	return NULL;
 #else
-    #if defined(__APPLE__)
+    #if Yang_OS_APPLE
         return NULL;
     #else
         return new YangVideoCaptureLinux(pcontext);
@@ -86,13 +86,13 @@ YangMultiVideoCapture* YangCaptureFactory::createVideoCapture(YangVideoInfo *pco
 #endif
 }
 YangMultiVideoCapture* YangCaptureFactory::createRecordVideoCapture(YangVideoInfo *pcontext){
-#if defined(_WIN32)
+#if Yang_OS_WIN
 	return new YangVideoCaptureWindows(pcontext);
 #else
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 	return NULL;
 #else
-    #if defined(__APPLE__)
+    #if Yang_OS_APPLE
         return new YangVideoCaptureMac(pcontext);
     #else
         return new YangVideoCaptureLinux(pcontext);
@@ -101,7 +101,7 @@ YangMultiVideoCapture* YangCaptureFactory::createRecordVideoCapture(YangVideoInf
 #endif
 }
 YangMultiVideoCapture* YangCaptureFactory::createRecordVideoCaptureAndroid(YangVideoInfo *pcontext,void* pwindow){
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 	return new YangVideoCaptureAndroid(pcontext,pwindow);
 #else
 	return NULL;

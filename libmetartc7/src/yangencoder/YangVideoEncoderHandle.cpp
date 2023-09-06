@@ -124,7 +124,7 @@ void YangVideoEncoderHandle::startLoop() {
 		if(!tmpsrc) continue;
 
 		if(isHw){
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 			if(para.videoCaptureFormat==YangI420){
 				if(para.videoEncoderFormat==YangI420) tmp=tmpsrc;
 				if(para.videoEncoderFormat==YangNv12) {

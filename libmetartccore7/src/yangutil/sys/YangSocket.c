@@ -5,7 +5,7 @@
 #include <yangutil/sys/YangSocket.h>
 #include <yangutil/sys/YangLog.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
@@ -31,7 +31,7 @@ void yang_addr_set(YangIpAddress* addr,char* ip,int32_t port,YangIpFamilyType fa
 	if(familyType==Yang_IpFamilyType_IPV4){
 		addr->addr4.sin_family = AF_INET;
 		addr->addr4.sin_port = yang_htons(addr->port);
-#ifdef _WIN32
+#if Yang_OS_WIN
 		addr->addr4.sin_addr.S_un.S_addr=yang_inet_addr(ip);
 #else
 		addr->addr4.sin_addr.s_addr = yang_inet_addr(ip);
@@ -64,7 +64,7 @@ void yang_addr_setIPV4(YangIpAddress* addr,int32_t ip,int32_t port,YangSocketPro
 
 		addr->addr4.sin_family = AF_INET;
 		addr->addr4.sin_port = yang_htons(addr->port);
-#ifdef _WIN32
+#if Yang_OS_WIN
 		addr->addr4.sin_addr.S_un.S_addr=ip;
 #else
 		addr->addr4.sin_addr.s_addr = ip;
@@ -92,7 +92,7 @@ void yang_addr_getIPStr(YangIpAddress* addr,char* addrstr,int32_t strLen){
 }
 
 uint32_t yang_addr_getIP(YangIpAddress* addr){
-#ifdef _WIN32
+#if Yang_OS_WIN
 	return addr->addr4.sin_addr.S_un.S_addr;
 #else
 	return addr->addr4.sin_addr.s_addr;
@@ -109,7 +109,7 @@ uint16_t yang_addr_getSinPort(YangIpAddress* addr){
 }
 
 yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol protocol){
-#ifdef _WIN32
+#if Yang_OS_WIN
     WORD wVersionRequested;
     WSADATA wsaData;
     wVersionRequested = MAKEWORD(2, 2);
@@ -125,7 +125,7 @@ yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol
 	}
 
 	int32_t timeoutMs=800;
-#ifdef _WIN32
+#if Yang_OS_WIN
     int32_t timeout=timeoutMs;
     setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, (const char*) &timeout,  sizeof(timeout));
 #else
@@ -149,7 +149,7 @@ yang_socket_t yang_socket_create(YangIpFamilyType familyType, YangSocketProtocol
 
 }
 int32_t yang_socket_setNonblock(yang_socket_t fd) {
-#ifdef _WIN32
+#if Yang_OS_WIN
 	if (fd != INVALID_SOCKET) {
 		int iMode = 1;
 		ioctlsocket(fd, FIONBIO,  & iMode);
@@ -163,7 +163,7 @@ int32_t yang_socket_setNonblock(yang_socket_t fd) {
 
 
 int32_t yang_socket_close(yang_socket_t fd){
-#ifdef _WIN32
+#if Yang_OS_WIN
 	closesocket(fd);
 #else
 	close(fd);

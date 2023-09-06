@@ -4,7 +4,7 @@
 #include <yangaudiodev/win/YangWinAudioApiCapture.h>
 #include <yangutil/sys/YangLog.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 
 #include <assert.h>
 #include <ksmedia.h>

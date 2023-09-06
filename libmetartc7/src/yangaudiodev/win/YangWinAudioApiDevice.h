@@ -14,7 +14,7 @@
 #include <yangutil/sys/YangLoadLib.h>
 #include <vector>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include "YangWinAudioCaptureHandle.h"
 
 class YangWinAudioApiDevice: public YangAudioCapture,public YangCaptureCallback {

@@ -8,7 +8,7 @@ extern "C"{
 #include <yangutil/sys/YangFile.h>
 }
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <windows.h>
 #include <basetyps.h>
 #ifdef _MSC_VER
@@ -29,7 +29,7 @@ YangLoadLib::~YangLoadLib(){
 void* YangLoadLib::loadSysObject(const char *sofile)
 {
 
-#ifdef _WIN32
+#if Yang_OS_WIN
    // LPCSTR
     m_handle = LoadLibraryA(sofile);
 #else
@@ -55,7 +55,7 @@ void* YangLoadLib::loadObject(const char *sofile)
 		return NULL;
 	}
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 	sprintf(file1, "%s/%s.dll", file_path_getcwd, sofile);
     m_handle =  LoadLibraryA(file1);
 #else
@@ -69,7 +69,7 @@ void* YangLoadLib::loadObject(const char *sofile)
     }
     return (m_handle);
 }
-#ifdef _WIN32
+#if Yang_OS_WIN
 char *YangLoadLib::dlerror(){
     return (char*)"loadlib error";
 }
@@ -78,7 +78,7 @@ char *YangLoadLib::dlerror(){
 void* YangLoadLib::loadFunction( const char *name)
 {
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 	void *symbol = (void *) GetProcAddress(m_handle, name);
 #else
 	void *symbol = dlsym(m_handle, name);
@@ -93,7 +93,7 @@ void* YangLoadLib::loadFunction( const char *name)
 void YangLoadLib::unloadObject()
 {
     if (m_handle) {
-#ifdef _WIN32
+#if Yang_OS_WIN
     	 FreeLibrary( m_handle);
 #else
 	 dlclose(m_handle);;

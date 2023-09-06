@@ -20,7 +20,7 @@ public:
      int32_t m_isLoop;
     void initPara(YangContext *par);
 
-#if defined (__APPLE__)
+#if Yang_OS_APPLE
     YangYuvPlayWidget *m_video;
 #else
     YangPlayWidget *m_video;

@@ -7,7 +7,7 @@
 #include <yangutil/sys/YangEndian.h>
 #include <yangavutil/video/YangNalu.h>
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <EGL/egl.h>
 YangEncoderMediacodec::YangEncoderMediacodec() {
 	m_sendKeyframe=0;

@@ -9,7 +9,7 @@
 
 #include <yangavutil/audio/YangPreProcess.h>
 
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if Yang_OS_LINUX
 #include <sys/poll.h>
 #include <alsa/asoundlib.h>
 

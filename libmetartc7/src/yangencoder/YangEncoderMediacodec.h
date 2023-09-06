@@ -9,7 +9,7 @@
 #include <yangutil/sys/YangLoadLib.h>
 #include <yangavutil/video/YangYuvConvert.h>
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 
 #include <media/NdkMediaCodec.h>
 

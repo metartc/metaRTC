@@ -5,7 +5,7 @@
 #include <yangaudiodev/win/YangWinAudioApiAec.h>
 #include <yangavutil/audio/YangAudioUtil.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 YangWinAudioApiDevice::YangWinAudioApiDevice(YangContext *pcontext,bool isRecord,
 		bool usingBuiltinAec) {
 	m_usingBuiltinAec = usingBuiltinAec;

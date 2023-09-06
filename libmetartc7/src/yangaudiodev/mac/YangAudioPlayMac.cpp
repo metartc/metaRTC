@@ -5,7 +5,7 @@
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/sys/YangMath.h>
 #include <yangutil/yangautofree.h>
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 
 int32_t yang_mac_audio_render_callback(YangFrame* audioFrame,void* user){
     YangAudioPlayMac* mac=(YangAudioPlayMac*)user;

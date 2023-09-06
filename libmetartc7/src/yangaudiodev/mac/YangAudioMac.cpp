@@ -3,7 +3,7 @@
 //
 #include "YangAudioMac.h"
 #include <yangutil/sys/YangLog.h>
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 #include "YangAudioDeviceMac.h"
 
 static OSStatus yang_mac_audio_callback(AudioDeviceID,

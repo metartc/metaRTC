@@ -7,7 +7,7 @@
 #include <yangdecoder/YangH264DecoderSoft.h>
 #include <yangdecoder/YangDecoderOpenh264.h>
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <yangdecoder/YangDecoderMediacodec.h>
 #else
 #include <yangdecoder/pc/YangAudioDecoderAac.h>
@@ -27,7 +27,7 @@ YangDecoderFactory::~YangDecoderFactory() {
 
 YangAudioDecoder *YangDecoderFactory::createAudioDecoder(YangAudioCodec paet,YangAudioParam *pcontext){
 
-#ifndef __ANDROID__
+#if  !Yang_OS_ANDROID
 	if(paet==Yang_AED_SPEEX) return new YangAudioDecoderSpeex(pcontext);
 	if(paet==Yang_AED_AAC) return new YangAudioDecoderAac(pcontext);
 #endif
@@ -39,7 +39,7 @@ YangAudioDecoder *YangDecoderFactory::createAudioDecoder(YangAudioParam *pcontex
 
 	return createAudioDecoder(pcontext->encode,pcontext);
 }
-#ifndef __ANDROID__
+#if !Yang_OS_ANDROID
 YangVideoDecoder* YangDecoderFactory::createFfmpegVideoDecoder(YangVideoCodec paet,YangVideoInfo *pcontext){
 #if Yang_Enable_Ffmpeg_Codec
 	return new YangVideoDecoderFfmpeg(pcontext,paet);
@@ -50,7 +50,7 @@ YangVideoDecoder* YangDecoderFactory::createFfmpegVideoDecoder(YangVideoCodec pa
 #endif
 YangVideoDecoder* YangDecoderFactory::createVideoDecoder(YangVideoCodec paet,YangVideoInfo *pcontext){
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 	if(pcontext->videoDecHwType==0)
 		return new YangH264DecoderSoft();
 	else

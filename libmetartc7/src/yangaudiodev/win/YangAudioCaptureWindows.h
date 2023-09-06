@@ -9,7 +9,7 @@
 #include <yangavutil/audio/YangPreProcess.h>
 #include <yangavutil/audio/YangAudioMix.h>
 #include <yangavutil/audio/YangRtcAec.h>
-#ifdef _WIN32
+#if Yang_OS_WIN
 
 #include <amstream.h>
 #include <control.h>

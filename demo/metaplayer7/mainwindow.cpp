@@ -1,5 +1,5 @@
 ﻿//
-// Copyright (c) 2019-2022 yanggaofeng
+// Copyright (c) 2019-2023 yanggaofeng
 //
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_centerWdiget->setLayout(m_vb);
     m_vb->setMargin(0);
     m_vb->setSpacing(0);
-#if defined (__APPLE__)
+#if Yang_OS_APPLE
      m_videoWin=new YangYuvPlayWidget(this);
 #else
      m_videoWin=new YangPlayWidget(this);

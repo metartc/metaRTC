@@ -7,7 +7,7 @@
 
 #include <yangcapture/YangVideoCaptureHandle.h>
 #include <yangcapture/YangMultiVideoCapture.h>
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if Yang_OS_LINUX
 #include <linux/videodev2.h>
 
 #define REQ_BUF_NUM 4

@@ -4,8 +4,8 @@
 #include <yangaudiodev/linux/YangAudioPlayLinux.h>
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/yangautofree.h>
-#if !defined(_WIN32) && !defined(__APPLE__)
-#ifndef __ANDROID__
+#if Yang_OS_LINUX
+
 #include <sys/types.h>
 #include <sys/ioctl.h>
 #include <fcntl.h>
@@ -218,5 +218,5 @@ void YangAudioPlayLinux::startLoop() {
 	m_handle = NULL;
 
 }
-#endif
+
 #endif

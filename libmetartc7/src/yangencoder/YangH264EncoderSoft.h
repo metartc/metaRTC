@@ -10,7 +10,7 @@
 #include <yangutil/sys/YangLoadLib.h>
 #include <x264.h>
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #define Yang_X264_So 0
 #else
 #define Yang_X264_So 1

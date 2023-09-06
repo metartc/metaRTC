@@ -5,7 +5,7 @@
 #define YANGAUDIOMAC_H
 #include <yangutil/yangtype.h>
 #include <yangutil/yangavctype.h>
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 
 #include <CoreAudio/CoreAudio.h>
 

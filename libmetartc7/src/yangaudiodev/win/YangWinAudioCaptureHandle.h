@@ -7,7 +7,7 @@
 #include <yangutil/buffer/YangAudioBuffer.h>
 #include <yangavutil/audio/YangPreProcess.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <qedit.h>
 
 #define Yang_Enable_RenderApi 1

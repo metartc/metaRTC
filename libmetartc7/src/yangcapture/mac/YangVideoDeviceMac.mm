@@ -2,7 +2,7 @@
 // Copyright (c) 2019-2023 yanggaofeng
 //
 #include "YangVideoDeviceMac.h"
-#if defined(__APPLE__)
+#if Yang_OS_APPLE
 
 #import <CoreFoundation/CFString.h>
 #import <AVFoundation/AVFoundation.h>

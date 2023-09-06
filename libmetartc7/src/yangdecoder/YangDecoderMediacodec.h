@@ -11,7 +11,7 @@
 #include <yangutil/yangavinfotype.h>
 
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <media/NdkMediaCodec.h>
 
 class YangDecoderMediacodec: public YangVideoDecoder {

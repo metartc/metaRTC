@@ -1,7 +1,8 @@
 ﻿//
 // Copyright (c) 2019-2022 yanggaofeng
 //
-#if !defined(_WIN32) && !defined(__APPLE__)
+#include <yangutil/yangtype.h>
+#if Yang_OS_LINUX
 #include <yangaudiodev/linux/YangAudioCaptureLinux.h>
 #include <yangavutil/audio/YangAudioUtil.h>
 

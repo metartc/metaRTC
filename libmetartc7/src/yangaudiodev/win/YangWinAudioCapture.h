@@ -10,7 +10,7 @@
 #include <yangavutil/audio/YangAudioMix.h>
 #include <yangavutil/audio/YangRtcAec.h>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <control.h>
 #include <amstream.h>
 #include <qedit.h>

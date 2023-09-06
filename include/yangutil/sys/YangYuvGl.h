@@ -5,7 +5,7 @@
 #ifndef INCLUDE_YANGUTIL_SYS_YANGYUVGL_H_
 #define INCLUDE_YANGUTIL_SYS_YANGYUVGL_H_
 #include <yangutil/yangtype.h>
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <EGL/egl.h>
 #include <GLES2/gl2.h>
 

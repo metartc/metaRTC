@@ -21,7 +21,7 @@ public:
     void initPara();
 
 
-#if defined (__APPLE__)
+#if Yang_OS_APPLE
     YangYuvPlayWidget *m_video;
 #else
     YangPlayWidget *m_video;

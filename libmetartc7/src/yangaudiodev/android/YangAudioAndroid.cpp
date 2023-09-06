@@ -7,7 +7,7 @@
 
 #include "YangAudioAndroid.h"
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_Android.h>
 

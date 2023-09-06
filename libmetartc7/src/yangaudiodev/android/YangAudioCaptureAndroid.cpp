@@ -4,7 +4,7 @@
 //
 #include <yangavutil/audio/YangAudioUtil.h>
 
-#ifdef __ANDROID__
+#if Yang_OS_ANDROID
 #include <yangaudiodev/android/YangAudioCaptureAndroid.h>
 
 void g_yang_androidaudio_bqRecorderCallback(uint8_t* data,int32_t nb,void* user)

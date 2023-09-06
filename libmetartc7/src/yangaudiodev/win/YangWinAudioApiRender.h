@@ -11,7 +11,7 @@
 #include <yangutil/yangavinfotype.h>
 #include <vector>
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 #include <audioclient.h>
 
 class YangWinAudioApiRender:public YangWinAudioApi,public YangAudioPlay

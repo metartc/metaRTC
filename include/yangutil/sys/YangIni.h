@@ -4,7 +4,7 @@
 #ifndef __YangIni__H_
 #define __YangIni__H_
 #include <yangutil/yangavinfotype.h>
-#ifndef __ANDROID__
+#if !(Yang_OS_ANDROID || Yang_OS_IOS)
 
 typedef struct{
 	char* filename;

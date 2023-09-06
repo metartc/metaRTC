@@ -4,16 +4,16 @@
 #include <yangutil/sys/YangTimer.h>
 #include <yangutil/sys/YangTime.h>
 #include <yangutil/sys/YangLog.h>
-#if !defined(__APPLE__)
+#if !Yang_OS_APPLE
 
-#ifdef _WIN32
+#if Yang_OS_WIN
 
 #else
 #include <sys/time.h>
 #endif
 
 #if !Yang_Enable_Timer_Phtread
-#ifdef _WIN32
+#if Yang_OS_WIN
 #pragma comment(lib,"Winmm.lib")
 void  CALLBACK YangTimer::TimeEvent(PVOID user, BOOLEAN TimerOrWaitFired2)
 {
@@ -55,7 +55,7 @@ YangTimer::YangTimer() {
     yang_thread_cond_init(&m_cond_mess,NULL);
 
 #else
-#ifdef _WIN32
+#if Yang_OS_WIN
     m_hTimerQueue=NULL;
     m_hTimerQueueTimer=NULL;
     m_winEvent=CreateEvent(NULL,TRUE,FALSE,NULL);
@@ -110,7 +110,7 @@ void YangTimer::stopLoop() {
 
     }
 #else
-#ifdef _WIN32
+#if Yang_OS_WIN
     if (m_hTimerQueueTimer != NULL)
         DeleteTimerQueueTimer(m_hTimerQueue, m_hTimerQueueTimer, INVALID_HANDLE_VALUE);
     if (m_hTimerQueue != NULL)
@@ -158,7 +158,7 @@ void YangTimer::startLoop() {
     }
     yang_thread_mutex_unlock(&m_lock);
 #else
-#ifdef _WIN32
+#if Yang_OS_WIN
 
     startWindowsEventTime(m_waitTime,(DWORD_PTR)this);
     if(WaitForSingleObject(m_winEvent,INFINITE) !=WAIT_OBJECT_0)
