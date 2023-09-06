@@ -4,7 +4,7 @@
 
 #ifndef YANGCAPTURE_SRC_YangLivingVideoCaptureWinImpl_H_
 #define YANGCAPTURE_SRC_YangLivingVideoCaptureWinImpl_H_
-
+#include <yangutil/yangtype.h>
 #if Yang_OS_WIN
 #include <yangcapture/win/YangWinVideoCaptureHandle.h>
 #include <yangcapture/YangMultiVideoCapture.h>

@@ -1,10 +1,10 @@
 ﻿//
 // Copyright (c) 2019-2022 yanggaofeng
 //
-
+#include "YangRecAudioCaptureHandle.h"
 #if Yang_OS_WIN
 #include <strmif.h>
-#include "YangRecAudioCaptureHandle.h"
+
 
 YangRecAudioCaptureHandle::YangRecAudioCaptureHandle(YangAVInfo* avinfo):YangAudioCaptureHandle(avinfo)
 {

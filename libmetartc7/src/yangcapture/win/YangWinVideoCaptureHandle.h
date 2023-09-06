@@ -1,8 +1,9 @@
-//
+﻿//
 // Copyright (c) 2019-2022 yanggaofeng
 //
 #ifndef __YangWinVideoCaptureHandle__
 #define __YangWinVideoCaptureHandle__
+#include <yang_config.h>
 #if Yang_OS_WIN
 #include <yangutil/buffer/YangVideoBuffer.h>
 #include <yangutil/yangavinfotype.h>
