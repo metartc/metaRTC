@@ -195,7 +195,6 @@
     <ClCompile Include="..\src\yangaudiodev\win\YangWinAudioCaptureHandle.cpp" />
     <ClCompile Include="..\src\yangcapture\win\YangDXGIManager.cpp" />
     <ClCompile Include="..\src\yangcapture\win\YangVideoCaptureWindows.cpp" />
-    <ClCompile Include="..\src\yangcapture\win\YangVideoSrc.cpp" />
     <ClCompile Include="..\src\yangcapture\win\YangWinVideoCaptureHandle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
