@@ -3,7 +3,7 @@
 MetaRTC是一个跨平台的webRTC SDK,更适合嵌入式/物联网的webRTC应用  
 MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of Things webRTC applications.    
 **Remark:metaRTC6.0 is stable**  
- 
+
 ## Key Features
 + Audio/Video Support  
   + H264/H265(HEVC) 
@@ -20,7 +20,17 @@ MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of T
 + MP4/FLV Recording  
   + AAC/H264  
   + AAC/H265(HEVC)
+
+## New Features
+
+### lvgl ui demo 
+
+demo/metaplayer7_lvgl
+
+download: https://github.com/metartc/metaRTC/releases/tag/7.0.050 file:metartc7.062.linux.lvgl.7z
+
 ## module
+
 ### libmetartccore7(pure C)
 Implementation of webRTC protocol stack    
 AEC/ANS/AGC and other audio and video processing libraries
@@ -39,7 +49,7 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 微信号: taihang82  
 email: yangrtc@aliyun.com yangrtc@outlook.com   
 twitter: metaRTC@metartc_sdk  
- 
+
 ### metaRTC问答星球      
   ![xingqiu2](https://user-images.githubusercontent.com/87118023/227077884-0163fcb6-ab0d-4933-88c9-0164b80f4d02.jpg)  
 https://t.zsxq.com/0cfpXQYoX
