@@ -49,6 +49,10 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 微信号: taihang82  
 email: yangrtc@aliyun.com yangrtc@outlook.com   
 twitter: metaRTC@metartc_sdk  
+### metaRTC微信公众号
+
+![gzh2](https://github.com/metartc/metaRTC/assets/87118023/29a65e31-083f-4151-ab86-0103766e9d0a)
+
 
 ### metaRTC问答星球      
   ![xingqiu2](https://user-images.githubusercontent.com/87118023/227077884-0163fcb6-ab0d-4933-88c9-0164b80f4d02.jpg)  
