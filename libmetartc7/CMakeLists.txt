@@ -15,7 +15,7 @@ include_directories(${HOME_BASE}/thirdparty/include)
 include_directories(${HOME_BASE}/thirdparty/user_include)
 include_directories(${HOME_BASE}/thirdparty/user_include/ffmpeg)
 include_directories(${HOME_BASE}/libmetartc7/src)
-
+#set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 if (NOT NoCapture)
 # 发现目录下的源文件
 aux_source_directory(./src/yangaudiodev DIR_SRCS)

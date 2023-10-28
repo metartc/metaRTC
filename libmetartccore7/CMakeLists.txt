@@ -20,7 +20,7 @@ add_definitions(-D_TIMESPEC_DEFINED)
 include_directories(${HOME_BASE}/thirdparty/include/win/include)
 endif()
 include_directories(${HOME_BASE}/libmetartccore7/src)
-
+#set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # 发现目录下的源文件
 
