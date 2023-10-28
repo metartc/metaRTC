@@ -23,6 +23,12 @@ MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of T
 
 ## New Features
 
+## flutter ui demo
+
+demo/metaplayer7_flutter
+
+download: https://github.com/metartc/metaRTC/releases/tag/7.0.072 file:metartc7.072.linux.7z
+
 ### lvgl ui demo 
 
 demo/metaplayer7_lvgl
