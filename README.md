@@ -2,7 +2,6 @@
 **Code once run everywhere, A pure C version of webRTC**    
 MetaRTC是一个跨平台的webRTC SDK,更适合嵌入式/物联网的webRTC应用  
 MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of Things webRTC applications.    
-**Remark:metaRTC6.0 is stable**  
 
 ## Key Features
 + Audio/Video Support  
@@ -20,6 +19,7 @@ MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of T
 + MP4/FLV Recording  
   + AAC/H264  
   + AAC/H265(HEVC)
++ Qt/Flutter/Lvgl/Native
 
 ## New Features
 
