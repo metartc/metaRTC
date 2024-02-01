@@ -88,7 +88,7 @@ int32_t yang_sdp_querySrs(YangRtcSession* session,SrsSdpResponseType* srs,int32_
 
 int32_t yang_srs_getSignal(YangRtcSession* session,SrsSdpResponseType* srs,char* sdp) {
 	int32_t err = Yang_Ok;
-	YangStreamDirection role=session->context.streamConfig->streamDirection;
+	YangRtcDirection role=session->context.streamConfig->direction;
 	const char* roleStr=role==YangRecvonly?"play":"publish";
 
 	char apiStr[256]={0};
@@ -129,7 +129,7 @@ int32_t yang_srs_connectRtcServer(YangRtcConnection* conn){
 	char *tsdp=NULL;
 	conn->createOffer(session, &tsdp);
 
-
+	if(tsdp) conn->setLocalDescription(session,tsdp);
 	if ((err=yang_srs_getSignal(conn->session,&srs,tsdp))  == Yang_Ok) {
 		conn->setRemoteDescription(conn->session,srs.sdp);
 	}

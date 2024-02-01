@@ -12,13 +12,15 @@ public:
 public:
 	void init();
 
-	//int32_t requestStunServer();
-	//int32_t requestTurnServer();
+    int32_t addAudioTrack(YangAudioCodec codec);
+    int32_t addVideoTrack(YangVideoCodec codec);
+
+    int32_t addTransceiver(YangRtcDirection direction);
 
 	int32_t createOffer( char **psdp);
 	int32_t createAnswer(char* answer);
 	int32_t createHttpAnswer(char* answer);
-
+	int32_t createDataChannel();
 	int32_t setRemoteDescription(char* sdp);
 	int32_t connectSfuServer();//srs zlm
 	int32_t connectWhipServer(char* url);

@@ -61,7 +61,7 @@ int32_t yang_whip_connectPeer(YangRtcConnection* conn,char* url){
 
 	char *localSdp=NULL;
 	conn->createOffer(session, &localSdp);
-
+	if(localSdp) conn->setLocalDescription(session,localSdp);
 	if ((err=yang_whip_getSignal(conn->session,url,&remoteSdp,localSdp))  == Yang_Ok) {
 		if(remoteSdp) conn->setRemoteDescription(conn->session,remoteSdp);
 	}

@@ -40,7 +40,7 @@ bool YangH264EncoderGpu::init()
 		if (nvenc_data_ != nullptr) {
 			nvenc_config nvenc_config;
             nvenc_config.codec = "h264";//
-            if(m_context->videoEncoderType==Yang_VED_265)   nvenc_config.codec = "hevc";
+            if(m_context->videoEncoderType==Yang_VED_H265)   nvenc_config.codec = "hevc";
 
 
             nvenc_config.format = m_format;//;

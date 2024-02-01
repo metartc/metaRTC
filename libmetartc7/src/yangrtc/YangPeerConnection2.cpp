@@ -19,14 +19,19 @@ void YangPeerConnection2::init(){
 	m_conn.init(&m_conn.peer);
 }
 
-//int32_t YangPeerConnection2::requestStunServer(){
-//	return m_conn.requestStunServer(&m_conn.peer);
-//}
-//
-//int32_t YangPeerConnection2::requestTurnServer(){
-//	return m_conn.requestTurnServer(&m_conn.peer);
-//}
+int32_t YangPeerConnection2::addAudioTrack(YangAudioCodec codec){
+	return m_conn.addAudioTrack(&m_conn.peer,codec);
+}
+int32_t YangPeerConnection2::addVideoTrack(YangVideoCodec codec){
+	return m_conn.addVideoTrack(&m_conn.peer,codec);
+}
 
+int32_t YangPeerConnection2::addTransceiver(YangRtcDirection direction){
+	return m_conn.addTransceiver(&m_conn.peer,direction);
+}
+int32_t YangPeerConnection2::createDataChannel(){
+	return m_conn.createDataChannel(&m_conn.peer);
+}
 int32_t YangPeerConnection2::createOffer( char **psdp){
 	return m_conn.createOffer(&m_conn.peer,psdp);
 }

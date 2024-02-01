@@ -31,7 +31,14 @@ typedef struct{
 } YangStunData;
 
 typedef struct{
-	YangVideoCodec codec;
+	yangbool enableAudioTrack;
+	yangbool enableVideoTrack;
+
+	YangAudioCodec audioCodec;
+	YangVideoCodec videoCodec;
+
+	YangRtcDirection direction;
+
 	uint32_t audioSsrc;
 	uint32_t videoSsrc;
 	int32_t state;

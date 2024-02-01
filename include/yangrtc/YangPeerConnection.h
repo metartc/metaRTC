@@ -16,13 +16,18 @@ typedef struct {
 	YangPeer peer;
 	void (*init)(YangPeer* peer);
 
+	int32_t (*addAudioTrack)(YangPeer* peer,YangAudioCodec codec);
+	int32_t (*addVideoTrack)(YangPeer* peer,YangVideoCodec codec);
 
+	int32_t (*addTransceiver)(YangPeer* peer,YangRtcDirection direction);
 	YangIceCandidateType (*getIceCandidateType)(YangPeer* peer);
 
 	int32_t (*createOffer)(YangPeer* peer, char **psdp);
 	int32_t (*createAnswer)(YangPeer* peer,char* answer);
 	int32_t (*createHttpAnswer)(YangPeer* peer,char* answer);
+	int32_t (*createDataChannel)(YangPeer* peer);
 
+	int32_t (*setLocalDescription)(YangPeer* peer,char* sdp);
 	int32_t (*setRemoteDescription)(YangPeer* peer,char* sdp);
 	int32_t (*connectSfuServer)(YangPeer* peer);//srs zlm
 	int32_t (*connectWhipWhepServer)(YangPeer* peer,char* url);

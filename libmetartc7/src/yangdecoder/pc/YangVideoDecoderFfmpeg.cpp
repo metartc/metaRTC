@@ -228,7 +228,7 @@ void YangVideoDecoderFfmpeg::parseRtmpHeader(uint8_t *p, int32_t pLen, int32_t *
 	uint8_t headers[128];
 	memset(headers, 0, 128);
 	int32_t headerLen = 0;
-	if(m_encDecType==Yang_VED_264){
+	if(m_encDecType==Yang_VED_H264){
 		yang_getH264RtmpHeader(p, headers, &headerLen);
 #if Yang_OS_WIN
 		uint8_t* sps=NULL;
@@ -238,7 +238,7 @@ void YangVideoDecoderFfmpeg::parseRtmpHeader(uint8_t *p, int32_t pLen, int32_t *
 #else
 		parseHeaderH264(headers,headerLen,pwid,phei,pfps);
 #endif
-	}else if(m_encDecType==Yang_VED_265) {
+	}else if(m_encDecType==Yang_VED_H265) {
 		yang_getH265RtmpHeader(p, headers, &headerLen);
 		parseHeaderH265(headers,headerLen,pwid,phei,pfps);
 
@@ -325,19 +325,19 @@ void YangVideoDecoderFfmpeg::init() {
 #endif
 
 	if(usingHw){
-		if(m_encDecType==Yang_VED_264){
+		if(m_encDecType==Yang_VED_H264){
 			if(m_context->videoDecHwType==YangV_Hw_Intel)	m_codec = yang_avcodec_find_decoder_by_name("h264_vaapi");//avcodec_find_encoder(AV_CODEC_ID_H264);
 			if(m_context->videoDecHwType==YangV_Hw_Nvdia)	m_codec = yang_avcodec_find_decoder_by_name("h264_nvdec");//h264_cuvid
 			if(m_context->videoDecHwType==YangV_Hw_Android)	m_codec = yang_avcodec_find_decoder_by_name("h264_mediacodec");
-		}else if(m_encDecType==Yang_VED_265){
+		}else if(m_encDecType==Yang_VED_H265){
 			if(m_context->videoDecHwType==YangV_Hw_Intel)	m_codec = yang_avcodec_find_decoder_by_name("hevc_vaapi");
 			if(m_context->videoDecHwType==YangV_Hw_Nvdia) 	m_codec = yang_avcodec_find_decoder_by_name("hevc_nvdec");
 			if(m_context->videoDecHwType==YangV_Hw_Android)	m_codec = yang_avcodec_find_decoder_by_name("hevc_mediacodec");
 		}
 	}else{
-		if(m_encDecType==Yang_VED_264){
+		if(m_encDecType==Yang_VED_H264){
 			m_codec = yang_avcodec_find_decoder(AV_CODEC_ID_H264);
-		}else if(m_encDecType==Yang_VED_265){
+		}else if(m_encDecType==Yang_VED_H265){
 			m_codec = yang_avcodec_find_decoder(AV_CODEC_ID_H265);
 		}
 	}

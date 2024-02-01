@@ -14,7 +14,7 @@ typedef void* (*yang_rtcsocket_thread_app)(void *obj);
 
 typedef struct{
 	yang_socket_t fd;
-
+	yangbool isControlled;
 	yangbool isStart;
 	yangbool isLoop;
 	yangbool notRemoteInit;

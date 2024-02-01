@@ -377,7 +377,7 @@ int32_t yang_rtcplay_on_rtcp_xr(YangRtcContext *context,
 						+ ((rtt_ntp >> 16) * 1000);
 				yang_trace("ssrc=%u, compact_ntp=%u, lrr=%u, dlrr=%u, rtt=%d",
 						ssrc, compact_ntp, lrr, dlrr, rtt);
-				if(context->streamConfig->streamDirection==YangRecvonly)
+				if(context->streamConfig->direction==YangRecvonly)
 					yang_rtcplay_update_rtt(context, play, ssrc, rtt);
 			}
 		}else if(bt == 4){

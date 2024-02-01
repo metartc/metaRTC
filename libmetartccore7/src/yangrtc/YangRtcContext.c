@@ -39,7 +39,7 @@ void yang_create_rtcContext(YangRtcContext *context) {
 	if (context == NULL)
 		return;
 	context->state = Yang_Conn_State_New;
-	context->codec = Yang_VED_264;
+	context->videoCodec = Yang_VED_H264;
 
 	context->audioSsrc = yang_generate_ssrc();
 	context->videoSsrc = yang_generate_ssrc();

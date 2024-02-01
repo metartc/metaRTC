@@ -59,7 +59,7 @@ typedef struct {
 	yangbool isStart;
 	yangbool isLoop;
 	yangbool reset_timer_;
-	yangbool isServer;
+	yangbool isControled;
 
 	int32_t uid;
 	yang_thread_t threadId;
@@ -109,7 +109,7 @@ typedef struct{
 	int32_t (*sendSctpData)(YangDtlsSession* session,uint8_t* pdata, int32_t nb);
 }YangRtcDtls;
 
-int32_t yang_create_rtcdtls(YangRtcDtls* dtls,yangbool isServer);
+int32_t yang_create_rtcdtls(YangRtcDtls* dtls,yangbool isControled);
 void yang_destroy_rtcdtls(YangRtcDtls* dtls);
 
 #endif

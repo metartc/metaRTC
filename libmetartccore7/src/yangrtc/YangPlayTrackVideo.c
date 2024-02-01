@@ -67,12 +67,12 @@ void yang_create_playvideoTrack(YangRtcContext *context,YangPlayTrackVideo *trac
 	videotrack->h264Track = NULL;
 	videotrack->h265Track = NULL;
 
-	if (context->codec == Yang_VED_264) {
+	if (context->videoCodec == Yang_VED_H264) {
 		YangPlayTrackH264* h264Track=(YangPlayTrackH264*) yang_calloc(1,sizeof(YangPlayTrackH264));
 		videotrack->h264Track = h264Track;
 		yang_create_playTrackH264(context, h264Track);
 	}
-	if (context->codec == Yang_VED_265) {
+	if (context->videoCodec == Yang_VED_H265) {
 		YangPlayTrackH265* h265Track= (YangPlayTrackH265*) yang_calloc(1,
 				sizeof(YangPlayTrackH265));
 		videotrack->h265Track =h265Track;

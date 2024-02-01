@@ -14,7 +14,7 @@
 
 typedef enum  {
 	YangRecvonly, YangSendonly, YangSendrecv
-}YangStreamDirection;
+}YangRtcDirection;
 
 typedef enum {
     Yang_Conn_State_New,
@@ -30,12 +30,13 @@ typedef enum YangAudioCodec{
 	Yang_AED_MP3,
 	Yang_AED_SPEEX,
 	Yang_AED_OPUS,
-	Yang_AED_G711
+	Yang_AED_PCMA,
+	Yang_AED_PCMU
 }YangAudioCodec;
 
 typedef enum YangVideoCodec{
-	Yang_VED_264,
-	Yang_VED_265,
+	Yang_VED_H264,
+	Yang_VED_H265,
 	Yang_VED_AV1,
 	Yang_VED_VP8,
 	Yang_VED_VP9,
@@ -139,7 +140,7 @@ typedef struct  {
 	int32_t uid;
 	yangbool isControlled;
 
-	YangStreamDirection streamDirection;
+	YangRtcDirection direction;
 	YangSslCallback sslCallback;
 	YangRtcCallback rtcCallback;
 	YangReceiveCallback recvCallback;

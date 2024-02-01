@@ -13,7 +13,7 @@ void yang_find_start_code(YangVideoCodec pve,uint8_t *buf,int32_t bufLen,int32_t
 {
    int32_t i = 0;
    *spsPos=0;*ppsPos=0;
-   if(pve==Yang_VED_265)	  {
+   if(pve==Yang_VED_H265)	  {
 	   *vpsPos=0;
 	   while(i<bufLen-3){
 		      if (buf[i] == 0 && buf[i + 1] == 0 &&buf[i + 2] == 0&& buf[i + 3] == 1){
@@ -26,7 +26,7 @@ void yang_find_start_code(YangVideoCodec pve,uint8_t *buf,int32_t bufLen,int32_t
    }
    while (i <bufLen-3) {
        if (buf[i] == 0 && buf[i + 1] == 0 &&buf[i + 2] == 0&& buf[i + 3] == 1){
-    	   if(pve==Yang_VED_265) *vpsLen=i-4;
+    	   if(pve==Yang_VED_H265) *vpsLen=i-4;
        	*spsPos=i+4;
        	i+=4;
        	 break;

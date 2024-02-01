@@ -100,7 +100,7 @@ void YangFfmpegEncoderMeta::yang_find_next_start_code(YangVideoCodec pve,uint8_t
    int32_t i = 0;
 
    *spsPos=0;*ppsPos=0;
-   if(pve==Yang_VED_265)	  {
+   if(pve==Yang_VED_H265)	  {
 	   *vpsPos=0;
 	   while(i<bufLen-3){
 		      if (buf[i] == 0 && buf[i + 1] == 0 &&buf[i + 2] == 0&& buf[i + 3] == 1){
@@ -113,7 +113,7 @@ void YangFfmpegEncoderMeta::yang_find_next_start_code(YangVideoCodec pve,uint8_t
    }
    while (i <bufLen-3) {
        if (buf[i] == 0 && buf[i + 1] == 0 &&buf[i + 2] == 0&& buf[i + 3] == 1){
-    	   if(pve==Yang_VED_265) *vpsLen=i-4;
+    	   if(pve==Yang_VED_H265) *vpsLen=i-4;
        	*spsPos=i+4;
        	i+=4;
        	 break;
@@ -187,11 +187,11 @@ void YangFfmpegEncoderMeta::yang_getSpsPps(YangH2645Conf *pconf,
 		 AVCodecContext *m_codecCtx = NULL;
 				 AVBufferRef *hw_device_ctx=NULL;
 					//hevc_vaapi nvenc nvdec vdpau h264_nvenc
-				if(m_encoderType==Yang_VED_264){
+				if(m_encoderType==Yang_VED_H264){
 					if(m_hwType==YangV_Hw_Intel)	m_codec = yang_avcodec_find_encoder_by_name("h264_vaapi");//avcodec_find_encoder(AV_CODEC_ID_H264);
 					if(m_hwType==YangV_Hw_Nvdia)	m_codec = yang_avcodec_find_encoder_by_name("h264_nvenc");
 					if(m_hwType==YangV_Hw_Android)	m_codec = yang_avcodec_find_encoder_by_name("h264_mediacodec");
-				}else if(m_encoderType==Yang_VED_265){
+				}else if(m_encoderType==Yang_VED_H265){
 					if(m_hwType==YangV_Hw_Intel)	m_codec = yang_avcodec_find_encoder_by_name("hevc_vaapi");
 					if(m_hwType==YangV_Hw_Nvdia) 	m_codec = yang_avcodec_find_encoder_by_name("hevc_nvenc");
 					if(m_hwType==YangV_Hw_Android)	m_codec = yang_avcodec_find_encoder_by_name("hevc_mediacodec");
@@ -241,7 +241,7 @@ void YangFfmpegEncoderMeta::yang_getSpsPps(YangH2645Conf *pconf,
 				int32_t spsPos=0,ppsPos=0;
 				int32_t spsLen=0,ppsLen=0;
 				yang_find_next_start_code(m_encoderType,m_codecCtx->extradata,m_codecCtx->extradata_size,&vpsPos,&vpsLen,&spsPos,&spsLen,&ppsPos,&ppsLen);
-				if(m_encoderType==Yang_VED_265) {
+				if(m_encoderType==Yang_VED_H265) {
 					pconf->vpsLen=vpsLen;
 					memcpy(pconf->vps,m_codecCtx->extradata+vpsPos,vpsLen);
 
@@ -268,8 +268,8 @@ void YangFfmpegEncoderMeta::yang_initVmd(YangVideoMeta *p_vmd,
 	if (!p_vmd->isInit) {
 
 		yang_getSpsPps(&p_vmd->mp4Meta, p_yvp,penc);
-		if(p_yvp->videoEncoderType==Yang_VED_264) yang_getConfig_Flv_H264(&p_vmd->mp4Meta, p_vmd->livingMeta.buffer,&p_vmd->livingMeta.bufLen);
-		if(p_yvp->videoEncoderType==Yang_VED_265) yang_getConfig_Flv_H265(&p_vmd->mp4Meta, p_vmd->livingMeta.buffer,&p_vmd->livingMeta.bufLen);
+		if(p_yvp->videoEncoderType==Yang_VED_H264) yang_getConfig_Flv_H264(&p_vmd->mp4Meta, p_vmd->livingMeta.buffer,&p_vmd->livingMeta.bufLen);
+		if(p_yvp->videoEncoderType==Yang_VED_H265) yang_getConfig_Flv_H265(&p_vmd->mp4Meta, p_vmd->livingMeta.buffer,&p_vmd->livingMeta.bufLen);
 	//	yang_getH265Config_Flv(&p_vmd->mp4Meta, p_vmd->flvMeta.buffer,		&p_vmd->flvMeta.bufLen);
 		p_vmd->isInit = 1;
 	}

@@ -9,11 +9,7 @@
 #include <ctype.h>
 #include <time.h>
 
-
-
-
-
-#if !(Yang_OS_ANDROID || Yang_OS_IOS)
+#if Yang_OS_ANDROID || Yang_OS_IOS
 #define Yang_Enable_Logfile 0
 #else
 #define Yang_Enable_Logfile 1

@@ -89,7 +89,7 @@ int32_t YangStreamManager::getPushOnlineCount(){
 int32_t YangStreamManager::getPlayOnlineCount(){
 	return m_onlinePlayUsers.size();
 }
-void YangStreamManager::connectNotify(int32_t puid,YangStreamDirection opt,bool isConnect){
+void YangStreamManager::connectNotify(int32_t puid,YangRtcDirection opt,bool isConnect){
 
 	size_t i=0;
 

@@ -35,12 +35,12 @@ void YangDecoderMediacodec::parseRtmpHeader(uint8_t *p, int32_t pLen, int32_t *p
 	uint8_t headers[128];
 	memset(headers, 0, 128);
 	int32_t headerLen = 0;
-	if(m_encDecType==Yang_VED_264){
+	if(m_encDecType==Yang_VED_H264){
 		uint8_t* sps=NULL;
 		int32_t spsLen=0;
 		yang_h264_decode_getH264RtmpHeader(p,&sps,&spsLen);
 		yang_h264_decode_spspps(sps,spsLen,pwid,phei,pfps);
-	}else if(m_encDecType==Yang_VED_265) {
+	}else if(m_encDecType==Yang_VED_H265) {
 
 	}
 	m_width = *pwid;

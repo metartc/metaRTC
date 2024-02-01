@@ -111,7 +111,7 @@ int32_t yang_get_srtp_key(YangDtlsSession *dtls, char *precv_key, int *precvkeyl
 	}
 	char* send_key=psend_key;
 	char* recv_key=precv_key;
-	if(dtls->isServer){
+	if(dtls->isControled){
 		send_key=precv_key;
 		recv_key=psend_key;
 	}
@@ -453,7 +453,7 @@ int32_t yang_dtls_sendSctpData(YangDtlsSession* dtls,uint8_t* pdata, int32_t nb)
 
 
 
-int32_t yang_create_rtcdtls(YangRtcDtls *pdtls,yangbool isServer) {
+int32_t yang_create_rtcdtls(YangRtcDtls *pdtls,yangbool isControled) {
 	if (!pdtls)	return ERROR_RTC_DTLS;
 	YangDtlsSession* dtls=&pdtls->session;
 	dtls->sslctx = NULL;
@@ -469,7 +469,7 @@ int32_t yang_create_rtcdtls(YangRtcDtls *pdtls,yangbool isServer) {
 	dtls->isStart = yangfalse;
 	dtls->isLoop = yangfalse;
 
-	dtls->isServer = isServer;
+	dtls->isControled = isControled;
 
 	dtls->state = YangDtlsStateInit;
 
@@ -487,7 +487,7 @@ int32_t yang_create_rtcdtls(YangRtcDtls *pdtls,yangbool isServer) {
 	SSL_set_options(dtls->ssl, SSL_OP_NO_QUERY_MTU);
 	SSL_set_mtu(dtls->ssl, kRtpPacketSize);
 
-	if(isServer){
+	if(isControled){
 		SSL_set_accept_state(dtls->ssl);
 	}else{
 		SSL_set_connect_state(dtls->ssl);

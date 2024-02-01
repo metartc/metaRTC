@@ -40,10 +40,8 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
      init();
     yang_setLogLevel(m_context->avinfo.sys.logLevel);
     yang_setLogFile(m_context->avinfo.sys.enableLogFile);
-
     m_context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm/Yang_Server_Whip_Whep
     m_context->avinfo.rtc.rtcLocalPort=10000+yang_random()%15000;
-    //m_showev->event=1;
 
     m_videoType=Yang_VideoSrc_Camera;//Yang_VideoSrc_Camera/Yang_VideoSrc_Screen;
 
@@ -79,13 +77,10 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
 
     m_initRecord=false;
 
-    m_context->avinfo.rtc.enableDatachannel=yangfalse;
-
     //using h264 h265
-    m_context->avinfo.video.videoEncoderType=Yang_VED_264;//Yang_VED_265;
-    if(m_context->avinfo.video.videoEncoderType==Yang_VED_265){
+    m_context->avinfo.video.videoEncoderType=Yang_VED_H264;//Yang_VED_265;
+    if(m_context->avinfo.video.videoEncoderType==Yang_VED_H265){
            m_context->avinfo.enc.createMeta=1;
-           m_context->avinfo.rtc.enableDatachannel=yangfalse;
     }
     m_context->avinfo.rtc.iceCandidateType=YangIceHost;
 

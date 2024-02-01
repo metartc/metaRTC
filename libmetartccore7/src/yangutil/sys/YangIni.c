@@ -218,7 +218,7 @@ void yang_ini_initRtc(char* filename,YangRtcInfo *rtc){
 	yang_memset(rtc,0,sizeof(YangRtcInfo));
 	rtc->enableHttpServerSdp = yang_ini_readIntValue(filename,"rtc", "enableHttpServerSdp", yangfalse);
 	rtc->sessionTimeout = yang_ini_readIntValue(filename,"rtc", "sessionTimeout",  30*1000000);
-	rtc->enableDatachannel = yang_ini_readIntValue(filename,"rtc", "enableDatachannel", yangtrue);
+
 	rtc->iceCandidateType = yang_ini_readIntValue(filename,"rtc", "iceCandidateType", 0);
 	rtc->iceUsingLocalIp = yang_ini_readIntValue(filename,"rtc", "iceUsingLocalIp", 0);
 	rtc->iceServerPort = yang_ini_readIntValue(filename,"rtc", "iceServerPort", 3478);

@@ -84,12 +84,12 @@ YangVideoEncoder* YangEncoderFactory::createVideoEncoder(YangVideoCodec paet,
 #else
 	if (pcontext->videoEncHwType == 0) {
 #if Yang_Enable_Openh264
-		if (paet == Yang_VED_264)
+		if (paet == Yang_VED_H264)
 			return new YangOpenH264Encoder();
 #else
-		if (paet == Yang_VED_264)		return  new YangH264EncoderSoft();
+		if (paet == Yang_VED_H264)		return  new YangH264EncoderSoft();
 #endif
-		if (paet == Yang_VED_265)
+		if (paet == Yang_VED_H265)
 			return new YangH265EncoderSoft();
 	} else {
 #if Yang_Enable_GPU_Encoding
@@ -111,11 +111,11 @@ YangVideoEncoder* YangEncoderFactory::createVideoEncoder(YangVideoCodec paet,
 }
 YangVideoEncoder* YangEncoderFactory::createVideoEncoder(
 		YangVideoInfo *pcontext) {
-	YangVideoCodec maet = Yang_VED_264;
+	YangVideoCodec maet = Yang_VED_H264;
 	if (pcontext->videoEncoderType == 0)
-		maet = Yang_VED_264;
+		maet = Yang_VED_H264;
 	if (pcontext->videoEncoderType == 1)
-		maet = Yang_VED_265;
+		maet = Yang_VED_H265;
 
 	return createVideoEncoder(maet, pcontext);
 }

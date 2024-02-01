@@ -79,7 +79,7 @@ void* yang_run_rtcudp_thread(void *obj) {
 	sock->isLoop = yangtrue;
 
 	int32_t len = 0;
-	if (!sock->notRemoteInit&&sock->startStunTimer)	sock->startStunTimer(sock->user);
+	if (sock->startStunTimer)	sock->startStunTimer(sock->user);
 
 	yang_trace("\nrtc udp(%s) server is starting,localPort=%d",sock->familyType==Yang_IpFamilyType_IPV4?"IPV4":"IPV6", sock->local_addr.port);
 	YangIpAddress src;

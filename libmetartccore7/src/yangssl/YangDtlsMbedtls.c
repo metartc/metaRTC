@@ -115,7 +115,7 @@ int32_t yang_get_srtp_key(YangDtlsSession *session, char *precv_key, int *precvk
 
 	char* send_key=psend_key;
 	char* recv_key=precv_key;
-	if(session->isServer){
+	if(session->isControled){
 		send_key=precv_key;
 		recv_key=psend_key;
 	}
@@ -251,7 +251,7 @@ int32_t yang_process_dtls_data(void* user,YangDtlsSession *dtls, char *data, int
 	int32_t err=Yang_Ok;
 	yangbool flag = yangtrue;
 
-	if(dtls->isServer&&dtls->state != YangDtlsStateClientDone){
+	if(dtls->isControled&&dtls->state != YangDtlsStateClientDone){
 		if(dtls->isStart==0) yang_start_rtcdtls(dtls);
 	}
 
@@ -386,7 +386,7 @@ void yang_mbed_initDtls(YangDtlsSession* session){
 	}
 
 	// init ssl config
-	if(mbedtls_ssl_config_defaults(session->sslConfig, session->isServer ? MBEDTLS_SSL_IS_SERVER : MBEDTLS_SSL_IS_CLIENT,
+	if(mbedtls_ssl_config_defaults(session->sslConfig, session->isControled ? MBEDTLS_SSL_IS_SERVER : MBEDTLS_SSL_IS_CLIENT,
 			MBEDTLS_SSL_TRANSPORT_DATAGRAM, MBEDTLS_SSL_PRESET_DEFAULT)!=Yang_Ok){
 		yang_error("create ssl(mbedtls_ssl_config_defaults) fail");
 	}
@@ -425,7 +425,7 @@ void yang_mbed_initDtls(YangDtlsSession* session){
 }
 
 
-int32_t yang_create_rtcdtls(YangRtcDtls *dtls,yangbool isServer) {
+int32_t yang_create_rtcdtls(YangRtcDtls *dtls,yangbool isControled) {
 	if (!dtls)	return ERROR_RTC_DTLS;
 	YangDtlsSession* session=&dtls->session;
 
@@ -439,7 +439,7 @@ int32_t yang_create_rtcdtls(YangRtcDtls *dtls,yangbool isServer) {
 	session->isStart = yangfalse;
 	session->isLoop = yangfalse;
 
-	session->isServer=isServer;
+	session->isControled=isControled;
 
 	session->state = YangDtlsStateInit;
 

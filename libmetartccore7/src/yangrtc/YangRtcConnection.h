@@ -10,13 +10,21 @@
 
 typedef struct{
 	YangRtcSession* session;
+	int32_t (*addAudioTrack)(YangRtcSession *session,YangAudioCodec codec);
+	int32_t (*addVideoTrack)(YangRtcSession *session,YangVideoCodec codec);
+
+	int32_t (*addTransceiver)(YangRtcSession *session,YangRtcDirection direction);
+
 	int32_t (*createOffer)(YangRtcSession *session, char **psdp);
+	int32_t (*createDataChannel)(YangRtcSession *session);
 
 	int32_t (*createAnswer)(YangRtcSession* session,char* answer);
 	int32_t (*createHttpAnswer)(YangRtcSession* session,char* answer);
+
+	int32_t (*setLocalDescription)(YangRtcSession* session,char* sdp);
 	int32_t (*setRemoteDescription)(YangRtcSession* session,char* sdp);
 
-	void (*init)(YangRtcSession* session,YangStreamDirection role);
+	//void (*init)(YangRtcSession* session,YangRtcDirection role);
 	void (*close)(YangRtcSession *session);
 
 	int32_t (*on_video)(YangRtcSession* session,YangFrame* p);

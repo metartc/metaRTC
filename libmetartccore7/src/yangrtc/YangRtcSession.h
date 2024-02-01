@@ -21,16 +21,15 @@
 typedef struct {
 	yangbool isSendDtls;
 	yangbool isSendStun;
-
+	yangbool enableDatachannel;
 	int32_t startRecv;
 	int32_t activeState;
 
-	yangbool isServer;
+	yangbool isControlled;
 	int32_t h264PayloadType;
 	int32_t h265PayloadType;
 	int32_t audioPayloadType;
 
-	int32_t usingDatachannel;
 	int64_t lastStunTime;
 	int64_t sessionTimeout;
 
@@ -73,7 +72,8 @@ typedef struct {
 	YangRtcContext context;
 	YangRtpPacket pushPacket;
 	YangRtcpCompound rtcp_compound;
-	YangVideoCodec codec;
+	YangAudioCodec audioCodec;
+	YangVideoCodec videoCodec;
 	YangIce ice;
 
 	char remote_fingerprint[128];

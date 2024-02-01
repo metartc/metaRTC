@@ -111,7 +111,7 @@ YangMetaplayer::YangMetaplayer()
 
 	m_context->avinfo.rtc.iceCandidateType=YangIceHost;
 	m_context->avinfo.rtc.turnSocketProtocol=Yang_Socket_Protocol_Udp;
-	m_context->avinfo.rtc.enableDatachannel=yangfalse;
+
 	m_context->avinfo.rtc.enableAudioBuffer=yangtrue; //use audio buffer
 	m_context->avinfo.audio.enableAudioFec=yangfalse; //srs not use audio fec
 

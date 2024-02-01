@@ -66,7 +66,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(this,SIGNAL(RtcConnectFailure(int)),SLOT(connectFailure(int)));
 
-    m_context->avinfo.rtc.enableDatachannel=yangfalse;
     m_context->avinfo.rtc.iceCandidateType=YangIceHost;
      m_context->avinfo.rtc.turnSocketProtocol=Yang_Socket_Protocol_Udp;
 

@@ -81,7 +81,7 @@ int32_t yang_zlm_query(YangRtcSession* session,ZlmSdpResponseType* zlm,int32_t i
 }
 
 
-int32_t yang_zlm_doHandleSignal(YangRtcSession* session,ZlmSdpResponseType* zlm,char* sdp,int32_t localport, YangStreamDirection role) {
+int32_t yang_zlm_doHandleSignal(YangRtcSession* session,ZlmSdpResponseType* zlm,char* sdp,int32_t localport, YangRtcDirection role) {
 	int32_t err = Yang_Ok;
 
 	char apiurl[256] ;
@@ -100,7 +100,8 @@ int32_t yang_zlm_connectRtcServer(YangRtcConnection* conn){
 	yang_memset(&zlm,0,sizeof(ZlmSdpResponseType));
 	char *tsdp=NULL;
 	conn->createOffer(session, &tsdp);
-    if ((err=yang_zlm_doHandleSignal(session,&zlm,tsdp,session->context.streamConfig->localPort,session->context.streamConfig->streamDirection))  == Yang_Ok) {
+	if(tsdp) conn->setLocalDescription(session,tsdp);
+    if ((err=yang_zlm_doHandleSignal(session,&zlm,tsdp,session->context.streamConfig->localPort,session->context.streamConfig->direction))  == Yang_Ok) {
 		conn->setRemoteDescription(conn->session,zlm.sdp);
 	}
 	yang_free(tsdp);

@@ -37,7 +37,7 @@ void  yang_sdp_genLocalSdp_candidate(YangRtcSession *session,YangMediaDesc *medi
 }
 
 
-void yang_sdp_init_direction(YangMediaDesc* media_desc,YangStreamDirection role){
+void yang_sdp_init_direction(YangMediaDesc* media_desc,YangRtcDirection role){
 	if (role == YangRecvonly) {
 		media_desc->recvonly = yangtrue;
 
@@ -52,7 +52,7 @@ void yang_sdp_init_direction(YangMediaDesc* media_desc,YangStreamDirection role)
 }
 
 #define Yang_SDP_BUFFERLEN 1024*12
-int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *dst, YangStreamDirection role) {
+int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *dst, YangRtcDirection role) {
 	int32_t mediaServer=session->context.avinfo->sys.mediaServer;
 	//int32_t redPayloadtype=1;
 	int32_t midNum=0;
@@ -114,7 +114,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 #endif
 #if Yang_Enable_Datachannel
 	YangMediaDesc *data_media_desc = NULL;
-	if(session->context.avinfo->rtc.enableDatachannel){
+	if(session->enableDatachannel){
 		yang_insert_YangMediaDescVector(&local_sdp->media_descs, NULL);
 		data_media_desc=&local_sdp->media_descs.payload[local_sdp->media_descs.vsize-1];
 		yang_strcpy(data_media_desc->type, "application");
@@ -203,13 +203,13 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	if(data_media_desc) yang_strcpy(data_media_desc->session_info.fingerprint,"EF:7A:50:9C:05:8C:EF:84:4D:72:B2:74:30:BA:FD:82:76:D1:C3:FE:0C:A0:10:43:B8:6C:B2:ED:B3:F7:77:8B");
 #endif
 	#if Yang_Enable_RTC_Audio
-	yang_strcpy(audio_media_desc->session_info.setup, session->isServer?"passive":"active");
+	yang_strcpy(audio_media_desc->session_info.setup, session->isControlled?"passive":"active");
 	#endif
 	#if Yang_Enable_RTC_Video
-	yang_strcpy(video_media_desc->session_info.setup, session->isServer?"passive":"active");
+	yang_strcpy(video_media_desc->session_info.setup, session->isControlled?"passive":"active");
 	#endif
 #if Yang_Enable_Datachannel
-	if(data_media_desc) yang_strcpy(data_media_desc->session_info.setup, session->isServer?"passive":"active");
+	if(data_media_desc) yang_strcpy(data_media_desc->session_info.setup, session->isControlled?"passive":"active");
 #endif
 	//extmaps twcc
 
@@ -262,10 +262,10 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 		yang_sdp_genLocalSdp_payloadType(videotype);
 		//redPayloadtype=2;
 	}else{
-		if (session->context.avinfo->video.videoEncoderType	== Yang_VED_264) {
+		if (session->context.avinfo->video.videoEncoderType	== Yang_VED_H264) {
 			videotype->payload_type = session->h264PayloadType;
 			yang_strcpy(videotype->encoding_name, "H264");
-		} else if (session->context.avinfo->video.videoEncoderType == Yang_VED_265) {
+		} else if (session->context.avinfo->video.videoEncoderType == Yang_VED_H265) {
 			videotype->payload_type = session->h265PayloadType;
 			yang_strcpy(videotype->encoding_name, "H265");
 		} else if(session->context.avinfo->video.videoEncoderType	== Yang_VED_AV1){
@@ -408,7 +408,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	yang_init_buffer(&buf, src, Yang_SDP_BUFFERLEN);
 	yang_rtcsdp_encode(local_sdp, &buf);
 
-	if(mediaServer==Yang_Server_Zlm||(mediaServer==Yang_Server_P2p&&!session->isServer)){
+	if(mediaServer==Yang_Server_Zlm||(mediaServer==Yang_Server_P2p&&!session->isControlled)){
 		yang_cstr_replace(src, dst, (char*) "\r\n", (char*) "\n");
 	}
 	else{
@@ -426,7 +426,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 
 }
 
-int32_t yang_sdp_genLocalSdp(YangRtcSession *session, int32_t localport,char **psdp, YangStreamDirection role){
+int32_t yang_sdp_genLocalSdp(YangRtcSession *session, int32_t localport,char **psdp, YangRtcDirection role){
 	char *dst = (char*) yang_calloc(1, Yang_SDP_BUFFERLEN);
 	*psdp=dst;
 	return yang_sdp_genLocalSdp2(session,localport,dst,role);
@@ -464,11 +464,11 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 #if Yang_Enable_RTC_Audio
 				if(session->context.avinfo->sys.mediaServer==Yang_Server_P2p){
 					if(desc->sendonly){
-						session->context.streamConfig->streamDirection=YangRecvonly;
+						session->context.streamConfig->direction=YangRecvonly;
 					}else if(desc->recvonly){
-						session->context.streamConfig->streamDirection=YangSendonly;
+						session->context.streamConfig->direction=YangSendonly;
 					}else if(desc->sendrecv){
-						session->context.streamConfig->streamDirection=YangSendrecv;
+						session->context.streamConfig->direction=YangSendrecv;
 					}
 				}
 				if(desc->ssrc_infos.vsize>0) session->context.audioTrack.ssrc=desc->ssrc_infos.payload[0].ssrc;
@@ -489,11 +489,11 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 #if Yang_Enable_RTC_Video
 				if(session->context.avinfo->sys.mediaServer==Yang_Server_P2p){
 					if(desc->sendonly){
-						session->context.streamConfig->streamDirection=YangRecvonly;
+						session->context.streamConfig->direction=YangRecvonly;
 					}else if(desc->recvonly){
-						session->context.streamConfig->streamDirection=YangSendonly;
+						session->context.streamConfig->direction=YangSendonly;
 					}else if(desc->sendrecv){
-						session->context.streamConfig->streamDirection=YangSendrecv;
+						session->context.streamConfig->direction=YangSendrecv;
 					}
 				}
 				if(desc->ssrc_infos.vsize>0) {
@@ -518,24 +518,24 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 						//}
 					//}
 					if(yang_yang_strcmp(payload->encoding_name,"H264")==0){
-						session->remote_video->encode=Yang_VED_264;
-						session->context.codec=Yang_VED_264;
+						session->remote_video->encode=Yang_VED_H264;
+						session->context.videoCodec=Yang_VED_H264;
 
 						if(yang_is_h2645PayoadType(payload->format_specific_param)){
 								session->h264PayloadType=payload->payload_type;
 						}
 					}else if(yang_yang_strcmp(payload->encoding_name,"H265")==0){
-						session->context.codec=Yang_VED_265;
-						session->remote_video->encode=Yang_VED_265;
+						session->context.videoCodec=Yang_VED_H265;
+						session->remote_video->encode=Yang_VED_H265;
 
 						if(yang_is_h2645PayoadType(payload->format_specific_param)){
 								session->h265PayloadType=payload->payload_type;
 						}
 					}else if(yang_yang_strcmp(payload->encoding_name,Yang_AV1_Name)==0){
-						session->context.codec=Yang_VED_AV1;
+						session->context.videoCodec=Yang_VED_AV1;
 						session->remote_video->encode=Yang_VED_AV1;
 					}else if(yang_yang_strcmp(payload->encoding_name,"MJPEG")==0){
-						session->context.codec=Yang_VED_MJPEG;
+						session->context.videoCodec=Yang_VED_MJPEG;
 						session->remote_video->encode=Yang_VED_MJPEG;
 					}
 
@@ -547,8 +547,6 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 					}
 				}
 #endif
-			}else if(yang_yang_strcmp(desc->type,"application")==0) {
-				session->usingDatachannel=1;
 			}
 
 			// set track fec_ssrc and rtx_ssrc

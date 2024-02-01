@@ -164,7 +164,7 @@ void YangVideoEncoderFfmpeg::initParam(AVCodecContext *p_codecCtx,YangVideoInfo 
 
 	p_codecCtx->width = pvp->outWidth;
 	p_codecCtx->height = pvp->outHeight;
-	p_codecCtx->profile = pvp->videoEncoderType==Yang_VED_264?FF_PROFILE_H264_CONSTRAINED_BASELINE:FF_PROFILE_HEVC_MAIN;	//66;
+	p_codecCtx->profile = pvp->videoEncoderType==Yang_VED_H264?FF_PROFILE_H264_CONSTRAINED_BASELINE:FF_PROFILE_HEVC_MAIN;	//66;
 
 
     p_codecCtx->time_base.den=1;
@@ -172,7 +172,7 @@ void YangVideoEncoderFfmpeg::initParam(AVCodecContext *p_codecCtx,YangVideoInfo 
     p_codecCtx->framerate.den = pvp->frame;
     p_codecCtx->framerate.num=1;
 
-	if(pvp->videoEncoderType==Yang_VED_264)	p_codecCtx->has_b_frames=0;
+	if(pvp->videoEncoderType==Yang_VED_H264)	p_codecCtx->has_b_frames=0;
 
 }
 int32_t YangVideoEncoderFfmpeg::init(YangContext* pcontext,YangVideoInfo* pvideoInfo) {
@@ -189,14 +189,14 @@ int32_t YangVideoEncoderFfmpeg::init(YangContext* pcontext,YangVideoInfo* pvideo
 		uLen = yLen / 4;
 		allLen = yLen * 3 / 2;
 		//hevc_vaapi nvenc nvdec vdpau h264_nvenc
-		if(m_encoderType==Yang_VED_264){
+		if(m_encoderType==Yang_VED_H264){
 			if(g_hwType==YangV_Hw_Intel)	m_codec = yang_avcodec_find_encoder_by_name("h264_vaapi");//avcodec_find_encoder(AV_CODEC_ID_H264);
             if(g_hwType==YangV_Hw_Nvdia)	{
                 m_codec = yang_avcodec_find_encoder_by_name("h264_nvenc");
 
             }
 			if(g_hwType==YangV_Hw_Android)	m_codec = yang_avcodec_find_encoder_by_name("h264_mediacodec");
-		}else if(m_encoderType==Yang_VED_265){
+		}else if(m_encoderType==Yang_VED_H265){
 			if(g_hwType==YangV_Hw_Intel)	{
 				m_codec = yang_avcodec_find_encoder_by_name("hevc_vaapi");
 			}
@@ -278,8 +278,8 @@ int32_t YangVideoEncoderFfmpeg::encode(YangFrame* pframe, YangEncoderCallback* p
 	destLen = packet.size-4;
 	int32_t frametype=YANG_Frametype_P;
 	memcpy(m_vbuffer, packet.data+4, destLen);
-	if(m_encoderType==Yang_VED_264) 	frametype=m_vbuffer[0]==0x67?YANG_Frametype_I:YANG_Frametype_P;
-	if(m_encoderType==Yang_VED_265) 	frametype=m_vbuffer[0]==0x40?YANG_Frametype_I:YANG_Frametype_P;
+	if(m_encoderType==Yang_VED_H264) 	frametype=m_vbuffer[0]==0x67?YANG_Frametype_I:YANG_Frametype_P;
+	if(m_encoderType==Yang_VED_H265) 	frametype=m_vbuffer[0]==0x40?YANG_Frametype_I:YANG_Frametype_P;
 	pframe->payload=m_vbuffer;
 	pframe->frametype=frametype;
 	pframe->nb=destLen;

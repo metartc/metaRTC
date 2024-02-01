@@ -84,7 +84,7 @@ typedef struct YangRtcInfo {
 	yangbool enableHttpServerSdp;
 
 	int32_t sessionTimeout;
-	yangbool enableDatachannel;
+        //yangbool enableDatachannel;
 	int32_t iceCandidateType;
 	yangbool iceUsingLocalIp;
 	int32_t iceServerPort;

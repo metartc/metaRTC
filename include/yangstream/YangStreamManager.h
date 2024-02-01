@@ -12,7 +12,7 @@ class YangStreamStateNotify{
 public:
 	YangStreamStateNotify(){};
 	virtual ~YangStreamStateNotify(){};
-    virtual void streamStateNotify(int32_t puid,YangStreamDirection opt,bool isConnect)=0;
+    virtual void streamStateNotify(int32_t puid,YangRtcDirection opt,bool isConnect)=0;
 };
 
 class YangStreamManager {
@@ -26,7 +26,7 @@ public:
 
 	int32_t getPlayOnlineCount();
 	int32_t getPushOnlineCount();
-	void connectNotify(int32_t puid,YangStreamDirection opt,bool isConnect);
+	void connectNotify(int32_t puid,YangRtcDirection opt,bool isConnect);
 
 public:
 	void setMediaConfig(int32_t puid,YangAudioParam* audio,YangVideoParam* video);

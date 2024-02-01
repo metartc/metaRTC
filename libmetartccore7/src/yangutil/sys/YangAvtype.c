@@ -100,7 +100,7 @@ void yang_avinfo_initEnc(YangVideoEncInfo *enc) {
 void yang_avinfo_initRtc(YangRtcInfo *rtc) {
 	rtc->enableHttpServerSdp = yangfalse;
 	rtc->sessionTimeout= 30*1000000;
-	rtc->enableDatachannel = yangtrue;
+
 	rtc->iceCandidateType = 0;
 	rtc->enableAudioBuffer = yangfalse;
 

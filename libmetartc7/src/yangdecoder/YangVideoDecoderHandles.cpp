@@ -129,7 +129,7 @@ void YangVideoDecoderHandles::removeStream(){
 void YangVideoDecoderHandles::addVideoStream(uint8_t *ps, int32_t puid,
 		int32_t pisAdd) {
 	if (pisAdd) {
-		YangVideoCodec aet = ps[0] == 0x17 ? Yang_VED_264 : Yang_VED_265;
+		YangVideoCodec aet = ps[0] == 0x17 ? Yang_VED_H264 : Yang_VED_H265;
 		YangDecoderFactory df;
 		m_decs->push_back(df.createVideoDecoder(aet, &m_context->avinfo.video));
 		m_decs->back()->m_uid = puid;

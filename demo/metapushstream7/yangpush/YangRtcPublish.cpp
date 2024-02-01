@@ -77,7 +77,7 @@ int32_t YangRtcPublish::init(int32_t nettype, char* server, int32_t pport,
 	YangStreamConfig streamconfig;
 	memset(&streamconfig,0,sizeof(YangStreamConfig));
 	strcpy(streamconfig.app,app);
-    streamconfig.streamDirection=YangSendonly;
+    streamconfig.direction=YangSendonly;
 
 	strcpy(streamconfig.remoteIp,server);
 	streamconfig.remotePort=pport;
@@ -91,6 +91,9 @@ int32_t YangRtcPublish::init(int32_t nettype, char* server, int32_t pport,
 
 	YangPeerConnection2* sh=new YangPeerConnection2(&m_context->avinfo,&streamconfig);
 	sh->init();
+    sh->addAudioTrack(Yang_AED_OPUS);
+    sh->addVideoTrack(Yang_VED_H264);
+    sh->addTransceiver(streamconfig.direction);
 	m_pushs.push_back(sh);
 
 
@@ -111,7 +114,7 @@ int32_t YangRtcPublish::init(char* url) {
     int32_t ret = 0;
     YangStreamConfig streamconfig;
     memset(&streamconfig,0,sizeof(YangStreamConfig));
-    streamconfig.streamDirection=YangSendonly;
+    streamconfig.direction=YangSendonly;
     streamconfig.uid=0;
 
     streamconfig.localPort=m_context->avinfo.rtc.rtcLocalPort;
@@ -120,6 +123,9 @@ int32_t YangRtcPublish::init(char* url) {
 
     YangPeerConnection2* sh=new YangPeerConnection2(&m_context->avinfo,&streamconfig);
     sh->init();
+    sh->addAudioTrack(Yang_AED_OPUS);
+    sh->addVideoTrack(Yang_VED_H264);
+    sh->addTransceiver(streamconfig.direction);
     m_pushs.push_back(sh);
 
     ret = m_pushs.back()->connectWhipServer(url);
@@ -243,12 +249,12 @@ void YangRtcPublish::startLoop() {
 					//if (ret)	continue;
 				} else {
 					if (!vmd->isInit) {
-						if (videoType == Yang_VED_264) {
+                        if (videoType == Yang_VED_H264) {
 							yang_createH264Meta(vmd, &videoFrame);
 							yang_getConfig_Flv_H264(&vmd->mp4Meta,
 									vmd->livingMeta.buffer,
 									&vmd->livingMeta.bufLen);
-						} else if (videoType == Yang_VED_265) {
+                        } else if (videoType == Yang_VED_H265) {
 							yang_createH265Meta(vmd, &videoFrame);
 							yang_getConfig_Flv_H265(&vmd->mp4Meta,
 									vmd->livingMeta.buffer,
@@ -269,7 +275,7 @@ void YangRtcPublish::startLoop() {
 				if (!m_context->avinfo.enc.createMeta) {
 
 					memset(&nalu, 0, sizeof(YangH264NaluData));
-					if (videoType == Yang_VED_264)
+                    if (videoType == Yang_VED_H264)
 						yang_parseH264Nalu(&videoFrame, &nalu);
 					else
 						yang_parseH265Nalu(&videoFrame, &nalu);

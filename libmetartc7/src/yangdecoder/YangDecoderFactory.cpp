@@ -56,7 +56,7 @@ YangVideoDecoder* YangDecoderFactory::createVideoDecoder(YangVideoCodec paet,Yan
 	else
 		return new YangDecoderMediacodec(pcontext,paet);
 #else
-	if (paet == Yang_VED_264)				{
+	if (paet == Yang_VED_H264)				{
 		if(pcontext->videoDecHwType==0){
 #if	Yang_Enable_H264Decoder
 			return new YangH264DecoderSoft();
@@ -72,13 +72,13 @@ YangVideoDecoder* YangDecoderFactory::createVideoDecoder(YangVideoCodec paet,Yan
 		}
 	}
 #if Yang_Enable_Ffmpeg_Codec
-	if (paet == Yang_VED_265)				return new YangVideoDecoderFfmpeg(pcontext,paet);
+	if (paet == Yang_VED_H265)				return new YangVideoDecoderFfmpeg(pcontext,paet);
 #endif
 #endif
 	return NULL;
 }
 YangVideoDecoder* YangDecoderFactory::createVideoDecoder(YangVideoInfo *pcontext){
-	YangVideoCodec maet=Yang_VED_264;
-	if(pcontext->videoDecoderType==Yang_VED_265) maet=Yang_VED_265;
+	YangVideoCodec maet=Yang_VED_H264;
+	if(pcontext->videoDecoderType==Yang_VED_H265) maet=Yang_VED_H265;
 	return createVideoDecoder(maet,pcontext);
 }
