@@ -63,18 +63,18 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 	peer->addTransceiver(&peer->peer,direction);
 	  //sfu server
 	if(enableWhipWhep)
-		peer->connectWhipWhepServer(&peer->peer,url);
+		err = peer->connectWhipWhepServer(&peer->peer,url);
 	else
-		peer->connectSfuServer(&peer->peer);
+		err = peer->connectSfuServer(&peer->peer);
 	//p2p
 	peer->createDataChannel(&peer->peer);//add datachannel
 	if((err=peer->createOffer(&peer->peer, &localSdp))!=Yang_Ok){
-	yang_error("createOffer fail,app=%s,stream=%s",app,stream);
+	    yang_error("createOffer fail,app=%s,stream=%s",app,stream);
 		goto cleanup;
 	}
 	if((err=peer->setLocalDescription(&peer->peer, localSdp))!=Yang_Ok){
-			yang_error("setLocalDescription fail");
-			goto cleanup;
+		yang_error("setLocalDescription fail");
+		goto cleanup;
 	}
 	......
 	//get remote peer sdp
@@ -84,6 +84,7 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 	}
 
  
+
 
 ## metaRTC服务支持(service support)
 微信号: taihang82  
