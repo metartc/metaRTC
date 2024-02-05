@@ -69,17 +69,17 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 	//p2p
 	peer->createDataChannel(&peer->peer);//add datachannel
 	if((err=peer->createOffer(&peer->peer, &localSdp))!=Yang_Ok){
-	    yang_error("createOffer fail,app=%s,stream=%s",app,stream);
+	    yang_error("createOffer fail!");
 		goto cleanup;
 	}
 	if((err=peer->setLocalDescription(&peer->peer, localSdp))!=Yang_Ok){
-		yang_error("setLocalDescription fail");
+		yang_error("setLocalDescription fail!");
 		goto cleanup;
 	}
 	......
 	//get remote peer sdp
 	if((err=peer->setRemoteDescription(&peer->peer,remoteSdp))!=Yang_Ok){
-		yang_error("setRemoteDescription fail,app=%s,stream=%s",app,stream);
+		yang_error("setRemoteDescription fail!");
 		goto cleanup;
 	}
 
