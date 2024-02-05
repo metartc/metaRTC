@@ -61,7 +61,7 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 	peer->addAudioTrack(&peer->peer,Yang_AED_OPUS);
 	peer->addVideoTrack(&peer->peer,Yang_VED_H264);
 	peer->addTransceiver(&peer->peer,direction);
-	  //sfu server
+	//sfu server
 	if(enableWhipWhep)
 		err = peer->connectWhipWhepServer(&peer->peer,url);
 	else
