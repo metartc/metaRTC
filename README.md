@@ -49,7 +49,41 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 [libsrtp](https://github.com/cisco/libsrtp)  
 [usrsctp](https://github.com/sctplab/usrsctp)  
 
+## Peer connect demo
 
+	int32_t err = Yang_Ok;
+	char* localSdp=NULL;
+	char* remoteSdp=NULL;
+	yangbool enableWhipWhep = yangtrue; 
+	YangRtcDirection direction = YangSendonly;//YangSendrecv,YangSendonly,YangRecvonly
+	YangPeerConnection *peer = (YangPeerConnection*)yang_calloc(sizeof(YangPeerConnection),1);
+	yang_create_peerConnection(peer);
+	peer->addAudioTrack(&peer->peer,Yang_AED_OPUS);
+	peer->addVideoTrack(&peer->peer,Yang_VED_H264);
+	peer->addTransceiver(&peer->peer,direction);
+	  //sfu server
+	if(enableWhipWhep)
+		peer->connectWhipWhepServer(&peer->peer,url);
+	else
+		peer->connectSfuServer(&peer->peer);
+	//p2p
+	peer->createDataChannel(&peer->peer);//add datachannel
+	if((err=peer->createOffer(&peer->peer, &localSdp))!=Yang_Ok){
+	yang_error("createOffer fail,app=%s,stream=%s",app,stream);
+		goto cleanup;
+	}
+	if((err=peer->setLocalDescription(&peer->peer, localSdp))!=Yang_Ok){
+			yang_error("setLocalDescription fail");
+			goto cleanup;
+	}
+	......
+	//get remote peer sdp
+	if((err=peer->setRemoteDescription(&peer->peer,remoteSdp))!=Yang_Ok){
+		yang_error("setRemoteDescription fail,app=%s,stream=%s",app,stream);
+		goto cleanup;
+	}
+
+ 
 
 ## metaRTC服务支持(service support)
 微信号: taihang82  
