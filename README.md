@@ -63,24 +63,24 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 	peer->addTransceiver(&peer->peer,direction);
 	//sfu server
 	if(enableWhipWhep)
-		err = peer->connectWhipWhepServer(&peer->peer,url);
+	     err = peer->connectWhipWhepServer(&peer->peer,url);
 	else
-		err = peer->connectSfuServer(&peer->peer);
+	     err = peer->connectSfuServer(&peer->peer);
 	//p2p
 	peer->createDataChannel(&peer->peer);//add datachannel
 	if((err=peer->createOffer(&peer->peer, &localSdp))!=Yang_Ok){
 	    yang_error("createOffer fail!");
-		goto cleanup;
+	    goto cleanup;
 	}
 	if((err=peer->setLocalDescription(&peer->peer, localSdp))!=Yang_Ok){
-		yang_error("setLocalDescription fail!");
-		goto cleanup;
+	    yang_error("setLocalDescription fail!");
+	    goto cleanup;
 	}
 	......
 	//get remote peer sdp
 	if((err=peer->setRemoteDescription(&peer->peer,remoteSdp))!=Yang_Ok){
-		yang_error("setRemoteDescription fail!");
-		goto cleanup;
+	    yang_error("setRemoteDescription fail!");
+	    goto cleanup;
 	}
 
  
