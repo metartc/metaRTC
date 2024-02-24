@@ -30,10 +30,6 @@ To compile libmetartccore6, you'll need to satisfy the following dependencies:
 [OpenSSL](https://www.openssl.org/) or [Mbedtls](https://github.com/Mbed-TLS/mbedtls)  
 [libsrtp](https://github.com/cisco/libsrtp)  
 [usrsctp](https://github.com/sctplab/usrsctp)  
-
-## metaRTC Version
-metaRTC version:**Community Edition/Standard Edition/Enterprise Edition (社区版/标准版/企业版)**  
-The open source version is the community version  
   
 ### Vesion Feature
 社区版：webrtc协议栈的基础实现  
