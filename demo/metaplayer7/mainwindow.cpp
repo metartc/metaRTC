@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     setCentralWidget(m_centerWdiget);
     m_centerWdiget->setLayout(m_vb);
-    m_vb->setMargin(0);
+//    m_vb->setMargin(0);
     m_vb->setSpacing(0);
 #if Yang_OS_APPLE
      m_videoWin=new YangYuvPlayWidget(this);
@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     char s[128]={0};
 
-    sprintf(s,"http://%s:1985/rtc/v1/whip-play/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
+    sprintf(s,"http://47.120.55.58:1985/rtc/v1/whip-play/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
     yang_trace("\nurl===%s",s);
     ui->m_url->setText(s);
     m_isStartplay=false;
@@ -146,9 +146,9 @@ void MainWindow::on_m_c_whep_clicked()
     char s[128]={0};
 
     if(ui->m_c_whep->checkState()==Qt::CheckState::Checked)
-        sprintf(s,"http://%s:1985/rtc/v1/whip-play/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
+        sprintf(s,"http://47.120.55.58:1985/rtc/v1/whip-play/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
     else
-        sprintf(s,"webrtc://%s:1985/live/livestream",m_context->avinfo.rtc.localIp);
+        sprintf(s,"webrtc://47.120.55.58:1985/live/livestream",m_context->avinfo.rtc.localIp);
 
     ui->m_url->setText(s);
 }

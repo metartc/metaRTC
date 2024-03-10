@@ -1,0 +1,694 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		3ECD387F31FEE7DF66177F41 /* Qt Preprocess */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59 /* Build configuration list for PBXNativeTarget "metaplayer7" */;
+			buildPhases = (
+				5E618435888B9D49F8540165 /* Qt Qmake */,
+				7EF0942E79C014DCEC8976BC /* Qt Preprocessors */,
+			);
+			dependencies = (
+			);
+			name = "Qt Preprocess";
+			productName = "Qt Preprocess";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		05E8FD719B8B3257C7BC15C2 /* mainwindow.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = CFE0552914FE90F23FED967E /* mainwindow.cpp */; settings = {ATTRIBUTES = (); }; };
+		0F2CFBB2131CE1C67EFFC582 /* YangRtcReceive.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 9C99E765362A075736A55F4C /* YangRtcReceive.cpp */; settings = {ATTRIBUTES = (); }; };
+		25039D974211F9FB4C18E16A /* moc_YangPlayWidget.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 043D680BC3F85AE2B77EF048 /* moc_YangPlayWidget.cpp */; settings = {ATTRIBUTES = (); }; };
+		35A1A39F8EAB37889EB3D397 /* CoreAudio.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = BEF9DFDA6822604126A7E233 /* CoreAudio.framework */; };
+		48C583BB0FFD8EC31284E924 /* QtGui.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = BD0A94197CBB69F311949134 /* QtGui.framework */; };
+		4A0A404410B3272C3598247C /* moc_mainwindow.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 68278E6041607765B12CAC04 /* moc_mainwindow.cpp */; settings = {ATTRIBUTES = (); }; };
+		5125369210B4F4FEC7857101 /* yangrecordthread.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = C678C96BC24BA0AB18BFC1C8 /* yangrecordthread.cpp */; settings = {ATTRIBUTES = (); }; };
+		5E536706B6A46385AEAEC0A0 /* YangPlayerBase.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 4D26327EC8EDDE0135F526BA /* YangPlayerBase.cpp */; settings = {ATTRIBUTES = (); }; };
+		61EEC397DC8556BF8C4E36A7 /* ImageIO.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 3A8EF9C62A8D4790CBB89CEA /* ImageIO.framework */; };
+		687E14EA85152E4D921AC3E6 /* QtCore.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = B16672A8B0758EFC8FC6D9B7 /* QtCore.framework */; };
+		72BE6C2A1274BEBC2AC6C2BB /* YangPlayerDecoder.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = E323FD627A98E2DF9DAA63F0 /* YangPlayerDecoder.cpp */; settings = {ATTRIBUTES = (); }; };
+		7439477E6D0CBD93D1620F27 /* dummy.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 525DE536155721BDC205514D /* dummy.cpp */; settings = {ATTRIBUTES = (); }; };
+		8771A8C96E9C391044035D99 /* OpenGL.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = D4B32C2222F82AC56BADEB21 /* OpenGL.framework */; };
+		87AB421C2B9C46FF007E7A4D /* QtOpenGLWidgets.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 87AB421B2B9C46FF007E7A4D /* QtOpenGLWidgets.framework */; };
+		87AB421E2B9C48B0007E7A4D /* QtOpenGL.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 87AB421D2B9C48B0007E7A4D /* QtOpenGL.framework */; };
+		88951A26878E89474E3E998C /* YangYuvPlayWidget.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = EF6CA63E8CAC09536CF9D641 /* YangYuvPlayWidget.cpp */; settings = {ATTRIBUTES = (); }; };
+		8D267F2E4776F0ECA2F49DC8 /* IOKit.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = A1A67BEAA744704B29168D39 /* IOKit.framework */; };
+		9567FDC650434D6B15CB68EA /* YangPlayerHandleImpl.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 75A1D08EAA2188CBBD957D94 /* YangPlayerHandleImpl.cpp */; settings = {ATTRIBUTES = (); }; };
+		A99B2AA0F9CBBDD12BA126A4 /* DiskArbitration.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 2B774D8E4178765CE52EAAF5 /* DiskArbitration.framework */; };
+		AB6EBA765B76BEB9A651D335 /* YangPlayFactory.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 82AEB0E70C449915CE5D3900 /* YangPlayFactory.cpp */; settings = {ATTRIBUTES = (); }; };
+		B3FE8FAC746D3D5BB24FA398 /* Metal.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 1B2543FCC48E9436F21C4F63 /* Metal.framework */; };
+		B8B38075E16320E7ED71F3F3 /* YangPlayerPlay.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 043034D18A4D51C867BE4944 /* YangPlayerPlay.cpp */; settings = {ATTRIBUTES = (); }; };
+		BABA0C12953CC3E66A5F20FF /* moc_YangYuvPlayWidget.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 1F87D9B1286CAAC13C00198F /* moc_YangYuvPlayWidget.cpp */; settings = {ATTRIBUTES = (); }; };
+		BDE58556634E5D2F8C7884CF /* YangPlayWidget.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 98500A53260CB61B84208B95 /* YangPlayWidget.cpp */; settings = {ATTRIBUTES = (); }; };
+		C071892727ACC10345AA96B6 /* QtWidgets.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 4C12E2FD69E45A3FACFF5550 /* QtWidgets.framework */; };
+		E45E51A644D5FC9F942ECE55 /* AGL.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 8D9815BDB5BD9F90D2BC05C5 /* AGL.framework */; };
+		EA2666D834A5078AC93DC40C /* main.cpp in Compile Sources */ = {isa = PBXBuildFile; fileRef = 81C581A5774C0718A8DFD74C /* main.cpp */; settings = {ATTRIBUTES = (); }; };
+		F2A75ACAC9DF6A3F4E5711E7 /* AppKit.framework in Link Binary With Libraries */ = {isa = PBXBuildFile; fileRef = 723F90793B2C195E2CCB2233 /* AppKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87AB421A2B9C415F007E7A4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DB9C3763D02B1415CD9D565 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3ECD387F31FEE7DF66177F41;
+			remoteInfo = "Qt Preprocess";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		99542592E9780B9225F24AA8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		043034D18A4D51C867BE4944 /* YangPlayerPlay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = YangPlayerPlay.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangPlayerPlay.cpp; sourceTree = "<absolute>"; };
+		043D680BC3F85AE2B77EF048 /* moc_YangPlayWidget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_YangPlayWidget.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/moc_YangPlayWidget.cpp; sourceTree = "<absolute>"; };
+		0D9A86DEFE3069EA51A5CB41 /* YangPlayerHandleImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YangPlayerHandleImpl.h; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangPlayerHandleImpl.h; sourceTree = "<absolute>"; };
+		1B2543FCC48E9436F21C4F63 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = /System/Library/Frameworks/Metal.framework; sourceTree = "<absolute>"; };
+		1F87D9B1286CAAC13C00198F /* moc_YangYuvPlayWidget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_YangYuvPlayWidget.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/moc_YangYuvPlayWidget.cpp; sourceTree = "<absolute>"; };
+		2B774D8E4178765CE52EAAF5 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = /System/Library/Frameworks/DiskArbitration.framework; sourceTree = "<absolute>"; };
+		3467C190F148F034692CAF9D /* mainwindow.ui */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = mainwindow.ui; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/mainwindow.ui; sourceTree = "<absolute>"; };
+		3A8EF9C62A8D4790CBB89CEA /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = /System/Library/Frameworks/ImageIO.framework; sourceTree = "<absolute>"; };
+		407BC833CD88308724FB5A99 /* YangPlayWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YangPlayWidget.h; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangPlayWidget.h; sourceTree = "<absolute>"; };
+		4B360CDC621341810134FB60 /* YangYuvPlayWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YangYuvPlayWidget.h; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangYuvPlayWidget.h; sourceTree = "<absolute>"; };
+		4C12E2FD69E45A3FACFF5550 /* QtWidgets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtWidgets.framework; path = /usr/local/lib/QtWidgets.framework; sourceTree = "<absolute>"; };
+		4D26327EC8EDDE0135F526BA /* YangPlayerBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = YangPlayerBase.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangPlayerBase.cpp; sourceTree = "<absolute>"; };
+		525DE536155721BDC205514D /* dummy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = dummy.cpp; path = /usr/local/share/qt/mkspecs/features/data/dummy.cpp; sourceTree = "<absolute>"; };
+		5ABCFEC83ABCD2CAF4ECD754 /* mainwindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mainwindow.h; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/mainwindow.h; sourceTree = "<absolute>"; };
+		68278E6041607765B12CAC04 /* moc_mainwindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = moc_mainwindow.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/moc_mainwindow.cpp; sourceTree = "<absolute>"; };
+		723F90793B2C195E2CCB2233 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		75A1D08EAA2188CBBD957D94 /* YangPlayerHandleImpl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = YangPlayerHandleImpl.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangPlayerHandleImpl.cpp; sourceTree = "<absolute>"; };
+		81C581A5774C0718A8DFD74C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/main.cpp; sourceTree = "<absolute>"; };
+		82AEB0E70C449915CE5D3900 /* YangPlayFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = YangPlayFactory.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangPlayFactory.cpp; sourceTree = "<absolute>"; };
+		85984FB8004A6A5E962FC0BA /* YangRtcReceive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YangRtcReceive.h; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangRtcReceive.h; sourceTree = "<absolute>"; };
+		87AB421B2B9C46FF007E7A4D /* QtOpenGLWidgets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtOpenGLWidgets.framework; path = ../../../../../../../../usr/local/lib/QtOpenGLWidgets.framework; sourceTree = "<group>"; };
+		87AB421D2B9C48B0007E7A4D /* QtOpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtOpenGL.framework; path = ../../../../../../../../usr/local/lib/QtOpenGL.framework; sourceTree = "<group>"; };
+		87AB42372B9C5B4F007E7A4D /* libyangh264dec.so */ = {isa = PBXFileReference; lastKnownFileType = file; name = libyangh264dec.so; path = ../../bin/lib/libyangh264dec.so; sourceTree = "<group>"; };
+		87AB42392B9C5B54007E7A4D /* libz.so */ = {isa = PBXFileReference; lastKnownFileType = file; name = libz.so; path = ../../bin/lib/libz.so; sourceTree = "<group>"; };
+		8D9815BDB5BD9F90D2BC05C5 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
+		95A0543980B5CC18145525ED /* ui_mainwindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ui_mainwindow.h; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/ui_mainwindow.h; sourceTree = "<absolute>"; };
+		98500A53260CB61B84208B95 /* YangPlayWidget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = YangPlayWidget.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangPlayWidget.cpp; sourceTree = "<absolute>"; };
+		9C99E765362A075736A55F4C /* YangRtcReceive.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = YangRtcReceive.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangRtcReceive.cpp; sourceTree = "<absolute>"; };
+		A1A67BEAA744704B29168D39 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		A3DA767F1C096011A053D222 /* metaplayer7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = metaplayer7.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8F9391CA3386571833AB76F /* yangrecordthread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = yangrecordthread.h; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/video/yangrecordthread.h; sourceTree = "<absolute>"; };
+		B16672A8B0758EFC8FC6D9B7 /* QtCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtCore.framework; path = /usr/local/lib/QtCore.framework; sourceTree = "<absolute>"; };
+		BD0A94197CBB69F311949134 /* QtGui.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtGui.framework; path = /usr/local/lib/QtGui.framework; sourceTree = "<absolute>"; };
+		BEF9DFDA6822604126A7E233 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		C678C96BC24BA0AB18BFC1C8 /* yangrecordthread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = yangrecordthread.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/video/yangrecordthread.cpp; sourceTree = "<absolute>"; };
+		CFE0552914FE90F23FED967E /* mainwindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mainwindow.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/mainwindow.cpp; sourceTree = "<absolute>"; };
+		D4B32C2222F82AC56BADEB21 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		E323FD627A98E2DF9DAA63F0 /* YangPlayerDecoder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = YangPlayerDecoder.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangPlayerDecoder.cpp; sourceTree = "<absolute>"; };
+		EC99BF1FD17237D5C57909FE /* metaplayer7.pro */ = {isa = PBXFileReference; lastKnownFileType = text; name = metaplayer7.pro; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/metaplayer7.pro; sourceTree = "<absolute>"; };
+		EF6CA63E8CAC09536CF9D641 /* YangYuvPlayWidget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = YangYuvPlayWidget.cpp; path = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/yangplayer/YangYuvPlayWidget.cpp; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D1C883685E82D5676953459A /* Link Binary With Libraries */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35A1A39F8EAB37889EB3D397 /* CoreAudio.framework in Link Binary With Libraries */,
+				C071892727ACC10345AA96B6 /* QtWidgets.framework in Link Binary With Libraries */,
+				48C583BB0FFD8EC31284E924 /* QtGui.framework in Link Binary With Libraries */,
+				F2A75ACAC9DF6A3F4E5711E7 /* AppKit.framework in Link Binary With Libraries */,
+				61EEC397DC8556BF8C4E36A7 /* ImageIO.framework in Link Binary With Libraries */,
+				B3FE8FAC746D3D5BB24FA398 /* Metal.framework in Link Binary With Libraries */,
+				687E14EA85152E4D921AC3E6 /* QtCore.framework in Link Binary With Libraries */,
+				8D267F2E4776F0ECA2F49DC8 /* IOKit.framework in Link Binary With Libraries */,
+				A99B2AA0F9CBBDD12BA126A4 /* DiskArbitration.framework in Link Binary With Libraries */,
+				E45E51A644D5FC9F942ECE55 /* AGL.framework in Link Binary With Libraries */,
+				8771A8C96E9C391044035D99 /* OpenGL.framework in Link Binary With Libraries */,
+				87AB421E2B9C48B0007E7A4D /* QtOpenGL.framework in Link Binary With Libraries */,
+				87AB421C2B9C46FF007E7A4D /* QtOpenGLWidgets.framework in Link Binary With Libraries */,
+			);
+			name = "Link Binary With Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12E908B8A1C3C07C115504F5 /* Sources [uic] */ = {
+			isa = PBXGroup;
+			children = (
+				3467C190F148F034692CAF9D /* mainwindow.ui */,
+			);
+			name = "Sources [uic]";
+			sourceTree = "<group>";
+		};
+		25B08E2869634E9BCBA333A2 /* Generated Sources */ = {
+			isa = PBXGroup;
+			children = (
+				68278E6041607765B12CAC04 /* moc_mainwindow.cpp */,
+				043D680BC3F85AE2B77EF048 /* moc_YangPlayWidget.cpp */,
+				1F87D9B1286CAAC13C00198F /* moc_YangYuvPlayWidget.cpp */,
+				95A0543980B5CC18145525ED /* ui_mainwindow.h */,
+			);
+			name = "Generated Sources";
+			sourceTree = "<group>";
+		};
+		2EB56BE3C2D93CDAB0C52E67 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				81C581A5774C0718A8DFD74C /* main.cpp */,
+				CFE0552914FE90F23FED967E /* mainwindow.cpp */,
+				A488FA0EBE3A89E25B20C6A8 /* video */,
+				867104EFC3A575C1848C7804 /* yangplayer */,
+				5ABCFEC83ABCD2CAF4ECD754 /* mainwindow.h */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		74B182DB50CB5611B5C1C297 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC99BF1FD17237D5C57909FE /* metaplayer7.pro */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		867104EFC3A575C1848C7804 /* yangplayer */ = {
+			isa = PBXGroup;
+			children = (
+				82AEB0E70C449915CE5D3900 /* YangPlayFactory.cpp */,
+				98500A53260CB61B84208B95 /* YangPlayWidget.cpp */,
+				4D26327EC8EDDE0135F526BA /* YangPlayerBase.cpp */,
+				E323FD627A98E2DF9DAA63F0 /* YangPlayerDecoder.cpp */,
+				75A1D08EAA2188CBBD957D94 /* YangPlayerHandleImpl.cpp */,
+				043034D18A4D51C867BE4944 /* YangPlayerPlay.cpp */,
+				9C99E765362A075736A55F4C /* YangRtcReceive.cpp */,
+				EF6CA63E8CAC09536CF9D641 /* YangYuvPlayWidget.cpp */,
+				407BC833CD88308724FB5A99 /* YangPlayWidget.h */,
+				0D9A86DEFE3069EA51A5CB41 /* YangPlayerHandleImpl.h */,
+				85984FB8004A6A5E962FC0BA /* YangRtcReceive.h */,
+				4B360CDC621341810134FB60 /* YangYuvPlayWidget.h */,
+			);
+			name = yangplayer;
+			sourceTree = "<group>";
+		};
+		A488FA0EBE3A89E25B20C6A8 /* video */ = {
+			isa = PBXGroup;
+			children = (
+				C678C96BC24BA0AB18BFC1C8 /* yangrecordthread.cpp */,
+				A8F9391CA3386571833AB76F /* yangrecordthread.h */,
+			);
+			name = video;
+			sourceTree = "<group>";
+		};
+		AF39DD055C3EF8226FBE929D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87AB42392B9C5B54007E7A4D /* libz.so */,
+				87AB42372B9C5B4F007E7A4D /* libyangh264dec.so */,
+				87AB421D2B9C48B0007E7A4D /* QtOpenGL.framework */,
+				87AB421B2B9C46FF007E7A4D /* QtOpenGLWidgets.framework */,
+				BEF9DFDA6822604126A7E233 /* CoreAudio.framework */,
+				4C12E2FD69E45A3FACFF5550 /* QtWidgets.framework */,
+				BD0A94197CBB69F311949134 /* QtGui.framework */,
+				723F90793B2C195E2CCB2233 /* AppKit.framework */,
+				3A8EF9C62A8D4790CBB89CEA /* ImageIO.framework */,
+				1B2543FCC48E9436F21C4F63 /* Metal.framework */,
+				B16672A8B0758EFC8FC6D9B7 /* QtCore.framework */,
+				A1A67BEAA744704B29168D39 /* IOKit.framework */,
+				2B774D8E4178765CE52EAAF5 /* DiskArbitration.framework */,
+				8D9815BDB5BD9F90D2BC05C5 /* AGL.framework */,
+				D4B32C2222F82AC56BADEB21 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8254625CFD509ED2A24A166 /* Sources [moc_predefs] */ = {
+			isa = PBXGroup;
+			children = (
+				525DE536155721BDC205514D /* dummy.cpp */,
+			);
+			name = "Sources [moc_predefs]";
+			sourceTree = "<group>";
+		};
+		E8C543AB96796ECAA2E65C57 /* metaplayer7 */ = {
+			isa = PBXGroup;
+			children = (
+				2EB56BE3C2D93CDAB0C52E67 /* Sources */,
+				25B08E2869634E9BCBA333A2 /* Generated Sources */,
+				B8254625CFD509ED2A24A166 /* Sources [moc_predefs] */,
+				12E908B8A1C3C07C115504F5 /* Sources [uic] */,
+				74B182DB50CB5611B5C1C297 /* Supporting Files */,
+				AF39DD055C3EF8226FBE929D /* Frameworks */,
+				FE0A091FDBFB3E9C31B7A1BD /* Products */,
+			);
+			name = metaplayer7;
+			sourceTree = "<group>";
+		};
+		FE0A091FDBFB3E9C31B7A1BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3DA767F1C096011A053D222 /* metaplayer7.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		077D0B3082D8C5329B20AC59 /* metaplayer7 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59 /* Build configuration list for PBXNativeTarget "metaplayer7" */;
+			buildPhases = (
+				F7E50F631C51CD5B5DC0BC43 /* Compile Sources */,
+				D1C883685E82D5676953459A /* Link Binary With Libraries */,
+				9C316F444A62BF296E3E1F25 /* Project Copy */,
+				30414803F31797EB689AE508 /* Copy Bundle Resources */,
+				99542592E9780B9225F24AA8 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D79F8C6545268531538D8DDD /* PBXTargetDependency */,
+			);
+			name = metaplayer7;
+			productInstallPath = ../../bin/app_release/;
+			productName = metaplayer7;
+			productReference = A3DA767F1C096011A053D222 /* metaplayer7.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6DB9C3763D02B1415CD9D565 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = DAC4C1AA5EDEA1C85E9CA5E6 /* Build configuration list for PBXProject "metaplayer7" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E8C543AB96796ECAA2E65C57 /* metaplayer7 */;
+			productRefGroup = FE0A091FDBFB3E9C31B7A1BD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				077D0B3082D8C5329B20AC59 /* metaplayer7 */,
+				3ECD387F31FEE7DF66177F41 /* Qt Preprocess */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		30414803F31797EB689AE508 /* Copy Bundle Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "Copy Bundle Resources";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E618435888B9D49F8540165 /* Qt Qmake */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "Qt Qmake";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7 -f metaplayer7.xcodeproj/qt_makeqmake.mak";
+			showEnvVarsInLog = 0;
+		};
+		7EF0942E79C014DCEC8976BC /* Qt Preprocessors */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				/usr/local/share/qt/mkspecs/features/data/dummy.cpp,
+				mainwindow.h,
+				yangplayer/YangPlayWidget.h,
+				yangplayer/YangYuvPlayWidget.h,
+				mainwindow.ui,
+			);
+			name = "Qt Preprocessors";
+			outputPaths = (
+				moc_predefs.h,
+				moc_mainwindow.cpp,
+				moc_YangPlayWidget.cpp,
+				moc_YangYuvPlayWidget.cpp,
+				ui_mainwindow.h,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7 -f metaplayer7.xcodeproj/qt_preprocess.mak";
+			showEnvVarsInLog = 0;
+		};
+		9C316F444A62BF296E3E1F25 /* Project Copy */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Project Copy";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -r $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME /Users/aiven/work/project/framework/metaRTC/bin/app_release\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F7E50F631C51CD5B5DC0BC43 /* Compile Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA2666D834A5078AC93DC40C /* main.cpp in Compile Sources */,
+				05E8FD719B8B3257C7BC15C2 /* mainwindow.cpp in Compile Sources */,
+				5125369210B4F4FEC7857101 /* yangrecordthread.cpp in Compile Sources */,
+				AB6EBA765B76BEB9A651D335 /* YangPlayFactory.cpp in Compile Sources */,
+				BDE58556634E5D2F8C7884CF /* YangPlayWidget.cpp in Compile Sources */,
+				5E536706B6A46385AEAEC0A0 /* YangPlayerBase.cpp in Compile Sources */,
+				72BE6C2A1274BEBC2AC6C2BB /* YangPlayerDecoder.cpp in Compile Sources */,
+				9567FDC650434D6B15CB68EA /* YangPlayerHandleImpl.cpp in Compile Sources */,
+				B8B38075E16320E7ED71F3F3 /* YangPlayerPlay.cpp in Compile Sources */,
+				0F2CFBB2131CE1C67EFFC582 /* YangRtcReceive.cpp in Compile Sources */,
+				88951A26878E89474E3E998C /* YangYuvPlayWidget.cpp in Compile Sources */,
+				4A0A404410B3272C3598247C /* moc_mainwindow.cpp in Compile Sources */,
+				25039D974211F9FB4C18E16A /* moc_YangPlayWidget.cpp in Compile Sources */,
+				BABA0C12953CC3E66A5F20FF /* moc_YangYuvPlayWidget.cpp in Compile Sources */,
+				7439477E6D0CBD93D1620F27 /* dummy.cpp in Compile Sources */,
+			);
+			name = "Compile Sources";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D79F8C6545268531538D8DDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3ECD387F31FEE7DF66177F41 /* Qt Preprocess */;
+			targetProxy = 87AB421A2B9C415F007E7A4D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		339EE1B2CC4FC24589A0EA95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				ARCHS = x86_64;
+				"ARCHS[sdk=macosx*]" = x86_64;
+				CC = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 8JW82U8D6W;
+				DYLIB_COMPATIBILITY_VERSION = 1.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/lib,
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					.,
+					../../libmetartc7/src,
+					../../include,
+					/usr/local/lib/QtWidgets.framework/Headers,
+					/usr/local/lib/QtGui.framework/Headers,
+					/usr/local/lib/QtCore.framework/Headers,
+					/usr/local/lib/QtOpenGL.framework/Headers,
+					/usr/local/lib/QtOpenGLWidgets.framework/Headers,
+					.,
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers,
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AGL.framework/Headers,
+					.,
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers,
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AGL.framework/Headers,
+					"/usr/local/Cellar/qt/6.6.2_1/share/qt/mkspecs/macx-clang",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_DIR = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/../../bin/app_release/;
+				LDPLUSPLUS = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++";
+				LIBRARY_SEARCH_PATHS = (
+					"../..//bin/lib_release",
+					"../..//thirdparty/lib",
+					/System/Library/Frameworks/,
+					/usr/local/lib,
+					/Users/aiven/work/project/framework/metaRTC/bin/lib_debug,
+					/Users/aiven/work/project/framework/metaRTC/thirdparty/lib/mac,
+					/Users/aiven/work/project/framework/metaRTC/libmetartc7/Debug,
+					/Users/aiven/work/project/framework/metaRTC/libmetartccore7/Debug,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-O2",
+					"-Wall",
+					"-Wextra",
+					"-fPIC",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-DQT_NO_DEBUG",
+					"-DQT_WIDGETS_LIB",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-stdlib=libc++",
+					"-O2",
+					"-std=gnu++1z",
+					"-Wall",
+					"-Wextra",
+					"-fPIC",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-DQT_NO_DEBUG",
+					"-DQT_WIDGETS_LIB",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+				);
+				OTHER_LDFLAGS = (
+					"-stdlib=libc++",
+					"-headerpad_max_install_names",
+					"-Wl,-rpath,@executable_path/../Frameworks",
+					"-Wl,-rpath,/usr/local/lib",
+					"-F/usr/local/lib",
+					"-L../..//bin/lib_release",
+					"-L../..//thirdparty/lib",
+					"-lmetartc7",
+					"-lmetartccore7",
+					"-lyuv",
+					"-lspeexdsp",
+					"-lopus",
+					"-lyangh264decoder",
+					"-lusrsctp",
+					"-lpthread",
+					"-ldl",
+					"-lssl2",
+					"-lcrypto2",
+					"-lsrtp2",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = metaplayer7;
+				QMAKE_FULL_VERSION = 1.0.0;
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = 1.0;
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = macosx;
+				SYMROOT = .xcode;
+			};
+			name = Release;
+		};
+		3AA6C32AC930069E80220CF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				ARCHS = x86_64;
+				"ARCHS[sdk=macosx*]" = x86_64;
+				CC = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 8JW82U8D6W;
+				DYLIB_COMPATIBILITY_VERSION = 1.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/lib,
+				);
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					.,
+					../../libmetartc7/src,
+					../../include,
+					/usr/local/lib/QtWidgets.framework/Headers,
+					/usr/local/lib/QtGui.framework/Headers,
+					/usr/local/lib/QtCore.framework/Headers,
+					/usr/local/lib/QtOpenGL.framework/Headers,
+					/usr/local/lib/QtOpenGLWidgets.framework/Headers,
+					.,
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers,
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AGL.framework/Headers,
+					.,
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers,
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/AGL.framework/Headers,
+					"/usr/local/Cellar/qt/6.6.2_1/share/qt/mkspecs/macx-clang",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_DIR = /Users/aiven/work/project/framework/metaRTC/demo/metaplayer7/../../bin/app_release/;
+				LDPLUSPLUS = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++";
+				LIBRARY_SEARCH_PATHS = (
+					"../..//bin/lib_release",
+					"../..//thirdparty/lib",
+					/System/Library/Frameworks/,
+					/usr/local/lib,
+					/Users/aiven/work/project/framework/metaRTC/bin/lib_debug,
+					/Users/aiven/work/project/framework/metaRTC/thirdparty/lib/mac,
+					/Users/aiven/work/project/framework/metaRTC/libmetartc7/Debug,
+					/Users/aiven/work/project/framework/metaRTC/libmetartccore7/Debug,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-O2",
+					"-Wall",
+					"-Wextra",
+					"-fPIC",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-DQT_NO_DEBUG",
+					"-DQT_WIDGETS_LIB",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-stdlib=libc++",
+					"-O2",
+					"-std=gnu++1z",
+					"-Wall",
+					"-Wextra",
+					"-fPIC",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-DQT_NO_DEBUG",
+					"-DQT_WIDGETS_LIB",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+				);
+				OTHER_LDFLAGS = (
+					"-stdlib=libc++",
+					"-headerpad_max_install_names",
+					"-Wl,-rpath,@executable_path/../Frameworks",
+					"-Wl,-rpath,/usr/local/lib",
+					"-F/usr/local/lib",
+					"-L../..//bin/lib_release",
+					"-L../..//thirdparty/lib",
+					"-lmetartc7",
+					"-lmetartccore7",
+					"-lyuv",
+					"-lspeexdsp",
+					"-lopus",
+					"-lyangh264decoder",
+					"-lusrsctp",
+					"-lpthread",
+					"-ldl",
+					"-lssl2",
+					"-lcrypto2",
+					"-lsrtp2",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = metaplayer7;
+				QMAKE_FULL_VERSION = 1.0.0;
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = 1.0;
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = macosx;
+				SYMROOT = .xcode;
+			};
+			name = Debug;
+		};
+		6666AA5E688052234F6758D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				"ARCHS[sdk=macosx*]" = x86_64;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 8JW82U8D6W;
+				ENABLE_BITCODE = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = metaplayer7;
+				QMAKE_FULL_VERSION = 1.0.0;
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = 1.0;
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		77418F46922677BB04ED38DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				"ARCHS[sdk=macosx*]" = x86_64;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 8JW82U8D6W;
+				ENABLE_BITCODE = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = metaplayer7;
+				QMAKE_FULL_VERSION = 1.0.0;
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = 1.0;
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6CC3B5D2136C7CD6A5CF5A59 /* Build configuration list for PBXNativeTarget "metaplayer7" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77418F46922677BB04ED38DD /* Debug */,
+				6666AA5E688052234F6758D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAC4C1AA5EDEA1C85E9CA5E6 /* Build configuration list for PBXProject "metaplayer7" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AA6C32AC930069E80220CF1 /* Debug */,
+				339EE1B2CC4FC24589A0EA95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6DB9C3763D02B1415CD9D565 /* Project object */;
+}

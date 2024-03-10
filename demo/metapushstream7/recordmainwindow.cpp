@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) 2019-2022 yanggaofeng
 //
 #include "recordmainwindow.h"
@@ -12,8 +12,10 @@
 #include <yangpush/YangPushFactory.h>
 #include <QDebug>
 //#include <QMessageBox>
-#include <QDesktopWidget>
+#include <QScreen>
 #include <QSettings>
+
+#define SERVER_ADDRESS "47.120.55.58"
 
 RecordMainWindow::RecordMainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -60,7 +62,7 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
      m_win0=new YangPlayWidget(this);
 #endif
     m_hb0->addWidget(m_win0);
-    m_hb0->setMargin(0);
+//    m_hb0->setMargin(0);
     m_hb0->setSpacing(0);
 
     char s[128]={0};
@@ -199,9 +201,14 @@ void RecordMainWindow::init() {
     m_context->avinfo.enc.enc_threads=4;
 
     memcpy(&m_screenInfo,&m_context->avinfo.video,sizeof(YangVideoInfo));
-    QDesktopWidget* desk=QApplication::desktop();
-    m_screenWidth=desk->screenGeometry().width();
-    m_screenHeight=desk->screenGeometry().height();
+//    QDesktopWidget* desk=QApplication::desktop();
+//    m_screenWidth=desk->screenGeometry().width();
+//    m_screenHeight=desk->screenGeometry().height();
+    
+    QScreen* screen=QApplication::primaryScreen();
+    m_screenWidth=screen->size().width();
+    m_screenHeight=screen->size().height();
+
     m_screenInfo.width=m_screenWidth;
     m_screenInfo.height=m_screenHeight;
     m_screenInfo.outWidth=m_screenWidth;
@@ -257,9 +264,9 @@ void RecordMainWindow::on_m_c_whip_clicked()
     char s[128]={0};
 
     if(ui->m_c_whip->checkState()==Qt::CheckState::Checked)
-        sprintf(s,"http://%s:1985/rtc/v1/whip/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
+        sprintf(s,"http://47.120.55.58:1985/rtc/v1/whip/?app=live&stream=livestream",m_context->avinfo.rtc.localIp);
     else
-        sprintf(s,"webrtc://%s:1985/live/livestream",m_context->avinfo.rtc.localIp);
+        sprintf(s,"webrtc://47.120.55.58:1985/live/livestream",m_context->avinfo.rtc.localIp);
 
     ui->m_url->setText(s);
 }
@@ -268,7 +275,7 @@ void RecordMainWindow::on_m_c_janus_clicked()
 {
     char s[128]={0};
     if(ui->m_c_janus->checkState()==Qt::CheckState::Checked){
-        sprintf(s,"http://%s:7080/whip/endpoint/metaRTC",m_context->avinfo.rtc.localIp);
+        sprintf(s,"http://47.120.55.58:7080/whip/endpoint/metaRTC",m_context->avinfo.rtc.localIp);
          ui->m_url->setText(s);
         m_janus.show();
     }

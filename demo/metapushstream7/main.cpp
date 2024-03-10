@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) 2019-2022 yanggaofeng
 //
 #include "recordmainwindow.h"
@@ -11,7 +11,7 @@
 #include <yangutil/sys/YangSysMessageHandle.h>
 
 
-#include <QTextCodec>
+#include <QtCore5Compat/QTextCodec>
 int main(int argc, char *argv[])
 {
 #if defined (__APPLE__)

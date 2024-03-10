@@ -1,0 +1,2922 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+		5E618435888B9D49F8540165 = {
+			buildActionMask = 2147483647;
+			files = (
+				);
+			isa = PBXShellScriptBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Qt Qmake";
+			shellPath = "/bin/sh";
+			shellScript = "make -C /Users/aiven/work/project/framework/metaRTC/libmetartccore7 -f metartccore7.xcodeproj/qt_makeqmake.mak";
+			showEnvVarsInLog = "0";
+		};
+		B7AF43593B8B3A022ED37367 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangAudioMix.c";
+			name = "YangAudioMix.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		5BA3BB08D84AC2F178C607CC = {
+			fileRef = "B7AF43593B8B3A022ED37367";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9D6C84110FFB74769938EFED = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangAudioUtil.c";
+			name = "YangAudioUtil.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		1D8562FF171C9FFEE3B1F30A = {
+			fileRef = "9D6C84110FFB74769938EFED";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		2C6E508E7E5D542B219ABD82 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangConvert.c";
+			name = "YangConvert.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		4C2777908B14D4404564911E = {
+			fileRef = "2C6E508E7E5D542B219ABD82";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		38EC85EF41E4197BD9D09AF0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangMeta.c";
+			name = "YangMeta.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		C50EA3D69FF6DB12C9ACEA88 = {
+			fileRef = "38EC85EF41E4197BD9D09AF0";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		F79506E315E267FFC9300B66 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangNalu.c";
+			name = "YangNalu.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		15751CF5BBB38FF3CD8D4BEF = {
+			fileRef = "F79506E315E267FFC9300B66";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		0218F5452A2E6E96227A5FDA = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangPreProcess.c";
+			name = "YangPreProcess.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		690EF687FFDE255EB55814A8 = {
+			fileRef = "0218F5452A2E6E96227A5FDA";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		85C312801C2169E34E016E8E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangResample.c";
+			name = "YangResample.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		9F86EA9424D589352AE5E808 = {
+			fileRef = "85C312801C2169E34E016E8E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		EDEA5909834A1E8F809214A2 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangRtcAec.c";
+			name = "YangRtcAec.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		94C5A04E9505DD92660B6AB1 = {
+			fileRef = "EDEA5909834A1E8F809214A2";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D08A8F0725EF767687A2E511 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangSpspps.c";
+			name = "YangSpspps.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		8A384671529C9121B2939470 = {
+			fileRef = "D08A8F0725EF767687A2E511";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D32EDFA72CA05C51C13074E1 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangavutil/YangYuvUtil.c";
+			name = "YangYuvUtil.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		14C72DD7EEDC98DC50044E40 = {
+			fileRef = "D32EDFA72CA05C51C13074E1";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		57977695E069A8C931F27673 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangice/YangIce.c";
+			name = "YangIce.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		65D15A2DB25D707F0C2727E6 = {
+			fileRef = "57977695E069A8C931F27673";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		1B891997F7B69FFCCCF229EF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangice/YangRtcSocket.c";
+			name = "YangRtcSocket.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		5954217852BC32D343F8BE20 = {
+			fileRef = "1B891997F7B69FFCCCF229EF";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		ECB2E8EE2FB0F5CDDCCEB123 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangice/YangRtcStun.c";
+			name = "YangRtcStun.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		27A9841B5AACCA2A5A8B54C5 = {
+			fileRef = "ECB2E8EE2FB0F5CDDCCEB123";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		AFB6A519AFF5CFCF7F97B347 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangice/YangTurnConnection.c";
+			name = "YangTurnConnection.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		D7DB308907C1813708FCFB57 = {
+			fileRef = "AFB6A519AFF5CFCF7F97B347";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		262C4CBD3DCF97D225337F67 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangjson/YangJson.c";
+			name = "YangJson.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		C015ED7876A147F08CFBC125 = {
+			fileRef = "262C4CBD3DCF97D225337F67";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		8751EFACE856C46951FEBDAC = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangjson/YangJsonImpl.c";
+			name = "YangJsonImpl.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		CB47D9342D7B772F608BB2FA = {
+			fileRef = "8751EFACE856C46951FEBDAC";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E96B2663DCF35E788AF436D4 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangp2p/YangP2pConnection.c";
+			name = "YangP2pConnection.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		E1CF2A0F8089714727CC50FB = {
+			fileRef = "E96B2663DCF35E788AF436D4";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		4E714F5343C621A5BC5229E4 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangp2p/YangP2pConnection2.c";
+			name = "YangP2pConnection2.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		1BB124FE31C3CEB61F45FF77 = {
+			fileRef = "4E714F5343C621A5BC5229E4";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		92DFD6D5A67CDE277C4BD7FC = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangBandwidth.c";
+			name = "YangBandwidth.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		9A421805DD80D0A4E1AB7D6B = {
+			fileRef = "92DFD6D5A67CDE277C4BD7FC";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		10B5F92C1C8D3952B5C39E87 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangDatachannel.c";
+			name = "YangDatachannel.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		9C7A85BF888F5B8ADD04C906 = {
+			fileRef = "10B5F92C1C8D3952B5C39E87";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D8C44BEE5148214D8269E07C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPeerConnection.c";
+			name = "YangPeerConnection.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		F7AAC2239A0044266CC213C2 = {
+			fileRef = "D8C44BEE5148214D8269E07C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		17C8E93F193589279CC4899E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayStream.c";
+			name = "YangPlayStream.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		129C99E19ABF2C0BDB2C8D01 = {
+			fileRef = "17C8E93F193589279CC4899E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		A8F035516321C4DE2AD67230 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrack.c";
+			name = "YangPlayTrack.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		219413E4286E337F0039859E = {
+			fileRef = "A8F035516321C4DE2AD67230";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E54CA6A5BC3639855F1C98DE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrackAudio.c";
+			name = "YangPlayTrackAudio.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		796207AE0C4D5AA26C08E374 = {
+			fileRef = "E54CA6A5BC3639855F1C98DE";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		A932B21E33783ED33BF5143D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrackH264.c";
+			name = "YangPlayTrackH264.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		4F260AB90D18FEDDDB35D361 = {
+			fileRef = "A932B21E33783ED33BF5143D";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		2EF2C50F66F7B7F250EBC3AD = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrackH265.c";
+			name = "YangPlayTrackH265.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		25EDA281DB450F0E89F68D3A = {
+			fileRef = "2EF2C50F66F7B7F250EBC3AD";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		4E2C2818C62BFC1C4FF8F20F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrackVideo.c";
+			name = "YangPlayTrackVideo.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		6A5F215B9ED1A3D6D99E4530 = {
+			fileRef = "4E2C2818C62BFC1C4FF8F20F";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		5E2F91E8FDB406C515A3A62F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPush.c";
+			name = "YangPush.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		3268E4919C94317BCEDDCF4B = {
+			fileRef = "5E2F91E8FDB406C515A3A62F";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		255FC700ACA99E09AD0A8C04 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushAudio.c";
+			name = "YangPushAudio.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		9D351841C6EEEDB6A42EFE44 = {
+			fileRef = "255FC700ACA99E09AD0A8C04";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		19B4D233A4C9BB8A8AA47B0C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushH264.c";
+			name = "YangPushH264.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		0D827AB239A38ACBC5E86A5D = {
+			fileRef = "19B4D233A4C9BB8A8AA47B0C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		6BC760EB8E28DDA709D44394 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushH265.c";
+			name = "YangPushH265.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		22E3DDCA1CDBA9905E5D91FD = {
+			fileRef = "6BC760EB8E28DDA709D44394";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		46F5E500B0B9A3FA531A79E0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushStream.c";
+			name = "YangPushStream.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		5B3244CD7A980595449F7A48 = {
+			fileRef = "46F5E500B0B9A3FA531A79E0";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9422E6A91BAF042C735A3CE1 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcConnection.c";
+			name = "YangRtcConnection.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		F816091A8B4AECA9AA3F5810 = {
+			fileRef = "9422E6A91BAF042C735A3CE1";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		F04C9FDECAA464A980D94852 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcContext.c";
+			name = "YangRtcContext.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		08B39C02614FCFB49A73BD0E = {
+			fileRef = "F04C9FDECAA464A980D94852";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9AA24AA3F5A10894AE322109 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcRtcp.c";
+			name = "YangRtcRtcp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		54E0CE5FBB4F76A1F128713E = {
+			fileRef = "9AA24AA3F5A10894AE322109";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9486BED3A6C91D2C8EF9F04C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcStats.c";
+			name = "YangRtcStats.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		C412DC9C6C3C2635BEEA51BF = {
+			fileRef = "9486BED3A6C91D2C8EF9F04C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		1678A9354416D4DD8A44B9C2 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcTwcc.c";
+			name = "YangRtcTwcc.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		B0A84CFE863E9DEEB4809767 = {
+			fileRef = "1678A9354416D4DD8A44B9C2";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		88E7B0106047DF65292DB628 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangStreamUrl.c";
+			name = "YangStreamUrl.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		3616D4A6799C3117F7348855 = {
+			fileRef = "88E7B0106047DF65292DB628";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		AA653945E0AE779710546C06 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangPublishNackBuffer.c";
+			name = "YangPublishNackBuffer.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		DD3106FEC989936CF9C0FF6A = {
+			fileRef = "AA653945E0AE779710546C06";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		13B319DDB1DD64D25DBD36A0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangReceiveNackBuffer.c";
+			name = "YangReceiveNackBuffer.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		2F40A5FD4AC3B00AA26CCBFE = {
+			fileRef = "13B319DDB1DD64D25DBD36A0";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		A7EE5F208148C9E93E0D68AF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcp.c";
+			name = "YangRtcp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		CC7794F87CA13D791CC64168 = {
+			fileRef = "A7EE5F208148C9E93E0D68AF";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		1B4C82213C8DA4E38D111835 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpApp.c";
+			name = "YangRtcpApp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		51632B4EA9225FEA736B5D73 = {
+			fileRef = "1B4C82213C8DA4E38D111835";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		6A8EFD09FBD23AF031A26260 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpBye.c";
+			name = "YangRtcpBye.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		241B8DD1046D8959A5477F52 = {
+			fileRef = "6A8EFD09FBD23AF031A26260";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		40D95751A237AD9581C14CE8 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpCommon.c";
+			name = "YangRtcpCommon.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		B7AC76789AF0EF60DC59268B = {
+			fileRef = "40D95751A237AD9581C14CE8";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E9AA20A63429AFE907F59BF7 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpCompound.c";
+			name = "YangRtcpCompound.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		A65696C3EE6209B1A6112ED1 = {
+			fileRef = "E9AA20A63429AFE907F59BF7";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		EDAF2BDD2C566E3D24AAC577 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpNack.c";
+			name = "YangRtcpNack.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		213E44C4F2746A939DFAD616 = {
+			fileRef = "EDAF2BDD2C566E3D24AAC577";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9E2428626CCDEDC556133685 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpPli.c";
+			name = "YangRtcpPli.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		043B156F15FCFDE87C608ABD = {
+			fileRef = "9E2428626CCDEDC556133685";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		13DFBBA6047A95E12B389788 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpPsfbCommon.c";
+			name = "YangRtcpPsfbCommon.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		9FF10DB72EEAC11D34DC152C = {
+			fileRef = "13DFBBA6047A95E12B389788";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		8C10BB255FF5B12C02034FBB = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpRR.c";
+			name = "YangRtcpRR.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		D7712698F2C757070A62DE8E = {
+			fileRef = "8C10BB255FF5B12C02034FBB";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		45D9A09C82E5A792699A116F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpRpsi.c";
+			name = "YangRtcpRpsi.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		AFA82073DF684DEE70E41DE0 = {
+			fileRef = "45D9A09C82E5A792699A116F";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		695CB291795F9B50F47DDF42 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpSR.c";
+			name = "YangRtcpSR.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		195F163D7BACE4D88A53AF46 = {
+			fileRef = "695CB291795F9B50F47DDF42";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		04451B2038266C9782D962BD = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpSli.c";
+			name = "YangRtcpSli.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		0485C55426C6EB766EDFF002 = {
+			fileRef = "04451B2038266C9782D962BD";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9D166778A03876927498A9C9 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpTWCC.c";
+			name = "YangRtcpTWCC.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		E3D88B269940965DFC41DA18 = {
+			fileRef = "9D166778A03876927498A9C9";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9F1303E07033F2897E5E2B85 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpXr.c";
+			name = "YangRtcpXr.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		E80CA68122E5BADA066D206A = {
+			fileRef = "9F1303E07033F2897E5E2B85";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		1AC384DDC3138C3E5BAA4BE8 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtp.c";
+			name = "YangRtp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		CB31457BFA0C8BAFDD0C706D = {
+			fileRef = "1AC384DDC3138C3E5BAA4BE8";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		7959453F1736762D30DC1955 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpBuffer.c";
+			name = "YangRtpBuffer.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		A3EA38A36FCFAAB73E796FC0 = {
+			fileRef = "7959453F1736762D30DC1955";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		17F96F99255C9A66619E0393 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpFUAPayload.c";
+			name = "YangRtpFUAPayload.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		410A2AC33E239EA0DA5B0C32 = {
+			fileRef = "17F96F99255C9A66619E0393";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		37643884DFE1432ADF30F2C3 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpFUAPayload2.c";
+			name = "YangRtpFUAPayload2.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		A3BDB4C2AA49DBD6771A8D3F = {
+			fileRef = "37643884DFE1432ADF30F2C3";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		7F43D90D43A2A7AF5F71B9E6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpHeader.c";
+			name = "YangRtpHeader.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		91DE7DB6942AF60CA9DA7EAF = {
+			fileRef = "7F43D90D43A2A7AF5F71B9E6";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		359B0E8DFCBA0B249611CF65 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpPacket.c";
+			name = "YangRtpPacket.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		CC0B1C790583C06BE26AA3A2 = {
+			fileRef = "359B0E8DFCBA0B249611CF65";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		FA7D8A43D3C9177A5F40AEDD = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpRawPayload.c";
+			name = "YangRtpRawPayload.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		8C152C5953A5705918C8E59A = {
+			fileRef = "FA7D8A43D3C9177A5F40AEDD";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E7C75C04B48F554BCA42F9F0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpRecvNack.c";
+			name = "YangRtpRecvNack.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		403DDCDEB3FD43C03CE0D0F1 = {
+			fileRef = "E7C75C04B48F554BCA42F9F0";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		2741CA04008142F517620D84 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpSTAPPayload.c";
+			name = "YangRtpSTAPPayload.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		73BB3FF7D57D4BDD717AE7B1 = {
+			fileRef = "2741CA04008142F517620D84";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		CEDB2C618AD7D23F3AAA0C7E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangAnswerSdp.c";
+			name = "YangAnswerSdp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		FC1FBE0EF6FEC2972CE1E4BA = {
+			fileRef = "CEDB2C618AD7D23F3AAA0C7E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		933AA7B79040BDB5B615AFA5 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangAudioPayload.c";
+			name = "YangAudioPayload.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		3BA525D80E1DF9C727DA5B58 = {
+			fileRef = "933AA7B79040BDB5B615AFA5";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		439F9F859B5D22D547BC4F84 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangCodecPayload.c";
+			name = "YangCodecPayload.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		D72F910DFDA76F4427B32C66 = {
+			fileRef = "439F9F859B5D22D547BC4F84";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		6C45059F478B325106A3E6D0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangMediaDesc.c";
+			name = "YangMediaDesc.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		DD981F4E3F96BDB4360B3C34 = {
+			fileRef = "6C45059F478B325106A3E6D0";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		12BD2330BD37F0D47A2071C8 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangMediaPayloadType.c";
+			name = "YangMediaPayloadType.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		20836B6087192197B8C48EB6 = {
+			fileRef = "12BD2330BD37F0D47A2071C8";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		AD425903D9938F37C93C048B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangRedPayload.c";
+			name = "YangRedPayload.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		30FCEC7FCB57FF5B9B19D087 = {
+			fileRef = "AD425903D9938F37C93C048B";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D4322BE8BB23ACDDE6736D4B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangRtcSdp.c";
+			name = "YangRtcSdp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		5CE2C8DC5C600C59CC4F93A6 = {
+			fileRef = "D4322BE8BB23ACDDE6736D4B";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		EB4C66F7944A938DDE658B6F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangRtxPayloadDes.c";
+			name = "YangRtxPayloadDes.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		208A93C338CFA5F2743EB05B = {
+			fileRef = "EB4C66F7944A938DDE658B6F";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		7969F56040B0290643E20D14 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangSSRCInfo.c";
+			name = "YangSSRCInfo.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		40B864BAB8E1C5F6E47412DC = {
+			fileRef = "7969F56040B0290643E20D14";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E6089B9F33CE79F10C4929D3 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangSdp.c";
+			name = "YangSdp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		C9E0A1E6BF7520C224480EDF = {
+			fileRef = "E6089B9F33CE79F10C4929D3";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		538AF5ED3129E7BCBA95019C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangSdpHandle.c";
+			name = "YangSdpHandle.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		B5358EC05A61900EC98A7DF2 = {
+			fileRef = "538AF5ED3129E7BCBA95019C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		A2809B9133A967069ACEBF39 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsrs/YangSrsConnection.c";
+			name = "YangSrsConnection.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		59FF6CBFABBCB64981FE93FF = {
+			fileRef = "A2809B9133A967069ACEBF39";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		544946D5B50C5EA0AA5D8BBF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangssl/YangDtlsMbedtls.c";
+			name = "YangDtlsMbedtls.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		18C1EE8780C1696AD3B4C8B0 = {
+			fileRef = "544946D5B50C5EA0AA5D8BBF";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		97925552BD9DDAB8547A7665 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangssl/YangDtlsOpenssl.c";
+			name = "YangDtlsOpenssl.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		160FC6DF0FAFD47BE9A7DF68 = {
+			fileRef = "97925552BD9DDAB8547A7665";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		EF04204A85086CB4732277C2 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangssl/YangSslMbedtls.c";
+			name = "YangSslMbedtls.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		30F2B6B044510ADCEE4FA933 = {
+			fileRef = "EF04204A85086CB4732277C2";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		B4BAEDD77EBD358EEF600F57 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangssl/YangSslOpenssl.c";
+			name = "YangSslOpenssl.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		F003C2226306A08EC39B4F3E = {
+			fileRef = "B4BAEDD77EBD358EEF600F57";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		7C5E86ACC459F9B1E3566388 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangstream/YangStream.c";
+			name = "YangStream.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		5D136E3E137886215ECBC556 = {
+			fileRef = "7C5E86ACC459F9B1E3566388";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		50982BD4C858A97235510336 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangstream/YangStreamCapture.c";
+			name = "YangStreamCapture.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		AFEA42EE64B2F5CD94DDCB93 = {
+			fileRef = "50982BD4C858A97235510336";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		70D05D48EBB5F24F2EC1C640 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangstream/YangStreamRtc.c";
+			name = "YangStreamRtc.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		6651DE92F23035E59BD1AC4B = {
+			fileRef = "70D05D48EBB5F24F2EC1C640";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		F0A72F30ACAB09AC3F0F5EBA = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/buffer2/YangMediaBuffer2.c";
+			name = "YangMediaBuffer2.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		7D8C17268BE5ADEE1FF8ACB2 = {
+			fileRef = "F0A72F30ACAB09AC3F0F5EBA";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		CE664DF33297C2D194B71F54 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/buffer2/YangSortBuffer.c";
+			name = "YangSortBuffer.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		316AF1DCABB8D267500E567A = {
+			fileRef = "CE664DF33297C2D194B71F54";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		50127A322225D0A19939AC01 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/buffer2/YangVideoEncoderBuffer2.c";
+			name = "YangVideoEncoderBuffer2.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		8962836D8C370EE7253A321B = {
+			fileRef = "50127A322225D0A19939AC01";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		BD4D6A1145A75A16E894F5F6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangAvtype.c";
+			name = "YangAvtype.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		117901538DD631C6E255448B = {
+			fileRef = "BD4D6A1145A75A16E894F5F6";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		2DC0404EC5ACEAE7BEC9AA89 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangBuffer.c";
+			name = "YangBuffer.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		040DDAD9B255266430348F32 = {
+			fileRef = "2DC0404EC5ACEAE7BEC9AA89";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		64595D1785F13D880286E8F6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangCLog.c";
+			name = "YangCLog.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		C34379D65F4535A66B52C7B7 = {
+			fileRef = "64595D1785F13D880286E8F6";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		A7DBB60276FCD5B953B84816 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangCString.c";
+			name = "YangCString.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		8CCD5BA1EEB44A05C4B2ECA4 = {
+			fileRef = "A7DBB60276FCD5B953B84816";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E3D4A4313B4989F4E75C75F6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangCTimer.c";
+			name = "YangCTimer.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		51421A82A8AA4E122E96DC00 = {
+			fileRef = "E3D4A4313B4989F4E75C75F6";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		846E9073B011B22970CD6E9B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangEndian.c";
+			name = "YangEndian.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		E4A85A479B07E79B7E6B06ED = {
+			fileRef = "846E9073B011B22970CD6E9B";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		0595D6B32DC4F48DB58068F6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangFile.c";
+			name = "YangFile.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		D50CE13C30B18416519E31B6 = {
+			fileRef = "0595D6B32DC4F48DB58068F6";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		0CC359EB44244485A1BFDF83 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangHttp.c";
+			name = "YangHttp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		7D87A016FBB1CFE90A2CD5F6 = {
+			fileRef = "0CC359EB44244485A1BFDF83";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		07916AFB9E35087B2A660190 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangIni.c";
+			name = "YangIni.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		1086A421468BF8D002EC41F9 = {
+			fileRef = "07916AFB9E35087B2A660190";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		072C00099F564067009BE01D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangLibHandle.c";
+			name = "YangLibHandle.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		7682FFAFCC6D41A02C4D393C = {
+			fileRef = "072C00099F564067009BE01D";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		4B8AB51EC77F2319EFC27734 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangMath.c";
+			name = "YangMath.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		4E2FC39176B4C1F3F06B4726 = {
+			fileRef = "4B8AB51EC77F2319EFC27734";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		EECA61C80D01CC2086931E62 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangSRtp.c";
+			name = "YangSRtp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		0535E38F12B92327FA8172D8 = {
+			fileRef = "EECA61C80D01CC2086931E62";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D2C2EBED4331C82AB745EA95 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangSctp.c";
+			name = "YangSctp.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		8AF94003CBEB3C043C5B0893 = {
+			fileRef = "D2C2EBED4331C82AB745EA95";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		8893F46A14F8DE4F5F5D3440 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangSocket.c";
+			name = "YangSocket.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		FD992F547BB9359050B12EBD = {
+			fileRef = "8893F46A14F8DE4F5F5D3440";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		86C06D2B08837B36756563B3 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangSocketIP.c";
+			name = "YangSocketIP.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		B1D71EC8DFF908FA0223A8C9 = {
+			fileRef = "86C06D2B08837B36756563B3";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		473C994A901CEB77C9C80159 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangSsrc.c";
+			name = "YangSsrc.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		C80B28037C71383339895690 = {
+			fileRef = "473C994A901CEB77C9C80159";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		0B617133E271901978527580 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangThread.c";
+			name = "YangThread.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		7F7B97798B5CEFA7A2FA6F46 = {
+			fileRef = "0B617133E271901978527580";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		F6F71782D3C944C33086A5CD = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangTime.c";
+			name = "YangTime.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		18D7396DFBB8FEA3B702131D = {
+			fileRef = "F6F71782D3C944C33086A5CD";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		2D23EE889E1E27B8E3CE32B7 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangUrl.c";
+			name = "YangUrl.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		7B0212211358D96B196E0395 = {
+			fileRef = "2D23EE889E1E27B8E3CE32B7";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		2388FC937E842195C2E8B29A = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangVector.c";
+			name = "YangVector.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		19BBCAA68AFE855BCB0F65F9 = {
+			fileRef = "2388FC937E842195C2E8B29A";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		53A8B649BE0EFD61D5C07502 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangWebsocket.c";
+			name = "YangWebsocket.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		65BDF16D2A7FC0CB103E6C87 = {
+			fileRef = "53A8B649BE0EFD61D5C07502";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		B2D35E43A52E66F29A21320E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangwhip/YangWhip.c";
+			name = "YangWhip.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		FB579872C21D231D4B380F56 = {
+			fileRef = "B2D35E43A52E66F29A21320E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		B32CE972B61347A2EADDC3C1 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangzlm/YangZlmConnection.c";
+			name = "YangZlmConnection.c";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.c";
+		};
+		134C842FF00463D9A2A39AF7 = {
+			fileRef = "B32CE972B61347A2EADDC3C1";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		81128C8CA7D13118823070BF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangice/YangIce.h";
+			name = "YangIce.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		581ED75B4CE2E50C6E7AE75D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangice/YangRtcSocket.h";
+			name = "YangRtcSocket.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		AB6FE2B40DCD57FC355B469F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangice/YangRtcStun.h";
+			name = "YangRtcStun.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		040AAD0500E948462020EF53 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangice/YangTurnConnection.h";
+			name = "YangTurnConnection.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		BE09C74349637EC6729791C1 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangjson/YangJsonImpl.h";
+			name = "YangJsonImpl.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		79DF76E0D544F74172A6FEEB = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangmqtt/YangMqttImpl.h";
+			name = "YangMqttImpl.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		4957B0EFFBCFD8837B059D59 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangp2p/YangP2pConnection.h";
+			name = "YangP2pConnection.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		1973A9C1F336345376A1D69F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangp2p/YangP2pConnection2.h";
+			name = "YangP2pConnection2.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		9EAF2CCC57A7722C57D148DE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangBandwidth.h";
+			name = "YangBandwidth.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		8D2C57521866119C46D8F712 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangDatachannel.h";
+			name = "YangDatachannel.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		936DCAC24B4BA4021A25C1DD = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlay.h";
+			name = "YangPlay.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		AD700F624DAC8C6A6F2FD1AF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayStream.h";
+			name = "YangPlayStream.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		520409DEB746C885CD566B1D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrack.h";
+			name = "YangPlayTrack.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A0D00BBD40DBEC38C4BFD5C8 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrackAudio.h";
+			name = "YangPlayTrackAudio.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A6DEC645F28B14FC8D2A3950 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrackH.h";
+			name = "YangPlayTrackH.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6EF5DDC8649CFF75459D5106 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrackH264.h";
+			name = "YangPlayTrackH264.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		EA12F8AF5E4CB467C75DD513 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrackH265.h";
+			name = "YangPlayTrackH265.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		68730C3454D8B5F273FFB97E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPlayTrackVideo.h";
+			name = "YangPlayTrackVideo.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		287431D58D88FB861FFDB158 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPush.h";
+			name = "YangPush.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		725A0FFB8D67259B775AA5DF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushAudio.h";
+			name = "YangPushAudio.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		51B5ED0A765CB62753A6169D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushH.h";
+			name = "YangPushH.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		066C207A47C5872E2C780079 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushH264.h";
+			name = "YangPushH264.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6513D439DBC691821D518675 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushH265.h";
+			name = "YangPushH265.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		588C5CA8C252F1F58C33CFEC = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushStream.h";
+			name = "YangPushStream.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A9902CDE0C6BDD37AF11A412 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangPushStreamH.h";
+			name = "YangPushStreamH.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		890163464ECE5867E413985C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcConnection.h";
+			name = "YangRtcConnection.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		11F77FFDF3D342EC94A818E2 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcContext.h";
+			name = "YangRtcContext.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		898742ED75CD273CB9DA08A2 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcContextH.h";
+			name = "YangRtcContextH.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		7DB3B4EA8F13D9E2F124CC93 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcRtcp.h";
+			name = "YangRtcRtcp.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		8C5B7C3A9218FBE30BC1A9C7 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcSession.h";
+			name = "YangRtcSession.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A5BC1B3F473BEF14FE46CAC5 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcStats.h";
+			name = "YangRtcStats.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		CE8F8F0E5F84449F77B19C26 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcStream.h";
+			name = "YangRtcStream.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		1D89D2E4813FEB84B0FDB0AB = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangRtcTwcc.h";
+			name = "YangRtcTwcc.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		3761EE26E51C96A63C40B393 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtc/YangStreamUrl.h";
+			name = "YangStreamUrl.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		C43DDE60D99D7E6354C3628D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangPublishNackBuffer.h";
+			name = "YangPublishNackBuffer.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		B271C59F457F3D6E4E43A378 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangReceiveNackBuffer.h";
+			name = "YangReceiveNackBuffer.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		FB4C993000FBB78F9A8E5C14 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcp.h";
+			name = "YangRtcp.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		DA235EAE7E8422249A529CE3 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpApp.h";
+			name = "YangRtcpApp.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		B8A6CC51C54D2F3D9EAC4EDF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpBye.h";
+			name = "YangRtcpBye.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		F46A688F5060B3312AE5EDEF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpCommon.h";
+			name = "YangRtcpCommon.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		D0DD48ED5715AD4A8D03C9B8 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpCompound.h";
+			name = "YangRtcpCompound.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		EF19B6FE92338CDFB7323BFF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpNack.h";
+			name = "YangRtcpNack.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		C2271336F513F00AD89C019D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpPli.h";
+			name = "YangRtcpPli.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		170A2C127AB98A9B1C5D2CD3 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpPsfbCommon.h";
+			name = "YangRtcpPsfbCommon.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		46E9382DE8202709A276928B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpRR.h";
+			name = "YangRtcpRR.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6F86E9A927C484732CAC8F77 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpRpsi.h";
+			name = "YangRtcpRpsi.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		0C9E37154733B9998CF4A7ED = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpSR.h";
+			name = "YangRtcpSR.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		B959D0D2256060DC3EC283FC = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpSli.h";
+			name = "YangRtcpSli.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		38F43B3347C3AB750BF50B36 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpTWCC.h";
+			name = "YangRtcpTWCC.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		B5D5E466A941DFFE05D660DA = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtcpXr.h";
+			name = "YangRtcpXr.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A68708C8BCE6830C524973AA = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtp.h";
+			name = "YangRtp.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		C56130430C7E2C945122F35B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpBuffer.h";
+			name = "YangRtpBuffer.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		B312F187D4989FB144308D2D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpConstant.h";
+			name = "YangRtpConstant.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		F0C1F16CC3AE29B7CA6EDD5E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpFUAPayload.h";
+			name = "YangRtpFUAPayload.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		8389914F161A6B9953260470 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpFUAPayload2.h";
+			name = "YangRtpFUAPayload2.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6248881D4E980D06E47F816E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpHeader.h";
+			name = "YangRtpHeader.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		2E1EEEC7DBE4975D92CF6C0D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpPacket.h";
+			name = "YangRtpPacket.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		3C12020D0F9608D3C71B7D87 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpRawPayload.h";
+			name = "YangRtpRawPayload.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		5159BD9F163F81E0455AFF63 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpRecvNack.h";
+			name = "YangRtpRecvNack.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		C1DB4BD8776554F5A2EC99E6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangrtp/YangRtpSTAPPayload.h";
+			name = "YangRtpSTAPPayload.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		D9378EBD4CFD292DCFC0A079 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangAnswerSdp.h";
+			name = "YangAnswerSdp.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6625348497C0C06119E9ACDE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangAudioPayload.h";
+			name = "YangAudioPayload.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		2C0AF5AF87CCCB6424518A08 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangCodecPayload.h";
+			name = "YangCodecPayload.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		18773D1B6AA4BD962CEEFB97 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangMediaDesc.h";
+			name = "YangMediaDesc.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		E9C50114545D29CCDF4AB3F0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangMediaPayloadType.h";
+			name = "YangMediaPayloadType.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		CAAB57D02F166E521FF2ABB9 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangRedPayload.h";
+			name = "YangRedPayload.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		BBBF7707EB6E355847DBAA35 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangRtcSdp.h";
+			name = "YangRtcSdp.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		B6A177FDCC4A9B61E8E7905D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangRtxPayloadDes.h";
+			name = "YangRtxPayloadDes.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		D0660894545917651AE200CD = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangSSRCInfo.h";
+			name = "YangSSRCInfo.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		7FCEBE2D6424493BC8C08D7E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangSdp.h";
+			name = "YangSdp.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		EEB87C43ED59440DF13DE90C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangSdpHandle.h";
+			name = "YangSdpHandle.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A4517FC13062ACDFE86C06A2 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsdp/YangSdpType.h";
+			name = "YangSdpType.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		3A6FABE0CC521FF294D8C8A6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangsrs/YangSrsConnection.h";
+			name = "YangSrsConnection.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A68D74D92C8C0FFAD6482F73 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangssl/YangRtcDtls.h";
+			name = "YangRtcDtls.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		123AAB776863262B3165B311 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangstream/YangStreamRtc.h";
+			name = "YangStreamRtc.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		CEFCBDDE771CA2332F3B6A10 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/buffer2/YangSortBuffer.h";
+			name = "YangSortBuffer.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		42CB44D49BAE55E595524FD1 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangutil/sys/YangSctp.h";
+			name = "YangSctp.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		D232E5554877D202E24CB671 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/src/yangzlm/YangZlmConnection.h";
+			name = "YangZlmConnection.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		770821482884F6F3DA19D9B6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/metartccore7.pro";
+			name = "metartccore7.pro";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "text";
+		};
+		921315FAA7F261D737F4F4C7 = {
+			isa = PBXGroup;
+			children = (
+				"CABFF806E58DF18E9B2FA69B",
+				"B328D3142CC7D7BDE8EF14DF",
+				"8389D3D4A8592E55C2C39FF4",
+				"239C224A62608CB551F99B9B",
+				"8E6F28E23A5DF3676F75568F",
+				"91EFC5670CE88F15133F5550",
+				"EE6127DAC390416E7832701C",
+				"87789481C8B74E16E34E8513",
+				"16C3B4126B497D0413C47C8C",
+				"06E43EF1324CD88884119193",
+				"DCC7E9C637E4634BFFA4B8CC",
+				"7D2A350B088E46631184F40D",
+				"EDF7E922F1A3745B7CD6F2A1",
+				"E05248DBDE403B9F9A838782");
+			name = "src";
+			sourceTree = "<group>";
+		};
+		CABFF806E58DF18E9B2FA69B = {
+			isa = PBXGroup;
+			children = (
+				"B7AF43593B8B3A022ED37367",
+				"9D6C84110FFB74769938EFED",
+				"2C6E508E7E5D542B219ABD82",
+				"38EC85EF41E4197BD9D09AF0",
+				"F79506E315E267FFC9300B66",
+				"0218F5452A2E6E96227A5FDA",
+				"85C312801C2169E34E016E8E",
+				"EDEA5909834A1E8F809214A2",
+				"D08A8F0725EF767687A2E511",
+				"D32EDFA72CA05C51C13074E1");
+			name = "yangavutil";
+			sourceTree = "<group>";
+		};
+		B328D3142CC7D7BDE8EF14DF = {
+			isa = PBXGroup;
+			children = (
+				"57977695E069A8C931F27673",
+				"1B891997F7B69FFCCCF229EF",
+				"ECB2E8EE2FB0F5CDDCCEB123",
+				"AFB6A519AFF5CFCF7F97B347",
+				"81128C8CA7D13118823070BF",
+				"581ED75B4CE2E50C6E7AE75D",
+				"AB6FE2B40DCD57FC355B469F",
+				"040AAD0500E948462020EF53");
+			name = "yangice";
+			sourceTree = "<group>";
+		};
+		8389D3D4A8592E55C2C39FF4 = {
+			isa = PBXGroup;
+			children = (
+				"262C4CBD3DCF97D225337F67",
+				"8751EFACE856C46951FEBDAC",
+				"BE09C74349637EC6729791C1");
+			name = "yangjson";
+			sourceTree = "<group>";
+		};
+		E05248DBDE403B9F9A838782 = {
+			isa = PBXGroup;
+			children = (
+				"79DF76E0D544F74172A6FEEB");
+			name = "yangmqtt";
+			sourceTree = "<group>";
+		};
+		239C224A62608CB551F99B9B = {
+			isa = PBXGroup;
+			children = (
+				"E96B2663DCF35E788AF436D4",
+				"4E714F5343C621A5BC5229E4",
+				"4957B0EFFBCFD8837B059D59",
+				"1973A9C1F336345376A1D69F");
+			name = "yangp2p";
+			sourceTree = "<group>";
+		};
+		8E6F28E23A5DF3676F75568F = {
+			isa = PBXGroup;
+			children = (
+				"92DFD6D5A67CDE277C4BD7FC",
+				"10B5F92C1C8D3952B5C39E87",
+				"D8C44BEE5148214D8269E07C",
+				"17C8E93F193589279CC4899E",
+				"A8F035516321C4DE2AD67230",
+				"E54CA6A5BC3639855F1C98DE",
+				"A932B21E33783ED33BF5143D",
+				"2EF2C50F66F7B7F250EBC3AD",
+				"4E2C2818C62BFC1C4FF8F20F",
+				"5E2F91E8FDB406C515A3A62F",
+				"255FC700ACA99E09AD0A8C04",
+				"19B4D233A4C9BB8A8AA47B0C",
+				"6BC760EB8E28DDA709D44394",
+				"46F5E500B0B9A3FA531A79E0",
+				"9422E6A91BAF042C735A3CE1",
+				"F04C9FDECAA464A980D94852",
+				"9AA24AA3F5A10894AE322109",
+				"9486BED3A6C91D2C8EF9F04C",
+				"1678A9354416D4DD8A44B9C2",
+				"88E7B0106047DF65292DB628",
+				"9EAF2CCC57A7722C57D148DE",
+				"8D2C57521866119C46D8F712",
+				"936DCAC24B4BA4021A25C1DD",
+				"AD700F624DAC8C6A6F2FD1AF",
+				"520409DEB746C885CD566B1D",
+				"A0D00BBD40DBEC38C4BFD5C8",
+				"A6DEC645F28B14FC8D2A3950",
+				"6EF5DDC8649CFF75459D5106",
+				"EA12F8AF5E4CB467C75DD513",
+				"68730C3454D8B5F273FFB97E",
+				"287431D58D88FB861FFDB158",
+				"725A0FFB8D67259B775AA5DF",
+				"51B5ED0A765CB62753A6169D",
+				"066C207A47C5872E2C780079",
+				"6513D439DBC691821D518675",
+				"588C5CA8C252F1F58C33CFEC",
+				"A9902CDE0C6BDD37AF11A412",
+				"890163464ECE5867E413985C",
+				"11F77FFDF3D342EC94A818E2",
+				"898742ED75CD273CB9DA08A2",
+				"7DB3B4EA8F13D9E2F124CC93",
+				"8C5B7C3A9218FBE30BC1A9C7",
+				"A5BC1B3F473BEF14FE46CAC5",
+				"CE8F8F0E5F84449F77B19C26",
+				"1D89D2E4813FEB84B0FDB0AB",
+				"3761EE26E51C96A63C40B393");
+			name = "yangrtc";
+			sourceTree = "<group>";
+		};
+		91EFC5670CE88F15133F5550 = {
+			isa = PBXGroup;
+			children = (
+				"AA653945E0AE779710546C06",
+				"13B319DDB1DD64D25DBD36A0",
+				"A7EE5F208148C9E93E0D68AF",
+				"1B4C82213C8DA4E38D111835",
+				"6A8EFD09FBD23AF031A26260",
+				"40D95751A237AD9581C14CE8",
+				"E9AA20A63429AFE907F59BF7",
+				"EDAF2BDD2C566E3D24AAC577",
+				"9E2428626CCDEDC556133685",
+				"13DFBBA6047A95E12B389788",
+				"8C10BB255FF5B12C02034FBB",
+				"45D9A09C82E5A792699A116F",
+				"695CB291795F9B50F47DDF42",
+				"04451B2038266C9782D962BD",
+				"9D166778A03876927498A9C9",
+				"9F1303E07033F2897E5E2B85",
+				"1AC384DDC3138C3E5BAA4BE8",
+				"7959453F1736762D30DC1955",
+				"17F96F99255C9A66619E0393",
+				"37643884DFE1432ADF30F2C3",
+				"7F43D90D43A2A7AF5F71B9E6",
+				"359B0E8DFCBA0B249611CF65",
+				"FA7D8A43D3C9177A5F40AEDD",
+				"E7C75C04B48F554BCA42F9F0",
+				"2741CA04008142F517620D84",
+				"C43DDE60D99D7E6354C3628D",
+				"B271C59F457F3D6E4E43A378",
+				"FB4C993000FBB78F9A8E5C14",
+				"DA235EAE7E8422249A529CE3",
+				"B8A6CC51C54D2F3D9EAC4EDF",
+				"F46A688F5060B3312AE5EDEF",
+				"D0DD48ED5715AD4A8D03C9B8",
+				"EF19B6FE92338CDFB7323BFF",
+				"C2271336F513F00AD89C019D",
+				"170A2C127AB98A9B1C5D2CD3",
+				"46E9382DE8202709A276928B",
+				"6F86E9A927C484732CAC8F77",
+				"0C9E37154733B9998CF4A7ED",
+				"B959D0D2256060DC3EC283FC",
+				"38F43B3347C3AB750BF50B36",
+				"B5D5E466A941DFFE05D660DA",
+				"A68708C8BCE6830C524973AA",
+				"C56130430C7E2C945122F35B",
+				"B312F187D4989FB144308D2D",
+				"F0C1F16CC3AE29B7CA6EDD5E",
+				"8389914F161A6B9953260470",
+				"6248881D4E980D06E47F816E",
+				"2E1EEEC7DBE4975D92CF6C0D",
+				"3C12020D0F9608D3C71B7D87",
+				"5159BD9F163F81E0455AFF63",
+				"C1DB4BD8776554F5A2EC99E6");
+			name = "yangrtp";
+			sourceTree = "<group>";
+		};
+		EE6127DAC390416E7832701C = {
+			isa = PBXGroup;
+			children = (
+				"CEDB2C618AD7D23F3AAA0C7E",
+				"933AA7B79040BDB5B615AFA5",
+				"439F9F859B5D22D547BC4F84",
+				"6C45059F478B325106A3E6D0",
+				"12BD2330BD37F0D47A2071C8",
+				"AD425903D9938F37C93C048B",
+				"D4322BE8BB23ACDDE6736D4B",
+				"EB4C66F7944A938DDE658B6F",
+				"7969F56040B0290643E20D14",
+				"E6089B9F33CE79F10C4929D3",
+				"538AF5ED3129E7BCBA95019C",
+				"D9378EBD4CFD292DCFC0A079",
+				"6625348497C0C06119E9ACDE",
+				"2C0AF5AF87CCCB6424518A08",
+				"18773D1B6AA4BD962CEEFB97",
+				"E9C50114545D29CCDF4AB3F0",
+				"CAAB57D02F166E521FF2ABB9",
+				"BBBF7707EB6E355847DBAA35",
+				"B6A177FDCC4A9B61E8E7905D",
+				"D0660894545917651AE200CD",
+				"7FCEBE2D6424493BC8C08D7E",
+				"EEB87C43ED59440DF13DE90C",
+				"A4517FC13062ACDFE86C06A2");
+			name = "yangsdp";
+			sourceTree = "<group>";
+		};
+		87789481C8B74E16E34E8513 = {
+			isa = PBXGroup;
+			children = (
+				"A2809B9133A967069ACEBF39",
+				"3A6FABE0CC521FF294D8C8A6");
+			name = "yangsrs";
+			sourceTree = "<group>";
+		};
+		16C3B4126B497D0413C47C8C = {
+			isa = PBXGroup;
+			children = (
+				"544946D5B50C5EA0AA5D8BBF",
+				"97925552BD9DDAB8547A7665",
+				"EF04204A85086CB4732277C2",
+				"B4BAEDD77EBD358EEF600F57",
+				"A68D74D92C8C0FFAD6482F73");
+			name = "yangssl";
+			sourceTree = "<group>";
+		};
+		06E43EF1324CD88884119193 = {
+			isa = PBXGroup;
+			children = (
+				"7C5E86ACC459F9B1E3566388",
+				"50982BD4C858A97235510336",
+				"70D05D48EBB5F24F2EC1C640",
+				"123AAB776863262B3165B311");
+			name = "yangstream";
+			sourceTree = "<group>";
+		};
+		DCC7E9C637E4634BFFA4B8CC = {
+			isa = PBXGroup;
+			children = (
+				"2DA3D4B363B4A9027DDB02E8",
+				"D88B99545B0D75BF74ACDC57");
+			name = "yangutil";
+			sourceTree = "<group>";
+		};
+		2DA3D4B363B4A9027DDB02E8 = {
+			isa = PBXGroup;
+			children = (
+				"F0A72F30ACAB09AC3F0F5EBA",
+				"CE664DF33297C2D194B71F54",
+				"50127A322225D0A19939AC01",
+				"CEFCBDDE771CA2332F3B6A10");
+			name = "buffer2";
+			sourceTree = "<group>";
+		};
+		D88B99545B0D75BF74ACDC57 = {
+			isa = PBXGroup;
+			children = (
+				"BD4D6A1145A75A16E894F5F6",
+				"2DC0404EC5ACEAE7BEC9AA89",
+				"64595D1785F13D880286E8F6",
+				"A7DBB60276FCD5B953B84816",
+				"E3D4A4313B4989F4E75C75F6",
+				"846E9073B011B22970CD6E9B",
+				"0595D6B32DC4F48DB58068F6",
+				"0CC359EB44244485A1BFDF83",
+				"07916AFB9E35087B2A660190",
+				"072C00099F564067009BE01D",
+				"4B8AB51EC77F2319EFC27734",
+				"EECA61C80D01CC2086931E62",
+				"D2C2EBED4331C82AB745EA95",
+				"8893F46A14F8DE4F5F5D3440",
+				"86C06D2B08837B36756563B3",
+				"473C994A901CEB77C9C80159",
+				"0B617133E271901978527580",
+				"F6F71782D3C944C33086A5CD",
+				"2D23EE889E1E27B8E3CE32B7",
+				"2388FC937E842195C2E8B29A",
+				"53A8B649BE0EFD61D5C07502",
+				"42CB44D49BAE55E595524FD1");
+			name = "sys";
+			sourceTree = "<group>";
+		};
+		7D2A350B088E46631184F40D = {
+			isa = PBXGroup;
+			children = (
+				"B2D35E43A52E66F29A21320E");
+			name = "yangwhip";
+			sourceTree = "<group>";
+		};
+		EDF7E922F1A3745B7CD6F2A1 = {
+			isa = PBXGroup;
+			children = (
+				"B32CE972B61347A2EADDC3C1",
+				"D232E5554877D202E24CB671");
+			name = "yangzlm";
+			sourceTree = "<group>";
+		};
+		2EB56BE3C2D93CDAB0C52E67 = {
+			isa = PBXGroup;
+			children = (
+				"921315FAA7F261D737F4F4C7");
+			name = "Sources";
+			sourceTree = "<group>";
+		};
+		74B182DB50CB5611B5C1C297 = {
+			isa = PBXGroup;
+			children = (
+				"770821482884F6F3DA19D9B6");
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7EF0942E79C014DCEC8976BC = {
+			buildActionMask = 2147483647;
+			files = (
+				);
+			isa = PBXShellScriptBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Qt Preprocessors";
+			inputPaths = (
+				);
+			outputPaths = (
+				);
+			shellPath = "/bin/sh";
+			shellScript = "make -C /Users/aiven/work/project/framework/metaRTC/libmetartccore7 -f metartccore7.xcodeproj/qt_preprocess.mak";
+			showEnvVarsInLog = "0";
+			alwaysOutOfDate = "1";
+		};
+		F7E50F631C51CD5B5DC0BC43 = {
+			buildActionMask = 2147483647;
+			files = (
+				"5BA3BB08D84AC2F178C607CC",
+				"1D8562FF171C9FFEE3B1F30A",
+				"4C2777908B14D4404564911E",
+				"C50EA3D69FF6DB12C9ACEA88",
+				"15751CF5BBB38FF3CD8D4BEF",
+				"690EF687FFDE255EB55814A8",
+				"9F86EA9424D589352AE5E808",
+				"94C5A04E9505DD92660B6AB1",
+				"8A384671529C9121B2939470",
+				"14C72DD7EEDC98DC50044E40",
+				"65D15A2DB25D707F0C2727E6",
+				"5954217852BC32D343F8BE20",
+				"27A9841B5AACCA2A5A8B54C5",
+				"D7DB308907C1813708FCFB57",
+				"C015ED7876A147F08CFBC125",
+				"CB47D9342D7B772F608BB2FA",
+				"E1CF2A0F8089714727CC50FB",
+				"1BB124FE31C3CEB61F45FF77",
+				"9A421805DD80D0A4E1AB7D6B",
+				"9C7A85BF888F5B8ADD04C906",
+				"F7AAC2239A0044266CC213C2",
+				"129C99E19ABF2C0BDB2C8D01",
+				"219413E4286E337F0039859E",
+				"796207AE0C4D5AA26C08E374",
+				"4F260AB90D18FEDDDB35D361",
+				"25EDA281DB450F0E89F68D3A",
+				"6A5F215B9ED1A3D6D99E4530",
+				"3268E4919C94317BCEDDCF4B",
+				"9D351841C6EEEDB6A42EFE44",
+				"0D827AB239A38ACBC5E86A5D",
+				"22E3DDCA1CDBA9905E5D91FD",
+				"5B3244CD7A980595449F7A48",
+				"F816091A8B4AECA9AA3F5810",
+				"08B39C02614FCFB49A73BD0E",
+				"54E0CE5FBB4F76A1F128713E",
+				"C412DC9C6C3C2635BEEA51BF",
+				"B0A84CFE863E9DEEB4809767",
+				"3616D4A6799C3117F7348855",
+				"DD3106FEC989936CF9C0FF6A",
+				"2F40A5FD4AC3B00AA26CCBFE",
+				"CC7794F87CA13D791CC64168",
+				"51632B4EA9225FEA736B5D73",
+				"241B8DD1046D8959A5477F52",
+				"B7AC76789AF0EF60DC59268B",
+				"A65696C3EE6209B1A6112ED1",
+				"213E44C4F2746A939DFAD616",
+				"043B156F15FCFDE87C608ABD",
+				"9FF10DB72EEAC11D34DC152C",
+				"D7712698F2C757070A62DE8E",
+				"AFA82073DF684DEE70E41DE0",
+				"195F163D7BACE4D88A53AF46",
+				"0485C55426C6EB766EDFF002",
+				"E3D88B269940965DFC41DA18",
+				"E80CA68122E5BADA066D206A",
+				"CB31457BFA0C8BAFDD0C706D",
+				"A3EA38A36FCFAAB73E796FC0",
+				"410A2AC33E239EA0DA5B0C32",
+				"A3BDB4C2AA49DBD6771A8D3F",
+				"91DE7DB6942AF60CA9DA7EAF",
+				"CC0B1C790583C06BE26AA3A2",
+				"8C152C5953A5705918C8E59A",
+				"403DDCDEB3FD43C03CE0D0F1",
+				"73BB3FF7D57D4BDD717AE7B1",
+				"FC1FBE0EF6FEC2972CE1E4BA",
+				"3BA525D80E1DF9C727DA5B58",
+				"D72F910DFDA76F4427B32C66",
+				"DD981F4E3F96BDB4360B3C34",
+				"20836B6087192197B8C48EB6",
+				"30FCEC7FCB57FF5B9B19D087",
+				"5CE2C8DC5C600C59CC4F93A6",
+				"208A93C338CFA5F2743EB05B",
+				"40B864BAB8E1C5F6E47412DC",
+				"C9E0A1E6BF7520C224480EDF",
+				"B5358EC05A61900EC98A7DF2",
+				"59FF6CBFABBCB64981FE93FF",
+				"18C1EE8780C1696AD3B4C8B0",
+				"160FC6DF0FAFD47BE9A7DF68",
+				"30F2B6B044510ADCEE4FA933",
+				"F003C2226306A08EC39B4F3E",
+				"5D136E3E137886215ECBC556",
+				"AFEA42EE64B2F5CD94DDCB93",
+				"6651DE92F23035E59BD1AC4B",
+				"7D8C17268BE5ADEE1FF8ACB2",
+				"316AF1DCABB8D267500E567A",
+				"8962836D8C370EE7253A321B",
+				"117901538DD631C6E255448B",
+				"040DDAD9B255266430348F32",
+				"C34379D65F4535A66B52C7B7",
+				"8CCD5BA1EEB44A05C4B2ECA4",
+				"51421A82A8AA4E122E96DC00",
+				"E4A85A479B07E79B7E6B06ED",
+				"D50CE13C30B18416519E31B6",
+				"7D87A016FBB1CFE90A2CD5F6",
+				"1086A421468BF8D002EC41F9",
+				"7682FFAFCC6D41A02C4D393C",
+				"4E2FC39176B4C1F3F06B4726",
+				"0535E38F12B92327FA8172D8",
+				"8AF94003CBEB3C043C5B0893",
+				"FD992F547BB9359050B12EBD",
+				"B1D71EC8DFF908FA0223A8C9",
+				"C80B28037C71383339895690",
+				"7F7B97798B5CEFA7A2FA6F46",
+				"18D7396DFBB8FEA3B702131D",
+				"7B0212211358D96B196E0395",
+				"19BBCAA68AFE855BCB0F65F9",
+				"65BDF16D2A7FC0CB103E6C87",
+				"FB579872C21D231D4B380F56",
+				"134C842FF00463D9A2A39AF7");
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Compile Sources";
+		};
+		D1C883685E82D5676953459A = {
+			buildActionMask = 2147483647;
+			files = (
+				);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Link Binary With Libraries";
+		};
+		9C316F444A62BF296E3E1F25 = {
+			isa = PBXShellScriptBuildPhase;
+			name = "Project Copy";
+			buildActionMask = 2147483647;
+			files = (
+				);
+			inputPaths = (
+				);
+			outputPaths = (
+				);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh";
+			shellScript = "cp -r $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME /Users/aiven/work/project/framework/metaRTC/bin/lib_release";
+			showEnvVarsInLog = "0";
+		};
+		25EDD295A5E5D47140B31B26 = {
+			isa = PBXFileReference;
+			includeInIndex = 0;
+			explicitFileType = "compiled.mach-o.dylib";
+			path = "libmetartccore7.a";
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FE0A091FDBFB3E9C31B7A1BD = {
+			children = (
+				"25EDD295A5E5D47140B31B26");
+			isa = PBXGroup;
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		E8C543AB96796ECAA2E65C57 = {
+			children = (
+				"2EB56BE3C2D93CDAB0C52E67",
+				"74B182DB50CB5611B5C1C297",
+				"FE0A091FDBFB3E9C31B7A1BD");
+			isa = PBXGroup;
+			name = "metartccore7";
+			sourceTree = "<group>";
+		};
+		6C13B5F97D91500268DC20A7 = {
+			buildPhases = (
+				"5E618435888B9D49F8540165",
+				"7EF0942E79C014DCEC8976BC");
+			dependencies = (
+				);
+			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59;
+			isa = PBXAggregateTarget;
+			buildRules = (
+);
+			productName = "Qt Preprocess";
+			name = "Qt Preprocess";
+		};
+		56DB31AC4AF23430FEFFFF30 = {
+			isa = PBXTargetDependency;
+			target = "6C13B5F97D91500268DC20A7";
+		};
+		68488392C4B71C8DDD47901A = {
+			buildPhases = (
+				"F7E50F631C51CD5B5DC0BC43",
+				"D1C883685E82D5676953459A",
+				"9C316F444A62BF296E3E1F25");
+			dependencies = (
+				"56DB31AC4AF23430FEFFFF30");
+			productReference = "25EDD295A5E5D47140B31B26";
+			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59;
+			isa = PBXNativeTarget;
+			buildRules = (
+);
+			name = "metartccore7";
+			productName = "metartccore7";
+			productType = "com.apple.product-type.library.static";
+			productInstallPath = "../bin/lib_release/";
+		};
+		3AA6C32AC930069E80220CF1 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "8JW82U8D6W";
+				ENABLE_BITCODE = "NO";
+				GCC_OPTIMIZATION_LEVEL = "0";
+				ONLY_ACTIVE_ARCH = "YES";
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "metartccore7";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				CC = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang";
+				LDPLUSPLUS = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++";
+				SYMROOT = ".xcode";
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				INSTALL_DIR = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/../bin/lib_release/";
+				INSTALL_PATH = "";
+				DYLIB_CURRENT_VERSION = "1.0.0";
+				DYLIB_COMPATIBILITY_VERSION = "1.0";
+				MACOSX_DEPLOYMENT_TARGET = "14.0";
+				HEADER_SEARCH_PATHS = (
+					".",
+					"../include",
+					"../thirdparty/include",
+					"../thirdparty/user_include",
+					"../thirdparty/user_include/gmssl",
+					"../thirdparty/user_include/mbedtls3",
+					"../libmetartccore7/src",
+					"/usr/local/Cellar/qt/6.6.2_1/share/qt/mkspecs/macx-clang");
+				LIBRARY_SEARCH_PATHS = (
+					);
+				FRAMEWORK_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-O2",
+					"-fPIC",
+					"-Wall",
+					"-Wextra",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-D__STDC_FORMAT_MACROS",
+					"-DMBEDTLS_SSL_DTLS_SRTP");
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-stdlib=libc++",
+					"-O2",
+					"-fPIC",
+					"-std=gnu++1z",
+					"-Wall",
+					"-Wextra",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-D__STDC_FORMAT_MACROS",
+					"-DMBEDTLS_SSL_DTLS_SRTP");
+				ARCHS = "x86_64";
+			};
+			name = "Debug";
+		};
+		77418F46922677BB04ED38DD = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "8JW82U8D6W";
+				ENABLE_BITCODE = "NO";
+				GCC_OPTIMIZATION_LEVEL = "0";
+				ONLY_ACTIVE_ARCH = "YES";
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "metartccore7";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				LIBRARY_STYLE = "STATIC";
+				PRODUCT_NAME = "metartccore7";
+			};
+			name = "Debug";
+		};
+		339EE1B2CC4FC24589A0EA95 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "8JW82U8D6W";
+				ENABLE_BITCODE = "NO";
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "metartccore7";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				CC = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang";
+				LDPLUSPLUS = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++";
+				SYMROOT = ".xcode";
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				INSTALL_DIR = "/Users/aiven/work/project/framework/metaRTC/libmetartccore7/../bin/lib_release/";
+				INSTALL_PATH = "";
+				DYLIB_CURRENT_VERSION = "1.0.0";
+				DYLIB_COMPATIBILITY_VERSION = "1.0";
+				MACOSX_DEPLOYMENT_TARGET = "14.0";
+				HEADER_SEARCH_PATHS = (
+					".",
+					"../include",
+					"../thirdparty/include",
+					"../thirdparty/user_include",
+					"../thirdparty/user_include/gmssl",
+					"../thirdparty/user_include/mbedtls3",
+					"../libmetartccore7/src",
+					"/usr/local/Cellar/qt/6.6.2_1/share/qt/mkspecs/macx-clang");
+				LIBRARY_SEARCH_PATHS = (
+					);
+				FRAMEWORK_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-O2",
+					"-fPIC",
+					"-Wall",
+					"-Wextra",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-D__STDC_FORMAT_MACROS",
+					"-DMBEDTLS_SSL_DTLS_SRTP");
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-stdlib=libc++",
+					"-O2",
+					"-fPIC",
+					"-std=gnu++1z",
+					"-Wall",
+					"-Wextra",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-D__STDC_FORMAT_MACROS",
+					"-DMBEDTLS_SSL_DTLS_SRTP");
+				ARCHS = "x86_64";
+			};
+			name = "Release";
+		};
+		6666AA5E688052234F6758D8 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "8JW82U8D6W";
+				ENABLE_BITCODE = "NO";
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "metartccore7";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				LIBRARY_STYLE = "STATIC";
+				PRODUCT_NAME = "metartccore7";
+			};
+			name = "Release";
+		};
+		DAC4C1AA5EDEA1C85E9CA5E6 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"3AA6C32AC930069E80220CF1",
+				"339EE1B2CC4FC24589A0EA95");
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release";
+		};
+		6CC3B5D2136C7CD6A5CF5A59 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"77418F46922677BB04ED38DD",
+				"6666AA5E688052234F6758D8");
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release";
+		};
+		6DB9C3763D02B1415CD9D565 = {
+			hasScannedForEncodings = 1;
+			compatibilityVersion = "Xcode 3.2";
+			isa = PBXProject;
+			mainGroup = "E8C543AB96796ECAA2E65C57";
+			productRefGroup = "FE0A091FDBFB3E9C31B7A1BD";
+			buildConfigurationList = "DAC4C1AA5EDEA1C85E9CA5E6";
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"68488392C4B71C8DDD47901A",
+				"6C13B5F97D91500268DC20A7");
+			attributes = {
+				TargetAttributes = {
+				};
+			};
+		};
+	};
+	rootObject = "6DB9C3763D02B1415CD9D565";
+}
