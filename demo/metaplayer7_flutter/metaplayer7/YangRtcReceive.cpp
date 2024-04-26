@@ -118,7 +118,7 @@ int32_t YangRtcReceive::init(int32_t puid, char* localIp,
 	strcpy(m_recv->peer.streamconfig.app,app);
 	strcpy(m_recv->peer.streamconfig.stream,stream);
 	m_recv->peer.streamconfig.uid = puid;
-    m_recv->peer.streamconfig.streamDirection = YangRecvonly;
+    m_recv->peer.streamconfig.direction = YangRecvonly;
 
 	m_recv->peer.streamconfig.recvCallback.context=this;
 	m_recv->peer.streamconfig.recvCallback.receiveAudio=g_rtcrecv_receiveAudio;
@@ -145,7 +145,7 @@ int32_t YangRtcReceive::init(int32_t puid,char* url){
     m_recv->peer.streamconfig.localPort = m_context->avinfo.rtc.rtcLocalPort++;
 
     m_recv->peer.streamconfig.uid = puid;
-    m_recv->peer.streamconfig.streamDirection = YangRecvonly;
+    m_recv->peer.streamconfig.direction = YangRecvonly;
 
     m_recv->peer.streamconfig.recvCallback.context=this;
     m_recv->peer.streamconfig.recvCallback.receiveAudio=g_rtcrecv_receiveAudio;
