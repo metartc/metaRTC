@@ -56,9 +56,6 @@ int yang_websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
 
 	if(reason==LWS_CALLBACK_CLIENT_RECEIVE){
     // 接收到服务器数据后的回调，数据为in，其长度为len
-
-
-
 		YangSample pdata;
 		pdata.bytes = (char*) in;
 		pdata.nb = len;
@@ -69,28 +66,7 @@ int yang_websocket_callback(struct lws *wsi, enum lws_callback_reasons reason,
 	if(reason==LWS_CALLBACK_CLIENT_ESTABLISHED){
 		yang_info("Connected to server ok!\n");
 	}
-	/**switch (reason) {
-	case LWS_CALLBACK_CLIENT_ESTABLISHED:   // 连接到服务器后的回调
-		yang_info("Connected to server ok!\n");
-		break;
-	case LWS_CALLBACK_CLIENT_RECEIVE:       // 接收到服务器数据后的回调，数据为in，其长度为len
-	{
-		//yang_trace("Rx: %s\n", (char* ) in);
 
-		YangSample pdata;
-		pdata.bytes = (char*) in;
-		pdata.nb = len;
-
-		if (obj->callback)	obj->callback->receive(obj->callback->context, &pdata);
-
-		break;
-	}
-	case LWS_CALLBACK_CLIENT_WRITEABLE:     // 当此客户端可以发送数据时的回调
-	{
-		break;
-	}
-
-	}**/
 	return Yang_Ok;
 }
 

@@ -219,10 +219,6 @@ static int32_t yang_rtcconn_on_rtcp_feedback_remb(YangRtcSession *session,	YangR
 	return Yang_Ok;
 }
 
-//static void yang_rtcconn_do_request_keyframe(YangRtcSession *session, uint32_t ssrc) {
-//	if (session->context.streamConfig&&session->context.streamConfig->rtcCallback.sendRequest)
-//		session->context.streamConfig->rtcCallback.sendRequest(session->context.streamConfig->rtcCallback.context,session->context.streamConfig->uid, ssrc, Yang_Req_Sendkeyframe);
-//}
 
 static int32_t yang_rtcconn_dispatch_rtcp(YangRtcSession *session,YangRtcpCommon *rtcp) {
 	int32_t err = Yang_Ok;
@@ -493,7 +489,6 @@ static void yang_rtcconn_receive(YangRtcSession *session, char *data, int32_t si
 				session->context.state=Yang_Conn_State_Connecting;
 				yang_onConnectionStateChange(session,Yang_Conn_State_Connecting);
 			}
-			//	session->lastStunTime=yang_get_system_time();
 
 		}else if(bt==0x01&&data[1]==0x01){
 			if ((err = session->ice.session.stun.decode2(data, size)) != Yang_Ok) {
@@ -774,7 +769,6 @@ int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* stre
 
 	session->context.avinfo=avinfo;
 
-
 	if(streamconfig->remotePort==0)
 		streamconfig->remotePort=8000;
 
@@ -786,7 +780,6 @@ int32_t yang_create_rtcConnection(YangRtcConnection* conn,YangStreamConfig* stre
 
 
 	conn->close=yang_rtcconn_close;
-	//conn->init=yang_rtcconn_init;
 	conn->on_video=yang_rtcconn_onVideo;
 	conn->on_audio=yang_rtcconn_onAudio;
 	conn->on_message=yang_rtcconn_onMessage;
