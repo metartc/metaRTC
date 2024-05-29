@@ -59,9 +59,9 @@ int32_t yang_playtrackAudio_send_rtcp_rr(YangRtcContext *context,YangPlayTrack *
 }
 
 void yang_create_playTrackAudio(YangRtcContext *context, YangPlayTrackAudio *track) {
-	yang_create_playTrack(context, &track->session,1);
+	yang_create_playTrack(context, &track->session,yangtrue);
 
-	if(track->session.hasAudioBuffer&&track->session.sortBuffer==NULL){
+	if(track->session.enableAudioBuffer&&track->session.sortBuffer==NULL){
 		track->session.sortBuffer=(YangSortBuffer*)yang_calloc(sizeof(YangSortBuffer),1);
 		yang_create_sortBuffer(track->session.sortBuffer,3);
 		track->session.sortBuffer->initFrames(&track->session.sortBuffer->session,8,1500);

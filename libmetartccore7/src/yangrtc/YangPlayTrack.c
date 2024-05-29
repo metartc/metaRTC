@@ -10,7 +10,7 @@
 
 #include <math.h>
 
-void yang_create_playTrack(YangRtcContext *context, YangPlayTrack *track, int is_audio) {
+void yang_create_playTrack(YangRtcContext *context, YangPlayTrack *track, yangbool is_audio) {
 	if (track == NULL)
 		return;
 	track->uid = context->streamConfig->uid;
@@ -30,7 +30,7 @@ void yang_create_playTrack(YangRtcContext *context, YangPlayTrack *track, int is
 	track->last_sender_report_sys_time = 0;
 
 	track->last_seq = 0;
-	track->hasAudioBuffer=context->avinfo->rtc.enableAudioBuffer;
+	track->enableAudioBuffer=context->avinfo->rtc.enableAudioBuffer;
 	track->sortBuffer=NULL;
 	yang_memset(&track->audioFrame, 0, sizeof(YangFrame));
 }

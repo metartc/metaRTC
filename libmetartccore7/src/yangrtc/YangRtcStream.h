@@ -18,13 +18,13 @@
 
 typedef struct {
 
+	yangbool enableAudioBuffer;
+	yangbool isAudio;
+
 	uint16_t last_seq;
-	int16_t isAudio;
 
 	int32_t uid;
 	uint32_t ssrc;
-
-	yangbool hasAudioBuffer;
 
 	int64_t last_sender_report_rtp_time;
 	uint64_t last_sender_report_sys_time;
@@ -36,7 +36,6 @@ typedef struct {
 	YangNtp last_sender_report_ntp;
 	YangSortBuffer* sortBuffer;
 } YangPlayTrack;
-
 
 #if Yang_Enable_RTC_Audio
 typedef struct{

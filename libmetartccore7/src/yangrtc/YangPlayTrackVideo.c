@@ -62,7 +62,7 @@ int32_t yang_playvideoTrack_send_rtcp_rr(YangRtcContext *context,YangPlayTrack *
 void yang_create_playvideoTrack(YangRtcContext *context,YangPlayTrackVideo *track) {
 	if (track == NULL)		return;
 	YangPlayTrackSession *videotrack=&track->session;
-	yang_create_playTrack(context, &videotrack->track,0);
+	yang_create_playTrack(context, &videotrack->track,yangfalse);
 
 	videotrack->h264Track = NULL;
 	videotrack->h265Track = NULL;
