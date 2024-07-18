@@ -63,11 +63,6 @@
 #define Yang_Enable_Timer_Phtread 0
 #define Yang_Enable_Ffmpeg_Codec 1
 
-//option lib
-#define Yang_Enable_PicUtilFfmpeg 0
-#define Yang_Enable_Websockets 1 //using libwebsockets
-#define Yang_Enable_Curl 0   //using libcurl
-
 #define Yang_Enable_RtcpXr 0
 #define Yang_Rtp_I_Withmeta 0
 #define Yang_CTimer_Epoll_Timeout 200

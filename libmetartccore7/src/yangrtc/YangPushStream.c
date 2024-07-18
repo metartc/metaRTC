@@ -35,7 +35,6 @@ int32_t yang_rtcpush_cache_nack(YangRtcPushStream *pub,
 }
 
 
-
 int32_t yang_rtcpush_on_rtcp_rr(YangRtcContext *context,
 		YangRtcPushStream *pub, YangRtcpCommon *rtcp) {
 	int32_t err = Yang_Ok;
@@ -117,14 +116,13 @@ int32_t yang_rtcpush_on_rtcp_nack(YangRtcContext *context,
 	YangPublishNackBuffer *que = NULL;
     uint32_t ssrc = rtcp->nack->mediaSsrc;
 
-
 #if Yang_Enable_RTC_Audio
 	if (ssrc == pub->audioSsrc)		que = pub->audio_queue;
 #endif
 #if Yang_Enable_RTC_Video
 	if (ssrc == pub->videoSsrc)		que = pub->video_queue;
 #endif
-//	yang_trace("\npublish find lost ssrc=%hu:", ssrc);
+
 	if (!ssrc)	return yang_error_wrap(err, "track response nack  ssrc=%u", ssrc);
 	if (que
 			&& (err = yang_rtcpush_on_recv_nack(context, pub, que,rtcp->nack)) != Yang_Ok) {
@@ -227,7 +225,6 @@ void yang_create_rtcpush(YangRtcPush *ppush, uint32_t audioSsrc,
 	YangRtcPushStream *pub=(YangRtcPushStream*) yang_calloc(1,sizeof(YangRtcPushStream));
 	ppush->pubStream=pub;
 	pub->mw_msgs = 0;
-	pub->realtime = 1;
 #if Yang_Enable_RTC_Audio
 	pub->audio_queue = (YangPublishNackBuffer*) yang_calloc(1,sizeof(YangPublishNackBuffer));
 	yang_create_pubNackbuffer(pub->audio_queue, Yang_AUDIO_Publish_NackBuffer_Count);

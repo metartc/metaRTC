@@ -76,8 +76,6 @@ typedef struct  {
 	uint32_t audioSsrc;
 	uint32_t videoSsrc;
 	int32_t mw_msgs;
-	int16_t realtime;
-
 #if Yang_Enable_RTC_Audio
 	YangPublishNackBuffer *audio_queue;
 #endif
