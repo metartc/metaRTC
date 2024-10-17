@@ -31,7 +31,7 @@ int64_t yang_get_win_micro_time();
 #define yang_micro_time yang_get_micro_time
 #endif
 
-int64_t g_system_time_startup_time = 0;
+uint64_t g_system_time_startup_time = 0;
 #ifdef _MSC_VER
 LARGE_INTEGER  g_large_interger;
 int64_t g_dff=0;
@@ -48,34 +48,30 @@ void yang_update_system_time() { //milli weimiao
 		g_system_time_startup_time=g_large_interger.QuadPart;
 	}
 #else
-	if(g_system_time_startup_time==0) g_system_time_startup_time = yang_get_micro_time();
-
+	if(g_system_time_startup_time==0)
+		g_system_time_startup_time = yang_get_micro_time();
 #endif
 
 }
 
-int64_t yang_get_system_micro_time(){
+uint64_t yang_get_system_micro_time(){
 	if(g_system_time_startup_time==0) yang_update_system_time();
 	return yang_micro_time()-g_system_time_startup_time;
 }
 
-int64_t yang_get_system_milli_time(){
+uint64_t yang_get_system_milli_time(){
 	if(g_system_time_startup_time==0) yang_update_system_time();
-
 	return yang_micro_time()/1000;
-
 }
-
-
 
 #ifdef _MSC_VER
 
-int64_t yang_get_win_micro_time(){
+uint64_t yang_get_win_micro_time(){
 	// if(g_system_time_startup_time==0) yang_update_system_time();
 	QueryPerformanceCounter(&g_large_interger);
 	return (g_large_interger.QuadPart-g_system_time_startup_time)*1000000/g_dff;
 }
-int64_t yang_get_win_milli_time(){
+uint64_t yang_get_win_milli_time(){
 	if(g_system_time_startup_time==0) yang_update_system_time();
 	QueryPerformanceCounter(&g_large_interger);
 	return (g_large_interger.QuadPart-g_system_time_startup_time)*1000/g_dff;
@@ -83,27 +79,27 @@ int64_t yang_get_win_milli_time(){
 }
 #else
 //namiao
-int64_t yang_get_nano_tick(){
+uint64_t yang_get_nano_tick(){
 	struct timespec ts;
 	clock_gettime(CLOCK_MONOTONIC, &ts);
-	return (ts.tv_sec * 1000000000 + ts.tv_nsec);
+	return ((uint64_t)ts.tv_sec * 1000000000 + ts.tv_nsec);
 }
 
 #endif
 
 
 //weimiao
-int64_t yang_get_micro_time() {
+uint64_t yang_get_micro_time() {
 	struct timeval time;
 	gettimeofday(&time, 0);
-	return time.tv_sec * 1000000 + time.tv_usec ;
+	return (uint64_t)time.tv_sec * 1000000 + time.tv_usec ;
 }
 //haomiao
-int64_t yang_get_milli_time() {
+uint64_t yang_get_milli_time() {
 	struct timeval time;
 	gettimeofday(&time, 0);
 	// long millis = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-	return (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return ((uint64_t)time.tv_sec * 1000) + (time.tv_usec / 1000);
 }
 
 

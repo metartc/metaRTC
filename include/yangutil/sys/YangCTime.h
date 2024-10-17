@@ -7,11 +7,9 @@
 #include <yangutil/yangtype.h>
 #define yang_time_t time_t
 
-int64_t yang_get_system_micro_time();
-int64_t yang_get_system_micro_time();
-
-int64_t yang_get_milli_time();//haomiao
-int64_t yang_get_micro_time();//weimiao
+uint64_t yang_get_system_micro_time();
+uint64_t yang_get_milli_time();//haomiao
+uint64_t yang_get_micro_time();//weimiao
 
 #define yang_get_milli_tick  yang_get_milli_time
 #define yang_get_micro_tick  yang_get_micro_time
@@ -21,7 +19,7 @@ int64_t yang_get_micro_time();//weimiao
 #include <winsock2.h>
 int gettimeofday(struct timeval *tp, void *tzp);
 #endif
-int64_t yang_get_nano_tick();//namiao
+uint64_t yang_get_nano_tick();//namiao
 typedef struct YangNtp{
     uint64_t system_ms;
     uint64_t ntp;
