@@ -3,6 +3,10 @@ project(libmetartc7)
 
 add_definitions(-D__STDC_FORMAT_MACROS)
 
+if(ANDROID)
+	add_definitions(-DYang_OS_ANDROID)
+endif()
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -std=gnu11 ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -std=gnu++11 ")
 set(HOME_BASE_REL "../")
