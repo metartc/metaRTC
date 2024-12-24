@@ -146,8 +146,8 @@ project_xcode/
 
 ## demo compile
 ### Qt demo
-demo/metapushstream6/metapushstream7.pro  
-demo/metaplayer6/metaplayer7.pro
+demo/metapushstream7/metapushstream7.pro  
+demo/metaplayer7/metaplayer7.pro
 ### android demo
 android studio ide(api:29)  
 demo/metapushstream7_android  
