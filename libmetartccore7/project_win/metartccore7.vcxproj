@@ -139,7 +139,6 @@
     <ClCompile Include="..\src\yangutil\sys\YangTime.c" />
     <ClCompile Include="..\src\yangutil\sys\YangUrl.c" />
     <ClCompile Include="..\src\yangutil\sys\YangVector.c" />
-    <ClCompile Include="..\src\yangutil\sys\YangWebsocket.c" />
     <ClCompile Include="..\src\yangutil\buffer2\YangMediaBuffer2.c" />
     <ClCompile Include="..\src\yangutil\buffer2\YangSortBuffer.c" />
     <ClCompile Include="..\src\yangutil\buffer2\YangVideoEncoderBuffer2.c" />
