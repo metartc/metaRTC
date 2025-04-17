@@ -9,23 +9,22 @@
 
 
 typedef struct YangAudioInfo {
+	yangbool enableAec;
+	yangbool enableMono;
+	yangbool enableAudioFec;
+	yangbool enableAudioHeader;
+
 	int32_t sample;
 	int32_t frameSize;
 	int32_t bitrate;
 	int32_t channel;
-
-	yangbool enableMono;
-	yangbool enableAec;
 	int32_t echoPath;
-
-	yangbool enableAudioFec;
 
 	int32_t aecBufferFrames;
 	int32_t audioCacheSize;
 	int32_t audioCacheNum;
 	int32_t audioPlayCacheNum;
 
-	yangbool enableAudioHeader;
 	int32_t audioEncoderType;
 	int32_t audioDecoderType;
 	int32_t audioPlayType;
@@ -60,35 +59,38 @@ typedef struct YangVideoInfo {
 }YangVideoInfo;
 
 typedef struct YangVideoEncInfo {
+	yangbool createMeta;
 	int32_t preset;
 	int32_t level_idc;
 	int32_t profile;
 	int32_t keyint_max;
 	int32_t enc_threads;
 	int32_t gop;
-	yangbool createMeta;
 }YangVideoEncInfo;
 
 typedef struct YangSysInfo {
-	YangIpFamilyType familyType;
 	yangbool enableLogFile;
+	YangIpFamilyType familyType;
+
 	int32_t mediaServer;
 	int32_t httpPort;
 	int32_t transType;
 	int32_t logLevel;
+
 	char whipUrl[128];
 	char whepUrl[128];
 }YangSysInfo;
 
 typedef struct YangRtcInfo {
+	yangbool iceUsingLocalIp;
+	yangbool enableAudioBuffer;
 	yangbool enableHttpServerSdp;
 
 	int32_t sessionTimeout;
-        //yangbool enableDatachannel;
-	int32_t iceCandidateType;
-	yangbool iceUsingLocalIp;
+ 	int32_t iceCandidateType;
+
 	int32_t iceServerPort;
-	yangbool enableAudioBuffer;
+
 	int32_t rtcSocketProtocol;
 	int32_t turnSocketProtocol;
 
@@ -145,4 +147,4 @@ void yang_init_avinfo(YangAVInfo* avinfo);
 void yang_init_avinfo(YangAVInfo* avinfo);
 #endif
 
-#endif /* YANGUTIL_YANGTYPE_H_ */
+#endif
