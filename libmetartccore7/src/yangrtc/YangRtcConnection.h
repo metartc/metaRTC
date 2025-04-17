@@ -24,7 +24,6 @@ typedef struct{
 	int32_t (*setLocalDescription)(YangRtcSession* session,char* sdp);
 	int32_t (*setRemoteDescription)(YangRtcSession* session,char* sdp);
 
-	//void (*init)(YangRtcSession* session,YangRtcDirection role);
 	void (*close)(YangRtcSession *session);
 
 	int32_t (*on_video)(YangRtcSession* session,YangFrame* p);
