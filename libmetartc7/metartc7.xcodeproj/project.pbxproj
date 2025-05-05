@@ -1,0 +1,2440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+		5E618435888B9D49F8540165 = {
+			buildActionMask = 2147483647;
+			files = (
+				);
+			isa = PBXShellScriptBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Qt Qmake";
+			shellPath = "/bin/sh";
+			shellScript = "make -C /Users/aiven/work/project/framework/metaRTC/libmetartc7 -f metartc7.xcodeproj/qt_makeqmake.mak";
+			showEnvVarsInLog = "0";
+		};
+		53719B660E134E503C1AEA30 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/YangAudioCapture.cpp";
+			name = "YangAudioCapture.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		3053031D785E2FF783C55A81 = {
+			fileRef = "53719B660E134E503C1AEA30";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D8D1A73F0BD77EF316E1E9E4 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/YangAudioCaptureData.cpp";
+			name = "YangAudioCaptureData.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		30DB3E57B39B500AF6D6A0B2 = {
+			fileRef = "D8D1A73F0BD77EF316E1E9E4";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		18CDC0BE916D5EBF4F878F89 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/YangAudioCaptureHandle.cpp";
+			name = "YangAudioCaptureHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		7E81EA8F24F1C2AC2D742A3A = {
+			fileRef = "18CDC0BE916D5EBF4F878F89";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9FD154C6E6AB1A1C67147C0E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/YangAudioPlay.cpp";
+			name = "YangAudioPlay.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		7BC5E467CA6CD64BC3016730 = {
+			fileRef = "9FD154C6E6AB1A1C67147C0E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		CB716DB4791F80FA119D55F9 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/YangAudioRenderData.cpp";
+			name = "YangAudioRenderData.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		FF1B23EDB19ABE1E9D259366 = {
+			fileRef = "CB716DB4791F80FA119D55F9";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		6C053F1B368FE007C26CDD24 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/linux/YangAudioAecLinux.cpp";
+			name = "YangAudioAecLinux.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		F7B9D2AA8FF3D2EFA9BE1057 = {
+			fileRef = "6C053F1B368FE007C26CDD24";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		C6BA036BE1EEDE85F252024F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/linux/YangAudioCaptureLinux.cpp";
+			name = "YangAudioCaptureLinux.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		571A800F6822BACD079221CA = {
+			fileRef = "C6BA036BE1EEDE85F252024F";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		04DF86068F4DB7CF9CA08B90 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/linux/YangAudioPlayLinux.cpp";
+			name = "YangAudioPlayLinux.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		B3D393345C93A3CBE95A090B = {
+			fileRef = "04DF86068F4DB7CF9CA08B90";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		207EDD894874C3C7B6D5DEE0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/mac/YangAudioCaptureMac.cpp";
+			name = "YangAudioCaptureMac.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		14EA782D84A007CC376C17EB = {
+			fileRef = "207EDD894874C3C7B6D5DEE0";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D86874A809A00698479BDAB3 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/mac/YangAudioDeviceMac.cpp";
+			name = "YangAudioDeviceMac.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		F04A716D0F7F33C1D8E069C0 = {
+			fileRef = "D86874A809A00698479BDAB3";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D5B65499246AEB148F20B480 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/mac/YangAudioMac.cpp";
+			name = "YangAudioMac.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		03369AC65BB29455E1DD720C = {
+			fileRef = "D5B65499246AEB148F20B480";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9231CBD8DA9632BE7C2D5019 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/mac/YangAudioPlayMac.cpp";
+			name = "YangAudioPlayMac.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		006062ECB13318D57E826EBB = {
+			fileRef = "9231CBD8DA9632BE7C2D5019";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		B6AA4697FFCC7057AC4C5B64 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangAudioCaptureWindows.cpp";
+			name = "YangAudioCaptureWindows.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		0015194B101753031B67CD2E = {
+			fileRef = "B6AA4697FFCC7057AC4C5B64";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		C0A0A22C054AFF355D4EFECE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangRecAudioCaptureHandle.cpp";
+			name = "YangRecAudioCaptureHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		60140BC5503A0C4027F10FC6 = {
+			fileRef = "C0A0A22C054AFF355D4EFECE";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9DB6E6712410B90A06568A94 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApi.cpp";
+			name = "YangWinAudioApi.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		C32B13E5459E38B00EE36BAD = {
+			fileRef = "9DB6E6712410B90A06568A94";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E368391595760C345A32873D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApiAec.cpp";
+			name = "YangWinAudioApiAec.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		7379F90B3D2BCCBC731673DE = {
+			fileRef = "E368391595760C345A32873D";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		620D372AB68184787A7F853C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApiCapture.cpp";
+			name = "YangWinAudioApiCapture.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		B4541AB98FA18A3D78C29088 = {
+			fileRef = "620D372AB68184787A7F853C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		EEB80D04BF92B158DDB9F1A5 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApiDevice.cpp";
+			name = "YangWinAudioApiDevice.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		E60D407D7A4BCE99DBD77F18 = {
+			fileRef = "EEB80D04BF92B158DDB9F1A5";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9B26F7A3F1DD678195C6D963 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApiRender.cpp";
+			name = "YangWinAudioApiRender.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		A7348BE80EA01FEF7BFD9754 = {
+			fileRef = "9B26F7A3F1DD678195C6D963";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		A58570C7D39C13C0BA27DD3D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioCapture.cpp";
+			name = "YangWinAudioCapture.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		CBA38126F9865634C15AC7ED = {
+			fileRef = "A58570C7D39C13C0BA27DD3D";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		224B98D242127A8E2A6C46BD = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioCaptureHandle.cpp";
+			name = "YangWinAudioCaptureHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		654E5FEF95EC9063E38CE060 = {
+			fileRef = "224B98D242127A8E2A6C46BD";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		378C67382ACBA6FD24D3E210 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangavutil/YangMakeWave.cpp";
+			name = "YangMakeWave.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		4F5B9B13F3A66E0B0232EF12 = {
+			fileRef = "378C67382ACBA6FD24D3E210";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		AC3FBC5B7101BE827C21607E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangavutil/YangVideoEncoderMeta.cpp";
+			name = "YangVideoEncoderMeta.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		4C060AEAA8AAC3FF6A67BCB5 = {
+			fileRef = "AC3FBC5B7101BE827C21607E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		3C72312E82D2EDBA26CC674D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangavutil/YangYuvConvert.cpp";
+			name = "YangYuvConvert.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		0C07656B73C4AE5691F80E3F = {
+			fileRef = "3C72312E82D2EDBA26CC674D";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		C9FEA86D40525722D224D300 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/YangCaptureFactory.cpp";
+			name = "YangCaptureFactory.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		A886F838AE60410C3C7D0F5D = {
+			fileRef = "C9FEA86D40525722D224D300";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		669BE17C212145E6E61A2A06 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/YangScreenShare.cpp";
+			name = "YangScreenShare.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		947C0055573DEDC2DB51A61C = {
+			fileRef = "669BE17C212145E6E61A2A06";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		81C3593E66163182B893C024 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/YangVideoCapture.cpp";
+			name = "YangVideoCapture.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		174BB5F8C5D801A25556C577 = {
+			fileRef = "81C3593E66163182B893C024";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		392F340DA34535CD7603D1EE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/YangVideoCaptureHandle.cpp";
+			name = "YangVideoCaptureHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		494724FB6B17C715198099A7 = {
+			fileRef = "392F340DA34535CD7603D1EE";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		61E0132C3132CABD17BF597F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/android/YangCameraAndroid.cpp";
+			name = "YangCameraAndroid.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		B4E23569581B24F101F5380A = {
+			fileRef = "61E0132C3132CABD17BF597F";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		49A1EB3F2794D31B793A7C1E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/android/YangVideoCaptureAndroid.cpp";
+			name = "YangVideoCaptureAndroid.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		630DE5786FB233ABED20891D = {
+			fileRef = "49A1EB3F2794D31B793A7C1E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		426D7D4E8807C30E98FDDEA7 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/linux/YangVideoCaptureLinux.cpp";
+			name = "YangVideoCaptureLinux.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		3F409FBE60EECA5B2BFE81D6 = {
+			fileRef = "426D7D4E8807C30E98FDDEA7";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		2C7D582A4C8F1CF5FB6BF2CB = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/win/YangDXGIManager.cpp";
+			name = "YangDXGIManager.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		B8AB8CD91176C7F39E7324A9 = {
+			fileRef = "2C7D582A4C8F1CF5FB6BF2CB";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E78EC624959803913EF386CB = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/win/YangVideoCaptureWindows.cpp";
+			name = "YangVideoCaptureWindows.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		FF29DD5F30CA60C03FC3F50A = {
+			fileRef = "E78EC624959803913EF386CB";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D65EAC2FC3FEE6F3D990727C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/win/YangWinVideoCaptureHandle.cpp";
+			name = "YangWinVideoCaptureHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		EFB7F41C0B55BD0CB76CB3D0 = {
+			fileRef = "D65EAC2FC3FEE6F3D990727C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		C05AFFD463859B037A0A02DC = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangAudioDecoder.cpp";
+			name = "YangAudioDecoder.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		E04F0D070EBDFCA829ADF44C = {
+			fileRef = "C05AFFD463859B037A0A02DC";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		77450CCAA273FDCB93AC93B9 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangAudioDecoderHandle.cpp";
+			name = "YangAudioDecoderHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		6616B72AC64B4BA73039A005 = {
+			fileRef = "77450CCAA273FDCB93AC93B9";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		090BF6827481FC156C69DDA6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangAudioDecoderHandles.cpp";
+			name = "YangAudioDecoderHandles.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		8137C25E965152CC2D064244 = {
+			fileRef = "090BF6827481FC156C69DDA6";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		CAAD198C592B6F5A6EEA4D14 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangAudioDecoderOpus.cpp";
+			name = "YangAudioDecoderOpus.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		929CAAE4C77E5F48CE586A0D = {
+			fileRef = "CAAD198C592B6F5A6EEA4D14";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		75DD7C131F6642E47D08A836 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangDecoderFactory.cpp";
+			name = "YangDecoderFactory.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		3339D86B26CA54C0BE5F392F = {
+			fileRef = "75DD7C131F6642E47D08A836";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		61FD2DD3C0068DD59EBF11D0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangDecoderH264.cpp";
+			name = "YangDecoderH264.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		2D3035961C9D9957AC1E6977 = {
+			fileRef = "61FD2DD3C0068DD59EBF11D0";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D7D2798E08BB65F196F4CC8E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangDecoderLibde265.cpp";
+			name = "YangDecoderLibde265.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		F0B1E03A0E4AA61ECF59B745 = {
+			fileRef = "D7D2798E08BB65F196F4CC8E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		57DF35685854749C9EAA20B3 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangDecoderMediacodec.cpp";
+			name = "YangDecoderMediacodec.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		B3FB5478D9039D7DDB9F4D37 = {
+			fileRef = "57DF35685854749C9EAA20B3";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		5382DA4C19F30BE0B6B9DEA7 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangDecoderOpenh264.cpp";
+			name = "YangDecoderOpenh264.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		F503944F00B19524B8006C3F = {
+			fileRef = "5382DA4C19F30BE0B6B9DEA7";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		DC13692AE529749D648B9F04 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangH264DecoderSoft.cpp";
+			name = "YangH264DecoderSoft.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		B6C3010373CD2C80EC4E2DD4 = {
+			fileRef = "DC13692AE529749D648B9F04";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		8A86FCEF1C8C02F0D43D2D14 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangH264DecoderSoft2.cpp";
+			name = "YangH264DecoderSoft2.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		1CDF784D1CAC2F2DCADBE4F5 = {
+			fileRef = "8A86FCEF1C8C02F0D43D2D14";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		3071D62665E6159EA403D6A8 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangVideoDecoderHandle.cpp";
+			name = "YangVideoDecoderHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		9F13CC7B049A1A3446290A99 = {
+			fileRef = "3071D62665E6159EA403D6A8";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		FB521EE274AE9F6CD3CAEA9F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangVideoDecoderHandles.cpp";
+			name = "YangVideoDecoderHandles.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		04A3A5736F7170BF7BCB0E8B = {
+			fileRef = "FB521EE274AE9F6CD3CAEA9F";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		3ABDC60C61524900D53A1FE8 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/pc/YangAudioDecoderAac.cpp";
+			name = "YangAudioDecoderAac.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		9ED9181992BC7A6638B45C74 = {
+			fileRef = "3ABDC60C61524900D53A1FE8";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		AE4A1281CBB07EEE6F4C9C9A = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/pc/YangAudioDecoderSpeex.cpp";
+			name = "YangAudioDecoderSpeex.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		065AFDCB9E88A49A961121DA = {
+			fileRef = "AE4A1281CBB07EEE6F4C9C9A";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		986F5AC5057010E2E18D9565 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/pc/YangHeaderParseFfmpeg.cpp";
+			name = "YangHeaderParseFfmpeg.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		B5FAC5EEEDBF3972F8A597EA = {
+			fileRef = "986F5AC5057010E2E18D9565";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		FBA6461E105ED1B8802F2DE7 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/pc/YangVideoDecoderFfmpeg.cpp";
+			name = "YangVideoDecoderFfmpeg.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		65886CC8C352CA8CC3206102 = {
+			fileRef = "FBA6461E105ED1B8802F2DE7";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		21677FB41411D5FB7FDF2BAF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoder.cpp";
+			name = "YangAudioEncoder.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		A52D9AA53452A9D7FFF3CB1B = {
+			fileRef = "21677FB41411D5FB7FDF2BAF";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		54BD9878C0160462FA8C1FC7 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderAac.cpp";
+			name = "YangAudioEncoderAac.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		D9F59266DE1CBAF67F729EAE = {
+			fileRef = "54BD9878C0160462FA8C1FC7";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		1EB32DF44C240E44899A43E0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderHandle.cpp";
+			name = "YangAudioEncoderHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		61B18AD54DB13508AC748FDC = {
+			fileRef = "1EB32DF44C240E44899A43E0";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		1BCADCA7F9CF070C9CC48DA9 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderHandleCb.cpp";
+			name = "YangAudioEncoderHandleCb.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		99467550CCDFE5859D3B15E5 = {
+			fileRef = "1BCADCA7F9CF070C9CC48DA9";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		38B4BAC440667421C3635428 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderMeta.cpp";
+			name = "YangAudioEncoderMeta.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		A53ACD5D736A768DC229A9CF = {
+			fileRef = "38B4BAC440667421C3635428";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		E1B3776B382CC6CB19D7013C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderMp3.cpp";
+			name = "YangAudioEncoderMp3.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		871D59F11306E4863868E320 = {
+			fileRef = "E1B3776B382CC6CB19D7013C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		3729EFBCBFD17E9FEA78B543 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderOpus.cpp";
+			name = "YangAudioEncoderOpus.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		31151D41A66B43B212CB8B3E = {
+			fileRef = "3729EFBCBFD17E9FEA78B543";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9C7337EBECAE35FD8DBAF6AD = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderSpeex.cpp";
+			name = "YangAudioEncoderSpeex.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		CF36525CA6A1436F11642DEE = {
+			fileRef = "9C7337EBECAE35FD8DBAF6AD";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		AD8131DD73BABA4AF42A8A0B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangEncoderFactory.cpp";
+			name = "YangEncoderFactory.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		D531F86A33503A06A12744B3 = {
+			fileRef = "AD8131DD73BABA4AF42A8A0B";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		1D93FBE18100FF6CA174DAB4 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangEncoderMediacodec.cpp";
+			name = "YangEncoderMediacodec.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		D2CBCAA1B6C4A5AA474D7EF1 = {
+			fileRef = "1D93FBE18100FF6CA174DAB4";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		3F543E27D7EFFD391F892A4E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangFfmpegEncoderMeta.cpp";
+			name = "YangFfmpegEncoderMeta.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		8E0894C2B0CC94A9AEAA29AC = {
+			fileRef = "3F543E27D7EFFD391F892A4E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		CB8B8D24958B457BCD04D60C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangH264EncoderMeta.cpp";
+			name = "YangH264EncoderMeta.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		F6F586B0B07B3866257C7DEE = {
+			fileRef = "CB8B8D24958B457BCD04D60C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		81444C08FF5B66BCFE7F5F45 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangH264EncoderSoft.cpp";
+			name = "YangH264EncoderSoft.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		A842D51FC74ECD5354BBC7DA = {
+			fileRef = "81444C08FF5B66BCFE7F5F45";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		0C3CECE5BC9FED5B0F64A0C1 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangH265EncoderMeta.cpp";
+			name = "YangH265EncoderMeta.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		6677860DC554B770E4281B0E = {
+			fileRef = "0C3CECE5BC9FED5B0F64A0C1";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		80C58D007BBADE6E0707893D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangH265EncoderSoft.cpp";
+			name = "YangH265EncoderSoft.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		D0B292935AB12479F00A4076 = {
+			fileRef = "80C58D007BBADE6E0707893D";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		CFEBCC58800CB90994191F9A = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangOpenH264Encoder.cpp";
+			name = "YangOpenH264Encoder.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		FB1FBB1CFE1C84F614A56674 = {
+			fileRef = "CFEBCC58800CB90994191F9A";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		A4701073BAA420D14E926366 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangVideoEncoder.cpp";
+			name = "YangVideoEncoder.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		5DF4D3CA44C7F94C75FC842C = {
+			fileRef = "A4701073BAA420D14E926366";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		6F187C827F03555DE7ED15DE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangVideoEncoderFfmpeg.cpp";
+			name = "YangVideoEncoderFfmpeg.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		58DABA1C8A51A46616AFAE52 = {
+			fileRef = "6F187C827F03555DE7ED15DE";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		821319DAD7FFE34B39949D43 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangVideoEncoderHandle.cpp";
+			name = "YangVideoEncoderHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		C20FF6E23CA397F5947C12A0 = {
+			fileRef = "821319DAD7FFE34B39949D43";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		94AE941492C2B1C239E6572C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangrtc/YangPeerConnection2.cpp";
+			name = "YangPeerConnection2.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		507DF8E1B25C9EB00F2C342B = {
+			fileRef = "94AE941492C2B1C239E6572C";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		AD165F5CF364036DE9B9755E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangstream/YangStreamManager.cpp";
+			name = "YangStreamManager.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		DB330D638A4094E84539AE75 = {
+			fileRef = "AD165F5CF364036DE9B9755E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		39187E2EC5A1F1926D972F7E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangstream/YangSynBuffer.cpp";
+			name = "YangSynBuffer.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		FBBB0EC2CEB89F457326A76A = {
+			fileRef = "39187E2EC5A1F1926D972F7E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		A40CA742F65A7D551DBE0F4F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangstream/YangSynBufferManager.cpp";
+			name = "YangSynBufferManager.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		352449FB283D7B82E36B62B4 = {
+			fileRef = "A40CA742F65A7D551DBE0F4F";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		0F1F64AB56E8F3083D6F4778 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/YangAvinfo.cpp";
+			name = "YangAvinfo.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		CDCAF25279699293CF87054B = {
+			fileRef = "0F1F64AB56E8F3083D6F4778";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D07A6293503A41B03F52FFFE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/YangLoadLib.cpp";
+			name = "YangLoadLib.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		AB31A740A3248B0E07CBE474 = {
+			fileRef = "D07A6293503A41B03F52FFFE";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		65F0A87C8B662B8A1159758E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/YangString.cpp";
+			name = "YangString.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		3F9938202256B25F67C3CC7C = {
+			fileRef = "65F0A87C8B662B8A1159758E";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		3CB49E4DCEDB00D4886D0342 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/YangSysMessageHandle.cpp";
+			name = "YangSysMessageHandle.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		546BDF5608B982D07498D2F0 = {
+			fileRef = "3CB49E4DCEDB00D4886D0342";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		9B4CB832E79612FB4E6350A1 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/YangThread.cpp";
+			name = "YangThread.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		234A11567F0F0EA108122572 = {
+			fileRef = "9B4CB832E79612FB4E6350A1";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		6235000FC879C12D8A10AF7A = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/YangTimer.cpp";
+			name = "YangTimer.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		7D5D61964D235AE785246088 = {
+			fileRef = "6235000FC879C12D8A10AF7A";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		91F1B4A70319CC248D175103 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/buffer/YangAudioBuffer.cpp";
+			name = "YangAudioBuffer.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		CA61CD540F50668504767691 = {
+			fileRef = "91F1B4A70319CC248D175103";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		5E24D1A2584A66422A7BCDDE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/buffer/YangAudioEncoderBuffer.cpp";
+			name = "YangAudioEncoderBuffer.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		C1400D44BFC2F0F78C39AA3B = {
+			fileRef = "5E24D1A2584A66422A7BCDDE";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		6D54199C82815BFC9FEC6374 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/buffer/YangAudioPlayBuffer.cpp";
+			name = "YangAudioPlayBuffer.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		8B1059B76FF37184C5395F9F = {
+			fileRef = "6D54199C82815BFC9FEC6374";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		770E2C982F2B3254CD2944DE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/buffer/YangMediaBuffer.cpp";
+			name = "YangMediaBuffer.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		5C0BDCE3CAEC64C0591CD0E8 = {
+			fileRef = "770E2C982F2B3254CD2944DE";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		838D75BBBC10E38F369831F3 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/buffer/YangVideoBuffer.cpp";
+			name = "YangVideoBuffer.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		07803444BA7D8DC4FB9C8F69 = {
+			fileRef = "838D75BBBC10E38F369831F3";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		B91879E3DFDF8BF11736B434 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/buffer/YangVideoDecoderBuffer.cpp";
+			name = "YangVideoDecoderBuffer.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		1EF30C2816CE0C1EE6DDE4E9 = {
+			fileRef = "B91879E3DFDF8BF11736B434";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		19B32BC16BC3D6F999E30A7A = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangutil/buffer/YangVideoEncoderBuffer.cpp";
+			name = "YangVideoEncoderBuffer.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		EDBD0706080885A4E3C59F3D = {
+			fileRef = "19B32BC16BC3D6F999E30A7A";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		067BBC85AFEDCE7DB633EE5A = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/mac/YangVideoCaptureMac.cpp";
+			name = "YangVideoCaptureMac.cpp";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.cpp";
+		};
+		D145E8308C24EE138053F164 = {
+			fileRef = "067BBC85AFEDCE7DB633EE5A";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		D8EDD1DCD489A9F60B12303A = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/mac/YangVideoDeviceMac.mm";
+			name = "YangVideoDeviceMac.mm";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.cpp.objcpp";
+		};
+		F9AF81A9D1D7EBECC0D29F1E = {
+			fileRef = "D8EDD1DCD489A9F60B12303A";
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					);
+			};
+		};
+		8A43D2216EBB0AF9329AA5A6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/YangAudioCaptureHandle.h";
+			name = "YangAudioCaptureHandle.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		771899749948C03073F064FF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/YangCaptureCallback.h";
+			name = "YangCaptureCallback.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		04709171588BAFDDB66FCB74 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/linux/YangAudioAecLinux.h";
+			name = "YangAudioAecLinux.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		645598B60F3A4B22419FEEE9 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/linux/YangAudioCaptureLinux.h";
+			name = "YangAudioCaptureLinux.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		536BFC619957B9FB44CDDD60 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/linux/YangAudioPlayLinux.h";
+			name = "YangAudioPlayLinux.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		0B5A2CE7D03C3135542AD010 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/mac/YangAudioCaptureMac.h";
+			name = "YangAudioCaptureMac.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		92BFCDF73E6F761B97C9455A = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/mac/YangAudioMac.h";
+			name = "YangAudioMac.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		7383F608A32B7949DDE662BD = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/mac/YangAudioPlayMac.h";
+			name = "YangAudioPlayMac.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		80971EF0C7AF1FCC8983E84B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangAudioApiCapture.h";
+			name = "YangAudioApiCapture.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		1DAED62B608849309E81118D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangAudioCaptureWindows.h";
+			name = "YangAudioCaptureWindows.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		B6EB90D0D8F65860777838AC = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangRecAudioCaptureHandle.h";
+			name = "YangRecAudioCaptureHandle.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		9313C1C5628E5FF19D4F4260 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApi.h";
+			name = "YangWinAudioApi.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		BB706818DD43B554E188C9C2 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApiAec.h";
+			name = "YangWinAudioApiAec.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6E0120968EDA84D149D1BFCE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApiCapture.h";
+			name = "YangWinAudioApiCapture.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		D85DE8DBB5D90681144A4A6A = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApiDevice.h";
+			name = "YangWinAudioApiDevice.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		167236E74BB40B3023F6FA6C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioApiRender.h";
+			name = "YangWinAudioApiRender.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		63E034211410AC8E5CF2D038 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioCapture.h";
+			name = "YangWinAudioCapture.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		7D45910FEE9B40A62C792EFE = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioCaptureHandle.h";
+			name = "YangWinAudioCaptureHandle.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		147DD3B7457A14B049FEB3EF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangaudiodev/win/YangWinAudioDevice.h";
+			name = "YangWinAudioDevice.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		5910586E2ACF726125DB062F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/YangScreenCaptureImpl.h";
+			name = "YangScreenCaptureImpl.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6C0999F60D4C8B5E6A9AB4B4 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/YangScreenShare.h";
+			name = "YangScreenShare.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		2536BB5B6A4BE56DF1FB04ED = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/YangVideoCaptureHandle.h";
+			name = "YangVideoCaptureHandle.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		8C9E0A4A47F0590CBFEBF2C5 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/android/YangCameraAndroid.h";
+			name = "YangCameraAndroid.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		1113550458E1B35ECE7FDD17 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/android/YangVideoCaptureAndroid.h";
+			name = "YangVideoCaptureAndroid.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		9DCB2E717E70DACEF3A24D79 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/linux/YangVideoCaptureLinux.h";
+			name = "YangVideoCaptureLinux.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		67F191BDBFB6B3BB317D19AF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/mac/YangVideoCaptureMac.h";
+			name = "YangVideoCaptureMac.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A3547AF8AC7790FF45C6EEA5 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/mac/YangVideoDeviceMac.h";
+			name = "YangVideoDeviceMac.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		35D19AB7DD1009D507159EB6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/win/YangDXGIManager.h";
+			name = "YangDXGIManager.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		01F16A0687B0428395D293C1 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/win/YangVideoCaptureWindows.h";
+			name = "YangVideoCaptureWindows.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		4ECF3298D1A8722B8CD308C0 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/win/YangVideoSrc.h";
+			name = "YangVideoSrc.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		7A86137C1757F8C3C6DCB9B1 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangcapture/win/YangWinVideoCaptureHandle.h";
+			name = "YangWinVideoCaptureHandle.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		D1AEA643C99FCB525BD12AA7 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangAudioDecoderOpus.h";
+			name = "YangAudioDecoderOpus.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A0B95B397F6700ECB31702E9 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangDecoderH264.h";
+			name = "YangDecoderH264.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		B4C2F9AB1007534EAC0F7FEA = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangDecoderLibde265.h";
+			name = "YangDecoderLibde265.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		89F12B28DDFF2827B72EAD45 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangDecoderMediacodec.h";
+			name = "YangDecoderMediacodec.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		EA091F761A6F053A5132C3F6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangDecoderOpenh264.h";
+			name = "YangDecoderOpenh264.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		AB49C404B3E9DC21A7D0FB6E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangH264Dec.h";
+			name = "YangH264Dec.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		016808BC465C031A0A7F810F = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangH264DecoderSoft.h";
+			name = "YangH264DecoderSoft.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		2E152ED184DBFC11CFC54C8C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangH264DecoderSoft2.h";
+			name = "YangH264DecoderSoft2.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6188A6BDCDEE365812893048 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/YangH264DecoderSoftFactory.h";
+			name = "YangH264DecoderSoftFactory.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		FE4A17B20CAE84C5409B31C2 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/pc/YangAudioDecoderAac.h";
+			name = "YangAudioDecoderAac.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		CB2E76C845BD7F83240FA1BF = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/pc/YangAudioDecoderSpeex.h";
+			name = "YangAudioDecoderSpeex.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		D3EC505E127CBC6448518A63 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/pc/YangHeaderParseFfmpeg.h";
+			name = "YangHeaderParseFfmpeg.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		42EE8B7D2DB10B2712DBAA81 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangdecoder/pc/YangVideoDecoderFfmpeg.h";
+			name = "YangVideoDecoderFfmpeg.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		8A0772C0D5C39FEC0040E881 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderAac.h";
+			name = "YangAudioEncoderAac.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		FC447CA84EC228840585BF4D = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderMp3.h";
+			name = "YangAudioEncoderMp3.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		9EA7AAD6DA6592D7B6820B95 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderOpus.h";
+			name = "YangAudioEncoderOpus.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		6030FC802F480AD675DA1B06 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangAudioEncoderSpeex.h";
+			name = "YangAudioEncoderSpeex.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		BAF4E6C13EC741ED6865379B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangEncoderMediacodec.h";
+			name = "YangEncoderMediacodec.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		A7D91E6DE00F06BEED8D8F93 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangFfmpegEncoderMeta.h";
+			name = "YangFfmpegEncoderMeta.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		AD7AD653C734B3853808E2A2 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangH264EncHeader.h";
+			name = "YangH264EncHeader.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		0D1BB3801941EDE0F4BEAE9B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangH264EncoderMeta.h";
+			name = "YangH264EncoderMeta.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		E10C91E7345747266FF73F1B = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangH264EncoderSoft.h";
+			name = "YangH264EncoderSoft.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		2571B5AC4535B5408C77E8B6 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangH265EncoderMeta.h";
+			name = "YangH265EncoderMeta.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		DB018E0C68C6BF726C660BAB = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangH265EncoderSoft.h";
+			name = "YangH265EncoderSoft.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		57E744C8CB344F4172D7849C = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangOpenH264Encoder.h";
+			name = "YangOpenH264Encoder.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		4FD0C1AB5FF4DEC5426CDB47 = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/YangVideoEncoderFfmpeg.h";
+			name = "YangVideoEncoderFfmpeg.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		FB10C382D2D0E3ED73A14D3E = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/src/yangencoder/lame.h";
+			name = "lame.h";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "sourcecode.c.h";
+		};
+		4CE739AC50DA40B906E644EA = {
+			isa = PBXFileReference;
+			path = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/metartc7.pro";
+			name = "metartc7.pro";
+			sourceTree = "<absolute>";
+			lastKnownFileType = "text";
+		};
+		921315FAA7F261D737F4F4C7 = {
+			isa = PBXGroup;
+			children = (
+				"1B2EEE5191331BEB1ACCE262",
+				"CABFF806E58DF18E9B2FA69B",
+				"A17605032D706271D76A20DB",
+				"B3B8C40055BE357C97540DC1",
+				"2EC8DAC551085D3D3C743258",
+				"8E6F28E23A5DF3676F75568F",
+				"06E43EF1324CD88884119193",
+				"DCC7E9C637E4634BFFA4B8CC");
+			name = "src";
+			sourceTree = "<group>";
+		};
+		1B2EEE5191331BEB1ACCE262 = {
+			isa = PBXGroup;
+			children = (
+				"53719B660E134E503C1AEA30",
+				"D8D1A73F0BD77EF316E1E9E4",
+				"18CDC0BE916D5EBF4F878F89",
+				"9FD154C6E6AB1A1C67147C0E",
+				"CB716DB4791F80FA119D55F9",
+				"DF2AE700ACC459949AFE84D8",
+				"C97B277FB3C1BBF0E98FC2EB",
+				"9F23A5B133E664D582CF381C",
+				"8A43D2216EBB0AF9329AA5A6",
+				"771899749948C03073F064FF");
+			name = "yangaudiodev";
+			sourceTree = "<group>";
+		};
+		DF2AE700ACC459949AFE84D8 = {
+			isa = PBXGroup;
+			children = (
+				"6C053F1B368FE007C26CDD24",
+				"C6BA036BE1EEDE85F252024F",
+				"04DF86068F4DB7CF9CA08B90",
+				"04709171588BAFDDB66FCB74",
+				"645598B60F3A4B22419FEEE9",
+				"536BFC619957B9FB44CDDD60");
+			name = "linux";
+			sourceTree = "<group>";
+		};
+		C97B277FB3C1BBF0E98FC2EB = {
+			isa = PBXGroup;
+			children = (
+				"207EDD894874C3C7B6D5DEE0",
+				"D86874A809A00698479BDAB3",
+				"D5B65499246AEB148F20B480",
+				"9231CBD8DA9632BE7C2D5019",
+				"0B5A2CE7D03C3135542AD010",
+				"92BFCDF73E6F761B97C9455A",
+				"7383F608A32B7949DDE662BD");
+			name = "mac";
+			sourceTree = "<group>";
+		};
+		9F23A5B133E664D582CF381C = {
+			isa = PBXGroup;
+			children = (
+				"B6AA4697FFCC7057AC4C5B64",
+				"C0A0A22C054AFF355D4EFECE",
+				"9DB6E6712410B90A06568A94",
+				"E368391595760C345A32873D",
+				"620D372AB68184787A7F853C",
+				"EEB80D04BF92B158DDB9F1A5",
+				"9B26F7A3F1DD678195C6D963",
+				"A58570C7D39C13C0BA27DD3D",
+				"224B98D242127A8E2A6C46BD",
+				"80971EF0C7AF1FCC8983E84B",
+				"1DAED62B608849309E81118D",
+				"B6EB90D0D8F65860777838AC",
+				"9313C1C5628E5FF19D4F4260",
+				"BB706818DD43B554E188C9C2",
+				"6E0120968EDA84D149D1BFCE",
+				"D85DE8DBB5D90681144A4A6A",
+				"167236E74BB40B3023F6FA6C",
+				"63E034211410AC8E5CF2D038",
+				"7D45910FEE9B40A62C792EFE",
+				"147DD3B7457A14B049FEB3EF");
+			name = "win";
+			sourceTree = "<group>";
+		};
+		CABFF806E58DF18E9B2FA69B = {
+			isa = PBXGroup;
+			children = (
+				"378C67382ACBA6FD24D3E210",
+				"AC3FBC5B7101BE827C21607E",
+				"3C72312E82D2EDBA26CC674D");
+			name = "yangavutil";
+			sourceTree = "<group>";
+		};
+		A17605032D706271D76A20DB = {
+			isa = PBXGroup;
+			children = (
+				"C9FEA86D40525722D224D300",
+				"669BE17C212145E6E61A2A06",
+				"81C3593E66163182B893C024",
+				"392F340DA34535CD7603D1EE",
+				"AD80F858577118907F2C1C32",
+				"BF06F93C0C7CA28C896D6BB3",
+				"AE96408F9871E4A9FB8BDFAD",
+				"A7E7790433147B1A94E9C6E7",
+				"5910586E2ACF726125DB062F",
+				"6C0999F60D4C8B5E6A9AB4B4",
+				"2536BB5B6A4BE56DF1FB04ED");
+			name = "yangcapture";
+			sourceTree = "<group>";
+		};
+		AD80F858577118907F2C1C32 = {
+			isa = PBXGroup;
+			children = (
+				"61E0132C3132CABD17BF597F",
+				"49A1EB3F2794D31B793A7C1E",
+				"8C9E0A4A47F0590CBFEBF2C5",
+				"1113550458E1B35ECE7FDD17");
+			name = "android";
+			sourceTree = "<group>";
+		};
+		BF06F93C0C7CA28C896D6BB3 = {
+			isa = PBXGroup;
+			children = (
+				"426D7D4E8807C30E98FDDEA7",
+				"9DCB2E717E70DACEF3A24D79");
+			name = "linux";
+			sourceTree = "<group>";
+		};
+		A7E7790433147B1A94E9C6E7 = {
+			isa = PBXGroup;
+			children = (
+				"067BBC85AFEDCE7DB633EE5A",
+				"D8EDD1DCD489A9F60B12303A",
+				"67F191BDBFB6B3BB317D19AF",
+				"A3547AF8AC7790FF45C6EEA5");
+			name = "mac";
+			sourceTree = "<group>";
+		};
+		AE96408F9871E4A9FB8BDFAD = {
+			isa = PBXGroup;
+			children = (
+				"2C7D582A4C8F1CF5FB6BF2CB",
+				"E78EC624959803913EF386CB",
+				"D65EAC2FC3FEE6F3D990727C",
+				"35D19AB7DD1009D507159EB6",
+				"01F16A0687B0428395D293C1",
+				"4ECF3298D1A8722B8CD308C0",
+				"7A86137C1757F8C3C6DCB9B1");
+			name = "win";
+			sourceTree = "<group>";
+		};
+		B3B8C40055BE357C97540DC1 = {
+			isa = PBXGroup;
+			children = (
+				"C05AFFD463859B037A0A02DC",
+				"77450CCAA273FDCB93AC93B9",
+				"090BF6827481FC156C69DDA6",
+				"CAAD198C592B6F5A6EEA4D14",
+				"75DD7C131F6642E47D08A836",
+				"61FD2DD3C0068DD59EBF11D0",
+				"D7D2798E08BB65F196F4CC8E",
+				"57DF35685854749C9EAA20B3",
+				"5382DA4C19F30BE0B6B9DEA7",
+				"DC13692AE529749D648B9F04",
+				"8A86FCEF1C8C02F0D43D2D14",
+				"3071D62665E6159EA403D6A8",
+				"FB521EE274AE9F6CD3CAEA9F",
+				"AEF803C02EAB5EB4E73DE353",
+				"D1AEA643C99FCB525BD12AA7",
+				"A0B95B397F6700ECB31702E9",
+				"B4C2F9AB1007534EAC0F7FEA",
+				"89F12B28DDFF2827B72EAD45",
+				"EA091F761A6F053A5132C3F6",
+				"AB49C404B3E9DC21A7D0FB6E",
+				"016808BC465C031A0A7F810F",
+				"2E152ED184DBFC11CFC54C8C",
+				"6188A6BDCDEE365812893048");
+			name = "yangdecoder";
+			sourceTree = "<group>";
+		};
+		AEF803C02EAB5EB4E73DE353 = {
+			isa = PBXGroup;
+			children = (
+				"3ABDC60C61524900D53A1FE8",
+				"AE4A1281CBB07EEE6F4C9C9A",
+				"986F5AC5057010E2E18D9565",
+				"FBA6461E105ED1B8802F2DE7",
+				"FE4A17B20CAE84C5409B31C2",
+				"CB2E76C845BD7F83240FA1BF",
+				"D3EC505E127CBC6448518A63",
+				"42EE8B7D2DB10B2712DBAA81");
+			name = "pc";
+			sourceTree = "<group>";
+		};
+		2EC8DAC551085D3D3C743258 = {
+			isa = PBXGroup;
+			children = (
+				"21677FB41411D5FB7FDF2BAF",
+				"54BD9878C0160462FA8C1FC7",
+				"1EB32DF44C240E44899A43E0",
+				"1BCADCA7F9CF070C9CC48DA9",
+				"38B4BAC440667421C3635428",
+				"E1B3776B382CC6CB19D7013C",
+				"3729EFBCBFD17E9FEA78B543",
+				"9C7337EBECAE35FD8DBAF6AD",
+				"AD8131DD73BABA4AF42A8A0B",
+				"1D93FBE18100FF6CA174DAB4",
+				"3F543E27D7EFFD391F892A4E",
+				"CB8B8D24958B457BCD04D60C",
+				"81444C08FF5B66BCFE7F5F45",
+				"0C3CECE5BC9FED5B0F64A0C1",
+				"80C58D007BBADE6E0707893D",
+				"CFEBCC58800CB90994191F9A",
+				"A4701073BAA420D14E926366",
+				"6F187C827F03555DE7ED15DE",
+				"821319DAD7FFE34B39949D43",
+				"8A0772C0D5C39FEC0040E881",
+				"FC447CA84EC228840585BF4D",
+				"9EA7AAD6DA6592D7B6820B95",
+				"6030FC802F480AD675DA1B06",
+				"BAF4E6C13EC741ED6865379B",
+				"A7D91E6DE00F06BEED8D8F93",
+				"AD7AD653C734B3853808E2A2",
+				"0D1BB3801941EDE0F4BEAE9B",
+				"E10C91E7345747266FF73F1B",
+				"2571B5AC4535B5408C77E8B6",
+				"DB018E0C68C6BF726C660BAB",
+				"57E744C8CB344F4172D7849C",
+				"4FD0C1AB5FF4DEC5426CDB47",
+				"FB10C382D2D0E3ED73A14D3E");
+			name = "yangencoder";
+			sourceTree = "<group>";
+		};
+		8E6F28E23A5DF3676F75568F = {
+			isa = PBXGroup;
+			children = (
+				"94AE941492C2B1C239E6572C");
+			name = "yangrtc";
+			sourceTree = "<group>";
+		};
+		06E43EF1324CD88884119193 = {
+			isa = PBXGroup;
+			children = (
+				"AD165F5CF364036DE9B9755E",
+				"39187E2EC5A1F1926D972F7E",
+				"A40CA742F65A7D551DBE0F4F");
+			name = "yangstream";
+			sourceTree = "<group>";
+		};
+		DCC7E9C637E4634BFFA4B8CC = {
+			isa = PBXGroup;
+			children = (
+				"0F1F64AB56E8F3083D6F4778",
+				"D07A6293503A41B03F52FFFE",
+				"65F0A87C8B662B8A1159758E",
+				"3CB49E4DCEDB00D4886D0342",
+				"9B4CB832E79612FB4E6350A1",
+				"6235000FC879C12D8A10AF7A",
+				"22FC9E0CD03B429C62CDF76C");
+			name = "yangutil";
+			sourceTree = "<group>";
+		};
+		22FC9E0CD03B429C62CDF76C = {
+			isa = PBXGroup;
+			children = (
+				"91F1B4A70319CC248D175103",
+				"5E24D1A2584A66422A7BCDDE",
+				"6D54199C82815BFC9FEC6374",
+				"770E2C982F2B3254CD2944DE",
+				"838D75BBBC10E38F369831F3",
+				"B91879E3DFDF8BF11736B434",
+				"19B32BC16BC3D6F999E30A7A");
+			name = "buffer";
+			sourceTree = "<group>";
+		};
+		2EB56BE3C2D93CDAB0C52E67 = {
+			isa = PBXGroup;
+			children = (
+				"921315FAA7F261D737F4F4C7");
+			name = "Sources";
+			sourceTree = "<group>";
+		};
+		74B182DB50CB5611B5C1C297 = {
+			isa = PBXGroup;
+			children = (
+				"4CE739AC50DA40B906E644EA");
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7EF0942E79C014DCEC8976BC = {
+			buildActionMask = 2147483647;
+			files = (
+				);
+			isa = PBXShellScriptBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Qt Preprocessors";
+			inputPaths = (
+				);
+			outputPaths = (
+				);
+			shellPath = "/bin/sh";
+			shellScript = "make -C /Users/aiven/work/project/framework/metaRTC/libmetartc7 -f metartc7.xcodeproj/qt_preprocess.mak";
+			showEnvVarsInLog = "0";
+			alwaysOutOfDate = "1";
+		};
+		F7E50F631C51CD5B5DC0BC43 = {
+			buildActionMask = 2147483647;
+			files = (
+				"3053031D785E2FF783C55A81",
+				"30DB3E57B39B500AF6D6A0B2",
+				"7E81EA8F24F1C2AC2D742A3A",
+				"7BC5E467CA6CD64BC3016730",
+				"FF1B23EDB19ABE1E9D259366",
+				"F7B9D2AA8FF3D2EFA9BE1057",
+				"571A800F6822BACD079221CA",
+				"B3D393345C93A3CBE95A090B",
+				"14EA782D84A007CC376C17EB",
+				"F04A716D0F7F33C1D8E069C0",
+				"03369AC65BB29455E1DD720C",
+				"006062ECB13318D57E826EBB",
+				"0015194B101753031B67CD2E",
+				"60140BC5503A0C4027F10FC6",
+				"C32B13E5459E38B00EE36BAD",
+				"7379F90B3D2BCCBC731673DE",
+				"B4541AB98FA18A3D78C29088",
+				"E60D407D7A4BCE99DBD77F18",
+				"A7348BE80EA01FEF7BFD9754",
+				"CBA38126F9865634C15AC7ED",
+				"654E5FEF95EC9063E38CE060",
+				"4F5B9B13F3A66E0B0232EF12",
+				"4C060AEAA8AAC3FF6A67BCB5",
+				"0C07656B73C4AE5691F80E3F",
+				"A886F838AE60410C3C7D0F5D",
+				"947C0055573DEDC2DB51A61C",
+				"174BB5F8C5D801A25556C577",
+				"494724FB6B17C715198099A7",
+				"B4E23569581B24F101F5380A",
+				"630DE5786FB233ABED20891D",
+				"3F409FBE60EECA5B2BFE81D6",
+				"B8AB8CD91176C7F39E7324A9",
+				"FF29DD5F30CA60C03FC3F50A",
+				"EFB7F41C0B55BD0CB76CB3D0",
+				"E04F0D070EBDFCA829ADF44C",
+				"6616B72AC64B4BA73039A005",
+				"8137C25E965152CC2D064244",
+				"929CAAE4C77E5F48CE586A0D",
+				"3339D86B26CA54C0BE5F392F",
+				"2D3035961C9D9957AC1E6977",
+				"F0B1E03A0E4AA61ECF59B745",
+				"B3FB5478D9039D7DDB9F4D37",
+				"F503944F00B19524B8006C3F",
+				"B6C3010373CD2C80EC4E2DD4",
+				"1CDF784D1CAC2F2DCADBE4F5",
+				"9F13CC7B049A1A3446290A99",
+				"04A3A5736F7170BF7BCB0E8B",
+				"9ED9181992BC7A6638B45C74",
+				"065AFDCB9E88A49A961121DA",
+				"B5FAC5EEEDBF3972F8A597EA",
+				"65886CC8C352CA8CC3206102",
+				"A52D9AA53452A9D7FFF3CB1B",
+				"D9F59266DE1CBAF67F729EAE",
+				"61B18AD54DB13508AC748FDC",
+				"99467550CCDFE5859D3B15E5",
+				"A53ACD5D736A768DC229A9CF",
+				"871D59F11306E4863868E320",
+				"31151D41A66B43B212CB8B3E",
+				"CF36525CA6A1436F11642DEE",
+				"D531F86A33503A06A12744B3",
+				"D2CBCAA1B6C4A5AA474D7EF1",
+				"8E0894C2B0CC94A9AEAA29AC",
+				"F6F586B0B07B3866257C7DEE",
+				"A842D51FC74ECD5354BBC7DA",
+				"6677860DC554B770E4281B0E",
+				"D0B292935AB12479F00A4076",
+				"FB1FBB1CFE1C84F614A56674",
+				"5DF4D3CA44C7F94C75FC842C",
+				"58DABA1C8A51A46616AFAE52",
+				"C20FF6E23CA397F5947C12A0",
+				"507DF8E1B25C9EB00F2C342B",
+				"DB330D638A4094E84539AE75",
+				"FBBB0EC2CEB89F457326A76A",
+				"352449FB283D7B82E36B62B4",
+				"CDCAF25279699293CF87054B",
+				"AB31A740A3248B0E07CBE474",
+				"3F9938202256B25F67C3CC7C",
+				"546BDF5608B982D07498D2F0",
+				"234A11567F0F0EA108122572",
+				"7D5D61964D235AE785246088",
+				"CA61CD540F50668504767691",
+				"C1400D44BFC2F0F78C39AA3B",
+				"8B1059B76FF37184C5395F9F",
+				"5C0BDCE3CAEC64C0591CD0E8",
+				"07803444BA7D8DC4FB9C8F69",
+				"1EF30C2816CE0C1EE6DDE4E9",
+				"EDBD0706080885A4E3C59F3D",
+				"D145E8308C24EE138053F164",
+				"F9AF81A9D1D7EBECC0D29F1E");
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Compile Sources";
+		};
+		D1C883685E82D5676953459A = {
+			buildActionMask = 2147483647;
+			files = (
+				);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Link Binary With Libraries";
+		};
+		9C316F444A62BF296E3E1F25 = {
+			isa = PBXShellScriptBuildPhase;
+			name = "Project Copy";
+			buildActionMask = 2147483647;
+			files = (
+				);
+			inputPaths = (
+				);
+			outputPaths = (
+				);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh";
+			shellScript = "cp -r $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME /Users/aiven/work/project/framework/metaRTC/bin/lib_release";
+			showEnvVarsInLog = "0";
+		};
+		F13529EDB71F97E1054A2380 = {
+			isa = PBXFileReference;
+			includeInIndex = 0;
+			explicitFileType = "compiled.mach-o.dylib";
+			path = "libmetartc7.a";
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FE0A091FDBFB3E9C31B7A1BD = {
+			children = (
+				"F13529EDB71F97E1054A2380");
+			isa = PBXGroup;
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		E8C543AB96796ECAA2E65C57 = {
+			children = (
+				"2EB56BE3C2D93CDAB0C52E67",
+				"74B182DB50CB5611B5C1C297",
+				"FE0A091FDBFB3E9C31B7A1BD");
+			isa = PBXGroup;
+			name = "metartc7";
+			sourceTree = "<group>";
+		};
+		1B09D81A9C2EE01D923BBB62 = {
+			buildPhases = (
+				"5E618435888B9D49F8540165",
+				"7EF0942E79C014DCEC8976BC");
+			dependencies = (
+				);
+			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59;
+			isa = PBXAggregateTarget;
+			buildRules = (
+);
+			productName = "Qt Preprocess";
+			name = "Qt Preprocess";
+		};
+		DECE851452573672B915255B = {
+			isa = PBXTargetDependency;
+			target = "1B09D81A9C2EE01D923BBB62";
+		};
+		85D4F34F1868460355DE8B2B = {
+			buildPhases = (
+				"F7E50F631C51CD5B5DC0BC43",
+				"D1C883685E82D5676953459A",
+				"9C316F444A62BF296E3E1F25");
+			dependencies = (
+				"DECE851452573672B915255B");
+			productReference = "F13529EDB71F97E1054A2380";
+			buildConfigurationList = 6CC3B5D2136C7CD6A5CF5A59;
+			isa = PBXNativeTarget;
+			buildRules = (
+);
+			name = "metartc7";
+			productName = "metartc7";
+			productType = "com.apple.product-type.library.static";
+			productInstallPath = "../bin/lib_release/";
+		};
+		3AA6C32AC930069E80220CF1 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "8JW82U8D6W";
+				ENABLE_BITCODE = "NO";
+				GCC_OPTIMIZATION_LEVEL = "0";
+				ONLY_ACTIVE_ARCH = "YES";
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "metartc7";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				CC = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang";
+				LDPLUSPLUS = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++";
+				SYMROOT = ".xcode";
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				INSTALL_DIR = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/../bin/lib_release/";
+				INSTALL_PATH = "";
+				DYLIB_CURRENT_VERSION = "1.0.0";
+				DYLIB_COMPATIBILITY_VERSION = "1.0";
+				MACOSX_DEPLOYMENT_TARGET = "14.0";
+				HEADER_SEARCH_PATHS = (
+					".",
+					"../include",
+					"../thirdparty/include",
+					"../thirdparty/user_include",
+					"../thirdparty/user_include/ffmpeg",
+					"../libmetartc7/src",
+					"/usr/local/Cellar/qt/6.6.2_1/share/qt/mkspecs/macx-clang");
+				LIBRARY_SEARCH_PATHS = (
+					);
+				FRAMEWORK_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-O2",
+					"-fPIC",
+					"-Wall",
+					"-Wextra",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-D__STDC_FORMAT_MACROS");
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-stdlib=libc++",
+					"-O2",
+					"-fPIC",
+					"-std=gnu++1z",
+					"-Wall",
+					"-Wextra",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-D__STDC_FORMAT_MACROS");
+				ARCHS = "x86_64";
+			};
+			name = "Debug";
+		};
+		77418F46922677BB04ED38DD = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "8JW82U8D6W";
+				ENABLE_BITCODE = "NO";
+				GCC_OPTIMIZATION_LEVEL = "0";
+				ONLY_ACTIVE_ARCH = "YES";
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "metartc7";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				LIBRARY_STYLE = "STATIC";
+				PRODUCT_NAME = "metartc7";
+			};
+			name = "Debug";
+		};
+		339EE1B2CC4FC24589A0EA95 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "8JW82U8D6W";
+				ENABLE_BITCODE = "NO";
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "metartc7";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				CC = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang";
+				LDPLUSPLUS = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++";
+				SYMROOT = ".xcode";
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				INSTALL_DIR = "/Users/aiven/work/project/framework/metaRTC/libmetartc7/../bin/lib_release/";
+				INSTALL_PATH = "";
+				DYLIB_CURRENT_VERSION = "1.0.0";
+				DYLIB_COMPATIBILITY_VERSION = "1.0";
+				MACOSX_DEPLOYMENT_TARGET = "14.0";
+				HEADER_SEARCH_PATHS = (
+					".",
+					"../include",
+					"../thirdparty/include",
+					"../thirdparty/user_include",
+					"../thirdparty/user_include/ffmpeg",
+					"../libmetartc7/src",
+					"/usr/local/Cellar/qt/6.6.2_1/share/qt/mkspecs/macx-clang");
+				LIBRARY_SEARCH_PATHS = (
+					);
+				FRAMEWORK_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-O2",
+					"-fPIC",
+					"-Wall",
+					"-Wextra",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-D__STDC_FORMAT_MACROS");
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-stdlib=libc++",
+					"-O2",
+					"-fPIC",
+					"-std=gnu++1z",
+					"-Wall",
+					"-Wextra",
+					"-DQT_DEPRECATED_WARNINGS",
+					"-D__STDC_FORMAT_MACROS");
+				ARCHS = "x86_64";
+			};
+			name = "Release";
+		};
+		6666AA5E688052234F6758D8 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = "NO";
+				"ARCHS[sdk=macosx*]" = "x86_64";
+				COPY_PHASE_STRIP = "NO";
+				DEVELOPMENT_TEAM = "8JW82U8D6W";
+				ENABLE_BITCODE = "NO";
+				PRODUCT_BUNDLE_IDENTIFIER = "ywq.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "metartc7";
+				QMAKE_FULL_VERSION = "1.0.0";
+				QMAKE_PKGINFO_TYPEINFO = "????";
+				QMAKE_SHORT_VERSION = "1.0";
+				QT_LIBRARY_SUFFIX = "";
+				SDKROOT = "macosx";
+				LIBRARY_STYLE = "STATIC";
+				PRODUCT_NAME = "metartc7";
+			};
+			name = "Release";
+		};
+		DAC4C1AA5EDEA1C85E9CA5E6 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"3AA6C32AC930069E80220CF1",
+				"339EE1B2CC4FC24589A0EA95");
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release";
+		};
+		6CC3B5D2136C7CD6A5CF5A59 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"77418F46922677BB04ED38DD",
+				"6666AA5E688052234F6758D8");
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release";
+		};
+		6DB9C3763D02B1415CD9D565 = {
+			hasScannedForEncodings = 1;
+			compatibilityVersion = "Xcode 3.2";
+			isa = PBXProject;
+			mainGroup = "E8C543AB96796ECAA2E65C57";
+			productRefGroup = "FE0A091FDBFB3E9C31B7A1BD";
+			buildConfigurationList = "DAC4C1AA5EDEA1C85E9CA5E6";
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"85D4F34F1868460355DE8B2B",
+				"1B09D81A9C2EE01D923BBB62");
+			attributes = {
+				TargetAttributes = {
+				};
+			};
+		};
+	};
+	rootObject = "6DB9C3763D02B1415CD9D565";
+}

@@ -395,7 +395,7 @@
 //#ifdef _WIN32
 #define HAVE_THREADS 0
 //#else
-//#define HAVE_THREADS 1
+#define HAVE_THREADS 0
 //#endif
 #define HAVE_VAAPI_DRM 0
 #define HAVE_VAAPI_X11 0
