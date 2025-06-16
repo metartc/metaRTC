@@ -64,6 +64,8 @@ void yang_setCLogFile(int32_t isSetLogFile) {
 #endif
 }
 
+#if Yang_Enable_Logfile
+
 static void yang_writeFile(int32_t level,struct tm* ntm,char* buf){
 	int32_t sfLen;
 	char logStr[4196];
@@ -95,6 +97,8 @@ static void yang_writeFile2(int32_t level,struct tm* ntm,char* buf){
 		fflush(g_fmsg);
 	}
 }
+
+#endif
 
 void yang_setCLogFile2(int32_t isSetLogFile, char *fullpathfile) {
 #if Yang_Enable_Logfile
