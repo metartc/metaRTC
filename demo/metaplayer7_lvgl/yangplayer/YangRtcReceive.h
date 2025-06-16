@@ -1,5 +1,5 @@
 ﻿//
-// Copyright (c) 2019-2022 yanggaofeng
+// Copyright (c) 2019-2025 yanggaofeng
 //
 #ifndef SRC_YANGPLAYER_SRC_YANGRTCRECEIVE_H_
 #define SRC_YANGPLAYER_SRC_YANGRTCRECEIVE_H_
@@ -27,7 +27,7 @@ public:
 
 	int32_t publishMsg(YangFrame* msgFrame);
 	int32_t receiveMsg(YangFrame* msgFrame);
-    int32_t init(int32_t puid,char* localIp, char* server, int32_t pport,char* app,	char* stream);
+   // int32_t init(int32_t puid,char* localIp, char* server, int32_t pport,char* app,	char* stream);
     int32_t init(int32_t puid,char* url);
     void setBuffer(YangAudioEncoderBuffer *al,YangVideoDecoderBuffer *vl);
     void disConnect();

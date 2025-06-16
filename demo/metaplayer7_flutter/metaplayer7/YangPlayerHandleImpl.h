@@ -19,8 +19,8 @@ public:
 	virtual ~YangPlayerHandleImpl();
 	YangVideoBuffer* getVideoBuffer();
 	int play(char* url);
-    int32_t playRtc(int32_t puid,char* url);
-	int32_t playRtc(int32_t puid,char* localIp, char* server, int32_t pport,char* app,char* stream);
+   	int32_t playRtc(int32_t puid,char* url);
+	//int32_t playRtc(int32_t puid,char* localIp, char* server, int32_t pport,char* app,char* stream);
 	void stopPlay();
 protected:
 

@@ -3,7 +3,8 @@
 //
 #include "YangRtcReceive.h"
 
-
+#include <yangrtc/YangWhip.h>
+#include <yangrtc/YangPeerInfo.h>
 #include <yangutil/sys/YangLog.h>
 #include <yangutil/sys/YangThread.h>
 
@@ -108,65 +109,39 @@ void YangRtcReceive::receiveVideo(YangFrame *videoFrame) {
     m_out_videoBuffer->putEVideo(videoFrame);
 }
 
-int32_t YangRtcReceive::init(int32_t puid, char* localIp,
-		char* server, int32_t pport, char* app, char* stream) {
-	if (!m_recv) m_recv=(YangPeerConnection*)calloc(sizeof(YangPeerConnection),1);
-	//memset(&m_recv->peer.streamconfig,0,sizeof(m_recv->peer.streamconfig));
-	m_recv->peer.streamconfig.localPort = m_context->avinfo.rtc.rtcLocalPort;
-	strcpy(m_recv->peer.streamconfig.remoteIp,server);
-	m_recv->peer.streamconfig.remotePort = pport;
-	strcpy(m_recv->peer.streamconfig.app,app);
-	strcpy(m_recv->peer.streamconfig.stream,stream);
-	m_recv->peer.streamconfig.uid = puid;
-    m_recv->peer.streamconfig.direction = YangRecvonly;
-
-	m_recv->peer.streamconfig.recvCallback.context=this;
-	m_recv->peer.streamconfig.recvCallback.receiveAudio=g_rtcrecv_receiveAudio;
-	m_recv->peer.streamconfig.recvCallback.receiveVideo=g_rtcrecv_receiveVideo;
-	m_recv->peer.streamconfig.recvCallback.receiveMsg=g_rtcrecv_receiveMsg;
-
-	m_recv->peer.streamconfig.recvCallback.context=this;
-
-	memcpy(&m_recv->peer.streamconfig.rtcCallback,&m_context->rtcCallback,sizeof(YangRtcCallback));
-	m_recv->peer.avinfo=&m_context->avinfo;
-	yang_create_peerConnection(m_recv);
-    m_recv->init(&m_recv->peer);
-      m_recv->addAudioTrack(&m_recv->peer,Yang_AED_OPUS);
-    m_recv->addVideoTrack(&m_recv->peer,Yang_VED_H264);
-    m_recv->addTransceiver(&m_recv->peer,m_recv->peer.streamconfig.direction);
-	return Yang_Ok;
-}
 
 
 
 int32_t YangRtcReceive::init(int32_t puid,char* url){
     if (!m_recv) m_recv=(YangPeerConnection*)calloc(sizeof(YangPeerConnection),1);
-    //memset(&m_recv->peer.streamconfig,0,sizeof(m_recv->peer.streamconfig));
-    m_recv->peer.streamconfig.localPort = m_context->avinfo.rtc.rtcLocalPort++;
 
-    m_recv->peer.streamconfig.uid = puid;
-    m_recv->peer.streamconfig.direction = YangRecvonly;
+    yang_avinfo_initPeerInfo(&m_recv->peer.peerInfo,&m_context->avinfo);
+    m_recv->peer.peerInfo.rtc.rtcLocalPort = m_context->avinfo.rtc.rtcLocalPort++;
 
-    m_recv->peer.streamconfig.recvCallback.context=this;
-    m_recv->peer.streamconfig.recvCallback.receiveAudio=g_rtcrecv_receiveAudio;
-    m_recv->peer.streamconfig.recvCallback.receiveVideo=g_rtcrecv_receiveVideo;
-    m_recv->peer.streamconfig.recvCallback.receiveMsg=g_rtcrecv_receiveMsg;
+    m_recv->peer.peerInfo.direction = YangRecvonly;
+    m_recv->peer.peerInfo.uid = puid;
 
-    m_recv->peer.streamconfig.recvCallback.context=this;
+    m_recv->peer.peerCallback.recvCallback.context=this;
+    m_recv->peer.peerCallback.recvCallback.receiveAudio=g_rtcrecv_receiveAudio;
+    m_recv->peer.peerCallback.recvCallback.receiveVideo=g_rtcrecv_receiveVideo;
+    m_recv->peer.peerCallback.recvCallback.receiveMsg=g_rtcrecv_receiveMsg;
 
-    memcpy(&m_recv->peer.streamconfig.rtcCallback,&m_context->rtcCallback,sizeof(YangRtcCallback));
-    m_recv->peer.avinfo=&m_context->avinfo;
+    m_recv->peer.peerCallback.recvCallback.context=this;
+
+    memcpy(&m_recv->peer.peerCallback.rtcCallback,&m_context->rtcCallback,sizeof(YangRtcCallback));
+
     yang_create_peerConnection(m_recv);
-  m_recv->addAudioTrack(&m_recv->peer,Yang_AED_OPUS);
+    m_recv->addAudioTrack(&m_recv->peer,(YangAudioCodec)m_context->avinfo.audio.audioDecoderType);
     m_recv->addVideoTrack(&m_recv->peer,Yang_VED_H264);
-    m_recv->addTransceiver(&m_recv->peer,m_recv->peer.streamconfig.direction);
+    m_recv->addTransceiver(&m_recv->peer,YangMediaAudio,YangRecvonly);
+    m_recv->addTransceiver(&m_recv->peer,YangMediaVideo,YangRecvonly);
+
     int len=strlen(url);
     if(m_url==NULL) m_url=(char*)yang_malloc(len+1);
     memcpy(m_url,url,len);
     m_url[len]=0;
     return Yang_Ok;
 }
-
 
 void YangRtcReceive::stop() {
 	m_loops = 0;
