@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".YangMainActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/m_b_player"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="start" >
+        </Button>
+        <EditText
+            android:id="@+id/m_t_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="webrtc://10.42.0.1/live/livestream"
+            android:inputType="textUri|textPersonName"
+            android:text="webrtc://192.168.0.105/live/livestream"
+            android:textSize="14dp" >
+        </EditText>
+        <CheckBox
+            android:id="@+id/m_c_gpu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPU"
+            android:checked="false"
+            >
+        </CheckBox>
+    </LinearLayout>
+    <com.metartc.player.YangYuvPlayer
+        android:id="@+id/m_v_surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    >
+    </com.metartc.player.YangYuvPlayer>
+
+
+
+
+</LinearLayout>

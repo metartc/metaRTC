@@ -1,6 +1,6 @@
 ﻿#ifndef _ENCODER_INFO_H
 #define _ENCODER_INFO_H
-#include <yangutil/yangavtype.h>
+#include <yangutil/yangavinfo.h>
 #include <cstdint>
 #include <string>
 #include <vector>

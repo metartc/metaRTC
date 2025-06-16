@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1101</width>
+    <height>689</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>webrtc拉流播放demo</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget, QLabel{
+                        color:white;
+                        border: 1px solid white;
+                        padding:0;
+                        border-radius:5px;
+							background-color:rgb(20,50,70);
+                      /**  background-color:rgba(250,170,0,150);**/
+  }
+
+
+QTabWidget{
+
+border: 1px solid white;
+background-color:rgb(20,50,70);
+}
+QTabWidget::tab-bar{
+alignment:left;
+left:1px;
+}
+QTabWidget::pane { 
+/*background-color:rgb(20,50,70);*/
+border:1px solid white;
+} 
+QTabBar{
+
+background-color:white;
+}
+QTabBar::tab{
+min-height:28px;
+padding:0 10px;
+border:0;
+margin:1px 1px 0 0;
+background-color:rgb(20,50,70);
+}
+QTabBar::tab:first{
+margin-left:1px;
+}
+QTabBar::tab:hover{
+color:cyan;
+}
+QTabBar::tab:selected{
+background-color: rgb(20, 100, 150);
+}
+QTabBar::tab:selected:hover{
+}
+
+QTabBar::tear{
+}
+QTabBar::scroller{
+}
+QMenu {
+     background-color: rgb(20,50,70); 
+     border: 1px solid white;
+ }
+  
+ QMenu::item {
+
+     background-color: transparent;
+     padding:8px 32px;
+     margin:0px 8px;
+     border-bottom:1px solid #DBDBDB;
+ }
+  
+ QMenu::item:selected { 
+     background-color: #2dabf9;
+ }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="m_l_url">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>80</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>URL:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="m_url">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>651</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="m_b_play">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>10</y>
+      <width>106</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Play</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="m_c_whep">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>20</y>
+      <width>121</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>whep</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1101</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

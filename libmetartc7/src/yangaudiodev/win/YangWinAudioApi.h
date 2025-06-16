@@ -1,0 +1,28 @@
+﻿//
+// Copyright (c) 2019-2025 yanggaofeng
+//
+#ifndef YangWinAudioApi_H
+#define YangWinAudioApi_H
+#include <yangutil/yangtype.h>
+
+#if Yang_OS_WIN
+#include <windows.h>
+#include <mmdeviceapi.h>
+
+class YangWinAudioApi
+{
+public:
+    YangWinAudioApi();
+virtual ~YangWinAudioApi();
+protected:
+    HRESULT enumEndpointDevicesAll(IMMDeviceEnumerator* penum,EDataFlow dataFlow);
+    int getDefaultDeviceID( IMMDeviceEnumerator* penum,EDataFlow dir,ERole role,LPWSTR szBuffer,int bufferLen);
+    int getDeviceID(IMMDevice* pDevice, LPWSTR pszBuffer,int bufferLen);
+    int getDefaultDeviceIndex(IMMDeviceEnumerator* penum,EDataFlow dir,  ERole role, int* index);
+    int getDeviceListCount(IMMDeviceCollection* pcollection,EDataFlow dir);
+    int getListDevice(IMMDeviceEnumerator* penum,EDataFlow dir,int index,IMMDevice** ppDevice);
+protected:
+      IMMDeviceEnumerator* m_enum;
+};
+#endif
+#endif // YangWinAudioApi_H
