@@ -67,38 +67,93 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 
 ## Peer connect demo
 
-    int32_t err = Yang_Ok;
-    char* localSdp=NULL;
-    char* remoteSdp=NULL;
-    yangbool enableWhipWhep = yangtrue; 
-    YangRtcDirection direction = YangSendonly;//YangSendrecv,YangSendonly,YangRecvonly
-    YangPeerConnection *peer = (YangPeerConnection*)yang_calloc(sizeof(YangPeerConnection),1);
-    yang_create_peerConnection(peer);
-    peer->addAudioTrack(&peer->peer,Yang_AED_OPUS);
-    peer->addVideoTrack(&peer->peer,Yang_VED_H264);
-    peer->addTransceiver(&peer->peer,YangMediaAudio,direction);
-    peer->addTransceiver(&peer->peer,YangMediaVideo,direction);
-    //sfu server
-    if(enableWhipWhep)
-         err = yang_whip_connectWhipWhepServer(&peer->peer,url);
+### Pure C
+
+    #include <yangrtc/YangWhip.h> 
+    #include <yangrtc/YangPeerInfo.h> 
+    #include <yangrtc/YangPeerConnection.h>
+    
+    int32_t localPort=16000;  
+    YangAVInfo* avinfo;
+    YangPeerConnection* conn=(YangPeerConnection*)calloc(sizeof(YangPeerConnection),1);    
+    
+    //yang_init_peerInfo(&conn->peer.peerInfo);
+    yang_avinfo_initPeerInfo(&conn->peer.peerInfo,avinfo);
+    conn->peer.peerInfo.rtc.rtcLocalPort = localPort;
+    conn->peer.peerInfo.direction = YangRecvonly;
+    conn->peer.peerInfo.uid = uid;
+    conn->peer.peerCallback.recvCallback.context=this;
+    conn->peer.peerCallback.recvCallback.receiveAudio=g_rtcrecv_receiveAudio;
+    conn->peer.peerCallback.recvCallback.receiveVideo=g_rtcrecv_receiveVideo;
+    conn->peer.peerCallback.recvCallback.receiveMsg=g_rtcrecv_receiveMsg;
+    
+    yang_create_peerConnection(conn);
+    conn->addAudioTrack(&conn->peer,Yang_AED_OPUS);
+    conn->addVideoTrack(&conn->peer,Yang_VED_H264);
+    conn->addTransceiver(&conn->peer,YangMediaAudio,YangRecvonly);
+    conn->addTransceiver(&conn->peer,YangMediaVideo,YangRecvonly);
+    //sfu   
+    if(isWhip)
+    	yang_whip_connectWhipWhepServer(&conn->m_peer,url);
     else
-         err = yang_whip_connectSfuServer(&peer->peer,url,mediaServer);
+    	yang_whip_connectSfuServer(&conn->m_peer,url,m_context->avinfo.sys.mediaServer);
     //p2p
-    peer->createDataChannel(&peer->peer);//add datachannel
-    if((err=peer->createOffer(&peer->peer, &localSdp))!=Yang_Ok){
-        yang_error("createOffer fail!");
-        goto cleanup;
+    if((err=sh->createOffer(&conn->peer, &localSdp))!=Yang_Ok){
+    	yang_error("createOffer fail",);
+    	goto cleanup;
     }
-    if((err=peer->setLocalDescription(&peer->peer, localSdp))!=Yang_Ok){
-        yang_error("setLocalDescription fail!");
-        goto cleanup;
+    
+    if((err=sh->setLocalDescription(&sh->peer, localSdp))!=Yang_Ok){
+    		yang_error("setLocalDescription fail");
+    		goto cleanup;
     }
-    ......
-    //get remote peer sdp
-    if((err=peer->setRemoteDescription(&peer->peer,remoteSdp))!=Yang_Ok){
-        yang_error("setRemoteDescription fail!");
-        goto cleanup;
-    }
+
+### C++
+
+```
+#include <yangrtc/YangWhip.h>
+#include <yangrtc/YangPeerInfo.h>
+#include <yangrtc/YangPeerConnection7.h>
+
+int32_t localPort=16000;
+YangAVInfo* avinfo;
+YangPeerInfo peerInfo;
+
+//yang_init_peerInfo(&peerInfo);
+yang_avinfo_initPeerInfo(&peerInfo,avinfo);
+peerInfo.uid=0;
+peerInfo.direction=YangSendonly;
+peerInfo.rtc.rtcLocalPort = localPort;
+
+//YangCallbackReceive* receive
+//YangCallbackIce* ice
+//YangCallbackRtc* rtc
+//YangCallbackSslAlert* sslAlert);
+
+YangPeerConnection7* conn=new YangPeerConnection7(&peerInfo,receive,ice, rtc,sslAlert);
+conn->addAudioTrack(Yang_AED_OPUS);
+conn->addVideoTrack(Yang_VED_H264);
+conn->addTransceiver(YangMediaAudio,peerInfo.direction);
+conn->addTransceiver(YangMediaVideo,peerInfo.direction);
+
+//sfu
+if(isWhip)
+    yang_whip_connectWhipWhepServer(&conn->m_peer,url);
+else
+    yang_whip_connectSfuServer(&conn->m_peer,url,m_context->avinfo.sys.mediaServer);
+
+//p2p
+if((err=sh->createOffer(&conn->m_peer, &localSdp))!=Yang_Ok){
+    yang_error("createOffer fail",);
+    goto cleanup;
+}
+
+if((err=sh->setLocalDescription(&sh->m_peer, localSdp))!=Yang_Ok){
+    yang_error("setLocalDescription fail");
+    goto cleanup;
+}
+
+```
 
 ## metaRTC服务支持(service support)
 
