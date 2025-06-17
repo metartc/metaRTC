@@ -80,7 +80,7 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
     peer->addTransceiver(&peer->peer,YangMediaVideo,direction);
     //sfu server
     if(enableWhipWhep)
-         err = peer->connectWhipWhepServer(&peer->peer,url);
+         err = yang_whip_connectWhipWhepServer(&peer->peer,url);
     else
          err = yang_whip_connectSfuServer(&peer->peer,url,mediaServer);
     //p2p
