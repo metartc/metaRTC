@@ -111,7 +111,7 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
     
     ......
     //get remote peer sdp
-    if((err=conn->setRemoteDescription(&peer->peer,remoteSdp))!=Yang_Ok){
+    if((err=conn->setRemoteDescription(&conn->peer,remoteSdp))!=Yang_Ok){
         yang_error("setRemoteDescription fail!");
         goto cleanup;
     }
@@ -137,7 +137,6 @@ peerInfo.rtc.rtcLocalPort = localPort;
 //YangCallbackIce* ice
 //YangCallbackRtc* rtc
 //YangCallbackSslAlert* sslAlert);
-
 YangPeerConnection7* conn=new YangPeerConnection7(&peerInfo,receive,ice, rtc,sslAlert);
 conn->addAudioTrack(Yang_AED_OPUS);
 conn->addVideoTrack(Yang_VED_H264);
