@@ -94,18 +94,26 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
     conn->addTransceiver(&conn->peer,YangMediaVideo,YangRecvonly);
     //sfu   
     if(isWhip)
-    	yang_whip_connectWhipWhepServer(&conn->m_peer,url);
+        yang_whip_connectWhipWhepServer(&conn->m_peer,url);
     else
-    	yang_whip_connectSfuServer(&conn->m_peer,url,m_context->avinfo.sys.mediaServer);
+        yang_whip_connectSfuServer(&conn->m_peer,url,m_context->avinfo.sys.mediaServer);
     //p2p
-    if((err=sh->createOffer(&conn->peer, &localSdp))!=Yang_Ok){
-    	yang_error("createOffer fail",);
-    	goto cleanup;
+    conn->createDataChannel(&conn->peer);
+    if((err=conn->createOffer(&conn->peer, &localSdp))!=Yang_Ok){
+        yang_error("createOffer fail",);
+        goto cleanup;
     }
     
-    if((err=sh->setLocalDescription(&sh->peer, localSdp))!=Yang_Ok){
-    		yang_error("setLocalDescription fail");
-    		goto cleanup;
+    if((err=conn->setLocalDescription(&conn->peer, localSdp))!=Yang_Ok){
+            yang_error("setLocalDescription fail");
+            goto cleanup;
+    }
+    
+    ......
+    //get remote peer sdp
+    if((err=conn->setRemoteDescription(&peer->peer,remoteSdp))!=Yang_Ok){
+        yang_error("setRemoteDescription fail!");
+        goto cleanup;
     }
 
 ### C++
@@ -140,19 +148,26 @@ conn->addTransceiver(YangMediaVideo,peerInfo.direction);
 if(isWhip)
     yang_whip_connectWhipWhepServer(&conn->m_peer,url);
 else
-    yang_whip_connectSfuServer(&conn->m_peer,url,m_context->avinfo.sys.mediaServer);
+    yang_whip_connectSfuServer(&conn->m_peer,url,mediaServer);
 
 //p2p
-if((err=sh->createOffer(&conn->m_peer, &localSdp))!=Yang_Ok){
+conn->createDataChannel();
+if((err=conn->createOffer(&localSdp))!=Yang_Ok){
     yang_error("createOffer fail",);
     goto cleanup;
 }
 
-if((err=sh->setLocalDescription(&sh->m_peer, localSdp))!=Yang_Ok){
+if((err=conn->setLocalDescription(localSdp))!=Yang_Ok){
     yang_error("setLocalDescription fail");
     goto cleanup;
 }
 
+......
+//get remote peer sdp
+if((err=conn->setRemoteDescription(remoteSdp))!=Yang_Ok){
+    yang_error("setRemoteDescription fail!");
+    goto cleanup;
+}
 ```
 
 ## metaRTC服务支持(service support)
