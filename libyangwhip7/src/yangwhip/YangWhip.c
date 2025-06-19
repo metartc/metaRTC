@@ -24,13 +24,12 @@ static int32_t yang_whip_getSignal(YangMetaConnection *conn,YangPeer* peer,char*
 	int32_t err=Yang_Ok,len;
 	YangUrlData urlData={0};
 
-	yangbool isHttps=yang_memcmp(url,"https:",6)==0?yangtrue:yangfalse;
 	char *remoteSdp,*p,*p2,*endp,*sdp;
 
 	yang_http_url_parse(peer->peerInfo.familyType,url,&urlData);
 
 	remoteSdp=(char*)yang_calloc(1,Yang_SDP_BUFFERLEN);
-	if(yang_https_post(yangtrue,peer->peerInfo.familyType,remoteSdp,urlData.server,
+	if(yang_http_post(yangtrue,peer->peerInfo.familyType,remoteSdp,urlData.server,
 			urlData.port, urlData.stream, (uint8_t*)localSdp, yang_strlen(localSdp))){
 		endp=yang_strstr(remoteSdp,"\r\n\r\n");
 
@@ -108,7 +107,7 @@ int32_t yang_whip_connectWhipWhepServer(YangPeer* peer,char* url){
 
 }
 
-int32_t yang_whip_connectSfuServer(YangPeer* peer,char* url,yangbool isHttps,int32_t mediaServer){
+int32_t yang_whip_connectSfuServer(YangPeer* peer,char* url,int32_t mediaServer){
 	YangMetaConnection conn={0};
     yang_create_metaConnection(&conn);
 
@@ -120,9 +119,9 @@ int32_t yang_whip_connectSfuServer(YangPeer* peer,char* url,yangbool isHttps,int
 
 
 	if(mediaServer==Yang_Server_Zlm)
-		return yang_zlm_connectRtcServer(&conn,peer,url,isHttps);
+		return yang_zlm_connectRtcServer(&conn,peer,url);
 	if(mediaServer==Yang_Server_Srs)
-		return yang_srs_connectRtcServer(&conn,peer,url,isHttps);
+		return yang_srs_connectRtcServer(&conn,peer,url);
 
 	return ERROR_RTC_PEERCONNECTION;
 }

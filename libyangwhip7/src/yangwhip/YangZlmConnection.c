@@ -25,7 +25,7 @@ static void yang_destroy_zlmresponse(ZlmSdpResponseType* zlm){
 	yang_free(zlm->id);
 }
 
-static int32_t yang_zlm_query(YangMetaConnection *conn,YangPeer* peer,ZlmSdpResponseType* zlm,int32_t isplay,yangbool isHttps,char* ip,int32_t port,char* purl, char* psdp)
+static int32_t yang_zlm_query(YangMetaConnection *conn,YangPeer* peer,ZlmSdpResponseType* zlm,int32_t isplay,char* ip,int32_t port,char* purl, char* psdp)
 {
 
 	int32_t err=Yang_Ok;
@@ -83,7 +83,7 @@ static int32_t yang_zlm_query(YangMetaConnection *conn,YangPeer* peer,ZlmSdpResp
 }
 
 
-static int32_t yang_zlm_doHandleSignal(YangMetaConnection *conn,YangPeer* peer,char* url,ZlmSdpResponseType* zlm,char* sdp,int32_t localport,yangbool isHttps) {
+static int32_t yang_zlm_doHandleSignal(YangMetaConnection *conn,YangPeer* peer,char* url,ZlmSdpResponseType* zlm,char* sdp,int32_t localport) {
 	int32_t err = Yang_Ok;
 	YangRtcDirection role;
 	char apiurl[1024] ;
@@ -98,12 +98,12 @@ static int32_t yang_zlm_doHandleSignal(YangMetaConnection *conn,YangPeer* peer,c
 	yang_memset(apiurl,0,sizeof(apiurl));
 	role=peer->peerInfo.direction;
 	yang_sprintf(apiurl, "index/api/webrtc?app=%s&stream=%s&type=%s", urlData.app,urlData.stream,role==YangRecvonly?"play":"push");
-	err=yang_zlm_query(conn,peer,zlm,role==YangRecvonly?1:0,isHttps,urlData.server,urlData.port,apiurl, sdp);
+	err=yang_zlm_query(conn,peer,zlm,role==YangRecvonly?1:0,urlData.server,urlData.port,apiurl, sdp);
 
 	return err;
 }
 
-int32_t yang_zlm_connectRtcServer(YangMetaConnection *conn,YangPeer* peer,char* url,yangbool isHttps){
+int32_t yang_zlm_connectRtcServer(YangMetaConnection *conn,YangPeer* peer,char* url){
 
 	int32_t err=Yang_Ok;
 	ZlmSdpResponseType zlm;
@@ -118,7 +118,7 @@ int32_t yang_zlm_connectRtcServer(YangMetaConnection *conn,YangPeer* peer,char* 
 	yang_cstr_replace(sdp, localSdp, (char*) "\r\n", (char*) "\n");
 	conn->setLocalDescription(peer,localSdp);
 
-    if ((err=yang_zlm_doHandleSignal(conn,peer,url,&zlm,localSdp,peer->peerInfo.rtc.rtcLocalPort,isHttps))  == Yang_Ok) {
+    if ((err=yang_zlm_doHandleSignal(conn,peer,url,&zlm,localSdp,peer->peerInfo.rtc.rtcLocalPort))  == Yang_Ok) {
 		conn->setRemoteDescription(peer,zlm.sdp);
 	}
 

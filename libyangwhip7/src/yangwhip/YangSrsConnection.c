@@ -27,7 +27,7 @@ static void yang_destroy_srsresponse(SrsSdpResponseType* srs){
 	yang_free(srs->sessionid);
 }
 
-static int32_t yang_sdp_querySrs(YangMetaConnection *conn,YangPeer* peer,SrsSdpResponseType* srs,int32_t isplay,yangbool isHttps,char* ip,int32_t port,char* purl, char* psdp)
+static int32_t yang_sdp_querySrs(YangMetaConnection *conn,YangPeer* peer,SrsSdpResponseType* srs,int32_t isplay,char* ip,int32_t port,char* purl, char* psdp)
 {
 
 	int32_t err=Yang_Ok;
@@ -37,7 +37,7 @@ static int32_t yang_sdp_querySrs(YangMetaConnection *conn,YangPeer* peer,SrsSdpR
 	YangJson *jcode,*server,*sessionid,*jsdp;
 	YangJsonReader reader;
 
-	if(yang_https_post(yangfalse,peer->peerInfo.familyType,sdp,ip, port, purl, (uint8_t*)psdp, yang_strlen(psdp))){
+	if(yang_http_post(yangfalse,peer->peerInfo.familyType,sdp,ip, port, purl, (uint8_t*)psdp, yang_strlen(psdp))){
 		yang_free(sdp);
 		return yang_error_wrap(1,"query srs sdp failure!");
 	}
@@ -91,7 +91,7 @@ static int32_t yang_sdp_querySrs(YangMetaConnection *conn,YangPeer* peer,SrsSdpR
 	return err;
 }
 
-static int32_t yang_srs_getSignal(YangMetaConnection *conn,YangPeer* peer,char* url,SrsSdpResponseType* srs,char* sdp,yangbool isHttps) {
+static int32_t yang_srs_getSignal(YangMetaConnection *conn,YangPeer* peer,char* url,SrsSdpResponseType* srs,char* sdp) {
 	int32_t err = Yang_Ok;
 	YangRtcDirection role=peer->peerInfo.direction;
 	char *srsSdp;
@@ -124,7 +124,7 @@ static int32_t yang_srs_getSignal(YangMetaConnection *conn,YangPeer* peer,char* 
 	yang_memset(apiurl,0,sizeof(apiurl));
 
 	yang_sprintf(apiurl, "rtc/v1/%s/", roleStr);
-	err=yang_sdp_querySrs(conn,peer,srs,role==YangRecvonly?1:0,isHttps,urlData.server,urlData.port,apiurl, srsSdp);
+	err=yang_sdp_querySrs(conn,peer,srs,role==YangRecvonly?1:0,urlData.server,urlData.port,apiurl, srsSdp);
 
 
 	yang_destroy_jsonWriter(&writer);
@@ -133,7 +133,7 @@ static int32_t yang_srs_getSignal(YangMetaConnection *conn,YangPeer* peer,char* 
 	return err;
 }
 
-int32_t yang_srs_connectRtcServer(YangMetaConnection *conn,YangPeer* peer,char* url,yangbool isHttps){
+int32_t yang_srs_connectRtcServer(YangMetaConnection *conn,YangPeer* peer,char* url){
 
 	int32_t err=Yang_Ok;
 	char *tsdp=NULL;
@@ -145,7 +145,7 @@ int32_t yang_srs_connectRtcServer(YangMetaConnection *conn,YangPeer* peer,char* 
 	conn->createOffer(peer, &tsdp);
 	conn->setLocalDescription(peer,tsdp);
 
-	if ((err=yang_srs_getSignal(conn,peer,url,&srs,tsdp,isHttps))  == Yang_Ok) {
+	if ((err=yang_srs_getSignal(conn,peer,url,&srs,tsdp))  == Yang_Ok) {
 		conn->setRemoteDescription(peer,srs.sdp);
 
 	}
