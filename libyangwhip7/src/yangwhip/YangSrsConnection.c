@@ -53,6 +53,7 @@ static int32_t yang_sdp_querySrs(YangMetaConnection *conn,YangPeer* peer,SrsSdpR
 	}
 
 	jcode = reader.getObjectItemCaseSensitive(reader.session, "code");
+
 	if (reader.isNumber(jcode))
 	{
 		err=jcode->valueint==0?Yang_Ok:ERROR_SERVER_ConnectFailure;

@@ -107,7 +107,7 @@ int32_t yang_zlm_connectRtcServer(YangMetaConnection *conn,YangPeer* peer,char* 
 
 	int32_t err=Yang_Ok;
 	ZlmSdpResponseType zlm;
-;
+
 	char *sdp=NULL;
 	char* localSdp=(char*)yang_calloc(1,1024*12);
 
