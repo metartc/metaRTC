@@ -39,7 +39,7 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
 
      init();
     yang_setLogLevel(m_context->avinfo.sys.logLevel);
-    yang_setLogFile(m_context->avinfo.sys.enableLogFile);
+    yang_setLogFile(m_context->avinfo.sys.enableLogFile,NULL);
     m_context->avinfo.sys.mediaServer=Yang_Server_Srs;//Yang_Server_Srs/Yang_Server_Zlm/Yang_Server_Whip_Whep
     m_context->avinfo.rtc.rtcLocalPort=10000+yang_random()%15000;
 

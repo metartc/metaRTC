@@ -92,7 +92,7 @@ YangMetaplayer::YangMetaplayer()
 	yang_getLocalInfo(m_context->avinfo.sys.familyType,m_context->avinfo.rtc.localIp);
 	m_player= YangPlayerHandle::createPlayerHandle(m_context,this);
 	yang_setLogLevel(5);
-	yang_setLogFile(1);
+	yang_setLogFile(1,NULL);
 	m_srcWidth=640;
 	m_srcHeight=480;
 	m_dstWidth=640;

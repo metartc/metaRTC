@@ -36,9 +36,8 @@ static FILE *g_fmsg = NULL;
 static char const *YANG_LOG_LEVEL_NAME[] = { "FATAL", "ERROR", "WARNING",
 		"INFO", "DEBUG", "TRACE" };
 
-void yang_setCLogFile(int32_t isSetLogFile) {
+void yang_setCLogFile(int32_t isSetLogFile,char* logPath) {
 #if Yang_Enable_Logfile
-	char file1[300];
 	char file_path_getcwd[255];
 
 	if (g_hasLogFile)
@@ -48,17 +47,22 @@ void yang_setCLogFile(int32_t isSetLogFile) {
 
 	if (isSetLogFile&&g_fmsg==NULL) {
 
-		yang_memset(file1, 0, 300);
-        yang_memset(file_path_getcwd, 0, 255);
-
-#ifdef _MSC_VER
-        if (_getcwd(file_path_getcwd, 255)) {
+		char file[300];
+		yang_memset(file, 0, 300);
+		if(logPath==NULL){
+			char file_path_getcwd[255];
+			yang_memset(file_path_getcwd, 0, 255);
+#if Yang_OS_WIN
+			if (_getcwd(file_path_getcwd, 255)) {
 #else
-        if (getcwd(file_path_getcwd, 255)) {
+			if (getcwd(file_path_getcwd, 255)) {
 #endif
-            yang_sprintf(file1, "%s/yang_log.log", file_path_getcwd);
-            yang_setCLogFile2(yangtrue, file1);
+					yang_sprintf(file, "%s/yang_log.log", file_path_getcwd);
+			}
+		}else{
+				yang_sprintf(file, "%s/yang_log.log", logPath);
 		}
+		yang_setCLogFile2(yangtrue, file);
 
 	}
 #endif
