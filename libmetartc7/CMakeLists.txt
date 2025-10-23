@@ -31,7 +31,9 @@ aux_source_directory(./src/yangavutil DIR_SRCS)
 aux_source_directory(./src/yangstream DIR_SRCS)
 
 
-
+if(APPLE)
+aux_source_directory(./src/yangmac DIR_SRCS)
+endif()
 
 if (NOT NoPlayer)
 aux_source_directory(./src/yangplayer DIR_SRCS)

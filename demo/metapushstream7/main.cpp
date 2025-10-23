@@ -10,8 +10,10 @@
 #include <video/yangrecordthread.h>
 #include <yangutil/sys/YangSysMessageHandle.h>
 
-
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 #include <QTextCodec>
+#endif
+
 int main(int argc, char *argv[])
 {
 #if defined (__APPLE__)
@@ -28,7 +30,7 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForLocale(codec);
     QTextCodec::setCodecForCStrings(codec);
     QTextCodec::setCodecForTr(codec);
-#else
+#elif (QT_VERSION < QT_VERSION_CHECK(6,0,0))
     QTextCodec *codec = QTextCodec::codecForName("UTF-8");
     QTextCodec::setCodecForLocale(codec);
 #endif

@@ -78,7 +78,7 @@ static void yang_writeFile(int32_t level,struct tm* ntm,char* buf){
 	if(level==YANG_LOG_ERROR&&ntm)
 		sfLen = yang_sprintf(logStr, "[%02d:%02d:%02d] Yang %s: %s\n",ntm->tm_hour,ntm->tm_min,ntm->tm_sec, YANG_LOG_LEVEL_NAME[level], buf);
 	else
-		sfLen = yang_sprintf(logStr, "Yang %s: %s\n", YANG_LOG_LEVEL_NAME[level], buf);
+        sfLen = yang_sprintf(logStr, "%s", buf);
 
 	if (g_fmsg){
 		fwrite(logStr, sfLen, 1, g_fmsg);
@@ -94,7 +94,7 @@ static void yang_writeFile2(int32_t level,struct tm* ntm,char* buf){
 	if(level==YANG_LOG_ERROR&&ntm)
 		sfLen = yang_sprintf(logStr, "[%02d:%02d:%02d] Yang %s: %s\n",ntm->tm_hour,ntm->tm_min,ntm->tm_sec, YANG_LOG_LEVEL_NAME[level], buf);
 	else
-		sfLen = yang_sprintf(logStr, "Yang %s: %s\n", YANG_LOG_LEVEL_NAME[level], buf);
+        sfLen = yang_sprintf(logStr, "%s", buf);
 
 	if (g_fmsg){
 		fwrite(logStr, sfLen, 1, g_fmsg);
@@ -141,7 +141,7 @@ void yang_clog(int32_t level, const char *fmt, ...) {
         yang_printf("[%02d:%02d:%02d] Yang %s: %s\n",ntm->tm_hour,ntm->tm_min,ntm->tm_sec,YANG_LOG_LEVEL_NAME[level], buf);
 
     }else{
-         yang_printf("Yang %s: %s\n",YANG_LOG_LEVEL_NAME[level], buf);
+         yang_printf("%s",buf);
     }
 #if Yang_Enable_Logfile
 	if (g_hasLogFile)
@@ -171,7 +171,7 @@ void yang_clog2(int32_t level, const char *fmt, ...) {
         yang_printf("[%02d:%02d:%02d] Yang %s: %s\n",ntm->tm_hour,ntm->tm_min,ntm->tm_sec,YANG_LOG_LEVEL_NAME[level], buf);
 
     }else{
-         yang_printf("Yang %s: %s\n",YANG_LOG_LEVEL_NAME[level], buf);
+         yang_printf("%s", buf);
     }
 #if Yang_Enable_Logfile
 	if (g_hasLogFile)

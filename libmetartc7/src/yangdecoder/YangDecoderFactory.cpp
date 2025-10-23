@@ -4,16 +4,20 @@
 #include <yangdecoder/YangDecoderFactory.h>
 #include <yangdecoder/YangH264DecoderSoftFactory.h>
 #include <yangdecoder/YangAudioDecoderOpus.h>
-#include <yangdecoder/YangH264DecoderSoft.h>
-#include <yangdecoder/YangDecoderOpenh264.h>
+
+#if	Yang_Enable_H264Decoder
+	#include <yangdecoder/YangH264DecoderSoft.h>
+#endif
+
+#include <yangdecoder/YangVideoDecoderFfmpeg.h>
 
 #if Yang_OS_ANDROID
 #include <yangdecoder/YangDecoderMediacodec.h>
-#else
-
-#include <yangdecoder/YangVideoDecoderFfmpeg.h>
 #endif
 
+#if Yang_OS_APPLE
+#include <yangdecoder/YangVideoDecoderMac.h>
+#endif
 
 YangDecoderFactory::YangDecoderFactory() {
 
@@ -24,56 +28,47 @@ YangDecoderFactory::~YangDecoderFactory() {
 
 }
 
-YangAudioDecoder *YangDecoderFactory::createAudioDecoder(YangAudioCodec paet,YangAudioParam *pcontext){
+YangAudioDecoder *YangDecoderFactory::createAudioDecoder(YangAudioCodec acodec,YangAudioParam *audioParam){
 
-	return new YangAudioDecoderOpus(pcontext);
+    return new YangAudioDecoderOpus(audioParam);
 }
 
-YangAudioDecoder *YangDecoderFactory::createAudioDecoder(YangAudioParam *pcontext){
+YangAudioDecoder *YangDecoderFactory::createAudioDecoder(YangAudioParam *audioParam){
 
-
-	return createAudioDecoder(pcontext->encode,pcontext);
+    return createAudioDecoder(audioParam->encode,audioParam);
 }
 #if !Yang_OS_ANDROID
-YangVideoDecoder* YangDecoderFactory::createFfmpegVideoDecoder(YangVideoCodec paet,YangVideoInfo *pcontext){
+YangVideoDecoder* YangDecoderFactory::createFfmpegVideoDecoder(YangVideoCodec vcodec,YangVideoInfo *videoInfo){
 #if Yang_Enable_Ffmpeg_Codec
-	return new YangVideoDecoderFfmpeg(pcontext,paet);
+    return new YangVideoDecoderFfmpeg(videoInfo,vcodec);
 #else
 	return NULL;
 #endif
 }
 #endif
-YangVideoDecoder* YangDecoderFactory::createVideoDecoder(YangVideoCodec paet,YangVideoInfo *pcontext){
+YangVideoDecoder* YangDecoderFactory::createVideoDecoder(YangVideoCodec vcodec,YangVideoInfo *videoInfo){
 
-#if Yang_OS_ANDROID
-	if(pcontext->videoDecHwType==0)
-		return new YangH264DecoderSoft();
-	else
-		return new YangDecoderMediacodec(pcontext,paet);
-#else
-	if (paet == Yang_VED_H264)				{
-		if(pcontext->videoDecHwType==0){
+   if(videoInfo->videoDecHwType==0){
 #if	Yang_Enable_H264Decoder
-			return new YangH264DecoderSoft();
+        return new YangH264DecoderSoft();
 #else
-			return new YangVideoDecoderFfmpeg(pcontext,paet);
+        return new YangVideoDecoderFfmpeg(videoInfo,vcodec);
 #endif
-		}else{
-#if Yang_Enable_Ffmpeg_Codec
-			return new YangVideoDecoderFfmpeg(pcontext,paet);
+   }else{
+#if Yang_OS_ANDROID
+        return new YangDecoderMediacodec(videoInfo,vcodec);
+#elif Yang_OS_APPLE
+        return new YangVideoDecoderMac();
 #else
-			return NULL;
+        return new YangVideoDecoderFfmpeg(videoInfo,vcodec);
 #endif
-		}
-	}
-#if Yang_Enable_Ffmpeg_Codec
-	if (paet == Yang_VED_H265)				return new YangVideoDecoderFfmpeg(pcontext,paet);
-#endif
-#endif
+
+   }
 	return NULL;
 }
-YangVideoDecoder* YangDecoderFactory::createVideoDecoder(YangVideoInfo *pcontext){
-	YangVideoCodec maet=Yang_VED_H264;
-	if(pcontext->videoDecoderType==Yang_VED_H265) maet=Yang_VED_H265;
-	return createVideoDecoder(maet,pcontext);
+
+YangVideoDecoder* YangDecoderFactory::createVideoDecoder(YangVideoInfo *videoInfo){
+    YangVideoCodec vcodec=Yang_VED_H264;
+    if(videoInfo->videoDecoderType==Yang_VED_H265) vcodec=Yang_VED_H265;
+    return createVideoDecoder(vcodec,videoInfo);
 }

@@ -12,7 +12,9 @@
 #include <yangpush/YangPushFactory.h>
 #include <QDebug>
 //#include <QMessageBox>
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 #include <QDesktopWidget>
+#endif
 #include <QSettings>
 
 RecordMainWindow::RecordMainWindow(QWidget *parent)
@@ -60,7 +62,7 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
      m_win0=new YangPlayWidget(this);
 #endif
     m_hb0->addWidget(m_win0);
-    m_hb0->setMargin(0);
+    //m_hb0->setMargin(0);
     m_hb0->setSpacing(0);
 
     char s[128]={0};
@@ -87,8 +89,12 @@ RecordMainWindow::RecordMainWindow(QWidget *parent)
     //srs do not use audio fec
     m_context->avinfo.audio.enableAudioFec=yangfalse;
 
-#if Yang_OS_APPLE
+#if defined (__APPLE__)
     m_context->avinfo.video.videoCaptureFormat=YangNv12;
+    if(m_context->avinfo.video.videoEncHwType==0)
+           m_context->avinfo.video.videoEncoderFormat = YangI420;//YangI420
+       else
+          m_context->avinfo.video.videoEncoderFormat = YangNv12;
 #endif
 
 }
@@ -199,9 +205,11 @@ void RecordMainWindow::init() {
     m_context->avinfo.enc.enc_threads=4;
 
     memcpy(&m_screenInfo,&m_context->avinfo.video,sizeof(YangVideoInfo));
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
     QDesktopWidget* desk=QApplication::desktop();
     m_screenWidth=desk->screenGeometry().width();
     m_screenHeight=desk->screenGeometry().height();
+#endif
     m_screenInfo.width=m_screenWidth;
     m_screenInfo.height=m_screenHeight;
     m_screenInfo.outWidth=m_screenWidth;

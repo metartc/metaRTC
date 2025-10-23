@@ -1,11 +1,11 @@
 ﻿//
-// Copyright (c) 2019-2025 yanggaofeng
+// Copyright (c) 2019-2022 yanggaofeng
 //
-#include <yangutil/yangtype.h>
-#if Yang_OS_LINUX
-#include <yangaudiodev/linux/YangAudioCaptureLinux.h>
-#include <yangavutil/audio/YangAudioUtil.h>
 
+#include <yangaudiodev/linux/YangAudioCaptureLinux.h>
+
+#include <yangavutil/audio/YangAudioUtil.h>
+#if Yang_OS_LINUX
 
 YangAudioCaptureLinux::YangAudioCaptureLinux(YangAVInfo *avinfo) //:YangAudioCapture(pcontext)
 		{
@@ -27,7 +27,9 @@ YangAudioCaptureLinux::YangAudioCaptureLinux(YangAVInfo *avinfo) //:YangAudioCap
 	}
 
 	onlySupportSingle = yangfalse;
+#if	Yang_Enable_Audio_Poll
 	m_readN=0;
+#endif
 
 }
 
@@ -47,26 +49,31 @@ YangAudioCaptureLinux::~YangAudioCaptureLinux() {
 	yang_delete(m_buffer);
 	yang_delete(m_ahandle);
 }
+
 void YangAudioCaptureLinux::setCatureStart() {
-	m_ahandle->m_enableBuf = 1;
+	if(m_ahandle) m_ahandle->m_enableBuf = 1;
 }
 void YangAudioCaptureLinux::setCatureStop() {
-	m_ahandle->m_enableBuf = 0;
+	if(m_ahandle) m_ahandle->m_enableBuf = 0;
 }
 void YangAudioCaptureLinux::setOutAudioBuffer(YangAudioBuffer *pbuffer) {
-	m_ahandle->setOutAudioBuffer(pbuffer);
+	if(m_ahandle) m_ahandle->setOutAudioBuffer(pbuffer);
 }
 void YangAudioCaptureLinux::setPlayAudoBuffer(YangAudioBuffer *pbuffer) {
-	m_ahandle->m_aecPlayBuffer = pbuffer;
+	if(m_ahandle) m_ahandle->m_aecPlayBuffer = pbuffer;
 }
 void YangAudioCaptureLinux::setAec(YangRtcAec *paec) {
-	m_ahandle->m_aec = paec;
+	if(m_ahandle) m_ahandle->m_aec = paec;
 }
 void YangAudioCaptureLinux::setInAudioBuffer(
 		vector<YangAudioPlayBuffer*> *pal) {
 
 }
 void YangAudioCaptureLinux::setPreProcess(YangPreProcess *pp) {
+
+}
+
+void YangAudioCaptureLinux::setPlayAudioParam(int32_t puid,YangAudioParam* audioParam){
 
 }
 
@@ -84,41 +91,41 @@ int32_t YangAudioCaptureLinux::init() {
 			SND_PCM_STREAM_CAPTURE, 0)) < 0) {
 
 		yang_error("unable to open pcm device: %s\n", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 	if ((err = snd_pcm_hw_params_malloc(&hw_params)) < 0) {
 
 		yang_error("cannot allocate hardware parameter structure (%s)\n",
 				snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_any(m_handle, hw_params)) < 0) {
 
 		yang_error("cannot initialize hardware parameter structure (%s)\n",
 				snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_set_access(m_handle, hw_params,
 			SND_PCM_ACCESS_RW_INTERLEAVED)) < 0) {
 
 		yang_error("cannot set access type (%s)\n", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_set_format(m_handle, hw_params,
 			SND_PCM_FORMAT_S16_LE)) < 0) {
 
 		yang_error("cannot set sample format (%s)\n", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_set_rate_near(m_handle, hw_params, &m_sample,
 			0)) < 0) {
 
 		yang_error("cannot set sample rate (%s)\n", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_set_channels(m_handle, hw_params, m_channel))
@@ -127,23 +134,23 @@ int32_t YangAudioCaptureLinux::init() {
 		err = snd_pcm_hw_params_set_channels(m_handle, hw_params, 1);
 		if (err < 0) {
 			yang_error("cannot set single channel  (%s)\n", snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 		onlySupportSingle = yangtrue;
-		//_exit(1);
+		//yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_set_period_size_near(m_handle, hw_params,
 			&m_frames, &dir)) < 0) {
 
 		yang_error("cannot set period size (%s)\n", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params(m_handle, hw_params)) < 0) {
 
 		yang_error("cannot set parameters (%s)\n", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	snd_pcm_hw_params_free(hw_params);
@@ -151,6 +158,7 @@ int32_t YangAudioCaptureLinux::init() {
 	m_buffer = (uint8_t*) malloc(m_size);
 	return Yang_Ok;
 }
+#if	Yang_Enable_Audio_Poll
 int32_t YangAudioCaptureLinux::alsa_device_capture_ready(struct pollfd *pfds,
 		uint32_t  nfds) {
 	unsigned short revents = 0;
@@ -164,7 +172,7 @@ int32_t YangAudioCaptureLinux::alsa_device_capture_ready(struct pollfd *pfds,
 
 	return revents & POLLIN;
 }
-
+#endif
 int32_t YangAudioCaptureLinux::alsa_device_read(short *pcm, int32_t len) {
 	int32_t ret=0;
 	if ((ret = snd_pcm_readi(m_handle, pcm, len)) != len) {
@@ -201,21 +209,30 @@ int32_t YangAudioCaptureLinux::alsa_device_read(short *pcm, int32_t len) {
 }
 
 void YangAudioCaptureLinux::startLoop() {
-
-	m_loops = 1;
 	unsigned long status = 0;
 	int32_t err=0;
 	uint8_t *tmp = NULL;
+	int32_t audiolen = m_frames * m_channel * 2;
+
 	if (onlySupportSingle) {
 		tmp = new uint8_t[m_frames * 2 * 2];
 	}
+
 	if ((status = snd_pcm_prepare(m_handle)) < 0) {
 
 		yang_error("cannot prepare audio interface for use (%s)\n",
 				snd_strerror(status));
-		_exit(1);
+		yang_exit(1);
 	}
-	int32_t audiolen = m_frames * m_channel * 2;
+
+	if ((status = snd_pcm_start(m_handle)) < 0) {
+
+		yang_error("cannot start audio interface for use (%s)\n",
+				snd_strerror(status));
+		yang_exit(1);
+	}
+
+#if	Yang_Enable_Audio_Poll
 	m_readN = snd_pcm_poll_descriptors_count(m_handle);
 	pollfd* read_fd = (pollfd*) malloc(m_readN * sizeof(*read_fd));
 		if ((err=snd_pcm_poll_descriptors(m_handle, read_fd,
@@ -223,16 +240,25 @@ void YangAudioCaptureLinux::startLoop() {
 
 			yang_error("cannot obtain capture file descriptors (%s)",
 					snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 	int32_t nfds=m_readN;
 
 	struct pollfd *pfds = (pollfd*) yang_malloc(sizeof(struct pollfd) * nfds);
 	pfds[0]=read_fd[0];
+#endif
+
+	m_loops = yangtrue;
+
 	while (m_loops) {
+#if	Yang_Enable_Audio_Poll
 		poll(pfds, nfds, -1);
 		if (alsa_device_capture_ready(pfds, nfds)) {
+#else
+		yang_usleep(5000);
+		if(snd_pcm_avail_update(m_handle)>=m_frames){
+#endif
 			alsa_device_read((short*) m_buffer, m_frames);
 
 			if (onlySupportSingle) {
@@ -246,9 +272,12 @@ void YangAudioCaptureLinux::startLoop() {
 	}
 
 	snd_pcm_close(m_handle);
+
 	yang_deleteA(tmp);
 	yang_free(m_buffer);
+#if	Yang_Enable_Audio_Poll
 	yang_free(pfds);
+#endif
 	m_handle = NULL;
 
 }

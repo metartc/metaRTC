@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     setCentralWidget(m_centerWdiget);
     m_centerWdiget->setLayout(m_vb);
-    m_vb->setMargin(0);
+    //m_vb->setMargin(0);
     m_vb->setSpacing(0);
 #if Yang_OS_APPLE
      m_videoWin=new YangYuvPlayWidget(this);
@@ -71,6 +71,8 @@ MainWindow::MainWindow(QWidget *parent)
 
    // m_context->avinfo.rtc.enableAudioBuffer=yangtrue; //use audio buffer
     m_context->avinfo.audio.enableAudioFec=yangfalse; //srs not use audio fec
+
+    m_context->avinfo.video.videoDecHwType=0;
 }
 
 MainWindow::~MainWindow()

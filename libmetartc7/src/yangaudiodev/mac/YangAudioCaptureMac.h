@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019-2025 yanggaofeng
+// Copyright (c) 2019-2022 yanggaofeng
 //
 #ifndef YANGCAPTURE_YangAudioCaptureMac_H_
 #define YANGCAPTURE_YangAudioCaptureMac_H_
@@ -27,9 +27,11 @@ public:
 	void setOutAudioBuffer(YangAudioBuffer *pbuffer);
 	void setPlayAudoBuffer(YangAudioBuffer *pbuffer);
 	void setInAudioBuffer(vector<YangAudioPlayBuffer*> *pal);
-	void setAec(YangRtcAec *paec);
+    void setAec(YangRtcAec *paec);
     void on_audio(uint8_t* data,uint32_t nb);
-
+    void setPlayAudioParam(int32_t  puid,YangAudioParam* audioParam);
+    void setCaptureVolume(int32_t vol);
+    void setPlayVolume(int32_t vol);
 protected:
 	void startLoop();
 	void stopLoop();
@@ -40,19 +42,11 @@ private:
 	int32_t m_loops;
 	int32_t m_channel;
 	uint32_t  m_sample;
-    uint32_t m_macSample;
-    uint32_t m_macChannel;
-    uint32_t m_size;
-	uint8_t *m_buffer;
-    uint32_t m_bufferLen;
+
     yangbool m_isInited;
 
     YangAudioMac* m_macAudio;
-    YangAudioPlayBuffer* m_bufferList;
-
-	yangbool onlySupportSingle;
     YangMacAudioCallback m_callback;
-    YangAudioResample m_resample;
     YangFrame m_audioFrame;
 
 };

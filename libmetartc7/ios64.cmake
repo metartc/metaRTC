@@ -1,0 +1,39 @@
+#SET(CMAKE_C_COMPILER /usr/bin/cc)
+#SET(CMAKE_CXX_COMPILER /usr/bin/cc)
+
+SET(CMAKE_C_COMPILER /usr/bin/clang)
+SET(CMAKE_CXX_COMPILER /usr/bin/clang++)
+
+# 设置iOS平台
+#set(CMAKE_SYSTEM_NAME iOS)
+#set(CMAKE_OSX_DEPLOYMENT_TARGET "15.6" CACHE STRING "Minimum iOS version")
+
+# macOS/Xcode特定设置
+set(CMAKE_SYSTEM_NAME iOS)
+set(CMAKE_OSX_ARCHITECTURES arm64)
+set(CMAKE_OSX_DEPLOYMENT_TARGET 15.6)
+
+# 设置SDK路径
+#set(CMAKE_XCODE_ATTRIBUTE_SDKROOT iphoneos)
+#set(CMAKE_XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY "1,2")
+
+# 设置代码签名
+#set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "iPhone Developer" CACHE STRING "Code signing identity")
+#set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "" CACHE STRING "Development team ID")
+
+# 编译器设置
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+
+
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    target_compile_options(mylib PRIVATE
+        -Wdocumentation
+        -Wdeprecated
+    )
+endif()
+

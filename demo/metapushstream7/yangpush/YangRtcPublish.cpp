@@ -47,17 +47,13 @@ YangRtcPublish::~YangRtcPublish() {
 	m_vmd = NULL;
 }
 
-/**
-int32_t YangRtcPublish::connectServer(int32_t puid){
-	return m_pushs.back()->connectSfuServer();
+void YangRtcPublish::setMediaConfig(int32_t  uid,YangAudioParam* audio,YangVideoParam* video){
+
 }
-
-
-
-int32_t YangRtcPublish::reconnectMediaServer() {
-	return m_pushs.back()->connectSfuServer();
+void YangRtcPublish::sendRequest(int32_t  uid,uint32_t  ssrc,YangRequestType req){
+    if(m_context->streams)
+            m_context->streams->sendRequest(uid,ssrc,req);
 }
-**/
 int32_t YangRtcPublish::publishMsg(YangFrame* msgFrame){
 
     if(m_pushs.size()>0) {
@@ -78,7 +74,7 @@ int32_t YangRtcPublish::init(char* url,yangbool isWhip) {
 
     peerInfo.direction=YangSendonly;
 
-    YangPeerConnection7* sh=new YangPeerConnection7(&peerInfo,NULL,NULL,NULL,NULL);
+    YangPeerConnection7* sh=new YangPeerConnection7(&peerInfo,NULL,NULL,this,NULL);
     sh->addAudioTrack(Yang_AED_OPUS);
     sh->addVideoTrack(Yang_VED_H264);
     sh->addTransceiver(YangMediaAudio,peerInfo.direction);

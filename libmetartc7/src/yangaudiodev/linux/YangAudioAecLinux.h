@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019-2025 yanggaofeng
+// Copyright (c) 2019-2022 yanggaofeng
 //
 #ifndef Yang_ALSA_DEVICE_H1
 #define Yang_ALSA_DEVICE_H1
@@ -19,8 +19,10 @@ struct YangAlsaDevice {
 	int32_t period;
 	snd_pcm_t *capture_handle;
 	snd_pcm_t *playback_handle;
+#if	Yang_Enable_Audio_Poll
 	int32_t readN, writeN;
 	struct pollfd *read_fd, *write_fd;
+#endif
 };
 
 class YangAudioAecLinux: public YangAudioCapture {
@@ -38,6 +40,7 @@ public:
     void setOutAudioBuffer(YangAudioBuffer *pbuffer);
 	void setPlayAudoBuffer(YangAudioBuffer *pbuffer);
     void setAec(YangRtcAec *paec);
+    void setPlayAudioParam(int32_t puid,YangAudioParam* audioParam);
 
 protected:
 	void run();
@@ -59,12 +62,13 @@ private:
 	void alsa_device_close();
 	int32_t alsa_device_read(short *pcm, int32_t len);
 	int32_t alsa_device_write(const short *pcm, int32_t len);
+#if	Yang_Enable_Audio_Poll
 	int32_t alsa_device_capture_ready(struct pollfd *pfds, uint32_t  nfds);
 	int32_t alsa_device_playback_ready(struct pollfd *pfds, uint32_t  nfds);
 
 	int32_t alsa_device_nfds();
 	void alsa_device_getfds(struct pollfd *pfds, uint32_t  nfds);
-
+#endif
 private:
 	YangAVInfo* m_avinfo;
 	YangAlsaDevice *m_dev;

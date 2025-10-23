@@ -19,5 +19,8 @@
 #include <unistd.h>
 #define yang_usleep usleep
 #define yang_sleep sleep
+#define yang_exit exit
 #endif
+
+
 #endif /* INCLUDE_YANGUTIL_YANGUNISTD_H_ */

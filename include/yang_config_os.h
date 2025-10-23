@@ -19,12 +19,12 @@
 
 #ifdef __APPLE__
 	#include <TargetConditionals.h>
-	#if defined(TARGET_OS_OSX)
-	#define 	Yang_OS_MAC       1
-	#define 	Yang_OS_IOS       0
-	#elif TARGET_OS_IPHONE
+	#if TARGET_OS_IPHONE
 	#define 	Yang_OS_MAC       0
 	#define 	Yang_OS_IOS       1
+	#elif TARGET_OS_OSX
+	#define 	Yang_OS_MAC       1
+	#define 	Yang_OS_IOS       0
 	#endif
 	#define Yang_OS_APPLE         1
 #else

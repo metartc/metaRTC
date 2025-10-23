@@ -13,19 +13,21 @@
 #include <yangutil/buffer/YangVideoEncoderBuffer.h>
 #include <vector>
 using namespace std;
-class YangRtcPublish: public YangThread  {
+class YangRtcPublish: public YangThread,public YangCallbackRtc {
 public:
 	YangRtcPublish(YangContext *pcontext);
 	virtual ~YangRtcPublish();
-        int32_t init(char* url,yangbool isWhip);
-        //int32_t init(int32_t nettype, char* server, int32_t pport,char* app,char* stream);
-        //int32_t connectServer(int32_t puid);
-        int32_t connectMediaServer();
-        int32_t disConnectMediaServer();
-        //int32_t reconnectMediaServer();
+    int32_t init(char* url,yangbool isWhip);
+
+    int32_t connectMediaServer();
+    int32_t disConnectMediaServer();
+
 	void setInVideoMetaData(YangVideoMeta *pvmd);
 	void setInAudioList(YangAudioEncoderBuffer *pbuf);
 	void setInVideoList(YangVideoEncoderBuffer *pbuf);
+
+    void setMediaConfig(int32_t  uid,YangAudioParam* audio,YangVideoParam* video);
+    void sendRequest(int32_t  uid,uint32_t  ssrc,YangRequestType req);
 
 	int32_t stopPublishAudioData();
 	int32_t stopPublishVideoData();

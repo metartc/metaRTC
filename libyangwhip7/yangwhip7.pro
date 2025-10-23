@@ -13,6 +13,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += __STDC_FORMAT_MACROS
 
 HOME_BASE=../
+
+macx{
+HOME_BASE=../../../
+}
+
 INCLUDEPATH += $$HOME_BASE/include
 INCLUDEPATH += $$HOME_BASE/thirdparty/include
 INCLUDEPATH += $$HOME_BASE/thirdparty/user_include

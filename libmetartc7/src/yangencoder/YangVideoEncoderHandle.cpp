@@ -133,6 +133,8 @@ void YangVideoEncoderHandle::startLoop() {
 				}
 				//if(m_encoderVideoFormat==YangArgb) m_yuv.i420torgba(pBuffer,m_buf,m_width,m_height);
 			}
+#elif Yang_OS_APPLE
+			tmp=tmpsrc;
 #else
 			if(para.videoEncoderFormat==YangI420) {
 				yuv.i420tonv12(tmpsrc,nv12Src,wid,hei);

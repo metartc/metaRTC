@@ -12,6 +12,11 @@ CONFIG += c++14
 DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += __STDC_FORMAT_MACROS
 HOME_BASE=../
+
+macx{
+HOME_BASE=../../../
+}
+
 INCLUDEPATH += $$HOME_BASE/include
 INCLUDEPATH += $$HOME_BASE/thirdparty/include
 INCLUDEPATH += $$HOME_BASE/thirdparty/user_include
@@ -104,6 +109,7 @@ SOURCES += \
     src/yangdecoder/YangVideoDecoderFfmpeg.cpp \
     src/yangdecoder/YangVideoDecoderHandle.cpp \
     src/yangdecoder/YangVideoDecoderHandles.cpp \
+    src/yangdecoder/YangVideoDecoderMac.cpp \
     src/yangencoder/YangAudioEncoder.cpp \
     src/yangencoder/YangAudioEncoderHandle.cpp \
     src/yangencoder/YangAudioEncoderHandleCb.cpp \
@@ -120,6 +126,7 @@ SOURCES += \
     src/yangencoder/YangVideoEncoder.cpp \
     src/yangencoder/YangVideoEncoderFfmpeg.cpp \
     src/yangencoder/YangVideoEncoderHandle.cpp \
+    src/yangencoder/YangVideoEncoderMac.cpp \
     src/yangrtc/YangPeerConnection7.cpp \
     src/yangstream/YangStreamManager.cpp \
     src/yangstream/YangSynBuffer.cpp \
@@ -140,9 +147,11 @@ SOURCES += \
 
 
 macx{
+    SOURCES += src/yangaudiodev/mac/YangAudioDeviceIos.mm
     SOURCES += src/yangcapture/mac/YangVideoDeviceMac.mm
+    SOURCES += src/yangmac/YangDecoderMac.mm
+    SOURCES += src/yangmac/YangEncoderMac.mm
 }
-
 
 HEADERS += \
     src/yangaudiodev/YangAudioCaptureHandle.h \
@@ -188,6 +197,7 @@ HEADERS += \
     src/yangdecoder/YangH264DecoderSoftFactory.h \
     src/yangdecoder/YangHeaderParseFfmpeg.h \
     src/yangdecoder/YangVideoDecoderFfmpeg.h \
+    src/yangdecoder/YangVideoDecoderMac.h \
     src/yangencoder/YangAudioEncoderOpus.h \
     src/yangencoder/YangEncoderMediacodec.h \
     src/yangencoder/YangFfmpegEncoderMeta.h \
@@ -196,7 +206,8 @@ HEADERS += \
     src/yangencoder/YangH265EncoderMeta.h \
     src/yangencoder/YangH265EncoderSoft.h \
     src/yangencoder/YangOpenH264Encoder.h \
-    src/yangencoder/YangVideoEncoderFfmpeg.h
+    src/yangencoder/YangVideoEncoderFfmpeg.h \
+    src/yangencoder/YangVideoEncoderMac.h
 
 # Default rules for deployment.
 unix {

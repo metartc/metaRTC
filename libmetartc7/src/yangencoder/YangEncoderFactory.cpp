@@ -2,6 +2,7 @@
 // Copyright (c) 2019-2025 yanggaofeng
 //
 #include <yangencoder/YangEncoderFactory.h>
+
 #include <yangencoder/YangAudioEncoderOpus.h>
 
 #include <yangencoder/YangFfmpegEncoderMeta.h>
@@ -9,6 +10,7 @@
 #include <yangencoder/YangH265EncoderMeta.h>
 #include <yangencoder/YangH265EncoderSoft.h>
 #include <yangencoder/YangVideoEncoderFfmpeg.h>
+#include <yangencoder/YangVideoEncoderMac.h>
 #include <yangencoder/YangEncoderMediacodec.h>
 
 #if Yang_Enable_Openh264
@@ -25,17 +27,16 @@ YangEncoderFactory::YangEncoderFactory() {
 YangEncoderFactory::~YangEncoderFactory() {
 
 }
-
 YangVideoEncoderMeta* YangEncoderFactory::createVideoEncoderMeta(
-		YangVideoInfo *pcontext) {
+        YangVideoInfo *videoInfo) {
 #if Yang_Enable_Ffmpeg_Codec
-	if (pcontext->videoEncHwType > 0)
+    if (videoInfo->videoEncHwType > 0)
 		return new YangFfmpegEncoderMeta();
 #endif
 #if !Yang_Enable_Openh264
-	if(pcontext->videoEncoderType==0) return new YangH264EncoderMeta();
+    if(videoInfo->videoEncoderType==0) return new YangH264EncoderMeta();
 #endif
-	if (pcontext->videoEncoderType == 1)
+    if (videoInfo->videoEncoderType == 1)
 		return new YangH265EncoderMeta();
 #if Yang_Enable_Openh264
 	return NULL;
@@ -44,73 +45,55 @@ YangVideoEncoderMeta* YangEncoderFactory::createVideoEncoderMeta(
 #endif
 }
 
-YangAudioEncoder* YangEncoderFactory::createAudioEncoder(YangAudioCodec paet,
-		YangAudioInfo *pcontext) {
+YangAudioEncoder* YangEncoderFactory::createAudioEncoder(YangAudioCodec acodec,
+        YangAudioInfo *audioInfo) {
 
-	if (paet == Yang_AED_OPUS)
-		return new YangAudioEncoderOpus();
-	return new YangAudioEncoderOpus();
+    return new YangAudioEncoderOpus();
 }
 YangAudioEncoder* YangEncoderFactory::createAudioEncoder(
-		YangAudioInfo *pcontext) {
-	YangAudioCodec maet = Yang_AED_OPUS;
+        YangAudioInfo *audioInfo) {
 
-	if (pcontext->audioEncoderType == 1)
-		maet = Yang_AED_MP3;
-	if (pcontext->audioEncoderType == 2)
-		maet = Yang_AED_SPEEX;
-	if (pcontext->audioEncoderType == 3)
-		maet = Yang_AED_OPUS;
-	return createAudioEncoder(maet, pcontext);
+    YangAudioCodec acodec=(YangAudioCodec)audioInfo->audioEncoderType;
+    return createAudioEncoder(acodec, audioInfo);
 }
 
-YangVideoEncoder* YangEncoderFactory::createVideoEncoder(YangVideoCodec paet,
-		YangVideoInfo *pcontext) {
+YangVideoEncoder* YangEncoderFactory::createVideoEncoder(YangVideoCodec vcodec,YangVideoInfo *videoInfo) {
+
+    if(videoInfo->videoEncHwType==0){
+        if (vcodec == Yang_VED_H264){
+#if Yang_Enable_Openh264
+            return new YangOpenH264Encoder();
+#else
+            return  new YangH264EncoderSoft();
+#endif
+        }else if (vcodec == Yang_VED_H265){
+            return new YangH265EncoderSoft();
+        }
+    }else{
 #if Yang_OS_ANDROID
-	if(pcontext->videoEncHwType==0){
-#if Yang_Enable_Openh264
-		return new YangOpenH264Encoder();
-#else
-		return  new YangH264EncoderSoft();
+        return new YangEncoderMediacodec();
+#elif Yang_OS_APPLE
+        return new YangVideoEncoderMac();
+#elif Yang_OS_WIN
+         YangGpuEncoderFactory gf;
+         return gf.createGpuEncoder();
 #endif
-	}else{
-		return new YangEncoderMediacodec();
-	}
-#else
-	if (pcontext->videoEncHwType == 0) {
-#if Yang_Enable_Openh264
-		if (paet == Yang_VED_H264)
-			return new YangOpenH264Encoder();
-#else
-		if (paet == Yang_VED_H264)		return  new YangH264EncoderSoft();
-#endif
-		if (paet == Yang_VED_H265)
-			return new YangH265EncoderSoft();
-	} else {
-#if Yang_Enable_GPU_Encoding
-                YangGpuEncoderFactory gf;
-               return gf.createGpuEncoder();
-#else
-#if Yang_Enable_Ffmpeg_Codec
-		return new YangVideoEncoderFfmpeg(paet, pcontext->videoEncHwType);
-#endif
-#endif
-	}
-#if Yang_Enable_Openh264
-	return new YangOpenH264Encoder();
-#else
-			return  new YangH264EncoderSoft();
-#endif
+    }
 
+#if Yang_Enable_Ffmpeg_Codec
+    return new YangVideoEncoderFfmpeg(vcodec, videoInfo->videoEncHwType);
+#else
+    return NULL;
 #endif
 }
-YangVideoEncoder* YangEncoderFactory::createVideoEncoder(
-		YangVideoInfo *pcontext) {
-	YangVideoCodec maet = Yang_VED_H264;
-	if (pcontext->videoEncoderType == 0)
-		maet = Yang_VED_H264;
-	if (pcontext->videoEncoderType == 1)
-		maet = Yang_VED_H265;
 
-	return createVideoEncoder(maet, pcontext);
+
+YangVideoEncoder* YangEncoderFactory::createVideoEncoder(YangVideoInfo *videoInfo) {
+    YangVideoCodec vcodec = Yang_VED_H264;
+    if (videoInfo->videoEncoderType == 0)
+        vcodec = Yang_VED_H264;
+    if (videoInfo->videoEncoderType == 1)
+        vcodec = Yang_VED_H265;
+
+    return createVideoEncoder(vcodec, videoInfo);
 }

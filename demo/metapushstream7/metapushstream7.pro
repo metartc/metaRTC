@@ -38,7 +38,7 @@ macx{
 LIBS += -framework CoreAudio -framework AVFoundation -framework CoreVideo -framework CoreMedia
 
 #openssl
- LIBS += -lssl2 -lcrypto2 -lsrtp2
+ LIBS += -lssl -lcrypto -lsrtp2
 
 }
 unix:!macx{
@@ -57,7 +57,7 @@ unix:!macx{
 LIBS += -lasound
 
 #openssl
- LIBS += -lssl2 -lcrypto2 -lsrtp2
+ LIBS += -lssl -lcrypto -lsrtp2
 #mbtls
  #LIBS += -lmbedtls -lmbedx509 -lmbedcrypto -lsrtp2_mbed
 #gmssl

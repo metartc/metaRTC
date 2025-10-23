@@ -1,5 +1,5 @@
 ﻿//
-// Copyright (c) 2019-2025 yanggaofeng
+// Copyright (c) 2019-2022 yanggaofeng
 //
 #ifndef YANGPLAYER_SRC_YANGAUDIOPLAYALSA_H_
 #define YANGPLAYER_SRC_YANGAUDIOPLAYALSA_H_
@@ -7,7 +7,6 @@
 #include <yangaudiodev/YangAudioPlay.h>
 
 #if Yang_OS_LINUX
-
 #include <alsa/asoundlib.h>
 
 class YangAudioPlayLinux:public YangAudioPlay{
@@ -16,8 +15,6 @@ public:
 	~YangAudioPlayLinux();
 
     int init();
-
-
 
 protected:
 	void startLoop();

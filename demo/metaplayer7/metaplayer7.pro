@@ -15,8 +15,14 @@ CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_WIN_MSC
 HOME_BASE=../../
-INCLUDEPATH += $$HOME_BASE/libmetartc7/src
 macx{
+ HOME_BASE=../../../../
+}
+
+INCLUDEPATH += $$HOME_BASE/libmetartc7/src
+
+macx{
+    QT += openglwidgets
 
     INCLUDEPATH += $$HOME_BASE/include
     CONFIG(debug, debug|release) {
@@ -26,14 +32,14 @@ macx{
         LIBS += -L$$HOME_BASE/bin/lib_release
         DESTDIR += $$HOME_BASE/bin/app_release
     }
- LIBS +=  -L$$HOME_BASE/thirdparty/lib
+ LIBS +=  -L$$HOME_BASE/thirdparty/lib/mac
 
  LIBS += -lmetartc7 -lyangwhip7 -lmetartccore7 -lyuv -lspeexdsp -lopus -lyangh264decoder -lusrsctp -lpthread  -ldl
 
- LIBS += -framework CoreAudio
+LIBS += -framework CoreAudio -framework AudioUnit -framework VideoToolbox -framework CoreMedia -framework CoreVideo
 
     #openssl
- LIBS += -lssl2 -lcrypto2 -lsrtp2
+ LIBS += -lssl -lcrypto -lsrtp2
 }
 unix:!macx{
 
@@ -52,7 +58,7 @@ unix:!macx{
 #linux
 LIBS += -lasound
     #openssl
- LIBS += -lssl2 -lcrypto2 -lsrtp2
+ LIBS += -lssl -lcrypto -lsrtp2
 
 #mbtls
  #LIBS += -lmbedtls -lmbedx509 -lmbedcrypto -lsrtp2_mbed

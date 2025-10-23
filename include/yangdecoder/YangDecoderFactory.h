@@ -12,11 +12,11 @@ public:
 	YangDecoderFactory();
 	virtual ~YangDecoderFactory();
 
-	YangAudioDecoder* createAudioDecoder(YangAudioCodec paet,YangAudioParam *pcontext);
-	YangAudioDecoder* createAudioDecoder(YangAudioParam *pcontext);
-	YangVideoDecoder* createVideoDecoder(YangVideoCodec paet,YangVideoInfo *pcontext);
-	YangVideoDecoder* createFfmpegVideoDecoder(YangVideoCodec paet,YangVideoInfo *pcontext);
-	YangVideoDecoder* createVideoDecoder(YangVideoInfo *pcontext);
+    YangAudioDecoder* createAudioDecoder(YangAudioCodec acodec,YangAudioParam *audioParam);
+    YangAudioDecoder* createAudioDecoder(YangAudioParam *audioParam);
+    YangVideoDecoder* createVideoDecoder(YangVideoCodec vcodec,YangVideoInfo *videoInfo);
+    YangVideoDecoder* createFfmpegVideoDecoder(YangVideoCodec vcodec,YangVideoInfo *videoInfo);
+    YangVideoDecoder* createVideoDecoder(YangVideoInfo *videoInfo);
 };
 
 #endif /* YANGDECODER_INCLUDE_YANGDECODERFACTORY_H_ */

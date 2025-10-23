@@ -13,6 +13,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += __STDC_FORMAT_MACROS
 DEFINES += MBEDTLS_SSL_DTLS_SRTP
 HOME_BASE=../
+
+macx{
+HOME_BASE=../../../
+}
+
 INCLUDEPATH += $$HOME_BASE/include
 INCLUDEPATH += $$HOME_BASE/thirdparty/include
 INCLUDEPATH += $$HOME_BASE/thirdparty/user_include
@@ -128,6 +133,7 @@ SOURCES += \
     src/yangssl/YangSslMbedtls.c \
     src/yangssl/YangSslOpenssl.c \
     src/yangstream/YangStreamCapture.c \
+    src/yangutil/buffer2/YangBuffer2.c \
     src/yangutil/buffer2/YangMediaBuffer2.c \
     src/yangutil/buffer2/YangSortBuffer.c \
     src/yangutil/buffer2/YangVideoEncoderBuffer2.c \

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019-2025 yanggaofeng
+// Copyright (c) 2019-2022 yanggaofeng
 //
 #include <yangaudiodev/linux/YangAudioAecLinux.h>
 #if Yang_OS_LINUX
@@ -73,6 +73,13 @@ void YangAudioAecLinux::setPreProcess(YangPreProcess *pp) {
 	m_audioData.m_preProcess=pp;
 }
 
+void YangAudioAecLinux::setPlayAudioParam(int32_t puid,YangAudioParam* audioParam){
+	if(audioParam==NULL) return;
+	m_audioData.initPlay(audioParam->sample, audioParam->channel);
+}
+
+
+
 int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 		uint32_t  rate, int32_t channels, int32_t period) {
 	int32_t dir;
@@ -102,14 +109,14 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 		yang_error("cannot open audio device %s (%s)", m_dev->device_name,
 				snd_strerror(err));
 		catpureDeviceState = 0;
-		//_exit(1);
+		//yang_exit(1);
 	}
 	if (catpureDeviceState) {
 		if ((err = snd_pcm_hw_params_malloc(&hw_params)) < 0) {
 
 			yang_error("cannot allocate hardware parameter structure (%s)",
 					snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 		if ((err = snd_pcm_hw_params_any(m_dev->capture_handle, hw_params))
@@ -117,35 +124,35 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 
 			yang_error("cannot initialize hardware parameter structure (%s)",
 					snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 		if ((err = snd_pcm_hw_params_set_access(m_dev->capture_handle,
 				hw_params, SND_PCM_ACCESS_RW_INTERLEAVED)) < 0) {
 
 			yang_error("cannot set access type (%s)", snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 		if ((err = snd_pcm_hw_params_set_format(m_dev->capture_handle,
 				hw_params, SND_PCM_FORMAT_S16_LE)) < 0) {
 
 			yang_error("cannot set sample format (%s)", snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 		if ((err = snd_pcm_hw_params_set_rate_near(m_dev->capture_handle,
 				hw_params, &rate, 0)) < 0) {
 
 			yang_error("cannot set sample rate (%s)", snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 		if ((err = snd_pcm_hw_params_set_channels(m_dev->capture_handle,
 				hw_params, channels)) < 0) {
 
 			yang_error("cannot set channel count (%s)", snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 		period_size = period;
@@ -154,7 +161,7 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 				hw_params, &period_size, &dir)) < 0) {
 
 			yang_error("cannot set period size (%s)", snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 
@@ -164,13 +171,13 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 				hw_params, &buffer_size)) < 0) {
 
 			yang_error("cannot set buffer time (%s)", snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 		if ((err = snd_pcm_hw_params(m_dev->capture_handle, hw_params)) < 0) {
 
 			yang_error("cannot set capture parameters (%s)", snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 
 		snd_pcm_hw_params_free(hw_params);
@@ -179,27 +186,27 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 
 			yang_error("cannot allocate software parameters structure (%s)",
 					snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 		if ((err = snd_pcm_sw_params_current(m_dev->capture_handle, sw_params))
 				< 0) {
 
 			yang_error("cannot initialize software parameters structure (%s)",
 					snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 		if ((err = snd_pcm_sw_params_set_avail_min(m_dev->capture_handle,
 				sw_params, period)) < 0) {
 
 			yang_error("cannot set minimum available count (%s)",
 					snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 		if ((err = snd_pcm_sw_params(m_dev->capture_handle, sw_params)) < 0) {
 
 			yang_error("cannot set software parameters (%s)",
 					snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 	}
 
@@ -216,35 +223,35 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 
 		yang_error("cannot allocate hardware parameter structure (%s)",
 				snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_any(m_dev->playback_handle, hw_params)) < 0) {
 
 		yang_error("cannot initialize hardware parameter structure (%s)",
 				snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_set_access(m_dev->playback_handle, hw_params,
 			SND_PCM_ACCESS_RW_INTERLEAVED)) < 0) {
 
 		yang_error("cannot set access type (%s)", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_set_format(m_dev->playback_handle, hw_params,
 			SND_PCM_FORMAT_S16_LE)) < 0) {
 
 		yang_error("cannot set sample format (%s)", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params_set_rate_near(m_dev->playback_handle,
 			hw_params, &rate, 0)) < 0) {
 
 		yang_error("cannot set sample rate (%s)", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 	/*	yang_error( "rate = %d", rate);*/
 
@@ -252,7 +259,7 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 			channels)) < 0) {
 
 		yang_error("cannot set channel count (%s)", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	period_size = period;
@@ -261,7 +268,7 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 			hw_params, &period_size, &dir)) < 0) {
 
 		yang_error("cannot set period size (%s)", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	buffer_size = period_size * 2;
@@ -270,13 +277,13 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 			hw_params, &buffer_size)) < 0) {
 
 		yang_error("cannot set buffer time (%s)", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	if ((err = snd_pcm_hw_params(m_dev->playback_handle, hw_params)) < 0) {
 
 		yang_error("cannot set playback parameters (%s)", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 
@@ -286,32 +293,32 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 
 		yang_error("cannot allocate software parameters structure (%s)",
 				snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 	if ((err = snd_pcm_sw_params_current(m_dev->playback_handle, sw_params))
 			< 0) {
 
 		yang_error("cannot initialize software parameters structure (%s)",
 				snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 	if ((err = snd_pcm_sw_params_set_avail_min(m_dev->playback_handle,
 			sw_params, period)) < 0) {
 
 		yang_error("cannot set minimum available count (%s)",
 				snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 	if ((err = snd_pcm_sw_params_set_start_threshold(m_dev->playback_handle,
 			sw_params, period)) < 0) {
 
 		yang_error("cannot set start mode (%s)", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 	if ((err = snd_pcm_sw_params(m_dev->playback_handle, sw_params)) < 0) {
 
 		yang_error("cannot set software parameters (%s)", snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 
 	snd_pcm_link(m_dev->capture_handle, m_dev->playback_handle);
@@ -319,16 +326,22 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 
 		yang_error("cannot prepare audio interface for use (%s)",
 				snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
+	}
+	if ((err = snd_pcm_start(m_dev->capture_handle)) < 0) {
+
+		yang_error("cannot start audio interface for use (%s)",
+				snd_strerror(err));
+		yang_exit(1);
 	}
 	if ((err = snd_pcm_prepare(m_dev->playback_handle)) < 0) {
 
 		yang_error("cannot prepare audio interface for use (%s)",
 				snd_strerror(err));
-		_exit(1);
+		yang_exit(1);
 	}
 	}
-
+#if	Yang_Enable_Audio_Poll
 	if(catpureDeviceState){
 		m_dev->readN = snd_pcm_poll_descriptors_count(m_dev->capture_handle);
 		m_dev->read_fd = (pollfd*) malloc(m_dev->readN * sizeof(*m_dev->read_fd));
@@ -337,7 +350,7 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 
 			yang_error("cannot obtain capture file descriptors (%s)",
 					snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 	}
 	if(playDeviceState){
@@ -348,11 +361,11 @@ int32_t YangAudioAecLinux::alsa_device_open(char *device_name,
 
 			yang_error("cannot obtain playback file descriptors (%s)",
 					snd_strerror(err));
-			_exit(1);
+			yang_exit(1);
 		}
 	}
 
-
+#endif
 	if(!catpureDeviceState&&!playDeviceState){
 		return ERROR_SYS_NoAudioDevice;
 	}else if(!catpureDeviceState){
@@ -435,7 +448,7 @@ int32_t YangAudioAecLinux::alsa_device_write(const short *pcm, int32_t len) {
 	}
 	return Yang_Ok;
 }
-
+#if	Yang_Enable_Audio_Poll
 int32_t YangAudioAecLinux::alsa_device_capture_ready(struct pollfd *pfds,
 		uint32_t  nfds) {
 	unsigned short revents = 0;
@@ -478,6 +491,7 @@ void YangAudioAecLinux::alsa_device_getfds(struct pollfd *pfds,
 	for (i = 0; i < m_dev->writeN; i++)
 		pfds[i + m_dev->readN] = m_dev->write_fd[i];
 }
+#endif
 void YangAudioAecLinux::setInAudioBuffer(vector<YangAudioPlayBuffer*> *pal) {
 
 }
@@ -513,10 +527,12 @@ int32_t YangAudioAecLinux::init() {
 
 void YangAudioAecLinux::startLoop() {
 	m_loops = yangtrue;
+#if	Yang_Enable_Audio_Poll
 	int32_t nfds = alsa_device_nfds();
 
 	pollfd *pfds = (pollfd*) malloc(sizeof(*pfds) * nfds);
 	alsa_device_getfds(pfds, nfds);
+#endif
 	int32_t audiolen = m_captureFrames * m_captureChannel * 2;
 
 	uint8_t pcm_write[audiolen];
@@ -528,8 +544,13 @@ void YangAudioAecLinux::startLoop() {
 	YangFrame frame;
 	yang_memset(&frame,0,sizeof(YangFrame));
 	while (m_loops) {
+#if	Yang_Enable_Audio_Poll
 		poll(pfds, nfds, -1);
 		if (playDeviceState&&alsa_device_playback_ready(pfds, nfds)) {
+#else
+		yang_usleep(5000);
+		if(playDeviceState&&snd_pcm_avail_update(m_dev->playback_handle)>=m_captureFrames){
+#endif
 
 			tmp=m_audioData.getRenderAudioData(audiolen);
 			if(tmp){
@@ -542,7 +563,12 @@ void YangAudioAecLinux::startLoop() {
 			alsa_device_write( (short*)tmp, m_captureFrames);
 			if (readStart)		m_ahandle->putEchoPlay((short*)tmp,audiolen);
 		}
+#if	Yang_Enable_Audio_Poll
 		if (catpureDeviceState&&alsa_device_capture_ready(pfds, nfds)) {
+#else
+		if(catpureDeviceState&&snd_pcm_avail_update(m_dev->capture_handle)>=m_captureFrames){
+#endif
+
 			alsa_device_read((short*) m_buffer, m_captureFrames);
 			if (readStart)
 				m_ahandle->putEchoBuffer(m_buffer,audiolen);
@@ -552,6 +578,8 @@ void YangAudioAecLinux::startLoop() {
 
 		}
 	}
+#if	Yang_Enable_Audio_Poll
 	yang_free(pfds);
+#endif
 }
 #endif

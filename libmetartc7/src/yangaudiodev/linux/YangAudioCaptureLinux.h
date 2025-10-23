@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019-2025 yanggaofeng
+// Copyright (c) 2019-2022 yanggaofeng
 //
 #ifndef YANGCAPTURE_SRC_YANGAUDIOCAPTUREIMPL_H_
 #define YANGCAPTURE_SRC_YANGAUDIOCAPTUREIMPL_H_
@@ -25,13 +25,16 @@ public:
 	void setOutAudioBuffer(YangAudioBuffer *pbuffer);
 	void setPlayAudoBuffer(YangAudioBuffer *pbuffer);
 	void setInAudioBuffer(vector<YangAudioPlayBuffer*> *pal);
-	void setAec(YangRtcAec *paec);
+    void setAec(YangRtcAec *paec);
 
+	void setPlayAudioParam(int32_t puid,YangAudioParam* audioParam);
 
 protected:
 	void startLoop();
 	void stopLoop();
+#if	Yang_Enable_Audio_Poll
 	int32_t alsa_device_capture_ready(struct pollfd *pfds,uint32_t  nfds);
+#endif
 	int32_t alsa_device_read(short *pcm, int32_t len);
 private:
 	YangAVInfo *m_avinfo;
@@ -39,7 +42,9 @@ private:
 	int32_t m_loops;
 	int32_t m_channel;
 	uint32_t  m_sample;
+#if	Yang_Enable_Audio_Poll
 	int32_t  m_readN ;
+#endif
 	snd_pcm_uframes_t m_frames;
 	uint8_t *m_buffer;
 	snd_pcm_t *m_handle;

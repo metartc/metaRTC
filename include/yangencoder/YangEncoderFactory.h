@@ -14,11 +14,11 @@ class YangEncoderFactory {
 public:
 	YangEncoderFactory();
 	virtual ~YangEncoderFactory();
-	YangAudioEncoder* createAudioEncoder(YangAudioCodec paet,YangAudioInfo *pcontext);
-	YangAudioEncoder* createAudioEncoder(YangAudioInfo *pcontext);
-	YangVideoEncoder* createVideoEncoder(YangVideoCodec paet,YangVideoInfo *pcontext);
-	YangVideoEncoder* createVideoEncoder(YangVideoInfo *pcontext);
-	YangVideoEncoderMeta* createVideoEncoderMeta(YangVideoInfo *pcontext);
+    YangAudioEncoder* createAudioEncoder(YangAudioCodec acodec,YangAudioInfo *audioInfo);
+    YangAudioEncoder* createAudioEncoder(YangAudioInfo *audioInfo);
+    YangVideoEncoder* createVideoEncoder(YangVideoCodec vcodec,YangVideoInfo *videoInfo);
+    YangVideoEncoder* createVideoEncoder(YangVideoInfo *videoInfo);
+    YangVideoEncoderMeta* createVideoEncoderMeta(YangVideoInfo *videoInfo);
 };
 
 #endif /* YANGENCODER_INCLUDE_YANGVIDEOENCODERFACTORY_H_ */
