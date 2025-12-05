@@ -10,9 +10,14 @@
 #include <yangutil/sys/YangSocket.h>
 #include <yangutil/sys/YangCString.h>
 
-static void yang_sdp_genLocalSdp_payloadType(YangMediaPayloadType *videotype){
+void yang_sdp_genLocalSdp_payloadType(YangVideoCodec codec,YangMediaPayloadType *videotype){
 	videotype->clock_rate = 90000;
-	yang_strcpy(videotype->format_specific_param,"level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f");
+	if(codec==Yang_VED_H264){
+		yang_strcpy(videotype->format_specific_param,"level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f");
+	}else if(codec==Yang_VED_H265){
+		yang_strcpy(videotype->format_specific_param,"level-id=93;profile-id=1;tier-flag=0;tx-mode=SRST");
+	}
+
 	yang_create_stringVector(&videotype->rtcp_fb);
 	yang_insert_stringVector(&videotype->rtcp_fb, "transport-cc");
 	yang_insert_stringVector(&videotype->rtcp_fb, "nack");
@@ -263,12 +268,12 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 	if(mediaServer==Yang_Server_Zlm&&role==YangRecvonly){
 		videotype->payload_type = session->h264PayloadType;
 		yang_strcpy(videotype->encoding_name, "H264");
-		yang_sdp_genLocalSdp_payloadType(videotype);
+		yang_sdp_genLocalSdp_payloadType(Yang_VED_H264,videotype);
 		yang_insert_YangMediaPayloadTypeVector(&video_media_desc->payload_types,NULL);
 		videotype =&video_media_desc->payload_types.payload[1];
 		videotype->payload_type = session->h265PayloadType;
 		yang_strcpy(videotype->encoding_name, "H265");
-		yang_sdp_genLocalSdp_payloadType(videotype);
+		yang_sdp_genLocalSdp_payloadType(Yang_VED_H265,videotype);
 		//redPayloadtype=2;
 	}else{
 		if (session->context.peerInfo->pushVideo.videoEncoderType	== Yang_VED_H264) {
@@ -286,7 +291,7 @@ int32_t yang_sdp_genLocalSdp2(YangRtcSession *session, int32_t localport,char *d
 		}
 
 
-		yang_sdp_genLocalSdp_payloadType(videotype);
+		yang_sdp_genLocalSdp_payloadType(session->context.peerInfo->pushVideo.videoEncoderType,videotype);
 	}
 
 	//insert red
@@ -457,10 +462,13 @@ static YangRtcTrack* yang_sdp_find_track(YangRtcSession* session,uint32_t ssrc){
 	return NULL;
 }
 
-static yangbool yang_is_h2645PayoadType(char* str) {
-	if (yang_strstr(str, "packetization-mode=1") && yang_strstr(str, "profile-level-id=42e01f"))
-		return yangtrue;
+static yangbool yang_is_h264PayoadType(char* str) {
+	if (yang_strstr(str, "packetization-mode=1") && yang_strstr(str, "profile-level-id=42e01f")) return yangtrue;
+	return yangfalse;
+}
 
+static yangbool yang_is_h265PayoadType(char* str) {
+	if (yang_strstr(str, "profile-id=1")) return yangtrue;
 	return yangfalse;
 }
 
@@ -540,14 +548,14 @@ int32_t yang_sdp_parseRemoteSdp(YangRtcSession* session,YangSdp* sdp){
 					session->remote_video->encode=Yang_VED_H264;
 					session->context.videoCodec=Yang_VED_H264;
 
-					if(yang_is_h2645PayoadType(payload->format_specific_param)){
+					if(yang_is_h264PayoadType(payload->format_specific_param)){
 						session->h264PayloadType=payload->payload_type;
 					}
 				}else if(yang_yang_strcmp(payload->encoding_name,"H265")==0){
 					session->context.videoCodec=Yang_VED_H265;
 					session->remote_video->encode=Yang_VED_H265;
 
-					if(yang_is_h2645PayoadType(payload->format_specific_param)){
+					if(yang_is_h265PayoadType(payload->format_specific_param)){
 						session->h265PayloadType=payload->payload_type;
 					}
 				}else if(yang_yang_strcmp(payload->encoding_name,Yang_AV1_Name)==0){
