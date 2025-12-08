@@ -211,7 +211,7 @@ typedef enum
     YangAvcNaluTypeCodedSliceExt = 20,
 }YangAvcNaluType;
 
-enum YangAvcProfile
+typedef enum YangAvcProfile
 {
     YangAvcProfileReserved = 0,
 
@@ -230,7 +230,37 @@ enum YangAvcProfile
     YangAvcProfileHigh444 = 144,
     YangAvcProfileHigh444Predictive = 244,
     YangAvcProfileHigh444Intra = 2192,
-};
+}YangAvcProfile;
+
+typedef enum YangHevcLevel {
+    YangHevcLevelReserved = 0,
+    YangHevcLevel_1 = 30,
+    YangHevcLevel_2 = 60,
+    YangHevcLevel_21 = 63,
+    YangHevcLevel_3 = 90,
+    YangHevcLevel_31 = 93,
+    YangHevcLevel_4 = 120,
+    YangHevcLevel_41 = 123,
+    YangHevcLevel_5 = 150,
+    YangHevcLevel_51 = 153,
+    YangHevcLevel_52 = 156,
+    YangHevcLevel_6 = 180,
+    YangHevcLevel_61 = 183,
+    YangHevcLevel_62 = 186,
+}YangHevcLevel;
+
+typedef enum YangHevcProfile {
+    YangHevcProfileReserved = 0,
+    YangHevcProfileMain = 1,
+    YangHevcProfileMain10 = 2,
+    YangHevcProfileMainStillPicture = 3,
+    YangHevcProfileRext = 4,
+}YangHevcProfile;
+
+typedef enum YangHevcTier {
+     YangTierMain,
+     YangTierHigh,
+}YangHevcTier;
 
 typedef enum YangAudioCodec{
 	Yang_AED_AAC,
