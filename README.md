@@ -2,6 +2,20 @@
 * The easiest WebRTC stack for embedded / IoT / robotics devices
 * Code once run everywhere, A pure C version of webRTC
 * Linux/RTOS/Windows/Mac/Android/IOS   
+## MetaRTC implements a *complete* WebRTC stack
+
+- ICE / ICE-Lite
+- STUN and TURN (configurable)
+- DTLS / SRTP
+- Full RTP/RTCP support
+- Adaptive bitrate & congestion control
+- Flexible media pipelines
+- P2P connection logic
+- Customizable session/signaling logic
+- UDP and optional TCP fallback
+- Multi-stream, multi-track support
+
+In short, MetaRTC provides **full control**, can run in **fully offline environments**, and is suitable for **large-scale product integration**.
 
 ## Key Features
 
