@@ -1,8 +1,8 @@
 ## MetaRTC Overview
 
-**Code once run everywhere, A pure C version of webRTC**    
-MetaRTC是一个跨平台的webRTC SDK,更适合嵌入式/物联网的webRTC应用  
-MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of Things webRTC applications.    
+* Code once run everywhere, A pure C version of webRTC
+* The easiest WebRTC stack for embedded / IoT / robotics devices  
+* Linux/Rtos/Windows/Mac/Android/IOS   
 
 ## Key Features
 
@@ -22,7 +22,7 @@ MetaRTC is a cross-platform webRTC SDK, more suitable for embedded/Internet of T
 
 + Whip/Whep  
 
-+ Linux/Windows/Mac/Android/IOS
++ Linux/Rtos/Windows/Mac/Android/IOS
 
 + ARM/MIPS/Loongson/RISC-V/X86
 
