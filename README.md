@@ -2,7 +2,7 @@
 
 * Code once run everywhere, A pure C version of webRTC
 * The easiest WebRTC stack for embedded / IoT / robotics devices  
-* Linux/Rtos/Windows/Mac/Android/IOS   
+* Linux/RTOS/Windows/Mac/Android/IOS   
 
 ## Key Features
 
@@ -22,7 +22,7 @@
 
 + Whip/Whep  
 
-+ Linux/Rtos/Windows/Mac/Android/IOS
++ Linux/RTOS/Windows/Mac/Android/IOS
 
 + ARM/MIPS/Loongson/RISC-V/X86
 
@@ -31,7 +31,7 @@
   + AAC/H264  
   + AAC/H265(HEVC)
 
-+ Qt/Flutter/Lvgl/Native
++ Flutter/React Native/UniApp/QT/Lvgl/Native
 
 ## New Features
 
