@@ -1,7 +1,6 @@
 ## MetaRTC Overview
-
+* The easiest WebRTC stack for embedded / IoT / robotics devices
 * Code once run everywhere, A pure C version of webRTC
-* The easiest WebRTC stack for embedded / IoT / robotics devices  
 * Linux/RTOS/Windows/Mac/Android/IOS   
 
 ## Key Features
