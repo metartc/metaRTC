@@ -117,14 +117,12 @@ SOURCES += \
     src/yangencoder/YangAudioEncoderOpus.cpp \
     src/yangencoder/YangEncoderFactory.cpp \
     src/yangencoder/YangEncoderMediacodec.cpp \
-    src/yangencoder/YangFfmpegEncoderMeta.cpp \
     src/yangencoder/YangH264EncoderMeta.cpp \
     src/yangencoder/YangH264EncoderSoft.cpp \
     src/yangencoder/YangH265EncoderMeta.cpp \
     src/yangencoder/YangH265EncoderSoft.cpp \
     src/yangencoder/YangOpenH264Encoder.cpp \
     src/yangencoder/YangVideoEncoder.cpp \
-    src/yangencoder/YangVideoEncoderFfmpeg.cpp \
     src/yangencoder/YangVideoEncoderHandle.cpp \
     src/yangencoder/YangVideoEncoderMac.cpp \
     src/yangrtc/YangPeerConnection7.cpp \
@@ -200,13 +198,11 @@ HEADERS += \
     src/yangdecoder/YangVideoDecoderMac.h \
     src/yangencoder/YangAudioEncoderOpus.h \
     src/yangencoder/YangEncoderMediacodec.h \
-    src/yangencoder/YangFfmpegEncoderMeta.h \
     src/yangencoder/YangH264EncoderMeta.h \
     src/yangencoder/YangH264EncoderSoft.h \
     src/yangencoder/YangH265EncoderMeta.h \
     src/yangencoder/YangH265EncoderSoft.h \
     src/yangencoder/YangOpenH264Encoder.h \
-    src/yangencoder/YangVideoEncoderFfmpeg.h \
     src/yangencoder/YangVideoEncoderMac.h
 
 # Default rules for deployment.

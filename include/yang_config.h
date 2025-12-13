@@ -37,18 +37,19 @@
 #define Yang_Enable_Dtls 1 //default:using dtls
 #define Yang_Enable_TWCC 0
 
-#if Yang_OS_WIN
 #define Yang_Enable_H264Decoder 0
-#define Yang_Enable_H264Decoder_So 1
-#define Yang_Enable_FfmpegSo 0
-#else
-#define Yang_Enable_H264Decoder 1
-#if !Yang_OS_ANDROID
 #define Yang_Enable_H264Decoder_So 0
+
+#if Yang_Enable_H264Decoder
+#define Yang_Enable_Ffmpeg_Codec   0
+#define Yang_Enable_FfmpegSo       1
 #else
-#define Yang_Enable_H264Decoder_So 0
-#endif
-#define Yang_Enable_FfmpegSo 1
+#define Yang_Enable_Ffmpeg_Codec 1
+	#if Yang_OS_APPLE
+		#define Yang_Enable_FfmpegSo 0
+	#else
+		#define Yang_Enable_FfmpegSo 0
+	#endif
 #endif
 
 

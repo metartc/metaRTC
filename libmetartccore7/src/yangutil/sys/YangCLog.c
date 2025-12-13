@@ -38,8 +38,6 @@ static char const *YANG_LOG_LEVEL_NAME[] = { "FATAL", "ERROR", "WARNING",
 
 void yang_setCLogFile(int32_t isSetLogFile,char* logPath) {
 #if Yang_Enable_Logfile
-	char file_path_getcwd[255];
-
 	if (g_hasLogFile)
 		return;
 

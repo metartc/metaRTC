@@ -135,14 +135,12 @@
     <ClCompile Include="..\src\yangencoder\YangAudioEncoderOpus.cpp" />
     <ClCompile Include="..\src\yangencoder\YangEncoderFactory.cpp" />
     <ClCompile Include="..\src\yangencoder\YangEncoderMediacodec.cpp" />
-    <ClCompile Include="..\src\yangencoder\YangFfmpegEncoderMeta.cpp" />
     <ClCompile Include="..\src\yangencoder\YangH264EncoderMeta.cpp" />
     <ClCompile Include="..\src\yangencoder\YangH264EncoderSoft.cpp" />
     <ClCompile Include="..\src\yangencoder\YangH265EncoderMeta.cpp" />
     <ClCompile Include="..\src\yangencoder\YangH265EncoderSoft.cpp" />
     <ClCompile Include="..\src\yangencoder\YangOpenH264Encoder.cpp" />
     <ClCompile Include="..\src\yangencoder\YangVideoEncoder.cpp" />
-    <ClCompile Include="..\src\yangencoder\YangVideoEncoderFfmpeg.cpp" />
     <ClCompile Include="..\src\yangencoder\YangVideoEncoderHandle.cpp" />
     <ClCompile Include="..\src\yangdecoder\YangAudioDecoder.cpp" />
     <ClCompile Include="..\src\yangdecoder\YangAudioDecoderHandle.cpp" />

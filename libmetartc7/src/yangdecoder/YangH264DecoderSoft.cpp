@@ -3,7 +3,7 @@
 //
 
 #include <yangdecoder/YangH264DecoderSoft.h>
-
+#if Yang_Enable_H264Decoder
 #if	!Yang_Enable_H264Decoder_So
 int32_t yang_decode(struct YangH264DecContext *cont,int32_t isIframe,uint8_t *pData, int32_t nSize,enum YangYuvType yuvType,
 		uint8_t *dest, int32_t *pnFrameReturned){
@@ -83,4 +83,4 @@ int32_t YangH264DecoderSoft::decode(YangFrame* videoFrame,YangColorSpace yuvtype
 	return ret;
 }
 
-
+#endif

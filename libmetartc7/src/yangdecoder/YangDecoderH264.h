@@ -6,7 +6,7 @@
 #include <yangdecoder/YangH264Dec.h>
 #include <yangutil/yangtype.h>
 
-
+#if Yang_Enable_H264Decoder
 #if !Yang_Enable_H264Decoder_So
 
 class YangDecoderH264{
@@ -21,5 +21,6 @@ public:
 private:
 
 };
+#endif
 #endif
 #endif /* YANGDECODER_SRC_YANGH2645VIDEODECODERFFMPEG_H_ */

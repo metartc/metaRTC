@@ -3,6 +3,7 @@
 //
 
 #include "YangDecoderH264.h"
+#if Yang_Enable_H264Decoder
 #if !Yang_Enable_H264Decoder_So
 extern "C"{
 	#include <h264decoder/libavcodec/avcodec.h>
@@ -135,4 +136,5 @@ void YangDecoderH264::decode_close() {
 	}
 
 }
+#endif
 #endif

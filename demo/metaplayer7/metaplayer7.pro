@@ -34,7 +34,7 @@ macx{
     }
  LIBS +=  -L$$HOME_BASE/thirdparty/lib/mac
 
- LIBS += -lmetartc7 -lyangwhip7 -lmetartccore7 -lyuv -lspeexdsp -lopus -lyangh264decoder -lusrsctp -lpthread  -ldl
+ LIBS += -lmetartc7 -lyangwhip7 -lmetartccore7 -lyuv -lspeexdsp -lopus  -lusrsctp -lpthread  -ldl -lavutil -lavcodec
 
 LIBS += -framework CoreAudio -framework AudioUnit -framework VideoToolbox -framework CoreMedia -framework CoreVideo
 
@@ -53,7 +53,7 @@ unix:!macx{
     }
  LIBS +=  -L$$HOME_BASE/thirdparty/lib
 
- LIBS += -lmetartc7 -lyangwhip7 -lmetartccore7 -lyuv -lspeexdsp -lopus -lyangh264decoder -lusrsctp -lpthread  -ldl
+ LIBS += -lmetartc7 -lyangwhip7 -lmetartccore7 -lyuv -lspeexdsp -lavutil -lavcodec -lopus -lusrsctp -lpthread  -ldl
 
 #linux
 LIBS += -lasound

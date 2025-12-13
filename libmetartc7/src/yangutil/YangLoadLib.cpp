@@ -50,7 +50,8 @@ void* YangLoadLib::loadObject(const char *sofile)
 	char file_path_getcwd[LENTH];
 	memset(file1, 0, LENTH+50);
 	memset(file_path_getcwd, 0, LENTH);
-    if(yang_getLibpath(file_path_getcwd)!=Yang_Ok){
+   // if(yang_getLibpath(file_path_getcwd)!=Yang_Ok){
+    if(yang_getCurpath(file_path_getcwd)!=Yang_Ok){
 		yang_error( "Failed loading shared obj %s: %s,getcwd error!", sofile, (char *) dlerror());
 		return NULL;
 	}

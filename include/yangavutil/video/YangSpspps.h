@@ -12,6 +12,7 @@ extern "C"{
 #endif
 void yang_h264_decode_getH264RtmpHeader(uint8_t* ps,uint8_t** sps,int32_t* spsLen);
 int yang_h264_decode_spspps(uint8_t * buf,uint32_t nLen,int32_t *p_width,int32_t *p_height,int32_t *p_fps);
+int32_t yang_h265_decode_sps(uint8_t* payload,uint32_t nLen,uint32_t* width,uint32_t* height);
 #ifdef __cplusplus
 }
 #endif

@@ -5,11 +5,11 @@
 
 #include <yangencoder/YangAudioEncoderOpus.h>
 
-#include <yangencoder/YangFfmpegEncoderMeta.h>
+
 #include <yangencoder/YangGpuEncoderFactory.h>
 #include <yangencoder/YangH265EncoderMeta.h>
 #include <yangencoder/YangH265EncoderSoft.h>
-#include <yangencoder/YangVideoEncoderFfmpeg.h>
+
 #include <yangencoder/YangVideoEncoderMac.h>
 #include <yangencoder/YangEncoderMediacodec.h>
 
@@ -29,10 +29,7 @@ YangEncoderFactory::~YangEncoderFactory() {
 }
 YangVideoEncoderMeta* YangEncoderFactory::createVideoEncoderMeta(
         YangVideoInfo *videoInfo) {
-#if Yang_Enable_Ffmpeg_Codec
-    if (videoInfo->videoEncHwType > 0)
-		return new YangFfmpegEncoderMeta();
-#endif
+
 #if !Yang_Enable_Openh264
     if(videoInfo->videoEncoderType==0) return new YangH264EncoderMeta();
 #endif
@@ -80,11 +77,9 @@ YangVideoEncoder* YangEncoderFactory::createVideoEncoder(YangVideoCodec vcodec,Y
 #endif
     }
 
-#if Yang_Enable_Ffmpeg_Codec
-    return new YangVideoEncoderFfmpeg(vcodec, videoInfo->videoEncHwType);
-#else
+
     return NULL;
-#endif
+
 }
 
 

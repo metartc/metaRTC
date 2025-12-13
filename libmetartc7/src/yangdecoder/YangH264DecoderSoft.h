@@ -7,7 +7,7 @@
 #include <yangdecoder/YangVideoDecoder.h>
 #include <yangutil/sys/YangLoadLib.h>
 #include <yangutil/yangtype.h>
-
+#if Yang_Enable_H264Decoder
 extern "C"{
 #include <yangdecoder/YangH264Dec.h>
 }
@@ -45,5 +45,5 @@ private:
 	#define yang_decode_close decode_close
 #endif
 };
-
+#endif
 #endif /* YANGDECODER_SRC_YANGH264DECODERSOFT_H_ */

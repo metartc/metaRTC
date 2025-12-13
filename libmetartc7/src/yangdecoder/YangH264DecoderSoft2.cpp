@@ -3,7 +3,7 @@
 //
 
 #include <yangdecoder/YangH264DecoderSoft2.h>
-
+#if Yang_Enable_H264Decoder
 #if !Yang_Enable_H264Decoder_So
 YangH264DecoderSoft2::YangH264DecoderSoft2() {
 	m_buffer=NULL;
@@ -56,5 +56,5 @@ int32_t YangH264DecoderSoft2::decode(YangFrame* videoFrame,YangYuvType yuvtype,Y
 	if(pcallback&&m_bufLen) pcallback->onVideoData(videoFrame);
 	return ret;
 }
-
+#endif
 #endif

@@ -10,7 +10,7 @@
 #include <yangutil/sys/YangLoadLib.h>
 #include <yangutil/yangtype.h>
 
-
+#if Yang_Enable_H264Decoder
 #if !Yang_Enable_H264Decoder_So
 class YangH264DecoderSoft2: public YangVideoDecoder {
 public:
@@ -28,5 +28,6 @@ private:
 	void getH264RtmpHeader(uint8_t *buf, uint8_t *src, int32_t *hLen);
 	YangDecoderH264* m_decoder;
 };
+#endif
 #endif
 #endif /* YANGDECODER_SRC_YANGH264DECODERSOFT_H_ */
