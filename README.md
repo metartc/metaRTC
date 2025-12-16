@@ -46,20 +46,6 @@ In short, MetaRTC provides **full control**, can run in **fully offline environm
 
 + Flutter/React Native/UniApp/QT/Lvgl/Native
 
-## New Features
-
-## flutter ui demo
-
-demo/metaplayer7_flutter
-
-download: https://github.com/metartc/metaRTC/releases/tag/7.0.072 file:metartc7.072.linux.7z
-
-### lvgl ui demo
-
-demo/metaplayer7_lvgl
-
-download: https://github.com/metartc/metaRTC/releases/tag/7.0.050 file:metartc7.062.linux.lvgl.7z
-
 ## module
 
 ### libmetartccore7(pure C)
