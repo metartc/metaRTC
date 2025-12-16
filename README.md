@@ -64,7 +64,7 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 [libsrtp](https://github.com/cisco/libsrtp)  
 [usrsctp](https://github.com/sctplab/usrsctp)  
 
-## Peer connect demo
+## metaRTC API
 [metaRTC7 API](https://github.com/metartc/metaRTC/wiki/metaRTC7--API)  
 [metaRTC 7.0 API Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-7.0-API-Programming-Guide)
 
