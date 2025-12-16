@@ -68,16 +68,6 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 [metaRTC7 API](https://github.com/metartc/metaRTC/wiki/metaRTC7--API)  
 [metaRTC 7.0 API Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-7.0-API-Programming-Guide)
 
-## metaRTC服务支持(service support)
-
-微信号: taihang82  
-email: yangrtc@aliyun.com yangrtc@outlook.com   
-twitter: metaRTC@metartc_sdk  
-
-### metaRTC微信公众号
-
-![gzh2](https://github.com/metartc/metaRTC/assets/87118023/29a65e31-083f-4151-ab86-0103766e9d0a)
-
 ## Compile
 
 ### linux/android
@@ -154,3 +144,12 @@ https://github.com/metartc/metaRTC/wiki/metaRTC-vs-webrtc
 ## metaRTC features
 
 https://github.com/metartc/metaRTC/wiki/metaRTC-Features
+
+## metaRTC服务支持(service support)
+
+微信号: taihang82  
+email: yangrtc@aliyun.com yangrtc@outlook.com   
+twitter: metaRTC@metartc_sdk  
+
+### metaRTC微信公众号
+![gzh2](https://github.com/metartc/metaRTC/assets/87118023/29a65e31-083f-4151-ab86-0103766e9d0a)
