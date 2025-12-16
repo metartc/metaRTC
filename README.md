@@ -69,65 +69,8 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 [metaRTC 7.0 API Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-7.0-API-Programming-Guide)
 
 ## Compile
-
-### linux/android
-
-#### cmake
-
-`./cmake_lib_x64.sh `
-
-`./cmake_lib_android.sh `
-
-##### module
-
-./cmake_mips32.sh  
-
-#arm64
-
-./cmake_arm.sh  
-
-./cmake_x64.sh 
-
-#arm64-v8a armeabi x86_64
-
-./cmake_android.sh  
-
-#### Qt
-
-libmetartccore7/libmetartccore7.pro
-
-libmetartc7/libmetartc7.pro
-
-### windows
-
-#### visual studio
-
-project_msvc/
-
-#### Qt(msvc)
-
-libmetartccore7/libmetartccore7.pro
-
-libmetartc7/libmetartc7.pro
-
-### mac/ios
-
-### xcode
-
-project_xcode/
-
-## demo compile
-
-### Qt demo
-
-demo/metapushstream7/metapushstream7.pro  
-demo/metaplayer7/metaplayer7.pro
-
-### android demo
-
-android studio ide(api:29)  
-demo/metapushstream7_android  
-demo/metaplayer7_android  
+[metaRTC Compilation Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-Compilation-Guide)   
+[metaRTC7 demo mac ios compilation guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-demo-mac-ios-compilation-guide) 
 
 ## metaRTC streams to janus via the whip protocol
 
