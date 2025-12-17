@@ -63,6 +63,7 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 [OpenSSL](https://www.openssl.org/) or [Mbedtls](https://github.com/Mbed-TLS/mbedtls)  
 [libsrtp](https://github.com/cisco/libsrtp)  
 [usrsctp](https://github.com/sctplab/usrsctp)  
+[Third-party library download](https://github.com/metartc/metaRTC/releases/tag/v7.0-b6). 
 
 ## metaRTC API
 [metaRTC7 API](https://github.com/metartc/metaRTC/wiki/metaRTC7--API)  
