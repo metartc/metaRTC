@@ -70,8 +70,8 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 [metaRTC 7.0 API Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-7.0-API-Programming-Guide)
 
 ## Compile
-[metaRTC Compilation Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-Compilation-Guide)   
-[metaRTC(ARM linux64) Compilation Guide](https://github.com/metartc/metaRTC/wiki/metaRTC(ARM-linux64)-Compilation-Guide)  
+[metaRTC Compilation](https://github.com/metartc/metaRTC/wiki/metaRTC-Compilation)   
+[metaRTC(ARM linux64) Compilation](https://github.com/metartc/metaRTC/wiki/metaRTC(ARM-linux64)-Compilation)  
 
 ## metaRTC7 Programming guide
 [metaRTC7 H265 HEVC Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-H265-HEVC-Programming-Guide)   
