@@ -72,6 +72,8 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 ## Compile
 [metaRTC Compilation](https://github.com/metartc/metaRTC/wiki/metaRTC-Compilation)   
 [metaRTC(ARM linux64) Compilation](https://github.com/metartc/metaRTC/wiki/metaRTC(ARM-linux64)-Compilation)  
+[metaRTC7 mbedtls(PolarSSL) Compilation](https://github.com/metartc/metaRTC/wiki/metaRTC7-mbedtls(PolarSSL)-Compilation)
+
 
 ## metaRTC7 Programming guide
 [metaRTC7 H265 HEVC Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-H265-HEVC-Programming-Guide)   
