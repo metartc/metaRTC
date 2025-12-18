@@ -78,7 +78,8 @@ To compile libmetartccore7, you'll need to satisfy the following dependencies:
 ## metaRTC7 Programming guide
 [metaRTC7 H265 HEVC Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-H265-HEVC-Programming-Guide)   
 [metaRTC7 Mac iOS Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-Mac-iOS-Programming-Guide)   
-[metaRTC7 demo mac ios compilation guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-demo-mac-ios-compilation-guide) 
+[metaRTC7 demo mac ios compilation guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-demo-mac-ios-compilation-guide)  
+[metaRTC7 datachannel programming guide](https://github.com/metartc/metaRTC/wiki/metaRTC-datachannel-programming-guide)
 
   
 ## metaRTC streams to janus via the whip protocol
