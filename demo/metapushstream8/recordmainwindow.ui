@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RecordMainWindow</class>
+ <widget class="QMainWindow" name="RecordMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1150</width>
+    <height>833</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Webrtc推流demo</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget, QLabel{
+                        color:white;
+                        border: 1px solid white;
+                        padding:0;
+                        border-radius:5px;
+							background-color:rgb(20,50,70);
+                      /**  background-color:rgba(250,170,0,150);**/
+  }
+
+
+QTabWidget{
+
+border: 1px solid white;
+background-color:rgb(20,50,70);
+}
+QTabWidget::tab-bar{
+alignment:left;
+left:1px;
+}
+QTabWidget::pane { 
+/*background-color:rgb(20,50,70);*/
+border:1px solid white;
+} 
+QTabBar{
+
+background-color:white;
+}
+QTabBar::tab{
+min-height:28px;
+padding:0 10px;
+border:0;
+margin:1px 1px 0 0;
+background-color:rgb(20,50,70);
+}
+QTabBar::tab:first{
+margin-left:1px;
+}
+QTabBar::tab:hover{
+color:cyan;
+}
+QTabBar::tab:selected{
+background-color: rgb(20, 100, 150);
+}
+QTabBar::tab:selected:hover{
+}
+
+QTabBar::tear{
+}
+QTabBar::scroller{
+}
+QMenu {
+     background-color: rgb(20,50,70); 
+     border: 1px solid white;
+ }
+  
+ QMenu::item {
+
+     background-color: transparent;
+     padding:8px 32px;
+     margin:0px 8px;
+     border-bottom:1px solid #DBDBDB;
+ }
+  
+ QMenu::item:selected { 
+     background-color: #2dabf9;
+ }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="m_b_rec">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>660</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>start</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="vdMain">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>1081</width>
+      <height>601</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="m_l_url">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>660</y>
+      <width>80</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>URL:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="m_url">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>660</y>
+      <width>601</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="m_l_err">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>710</y>
+      <width>861</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="m_l_url_3">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>710</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Error:</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="m_c_whip">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>660</y>
+      <width>111</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>whip</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="m_c_janus">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>660</y>
+      <width>111</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>janus</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1150</width>
+     <height>50</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

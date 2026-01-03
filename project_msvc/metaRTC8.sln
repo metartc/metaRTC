@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yangutil8", "..\libyangutil8\project_win\yangutil8.vcxproj", "{12FE6569-B32E-386C-A652-F6CE39768C7F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yangwhip8", "..\libyangwhip8\project_win\yangwhip8.vcxproj", "{12FE6569-B32E-386C-A651-F6CE39768C7F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "metartccore8", "..\libmetartccore8\project_win\metartccore8.vcxproj", "{D1E2DDF4-5ADC-41EA-A141-D28B9AB244F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "metartc8", "..\libmetartc8\project_win\metartc8.vcxproj", "{46F7A260-1577-3D51-91C6-2D6761C79AB7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yangwincodec8", "..\codec\yangwincodec8\project_win\yangwincodec8.vcxproj", "{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12FE6569-B32E-386C-A652-F6CE39768C7F}.Debug|x64.ActiveCfg = Debug|x64
+		{12FE6569-B32E-386C-A652-F6CE39768C7F}.Debug|x64.Build.0 = Debug|x64
+		{12FE6569-B32E-386C-A652-F6CE39768C7F}.Debug|x86.ActiveCfg = Debug|x64
+		{12FE6569-B32E-386C-A652-F6CE39768C7F}.Release|x64.ActiveCfg = Release|x64
+		{12FE6569-B32E-386C-A652-F6CE39768C7F}.Release|x64.Build.0 = Release|x64
+		{12FE6569-B32E-386C-A652-F6CE39768C7F}.Release|x86.ActiveCfg = Release|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Debug|x64.ActiveCfg = Debug|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Debug|x64.Build.0 = Debug|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Debug|x86.ActiveCfg = Debug|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Release|x64.ActiveCfg = Release|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Release|x64.Build.0 = Release|x64
+		{12FE6569-B32E-386C-A651-F6CE39768C7F}.Release|x86.ActiveCfg = Release|x64
+		{D1E2DDF4-5ADC-41EA-A141-D28B9AB244F4}.Debug|x64.ActiveCfg = Debug|x64
+		{D1E2DDF4-5ADC-41EA-A141-D28B9AB244F4}.Debug|x64.Build.0 = Debug|x64
+		{D1E2DDF4-5ADC-41EA-A141-D28B9AB244F4}.Debug|x86.ActiveCfg = Debug|x64
+		{D1E2DDF4-5ADC-41EA-A141-D28B9AB244F4}.Release|x64.ActiveCfg = Release|x64
+		{D1E2DDF4-5ADC-41EA-A141-D28B9AB244F4}.Release|x64.Build.0 = Release|x64
+		{D1E2DDF4-5ADC-41EA-A141-D28B9AB244F4}.Release|x86.ActiveCfg = Release|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Debug|x64.ActiveCfg = Debug|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Debug|x64.Build.0 = Debug|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Debug|x86.ActiveCfg = Debug|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Release|x64.ActiveCfg = Release|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Release|x64.Build.0 = Release|x64
+		{46F7A260-1577-3D51-91C6-2D6761C79AB7}.Release|x86.ActiveCfg = Release|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Debug|x64.ActiveCfg = Debug|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Debug|x64.Build.0 = Debug|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Debug|x86.ActiveCfg = Debug|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Release|x64.ActiveCfg = Release|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Release|x64.Build.0 = Release|x64
+		{0A939AA3-747E-3112-A5E7-EDCB18E35DEC}.Release|x86.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9832F894-E4EB-4206-B343-0C8A4358517E}
+	EndGlobalSection
+EndGlobal
