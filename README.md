@@ -68,8 +68,6 @@ To compile libmetartccore8, you'll need to satisfy the following dependencies:
 
 [metaRTC 8.0 P2P Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC8-P2P-Programming-Guide)  
 [metaRTC 8.0 API Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-8.0-API-Programming-Guide)  
-[metaRTC7 API](https://github.com/metartc/metaRTC/wiki/metaRTC7--API)  
-[metaRTC 7.0 API Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-7.0-API-Programming-Guide)
 
 ## Compile
 [metaRTC Compilation](https://github.com/metartc/metaRTC/wiki/metaRTC-Compilation)   
@@ -77,11 +75,11 @@ To compile libmetartccore8, you'll need to satisfy the following dependencies:
 [metaRTC mbedtls(PolarSSL) Compilation](https://github.com/metartc/metaRTC/wiki/metaRTC-mbedtls(PolarSSL)-Compilation)
 
 
-## metaRTC7 Programming guide
-[metaRTC7 H265 HEVC Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-H265-HEVC-Programming-Guide)   
-[metaRTC7 Mac iOS Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-Mac-iOS-Programming-Guide)   
+## metaRTC Programming guide
+[metaRTC H265 HEVC Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-H265-HEVC-Programming-Guide)   
+[metaRTC Mac iOS Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-Mac-iOS-Programming-Guide)   
+[metaRTC datachannel programming guide](https://github.com/metartc/metaRTC/wiki/metaRTC-datachannel-programming-guide)  
 [metaRTC7 demo mac ios compilation guide](https://github.com/metartc/metaRTC/wiki/metaRTC7-demo-mac-ios-compilation-guide)  
-[metaRTC7 datachannel programming guide](https://github.com/metartc/metaRTC/wiki/metaRTC-datachannel-programming-guide)
 
 ## metaRTC streams to janus via the whip protocol
 https://github.com/metartc/metaRTC/wiki/metaRTC-streams-to-janus-via-the-whip-protocol
