@@ -48,24 +48,25 @@ In short, MetaRTC provides **full control**, can run in **fully offline environm
 
 ## module
 
-### libmetartccore7(pure C)
+### libmetartccore8(pure C)
 
 Implementation of webRTC protocol stack    
 AEC/ANS/AGC and other audio and video processing libraries
 
-### libmetartc7(C++)
+### libmetartc8(C++)
 
 Realize audio and video collection, encoding, decoding, transmission, rendering, and push-pull streaming  
 
 ## Dependencies
 
-To compile libmetartccore7, you'll need to satisfy the following dependencies:  
+To compile libmetartccore8, you'll need to satisfy the following dependencies:  
 [OpenSSL](https://www.openssl.org/) or [Mbedtls](https://github.com/Mbed-TLS/mbedtls)  
 [libsrtp](https://github.com/cisco/libsrtp)  
 [usrsctp](https://github.com/sctplab/usrsctp)  
 [Third-party library download](https://github.com/metartc/metaRTC/wiki/Third%E2%80%90party-library-download) 
 
 ## metaRTC API
+[metaRTC 8.0 P2P Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC8-P2P-Programming-Guide)
 [metaRTC7 API](https://github.com/metartc/metaRTC/wiki/metaRTC7--API)  
 [metaRTC 7.0 API Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-7.0-API-Programming-Guide)
 
