@@ -47,14 +47,13 @@ In short, MetaRTC provides **full control**, can run in **fully offline environm
 + Flutter/React Native/UniApp/QT/Lvgl/Native
 
 ## module
-
-### libmetartccore8(pure C)
-
-Implementation of webRTC protocol stack    
+### libyangutil8(pure C)
 AEC/ANS/AGC and other audio and video processing libraries
-
+### libmetartccore8(pure C)
+Implementation of webRTC protocol stack   
+### libyangwhip8
+whip/whep/sfu/mcu connection protocol implementation  
 ### libmetartc8(C++)
-
 Realize audio and video collection, encoding, decoding, transmission, rendering, and push-pull streaming  
 
 ## Dependencies
