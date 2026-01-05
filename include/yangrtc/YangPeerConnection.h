@@ -29,7 +29,7 @@ typedef struct {
 	int32_t  (*on_audio)(YangPeer* peer,YangPushData *audioData);
 	int32_t  (*on_video)(YangPeer* peer,YangPushData *videoData);
 	int32_t (*on_message)(YangPeer* peer,YangFrame* msgFrame);
-	//not implement
+
 	int32_t (*addIceCandidate)(YangPeer* peer,char* candidateStr);
 	int32_t (*sendRtcMessage)(YangPeer* peer, YangRtcMessageType mess);
 	int32_t  (*sendRequestPli)(YangPeer* peer);
