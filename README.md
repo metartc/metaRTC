@@ -66,7 +66,7 @@ To compile libmetartccore8, you'll need to satisfy the following dependencies:
 [Third-party library download](https://github.com/metartc/metaRTC/wiki/Third%E2%80%90party-library-download) 
 
 ## metaRTC API
-[metaRTC 8.0 P2P Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC8-P2P-Programming-Guide)
+[metaRTC 8.0 P2P Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC8-P2P-Programming-Guide)  
 [metaRTC7 API](https://github.com/metartc/metaRTC/wiki/metaRTC7--API)  
 [metaRTC 7.0 API Programming Guide](https://github.com/metartc/metaRTC/wiki/metaRTC-7.0-API-Programming-Guide)
 
