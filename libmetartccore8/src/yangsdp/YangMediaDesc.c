@@ -38,6 +38,7 @@ void yang_destroy_mediadesc(YangMediaDesc* desc){
 	yang_destroy_YangSSRCGroupVector(&desc->ssrc_groups);
 	yang_destroy_YangSSRCInfoVector(&desc->ssrc_infos);
 }
+
 int32_t yang_encode_sessionInfo(YangSessionInfo *info, YangBuffer *os,YangIceMode iceMode) {
 	int32_t err = Yang_Ok;
 
@@ -53,8 +54,6 @@ int32_t yang_encode_sessionInfo(YangSessionInfo *info, YangBuffer *os,YangIceMod
 		yang_write_cstring(os, info->ice_pwd);
 		yang_write_cstring(os, kCRLF);
 	}
-
-	// For ICE-lite, we never set the trickle.
 
 	if (iceMode==YangIceModeFull&&yang_strlen(info->ice_options)) {
 		yang_write_cstring(os, "a=ice-options:");
@@ -110,7 +109,7 @@ int32_t yang_encode_mediadesc(YangMediaDesc *desc, YangBuffer *os) {
 		yang_write_cstring(os, "c=IN IP6 0:0:0:0:0:0:0:0");
 	yang_write_cstring(os, kCRLF);
 	if ((err = yang_encode_sessionInfo(&desc->session_info, os,desc->iceMode)) != Yang_Ok) {
-		return printf("encode session info failed");
+		return yang_error_wrap(err,"encode session info failed");
 	}
 	yang_write_cstring(os, "a=mid:");
 	yang_write_cstring(os, desc->mid);
@@ -203,9 +202,9 @@ int32_t yang_encode_mediadesc(YangMediaDesc *desc, YangBuffer *os) {
 int32_t yang_mediadesc_update_msid(YangMediaDesc *desc, char *id) {
 	int32_t i;
 	int32_t err = Yang_Ok;
-
+	YangSSRCInfo *info;
 	for (i = 0; i < desc->ssrc_infos.vsize; i++) {
-		YangSSRCInfo *info = &desc->ssrc_infos.payload[i];
+		info = &desc->ssrc_infos.payload[i];
 		yang_memset(info->msid, 0, sizeof(info->msid));
 		yang_strcpy(info->msid, id);
 		yang_memset(info->mslabel, 0, sizeof(info->mslabel));
@@ -318,11 +317,8 @@ int32_t yang_mediadesc_parse_attr_extmap(YangMediaDesc *desc, char *value) {
 
 	return err;
 }
-
+// @see: https://tools.ietf.org/html/rfc4566#page-25
 int32_t yang_mediadesc_parse_attr_rtpmap(YangMediaDesc *desc, char *value) {
-
-	// @see: https://tools.ietf.org/html/rfc4566#page-25
-	// a=rtpmap:<payload type> <encoding name>/<clock rate> [/<encoding parameters>]
 
 	int32_t payload_type;
 	int32_t err = Yang_Ok;
@@ -399,7 +395,6 @@ int32_t yang_mediadesc_parse_attr_rtcp_fb(YangMediaDesc *desc, char *value) {
 
 int32_t yang_mediadesc_parse_attr_fmtp(YangMediaDesc *desc, char *value) {
 	// @see: https://tools.ietf.org/html/rfc4566#page-30
-	// a=fmtp:<format> <format specific parameters>
 	int32_t err = Yang_Ok;
 	int32_t payload_type;
 	YangMediaPayloadType *payload;
@@ -454,7 +449,6 @@ int32_t yang_mediadesc_parse_attr_msid(YangMediaDesc *desc, char *value) {
 
 int32_t yang_mediadesc_parse_attr_ssrc_group(YangMediaDesc *desc, char *value) {
 	// @see: https://tools.ietf.org/html/rfc5576#section-4.2
-	// a=ssrc-group:<semantics> <ssrc-id> ...
 	size_t i;
 	int32_t err = Yang_Ok;
 	uint32_t ssrc;
