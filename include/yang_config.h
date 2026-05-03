@@ -16,7 +16,7 @@
 #define Yang_Enable_GPU_Encoding 0
 #define Yang_Enable_Phtread 0
 #else
-#define Yang_Enable_Openssl 1
+#define Yang_Enable_Openssl 0
 #define Yang_Enable_GPU_Encoding 0
 #define Yang_Enable_Phtread 1
 #endif
@@ -63,7 +63,6 @@
 #define Yang_Enable_Ffmpeg_Codec 1
 
 #define Yang_Enable_RtcpXr 0
-#define Yang_Rtp_I_Withmeta 1
 #define Yang_CTimer_Epoll_Timeout 200
 #define Yang_gatherTurn_WaitTime 3000 //ms
 
