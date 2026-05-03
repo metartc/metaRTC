@@ -86,7 +86,6 @@ int32_t yang_encode_ssrcgroup(YangSSRCGroup* group,YangBuffer* os)
     	     yang_memset(ssrcstr,0,sizeof(ssrcstr));
     	     yang_itoa(group->groups.payload[i],ssrcstr,10);
     	  yang_write_cstring(os,ssrcstr);
-      //  os << " " << m_ssrcs[i];
     }
 
     return err;

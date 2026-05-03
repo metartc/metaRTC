@@ -438,7 +438,7 @@ int32_t yang_mediadesc_parse_attr_mid(YangMediaDesc *desc, char *value) {
 
 int32_t yang_mediadesc_parse_attr_msid(YangMediaDesc *desc, char *value) {
 	// @see: https://tools.ietf.org/id/draft-ietf-mmusic-msid-08.html#rfc.section.2
-	// TODO: msid and msid_tracker
+
 	int32_t err = Yang_Ok;
 	YangStrings str;
 	yang_cstr_split(value, " ", &str);
@@ -632,7 +632,7 @@ int32_t yang_mediadesc_parse_line(YangMediaDesc *desc, char *line) {
 		return yang_mediadesc_parse_attribute(desc, content);
 	}
 	case 'c': {
-		// TODO: process c-line
+
 		break;
 	}
 	default: {

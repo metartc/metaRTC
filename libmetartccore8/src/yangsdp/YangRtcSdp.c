@@ -88,7 +88,6 @@ void yang_rtcsdp_set_fingerprint(YangSdp *sdp, char *fingerprint) {
 
 
 char* yang_rtcsdp_get_ice_ufrag(YangSdp *sdp) {
-	// Becaues we use BUNDLE, so we can choose the first element.
 	int32_t i;
 	for (i = 0; i < sdp->media_descs.vsize; i++) {
 		return sdp->media_descs.payload[i].session_info.ice_ufrag;
@@ -97,7 +96,6 @@ char* yang_rtcsdp_get_ice_ufrag(YangSdp *sdp) {
 }
 
 char* yang_rtcsdp_get_ice_pwd(YangSdp *sdp) {
-	// Becaues we use BUNDLE, so we can choose the first element.
 	int32_t i;
 	for (i = 0; i < sdp->media_descs.vsize; i++) {
 		return sdp->media_descs.payload[i].session_info.ice_pwd;
@@ -106,7 +104,6 @@ char* yang_rtcsdp_get_ice_pwd(YangSdp *sdp) {
 }
 
 char* yang_rtcsdp_get_dtls_role(YangSdp *sdp) {
-	// Becaues we use BUNDLE, so we can choose the first element.
 	int32_t i;
 	for (i = 0; i < sdp->media_descs.vsize; i++) {
 		return sdp->media_descs.payload[i].session_info.setup;
@@ -114,15 +111,13 @@ char* yang_rtcsdp_get_dtls_role(YangSdp *sdp) {
 	return "";
 }
 
+// @see: https://tools.ietf.org/html/rfc4566#section-5.2
 int32_t yang_rtcsdp_parse_origin(YangSdp *sdp, char *content) {
 	int32_t err = Yang_Ok;
 	YangStrings str;
 	yang_cstr_split(content, " ", &str);
 	if (str.vsize < 5)
 		return 1;
-	// @see: https://tools.ietf.org/html/rfc4566#section-5.2
-	// o=<username> <sess-id> <sess-version> <nettype> <addrtype> <unicast-address>
-	// eg. o=- 9164462281920464688 2 IN IP4 127.0.0.1
 
 	yang_strcpy(sdp->username, str.str[0]);
 	yang_strcpy(sdp->session_id, str.str[1]);
@@ -135,9 +130,10 @@ int32_t yang_rtcsdp_parse_origin(YangSdp *sdp, char *content) {
 	return err;
 }
 
+// @see: https://tools.ietf.org/html/rfc4566#section-5.1
 int32_t yang_rtcsdp_parse_version(YangSdp *sdp, char *content) {
 	int32_t err = Yang_Ok;
-	// @see: https://tools.ietf.org/html/rfc4566#section-5.1
+
 	if (yang_strlen(content))
 		yang_strcpy(sdp->version, content);
 	else
@@ -146,20 +142,19 @@ int32_t yang_rtcsdp_parse_version(YangSdp *sdp, char *content) {
 	return err;
 }
 
+// @see: https://tools.ietf.org/html/rfc4566#section-5.3
+// s=<session name>
 int32_t yang_rtcsdp_parse_session_name(YangSdp *sdp, char *content) {
 	int32_t err = Yang_Ok;
-	// @see: https://tools.ietf.org/html/rfc4566#section-5.3
-	// s=<session name>
+
 	yang_strcpy(sdp->session_name, content);
 
 	return err;
 }
-
+// @see: https://tools.ietf.org/html/rfc4566#section-5.9
 int32_t yang_rtcsdp_parse_timing(YangSdp *sdp, char *content) {
 	int32_t err = Yang_Ok;
 
-	// @see: https://tools.ietf.org/html/rfc4566#section-5.9
-	// t=<start-time> <stop-time>
 	YangStrings str;
 	yang_cstr_split(content, " ", &str);
 
@@ -173,9 +168,10 @@ int32_t yang_rtcsdp_parse_timing(YangSdp *sdp, char *content) {
 	return err;
 }
 
+// @see: https://tools.ietf.org/html/rfc5888#section-5
 int32_t yang_rtcsdp_parse_attr_group(YangSdp *sdp, char *value) {
 	int32_t err = Yang_Ok;
-	// @see: https://tools.ietf.org/html/rfc5888#section-5
+
 	YangStrings str;
 	yang_cstr_split(value, " ", &str);
 	if (str.vsize == 0)
@@ -190,10 +186,10 @@ int32_t yang_rtcsdp_parse_attr_group(YangSdp *sdp, char *value) {
 	return err;
 }
 
+// @see: https://tools.ietf.org/html/rfc4566#section-5.14
 int32_t yang_rtcsdp_parse_media_description(YangSdp *sdp, char *content) {
-	// @see: https://tools.ietf.org/html/rfc4566#section-5.14
-	// m=<media> <port> <proto> <fmt> ...
-	// m=<media> <port>/<number of ports> <proto> <fmt> ...
+
+
 	int32_t i;
 	int32_t err = Yang_Ok;
 	YangMediaDesc *desc;
@@ -225,10 +221,11 @@ int32_t yang_rtcsdp_parse_media_description(YangSdp *sdp, char *content) {
 	yang_destroy_strings(&str);
 	return err;
 }
+
+// @see: https://tools.ietf.org/html/rfc4566#section-5.13
 int32_t yang_rtcsdp_parse_attribute(YangSdp *sdp, char *content) {
-	// @see: https://tools.ietf.org/html/rfc4566#section-5.13
-	// a=<attribute>
-	// a=<attribute>:<value>
+
+
 	int32_t j;
 	int32_t err = Yang_Ok;
 	if(yang_memcmp(content,"ice-lite",8)==0){
@@ -236,7 +233,6 @@ int32_t yang_rtcsdp_parse_attribute(YangSdp *sdp, char *content) {
 		return err;
 	}
 	char *p = yang_strstr(content, ":");
-	//if(p==NULL) return err;
 
 	char attribute[256];
 	char value[256];
@@ -266,7 +262,7 @@ int32_t yang_rtcsdp_parse_attribute(YangSdp *sdp, char *content) {
 }
 
 int32_t yang_rtcsdp_is_unified(YangSdp *sdp) {
-	// TODO: FIXME: Maybe we should consider other situations.
+
 	return sdp->media_descs.vsize > 2 ? 1 : 0;
 }
 
@@ -381,7 +377,7 @@ int32_t yang_rtcsdp_encode(YangSdp *sdp, YangBuffer *os) {
 
 	yang_write_cstring(os, tmp);
 	if ((err = yang_encode_sessionInfo(&sdp->session_info, os,sdp->iceMode)) != Yang_Ok) {
-		return printf("encode session info failed");
+		return yang_error_wrap(err,"encode session info failed");
 	}
 
 
@@ -389,7 +385,7 @@ int32_t yang_rtcsdp_encode(YangSdp *sdp, YangBuffer *os) {
 
 		if ((err = yang_encode_mediadesc(&sdp->media_descs.payload[i], os))
 				!= Yang_Ok) {
-			return printf("encode media description failed");
+			return yang_error_wrap(err,"encode media description failed");
 		}
 	}
 
@@ -403,9 +399,6 @@ int32_t yang_rtcsdp_parse(YangSdp *sdp, char *sdp_str) {
 	YangStrings strs;
 
 	yang_cstr_split(sdp_str, "\n", &strs);
-
-	// All webrtc SrsSdp annotated example
-	// @see: https://tools.ietf.org/html/draft-ietf-rtcweb-SrsSdp-11
 
 	sdp->iceMode=YangIceModeFull;
 
@@ -421,8 +414,6 @@ int32_t yang_rtcsdp_parse(YangSdp *sdp, char *sdp_str) {
 			return yang_error_wrap(1, "parse sdp line failed:%s",line);
 		}
 	}
-
-	// The msid/tracker/mslabel is optional for SSRC, so we copy it when it's empty.
 
 	for (i = 0; i < sdp->media_descs.vsize; i++) {
 		YangMediaDesc *media_desc = &sdp->media_descs.payload[i];
