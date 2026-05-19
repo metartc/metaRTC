@@ -1,9 +1,12 @@
 ## MetaRTC Overview
 * The easiest WebRTC stack for embedded / IoT / robotics devices
 * Code once run everywhere, A pure C version of webRTC
-* Linux/RTOS/Windows/Mac/Android/IOS
+* Linux/RTOS/Windows/Mac/Android/IOS  
 
 [metaRTC8 Successfully Adapts to RTOS](https://github.com/metartc/metaRTC/wiki/metaRTC8-Successfully-Adapts-to-RTOS)  
+[One-Codebase-Across-RTOS-Linux-Android(en)](https://github.com/metartc/metaRTC/wiki/One-Codebase-Across-RTOS-Linux-Android)  
+[One-Codebase-Across-RTOS-Linux-Android(zh_CN)](https://github.com/metartc/metaRTC/wiki/One-codebase,-compatible-with-three-platforms-(RTOS-Linux-Android))  
+ 
 ## MetaRTC implements a *complete* WebRTC stack
 
 - ICE / ICE-Lite
