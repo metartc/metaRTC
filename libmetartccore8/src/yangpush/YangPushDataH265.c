@@ -156,14 +156,14 @@ static int32_t yang_h265_package_fu_a(YangPushVideoSession *session,YangFrame *v
 	int32_t packet_size,i;
 	int32_t plen = videoFrame->nb;
 	uint8_t *pdata = videoFrame->payload;
-	char *p = (char*) pdata + 2;
+	char *payload = (char*) pdata + 2;
 	int32_t nb_left = plen - 2;
 	uint8_t header = pdata[0];
 	uint8_t nal_type = YANG_HEVC_NALU_TYPE(header);
 
 	YangPacket* pktData=NULL;
 
-	uint32_t num_of_packet = ((plen - 2) % fu_payload_size==0)?0:1  + (plen - 2) / fu_payload_size;
+	uint32_t num_of_packet = 1  + (nb_left - 1) / fu_payload_size;
 
 	yang_pkt_checkBuffer(session->dataBuffer->pushDataBuffer,num_of_packet);
 
@@ -188,9 +188,9 @@ static int32_t yang_h265_package_fu_a(YangPushVideoSession *session,YangFrame *v
 
 		session->videoFua2Data.payload = session->videoBuf;
 		session->videoFua2Data.nb = packet_size;
-		yang_memcpy(session->videoFua2Data.payload, p, packet_size);
+		yang_memcpy(session->videoFua2Data.payload, payload, packet_size);
 
-		p += packet_size;
+		payload += packet_size;
 		nb_left -= packet_size;
 
 		pktData=yang_pkt_getPutPacket(session->dataBuffer->pushDataBuffer);
